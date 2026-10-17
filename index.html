@@ -83,7 +83,7 @@
 .event-meta{font-size:12px;color:#52644f;line-height:1.75;margin-top:6px}
 .event-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .event-kind{border-radius:30px;background:#d9edb6;color:#23432a;font-size:10px;font-weight:800;padding:6px 12px;white-space:nowrap}
-.overdue-note{background:#ffecd0;border-left:4px solid #e4aa42;border-radius:9px;color:#613f13;font-size:12px;line-height:1.6;padding:12px 15px;margin-top:8px}
+.overdue-note{background:#dcefe0;border-left:4px solid var(--green);border-radius:9px;color:#184733;font-size:12px;line-height:1.6;padding:12px 15px;margin-top:8px}
 .group-switch{display:flex;gap:3px;background:#e5e9df;padding:4px;border-radius:10px}
 .group-switch button{border:0;border-radius:8px;padding:5px 14px;min-height:32px;background:transparent;color:#405545;font:600 11px var(--sans);cursor:pointer}
 .group-switch button.active{background:#174d3c;color:#fff}
@@ -93,21 +93,25 @@
 .day-control span{font-size:10px;font-weight:700;color:#52624e;min-width:70px;text-align:center}
 
 /* Calificaciones y evaluaciones */
-.grades-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grades-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .grade-card{background:#fff;border:1px solid #c5d9ca;border-left:6px solid var(--green);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
 .grade-card[data-type="test"]{border-color:#c5d4e2;border-left-color:var(--blue)}
+.grade-card[data-type="global"]{border-color:#d8cbb8;border-left-color:var(--honey)}
 .grade-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .grade-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green)}
 .grade-card[data-type="test"] .grade-kicker{color:var(--blue)}
-.grade-title{font:600 20px/1.25 var(--serif);margin:4px 0;color:var(--ink)}
+.grade-card[data-type="global"] .grade-kicker{color:var(--honey)}
+.grade-title{font:600 19px/1.25 var(--serif);margin:4px 0;color:var(--ink)}
 .grade-badge{background:var(--green-dark);color:#fff;border-radius:14px;padding:8px 13px;text-align:center;min-width:86px;flex-shrink:0}
 .grade-card[data-type="test"] .grade-badge{background:var(--blue)}
-.grade-badge strong{display:block;font:700 22px/1 var(--serif)}
+.grade-card[data-type="global"] .grade-badge{background:#7d5411}
+.grade-badge strong{display:block;font:700 21px/1 var(--serif)}
 .grade-badge small{font-size:9px;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
 .grade-breakdown{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:#f5f8f4;border:1px solid #dce6dd;border-radius:11px;padding:10px 12px}
 .grade-card[data-type="test"] .grade-breakdown{background:#f3f7fb;border-color:#d5e1ec}
+.grade-card[data-type="global"] .grade-breakdown{background:#fbf7ef;border-color:#e6dcc8}
 .grade-stat{font-size:11px;color:var(--muted)}
-.grade-stat b{display:block;font-size:14px;color:var(--ink);margin-top:2px}
+.grade-stat b{display:block;font-size:13px;color:var(--ink);margin-top:2px}
 .grade-meta{font-size:12px;color:#4f5f54;line-height:1.6}
 .action-pills{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
 .pill-btn,.pill-link{display:inline-flex;align-items:center;gap:5px;border:1px solid #cbd6cc;background:#f6f9f5;color:var(--green-dark);border-radius:20px;padding:6px 11px;font:700 11px var(--sans);text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
@@ -117,7 +121,7 @@
 .pill-link.terra,.pill-btn.terra{background:#fbede4;border-color:#e5c6b5;color:#8c3d23}
 .pill-link.terra:hover,.pill-btn.terra:hover{background:#f5decb}
 .pill-link.solid-green,.pill-btn.solid-green{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
-.pill-link.solid-blue{background:var(--blue);border-color:var(--blue);color:#fff}
+.pill-link.solid-blue,.pill-btn.solid-blue{background:var(--blue);border-color:var(--blue);color:#fff}
 
 /* Asignaturas en curso (Matriz profunda) */
 .course-grid{display:grid;grid-template-columns:1fr;gap:18px}
@@ -161,18 +165,18 @@
 .teacher-sec-row b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
 
 /* Entregas */
-.deliveries{background:#fff3e7;border:1px solid #e7cbb2;border-left:5px solid #b55d2b;padding:14px 21px;border-radius:14px}
-.delivery-range{font-size:11px;font-weight:700;background:#f3e9db;color:#775a37;border-radius:20px;padding:6px 11px}
+.deliveries{background:#f2f7f1;border:1px solid #c8d9c9;border-left:5px solid var(--green);padding:14px 21px;border-radius:14px}
+.delivery-range{font-size:11px;font-weight:700;background:#e2eee5;color:var(--green-dark);border-radius:20px;padding:6px 11px}
 .delivery-list{display:grid;gap:0}
-.delivery-row{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center;padding:14px 2px;border-top:1px solid #e9e2d3}
+.delivery-row{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:center;padding:14px 2px;border-top:1px solid #d8e4d8}
 .delivery-row:first-child{border-top:0}
-.delivery-date{font:700 26px/1 var(--serif);color:#a64727}
+.delivery-date{font:700 26px/1 var(--serif);color:var(--green-dark)}
 .delivery-date small{display:block;font:700 10px var(--sans);text-transform:uppercase;letter-spacing:.1em;margin-top:3px}
 .delivery-name{font-size:14px;line-height:1.4;font-weight:800}
-.delivery-meta{font-size:11px;line-height:1.65;color:#705d4c;margin-top:3px}
-.due-state{background:#a7462b;color:#fff;font-weight:800;font-size:10px;padding:6px 10px;border-radius:20px;white-space:nowrap}
-.due-state.submitted{background:var(--green-pale);color:var(--green-dark);border:1px solid #b8c9b5}
-.source-foot{font-size:10px;line-height:1.7;color:#796b5e;margin:10px 2px 0}
+.delivery-meta{font-size:11px;line-height:1.65;color:#495c4e;margin-top:3px}
+.due-state{background:var(--green-dark);color:#fff;font-weight:800;font-size:10px;padding:6px 10px;border-radius:20px;white-space:nowrap}
+.due-state.submitted{background:var(--green-pale);color:var(--green-dark);border:1px solid #9fc0a7}
+.source-foot{font-size:10px;line-height:1.7;color:#4e6152;margin:10px 2px 0}
 
 /* Banners y Materiales */
 .drive-banner{background:#edf3eb;border:1px solid #cbdacb;border-left:5px solid var(--green);border-radius:16px;padding:18px 21px;display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px;flex-wrap:wrap}
@@ -263,9 +267,77 @@
 .empty{padding:20px 6px;color:var(--muted);font:italic 15px var(--serif)}
 @keyframes drawer-in{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
 
+/* Navegación por vistas y diseño visual limpio */
+.view-tabs{display:flex;gap:6px;flex-wrap:wrap;background:#ecefe6;padding:6px;border-radius:16px;margin-bottom:26px;border:1px solid var(--line)}
+.view-tab{border:0;background:transparent;border-radius:12px;padding:9px 14px;font:700 12px var(--sans);color:#46594c;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .16s}
+.view-tab:hover{background:#dfe6d8;color:var(--green-dark)}
+.view-tab.active{background:var(--green-dark);color:#fff;box-shadow:0 4px 12px #13473624}
+.view-tab .tab-badge{font-size:10px;padding:2px 7px;border-radius:10px;background:#dce3d5;color:#3d5144}
+.view-tab.active .tab-badge{background:#296853;color:#e8f5ec}
+
+/* Ocultar secciones que no pertenecen a la vista activa */
+.section.view-hidden{display:none!important}
+.section{margin:24px 0;animation:fade-view .2s ease-out}
+@keyframes fade-view{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Portada visual de un vistazo (Hub de Inicio) */
+.home-hub{display:grid;grid-template-columns:1.25fr .95fr;gap:18px;margin-top:20px}
+.hub-box{background:#fffefa;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}
+.hub-box-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.hub-box-head h3{margin:0;font:600 20px/1.2 var(--serif);color:var(--ink)}
+.hub-more-btn{border:1px solid #cbdacb;background:#f4f8f3;color:var(--green-dark);border-radius:20px;padding:6px 12px;font:700 11px var(--sans);cursor:pointer;transition:.15s}
+.hub-more-btn:hover{background:var(--green-dark);color:#fff}
+.hub-grid-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hub-visual-card{border:1px solid var(--line);background:#fafbf8;border-radius:14px;padding:15px 16px;text-align:left;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .16s;display:flex;flex-direction:column;gap:6px}
+.hub-visual-card:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 8px 20px #162f290d}
+.hub-visual-icon{width:34px;height:34px;border-radius:10px;background:var(--green-pale);color:var(--green-dark);display:grid;place-items:center;font-size:16px;font-weight:700}
+.hub-visual-card[data-accent="blue"] .hub-visual-icon{background:var(--blue-pale);color:var(--blue)}
+.hub-visual-card[data-accent="terra"] .hub-visual-icon{background:var(--terra-pale);color:var(--terracotta)}
+.hub-visual-card[data-accent="honey"] .hub-visual-icon{background:var(--honey-pale);color:var(--honey)}
+.hub-visual-card strong{font:600 16px/1.25 var(--serif);color:var(--ink)}
+.hub-visual-card span{font-size:11px;color:var(--muted);line-height:1.45}
+.hub-mini-list{display:grid;gap:9px}
+.hub-mini-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border-radius:12px;background:#f7f8f3;border:1px solid #e2e7dc;text-align:left;cursor:pointer;transition:background .15s,border-color .15s}
+.hub-mini-item:hover{background:#ecf3ea;border-color:#b8cfb9}
+.hub-mini-item b{display:block;font-size:13px;color:var(--ink)}
+.hub-mini-item small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.hub-mini-pill{font-size:11px;font-weight:800;padding:5px 10px;border-radius:20px;background:var(--green-dark);color:#fff;white-space:nowrap}
+.hub-mini-pill.blue{background:var(--blue)}
+.hub-mini-pill.terra{background:var(--terracotta)}
+.hub-mini-pill.soft{background:#e2eee5;color:var(--green-dark)}
+
+/* Tarjetas interactivas plegables (Acordeón bajo demanda) */
+.fold-card{border:1px solid var(--line);border-radius:15px;background:#fff;margin-bottom:12px;overflow:hidden;transition:border-color .16s,box-shadow .16s}
+.fold-card:hover{border-color:#b8c9b5}
+.fold-card.open{border-color:var(--green);box-shadow:0 10px 26px #162f2910}
+.fold-summary{width:100%;border:0;background:#fffefa;padding:16px 20px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fold-summary:hover{background:#f6f9f4}
+.fold-title-wrap{display:flex;flex-direction:column;gap:4px;min-width:220px;flex:1}
+.fold-title{font:600 18px/1.25 var(--serif);color:var(--ink)}
+.fold-sub{font-size:12px;color:var(--muted)}
+.fold-chips{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.fold-chip{font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;background:#eef3eb;color:var(--green-dark);white-space:nowrap}
+.fold-chip.grade{background:#174d3c;color:#fff}
+.fold-chip.blue{background:var(--blue-pale);color:var(--blue)}
+.fold-chip.terra{background:var(--terra-pale);color:var(--terracotta)}
+.fold-arrow{width:28px;height:28px;border-radius:50%;background:#eef2ea;color:var(--green-dark);display:grid;place-items:center;font-size:13px;transition:transform .2s}
+.fold-card.open .fold-arrow{transform:rotate(180deg);background:var(--green-dark);color:#fff}
+.fold-body{display:none;padding:0 20px 20px;border-top:1px solid #e6ebe2;background:#fcfdfb}
+.fold-card.open .fold-body{display:block}
+
+/* Tarjetas limpias de profesorado */
+.teacher-compact-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;padding-top:12px;border-top:1px solid var(--line);flex-wrap:wrap}
+.teacher-expand-btn{border:1px solid #cbd6cc;background:#f5f8f4;color:var(--green-dark);border-radius:20px;padding:6px 12px;font:700 11px var(--sans);cursor:pointer}
+.teacher-expand-btn:hover{background:#e2eee5}
+.teacher-card .teacher-sections{display:none;margin-top:12px}
+.teacher-card.expanded .teacher-sections{display:grid}
+
+@media(max-width:1180px){
+  .grades-grid{grid-template-columns:1fr}
+}
 @media(max-width:1080px){
   .stats-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .grades-grid,.teachers-grid,.materials-grid{grid-template-columns:1fr}
+  .home-hub,.teachers-grid,.materials-grid{grid-template-columns:1fr}
   .course-subject{grid-template-columns:1fr;gap:14px}
   .subject-col-box{border-left:0;border-top:1px dashed #cbd4c6;padding-left:0;padding-top:12px}
 }
@@ -274,7 +346,7 @@
   .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(295px,85vw);height:100dvh;transform:translateX(-105%);transition:transform .22s ease;box-shadow:12px 0 35px #29372b22}
   .sidebar.open{transform:translateX(0)}
   .content{padding:18px 15px 40px}
-  .stats-strip{grid-template-columns:1fr}
+  .stats-strip,.hub-grid-cards{grid-template-columns:1fr}
   .welcome{flex-direction:column;align-items:flex-start}
   .term-note{text-align:left}
   .today-row{grid-template-columns:70px 1fr;gap:10px}
@@ -288,14 +360,16 @@
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="brand"><div class="brand-icon">c</div><div><div class="brand-name">Cuaderno</div><div class="brand-sub">Máster en Abogacía y Procura</div></div></div>
-  <div class="nav-label">Tu espacio</div>
+  <div class="nav-label">Vistas del portal</div>
   <nav class="nav" aria-label="Menú principal">
-    <button class="active" data-view="inicio"><span class="nav-symbol">⌂</span>Mi día</button>
-    <button data-view="notas"><span class="nav-symbol">★</span>Notas y evaluaciones<span class="nav-count">2</span></button>
-    <button data-view="asignaturas"><span class="nav-symbol">▤</span>Asignaturas y profesores<span class="nav-count">7</span></button>
-    <button data-view="entregas"><span class="nav-symbol">✎</span>Prácticas y entregas<span class="nav-count">4</span></button>
+    <button class="active" data-view="inicio"><span class="nav-symbol">⌂</span>Portada · Mi día</button>
+    <button data-view="notas"><span class="nav-symbol">★</span>Notas y tests<span class="nav-count">Todos 10 / 8</span></button>
+    <button data-view="asignaturas"><span class="nav-symbol">▤</span>Asignaturas<span class="nav-count">4</span></button>
+    <button data-view="profesores"><span class="nav-symbol">♟</span>Profesorado<span class="nav-count">7</span></button>
+    <button data-view="entregas"><span class="nav-symbol">✎</span>Prácticas (CPROC)<span class="nav-count">4/4 ✓</span></button>
     <button data-view="materiales"><span class="nav-symbol">▧</span>Apuntes y Drive<span class="nav-count">13</span></button>
     <button data-view="correo"><span class="nav-symbol">✉</span>Correo clasificado<span class="nav-count">5</span></button>
+    <button data-view="calendario"><span class="nav-symbol">▦</span>Calendario mes</button>
   </nav>
   <div class="branch">
     <div class="nav-label">Materias</div>
@@ -335,10 +409,11 @@
         <button data-branch-view="Procura">Procuradores</button>
         <a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>
         <a href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+        <a href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
       </div>
     </div>
     <div class="top-actions">
-      <label class="search"><span>⌕</span><input id="search" placeholder="Filtrar correo, profesor o documento..." aria-label="Buscar"></label>
+      <label class="search"><span>⌕</span><input id="search" placeholder="Buscar profesor, apunte o correo..." aria-label="Buscar"></label>
       <div class="avatar" title="Raquel Escudero">RE</div>
     </div>
   </header>
@@ -346,15 +421,26 @@
   <section class="welcome">
     <div>
       <div class="date-line" id="welcomeDate">Viernes, 16 de octubre de 2026</div>
-      <h1 id="welcomeTitle">Tu cuaderno integral del máster.</h1>
-      <p>Cada asignatura y cada profesor conectados directamente con su correo, su práctica, sus apuntes y sus calificaciones.</p>
+      <h1 id="welcomeTitle">Hola, Raquel.</h1>
+      <p id="welcomeSubtitle">Pincha en cualquier pestaña o tarjeta para abrir únicamente el apartado que quieras consultar, sin saturar la pantalla.</p>
     </div>
     <div class="term-note">
       <strong>Primer cuatrimestre · 2026/27</strong>
-      <a href="#gradesSection">Ver notas y evaluaciones ↓</a>
-      <a href="#calendarSection">Ver calendario ↓</a>
+      <a href="#calendario" data-switch-view="calendario">Abrir calendario mensual ↗</a>
     </div>
   </section>
+
+  <!-- Barra de pestañas visual: muestra solo la sección elegida -->
+  <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
+    <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">⌂ Portada</button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">★ Notas y Tests <span class="tab-badge">10 / 20 de 20</span></button>
+    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Asignaturas <span class="tab-badge">4</span></button>
+    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">♟ Profesorado <span class="tab-badge">7</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">✎ Prácticas <span class="tab-badge">4/4 ✓</span></button>
+    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">▧ Apuntes y Drive <span class="tab-badge">13</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">✉ Correo <span class="tab-badge">5</span></button>
+    <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">▦ Calendario</button>
+  </div>
 
   <!-- Indicadores rápidos con enlace directo -->
   <div class="stats-strip" aria-label="Resumen académico rápido">
@@ -363,25 +449,25 @@
       <div class="stat-val">10 / 10</div>
       <span class="stat-sub">Técnicas instrumentales (Procura) · 4 ptos. test + 6 ptos. escritos · Ver correo ↗</span>
     </button>
-    <button class="stat-card highlight-test" data-detail="test_16oct">
-      <span class="stat-kicker">Test online · 16 oct (19:17)</span>
-      <div class="stat-val">20 / 20 (100 %)</div>
-      <span class="stat-sub">Deontología y técnicas transversales · C. Moreno y C. Sánchez · Ver test ↗</span>
+    <button class="stat-card highlight-test" data-detail="all_tests_summary">
+      <span class="stat-kicker">Tests CPROC / Testmoz</span>
+      <div class="stat-val">Todos 10 (y un 8)</div>
+      <span class="stat-sub">Todos los tests realizados · 10/10 en todos salvo uno con ~8 · Ver desglose ↗</span>
     </button>
-    <button class="stat-card" onclick="document.getElementById('deliverySection').scrollIntoView({behavior:'smooth'})">
-      <span class="stat-kicker">Prácticas en CPROC / Drive</span>
-      <div class="stat-val">3 entregadas · 1 vencida</div>
-      <span class="stat-sub">Poder apud acta, Subsanación y Auto UP (2 envíos) en Drive · Caso 15 oct ↓</span>
+    <button class="stat-card highlight-grade" data-switch-view="entregas">
+      <span class="stat-kicker">Prácticas en CPROC y Drive</span>
+      <div class="stat-val">4 / 4 enviadas ✓</div>
+      <span class="stat-sub">0 vencidas · Todas subidas a Google Drive y entregadas en CPROC →</span>
     </button>
-    <button class="stat-card" onclick="document.getElementById('teachersSection').scrollIntoView({behavior:'smooth'})">
+    <button class="stat-card" data-switch-view="profesores">
       <span class="stat-kicker">Docentes y apuntes</span>
       <div class="stat-val">7 profesores</div>
-      <span class="stat-sub">Cada docente con enlace directo a su correo, práctica, apuntes y notas ↓</span>
+      <span class="stat-sub">Cada docente con enlace directo a su correo, práctica, apuntes y notas →</span>
     </button>
   </div>
 
-  <!-- 1. MI DÍA -->
-  <section class="section" id="todaySection">
+  <!-- 1. PORTADA LIMPIA: MI DÍA + ACCESOS VISUALES -->
+  <section class="section" id="todaySection" data-section-view="inicio">
     <div class="section-title">
       <div>
         <h2 id="dayHeading">Actividades de hoy</h2>
@@ -400,65 +486,142 @@
       <button id="previousDay" aria-label="Día anterior">‹ Anterior</button>
       <span id="dayPosition">HOY</span>
       <button id="nextDay" aria-label="Día siguiente">Siguiente ›</button>
+      <button data-switch-view="calendario">Elegir fecha en el calendario ▦</button>
+    </div>
+
+    <!-- Explorador visual de la portada sin saturar -->
+    <div class="home-hub">
+      <div class="hub-box">
+        <div class="hub-box-head">
+          <h3>¿Qué quieres consultar ahora?</h3>
+          <span style="font-size:11px;color:var(--muted)">Pincha para abrir</span>
+        </div>
+        <div class="hub-grid-cards">
+          <button class="hub-visual-card" data-switch-view="asignaturas">
+            <div class="hub-visual-icon">▤</div>
+            <strong>Asignaturas en curso</strong>
+            <span>4 bloques · Despliega solo la asignatura que necesites ver</span>
+          </button>
+          <button class="hub-visual-card" data-accent="blue" data-switch-view="profesores">
+            <div class="hub-visual-icon">♟</div>
+            <strong>Tus 7 profesores</strong>
+            <span>Ficha limpia de cada docente con su correo, práctica, apuntes y nota</span>
+          </button>
+          <button class="hub-visual-card" data-accent="terra" data-switch-view="entregas">
+            <div class="hub-visual-icon">✎</div>
+            <strong>Prácticas (4/4 entregadas)</strong>
+            <span>Poder apud acta, Subsanación, Auto UP (2 envíos) y Caso Deontología</span>
+          </button>
+          <button class="hub-visual-card" data-accent="honey" data-switch-view="materiales">
+            <div class="hub-visual-icon">▧</div>
+            <strong>Apuntes, BOE y Drive</strong>
+            <span>Todos los PDFs, presentaciones, guías legislativas y test completo</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hub-box">
+        <div class="hub-box-head">
+          <h3>Últimas notas y entregas</h3>
+          <button class="hub-more-btn" data-switch-view="notas">Ver todas →</button>
+        </div>
+        <div class="hub-mini-list">
+          <button class="hub-mini-item" data-detail="grades">
+            <div>
+              <b>Nota oficial por correo: Técnicas instrumentales</b>
+              <small>Javier Sánchez García · 4 test + 6 escritos (14 oct)</small>
+            </div>
+            <span class="hub-mini-pill">10 / 10</span>
+          </button>
+          <button class="hub-mini-item" data-detail="test_16oct">
+            <div>
+              <b>Test online: Proceso digital y TIC (20 preguntas)</b>
+              <small>C. Moreno y C. Sánchez · 16 oct (19:17) · Testmoz</small>
+            </div>
+            <span class="hub-mini-pill blue">20 / 20</span>
+          </button>
+          <button class="hub-mini-item" data-detail="all_tests_summary">
+            <div>
+              <b>Balance global de Tests en CPROC / Testmoz</b>
+              <small>Todos realizados · 10 en todos salvo uno con ~8</small>
+            </div>
+            <span class="hub-mini-pill blue">Todos 10 / 8</span>
+          </button>
+          <button class="hub-mini-item" data-switch-view="entregas">
+            <div>
+              <b>4 de 4 prácticas enviadas en CPROC y Drive</b>
+              <small>Apud acta · Subsanación · Auto UP · Deontología</small>
+            </div>
+            <span class="hub-mini-pill soft">4/4 Al día ✓</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 2. NOTAS Y EVALUACIONES -->
-  <section class="section" id="gradesSection">
+  <section class="section view-hidden" id="gradesSection" data-section-view="notas">
     <div class="section-title">
       <div>
         <h2>Calificaciones, notas por correo y tests evaluados</h2>
-        <p>Desglose de todas las notas recibidas por correo electrónico o registradas en pruebas online, con acceso directo al justificante.</p>
+        <p>Todos los tests realizados (10 en todos salvo uno con ~8) y nota oficial de 10/10 por correo en Técnicas instrumentales.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="grades-grid" id="gradesGrid"></div>
   </section>
 
-  <!-- 3. ASIGNATURAS AL DETALLE (CADA ASIGNATURA CON SU PROFESOR, NOTA, PRÁCTICA, APUNTES Y CORREO) -->
-  <section class="section" id="subjectsSection">
+  <!-- 3. ASIGNATURAS AL DETALLE (DESPLEGABLES AL PINCHAR) -->
+  <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
     <div class="section-title">
       <div>
-        <h2>Asignaturas al detalle: profesorado, notas, prácticas, apuntes y correos</h2>
-        <p>Análisis completo por materia y asignatura con botones directos a cada documento, práctica, calificación y correo electrónico.</p>
+        <h2>Asignaturas en curso</h2>
+        <p>Pincha en cualquier asignatura para desplegar sus profesores, su nota, sus prácticas, sus apuntes y sus correos.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="course-grid" id="courseGrid"></div>
-    <div class="course-note">Datos verificados a partir del calendario oficial, los correos recibidos hasta el 16 de octubre de 2026, las entregas en Google Drive y el historial de pruebas de CPROC/Testmoz.</div>
+    <div class="course-note">Datos actualizados a 17 de octubre de 2026: todas las prácticas de Google Drive están completadas y enviadas en CPROC (ninguna vencida) y todos los tests están realizados.</div>
   </section>
 
   <!-- 4. DIRECTORIO DE PROFESORADO -->
-  <section class="section" id="teachersSection">
+  <section class="section view-hidden" id="teachersSection" data-section-view="profesores">
     <div class="section-title">
       <div>
-        <h2>Profesorado: correo, práctica, apuntes y evaluación de cada docente</h2>
-        <p>Ficha individual de cada profesor con acceso directo a sus materiales de estudio, sus prácticas, sus correos y las notas que ha calificado.</p>
+        <h2>Profesorado: correo, práctica, apuntes y evaluación</h2>
+        <p>Pincha en el nombre de cualquier docente para abrir su ficha completa o pulsa en «Desplegar vínculos» en su tarjeta.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="teachers-grid" id="teachersGrid"></div>
   </section>
 
   <!-- 5. PRÁCTICAS Y ENTREGAS -->
-  <section class="section" id="deliverySection">
+  <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Prácticas y entregas</h2>
-        <p>Seguimiento de envíos realizados en CPROC, archivos conservados en Google Drive y plazos comunicados por correo.</p>
+        <h2>Prácticas y entregas (4 / 4 completadas y enviadas en CPROC)</h2>
+        <p>Todas las prácticas subidas a Google Drive están enviadas en CPROC (ninguna vencida). Nota: CPROC no envía acuse por correo electrónico.</p>
       </div>
-      <div class="delivery-range" id="deliveryRange">Seguimiento completo</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div class="delivery-range" id="deliveryRange">4 / 4 entregadas · 0 vencidas</div>
+        <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
+      </div>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
-      <div class="source-foot">Las 3 tareas enviadas el 16 de octubre cuentan con justificante («La Tarea se ha entregado con éxito») y archivo en Google Drive; figuran como pendientes de evaluación hasta que se publique su nota.</div>
+      <div class="source-foot">Todas las prácticas figuran como completadas, subidas a la carpeta «Máster» de Google Drive y entregadas en la plataforma CPROC (la plataforma no remite correo de confirmación tras el envío).</div>
     </div>
   </section>
 
   <!-- 6. APUNTES, DOCUMENTOS Y GOOGLE DRIVE -->
-  <section class="section" id="materialsSection">
+  <section class="section view-hidden" id="materialsSection" data-section-view="materiales">
     <div class="section-title">
       <div>
         <h2>Apuntes, documentos por asignatura y Google Drive</h2>
         <p>Acceso directo a cada archivo entregado, presentación docente, guía legislativa, normativa oficial del BOE y test completo.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="drive-banner">
       <div class="drive-banner-info">
@@ -471,12 +634,13 @@
   </section>
 
   <!-- 7. CORREO RECIENTE Y OUTLOOK -->
-  <section class="section mail-section" id="mailSection">
+  <section class="section mail-section view-hidden" id="mailSection" data-section-view="correo">
     <div class="section-title">
       <div>
         <h2>Correo clasificado por asignatura y profesor</h2>
         <p>Mensajes revisados hasta el 16 de octubre de 2026 con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="outlook-banner">
       <div class="outlook-banner-info">
@@ -489,12 +653,13 @@
   </section>
 
   <!-- 8. CALENDARIO -->
-  <section class="section" id="calendarSection">
+  <section class="section view-hidden" id="calendarSection" data-section-view="calendario">
     <div class="section-title">
       <div>
         <h2>Calendario académico</h2>
         <p>Elige cualquier día para ver sus clases por grupo (mañana o tarde), su profesor y sus entregas.</p>
       </div>
+      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
     <div class="calendar-wrap">
       <div class="calendar-head">
@@ -508,7 +673,7 @@
       <div class="calendar-legend">
         <span><i class="legend-dot"></i>Clase / Actividad</span>
         <span><i class="legend-dot terracotta"></i>Entrega o prueba</span>
-        <span>Selecciona una fecha para abrir su agenda detallada arriba</span>
+        <span>Selecciona una fecha para abrir su agenda detallada en Portada</span>
       </div>
     </div>
   </section>
@@ -571,8 +736,8 @@ const gradeRecords=[
   score:'10 / 10',
   scoreLabel:'Nota final',
   breakdown:[
-   {label:'Test (1 oct)',val:'4 puntos'},
-   {label:'Trabajos / escritos',val:'6 puntos'},
+   {label:'Test (1 oct)',val:'4 / 4 puntos'},
+   {label:'Trabajos / escritos',val:'6 / 6 puntos'},
    {label:'Calificación final',val:'10 (Sobresaliente)'}
   ],
   teacher:'Javier Sánchez García',
@@ -591,18 +756,18 @@ const gradeRecords=[
   type:'test',
   kicker:'Prueba online evaluada en Testmoz / CPROC · 16 oct 2026 (19:17)',
   title:'Deontología y técnicas transversales · Proceso digital y TIC',
-  score:'20 / 20',
-  scoreLabel:'100 % aciertos',
+  score:'10 / 10',
+  scoreLabel:'20/20 (100 %)',
   breakdown:[
    {label:'Respuestas correctas',val:'20 de 20 (100 %)'},
-   {label:'Equivalencia sobre 10',val:'10 / 10 puntos'},
+   {label:'Calificación',val:'10 / 10 puntos'},
    {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Carlos M. Sánchez Muiño',
   subjectRef:'Procura|Técnicas instrumentales|1',
   mailKey:'test_16oct',
-  description:'Test oficial «CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el viernes 16 de octubre de 2026 a las 19:17. Superado con el 100 % de aciertos.',
+  description:'Test oficial «CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el viernes 16 de octubre de 2026 a las 19:17. Superado con 20/20 aciertos (10 sobre 10).',
   links:[
    {label:'✓ Ver las 20 preguntas y opciones ↗',detailKey:'test_16oct',cls:'solid-blue'},
    {label:'Abrir HTML original Testmoz ↗',url:testHtmlLocalUrl,cls:'blue'},
@@ -610,19 +775,42 @@ const gradeRecords=[
    {label:'Revisión en Testmoz ↗',url:testmozReviewUrl,cls:'blue'},
    {label:'Plataforma CPROC ↗',url:cprocUrl}
   ]
+ },
+ {
+  id:'grades_all_tests',
+  type:'global',
+  kicker:'Balance global en CPROC / Testmoz · Todos realizados',
+  title:'Historial general de tests y prácticas en CPROC',
+  score:'10 (y un 8)',
+  scoreLabel:'Todos hechos',
+  breakdown:[
+   {label:'Tests realizados',val:'100 % completados'},
+   {label:'Notas en tests',val:'10 en todos salvo uno (~8)'},
+   {label:'Prácticas CPROC',val:'4 / 4 enviadas (0 vencidas)'}
+  ],
+  teacher:'Carolina Moreno Vázquez',
+  coTeacher:'Ana Vázquez Corte',
+  subjectRef:'Procura|Técnicas instrumentales|1',
+  mailKey:'all_tests_summary',
+  description:'Todos los tests publicados hasta la fecha en CPROC / Testmoz están hechos, con calificación de 10 en todos salvo en uno (~8). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
+  links:[
+   {label:'★ Ver resumen completo de tests y entregas ↗',detailKey:'all_tests_summary',cls:'solid-green'},
+   {label:'Abrir plataforma CPROC ↗',url:cprocUrl,cls:'blue'},
+   {label:'Abrir carpeta Drive ↗',url:driveFolderUrl}
+  ]
  }
 ];
 
 const deliveries=[
- {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Entregado · Pte. de nota',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Confirmación en CPROC: «La Tarea se ha entregado con éxito». Guardado en Drive.'},
- {date:new Date(2026,9,16),title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Entregado · Pte. de nota',submitted:true,detailKey:'entrega_subsanacion',file:'Escrito de subsanación_signed.pdf',details:'Tarea seleccionada en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Guardado en Drive.'},
- {date:new Date(2026,9,16),title:'Auto declaración con oferta de venta UP (2 envíos)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',subjectRef:'Procura|Técnicas instrumentales|1',status:'Entregado (2 envíos) · Pte. de nota',submitted:true,detailKey:'entrega_auto_up',file:'Documento_anonimizado.pdf',file2:'summary.docx',details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Ambos entregados con éxito en CPROC y guardados en Google Drive.'},
- {date:new Date(2026,9,15),title:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador',teacher:'Ana Vázquez Corte',subject:'Procura · Deontología y responsabilidad',subjectRef:'Procura|Deontología y responsabilidad|0',status:'Plazo correo: 15 oct · Revisar en CPROC',submitted:false,detailKey:'assignment',file:'Caso práctico Deontología',details:'El correo de Ana Vázquez Corte fija el jueves 15 de octubre como fecha límite y pide subirlo en CPROC (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador).'}
+ {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'},
+ {date:new Date(2026,9,16),title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_subsanacion',file:'Escrito de subsanación_signed.pdf',details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'},
+ {date:new Date(2026,9,16),title:'Auto declaración con oferta de venta UP (2 envíos)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada (2 envíos) ✓',submitted:true,detailKey:'entrega_auto_up',file:'Documento_anonimizado.pdf',file2:'summary.docx',details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'},
+ {date:new Date(2026,9,15),title:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador',teacher:'Ana Vázquez Corte',subject:'Procura · Deontología y responsabilidad',subjectRef:'Procura|Deontología y responsabilidad|0',status:'Completada en Drive y enviada en CPROC ✓',submitted:true,detailKey:'assignment',file:'Derechos, deberes y responsabilidad',details:'Práctica subida a Google Drive y enviada dentro de plazo en CPROC (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador). Nota: CPROC no envía correo de confirmación.'}
 ];
 
 const messages=[
  {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
- {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional',meta:'Ana Vázquez Corte · Procura · Deontología · entrega indicada: 15 oct',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
+ {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|2'},
  {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|0'},
  {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|0'}
@@ -630,7 +818,7 @@ const messages=[
 
 const mailSummaries={
  grades:'NOTA OFICIAL: 10 / 10 (4 puntos en test + 6 puntos en trabajos/escritos). Comunica las calificaciones de las pruebas del 1 de octubre de Técnicas instrumentales (Procura).',
- assignment:'Instrucciones y 3 documentos base (Código Deontológico, Estatuto General y Derechos y deberes) para entregar el caso práctico en CPROC (plazo indicado: 15 de octubre).',
+ assignment:'Instrucciones y 3 documentos base (Código Deontológico, Estatuto General y Derechos y deberes). Práctica ya completada, subida a Google Drive y enviada en CPROC.',
  materials:'Remite 4 documentos de Sandra Mosteiro Costa: Carta de presentación, Presentación de clase sobre actos de comunicación, Guía legislativa y Jurisprudencia sobre plazos.',
  dataforum:'El Decanato suspende las clases en la Facultad del 21 al 23 de octubre por DATAfórum Justicia 2026 (PALEXCO) e indica inscribirse para justificar asistencia.',
  schedule:'Horarios oficiales y enlace a la documentación del módulo de Responsabilidad civil y penal y turno de oficio con José Luis Delgado Domínguez (19, 20 y 26 de octubre).'
@@ -650,20 +838,41 @@ const details={
    {name:'Tabla de resultados incluida en el correo (4 test + 6 escritos = 10)',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
+ all_tests_summary:{
+  kicker:'Balance global de evaluación · Procura',
+  title:'Todos los tests realizados (10 en todos salvo uno con ~8) y 4/4 prácticas enviadas',
+  date:'Actualizado: sábado, 17 de octubre de 2026',
+  teacher:'Carolina Moreno Vázquez',
+  coTeacher:'Carlos M. Sánchez Muiño',
+  subjectRef:'Procura|Técnicas instrumentales|1',
+  body:'Estado general confirmado: 1) Todos los cuestionarios/tests de CPROC y Testmoz hasta la fecha están realizados y completados, con una calificación de 10 sobre 10 en todos ellos excepto en uno (calificado con un ~8). 2) Las 4 prácticas elaboradas y guardadas en Google Drive están todas completadas y enviadas en la plataforma CPROC (ninguna vencida). Nota: el formulario de entregas de CPROC muestra mensaje en pantalla al enviar pero no remite resguardo por correo electrónico.',
+  gradeTable:{test:'10 en todos (salvo uno con ~8)',trabajos:'4 / 4 prácticas enviadas en CPROC',final:'100 % al día (0 vencidas)'},
+  source:'Confirmación de la alumna + registros de Testmoz (16 oct 2026: 20/20 = 10), correo de Secretaría (14 oct 2026: 10/10) y carpeta «Máster» en Google Drive · 17 oct 2026',
+  attachments:[
+   {name:'Test 16 oct 2026 · Proceso digital y TIC (20/20 = 10) · HTML original',url:testHtmlLocalUrl,kind:'HTML Testmoz'},
+   {name:'Test 16 oct 2026 · Apuntes completos con las 20 preguntas (.md)',url:testMdLocalUrl,kind:'Markdown'},
+   {name:'Plataforma CPROC (MUAP · Tests y Tareas entregadas)',url:cprocUrl,kind:'Web CPROC'},
+   {name:'Carpeta «Máster» en Google Drive (Prácticas completadas)',url:driveFolderUrl,kind:'Carpeta Drive'},
+   {name:'Bandeja de Outlook (Correo de nota 10/10 del 14 oct)',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
  assignment:{
-  kicker:'Práctica y apuntes · Procura · Deontología y responsabilidad',
+  isDelivery:true,
+  kicker:'Práctica entregada y apuntes · Procura · Deontología y responsabilidad',
   title:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador',
-  date:'Correo de instrucciones: 13/15 de octubre de 2026 · Fecha límite indicada: jueves, 15 de octubre de 2026',
+  date:'Estado: Completada en Google Drive y enviada en CPROC ✓ (Plazo del correo: 15 de octubre de 2026)',
   teacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Deontología y responsabilidad|0',
-  body:'El correo pide subir el ejercicio resuelto a la plataforma CPROC siguiendo la ruta: MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador. La profesora Ana Vázquez Corte indica que se aplique la norma general explicada en clase y se justifiquen jurídicamente las excepciones con apoyo en el Código Deontológico y el Estatuto General.',
-  source:'Correo de Ana Vázquez Corte · instrucciones de caso práctico · 13 oct 2026 (revisado 15 oct 2026)',
+  body:'Práctica completada, subida a la carpeta «Máster» de Google Drive y entregada en la plataforma CPROC siguiendo la ruta indicada por la profesora Ana Vázquez Corte (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador), aplicando la norma general explicada en clase y justificando las excepciones con el Código Deontológico y el Estatuto General.',
+  source:'Correo de instrucciones de Ana Vázquez Corte (13/15 oct 2026) · Práctica subida a Google Drive y enviada en CPROC (CPROC no envía correo de confirmación)',
   attachments:[
+   {name:'Práctica resuelta en carpeta «Máster» de Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Código Deontológico de los Procuradores',url:driveSearchUrl('Código Deontológico'),kind:'Buscar en Drive'},
    {name:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',kind:'BOE oficial'},
-   {name:'Documento de derechos y deberes del procurador',url:driveSearchUrl('derechos y deberes'),kind:'Buscar en Drive'}
+   {name:'Documento de derechos y deberes del procurador',url:driveSearchUrl('derechos y deberes'),kind:'Buscar en Drive'},
+   {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'El correo recibido fija el 15 de octubre como fecha de entrega en CPROC. No consta prórroga en los correos revisados.'
+  extra:'✓ Estado confirmado: práctica completada, subida a Google Drive y enviada en CPROC (no vencida). La plataforma CPROC no remite acuse por correo electrónico.'
  },
  materials:{
   kicker:'Apuntes y correo · Procura · Técnicas instrumentales',
@@ -710,7 +919,7 @@ const details={
   isDelivery:true,
   kicker:'Práctica entregada · Procura · Técnicas instrumentales / Actuación procesal',
   title:'Poder apud acta (CertificadoRegistro.pdf)',
-  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Entregado · Pendiente de evaluación',
+  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|1',
   body:'Certificado electrónico de inscripción de apoderamiento apud acta en el Registro Electrónico de Apoderamientos Judiciales (REAJ) a favor de la procuradora Carolina Moreno Vázquez. Archivo entregado en la plataforma CPROC y guardado en la carpeta «Máster» de Google Drive.',
@@ -720,13 +929,13 @@ const details={
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'Observación: entrega confirmada por la plataforma («La Tarea se ha entregado con éxito»); pendiente de publicación de nota por la docente.'
+  extra:'✓ Entrega confirmada en CPROC («La Tarea se ha entregado con éxito») y guardada en Drive.'
  },
  entrega_subsanacion:{
   isDelivery:true,
   kicker:'Práctica entregada · Procura · Técnicas instrumentales / Actuación procesal',
   title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',
-  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Entregado · Pendiente de evaluación',
+  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|1',
   body:'Escrito procesal firmado digitalmente que solicita al juzgado/tribunal tener por subsanado el defecto de acreditación de la representación procesal mediante la aportación de certificación de poder apud acta. Entregado dentro de la tarea «ESCRITO SUBSANACIÓN» en CPROC y conservado en Google Drive.',
@@ -736,19 +945,19 @@ const details={
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'Estado actual: entregado con justificante de éxito y pendiente de calificación.'
+  extra:'✓ Entregada con justificante de éxito en CPROC y guardada en Drive.'
  },
  entrega_auto_up:{
   isDelivery:true,
   kicker:'Práctica entregada (2 envíos) · Procura · Técnicas instrumentales / Actuación procesal',
   title:'Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',
-  date:'Entregado: viernes, 16 de octubre de 2026 · 2 envíos realizados · Estado: Entregado · Pendiente de evaluación',
+  date:'Entregado: viernes, 16 de octubre de 2026 · 2 envíos realizados · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|1',
   body:'Se registran dos envíos sucesivos para la tarea «AUTO DECLARACION CON OFERTA DE VENTA UP» el 16 de octubre de 2026 en la plataforma CPROC, ambos confirmados con éxito y almacenados en tu carpeta «Máster» de Google Drive.',
   submissions:[
-   {label:'Primer envío',file:'Documento_anonimizado.pdf',pages:'11 páginas · Guardado en Google Drive',url:driveSearchUrl('Documento_anonimizado.pdf'),content:'Auto judicial anonimizado de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP).',state:'Entregado, pendiente de evaluación · «La Tarea se ha entregado con éxito»'},
-   {label:'Segundo envío',file:'summary.docx',pages:'1 página · Guardado en Google Drive',url:driveSearchUrl('summary.docx'),content:'Resumen estructurado de los intervinientes, antecedentes y parte dispositiva relevante del auto concursal anterior.',state:'Entregado, pendiente de evaluación · «La Tarea se ha entregado con éxito»'}
+   {label:'Primer envío',file:'Documento_anonimizado.pdf',pages:'11 páginas · Guardado en Google Drive',url:driveSearchUrl('Documento_anonimizado.pdf'),content:'Auto judicial anonimizado de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP).',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'},
+   {label:'Segundo envío',file:'summary.docx',pages:'1 página · Guardado en Google Drive',url:driveSearchUrl('summary.docx'),content:'Resumen estructurado de los intervinientes, antecedentes y parte dispositiva relevante del auto concursal anterior.',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'}
   ],
   source:'Plataforma CPROC (Tarea: «AUTO DECLARACION CON OFERTA DE VENTA UP») y carpeta «Máster» en Google Drive · 16 oct 2026',
   attachments:[
@@ -756,16 +965,16 @@ const details={
    {name:'summary.docx (1 pág. · Abrir en Drive)',url:driveSearchUrl('summary.docx'),kind:'Archivo en Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'Observación: constan los dos envíos en la misma tarea. No se especifica en plataforma si el segundo sustituye al primero o lo complementa.'
+  extra:'✓ Ambos archivos están entregados en CPROC y guardados en Google Drive.'
  },
  test_16oct:{
-  kicker:'Nota de Test: 20 / 20 (100 %) · Procura · Deontología y técnicas transversales',
+  kicker:'Nota de Test: 10 / 10 (20/20 · 100 %) · Procura · Deontología y técnicas transversales',
   title:'Test online · Proceso digital y TIC (16 oct 2026)',
-  date:'Realizado: viernes, 16 de octubre de 2026 · 19:17 (Grupo de tarde) · Calificación: 20 / 20 (100 %)',
+  date:'Realizado: viernes, 16 de octubre de 2026 · 19:17 (Grupo de tarde) · Calificación: 10 / 10 (20/20 aciertos)',
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Carlos M. Sánchez Muiño',
   subjectRef:'Procura|Técnicas instrumentales|1',
-  body:'Prueba oficial realizada en Testmoz («CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida: 20 de 20 respuestas correctas (100 %). Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta marcada, además de enlaces directos al HTML original y a Testmoz.',
+  body:'Prueba oficial realizada en Testmoz («CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida: 20 de 20 respuestas correctas (100 % · 10 sobre 10). Todos los tests del máster hasta la fecha están realizados (con un 10 en todos salvo en uno con ~8). Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta marcada.',
   source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15705122/student/review) · 16 oct 2026',
   attachments:[
    {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlLocalUrl,kind:'HTML en portal'},
@@ -811,7 +1020,7 @@ const courses=[
     teachers:['Javier Sánchez García'],
     grade:{score:'10 / 10 (Sobresaliente)',detail:'4 ptos. Test + 6 ptos. Trabajos/escritos · Confirmado por correo el 14 oct',detailKey:'grades',actionLabel:'Ver correo de la nota (10/10) ↗'},
     tasks:[
-     {title:'Pruebas del 1 de octubre (Test + Trabajos/escritos)',date:'Evaluado el 14 oct 2026 por correo',state:'Calificado: 10 / 10',detailKey:'grades',actionLabel:'Abrir desglose de nota ↗'}
+     {title:'Pruebas del 1 de octubre (Test + Trabajos/escritos)',date:'Evaluado el 14 oct 2026 por correo',state:'Calificado: 10 / 10 ✓',detailKey:'grades',actionLabel:'Abrir desglose de nota ↗'}
     ],
     notes:[
      {name:'Tabla oficial de calificaciones (4 test + 6 escritos = 10)',detailKey:'grades',url:outlookUrl,label:'Ver en correo / Outlook ↗'}
@@ -822,12 +1031,12 @@ const courses=[
     name:'Responsabilidad disciplinaria y proceso digital (Deontología y técnicas transversales)',
     period:'Sesiones y entregas: 16–20 oct 2026 · Colegio de Abogados y CPROC',
     teachers:['Carolina Moreno Vázquez','Carlos M. Sánchez Muiño','Alex Sánchez Barge','Sandra Mosteiro Costa'],
-    grade:{score:'Test: 20 / 20 (100 %)',detail:'Realizado el 16 oct 2026 (19:17) en Testmoz + 3 prácticas entregadas en CPROC',detailKey:'test_16oct',actionLabel:'Ver test completo (20/20) ↗'},
+    grade:{score:'Test: 10 / 10 (20/20) · Todos los tests hechos',detail:'Test 16 oct: 10/10 (20/20) · Todos los tests hechos (10 en todos salvo uno con ~8) · 3 prácticas enviadas en CPROC ✓',detailKey:'test_16oct',actionLabel:'Ver test completo (20/20) ↗'},
     tasks:[
-     {title:'Test online: Proceso digital y TIC (Grupo de tarde)',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 20 / 20 (100 %)',detailKey:'test_16oct',actionLabel:'Ver las 20 preguntas ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'},
-     {title:'Práctica 1: Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · CPROC y Drive',state:'Entregado · Pte. de nota',detailKey:'entrega_apud_acta',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Abrir PDF en Drive ↗'},
-     {title:'Práctica 2: Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · Tarea: ESCRITO SUBSANACIÓN',state:'Entregado · Pte. de nota',detailKey:'entrega_subsanacion',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Abrir PDF en Drive ↗'},
-     {title:'Práctica 3 (2 envíos): AUTO DECLARACION CON OFERTA DE VENTA UP',date:'16 oct 2026 · Documento_anonimizado.pdf + summary.docx',state:'Entregado (2 envíos) · Pte. de nota',detailKey:'entrega_auto_up',actionLabel:'Ver los 2 envíos ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Abrir en Drive ↗'}
+     {title:'Test online: Proceso digital y TIC (Grupo de tarde)',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver las 20 preguntas ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'},
+     {title:'Práctica 1: Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · Subida a Drive y enviada en CPROC',state:'Completada y enviada ✓',detailKey:'entrega_apud_acta',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Abrir PDF en Drive ↗'},
+     {title:'Práctica 2: Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · Tarea: ESCRITO SUBSANACIÓN',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Abrir PDF en Drive ↗'},
+     {title:'Práctica 3 (2 envíos): AUTO DECLARACION CON OFERTA DE VENTA UP',date:'16 oct 2026 · Documento_anonimizado.pdf + summary.docx',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver los 2 envíos ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Abrir en Drive ↗'}
     ],
     notes:[
      {name:'Cuestionario completo de 20 preguntas y 4 opciones (Proceso digital y TIC)',detailKey:'test_16oct',url:testMdLocalUrl,label:'Abrir apuntes (.md) ↗'},
@@ -843,9 +1052,9 @@ const courses=[
     name:'Actos de comunicación judicial',
     period:'Sesiones: 16, 19 y 20 oct 2026 · 09:30–11:30 (M) / 16:30–18:30 (T)',
     teachers:['Sandra Mosteiro Costa','Carlos M. Sánchez Muiño'],
-    grade:{score:'En curso · Test bloque: 20/20',detail:'Materiales recibidos por correo el 15 oct · Clases 19 y 20 oct',detailKey:'materials',actionLabel:'Ver correo y materiales ↗'},
+    grade:{score:'Tests al día (10 / ~8) · En curso',detail:'Materiales recibidos por correo el 15 oct · Clases 19 y 20 oct · Tests realizados',detailKey:'materials',actionLabel:'Ver correo y materiales ↗'},
     tasks:[
-     {title:'Preparación de caso práctico sobre plazos y actos de comunicación judicial',date:'Clases 19 y 20 oct 2026',state:'Materiales en correo del 15 oct',detailKey:'materials',actionLabel:'Ver documentos del caso ↗'}
+     {title:'Preparación y caso práctico sobre plazos y actos de comunicación judicial',date:'Clases 19 y 20 oct 2026',state:'Al día · Materiales en Drive y correo',detailKey:'materials',actionLabel:'Ver documentos del caso ↗'}
     ],
     notes:[
      {name:'Carta de presentación de Sandra Mosteiro Costa',detailKey:'materials',url:driveSearchUrl('Carta de presentación'),label:'Buscar en Drive ↗'},
@@ -864,12 +1073,12 @@ const courses=[
   subjects:[
    {
     name:'Derechos, deberes y responsabilidad profesional del procurador',
-    period:'Correo de instrucciones: 13/15 oct 2026 · Plazo indicado: 15 oct 2026',
+    period:'Práctica entregada en CPROC y Drive (15 oct 2026) · Tests completados',
     teachers:['Ana Vázquez Corte'],
-    grade:{score:'Caso práctico + Test 20/20',detail:'Entrega en CPROC (plazo correo: 15 oct) · Test transversal del 16 oct: 20/20 (100 %)',detailKey:'assignment',actionLabel:'Ver instrucciones del caso ↗'},
+    grade:{score:'Práctica enviada ✓ + Tests (10 / ~8)',detail:'Caso práctico subido a Drive y enviado en CPROC (ninguna vencida) · Test transversal del 16 oct: 10/10 (20/20)',detailKey:'assignment',actionLabel:'Ver ficha de la práctica ↗'},
     tasks:[
-     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional del procurador',date:'Plazo en correo: 15 oct 2026 · Ruta CPROC: MUAP 26/28 → Tareas publicadas',state:'Plazo vencido (15 oct)',overdue:true,detailKey:'assignment',actionLabel:'Ver instrucciones y correo ↗',extUrl:cprocUrl,extLabel:'Abrir CPROC ↗'},
-     {title:'Test online transversal: Deontología y técnicas transversales',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 20 / 20 (100 %)',detailKey:'test_16oct',actionLabel:'Ver test (20/20) ↗'}
+     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional del procurador',date:'Subido a Drive y enviado en CPROC (MUAP 26/28 → Tareas publicadas)',state:'Completada y enviada en CPROC ✓',overdue:false,detailKey:'assignment',actionLabel:'Ver ficha y documentos ↗',extUrl:driveFolderUrl,extLabel:'Abrir Drive ↗'},
+     {title:'Test online transversal: Deontología y técnicas transversales',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver test (20/20) ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'}
     ],
     notes:[
      {name:'Código Deontológico de los Procuradores',detailKey:'assignment',url:driveSearchUrl('Código Deontológico'),label:'Buscar en Drive ↗'},
@@ -887,13 +1096,13 @@ const courses=[
   subjects:[
    {
     name:'Práctica procesal digital: representación, subsanación y concurso (UP)',
-    period:'Entregas registradas: 16 oct 2026 · CPROC y Google Drive',
+    period:'Entregas registradas: 15–16 oct 2026 · CPROC y Google Drive',
     teachers:['Carolina Moreno Vázquez','Sandra Mosteiro Costa'],
-    grade:{score:'3 prácticas entregadas',detail:'Confirmadas en CPROC el 16 oct 2026 («La Tarea se ha entregado con éxito») · Pendientes de nota',detailKey:'entrega_auto_up',actionLabel:'Ver entregas procesales ↗'},
+    grade:{score:'4 / 4 prácticas enviadas ✓',detail:'Todas las prácticas de Drive están completadas y enviadas en CPROC (0 vencidas)',detailKey:'entrega_auto_up',actionLabel:'Ver entregas procesales ↗'},
     tasks:[
-     {title:'Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · CPROC',state:'Entregado · Pte. de nota',detailKey:'entrega_apud_acta',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Drive ↗'},
-     {title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · CPROC',state:'Entregado · Pte. de nota',detailKey:'entrega_subsanacion',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Drive ↗'},
-     {title:'Auto declaración con oferta de venta UP (2 envíos)',date:'16 oct 2026 · CPROC',state:'Entregado (2 envíos) · Pte. de nota',detailKey:'entrega_auto_up',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Drive ↗'}
+     {title:'Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada ✓',detailKey:'entrega_apud_acta',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Drive ↗'},
+     {title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Drive ↗'},
+     {title:'Auto declaración con oferta de venta UP (2 envíos)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Drive ↗'}
     ],
     notes:[
      {name:'CertificadoRegistro.pdf (Inscripción apud acta)',detailKey:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),label:'Abrir en Drive ↗'},
@@ -949,14 +1158,14 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procura · Técnicas instrumentales, Deontología y Actuación procesal',
   subjectRef:'Procura|Técnicas instrumentales|1',
-  gradeBadge:'Test: 20 / 20 (100 %)',
-  summary:'Docente de referencia en el test online del 16 de octubre de 2026 (20/20 aciertos) y en las tres prácticas procesales entregadas ese mismo día en CPROC y guardadas en Google Drive.',
-  mails:[{title:'Ficha del Test online 16 oct (20/20) y entregas en CPROC',key:'test_16oct'}],
+  gradeBadge:'Test: 10/10 (20/20) · 3 entregas ✓',
+  summary:'Docente de referencia en el test online del 16 de octubre de 2026 (20/20 aciertos = 10) y en las tres prácticas procesales completadas en Google Drive y enviadas en CPROC.',
+  mails:[{title:'Ficha del Test online 16 oct (10/10) y entregas en CPROC',key:'test_16oct'}],
   practices:[
-   {title:'Test online: Deontología y técnicas transversales (20/20 · 100 %)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'HTML original ↗'},
-   {title:'Entrega 1: Poder apud acta (CertificadoRegistro.pdf)',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
-   {title:'Entrega 2: Escrito de subsanación (Escrito de subsanación_signed.pdf)',key:'entrega_subsanacion',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),urlLabel:'Abrir en Drive ↗'},
-   {title:'Entrega 3 (2 envíos): Auto declaración con oferta de venta UP',key:'entrega_auto_up',url:driveSearchUrl('Documento_anonimizado.pdf'),urlLabel:'Abrir en Drive ↗'}
+   {title:'Test online: Deontología y técnicas transversales (20/20 · Nota: 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'HTML original ↗'},
+   {title:'Entrega 1 (Enviada ✓): Poder apud acta (CertificadoRegistro.pdf)',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
+   {title:'Entrega 2 (Enviada ✓): Escrito de subsanación (Escrito de subsanación_signed.pdf)',key:'entrega_subsanacion',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),urlLabel:'Abrir en Drive ↗'},
+   {title:'Entrega 3 (Enviada · 2 envíos ✓): Auto declaración con oferta de venta UP',key:'entrega_auto_up',url:driveSearchUrl('Documento_anonimizado.pdf'),urlLabel:'Abrir en Drive ↗'}
   ],
   notes:[
    {title:'Apuntes y 20 preguntas resueltas del Test de Proceso Digital y TIC (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
@@ -969,14 +1178,14 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procura · Técnicas instrumentales (Proceso digital y actos de comunicación)',
   subjectRef:'Procura|Técnicas instrumentales|1',
-  gradeBadge:'Test: 20 / 20 (100 %)',
-  summary:'Imparte las sesiones del viernes 16 de octubre (11:45–13:45 mañana y 18:45–20:45 tarde) sobre responsabilidad disciplinaria y actos de comunicación, y coautor del test online del 16 de octubre superado con 20/20.',
+  gradeBadge:'Test: 10 / 10 (20/20)',
+  summary:'Imparte las sesiones del viernes 16 de octubre (11:45–13:45 mañana y 18:45–20:45 tarde) sobre responsabilidad disciplinaria y actos de comunicación, y coautor del test online del 16 de octubre superado con 20/20 (10/10).',
   mails:[
    {title:'Material de clase · Actos de comunicación judicial (15 oct)',key:'materials'},
-   {title:'Test online 16 oct · Proceso digital y TIC (20/20)',key:'test_16oct'}
+   {title:'Test online 16 oct · Proceso digital y TIC (10/10 · 20/20)',key:'test_16oct'}
   ],
   practices:[
-   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20)',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'}
+   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20 = 10)',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'}
   ],
   notes:[
    {title:'Cuestionario completo de 20 preguntas con las 4 opciones (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
@@ -993,7 +1202,7 @@ const teacherDirectory=[
   summary:'Imparte las clases del lunes 19 y martes 20 de octubre (09:30–11:30 mañana y 16:30–18:30 tarde). Remitió por correo el 15 de octubre 4 documentos de estudio y práctica.',
   mails:[{title:'Material de clase · Actos de comunicación judicial (15 oct)',key:'materials'}],
   practices:[
-   {title:'Caso práctico de plazos y actos de comunicación judicial (para clases 19–20 oct)',key:'materials',url:driveSearchUrl('Jurisprudencia'),urlLabel:'Buscar en Drive ↗'}
+   {title:'Caso práctico de plazos y actos de comunicación judicial (clases 19–20 oct)',key:'materials',url:driveSearchUrl('Jurisprudencia'),urlLabel:'Buscar en Drive ↗'}
   ],
   notes:[
    {title:'1. Carta de presentación de Sandra Mosteiro Costa',key:'materials',url:driveSearchUrl('Carta de presentación'),urlLabel:'Drive ↗'},
@@ -1007,11 +1216,11 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procura · Deontología y responsabilidad profesional',
   subjectRef:'Procura|Deontología y responsabilidad|0',
-  gradeBadge:'Caso práctico (15 oct)',
-  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador. Envió por correo las instrucciones del caso práctico y los tres textos normativos de referencia.',
+  gradeBadge:'Práctica enviada en CPROC ✓',
+  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador. Su caso práctico ya está completado, subido a Google Drive y enviado en CPROC (junto con los tests hechos).',
   mails:[{title:'Caso práctico: Derechos, deberes y responsabilidad profesional (13/15 oct)',key:'assignment'}],
   practices:[
-   {title:'Caso práctico en CPROC: Derechos, deberes y responsabilidad profesional (plazo correo: 15 oct)',key:'assignment',url:cprocUrl,urlLabel:'Abrir CPROC ↗'}
+   {title:'Caso práctico (Completado en Drive y enviado en CPROC ✓): Derechos, deberes y responsabilidad profesional',key:'assignment',url:driveFolderUrl,urlLabel:'Abrir en Drive ↗'}
   ],
   notes:[
    {title:'1. Código Deontológico de los Procuradores',key:'assignment',url:driveSearchUrl('Código Deontológico'),urlLabel:'Drive ↗'},
@@ -1024,14 +1233,15 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procura · Técnicas instrumentales (Responsabilidad disciplinaria y proceso digital)',
   subjectRef:'Procura|Técnicas instrumentales|1',
-  gradeBadge:'Bloque 16 oct (Test 20/20)',
+  gradeBadge:'Tests hechos (10 / ~8)',
   summary:'Imparte las sesiones del viernes 16 de octubre (09:30–11:30 mañana y 16:30–18:30 tarde) dentro del bloque de Responsabilidad disciplinaria y proceso digital en el Colegio de Abogados.',
   mails:[
    {title:'Material y cronograma de Técnicas instrumentales (15 oct)',key:'materials'},
    {title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}
   ],
   practices:[
-   {title:'Test online del bloque de Proceso digital y TIC (16 oct · 20/20)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver HTML test ↗'}
+   {title:'Tests del bloque realizados (10 en todos salvo uno con ~8)',key:'all_tests_summary',url:cprocUrl,urlLabel:'Abrir CPROC ↗'},
+   {title:'Test online Proceso digital y TIC (16 oct · 20/20 = 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver HTML test ↗'}
   ],
   notes:[
    {title:'Banco de 20 preguntas de Proceso digital y TIC (16 oct)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
@@ -1591,7 +1801,7 @@ function renderDay(){
   </div>
  `).join(''):'<div class="empty">No hay clases registradas para este día y grupo en el calendario actual.</div>';
  const overdue=deliveries.filter(d=>!d.submitted&&d.date<todayDate);
- document.getElementById('overdueNote').innerHTML=overdue.length?`<b>Aviso de entrega:</b> el caso práctico de <b>Ana Vázquez Corte</b> tenía fecha indicada en correo el 15 de octubre en CPROC. <button class="teacher-link" data-detail="assignment">Abrir instrucciones y documentos del caso ↗</button>`:'Todas las entregas del plazo actual están al día.';
+ document.getElementById('overdueNote').innerHTML=overdue.length?`<b>Aviso de entrega:</b> tienes ${overdue.length} entrega pendiente.`:'<b>✓ Todo al día (0 vencidas):</b> las <b>4 prácticas</b> están subidas a Google Drive y enviadas en CPROC, y <b>todos los tests</b> están hechos (con un <b>10 en todos salvo uno con ~8</b>). <button class="teacher-link" data-detail="all_tests_summary">Ver resumen completo ↗</button>';
  renderCalendar();
  renderDeliveries();
 }
