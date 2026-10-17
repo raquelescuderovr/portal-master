@@ -83,6 +83,9 @@
 .event-meta{font-size:12px;color:#52644f;line-height:1.75;margin-top:6px}
 .event-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .event-kind{border-radius:30px;background:#d9edb6;color:#23432a;font-size:10px;font-weight:800;padding:6px 12px;white-space:nowrap}
+.event-kind.personal{background:var(--blue-pale);color:var(--blue);border:1px solid #bfd2e3}
+.event-kind.warning{background:var(--terra-pale);color:var(--terracotta);border:1px solid #e7bfb0}
+.today-row.personal-row{background:#f5f8fc;margin:0 -14px;padding:18px 14px;border-radius:12px}
 .overdue-note{background:#dcefe0;border-left:4px solid var(--green);border-radius:9px;color:#184733;font-size:12px;line-height:1.6;padding:12px 15px;margin-top:8px}
 .group-switch{display:flex;gap:3px;background:#e5e9df;padding:4px;border-radius:10px}
 .group-switch button{border:0;border-radius:8px;padding:5px 14px;min-height:32px;background:transparent;color:#405545;font:600 11px var(--sans);cursor:pointer}
@@ -123,31 +126,52 @@
 .pill-link.solid-green,.pill-btn.solid-green{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
 .pill-link.solid-blue,.pill-btn.solid-blue{background:var(--blue);border-color:var(--blue);color:#fff}
 
-/* Asignaturas en curso (Matriz profunda) */
-.course-grid{display:grid;grid-template-columns:1fr;gap:18px}
-.course-card{border:1px solid #c9d7e1;border-radius:16px;overflow:hidden;background:#fff}
-.course-card-head{background:#e8f0f7;padding:16px 21px;border-left:5px solid #285d85;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.course-card h3{font:600 22px/1.2 var(--serif);margin:0;color:#214d70}
-.course-card-head p{font-size:11px;font-weight:800;color:#285d85;margin:4px 0 0;text-transform:uppercase;letter-spacing:.09em}
-.course-status{background:#d1e4d4;color:#215735;font-size:10px;font-weight:800;padding:6px 10px;border-radius:20px;white-space:nowrap}
+/* Bloques del Máster -> Asignaturas -> Profesores -> Correo, Prácticas, Apuntes y Notas */
+.course-grid{display:grid;grid-template-columns:1fr;gap:22px}
+.course-card{border:1px solid #c9d7e1;border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.course-card-head{background:#e8f0f7;padding:18px 22px;border-left:6px solid #285d85;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.course-kicker{font-size:10px;font-weight:800;color:#285d85;text-transform:uppercase;letter-spacing:.11em;margin-bottom:3px}
+.course-card h3{font:700 24px/1.2 var(--serif);margin:0;color:#214d70}
+.course-card-head p{font-size:12px;font-weight:600;color:#355d7d;margin:4px 0 0}
+.course-status{background:#d1e4d4;color:#215735;font-size:11px;font-weight:800;padding:6px 12px;border-radius:20px;white-space:nowrap}
 .course-card[data-area="procura"]{border-color:#e3cbbb}
 .course-card[data-area="procura"] .course-card-head{background:#f9eadf;border-left-color:#ad512f}
+.course-card[data-area="procura"] .course-kicker{color:#974627}
 .course-card[data-area="procura"] h3{color:#803e27}
-.course-card[data-area="procura"] .course-card-head p{color:#974627}
-.course-subject{padding:18px 21px;border-top:1px solid #e3e8e1;display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:18px;align-items:start}
-.subject-col{min-width:0}
-.subject-col-box{border-left:1px solid var(--line);padding-left:16px}
-.subject-col-title{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#516155;margin:0 0 8px}
-.subject-header-title{font-size:16px;font-weight:700;line-height:1.35;color:var(--ink)}
-.course-period{font-size:11px;color:#4b6556;font-weight:700;margin:4px 0 8px}
-.course-teachers{font-size:12px;line-height:1.8;color:#526257;margin-bottom:10px}
-.subject-grade-box{background:#edf6ef;border:1px solid #c2dec8;border-radius:10px;padding:9px 11px;margin-top:8px;font-size:11px;color:#1b4d38}
-.subject-grade-box b{display:block;font-size:12px;margin-bottom:3px}
+.course-card[data-area="procura"] .course-card-head p{color:#7c4732}
+
+.course-subject{padding:20px 22px;border-top:2px solid #e1e7df;background:#fcfdfb}
+.subject-banner{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;background:#f3f7f2;border:1px solid #d5e2d6;border-left:4px solid var(--green);border-radius:14px;padding:14px 18px;margin-bottom:16px}
+.course-card[data-area="abogacia"] .subject-banner{background:#f2f6fa;border-color:#d0deea;border-left-color:var(--blue)}
+.subject-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--green-dark);margin-bottom:3px}
+.course-card[data-area="abogacia"] .subject-kicker{color:var(--blue)}
+.subject-header-title{font:700 19px/1.3 var(--serif);color:var(--ink)}
+.course-period{font-size:12px;color:#4b6556;font-weight:600;margin:4px 0 0}
+.subject-grade-box{background:#fff;border:1px solid #bdd9c3;border-radius:12px;padding:10px 14px;font-size:11px;color:#1b4d38;min-width:250px;max-width:420px;box-shadow:0 2px 8px #174d3c0a}
+.subject-grade-box b{display:block;font-size:12px;color:var(--green-dark);margin-bottom:3px}
+
+.subject-teachers-label{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#4c5e51;margin:0 0 12px;padding:0 2px}
+.subject-teachers-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.subject-teacher-card{background:#fff;border:1px solid #dce3d8;border-radius:14px;padding:16px 18px;box-shadow:0 3px 10px #19241d08}
+.subject-teacher-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid #e7ece4;margin-bottom:12px}
+.subject-teacher-name{font:700 18px/1.25 var(--serif);color:var(--ink);margin:0}
+.subject-teacher-role{font-size:11px;color:#526257;margin-top:3px;line-height:1.45}
+.subject-teacher-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.st-col{background:#f9faf7;border:1px solid #e4e9e0;border-radius:11px;padding:11px 13px;min-width:0}
+.st-col-title{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--green-dark);margin-bottom:8px;padding-bottom:5px;border-bottom:1px dashed #d5ddd1}
+.st-item{padding:7px 0;border-top:1px solid #e9eee6;font-size:11px;line-height:1.45}
+.st-item:first-of-type{border-top:0;padding-top:0}
+.st-item:last-of-type{padding-bottom:0}
+.st-item strong{display:block;font-size:12px;color:var(--ink);margin-bottom:3px}
+.st-item-meta{font-size:11px;color:#516256;margin-bottom:5px}
+.st-item .item-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+
 .subject-item-card{background:#fafbf8;border:1px solid #e1e6dd;border-radius:10px;padding:9px 11px;margin-bottom:8px;font-size:11px;line-height:1.5}
 .subject-item-card:last-child{margin-bottom:0}
 .subject-item-card strong{display:block;font-size:12px;color:var(--ink);margin-bottom:2px}
 .subject-item-card.overdue{background:#fff1e7;border-color:#ecc8b5;color:#8c361e}
 .subject-item-card .item-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+
 
 /* Directorio de Profesorado */
 .teachers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -233,10 +257,13 @@
 .cal-day .dots{position:absolute;bottom:8px;left:9px;display:flex;gap:3px}
 .cal-day .dots i{width:5px;height:5px;background:var(--green);border-radius:50%}
 .cal-day .dots i.deadline-dot{background:var(--terracotta)}
+.cal-day .dots i.personal-dot{background:var(--blue)}
 .cal-day.selected .dots i{background:#c9e697}
+.cal-day.selected .dots i.personal-dot{background:#9ed2ff}
 .calendar-legend{display:flex;gap:15px;margin-top:13px;color:#54624f;font-size:11px;flex-wrap:wrap}
 .legend-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:5px}
 .legend-dot.terracotta{background:var(--terracotta)}
+.legend-dot.blue{background:var(--blue)}
 
 /*Enlaces y Drawer lateral */
 .teacher-link,.course-open,.subject-open{border:0;background:transparent;color:var(--green-dark);font:inherit;font-weight:600;text-decoration:underline;text-decoration-color:#a0b6a2;text-underline-offset:3px;cursor:pointer;padding:0;text-align:left}
@@ -329,17 +356,14 @@
 .teacher-compact-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;padding-top:12px;border-top:1px solid var(--line);flex-wrap:wrap}
 .teacher-expand-btn{border:1px solid #cbd6cc;background:#f5f8f4;color:var(--green-dark);border-radius:20px;padding:6px 12px;font:700 11px var(--sans);cursor:pointer}
 .teacher-expand-btn:hover{background:#e2eee5}
-.teacher-card .teacher-sections{display:none;margin-top:12px}
-.teacher-card.expanded .teacher-sections{display:grid}
+.teacher-card .teacher-sections{display:grid;margin-top:12px}
 
 @media(max-width:1180px){
-  .grades-grid{grid-template-columns:1fr}
+  .grades-grid,.subject-teacher-cols{grid-template-columns:1fr}
 }
 @media(max-width:1080px){
   .stats-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
   .home-hub,.teachers-grid,.materials-grid{grid-template-columns:1fr}
-  .course-subject{grid-template-columns:1fr;gap:14px}
-  .subject-col-box{border-left:0;border-top:1px dashed #cbd4c6;padding-left:0;padding-top:12px}
 }
 @media(max-width:720px){
   .layout{display:block}
@@ -571,17 +595,21 @@
     <div class="grades-grid" id="gradesGrid"></div>
   </section>
 
-  <!-- 3. ASIGNATURAS AL DETALLE (DESPLEGABLES AL PINCHAR) -->
-  <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
+  <!-- 3. BLOQUES DEL MÁSTER -> ASIGNATURAS -> PROFESORES (CORREO, PRÁCTICAS, APUNTES Y NOTAS) -->
+  <section class="section" id="subjectsSection" data-section-view="asignaturas">
     <div class="section-title">
       <div>
-        <h2>Asignaturas en curso</h2>
-        <p>Pincha en cualquier asignatura para desplegar sus profesores, su nota, sus prácticas, sus apuntes y sus correos.</p>
+        <h2>Bloques del Máster · Asignaturas y Profesorado al detalle</h2>
+        <p>Dentro de cada bloque tienes cada asignatura, y dentro de cada asignatura cada profesor con acceso directo a su correo, sus prácticas, sus apuntes y su nota.</p>
       </div>
-      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="hub-more-btn" data-branch-view="todas">Todos los bloques</button>
+        <button class="hub-more-btn" data-branch-view="Procura">Bloques Procura</button>
+        <button class="hub-more-btn" data-branch-view="Abogacía">Bloques Abogacía</button>
+      </div>
     </div>
     <div class="course-grid" id="courseGrid"></div>
-    <div class="course-note">Datos actualizados a 17 de octubre de 2026: todas las prácticas de Google Drive están completadas y enviadas en CPROC (ninguna vencida) y todos los tests están realizados.</div>
+    <div class="course-note">Datos actualizados a 17 de octubre de 2026: todas las prácticas de Google Drive están completadas y enviadas en CPROC (ninguna vencida) y todos los tests están realizados (10 en todos salvo uno con ~8).</div>
   </section>
 
   <!-- 4. DIRECTORIO DE PROFESORADO -->
@@ -1408,64 +1436,84 @@ function renderCourses(filter=''){
  const grid=document.getElementById('courseGrid');
  const activeFilter=(filter==='todas')?'':filter;
  grid.innerHTML=courses.filter(c=>c.state==='En curso'&&(!activeFilter||c.branch===activeFilter)).map(c=>`
-  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}">
-   <div class="course-card-head">
+  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}" style="padding:14px 18px;background:#fafbf8">
+   <div class="course-card-head" style="border-radius:12px;margin-bottom:12px">
     <div>
      <h3><button class="course-open" data-course="${courseKey(c)}">${c.name} <span aria-hidden="true">↗</span></button></h3>
-     <p>${c.branch}</p>
+     <p>${c.branch} · Pincha en cualquier asignatura para desplegar sus detalles</p>
     </div>
-    <span class="course-status">${c.state}</span>
+    <span class="course-status">${c.subjects.length} asignatura${c.subjects.length===1?'':'s'}</span>
    </div>
    ${c.subjects.map((sub,idx)=>`
-    <div class="course-subject">
-     <!-- Columna 1: Asignatura, Profesorado y Calificación -->
-     <div class="subject-col">
-      <div class="subject-header-title"><button class="subject-open" data-subject="${courseKey(c)}|${idx}">${sub.name} <span aria-hidden="true">↗</span></button></div>
-      <div class="course-period">${sub.period}</div>
-      <div class="course-teachers">
-       <b>Profesorado:</b> ${sub.teachers.map(t=>`<button class="teacher-link" data-teacher="${t}">${t}</button>`).join(' · ')}
+    <div class="fold-card ${idx===0&&c.branch==='Procura'&&c.name==='Técnicas instrumentales'?'open':''}">
+     <button class="fold-summary" data-toggle-fold aria-expanded="${idx===0&&c.branch==='Procura'&&c.name==='Técnicas instrumentales'?'true':'false'}">
+      <div class="fold-title-wrap">
+       <span class="fold-title">${sub.name}</span>
+       <span class="fold-sub">${sub.period} · Profesorado: ${sub.teachers.join(', ')}</span>
       </div>
-      ${sub.grade?`
-       <div class="subject-grade-box">
-        <b>★ Calificación / Evaluación: ${sub.grade.score}</b>
-        <div>${sub.grade.detail}</div>
-        <div style="margin-top:6px"><button class="pill-btn solid-green" data-detail="${sub.grade.detailKey}">${sub.grade.actionLabel}</button></div>
-       </div>
-      `:''}
-     </div>
-
-     <!-- Columna 2: Prácticas y pruebas de la asignatura -->
-     <div class="subject-col subject-col-box">
-      <b class="subject-col-title">✎ Prácticas y pruebas (${sub.tasks.length})</b>
-      ${sub.tasks.map(t=>`
-       <div class="subject-item-card ${t.overdue?'overdue':''}">
-        <strong>${t.title}</strong>
-        <div>${t.date} · <b>${t.state}</b></div>
-        <div class="item-links">
-         <button class="pill-btn" data-detail="${t.detailKey}">${t.actionLabel}</button>
-         ${t.extUrl?`<a class="pill-link blue" href="${t.extUrl}" target="_blank" rel="noopener noreferrer">${t.extLabel||'Abrir archivo ↗'}</a>`:''}
+      <div class="fold-chips">
+       ${sub.grade?`<span class="fold-chip grade">★ ${sub.grade.score}</span>`:''}
+       <span class="fold-chip">${sub.tasks.length} práctica${sub.tasks.length===1?'':'s'}</span>
+       <span class="fold-chip blue">${sub.notes.length} apunte${sub.notes.length===1?'':'s'}</span>
+       <span class="fold-arrow" aria-hidden="true">⌄</span>
+      </div>
+     </button>
+     <div class="fold-body">
+      <div class="course-subject" style="padding:16px 0 0;border-top:0">
+       <!-- Columna 1: Asignatura, Profesorado y Calificación -->
+       <div class="subject-col">
+        <div class="course-teachers">
+         <b>Profesorado (pincha para abrir su ficha):</b>
+         <div class="action-pills" style="margin-top:6px">
+          ${sub.teachers.map(t=>`<button class="pill-btn" data-teacher="${t}">♟ ${t} ↗</button>`).join('')}
+         </div>
+        </div>
+        ${sub.grade?`
+         <div class="subject-grade-box">
+          <b>★ Calificación / Evaluación: ${sub.grade.score}</b>
+          <div>${sub.grade.detail}</div>
+          <div style="margin-top:6px"><button class="pill-btn solid-green" data-detail="${sub.grade.detailKey}">${sub.grade.actionLabel}</button></div>
+         </div>
+        `:''}
+        <div style="margin-top:10px">
+         <button class="pill-btn" data-subject="${courseKey(c)}|${idx}">Abrir ficha lateral completa de la asignatura ↗</button>
         </div>
        </div>
-      `).join('')}
-     </div>
 
-     <!-- Columna 3: Apuntes, documentos y correo correspondiente -->
-     <div class="subject-col subject-col-box">
-      <b class="subject-col-title">▧ Apuntes, documentos y correo</b>
-      ${sub.notes.map(n=>`
-       <div class="subject-item-card">
-        <strong>${n.name}</strong>
-        <div class="item-links">
-         ${n.detailKey?`<button class="pill-btn" data-detail="${n.detailKey}">Ver ficha ↗</button>`:''}
-         ${n.url?`<a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.label||'Abrir documento ↗'}</a>`:''}
-        </div>
+       <!-- Columna 2: Prácticas y pruebas de la asignatura -->
+       <div class="subject-col subject-col-box">
+        <b class="subject-col-title">✎ Prácticas y pruebas (${sub.tasks.length})</b>
+        ${sub.tasks.map(t=>`
+         <div class="subject-item-card ${t.overdue?'overdue':''}">
+          <strong>${t.title}</strong>
+          <div>${t.date} · <b>${t.state}</b></div>
+          <div class="item-links">
+           <button class="pill-btn" data-detail="${t.detailKey}">${t.actionLabel}</button>
+           ${t.extUrl?`<a class="pill-link blue" href="${t.extUrl}" target="_blank" rel="noopener noreferrer">${t.extLabel||'Abrir archivo ↗'}</a>`:''}
+          </div>
+         </div>
+        `).join('')}
        </div>
-      `).join('')}
-      ${sub.mails?.length?`
-       <div style="margin-top:8px">
-        ${sub.mails.map(mk=>{const m=messages.find(x=>x.key===mk);return m?`<button class="pill-btn blue" style="margin:3px 4px 0 0" data-detail="${mk}">✉ Correo: ${m.title.slice(0,38)}… ↗</button>`:''}).join('')}
+
+       <!-- Columna 3: Apuntes, documentos y correo correspondiente -->
+       <div class="subject-col subject-col-box">
+        <b class="subject-col-title">▧ Apuntes, documentos y correo</b>
+        ${sub.notes.map(n=>`
+         <div class="subject-item-card">
+          <strong>${n.name}</strong>
+          <div class="item-links">
+           ${n.detailKey?`<button class="pill-btn" data-detail="${n.detailKey}">Ver ficha ↗</button>`:''}
+           ${n.url?`<a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.label||'Abrir documento ↗'}</a>`:''}
+          </div>
+         </div>
+        `).join('')}
+        ${sub.mails?.length?`
+         <div style="margin-top:8px">
+          ${sub.mails.map(mk=>{const m=messages.find(x=>x.key===mk);return m?`<button class="pill-btn blue" style="margin:3px 4px 0 0" data-detail="${mk}">✉ Correo: ${m.title.slice(0,38)}… ↗</button>`:''}).join('')}
+         </div>
+        `:''}
        </div>
-      `:''}
+      </div>
      </div>
     </div>
    `).join('')}
@@ -1488,7 +1536,12 @@ function renderTeachers(q=''){
      <span class="teacher-grade-pill">${t.gradeBadge}</span>
     </div>
     <p class="teacher-summary" style="margin-top:8px">${t.summary}</p>
-    <div class="teacher-sections" style="margin-top:12px">
+    <div class="action-pills" style="margin-top:10px">
+     ${t.mails[0]?`<button class="pill-btn blue" data-detail="${t.mails[0].key}">✉ Su correo ↗</button>`:''}
+     ${t.practices[0]?`<button class="pill-btn" data-detail="${t.practices[0].key}">✎ Su práctica / test ↗</button>`:''}
+     <button class="pill-btn" data-subject="${t.subjectRef}">▤ Su asignatura ↗</button>
+    </div>
+    <div class="teacher-sections">
      <div class="teacher-sec-row">
       <b>✉ Correo correspondiente</b>
       <div class="action-pills">
@@ -1510,9 +1563,9 @@ function renderTeachers(q=''){
      </div>
     </div>
    </div>
-   <div class="action-pills" style="padding-top:10px;border-top:1px solid var(--line);justify-content:space-between">
-    <button class="teacher-link" data-teacher="${t.name}">Abrir ficha completa del docente ↗</button>
-    <button class="teacher-link" data-subject="${t.subjectRef}">Ir a su asignatura ↗</button>
+   <div class="teacher-compact-actions">
+    <button class="teacher-expand-btn" data-expand-teacher>Desplegar todos sus enlaces (${t.mails.length+t.practices.length+t.notes.length}) ⌄</button>
+    <button class="teacher-link" data-teacher="${t.name}">Abrir ficha completa ↗</button>
    </div>
   </article>
  `).join('');
@@ -1715,7 +1768,7 @@ function openDetail(key){
   </div>
   ${d.gradeTable?`
    <div class="detail-block">
-    <b>★ Desglose oficial de la nota en el correo</b>
+    <b>★ Desglose oficial de la nota</b>
     <div class="grade-breakdown" style="margin-top:6px">
      <div class="grade-stat">Test (1 oct)<b>${d.gradeTable.test}</b></div>
      <div class="grade-stat">Trabajos / escritos<b>${d.gradeTable.trabajos}</b></div>
@@ -1827,7 +1880,7 @@ function renderCalendar(){
    selectedDate=new Date(d);
    if(d.getMonth()!==monthDate.getMonth())monthDate=new Date(d.getFullYear(),d.getMonth(),1);
    renderDay();
-   document.getElementById('todaySection').scrollIntoView({behavior:'smooth',block:'start'});
+   setView('inicio');
   });
   grid.appendChild(b);
  }
@@ -1877,16 +1930,15 @@ function renderMail(q=''){
 function setView(view){
  activeView=view;
  document.querySelectorAll('.nav [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
- const map={
-  inicio:'todaySection',
-  notas:'gradesSection',
-  asignaturas:'subjectsSection',
-  entregas:'deliverySection',
-  materiales:'materialsSection',
-  correo:'mailSection'
- };
- if(view==='inicio')window.scrollTo({top:0,behavior:'smooth'});
- else if(map[view])document.getElementById(map[view]).scrollIntoView({behavior:'smooth'});
+ document.querySelectorAll('.view-tabs [data-view]').forEach(b=>{
+  const isAct=b.dataset.view===view;
+  b.classList.toggle('active',isAct);
+  b.setAttribute('aria-selected',String(isAct));
+ });
+ document.querySelectorAll('[data-section-view]').forEach(sec=>{
+  sec.classList.toggle('view-hidden',sec.dataset.sectionView!==view);
+ });
+ window.scrollTo({top:0,behavior:'smooth'});
  closeMenu();
 }
 
@@ -1921,7 +1973,7 @@ document.querySelectorAll('.branch-link').forEach(b=>b.addEventListener('click',
  closeMenu();
  openCourse(`${b.dataset.branch}|${name}`);
 }));
-document.querySelectorAll('.nav [data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+document.querySelectorAll('.nav [data-view], .view-tabs [data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
 document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{
  group=b.dataset.group;
  document.querySelectorAll('[data-group]').forEach(x=>x.classList.toggle('active',x===b));
@@ -1946,12 +1998,38 @@ document.getElementById('nextMonth').addEventListener('click',()=>{
  renderCalendar();
 });
 document.getElementById('search').addEventListener('input',e=>{
- const q=e.target.value;
+ const q=e.target.value.trim();
  renderMail(q);
  renderTeachers(q);
  renderMaterials(q);
+ if(q){
+  document.querySelectorAll('[data-section-view]').forEach(sec=>{
+   const show=['profesores','materiales','correo'].includes(sec.dataset.sectionView);
+   sec.classList.toggle('view-hidden',!show);
+  });
+ }else{
+  setView(activeView);
+ }
 });
 document.addEventListener('click',e=>{
+ const sv=e.target.closest('[data-switch-view]');
+ if(sv){e.preventDefault();setView(sv.dataset.switchView);return}
+ const fold=e.target.closest('[data-toggle-fold]');
+ if(fold){
+  const card=fold.closest('.fold-card');
+  const open=!card.classList.contains('open');
+  card.classList.toggle('open',open);
+  fold.setAttribute('aria-expanded',String(open));
+  return;
+ }
+ const expT=e.target.closest('[data-expand-teacher]');
+ if(expT){
+  const card=expT.closest('.teacher-card');
+  const exp=!card.classList.contains('expanded');
+  card.classList.toggle('expanded',exp);
+  expT.textContent=exp?'Ocultar enlaces ⌃':'Desplegar todos sus enlaces ⌄';
+  return;
+ }
  const subject=e.target.closest('[data-subject]');
  if(subject){openSubject(subject.dataset.subject);return}
  const course=e.target.closest('[data-course]');
@@ -1963,7 +2041,7 @@ document.addEventListener('click',e=>{
   const branch=bv.dataset.branchView;
   renderCourses(branch);
   document.querySelectorAll('[data-branch-view]').forEach(x=>x.classList.toggle('active',x===bv));
-  document.getElementById('subjectsSection').scrollIntoView({behavior:'smooth',block:'start'});
+  setView('asignaturas');
   return;
  }
  const d=e.target.closest('[data-detail]');
