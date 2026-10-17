@@ -681,13 +681,13 @@
   </section>
 
   <!-- 8. CALENDARIO -->
-  <section class="section view-hidden" id="calendarSection" data-section-view="calendario">
+  <section class="section" id="calendarSection">
     <div class="section-title">
       <div>
-        <h2>Calendario académico</h2>
+        <h2>Calendario mensual</h2>
         <p>Elige cualquier día para ver sus clases por grupo (mañana o tarde), su profesor y sus entregas.</p>
       </div>
-      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      <button class="hub-more-btn" id="goTodayBtn">Ir a hoy (16 oct)</button>
     </div>
     <div class="calendar-wrap">
       <div class="calendar-head">
@@ -701,7 +701,7 @@
       <div class="calendar-legend">
         <span><i class="legend-dot"></i>Clase / Actividad</span>
         <span><i class="legend-dot terracotta"></i>Entrega o prueba</span>
-        <span>Selecciona una fecha para abrir su agenda detallada en Portada</span>
+        <span>Selecciona cualquier día para ver sus clases y entregas arriba en «Actividades del día»</span>
       </div>
     </div>
   </section>
@@ -1432,93 +1432,126 @@ function renderGrades(){
  `).join('');
 }
 
+function renderTeacherInsideSubject(tName){
+ const t=teacherDirectory.find(x=>x.name===tName);
+ if(!t)return '';
+ return `
+  <div class="subject-teacher-card">
+   <div class="subject-teacher-head">
+    <div>
+     <h4 class="subject-teacher-name">
+      <button class="teacher-link" style="text-decoration:none;font:inherit;color:inherit" data-teacher="${t.name}">♟ Profesor/a: ${t.name} <span aria-hidden="true">↗</span></button>
+     </h4>
+     <div class="subject-teacher-role">${t.summary}</div>
+    </div>
+    <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+     <span class="teacher-grade-pill">★ ${t.gradeBadge}</span>
+     <button class="pill-btn" data-teacher="${t.name}">Ficha completa del profesor ↗</button>
+    </div>
+   </div>
+
+   <div class="subject-teacher-cols">
+    <!-- 1. Correo del profesor -->
+    <div class="st-col">
+     <b class="st-col-title">✉ Correo de ${t.name} (${t.mails.length})</b>
+     ${t.mails.map(m=>{
+      const msg=messages.find(x=>x.key===m.key);
+      return `
+       <div class="st-item">
+        <strong>${m.title}</strong>
+        ${msg?`<div class="st-item-meta">${msg.date} · ${msg.meta}</div>`:''}
+        <div class="item-links">
+         <button class="pill-btn blue" data-detail="${m.key}">Ver correo y adjuntos ↗</button>
+         <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir en Outlook ↗</a>
+        </div>
+       </div>
+      `;
+     }).join('')}
+    </div>
+
+    <!-- 2. Prácticas, entregas y tests del profesor -->
+    <div class="st-col">
+     <b class="st-col-title">✎ Prácticas y tests de ${t.name} (${t.practices.length})</b>
+     ${t.practices.map(p=>`
+      <div class="st-item">
+       <strong>${p.title}</strong>
+       <div class="item-links">
+        <button class="pill-btn" data-detail="${p.key}">Ver práctica / nota ↗</button>
+        ${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel}</a>`:''}
+        <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
+       </div>
+      </div>
+     `).join('')}
+    </div>
+
+    <!-- 3. Apuntes y documentos del profesor -->
+    <div class="st-col">
+     <b class="st-col-title">▧ Apuntes y documentos de ${t.name} (${t.notes.length})</b>
+     ${t.notes.map(n=>`
+      <div class="st-item">
+       <strong>${n.title}</strong>
+       <div class="item-links">
+        <button class="pill-btn" data-detail="${n.key}">Ver ficha ↗</button>
+        <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel}</a>
+       </div>
+      </div>
+     `).join('')}
+    </div>
+   </div>
+  </div>
+ `;
+}
+
 function renderCourses(filter=''){
  const grid=document.getElementById('courseGrid');
  const activeFilter=(filter==='todas')?'':filter;
- grid.innerHTML=courses.filter(c=>c.state==='En curso'&&(!activeFilter||c.branch===activeFilter)).map(c=>`
-  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}" style="padding:14px 18px;background:#fafbf8">
-   <div class="course-card-head" style="border-radius:12px;margin-bottom:12px">
+ grid.innerHTML=courses.filter(c=>c.state==='En curso'&&(!activeFilter||c.branch===activeFilter)).map((c,cIdx)=>{
+  const uniqueTeachers=[...new Set(c.subjects.flatMap(s=>s.teachers))];
+  return `
+  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}">
+   <div class="course-card-head">
     <div>
-     <h3><button class="course-open" data-course="${courseKey(c)}">${c.name} <span aria-hidden="true">↗</span></button></h3>
-     <p>${c.branch} · Pincha en cualquier asignatura para desplegar sus detalles</p>
+     <div class="course-kicker">Bloque del Máster · ${c.branch}</div>
+     <h3><button class="course-open" data-course="${courseKey(c)}">Bloque ${cIdx+1}: ${c.name} (${c.branch}) <span aria-hidden="true">↗</span></button></h3>
+     <p>${c.subjects.length} asignatura${c.subjects.length===1?'':'s'} en este bloque · ${uniqueTeachers.length} profesor${uniqueTeachers.length===1?'':'es'} (${uniqueTeachers.join(', ')})</p>
     </div>
-    <span class="course-status">${c.subjects.length} asignatura${c.subjects.length===1?'':'s'}</span>
+    <span class="course-status">${c.state} · ${c.subjects.length} asignatura${c.subjects.length===1?'':'s'}</span>
    </div>
+
    ${c.subjects.map((sub,idx)=>`
-    <div class="fold-card ${idx===0&&c.branch==='Procura'&&c.name==='Técnicas instrumentales'?'open':''}">
-     <button class="fold-summary" data-toggle-fold aria-expanded="${idx===0&&c.branch==='Procura'&&c.name==='Técnicas instrumentales'?'true':'false'}">
-      <div class="fold-title-wrap">
-       <span class="fold-title">${sub.name}</span>
-       <span class="fold-sub">${sub.period} · Profesorado: ${sub.teachers.join(', ')}</span>
+    <div class="course-subject">
+     <!-- Cabecera de la Asignatura dentro del Bloque -->
+     <div class="subject-banner">
+      <div>
+       <div class="subject-kicker">Asignatura ${idx+1} de ${c.subjects.length} · Bloque ${c.name} (${c.branch})</div>
+       <div class="subject-header-title">
+        <button class="subject-open" data-subject="${courseKey(c)}|${idx}">▤ Asignatura: ${sub.name} <span aria-hidden="true">↗</span></button>
+       </div>
+       <div class="course-period">${sub.period}</div>
       </div>
-      <div class="fold-chips">
-       ${sub.grade?`<span class="fold-chip grade">★ ${sub.grade.score}</span>`:''}
-       <span class="fold-chip">${sub.tasks.length} práctica${sub.tasks.length===1?'':'s'}</span>
-       <span class="fold-chip blue">${sub.notes.length} apunte${sub.notes.length===1?'':'s'}</span>
-       <span class="fold-arrow" aria-hidden="true">⌄</span>
-      </div>
-     </button>
-     <div class="fold-body">
-      <div class="course-subject" style="padding:16px 0 0;border-top:0">
-       <!-- Columna 1: Asignatura, Profesorado y Calificación -->
-       <div class="subject-col">
-        <div class="course-teachers">
-         <b>Profesorado (pincha para abrir su ficha):</b>
-         <div class="action-pills" style="margin-top:6px">
-          ${sub.teachers.map(t=>`<button class="pill-btn" data-teacher="${t}">♟ ${t} ↗</button>`).join('')}
-         </div>
-        </div>
-        ${sub.grade?`
-         <div class="subject-grade-box">
-          <b>★ Calificación / Evaluación: ${sub.grade.score}</b>
-          <div>${sub.grade.detail}</div>
-          <div style="margin-top:6px"><button class="pill-btn solid-green" data-detail="${sub.grade.detailKey}">${sub.grade.actionLabel}</button></div>
-         </div>
-        `:''}
-        <div style="margin-top:10px">
-         <button class="pill-btn" data-subject="${courseKey(c)}|${idx}">Abrir ficha lateral completa de la asignatura ↗</button>
+      ${sub.grade?`
+       <div class="subject-grade-box">
+        <b>★ Evaluación de la asignatura: ${sub.grade.score}</b>
+        <div>${sub.grade.detail}</div>
+        <div style="margin-top:7px;display:flex;gap:6px;flex-wrap:wrap">
+         <button class="pill-btn solid-green" data-detail="${sub.grade.detailKey}">${sub.grade.actionLabel}</button>
+         <button class="pill-btn" data-subject="${courseKey(c)}|${idx}">Abrir ficha de la asignatura ↗</button>
         </div>
        </div>
+      `:''}
+     </div>
 
-       <!-- Columna 2: Prácticas y pruebas de la asignatura -->
-       <div class="subject-col subject-col-box">
-        <b class="subject-col-title">✎ Prácticas y pruebas (${sub.tasks.length})</b>
-        ${sub.tasks.map(t=>`
-         <div class="subject-item-card ${t.overdue?'overdue':''}">
-          <strong>${t.title}</strong>
-          <div>${t.date} · <b>${t.state}</b></div>
-          <div class="item-links">
-           <button class="pill-btn" data-detail="${t.detailKey}">${t.actionLabel}</button>
-           ${t.extUrl?`<a class="pill-link blue" href="${t.extUrl}" target="_blank" rel="noopener noreferrer">${t.extLabel||'Abrir archivo ↗'}</a>`:''}
-          </div>
-         </div>
-        `).join('')}
-       </div>
-
-       <!-- Columna 3: Apuntes, documentos y correo correspondiente -->
-       <div class="subject-col subject-col-box">
-        <b class="subject-col-title">▧ Apuntes, documentos y correo</b>
-        ${sub.notes.map(n=>`
-         <div class="subject-item-card">
-          <strong>${n.name}</strong>
-          <div class="item-links">
-           ${n.detailKey?`<button class="pill-btn" data-detail="${n.detailKey}">Ver ficha ↗</button>`:''}
-           ${n.url?`<a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.label||'Abrir documento ↗'}</a>`:''}
-          </div>
-         </div>
-        `).join('')}
-        ${sub.mails?.length?`
-         <div style="margin-top:8px">
-          ${sub.mails.map(mk=>{const m=messages.find(x=>x.key===mk);return m?`<button class="pill-btn blue" style="margin:3px 4px 0 0" data-detail="${mk}">✉ Correo: ${m.title.slice(0,38)}… ↗</button>`:''}).join('')}
-         </div>
-        `:''}
-       </div>
-      </div>
+     <!-- Dentro de cada Asignatura: Cada Profesor con su Correo, sus Prácticas, sus Apuntes y su Nota -->
+     <div class="subject-teachers-label">
+      <span>♟ Profesorado de esta asignatura (${sub.teachers.length}): correo, prácticas, apuntes y notas de cada profesor</span>
+     </div>
+     <div class="subject-teachers-grid">
+      ${sub.teachers.map(tName=>renderTeacherInsideSubject(tName)).join('')}
      </div>
     </div>
    `).join('')}
   </article>
- `).join('')||'<div class="empty">No hay asignaturas registradas para este filtro.</div>';
+ `}).join('')||'<div class="empty">No hay bloques registrados para este filtro.</div>';
 }
 
 function renderTeachers(q=''){
@@ -1564,7 +1597,7 @@ function renderTeachers(q=''){
     </div>
    </div>
    <div class="teacher-compact-actions">
-    <button class="teacher-expand-btn" data-expand-teacher>Desplegar todos sus enlaces (${t.mails.length+t.practices.length+t.notes.length}) ⌄</button>
+    <button class="teacher-link" data-subject="${t.subjectRef}">Ir a su asignatura ↗</button>
     <button class="teacher-link" data-teacher="${t.name}">Abrir ficha completa ↗</button>
    </div>
   </article>
@@ -1618,20 +1651,29 @@ function showAcademicDetail(html){
 function openCourse(key){
  const c=getCourse(key),related=courseMail[key]||[];
  showAcademicDetail(`
-  <div class="detail-kicker">${c.branch} · Materia</div>
+  <div class="detail-kicker">Bloque del Máster · ${c.branch}</div>
   <h2>${c.name}</h2>
-  <div class="detail-date">${c.subjects.length?'Asignaturas, calificaciones, prácticas y apuntes disponibles':'Bloque del plan de estudios pendiente de inicio'}</div>
+  <div class="detail-date">${c.subjects.length?`${c.subjects.length} asignatura${c.subjects.length===1?'':'s'} con su profesorado, correos, prácticas, apuntes y notas`:'Bloque del plan de estudios pendiente de inicio'}</div>
   <div class="detail-block">
-   <b>Asignaturas de este bloque</b>
+   <b>Asignaturas y profesorado de este bloque</b>
    ${c.subjects.length?c.subjects.map((sub,i)=>`
-    <button class="academic-item" data-subject="${key}|${i}">
-     <span>${sub.name}</span>
-     <small>${sub.period}<br>Profesorado: ${sub.teachers.join(', ')}${sub.grade?`<br><b>★ ${sub.grade.score}</b>`:''}</small>
-     <span class="related-action">Abrir asignatura completa ↗</span>
-    </button>
+    <div style="border:1px solid #d5e0d4;border-radius:12px;padding:12px 14px;margin:10px 0;background:#f8faf6">
+     <button class="academic-item" style="margin:0 0 8px;background:#fff" data-subject="${key}|${i}">
+      <span>▤ Asignatura ${i+1}: ${sub.name}</span>
+      <small>${sub.period}${sub.grade?`<br><b>★ ${sub.grade.score}</b>`:''}</small>
+      <span class="related-action">Abrir asignatura completa y desglose por profesor ↗</span>
+     </button>
+     <div style="font-size:11px;font-weight:700;color:#355240;margin:6px 0 4px">♟ Profesores en esta asignatura (${sub.teachers.length}):</div>
+     <div class="action-pills">
+      ${sub.teachers.map(tName=>{
+       const td=teacherDirectory.find(x=>x.name===tName);
+       return `<button class="pill-btn" data-teacher="${tName}">${tName}${td?` (${td.gradeBadge})`:''} ↗</button>`;
+      }).join('')}
+     </div>
+    </div>
    `).join(''):'<p>Aún no han comenzado las sesiones de este bloque en los correos revisados. Se completará en cuanto se publiquen sus horarios y materiales.</p>'}
   </div>
-  ${related.length?`<div class="detail-block"><b>Correos de esta materia</b>${courseLinks(related)}</div>`:''}
+  ${related.length?`<div class="detail-block"><b>Correos de este bloque</b>${courseLinks(related)}</div>`:''}
   <div class="detail-block">
    <b>Accesos directos</b>
    <div class="action-pills">
@@ -1648,14 +1690,14 @@ function openSubject(ref){
  if(!sub)return;
  const related=sub.mails||[];
  showAcademicDetail(`
-  <button class="detail-back" data-course="${key}">‹ Volver a ${c.name} (${c.branch})</button>
-  <div class="detail-kicker">${c.branch} · Asignatura</div>
+  <button class="detail-back" data-course="${key}">‹ Volver al bloque ${c.name} (${c.branch})</button>
+  <div class="detail-kicker">Bloque ${c.name} (${c.branch}) · Asignatura</div>
   <h2>${sub.name}</h2>
   <div class="detail-date">${sub.period}</div>
   ${sub.grade?`
    <div class="detail-block">
-    <b>★ Calificación / Evaluación registrada</b>
-    <div class="subject-grade-box" style="margin-top:0">
+    <b>★ Calificación / Evaluación de la asignatura</b>
+    <div class="subject-grade-box" style="margin-top:0;max-width:none">
      <b>${sub.grade.score}</b>
      <div>${sub.grade.detail}</div>
      <div style="margin-top:8px"><button class="pill-btn solid-green" data-detail="${sub.grade.detailKey}">${sub.grade.actionLabel}</button></div>
@@ -1663,41 +1705,43 @@ function openSubject(ref){
    </div>
   `:''}
   <div class="detail-block">
-   <b>Profesorado</b>
-   <div class="action-pills">${sub.teachers.map(t=>`<button class="pill-btn" data-teacher="${t}">${t} ↗</button>`).join('')}</div>
-  </div>
-  <div class="detail-block">
-   <b>Prácticas, entregas y exámenes</b>
-   ${sub.tasks?.length?sub.tasks.map(t=>`
-    <div class="subject-item-card ${t.overdue?'overdue':''}">
-     <strong>${t.title}</strong>
-     <div>${t.date} · <b>${t.state}</b></div>
-     <div class="item-links">
-      <button class="pill-btn" data-detail="${t.detailKey}">${t.actionLabel}</button>
-      ${t.extUrl?`<a class="pill-link blue" href="${t.extUrl}" target="_blank" rel="noopener noreferrer">${t.extLabel||'Abrir archivo ↗'}</a>`:''}
+   <b>♟ Profesorado de la asignatura (${sub.teachers.length}): su correo, sus prácticas y sus apuntes</b>
+   ${sub.teachers.map(tName=>{
+    const td=teacherDirectory.find(x=>x.name===tName);
+    if(!td)return '';
+    return `
+     <div style="border:1px solid #d5e0d4;border-radius:12px;padding:12px 14px;margin:10px 0;background:#fafbf8">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+       <button class="teacher-link" style="font-size:15px;font-weight:800" data-teacher="${td.name}">♟ ${td.name} ↗</button>
+       <span class="teacher-grade-pill">★ ${td.gradeBadge}</span>
+      </div>
+      <p style="font-size:12px;margin-bottom:8px">${td.summary}</p>
+      <div style="margin-bottom:7px">
+       <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:#1d496b;margin-bottom:4px">✉ Correo de ${td.name}</div>
+       <div class="action-pills">
+        ${td.mails.map(m=>`<button class="pill-btn blue" data-detail="${m.key}">${m.title} ↗</button>`).join('')}
+        <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+       </div>
+      </div>
+      <div style="margin-bottom:7px">
+       <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:#8c3d23;margin-bottom:4px">✎ Prácticas y tests de ${td.name}</div>
+       <div class="action-pills">
+        ${td.practices.map(p=>`<button class="pill-btn" data-detail="${p.key}">${p.title} ↗</button>${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel}</a>`:''}`).join('')}
+       </div>
+      </div>
+      <div>
+       <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:#1b4d38;margin-bottom:4px">▧ Apuntes y documentos de ${td.name}</div>
+       <div class="action-pills">
+        ${td.notes.map(n=>`<button class="pill-btn" data-detail="${n.key}">${n.title} ↗</button><a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel}</a>`).join('')}
+       </div>
+      </div>
      </div>
-    </div>
-   `).join(''):'<p>No hay entregas registradas para esta asignatura.</p>'}
-  </div>
-  <div class="detail-block">
-   <b>Apuntes y documentos directos</b>
-   ${sub.notes?.length?sub.notes.map(n=>`
-    <div class="doc-direct-row" style="margin-bottom:6px">
-     <span>${n.name}</span>
-     <div style="display:flex;gap:8px">
-      ${n.detailKey?`<button data-detail="${n.detailKey}">Ficha ↗</button>`:''}
-      ${n.url?`<a href="${n.url}" target="_blank" rel="noopener noreferrer">${n.label||'Abrir ↗'}</a>`:''}
-     </div>
-    </div>
-   `).join(''):'<p>Sin apuntes adicionales.</p>'}
-   <div class="action-pills" style="margin-top:10px">
-    <a class="drive-btn-secondary" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Máster en Drive ↗</a>
-    <a class="drive-btn-secondary" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-   </div>
+    `;
+   }).join('')}
   </div>
   ${related.length?`
    <div class="detail-block">
-    <b>Correos correspondientes</b>
+    <b>Correos de la asignatura</b>
     ${courseLinks(related)}
     <a class="outlook-btn-secondary" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir bandeja en Outlook ↗</a>
    </div>
@@ -1880,7 +1924,8 @@ function renderCalendar(){
    selectedDate=new Date(d);
    if(d.getMonth()!==monthDate.getMonth())monthDate=new Date(d.getFullYear(),d.getMonth(),1);
    renderDay();
-   setView('inicio');
+   setView('inicio',false);
+   document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
   });
   grid.appendChild(b);
  }
@@ -1927,7 +1972,7 @@ function renderMail(q=''){
  `).join('')||'<div class="empty">No se encontraron correos con ese filtro.</div>';
 }
 
-function setView(view){
+function setView(view,doScroll=true){
  activeView=view;
  document.querySelectorAll('.nav [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  document.querySelectorAll('.view-tabs [data-view]').forEach(b=>{
@@ -1936,9 +1981,10 @@ function setView(view){
   b.setAttribute('aria-selected',String(isAct));
  });
  document.querySelectorAll('[data-section-view]').forEach(sec=>{
-  sec.classList.toggle('view-hidden',sec.dataset.sectionView!==view);
+  const show=view==='inicio'?(sec.dataset.sectionView==='inicio'||sec.dataset.sectionView==='asignaturas'):sec.dataset.sectionView===view;
+  sec.classList.toggle('view-hidden',!show);
  });
- window.scrollTo({top:0,behavior:'smooth'});
+ if(doScroll)window.scrollTo({top:0,behavior:'smooth'});
  closeMenu();
 }
 
@@ -1996,6 +2042,13 @@ document.getElementById('previousMonth').addEventListener('click',()=>{
 document.getElementById('nextMonth').addEventListener('click',()=>{
  monthDate.setMonth(monthDate.getMonth()+1);
  renderCalendar();
+});
+document.getElementById('goTodayBtn').addEventListener('click',()=>{
+ selectedDate=new Date(todayDate);
+ monthDate=new Date(todayDate.getFullYear(),todayDate.getMonth(),1);
+ renderDay();
+ setView('inicio',false);
+ document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
 });
 document.getElementById('search').addEventListener('input',e=>{
  const q=e.target.value.trim();
