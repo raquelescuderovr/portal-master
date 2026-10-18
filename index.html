@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8fafc">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#faf8f5">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -12,77 +12,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f8fafc;
+  --bg:#faf8f5;
   --paper:#ffffff;
-  --paper-warm:#f8fafc;
+  --paper-warm:#fdfcf9;
   --paper-card:#ffffff;
-  --sidebar-bg:#f1f5f9;
-  --ink:#0f172a;
-  --ink-soft:#334155;
-  --muted:#64748b;
-  --line:#e2e8f0;
-  --line-subtle:#f1f5f9;
+  --sidebar-bg:#f6f4ee;
+  --ink:#1e1b18;
+  --ink-soft:#44403c;
+  --muted:#78716c;
+  --line:#e6e1d6;
+  --line-subtle:#f0ece3;
 
-  /* Verde Británico Institucional (Clases del Máster, Plan de estudios, Estados completados) */
-  --green:#166534;
-  --green-dark:#052e16;
-  --green-pale:#f0fdf4;
-  --green-badge:#dcfce7;
-  --green-border:#86efac;
+  /* Verde Laurel Británico (Clases del Máster, Plan de estudios, Estados completados) */
+  --green:#1a4d36;
+  --green-dark:#0e2f20;
+  --green-pale:#eef6f1;
+  --green-badge:#d4ebd9;
+  --green-border:#a1d1b4;
 
-  /* Azul Jurídico Oxford (Abogacía, Correos de Outlook, Citas personales) */
-  --blue:#1d4ed8;
-  --blue-dark:#1e3a8a;
-  --blue-pale:#eff6ff;
-  --blue-badge:#dbeafe;
-  --blue-border:#93c5fd;
+  /* Azul Oxford Sedoso (Abogacía, Correos de Outlook, Citas personales) */
+  --blue:#1c3e6c;
+  --blue-dark:#0f2440;
+  --blue-pale:#eef4fb;
+  --blue-badge:#d1e2f5;
+  --blue-border:#a1c4eb;
 
-  /* Burdeos Académico / Carmesí Judicial (Procura, Prácticas CPROC, Entregas - Adiós al marrón café) */
-  --terracotta:#9f1239;
-  --terra-dark:#4c0519;
-  --terra-pale:#fff1f2;
-  --terra-badge:#ffe4e6;
-  --terra-border:#fda4af;
+  /* Burdeos Terciopelo (Procura, Prácticas CPROC, Entregas) */
+  --terracotta:#881e3d;
+  --terra-dark:#4d0a1e;
+  --terra-pale:#fdf1f4;
+  --terra-badge:#fad4dc;
+  --terra-border:#f2a9ba;
 
-  /* Oro Noble / Latón Académico (Evaluación oficial, Notas 10/10 y 20/20, Logros) */
-  --honey:#b45309;
-  --honey-dark:#78350f;
-  --honey-pale:#fffbeb;
-  --honey-badge:#fef3c7;
-  --honey-border:#fcd34d;
+  /* Oro Miel Cálido (Evaluación oficial, Notas 10/10 y 20/20, Logros) */
+  --honey:#9e6915;
+  --honey-dark:#5e3b04;
+  --honey-pale:#fdf8ed;
+  --honey-badge:#fbeac4;
+  --honey-border:#eccb86;
 
-  /* Púrpura Real / Magenta Académico (Profesorado y Docentes) */
-  --plum:#701a75;
-  --plum-dark:#4a044e;
-  --plum-pale:#fdf4ff;
-  --plum-badge:#fae8ff;
-  --plum-border:#f0abfc;
+  /* Ciruela Académico (Profesorado y Docentes) */
+  --plum:#6f2b58;
+  --plum-dark:#431333;
+  --plum-pale:#fbf1f7;
+  --plum-badge:#f4d4e9;
+  --plum-border:#de9fca;
 
-  /* Azul Zafiro / Documentos (Google Drive y Apuntes) */
-  --sky:#0284c7;
-  --sky-dark:#075985;
-  --sky-pale:#f0f9ff;
-  --sky-badge:#e0f2fe;
-  --sky-border:#7dd3fc;
+  /* Azul Zafiro Nórdico (Google Drive y Apuntes) */
+  --sky:#195d82;
+  --sky-dark:#0b344a;
+  --sky-pale:#edf6fa;
+  --sky-badge:#d1e6f1;
+  --sky-border:#a1c8dd;
 
-  /* Coral Escarlata (Correo institucional) */
-  --peach:#c2410c;
-  --peach-dark:#7c2d12;
-  --peach-pale:#fff7ed;
-  --peach-badge:#ffedd5;
-  --peach-border:#fed7aa;
+  /* Coral Cálido (Correo institucional) */
+  --peach:#b84318;
+  --peach-dark:#6e2308;
+  --peach-pale:#fef4ee;
+  --peach-badge:#fddcc9;
+  --peach-border:#f8b394;
 
-  /* Lavanda Violeta (Calendario mensual) */
-  --lilac:#6d28d9;
-  --lilac-dark:#4c1d95;
-  --lilac-pale:#f5f3ff;
-  --lilac-badge:#ede9fe;
-  --lilac-border:#ddd6fe;
+  /* Lavanda Brezo (Calendario mensual) */
+  --lilac:#6a3e7a;
+  --lilac-dark:#43214f;
+  --lilac-pale:#f8f2fa;
+  --lilac-badge:#ecdcf0;
+  --lilac-border:#d4b5dd;
 
-  /* Sombras nítidas de alta precisión */
-  --shadow-sm:0 1px 3px rgba(15,23,42,.04);
-  --shadow:0 4px 16px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.03);
-  --shadow-hover:0 10px 25px rgba(15,23,42,.1),0 2px 6px rgba(15,23,42,.04);
+  /* Sombras aterciopeladas cálidas y nítidas */
+  --shadow-sm:0 1px 3px rgba(35,28,20,.04);
+  --shadow:0 4px 16px rgba(35,28,20,.06),0 1px 3px rgba(35,28,20,.03);
+  --shadow-hover:0 10px 26px rgba(35,28,20,.09),0 2px 6px rgba(35,28,20,.04);
 
   /* Tipografía seleccionada para lectura relajada y cómoda */
   --serif:'Lora',Charter,'Sitka Text',Georgia,serif;
@@ -97,7 +97,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 .layout{max-width:1440px;min-height:100vh;margin:auto;display:grid;grid-template-columns:310px minmax(0,1fr);background:var(--paper);box-shadow:0 0 60px rgba(60,45,30,.08)}
 /* ========================================================
-   BARRA LATERAL / MENÚ IZQUIERDO: ELEGANTE, ACADÉMICO Y PROFESIONAL
+   BARRA LATERAL / MENÚ IZQUIERDO: ELEGANTE, ACADÉMICO Y COZY
    ======================================================== */
 .sidebar{
   position:sticky;
@@ -130,12 +130,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   width:44px;
   height:44px;
   border-radius:12px;
-  background:linear-gradient(135deg, #052e16 0%, #166534 100%);
+  background:linear-gradient(135deg, #0e2f20 0%, #1a4d36 100%);
   color:#fffef9;
   display:grid;
   place-items:center;
   font-size:22px;
-  box-shadow:0 3px 10px rgba(18,56,35,.25);
+  box-shadow:0 3px 10px rgba(26,77,54,.25);
   flex-shrink:0;
   transition:transform .18s ease;
 }
@@ -155,12 +155,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:inline-flex;
   align-items:center;
   gap:5px;
-  background:#edf5f0;
-  color:#1b4d36;
+  background:var(--green-pale);
+  color:var(--green);
   font:700 11px/1 var(--sans);
   padding:4px 8px;
   border-radius:6px;
-  border:1px solid #bedbc9;
+  border:1px solid var(--green-border);
   margin-top:5px;
 }
 
@@ -195,21 +195,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color:var(--ink);
   font:600 13.5px/1.2 var(--sans);
   transition:all .16s ease;
-  box-shadow:0 1px 3px rgba(30,20,10,.02);
+  box-shadow:0 1px 3px rgba(35,28,20,.02);
 }
 .nav button:hover{
-  background:#fbf9f5;
-  border-color:#94a3b8;
+  background:#fdfcf9;
+  border-color:#cdc6b8;
   transform:translateX(2px);
-  box-shadow:0 2px 6px rgba(30,20,10,.05);
+  box-shadow:0 2px 6px rgba(35,28,20,.05);
 }
 .nav button.active{
   background:#ffffff;
-  border-color:#86efac;
+  border-color:var(--green-border);
   border-left:4px solid var(--green);
   color:var(--green-dark);
   font-weight:700;
-  box-shadow:0 2px 8px rgba(22,101,52,.08);
+  box-shadow:0 2px 8px rgba(26,77,54,.08);
   transform:translateX(1px);
 }
 
@@ -228,14 +228,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 /* Variantes de color institucionales y sobrias por vista */
-.nav-icon-pill.icon-green{background:#edf5f0;color:#1b4d36;border:1px solid #c2ded0}
-.nav-icon-pill.icon-blue{background:#eef3f9;color:#1e4273;border:1px solid #bfd3e8}
-.nav-icon-pill.icon-plum{background:#faf0f3;color:#7a243c;border:1px solid #e5c0cc}
-.nav-icon-pill.icon-honey{background:#fffbeb;color:#b45309;border:1px solid #fde047}
-.nav-icon-pill.icon-terra{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}
-.nav-icon-pill.icon-sky{background:#edf4f8;color:#205b7a;border:1px solid #bfd7e7}
-.nav-icon-pill.icon-peach{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
-.nav-icon-pill.icon-lilac{background:#f5f0f8;color:#63367a;border:1px solid #d8c2e4}
+.nav-icon-pill.icon-green{background:var(--green-pale);color:var(--green);border:1px solid var(--green-border)}
+.nav-icon-pill.icon-blue{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border)}
+.nav-icon-pill.icon-plum{background:var(--plum-pale);color:var(--plum);border:1px solid var(--plum-border)}
+.nav-icon-pill.icon-honey{background:var(--honey-pale);color:var(--honey);border:1px solid var(--honey-border)}
+.nav-icon-pill.icon-terra{background:var(--terra-pale);color:var(--terracotta);border:1px solid var(--terra-border)}
+.nav-icon-pill.icon-sky{background:var(--sky-pale);color:var(--sky);border:1px solid var(--sky-border)}
+.nav-icon-pill.icon-peach{background:var(--peach-pale);color:var(--peach);border:1px solid var(--peach-border)}
+.nav-icon-pill.icon-lilac{background:var(--lilac-pale);color:var(--lilac);border:1px solid var(--lilac-border)}
 
 .nav-icon-pill svg{
   width:18px;
@@ -260,17 +260,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border-radius:8px;
   flex-shrink:0;
 }
-.nav-badge-pill.badge-green{background:#edf5f0;color:#1b4d36;border:1px solid #bedbc9}
-.nav-badge-pill.badge-blue{background:#eef3f9;color:#1e4273;border:1px solid #bed3e8}
-.nav-badge-pill.badge-plum{background:#faf0f3;color:#7a243c;border:1px solid #e5c0cc}
-.nav-badge-pill.badge-honey{background:#fffbeb;color:#b45309;border:1px solid #fde047}
-.nav-badge-pill.badge-terra{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}
-.nav-badge-pill.badge-sky{background:#edf4f8;color:#205b7a;border:1px solid #bfd7e7}
-.nav-badge-pill.badge-peach{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.nav-badge-pill.badge-green{background:var(--green-pale);color:var(--green);border:1px solid var(--green-border)}
+.nav-badge-pill.badge-blue{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border)}
+.nav-badge-pill.badge-plum{background:var(--plum-pale);color:var(--plum);border:1px solid var(--plum-border)}
+.nav-badge-pill.badge-honey{background:var(--honey-pale);color:var(--honey);border:1px solid var(--honey-border)}
+.nav-badge-pill.badge-terra{background:var(--terra-pale);color:var(--terracotta);border:1px solid var(--terra-border)}
+.nav-badge-pill.badge-sky{background:var(--sky-pale);color:var(--sky);border:1px solid var(--sky-border)}
+.nav-badge-pill.badge-peach{background:var(--peach-pale);color:var(--peach);border:1px solid var(--peach-border)}
 .nav-badge-pill.highlight-pill{
-  background:#fffbeb;
-  color:#92400e;
-  border:1px solid #fcd34d;
+  background:var(--honey-pale);
+  color:var(--honey-dark);
+  border:1px solid var(--honey-border);
   font-size:11.5px;
   font-weight:700;
 }
@@ -297,27 +297,27 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .side-branch-card.card-abogacia{
   background:#ffffff;
-  border:1px solid #c9d9e8;
+  border:1px solid var(--blue-border);
   border-left:3.5px solid var(--blue);
-  box-shadow:0 1px 3px rgba(30,66,115,.03);
+  box-shadow:0 1px 3px rgba(28,62,108,.03);
 }
 .side-branch-card.card-abogacia:hover{
-  background:#f6f9fc;
-  border-color:#a8c4de;
+  background:var(--blue-pale);
+  border-color:var(--blue);
   transform:translateY(-1px);
-  box-shadow:0 3px 8px rgba(30,66,115,.08);
+  box-shadow:0 3px 8px rgba(28,62,108,.08);
 }
 .side-branch-card.card-procura{
   background:#ffffff;
-  border:1px solid #fecdd3;
+  border:1px solid var(--terra-border);
   border-left:3.5px solid var(--terracotta);
-  box-shadow:0 1px 3px rgba(159,18,57,.03);
+  box-shadow:0 1px 3px rgba(136,30,61,.03);
 }
 .side-branch-card.card-procura:hover{
-  background:#fff5f6;
-  border-color:#fda4af;
+  background:var(--terra-pale);
+  border-color:var(--terracotta);
   transform:translateY(-1px);
-  box-shadow:0 3px 8px rgba(159,18,57,.08);
+  box-shadow:0 3px 8px rgba(136,30,61,.08);
 }
 .sbc-top{
   display:flex;
@@ -331,8 +331,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   padding:2px 7px;
   border-radius:6px;
 }
-.sbc-chip.blue{background:#eef3f9;color:#1e4273;border:1px solid #bed3e8}
-.sbc-chip.terra{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}
+.sbc-chip.blue{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border)}
+.sbc-chip.terra{background:var(--terra-pale);color:var(--terracotta);border:1px solid var(--terra-border)}
 .sbc-title{
   font:700 14px var(--serif);
   color:var(--ink);
@@ -351,7 +351,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   background:#ffffff;
   margin-bottom:12px;
   overflow:hidden;
-  box-shadow:0 1px 3px rgba(60,45,30,.03);
+  box-shadow:0 1px 3px rgba(35,28,20,.03);
 }
 .side-tree-summary{
   padding:11px 13px;
@@ -363,11 +363,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   justify-content:space-between;
   align-items:center;
   user-select:none;
-  background:#f8fafc;
+  background:var(--paper-warm);
   transition:background .15s ease;
 }
 .side-tree-summary::-webkit-details-marker{display:none}
-.side-tree-summary:hover{background:#f1f5f9}
+.side-tree-summary:hover{background:#ede7db}
 .side-tree-accordion[open] .sta-arrow{transform:rotate(180deg)}
 .sta-arrow{
   transition:transform .18s ease;
@@ -440,7 +440,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Cabecera acogedora cálida (Welcome Card) */
 /* ========================================================
-   CABECERA PRINCIPAL EJECUTIVA (Welcome Card)
+   CABECERA PRINCIPAL EJECUTIVA Y ACOGEDORA (Welcome Card)
    ======================================================== */
 .welcome{
   background:#ffffff;
@@ -461,8 +461,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:inline-flex;
   align-items:center;
   gap:6px;
-  background:#edf5f0;
-  color:#1b4d36;
+  background:var(--green-pale);
+  color:var(--green);
   padding:4px 10px;
   border-radius:6px;
   font-size:11px;
@@ -470,10 +470,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   letter-spacing:.05em;
   text-transform:uppercase;
   margin-bottom:10px;
-  border:1px solid #bedbc9;
+  border:1px solid var(--green-border);
 }
 .welcome h1{
-  font:700 clamp(28px,3.2vw,38px)/1.2 var(--serif);
+  font:600 clamp(28px,3.2vw,38px)/1.2 var(--serif);
   letter-spacing:-.025em;
   margin:0;
   color:var(--ink);
@@ -505,35 +505,35 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   cursor:pointer;
   text-align:left;
   transition:all .18s ease;
-  box-shadow:0 1px 3px rgba(30,20,10,.03);
+  box-shadow:0 1px 3px rgba(35,28,20,.03);
 }
 .welcome-badge:hover{
   transform:translateY(-1px);
-  border-color:#94a3b8;
-  box-shadow:0 4px 12px rgba(30,20,10,.07);
+  border-color:#cdc6b8;
+  box-shadow:0 4px 12px rgba(35,28,20,.07);
 }
 .welcome-badge.badge-gold{
   border-left:3.5px solid var(--honey);
-  background:#fffdf5;
-  border-color:#fef08a;
+  background:var(--honey-pale);
+  border-color:var(--honey-border);
 }
 .welcome-badge.badge-gold .badge-icon{color:var(--honey)}
 .welcome-badge.badge-mint{
   border-left:3.5px solid var(--green);
-  background:#f7fdf9;
-  border-color:#bbf7d0;
+  background:var(--green-pale);
+  border-color:var(--green-border);
 }
 .welcome-badge.badge-mint .badge-icon{color:var(--green)}
 .welcome-badge.badge-terra{
   border-left:3.5px solid var(--terracotta);
-  background:#fff5f6;
-  border-color:#fecdd3;
+  background:var(--terra-pale);
+  border-color:var(--terra-border);
 }
 .welcome-badge.badge-terra .badge-icon{color:var(--terracotta)}
 .welcome-badge.badge-blue{
   border-left:3.5px solid var(--blue);
-  background:#f8fbff;
-  border-color:#bfdbfe;
+  background:var(--blue-pale);
+  border-color:var(--blue-border);
   cursor:default;
 }
 .welcome-badge.badge-blue .badge-icon{color:var(--blue)}
@@ -561,24 +561,24 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Tarjeta lateral informativa del cuatrimestre */
 .welcome-term-box{
-  background:#f8fafc;
+  background:var(--paper-warm);
   border:1px solid var(--line);
   border-radius:12px;
   padding:16px 20px;
   text-align:right;
   min-width:200px;
   flex-shrink:0;
-  box-shadow:0 1px 3px rgba(30,20,10,.03);
+  box-shadow:0 1px 3px rgba(35,28,20,.03);
 }
 .term-box-badge{
   display:inline-block;
-  background:#edf5f0;
-  color:#1b4d36;
+  background:var(--green-pale);
+  color:var(--green);
   padding:4px 10px;
   border-radius:6px;
   font-size:11px;
   font-weight:700;
-  border:1px solid #bedbc9;
+  border:1px solid var(--green-border);
   margin-bottom:6px;
 }
 .term-box-period{
@@ -597,7 +597,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .term-status-dot{
   font-weight:700;
-  color:#1b4d36;
+  color:var(--green);
 }
 
 /* Pestañas de vista estilo cuaderno */
@@ -633,8 +633,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .view-tab.active{
   background:#ffffff;
   color:var(--green-dark);
-  box-shadow:0 2px 6px rgba(24,97,61,.08);
-  border:1px solid #c5d8cb;
+  box-shadow:0 2px 6px rgba(26,77,54,.08);
+  border:1px solid var(--green-border);
   border-bottom:2px solid var(--green);
   font-weight:700;
 }
@@ -643,18 +643,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   font-size:11px;
   padding:2px 7px;
   border-radius:8px;
-  background:#ded2bf;
+  background:#e5ded2;
   color:var(--ink);
   font-weight:700;
 }
 .view-tab.active .tab-badge{
-  background:#edf5f0;
-  color:#1b4d36;
-  border:1px solid #bedbc9;
+  background:var(--green-pale);
+  color:var(--green);
+  border:1px solid var(--green-border);
 }
 
 /* ========================================================
-   HUB VISUAL DE PORTADA (4 tarjetas refinadas ejecutivas)
+   HUB VISUAL DE PORTADA (4 tarjetas refinadas y táctiles)
    ======================================================== */
 .home-hub-strip{
   display:grid;
@@ -679,41 +679,41 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   box-shadow:var(--shadow-sm);
 }
 .home-hub-card:hover{
-  border-color:#94a3b8;
+  border-color:#cdc6b8;
   transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(30,20,10,.08);
+  box-shadow:0 6px 18px rgba(35,28,20,.08);
 }
 
 /* 1. Plan de estudios */
 .home-hub-card.hub-green{border-left:4px solid var(--green)}
-.home-hub-card.hub-green .hub-card-icon{background:#166534;color:#ffffff}
+.home-hub-card.hub-green .hub-card-icon{background:var(--green-pale);color:var(--green);border:1px solid var(--green-border)}
 .home-hub-card.hub-green .hub-card-kicker{color:var(--green)}
 
 /* 2. Evaluación oficial */
 .home-hub-card.hub-honey{border-left:4px solid var(--honey)}
-.home-hub-card.hub-honey .hub-card-icon{background:#b45309;color:#ffffff}
+.home-hub-card.hub-honey .hub-card-icon{background:var(--honey-pale);color:var(--honey);border:1px solid var(--honey-border)}
 .home-hub-card.hub-honey .hub-card-kicker{color:var(--honey)}
 
 /* 3. Plataforma CPROC */
 .home-hub-card.hub-terra{border-left:4px solid var(--terracotta)}
-.home-hub-card.hub-terra .hub-card-icon{background:#9f1239;color:#ffffff}
+.home-hub-card.hub-terra .hub-card-icon{background:var(--terra-pale);color:var(--terracotta);border:1px solid var(--terra-border)}
 .home-hub-card.hub-terra .hub-card-kicker{color:var(--terracotta)}
 
 /* 4. Google Drive */
 .home-hub-card.hub-blue{border-left:4px solid var(--blue)}
-.home-hub-card.hub-blue .hub-card-icon{background:#1d4ed8;color:#ffffff}
+.home-hub-card.hub-blue .hub-card-icon{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border)}
 .home-hub-card.hub-blue .hub-card-kicker{color:var(--blue)}
 
 .hub-card-icon{
-  width:42px;
-  height:42px;
-  border-radius:10px;
+  width:44px;
+  height:44px;
+  border-radius:11px;
   display:grid;
   place-items:center;
   flex-shrink:0;
-  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
 }
-.hub-card-icon svg{width:20px;height:20px;stroke-width:1.9}
+.hub-card-icon svg{width:21px;height:21px;stroke-width:1.9}
 .hub-card-text{flex:1;min-width:0}
 .hub-card-kicker{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;display:block}
 .hub-card-title{font:700 16px/1.3 var(--serif);margin-top:2px;display:block;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -734,14 +734,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .group-switch button{border:0;border-radius:7px;padding:5px 12px;min-height:28px;background:transparent;color:var(--ink-soft);font:600 12px var(--sans);cursor:pointer;transition:all .16s}
 .group-switch button.active{background:var(--green-dark);color:#fff;font-weight:700}
 .day-control-nav{display:flex;align-items:center;gap:8px}
-.day-control-nav button,#resetTodayTop{border-radius:20px;border:1px solid var(--line);background:var(--paper-warm);cursor:pointer;font:700 12px var(--sans);padding:7px 13px;color:var(--green-dark);box-shadow:0 1px 3px rgba(60,45,30,.03);transition:all .16s}
+.day-control-nav button,#resetTodayTop{border-radius:20px;border:1px solid var(--line);background:var(--paper-warm);cursor:pointer;font:700 12px var(--sans);padding:7px 13px;color:var(--green-dark);box-shadow:0 1px 3px rgba(35,28,20,.03);transition:all .16s}
 .day-control-nav button:hover,#resetTodayTop:hover{background:var(--green-pale);border-color:var(--green-border);transform:translateY(-1px)}
 .day-control-nav span{font-size:12px;font-weight:800;color:var(--green-dark);min-width:88px;text-align:center}
 
 /* Panel Mi Día */
 .today-panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow-sm)}
 .today-list{display:grid;gap:9px}
-.headline-item{width:100%;border:1px solid var(--line);background:var(--paper-warm);padding:14px 16px;display:grid;grid-template-columns:94px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;cursor:pointer;border-radius:12px;box-shadow:0 1px 3px rgba(60,45,30,.02);transition:all .16s ease}
+.headline-item{width:100%;border:1px solid var(--line);background:var(--paper-warm);padding:14px 16px;display:grid;grid-template-columns:94px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;cursor:pointer;border-radius:12px;box-shadow:0 1px 3px rgba(35,28,20,.02);transition:all .16s ease}
 .headline-item:hover{transform:translateY(-1px);background:#ffffff;border-color:var(--green-border);box-shadow:var(--shadow-sm)}
 .headline-time{font-size:12.5px;font-weight:700;color:var(--green-dark);white-space:nowrap;background:var(--green-pale);padding:5px 9px;border-radius:8px;text-align:center;border:1px solid var(--green-border)}
 .headline-time small{display:block;font-size:10px;font-weight:600;color:var(--muted);margin-top:1px}
@@ -751,15 +751,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .headline-tag.warning{background:var(--terra-pale);color:var(--terracotta);border-color:var(--terra-border)}
 
 /* ========================================================
-   ESTADO VACÍO ACADÉMICO / DESPACHO (Empty State)
+   ESTADO VACÍO ACADÉMICO Y COZY (Empty State)
    ======================================================== */
 .empty-cozy{
   padding:36px 28px;
   text-align:center;
-  background:#f8fafc;
+  background:#ffffff;
   border-radius:16px;
   border:1px solid var(--line);
-  box-shadow:0 1px 3px rgba(60,45,30,.03);
+  box-shadow:0 1px 4px rgba(35,28,20,.03);
 }
 .empty-cozy-icon-wrap{
   display:inline-flex;
@@ -768,15 +768,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   margin-bottom:14px;
 }
 .empty-cozy-icon-box{
-  width:46px;
-  height:46px;
+  width:48px;
+  height:48px;
   border-radius:12px;
-  background:#ffffff;
-  border:1px solid var(--line);
+  background:var(--green-pale);
+  border:1px solid var(--green-border);
   display:grid;
   place-items:center;
-  color:var(--green-dark);
-  box-shadow:0 1px 4px rgba(60,45,30,.04);
+  color:var(--green);
+  box-shadow:0 1px 4px rgba(26,77,54,.06);
 }
 .empty-cozy strong{
   display:block;
@@ -806,35 +806,35 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   transition:all .16s ease;
 }
 .cozy-btn-mint{
-  background:#f0fdf4;
+  background:var(--green-pale);
   color:var(--green-dark);
-  border:1px solid #86efac;
-  box-shadow:0 1px 3px rgba(22,101,52,.04);
+  border:1px solid var(--green-border);
+  box-shadow:0 1px 3px rgba(26,77,54,.04);
 }
 .cozy-btn-mint:hover{
-  background:#edf5f0;
+  background:#ddf0e4;
   border-color:var(--green);
   transform:translateY(-1px);
 }
 .cozy-btn-gold{
-  background:#fffbeb;
+  background:var(--honey-pale);
   color:var(--honey-dark);
-  border:1px solid #fcd34d;
-  box-shadow:0 1px 3px rgba(180,83,9,.04);
+  border:1px solid var(--honey-border);
+  box-shadow:0 1px 3px rgba(158,105,21,.04);
 }
 .cozy-btn-gold:hover{
-  background:#fef3c7;
+  background:#f9e8c3;
   border-color:var(--honey);
   transform:translateY(-1px);
 }
 .cozy-btn-blue{
-  background:#eff6ff;
+  background:var(--blue-pale);
   color:var(--blue-dark);
-  border:1px solid #93c5fd;
-  box-shadow:0 1px 3px rgba(29,78,216,.04);
+  border:1px solid var(--blue-border);
+  box-shadow:0 1px 3px rgba(28,62,108,.04);
 }
 .cozy-btn-blue:hover{
-  background:#eef3f9;
+  background:#dbe9f7;
   border-color:var(--blue);
   transform:translateY(-1px);
 }
@@ -876,7 +876,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   gap:14px;
 }
 .next-day-card{
-  background:#fdfcf9;
+  background:#ffffff;
   border:1px solid var(--line);
   border-top:3.5px solid var(--green);
   border-radius:12px;
@@ -887,15 +887,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   flex-direction:column;
   justify-content:space-between;
   gap:12px;
-  box-shadow:0 1px 3px rgba(60,45,30,.03);
+  box-shadow:0 1px 3px rgba(35,28,20,.03);
   transition:all .18s ease;
   width:100%;
 }
 .next-day-card:hover{
-  border-color:#94a3b8;
+  border-color:#cdc6b8;
   background:#ffffff;
   transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(60,45,30,.08);
+  box-shadow:0 6px 16px rgba(35,28,20,.08);
 }
 .ndc-top{
   display:flex;
@@ -905,10 +905,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .ndc-day{
   font:700 11px var(--sans);
   color:var(--green-dark);
-  background:#edf5f0;
+  background:var(--green-pale);
   padding:4px 9px;
   border-radius:6px;
-  border:1px solid #c2ded0;
+  border:1px solid var(--green-border);
   letter-spacing:.04em;
 }
 .ndc-time{
@@ -967,11 +967,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .stat-card:hover{
   transform:translateY(-2px);
-  border-color:#94a3b8;
-  box-shadow:0 6px 16px rgba(60,45,30,.08);
+  border-color:#cdc6b8;
+  box-shadow:0 6px 16px rgba(35,28,20,.08);
 }
 
-/* Card 1: 10/10 oficial por correo (Oro Viejo) */
+/* Card 1: 10/10 oficial por correo (Oro Miel) */
 .stat-card:first-child{
   border-left:4px solid var(--honey);
 }
@@ -983,7 +983,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border:1px solid var(--honey-border);
 }
 
-/* Card 2: Tests CPROC / Testmoz 20/20 (Azul Jurídico) */
+/* Card 2: Tests CPROC / Testmoz 20/20 (Azul Oxford) */
 .stat-card.highlight-test{
   border-left:4px solid var(--blue);
 }
@@ -995,16 +995,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border:1px solid var(--blue-border);
 }
 
-/* Card 3: Prácticas en CPROC 4/4 (Verde Institucional) */
+/* Card 3: Prácticas en CPROC 4/4 (Burdeos Terciopelo) */
 .stat-card:last-child{
-  border-left:4px solid var(--green);
+  border-left:4px solid var(--terracotta);
 }
-.stat-card:last-child .stat-kicker{color:var(--green)}
+.stat-card:last-child .stat-kicker{color:var(--terracotta)}
 .stat-card:last-child .stat-title{color:var(--ink);font-size:15px}
 .stat-card:last-child .stat-val-pill{
-  background:var(--green-pale);
-  color:var(--green-dark);
-  border:1px solid var(--green-border);
+  background:var(--terra-pale);
+  color:var(--terra-dark);
+  border:1px solid var(--terra-border);
 }
 
 .stat-kicker{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;display:block}
@@ -1027,12 +1027,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .grade-card[data-type="test"] .grade-kicker{color:var(--blue)}
 .grade-card[data-type="global"] .grade-kicker{color:var(--honey)}
 .grade-title{font:700 19px/1.25 var(--serif);margin:3px 0;color:var(--ink)}
-.grade-badge{background:var(--honey-dark);color:#fff;border-radius:10px;padding:9px 12px;text-align:center;min-width:86px;flex-shrink:0;box-shadow:0 2px 6px rgba(102,59,3,.15)}
-.grade-card[data-type="test"] .grade-badge{background:var(--blue);box-shadow:0 2px 6px rgba(21,55,82,.15)}
+.grade-badge{background:var(--honey-dark);color:#fff;border-radius:10px;padding:9px 12px;text-align:center;min-width:86px;flex-shrink:0;box-shadow:0 2px 6px rgba(94,59,4,.15)}
+.grade-card[data-type="test"] .grade-badge{background:var(--blue);box-shadow:0 2px 6px rgba(15,36,64,.15)}
 .grade-card[data-type="global"] .grade-badge{background:var(--honey-dark)}
 .grade-badge strong{display:block;font:700 22px/1 var(--serif)}
 .grade-badge small{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;opacity:.9}
-.grade-breakdown{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:var(--paper-card);border:1px solid var(--line-subtle);border-radius:10px;padding:10px 12px}
+.grade-breakdown{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:10px 12px}
 .grade-card[data-type="test"] .grade-breakdown{background:var(--blue-pale);border-color:var(--blue-border)}
 .grade-card[data-type="global"] .grade-breakdown{background:var(--honey-pale);border-color:var(--honey-border)}
 .grade-stat{font-size:11.5px;color:var(--muted)}
@@ -1041,24 +1041,24 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Pastillas de acción y botones (Pills) */
 .action-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.pill-btn,.pill-link{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper-warm);color:var(--green-dark);border-radius:18px;padding:7px 14px;font:700 12px var(--sans);text-decoration:none;cursor:pointer;transition:all .16s ease}
-.pill-btn:hover,.pill-link:hover{background:var(--green-pale);border-color:var(--green-border);transform:translateY(-1px);box-shadow:0 2px 6px rgba(40,30,20,.05)}
+.pill-btn,.pill-link{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#ffffff;color:var(--green-dark);border-radius:18px;padding:7px 14px;font:700 12px var(--sans);text-decoration:none;cursor:pointer;transition:all .16s ease}
+.pill-btn:hover,.pill-link:hover{background:var(--green-pale);border-color:var(--green-border);transform:translateY(-1px);box-shadow:0 2px 6px rgba(35,28,20,.05)}
 .pill-link.blue,.pill-btn.blue{background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)}
-.pill-link.blue:hover,.pill-btn.blue:hover{background:#dfeefb;border-color:#93c5fd}
+.pill-link.blue:hover,.pill-btn.blue:hover{background:#dfeefb;border-color:var(--blue)}
 .pill-link.terra,.pill-btn.terra{background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)}
-.pill-link.terra:hover,.pill-btn.terra:hover{background:#ffe4e6;border-color:#fda4af}
+.pill-link.terra:hover,.pill-btn.terra:hover{background:#fad4dc;border-color:var(--terracotta)}
 .pill-link.honey,.pill-btn.honey{background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)}
-.pill-link.honey:hover,.pill-btn.honey:hover{background:#fef3c7;border-color:#fcd34d}
+.pill-link.honey:hover,.pill-btn.honey:hover{background:#fbeac4;border-color:var(--honey)}
 .pill-link.solid-honey,.pill-btn.solid-honey{background:var(--honey);border-color:var(--honey);color:#fff}
 .pill-link.solid-honey:hover,.pill-btn.solid-honey:hover{background:var(--honey-dark)}
 .pill-link.solid-green,.pill-btn.solid-green{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
 .pill-link.solid-green:hover,.pill-btn.solid-green:hover{background:var(--green)}
 .pill-link.solid-blue,.pill-btn.solid-blue{background:var(--blue);border-color:var(--blue);color:#fff}
 .pill-link.solid-blue:hover,.pill-btn.solid-blue:hover{background:var(--blue-dark)}
-.hub-more-btn{border:1px solid var(--line);background:var(--paper-warm);color:var(--green-dark);border-radius:18px;padding:7px 14px;font:700 12px var(--sans);cursor:pointer;transition:all .16s}
+.hub-more-btn{border:1px solid var(--line);background:#ffffff;color:var(--green-dark);border-radius:18px;padding:7px 14px;font:700 12px var(--sans);cursor:pointer;transition:all .16s}
 .hub-more-btn:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
 
-/* Bloques del Máster con Identidad de Color Temática Nítida */
+/* Bloques del Máster con Identidad de Color Temática Nítida */ Temática Nítida */
 .course-grid{display:grid;grid-template-columns:1fr;gap:24px}
 .course-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
 
@@ -1471,6 +1471,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   .delivery-row{grid-template-columns:50px 1fr}
   .due-state{grid-column:2;justify-self:start}
 }
+@media(max-width:480px){
+  .grade-breakdown{grid-template-columns:1fr;gap:10px}
+}
 
 /* --- ÁRBOL JERÁRQUICO ACADÉMICO DEL MENÚ IZQUIERDO --- */
 .sidebar-academic-tree{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
@@ -1780,31 +1783,31 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
     <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Portada
     </button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Bloques y Asignaturas <span class="tab-badge">8</span>
     </button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       Profesorado <span class="tab-badge">29</span>
     </button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Notas y Tests <span class="tab-badge">10 / 8</span>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Notas y Tests <span class="tab-badge">10/8</span>
     </button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       Prácticas <span class="tab-badge">4/4 ✓</span>
     </button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
       Apuntes y Drive <span class="tab-badge">13</span>
     </button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       Correo <span class="tab-badge">5</span>
     </button>
   </div>
@@ -1882,7 +1885,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <!-- Próximos 3 días (únicamente titulares clicables) -->
     <div class="next-days-box">
       <div class="minimal-box-head">
-        <h3>Próximos 3 días · Titulares</h3>
+        <div>
+          <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
+          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Lunes 19, martes 20 y miércoles 21 de octubre de 2026</p>
+        </div>
         <span>Pincha en el titular para ver los datos</span>
       </div>
       <div class="minimal-list" id="nextThreeDaysList"></div>
@@ -2307,7 +2313,7 @@ const gradeRecords=[
   breakdown:[
    {label:'Test (1 oct)',val:'4 / 4 puntos'},
    {label:'Trabajos / escritos',val:'6 / 6 puntos'},
-   {label:'Calificación final',val:'10 (Sobresaliente)'}
+   {label:'Calificación final',val:'10 / 10 · Sobresaliente'}
   ],
   teacher:'Javier Sánchez García',
   subjectRef:'Procura|Técnicas instrumentales|0',
@@ -3912,16 +3918,6 @@ function renderGrades(){
    </details>
   ` : '';
 
-  const submissionsHtml = (g.id === 'grade_1oct' && details.grades && details.grades.gradeTable) ? `
-   <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:12px">
-    <b>⭐ Desglose oficial de la nota:</b>
-    <div class="grade-breakdown" style="margin-top:6px">
-     <div class="grade-stat">Test (1 oct)<b>${details.grades.gradeTable.test}</b></div>
-     <div class="grade-stat">Trabajos / escritos<b>${details.grades.gradeTable.trabajos}</b></div>
-     <div class="grade-stat">Nota final<b>${details.grades.gradeTable.final}</b></div>
-    </div>
-   </div>
-  ` : '';
 
   return `
   <article class="grade-card" data-type="${g.type}" id="${g.id}">
@@ -3938,7 +3934,6 @@ function renderGrades(){
     <div class="grade-breakdown">
      ${g.breakdown.map(b=>`<div class="grade-stat">${b.label}<b>${b.val}</b></div>`).join('')}
     </div>
-    ${submissionsHtml}
     ${quizHtml}
    </div>
    <div class="action-pills" style="margin-top:12px">
@@ -4009,6 +4004,13 @@ function getSubSessions(sub, t){
  return matched.length ? matched : allS;
 }
 
+function getTeacherInitials(name){
+ if(!name) return 'DC';
+ const parts = name.trim().split(/\s+/);
+ if(parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+ return (parts[0][0] + parts[1][0]).toUpperCase();
+}
+
 function renderTeacherInsideSubject(tName, sub){
  const t=teacherDirectory.find(x=>x.name===tName);
  if(!t)return '';
@@ -4035,176 +4037,233 @@ function renderTeacherInsideSubject(tName, sub){
  // 1. Fechas de clase
  const sessRows=sessions.map(s=>{
   const sState=getSessionStatus(s.date);
-  let tagHtml=(sState==='tomorrow')?'<span class="teacher-badge-tomorrow">🔥 ¡Mañana!</span>':((sState==='upcoming')?'<span class="teacher-badge-upcoming">⏳ Programada</span>':'<span class="teacher-badge-past">✓ Ya impartida</span>');
+  let tagHtml=(sState==='tomorrow')?'<span class="teacher-badge-tomorrow">🔥 ¡Mañana!</span>':((sState==='upcoming')?'<span class="teacher-badge-upcoming">⏳ Programada</span>':'<span class="teacher-badge-past">✓ Impartida</span>');
+  const dParts=s.date.split('-');
+  const dayNum=dParts[2];
+  const mCode={'10':'OCT','11':'NOV','12':'DIC','01':'ENE'}[dParts[1]]||'OCT';
   return `
-   <div class="teacher-session-row ${sState}">
-    <div class="teacher-session-date">🗓️ ${s.dayLabel}</div>
-    <div class="teacher-session-time">⏰ ${s.time} <span style="color:var(--muted);font-weight:400">(${s.hours})</span></div>
-    <div class="teacher-session-topic" title="${s.topic}">📖 ${s.topic}</div>
-    <div class="teacher-session-place">📍 ${s.place}</div>
+   <div class="visual-resource-card" style="border-left:4px solid var(--green)">
+    <div class="visual-resource-left">
+     <div style="width:48px;height:48px;border-radius:12px;background:#f3f8f4;border:1.5px solid #c8e4cf;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+      <span style="font:700 17px/1 var(--serif);color:var(--green-dark)">${dayNum}</span>
+      <span style="font:700 9.5px var(--sans);color:var(--muted);text-transform:uppercase">${mCode}</span>
+     </div>
+     <div>
+      <div class="visual-resource-title">📖 ${s.topic}</div>
+      <div class="visual-resource-sub">⏰ ${s.time} (${s.hours}) · 📍 ${s.place}</div>
+     </div>
+    </div>
     <div>${tagHtml}</div>
    </div>
   `;
  }).join('');
 
  const sessionsContent = sessions.length ? `
-  <div class="teacher-sessions-list">
+  <div style="display:grid;gap:8px">
    ${sessRows}
   </div>
  ` : `<div class="st-item-empty" style="padding:10px 14px;color:var(--muted);font-style:italic">— Fechas y horarios de clase pendientes de programar en el horario oficial.</div>`;
 
  // 2. Correos
  const mailsContent = mailsList.length ? `
-  <div style="display:grid;gap:6px">
+  <div style="display:grid;gap:8px">
    ${mailsList.map(m=>{
     const msg=messages.find(x=>x.key===m.key);
     return `
-     <div class="derive-item-row">
-      <div>
-       <strong>✉️ ${m.title}</strong>
-       ${msg?`<div style="font-size:11px;color:var(--muted)">Fecha: ${msg.date}</div>`:''}
+     <div class="visual-resource-card" style="border-left:4px solid #2a5d85">
+      <div class="visual-resource-left">
+       <div class="visual-resource-icon" style="background:#f0f6fc;border-color:#bad6ef;color:#184b73">✉️</div>
+       <div>
+        <div class="visual-resource-title">${m.title}</div>
+        ${msg?`<div class="visual-resource-sub">📅 ${msg.date} · 👤 De: ${msg.from||t.name}</div>`:''}
+       </div>
       </div>
       <div class="derive-action-links">
-       <button class="pill-btn blue" data-detail="${m.key}">Ver correo en el portal ↗</button>
+       <button class="pill-btn blue" data-detail="${m.key}">Ver correo en portal ↗</button>
+       <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
       </div>
      </div>
     `;
    }).join('')}
   </div>
-  <div class="derive-foot">
+  <div class="visual-derive-banner v-banner-mails">
+   <div style="font-size:12.5px;font-weight:600">✉️ Acceso directo a tu correo del máster en Microsoft Outlook</div>
    <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Bandeja de entrada en Outlook ↗</a>
   </div>
  ` : `
-  <div class="st-item-empty" style="padding:8px 0;font-style:italic">— Sin correos directos registrados todavía.</div>
-  <div class="derive-foot">
-   <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir Outlook ↗</a>
+  <div class="st-item-empty" style="padding:10px 14px;color:var(--muted);font-style:italic">— Sin correos directos registrados para este módulo todavía.</div>
+  <div class="visual-derive-banner v-banner-mails">
+   <div style="font-size:12.5px;font-weight:600">✉️ ¿Quieres consultar tu bandeja general del máster?</div>
+   <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir Outlook de la Universidad ↗</a>
   </div>
  `;
 
  // 3. Prácticas
  const practicesContent = practicesList.length ? `
-  <div style="display:grid;gap:6px">
+  <div style="display:grid;gap:8px">
    ${practicesList.map(p=>`
-    <div class="derive-item-row">
-     <div>
-      <strong>✍️ ${p.title}</strong>
-      ${p.status?`<div style="font-size:11.5px;color:var(--green-dark);font-weight:700;margin-top:2px">${p.status}</div>`:''}
+    <div class="visual-resource-card" style="border-left:4px solid #a84320">
+     <div class="visual-resource-left">
+      <div class="visual-resource-icon" style="background:#fdf2eb;border-color:#f2c7b3;color:#852d11">✍️</div>
+      <div>
+       <div class="visual-resource-title">${p.title}</div>
+       ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
+      </div>
      </div>
      <div class="derive-action-links">
-      ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ver práctica ↗</button>`:''}
-      ${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel||'Ver enlace ↗'}</a>`:''}
+      ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha en portal ↗</button>`:''}
+      <a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
      </div>
     </div>
    `).join('')}
   </div>
-  <div class="derive-foot">
-   <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC (MUAP) ↗</a>
+  <div class="visual-derive-banner v-banner-practices">
+   <div style="font-size:12.5px;font-weight:600">✍️ Campus Virtual y gestión de entregas en CPROC (MUAP)</div>
+   <a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>
   </div>
  ` : `
-  <div class="st-item-empty" style="padding:8px 0;font-style:italic">— Sin prácticas asignadas todavía.</div>
-  <div class="derive-foot">
-   <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+  <div class="st-item-empty" style="padding:10px 14px;color:var(--muted);font-style:italic">— Sin prácticas evaluables asignadas para este docente aún.</div>
+  <div class="visual-derive-banner v-banner-practices">
+   <div style="font-size:12.5px;font-weight:600">✍️ Consulta las entregas activas del máster en la plataforma</div>
+   <a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Abrir CPROC ↗</a>
   </div>
  `;
 
  // 4. Apuntes
  const apuntesContent = apuntesDocs.length ? `
-  <div style="display:grid;gap:6px">
+  <div style="display:grid;gap:8px">
    ${driveDocs.map(d=>`
-    <div class="derive-item-row">
-     <div><strong>📄 ${d.name}</strong></div>
+    <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-left">
+      <div class="visual-resource-icon" style="background:#edf7f0;border-color:#bce0c3;color:#195032">📄</div>
+      <div>
+       <div class="visual-resource-title">${d.name}</div>
+       <div class="visual-resource-sub">Google Drive · Documento de estudio</div>
+      </div>
+     </div>
      <div class="derive-action-links">
-      <a class="pill-link terra" href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label||'Abrir en Drive ↗'}</a>
+      <a class="pill-link solid-green" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir en Drive ↗</a>
      </div>
     </div>
    `).join('')}
    ${pureNotes.map(n=>`
-    <div class="derive-item-row">
-     <div><strong>📖 ${n.title}</strong></div>
+    <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-left">
+      <div class="visual-resource-icon" style="background:#edf7f0;border-color:#bce0c3;color:#195032">📖</div>
+      <div>
+       <div class="visual-resource-title">${n.title}</div>
+       <div class="visual-resource-sub">Apuntes y guía didáctica</div>
+      </div>
+     </div>
      <div class="derive-action-links">
       ${n.key?`<button class="pill-btn" data-detail="${n.key}">Ficha ↗</button>`:''}
-      <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel||'Abrir enlace ↗'}</a>
+      <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">Ver documento ↗</a>
      </div>
     </div>
    `).join('')}
   </div>
-  <div class="derive-foot">
-   <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Máster en Google Drive ↗</a>
+  <div class="visual-derive-banner v-banner-notes">
+   <div style="font-size:12.5px;font-weight:600">📚 Carpeta compartida con todos los apuntes y manuales del Máster</div>
+   <a class="pill-link solid-green" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir Carpeta Google Drive ↗</a>
   </div>
  ` : `
-  <div class="st-item-empty" style="padding:8px 0;font-style:italic">— Sin apuntes subidos todavía.</div>
-  <div class="derive-foot">
-   <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive ↗</a>
+  <div class="st-item-empty" style="padding:10px 14px;color:var(--muted);font-style:italic">— Sin apuntes subidos para este docente aún.</div>
+  <div class="visual-derive-banner v-banner-notes">
+   <div style="font-size:12.5px;font-weight:600">📚 Explora la biblioteca general de apuntes y esquemas en Google Drive</div>
+   <a class="pill-link solid-green" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir Google Drive ↗</a>
   </div>
  `;
 
  // 5. Tests
  const testsContent = testsList.length ? `
-  <div style="display:grid;gap:6px">
+  <div style="display:grid;gap:8px">
    ${testsList.map(tst=>`
-    <div class="derive-item-row" style="border-color:#f3d79e;background:#fffcf5">
-     <div>
-      <strong>🎯 ${tst.title}</strong>
-      ${tst.status?`<div style="font-size:11.5px;color:var(--honey-dark);font-weight:700;margin-top:2px">Calificación: ${tst.status}</div>`:''}
+    <div class="visual-resource-card" style="border-left:4px solid #945f18;background:#fffdf9">
+     <div class="visual-resource-left">
+      <div class="visual-resource-icon" style="background:#fef7e9;border-color:#f6daa3;color:#78490a">🎯</div>
+      <div>
+       <div class="visual-resource-title">${tst.title}</div>
+       ${tst.status?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">⭐ Calificación: ${tst.status}</div>`:''}
+      </div>
      </div>
      <div class="derive-action-links">
-      ${tst.key?`<button class="pill-btn solid-honey" data-detail="${tst.key}">Ver test en el portal ↗</button>`:''}
-      <a class="pill-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">Test original ↗</a>
+      ${tst.key?`<button class="pill-btn solid-honey" data-detail="${tst.key}">Ficha del test ↗</button>`:''}
+      <a class="pill-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">Test original en Testmoz ↗</a>
      </div>
     </div>
    `).join('')}
   </div>
-  <div class="derive-foot">
-   <button class="pill-btn solid-honey" data-detail="all_tests_summary">Ver resumen global de tests (10/10) ↗</button>
+  <div class="visual-derive-banner v-banner-tests">
+   <div style="font-size:12.5px;font-weight:600">📝 Resumen completo de todos los cuestionarios realizados (10/10)</div>
+   <button class="pill-btn solid-honey" data-detail="all_tests_summary">Ver historial global de tests ↗</button>
   </div>
  ` : `
-  <div class="st-item-empty" style="padding:8px 0;font-style:italic">— Sin tests registrados para este módulo.</div>
-  <div class="derive-foot">
+  <div class="st-item-empty" style="padding:10px 14px;color:var(--muted);font-style:italic">— Sin tests evaluables registrados para este módulo aún.</div>
+  <div class="visual-derive-banner v-banner-tests">
+   <div style="font-size:12.5px;font-weight:600">📝 Consulta el historial global de cuestionarios y notas en el portal</div>
    <button class="pill-btn solid-honey" data-detail="all_tests_summary">Ver resumen global de tests (10/10) ↗</button>
   </div>
  `;
 
  // 6. Notas y Evaluación
  const gradeContent = `
-  <div style="padding:12px 14px;background:#fdf7eb;border:1.5px solid #f6d89e;border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-   <div>
-    <div style="font:700 18px var(--serif);color:#5e3804">⭐ ${t.gradeBadge || 'Evaluación'}</div>
-    <div style="font-size:12px;color:#7a5015;margin-top:2px">${t.grade ? t.grade.detail : t.summary}</div>
+  <div class="visual-resource-card" style="border-left:5px solid #82591a;background:#fffdf7;padding:16px 20px">
+   <div class="visual-resource-left">
+    <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:#fcf5e5;border-color:#edd299;color:#6b4408">⭐</div>
+    <div>
+     <div style="font:700 19px/1.2 var(--serif);color:#523508">${t.gradeBadge || 'Evaluación del Módulo'}</div>
+     <div style="font-size:13px;color:#6d4812;margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
+    </div>
    </div>
    <div class="derive-action-links">
-    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Ver calificación oficial ↗</button>
+    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Consultar nota oficial ↗</button>
    </div>
   </div>
  `;
 
+ const initials = getTeacherInitials(t.name);
+
  return `
   <details class="teacher-collapsible" id="docente-${encodeURIComponent(t.name)}">
    <summary class="teacher-collapsible-summary">
+    <div class="teacher-avatar" title="${t.name}">${initials}</div>
+
     <div class="t-summary-main">
      <div class="t-summary-name-row">
       <span class="t-name">👤 ${t.name}</span>
       <span class="${badgeClass}">${statusInfo.label}</span>
       ${t.gradeBadge?`<span class="tag-score" title="Calificación / evaluación oficial">⭐ ${t.gradeBadge}</span>`:''}
-      <span class="pill-btn" style="margin-left:auto;font-size:11px;padding:3px 8px;pointer-events:none">Desplegar ▾</span>
      </div>
-     <!-- Titular debajo del profesor -->
-     <div class="t-headline">
-      <span>${t.role}</span>
-      <span class="t-hl-sep">·</span>
-      <span>📅 ${sessions.length} sesión${sessions.length===1?'':'es'} (${statusInfo.pastCount} impartidas${statusInfo.upcomingCount?`, ${statusInfo.upcomingCount} pendientes`:''})</span>
-      <span class="t-hl-sep">·</span>
-      <span style="color:var(--green-dark);font-weight:600">Pincha para ver correos, prácticas, apuntes, tests y notas ▾</span>
+
+     <!-- Titular visual debajo del profesor -->
+     <div class="t-visual-pills">
+      <span class="t-pill t-pill-role">💼 ${t.role}</span>
+      <span class="t-pill t-pill-sessions">📅 ${sessions.length} sesión${sessions.length===1?'':'es'} (${statusInfo.pastCount} impartidas${statusInfo.upcomingCount?`, ${statusInfo.upcomingCount} pendientes`:''})</span>
+      <span class="t-pill t-pill-invite">Explorar correos, prácticas, apuntes, tests y notas ▾</span>
      </div>
     </div>
-    <span class="t-collapsible-arrow">▾</span>
+
+    <span class="t-collapsible-badge">
+     <span>Ver recursos</span>
+     <span class="t-collapsible-arrow">▾</span>
+    </span>
    </summary>
 
    <div class="teacher-collapsible-body">
     <!-- Fechas que ha dado clase (y sesiones programadas del horario oficial) -->
     <details class="t-section-accordion t-sec-dates">
      <summary class="t-sec-summary">
-      <span>📅 Fechas que ha dado clase (${sessions.length} sesión${sessions.length===1?'':'es'})</span>
-      <span class="t-sec-arrow">▾</span>
+      <div class="t-sec-lead">
+       <div class="t-sec-icon-tile">📅</div>
+       <div>
+        <span class="t-sec-title-text">Fechas de clase y sesiones</span>
+        <span class="t-sec-counter-badge">${sessions.length} sesión${sessions.length===1?'':'es'}</span>
+       </div>
+      </div>
+      <div class="t-sec-actions-right">
+       <span class="t-sec-dest-pill">Horario oficial</span>
+       <span class="t-sec-arrow">▾</span>
+      </div>
      </summary>
      <div class="t-sec-body">
       ${sessionsContent}
@@ -4216,8 +4275,17 @@ function renderTeacherInsideSubject(tName, sub){
      <!-- 1. CORREOS -->
      <details class="t-section-accordion t-sec-mails">
       <summary class="t-sec-summary">
-       <span>✉️ Correos (${mailsList.length})</span>
-       <span class="t-sec-arrow">▾</span>
+       <div class="t-sec-lead">
+        <div class="t-sec-icon-tile">✉️</div>
+        <div>
+         <span class="t-sec-title-text">Correos y avisos</span>
+         <span class="t-sec-counter-badge">${mailsList.length}</span>
+        </div>
+       </div>
+       <div class="t-sec-actions-right">
+        <span class="t-sec-dest-pill">Outlook ↗</span>
+        <span class="t-sec-arrow">▾</span>
+       </div>
       </summary>
       <div class="t-sec-body">
        ${mailsContent}
@@ -4227,8 +4295,17 @@ function renderTeacherInsideSubject(tName, sub){
      <!-- 2. PRÁCTICAS -->
      <details class="t-section-accordion t-sec-practices">
       <summary class="t-sec-summary">
-       <span>✍️ Prácticas (${practicesList.length})</span>
-       <span class="t-sec-arrow">▾</span>
+       <div class="t-sec-lead">
+        <div class="t-sec-icon-tile">✍️</div>
+        <div>
+         <span class="t-sec-title-text">Prácticas y entregas</span>
+         <span class="t-sec-counter-badge">${practicesList.length}</span>
+        </div>
+       </div>
+       <div class="t-sec-actions-right">
+        <span class="t-sec-dest-pill">CPROC ↗</span>
+        <span class="t-sec-arrow">▾</span>
+       </div>
       </summary>
       <div class="t-sec-body">
        ${practicesContent}
@@ -4238,8 +4315,17 @@ function renderTeacherInsideSubject(tName, sub){
      <!-- 3. APUNTES -->
      <details class="t-section-accordion t-sec-notes">
       <summary class="t-sec-summary">
-       <span>📚 Apuntes y documentos (${apuntesDocs.length})</span>
-       <span class="t-sec-arrow">▾</span>
+       <div class="t-sec-lead">
+        <div class="t-sec-icon-tile">📚</div>
+        <div>
+         <span class="t-sec-title-text">Apuntes y documentos</span>
+         <span class="t-sec-counter-badge">${apuntesDocs.length}</span>
+        </div>
+       </div>
+       <div class="t-sec-actions-right">
+        <span class="t-sec-dest-pill">Google Drive ↗</span>
+        <span class="t-sec-arrow">▾</span>
+       </div>
       </summary>
       <div class="t-sec-body">
        ${apuntesContent}
@@ -4249,8 +4335,17 @@ function renderTeacherInsideSubject(tName, sub){
      <!-- 4. TESTS -->
      <details class="t-section-accordion t-sec-tests">
       <summary class="t-sec-summary">
-       <span>📝 Tests (${testsList.length})</span>
-       <span class="t-sec-arrow">▾</span>
+       <div class="t-sec-lead">
+        <div class="t-sec-icon-tile">📝</div>
+        <div>
+         <span class="t-sec-title-text">Tests y cuestionarios</span>
+         <span class="t-sec-counter-badge">${testsList.length}</span>
+        </div>
+       </div>
+       <div class="t-sec-actions-right">
+        <span class="t-sec-dest-pill">Testmoz ↗</span>
+        <span class="t-sec-arrow">▾</span>
+       </div>
       </summary>
       <div class="t-sec-body">
        ${testsContent}
@@ -4260,8 +4355,17 @@ function renderTeacherInsideSubject(tName, sub){
      <!-- 5. NOTAS Y EVALUACIÓN -->
      <details class="t-section-accordion t-sec-grades">
       <summary class="t-sec-summary">
-       <span>⭐ Notas y Evaluación (${t.gradeBadge || 'Ver calificación'})</span>
-       <span class="t-sec-arrow">▾</span>
+       <div class="t-sec-lead">
+        <div class="t-sec-icon-tile">⭐</div>
+        <div>
+         <span class="t-sec-title-text">Notas y evaluación</span>
+         <span class="t-sec-counter-badge">${t.gradeBadge || 'Oficial'}</span>
+        </div>
+       </div>
+       <div class="t-sec-actions-right">
+        <span class="t-sec-dest-pill">Calificación ↗</span>
+        <span class="t-sec-arrow">▾</span>
+       </div>
       </summary>
       <div class="t-sec-body">
        ${gradeContent}
@@ -4269,8 +4373,8 @@ function renderTeacherInsideSubject(tName, sub){
      </details>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:10px;border-top:1px dashed #dce5da;flex-wrap:wrap;gap:8px">
-     <span style="font-size:11.5px;color:var(--muted)">👤 ${t.name} · ${t.role}</span>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:12px;border-top:1.5px dashed #ded5c8;flex-wrap:wrap;gap:10px">
+     <span style="font-size:12px;color:var(--muted)">👤 <b>${t.name}</b> · ${t.role}</span>
      <button class="pill-btn" data-teacher="${t.name}">Ver perfil y ficha completa en Profesorado ↗</button>
     </div>
    </div>
@@ -4611,11 +4715,15 @@ function renderCourses(branchFilter, statusFilter){
      </div>
     </div>
 
-    <!-- Asignaturas del bloque ordenadas cronológicamente con titulares debajo -->
+    <!-- Asignaturas del bloque ordenadas cronológicamente con diseño visual y titulares -->
     <div class="course-subjects-list">
      ${c.subjects.map((sub,idx)=>`
-      <details class="subject-accordion" id="subject-card-${encodeURIComponent(cKey)}-${idx}" data-subject-ref="${cKey}|${idx}">
+      <details class="subject-accordion" id="subject-card-${encodeURIComponent(cKey)}-${idx}" data-subject-ref="${cKey}|${idx}" data-branch="${c.branch}">
        <summary class="subject-summary">
+        <div class="subject-icon-box" title="${c.branch}">
+         ${c.branch === 'Abogacía' ? '⚖️' : '📜'}
+        </div>
+
         <div class="subject-summary-content">
          <div class="subject-summary-top">
           <span class="subject-title">📖 ${sub.name}</span>
@@ -4624,27 +4732,24 @@ function renderCourses(branchFilter, statusFilter){
            <span class="subject-expand-badge">Ver profesorado (${sub.teachers.length}) <span class="arrow">▾</span></span>
           </div>
          </div>
-         <div class="subject-headline">
-          <span class="sub-hl-item">🗓️ Periodo oficial: <b>${sub.period}</b></span>
-          <span class="sub-hl-sep">·</span>
-          <span class="sub-hl-item">👤 Docente(s): <b>${sub.teachers.join(', ') || 'Pendiente de asignar'}</b></span>
-          <span class="sub-hl-sep">·</span>
-          <span class="sub-hl-item" style="color:var(--green-dark);font-weight:600">Pincha para ver docentes y desplegables ▾</span>
+
+         <!-- Titulares visuales debajo de la asignatura (píldoras suaves y humanas) -->
+         <div class="subject-visual-pills">
+          <span class="sub-pill sub-pill-date">🗓️ <b>${sub.period}</b></span>
+          <span class="sub-pill sub-pill-teachers">👤 <b>${sub.teachers.join(', ') || 'Pendiente de asignar'}</b></span>
+          <span class="sub-pill sub-pill-prompt">Explorar profesorado y recursos ▾</span>
          </div>
         </div>
        </summary>
 
        <div class="subject-details-body">
-        <div class="st-tree-nav" style="margin-bottom:12px">
-         <b>Jerarquía:</b>
-         <span class="view-tab active" style="padding:2px 8px;font-size:10.5px">${c.branch}</span>
-         <span style="color:#7a8a7c">→</span>
-         <span class="view-tab active" style="padding:2px 8px;font-size:10.5px;background:#2d5c43">${c.blockNumber}</span>
-         <span style="color:#7a8a7c">→</span>
-         <span class="view-tab active" style="padding:2px 8px;font-size:10.5px;background:#1b4332">${sub.name}</span>
-         <span style="color:#7a8a7c">→</span>
-         <span class="view-tab active" style="padding:2px 8px;font-size:10.5px;background:#b25e00">Docentes y contenidos</span>
-         ${sub.grade?`<button class="pill-btn" style="margin-left:auto;font-size:11px;padding:3px 8px" data-detail="${sub.grade.detailKey||'grades'}">Ver notas ↗</button>`:''}
+        <!-- Visual Context Ribbon -->
+        <div class="subject-ribbon">
+         <div>
+          <span class="course-badge ${c.branch==='Procura'?'terra':'blue'}" style="margin-right:6px">${c.branch}</span>
+          <b>${c.blockNumber}</b>: ${c.name}
+         </div>
+         ${sub.grade?`<button class="pill-btn solid-honey" style="font-size:11.5px;padding:4px 10px" data-detail="${sub.grade.detailKey||'grades'}">⭐ Ver nota oficial (${sub.grade.score}) ↗</button>`:''}
         </div>
 
         <div class="subject-teachers-wrapper">
