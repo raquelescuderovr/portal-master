@@ -6,22 +6,31 @@ Portal personal de seguimiento académico del **Máster Universitario en Abogac�
 
 ---
 
-## Estado actual (actualizado a 17 de octubre de 2026)
+## Estado actual (actualizado a 18 de octubre de 2026)
 
-- **Calificaciones y tests (`Notas y tests`):**
-  - **10 / 10 (Sobresaliente)** en la evaluación inicial de *Técnicas instrumentales · Procura* (pruebas del 1 de octubre: 4 ptos. test + 6 ptos. escritos), comunicada por correo el 14 de octubre de 2026.
-  - **20 / 20 (100 %)** en el test online de *Deontología y técnicas transversales · Proceso digital y TIC* (16 de octubre de 2026, grupo de tarde, Testmoz / CPROC).
-  - **100 % de los tests realizados** en la plataforma hasta la fecha, con calificación de **10 / 10 en todos salvo uno (~8 / 10)**.
-- **Prácticas y entregas (`4 / 4 entregadas · 0 vencidas`):**
-  - Todas las prácticas subidas a la carpeta «Máster» de Google Drive están **completadas y enviadas en CPROC** (la plataforma CPROC no remite acuse por correo electrónico):
-    1. *Caso práctico · Derechos, deberes y responsabilidad profesional del procurador* (Ana Vázquez Corte).
-    2. *Poder apud acta* (`CertificadoRegistro.pdf` · Carolina Moreno Vázquez).
-    3. *Escrito de subsanación* (`Escrito de subsanación_signed.pdf` · Carolina Moreno Vázquez).
-    4. *Auto declaración con oferta de venta UP* (2 envíos: `Documento_anonimizado.pdf` y `summary.docx` · Carolina Moreno Vázquez).
-- **Asignaturas y profesorado (7 docentes):**
-  - Matriz completa por asignatura y fichas individuales de **Javier Sánchez García**, **Carolina Moreno Vázquez**, **Carlos M. Sánchez Muiño**, **Sandra Mosteiro Costa**, **Ana Vázquez Corte**, **Alex Sánchez Barge** y **José Luis Delgado Domínguez**, vinculando sus correos, apuntes, prácticas y calificaciones.
-- **Accesos directos:**
-  - Enlaces integrados a la carpeta **«Máster» en Google Drive**, bandeja de **Microsoft Outlook**, plataforma **CPROC**, revisión de **Testmoz** y textos consolidados del **BOE**.
+- **Menú de la izquierda (árbol jerárquico completo e interactivo):**
+  - Incorpora en la barra lateral izquierda la jerarquía en 5 niveles:
+    **`Abogado / Procurador ➔ Bloque del máster ➔ Asignatura ➔ Profesor (con días y horas de clase) ➔ Material del profesor`**.
+  - Cada nivel es colapsable/desplegable (`<details>`) con acceso directo a fichas, bloques y recursos.
+  - Filtro interactivo en el menú izquierdo:
+    - **`⏳ Por venir (no impartidos)`** (activo por defecto): muestra de inmediato los docentes con sesiones a partir del 19 de octubre de 2026, destacando las sesiones de mañana lunes.
+    - **`🗓️ Todo el curso`**: despliega todos los bloques y el claustro al completo.
+- **Días y horas exactas por profesor:**
+  - Desglose cronológico de cada sesión con fecha, día de la semana, horario (`16:30–18:30`, `18:45–20:45`, etc.), número de horas, tema específico y sede (Colegio de Abogados, Juzgado de 1.ª Instancia n.º 4, etc.).
+  - Distintivos visuales de estado: `🔥 ¡Mañana!` (lunes 19 oct), `⏳ Por venir` o `✓ Ya impartida`.
+- **Próximas sesiones inmediatas (mañana lunes 19 de octubre de 2026):**
+  - **Sandra Mosteiro Costa** (Procura · *Actos de comunicación judicial*): 16:30 – 18:30 (Colegio de Abogados). Materiales recibidos el 15 oct (4 documentos disponibles).
+  - **José Luis Delgado Domínguez** (Abogacía · *Responsabilidad civil y penal, aseguramiento y turno de oficio*): 18:45 – 20:45 (Colegio de Abogados). Documentación recibida el 16 oct.
+- **Profesorado completo (29 docentes) y división en 3 apartados (`correos` / `prácticas` / `apuntes`):**
+  - Cada docente cuenta con sus sesiones cronológicas y sus recursos divididos de forma homogénea en 3 bloques (además de la calificación y evaluación):
+    1. ✉️ **Correos:** correos y comunicaciones directas (con enlace a Outlook).
+    2. ✍️ **Prácticas:** casos prácticos, pruebas y tests (con acceso a CPROC).
+    3. 📚 **Apuntes:** documentos, esquemas y presentaciones (con acceso directo a Drive).
+  - En los docentes que aún no han impartido clase o no tienen materiales enviados todavía, los campos permanecen vacíos (`[]`) pero los apartados se mantienen visibles con un estado informativo para facilitar su cumplimentación progresiva.
+- **Calificaciones y tests al día:**
+  - **10 / 10 (Sobresaliente)** en la evaluación inicial de *Técnicas instrumentales · Procura* (comunicada el 14 oct).
+  - **20 / 20 (100 %)** en el test online de *Justicia digital y proceso telemático* (16 oct).
+  - **4 / 4 prácticas completadas y enviadas en CPROC** (0 vencidas).
 
 ---
 
