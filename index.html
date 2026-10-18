@@ -600,56 +600,89 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color:var(--green);
 }
 
-/* Pestañas de vista estilo cuaderno */
+/* Pestañas de vista estilo barra ejecutiva académica */
 .view-tabs{
   display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+  align-items:center;
+  gap:4px;
   background:var(--sidebar-bg);
-  padding:5px;
-  border-radius:12px;
-  margin-bottom:24px;
+  padding:4px;
+  border-radius:10px;
+  margin-bottom:22px;
   border:1px solid var(--line);
-  box-shadow:var(--shadow-sm);
+  box-shadow:0 1px 2px rgba(15,23,42,.03);
+  overflow-x:auto;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.view-tabs::-webkit-scrollbar{
+  display:none;
 }
 .view-tab{
   border:1px solid transparent;
   background:transparent;
-  border-radius:8px;
-  padding:8px 15px;
-  font:600 13.5px var(--sans);
+  border-radius:7px;
+  padding:6px 12px;
+  font:500 13px/1.2 var(--sans);
   color:var(--ink-soft);
   cursor:pointer;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  transition:all .16s ease;
+  gap:7px;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:all .15s ease;
 }
 .view-tab:hover{
-  background:#ffffff;
-  color:var(--green-dark);
-  border-color:var(--line);
+  background:rgba(255,255,255,.8);
+  color:var(--ink);
 }
 .view-tab.active{
   background:#ffffff;
   color:var(--green-dark);
-  box-shadow:0 2px 6px rgba(26,77,54,.08);
+  box-shadow:0 1px 3px rgba(15,23,42,.08),0 1px 1px rgba(15,23,42,.04);
   border:1px solid var(--green-border);
-  border-bottom:2px solid var(--green);
-  font-weight:700;
+  font-weight:600;
 }
-.view-tab.active .nav-svg{color:var(--green-dark)}
-.view-tab .tab-badge{
-  font-size:11px;
-  padding:2px 7px;
-  border-radius:8px;
-  background:#e5ded2;
+.nav-svg{
+  width:15px;
+  height:15px;
+  min-width:15px;
+  min-height:15px;
+  flex-shrink:0;
+}
+.view-tab .nav-svg{
+  width:15px;
+  height:15px;
+  min-width:15px;
+  min-height:15px;
+  flex-shrink:0;
+  stroke:currentColor;
+  stroke-width:1.75;
+  color:var(--muted);
+  transition:color .15s ease;
+}
+.view-tab:hover .nav-svg{
   color:var(--ink);
-  font-weight:700;
+}
+.view-tab.active .nav-svg{
+  color:var(--green);
+}
+.view-tab .tab-badge{
+  font-size:10.5px;
+  font-weight:600;
+  line-height:1;
+  padding:2px 6px;
+  border-radius:999px;
+  background:rgba(100,116,139,.14);
+  color:var(--ink-soft);
+  white-space:nowrap;
+  flex-shrink:0;
+  letter-spacing:-0.01em;
 }
 .view-tab.active .tab-badge{
   background:var(--green-pale);
-  color:var(--green);
+  color:var(--green-dark);
   border:1px solid var(--green-border);
 }
 
@@ -1098,7 +1131,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .course-card.theme-abogacia .subject-banner{background:#f5f8fb;border-color:var(--blue-border);border-left:4px solid var(--blue)}
 .course-card.theme-abogacia .subject-kicker{color:var(--blue);font-weight:700}
 
-.course-card-head{padding:20px 24px.course-card-head{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.course-card-head{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .course-kicker{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
 .course-card h3{font:700 25px/1.2 var(--serif);margin:0}
 .course-card-head p{font-size:13.5px;font-weight:600;color:var(--ink-soft);margin:5px 0 0}
@@ -1413,10 +1446,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .cal-day .dots i.personal-dot{background:var(--blue)}
 .cal-day.selected .dots i{background:#cce8d6}
 .cal-day.selected .dots i.personal-dot{background:#b8dcf8}
-.calendar-legend{display:flex;gap:18px;margin-top:18px;color:var(--ink-soft);font-size:12.5px;flex-wrap:wrap}
-.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px}
+.calendar-legend{display:flex;align-items:center;gap:18px;margin-top:18px;color:var(--ink-soft);font-size:12.5px;flex-wrap:wrap}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:6px;vertical-align:middle}
 .legend-dot.terracotta{background:var(--terracotta)}
 .legend-dot.blue{background:var(--blue)}
+.calendar-legend-hint{margin-left:auto;color:var(--muted);font-size:12px}
 
 /* Enlaces y Vista de Detalle a Página Entera (Sustituye la ventana lateral a la derecha) */
 .teacher-link,.course-open,.subject-open{border:0;background:transparent;color:var(--green-dark);font:inherit;font-weight:600;text-decoration:underline;text-decoration-color:var(--green-border);text-underline-offset:3px;cursor:pointer;padding:0;text-align:left;transition:color .15s}
@@ -5197,19 +5231,23 @@ function renderHomeHeadlines(){
  const nextBox=document.getElementById('nextThreeDaysList');
  if(!nextBox)return;
 
- // Buscar los próximos 3 días con actividades / prácticas a partir del día siguiente al seleccionado
+ // Siempre los próximos 3 días a partir de hoy (la fecha real actual)
  const upcoming=[];
- const cursor=new Date(selectedDate);
+ const cursor=new Date(todayDate);
  for(let step=1;step<=20&&upcoming.length<3;step++){
   cursor.setDate(cursor.getDate()+1);
   const ck=keyOf(cursor);
   const raw=events[ck]||[];
-  const filtered=raw.map((ev,idx)=>({ev,idx,ck,date:new Date(cursor)})).filter(item=>{
-   return true;
-  });
+  const filtered=raw.map((ev,idx)=>({ev,idx,ck,date:new Date(cursor)}));
   if(filtered.length){
    upcoming.push({date:new Date(cursor),ck,items:filtered});
   }
+ }
+
+ const subEl=document.getElementById('nextThreeDaysSubtitle');
+ if(subEl && upcoming.length){
+  const daysStr=upcoming.map(u=>new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'short'}).format(u.date).replace('.','')).join(', ');
+  subEl.textContent=`${daysStr.charAt(0).toUpperCase()+daysStr.slice(1)} · Pincha en el titular para ver los datos`;
  }
 
  if(!upcoming.length){
@@ -5224,13 +5262,13 @@ function renderHomeHeadlines(){
     return u.items.map(item=>`
      <button class="next-day-card" data-event-ref="${u.ck}|${item.idx}">
       <div class="ndc-top">
-       <span class="ndc-day">${dateLabel.toUpperCase()}</span>
+       <span class="ndc-day" data-jump-day="${u.ck}" title="Ir a este día en la agenda">${dateLabel.toUpperCase()}</span>
        <span class="ndc-time">${item.ev.start}${item.ev.end?' – '+item.ev.end:''}</span>
       </div>
       <strong class="ndc-title">${item.ev.name}</strong>
       <div class="ndc-footer">
        <span class="ndc-kind ${item.ev.isWarning?'warning':(item.ev.isPersonal?'personal':'master')}">${item.ev.kind||'Máster'}</span>
-       <span class="ndc-arrow">Ver día →</span>
+       <span class="ndc-arrow">Ver datos ↗</span>
       </div>
      </button>
     `).join('');
@@ -5537,6 +5575,19 @@ document.addEventListener('click',e=>{
   selectedDate.setDate(selectedDate.getDate()+1);
   monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
   renderDay();
+  return;
+ }
+
+ const jumpDay=e.target.closest('[data-jump-day]');
+ if(jumpDay){
+  e.stopPropagation();
+  const [y,m,d]=jumpDay.dataset.jumpDay.split('-').map(Number);
+  selectedDate=new Date(y,m-1,d);
+  monthDate=new Date(y,m-1,1);
+  renderDay();
+  setView('inicio',false);
+  const todaySec=document.getElementById('todaySection');
+  if(todaySec) todaySec.scrollIntoView({behavior:'smooth'});
   return;
  }
 
