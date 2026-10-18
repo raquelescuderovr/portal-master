@@ -5,23 +5,23 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%2220%22%20cy%3D%2220%22%20r%3D%2220%22%20fill%3D%22%23325e43%22/%3E%3Ctext%20x%3D%2212%22%20y%3D%2228%22%20fill%3D%22%23fffefa%22%20font-family%3D%22Georgia%22%20font-size%3D%2228%22%3Ec%3C/text%3E%3C/svg%3E">
 <title>Cuaderno · Máster en Abogacía y Procura</title>
 <style>
-:root{--bg:#eeeae1;--paper:#fffefa;--paper2:#faf8f1;--ink:#162f29;--muted:#59685f;--line:#dce0d6;--green:#23614c;--green-dark:#134736;--green-pale:#e2eee5;--sage:#b8c9b5;--blue:#285d85;--blue-pale:#e8f0f7;--terracotta:#ac4b2f;--terra-pale:#f9e4d8;--honey:#895d13;--honey-pale:#fbefcf;--shadow:0 12px 40px #42351d0c;--serif:Georgia,'Times New Roman',serif;--sans:'Avenir Next',Avenir,'Segoe UI',sans-serif}
+:root{--bg:#f3f0e8;--paper:#fdfcf8;--paper2:#f7f5ee;--ink:#1c2d27;--muted:#5b6960;--line:#e2e5dc;--green:#265947;--green-dark:#173f31;--green-pale:#e7f0ea;--sage:#c2d0c0;--blue:#2c5675;--blue-pale:#ebf1f6;--terracotta:#9e4a32;--terra-pale:#f7eae3;--honey:#855c1a;--honey-pale:#f9f0d8;--shadow:0 10px 32px #2c26190a;--serif:Georgia,'Times New Roman',serif;--sans:'Avenir Next',Avenir,'Segoe UI',sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--sans)}button,a{-webkit-tap-highlight-color:transparent;font:inherit;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd821b;outline-offset:3px}
-.layout{max-width:1440px;min-height:100vh;margin:auto;display:grid;grid-template-columns:256px minmax(0,1fr);background:var(--paper);box-shadow:0 0 70px #443a2410}
-.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;padding:24px 16px 20px;background:#f0f2e9;border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:4}
+.layout{max-width:1440px;min-height:100vh;margin:auto;display:grid;grid-template-columns:252px minmax(0,1fr);background:var(--paper);box-shadow:0 0 60px #38301e0d}
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;padding:24px 16px 20px;background:#f4f5ee;border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:4}
 .brand{display:flex;align-items:center;gap:11px;padding:0 8px 22px}
-.brand-icon{width:39px;height:39px;border-radius:50% 50% 46% 54%;background:#184c3c;color:#f7f4e9;display:grid;place-items:center;font:20px var(--serif);transform:rotate(-8deg);flex-shrink:0}
+.brand-icon{width:39px;height:39px;border-radius:50% 50% 46% 54%;background:var(--green-dark);color:#f7f4e9;display:grid;place-items:center;font:20px var(--serif);transform:rotate(-8deg);flex-shrink:0}
 .brand-name{font:700 22px var(--serif);letter-spacing:-.03em}
 .brand-sub{font-size:10px;color:#54645a;margin-top:2px}
 .nav-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:#647061;padding:0 10px;margin:10px 0 6px}
 .nav{display:grid;gap:3px}
 .nav button,.branch-link{width:100%;border:0;background:transparent;text-align:left;border-radius:10px;padding:9px 11px;display:flex;gap:10px;align-items:center;cursor:pointer;color:#445a4c;font-size:12px;transition:.18s}
-.nav button:hover,.branch-link:hover{background:#e4e9dc;color:var(--green-dark)}
-.nav button.active{background:#174d3c;color:#fff;font-weight:700}
+.nav button:hover,.branch-link:hover{background:#e7ece0;color:var(--green-dark)}
+.nav button.active{background:var(--green-dark);color:#fff;font-weight:700}
 .nav-symbol{width:18px;text-align:center;font-size:14px;color:var(--green)}
-.nav button.active .nav-symbol{color:#b9e1be}
-.nav-count{margin-left:auto;font-size:10px;color:var(--muted);background:#e3e7dc;padding:2px 6px;border-radius:10px;font-weight:700}
-.nav button.active .nav-count{background:#296853;color:#e8f5ec}
+.nav button.active .nav-symbol{color:#c4e3cb}
+.nav-count{margin-left:auto;font-size:10px;color:var(--muted);background:#e6eadf;padding:2px 6px;border-radius:10px;font-weight:700}
+.nav button.active .nav-count{background:#285b48;color:#e8f5ec}
 .branch{margin-top:16px}
 .branch-head{width:100%;display:flex;align-items:center;justify-content:space-between;border:0;background:transparent;text-align:left;padding:8px 9px 5px;font-size:12px;font-weight:700;cursor:pointer;color:#324e3c}
 .branch-head span:last-child{transition:transform .2s}
@@ -35,65 +35,77 @@
 .side-links{display:grid;gap:4px;margin-top:8px}
 .side-drive-link{display:inline-flex;align-items:center;gap:5px;color:var(--green-dark);font-weight:700;text-decoration:underline;text-underline-offset:3px;font-size:11px}
 .layout.menu-hidden{grid-template-columns:minmax(0,1fr)}.layout.menu-hidden .sidebar{display:none}
-.content{min-width:0;padding:25px clamp(20px,3.8vw,54px) 60px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.content{min-width:0;padding:24px clamp(20px,3.6vw,50px) 56px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
 .top-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .menu-toggle{border:1px solid var(--line);background:var(--paper);width:38px;height:36px;border-radius:11px;display:grid;place-items:center;cursor:pointer;color:var(--green-dark)}
 .top-quick{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
 .top-quick button,.top-quick a{border:1px solid var(--line);background:#fffef9;border-radius:20px;padding:7px 12px;font-size:11px;font-weight:700;color:var(--green-dark);cursor:pointer;white-space:nowrap;text-decoration:none;transition:background .18s,transform .18s}
-.top-quick button[data-branch-view="Abogacía"]{color:#1e537c;border-color:#bbcede;background:#edf3f8}
-.top-quick button[data-branch-view="Procura"]{color:#8c3d23;border-color:#e4c4b3;background:#fbede3}
+.top-quick button[data-branch-view="Abogacía"]{color:var(--blue);border-color:#c9d8e4;background:var(--blue-pale)}
+.top-quick button[data-branch-view="Procura"]{color:var(--terracotta);border-color:#e5cec2;background:var(--terra-pale)}
 .top-quick button:hover,.top-quick a:hover{transform:translateY(-1px)}
 .top-quick button.active{box-shadow:inset 0 -3px currentColor}
 .top-actions{display:flex;gap:10px;align-items:center}
 .search{width:min(260px,30vw);display:flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid var(--line);background:#fffef9;border-radius:12px;color:#969c91}
 .search input{border:0;outline:0;background:transparent;width:100%;font:12px var(--sans);color:var(--ink)}
-.avatar{width:34px;height:34px;border-radius:50%;background:#e9daca;color:#725741;display:grid;place-items:center;font-size:11px;font-weight:700}
+.avatar{width:34px;height:34px;border-radius:50%;background:#eadfd2;color:#6d5440;display:grid;place-items:center;font-size:11px;font-weight:700}
 
-.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px}
-.date-line{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#295d45;font-weight:700;margin-bottom:5px}
-.welcome h1{font:700 clamp(28px,3.2vw,42px)/1.15 var(--serif);letter-spacing:-.04em;margin:0}
-.welcome p{margin:7px 0 0;color:#58665e;font-size:13px}
-.term-note{text-align:right;font-size:11px;color:#4a5b50}
-.term-note a{display:block;color:#184c3c;font-size:12px;font-weight:800;margin-top:6px;text-underline-offset:4px}
+.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+.date-line{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:4px}
+.welcome h1{font:700 clamp(26px,3vw,38px)/1.15 var(--serif);letter-spacing:-.035em;margin:0}
+.welcome p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.term-note{text-align:right;font-size:11px;color:var(--muted)}
+.term-note a{display:block;color:var(--green-dark);font-size:12px;font-weight:800;margin-top:5px;text-underline-offset:4px}
 
-/* Resumen rápido de indicadores */
-.stats-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:28px}
-.stat-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;cursor:pointer;transition:transform .16s,border-color .16s;display:flex;flex-direction:column;justify-content:space-between}
-.stat-card:hover{transform:translateY(-2px);border-color:var(--green)}
-.stat-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.stat-val{font:700 24px/1.2 var(--serif);color:var(--green-dark);margin:5px 0 3px}
-.stat-sub{font-size:11px;color:var(--muted);line-height:1.4}
-.stat-card.highlight-grade{background:#edf6ef;border-color:#b8d4be}
-.stat-card.highlight-test{background:#eef3f8;border-color:#c2d5e5}
-.stat-card.highlight-test .stat-val{color:var(--blue)}
+/* Resumen rápido de notas por correo y tests a grosso modo */
+.stats-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.stat-card{background:#fffefa;border:1px solid var(--line);border-radius:14px;padding:13px 16px;text-align:left;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .16s;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stat-card:hover{transform:translateY(-1px);border-color:var(--green);box-shadow:var(--shadow)}
+.stat-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block}
+.stat-title{font:600 14px/1.3 var(--serif);color:var(--ink);margin-top:3px;display:block}
+.stat-val-pill{font:700 15px/1 var(--serif);background:var(--green-pale);color:var(--green-dark);padding:8px 12px;border-radius:12px;white-space:nowrap;flex-shrink:0}
+.stat-card.highlight-test .stat-val-pill{background:var(--blue-pale);color:var(--blue)}
+.stat-card.highlight-terra .stat-val-pill{background:var(--terra-pale);color:var(--terracotta)}
 
-.section{margin:34px 0;scroll-margin-top:20px}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 15px;flex-wrap:wrap}
-.section-title h2{margin:0;font:600 26px/1.15 var(--serif);letter-spacing:-.035em}
-.section-title p{margin:5px 0 0;color:#5c695f;font-size:12px}
+.section{margin:28px 0;scroll-margin-top:20px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 14px;flex-wrap:wrap}
+.section-title h2{margin:0;font:600 23px/1.2 var(--serif);letter-spacing:-.03em}
+.section-title p{margin:4px 0 0;color:var(--muted);font-size:12px}
 
-/* Panel Mi Día */
-.today-panel{background:#edf3eb;border:1px solid #cbdacb;border-radius:20px;padding:9px 24px 18px;box-shadow:0 12px 28px #153e2c15}
-.today-row{display:grid;grid-template-columns:95px minmax(0,1fr) auto;padding:20px 0;gap:18px;align-items:center;border-top:1px solid #d0ddcf}
-.today-row:first-child{border-top:0}
-.time{font-size:11px;color:#526951;line-height:1.6}
-.time b{display:block;font-size:22px;color:#325e43;font-weight:600;letter-spacing:-.04em;line-height:1.25}
-.event-name{font:500 20px/1.3 var(--serif);color:#253e2d}
-.event-meta{font-size:12px;color:#52644f;line-height:1.75;margin-top:6px}
-.event-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.event-kind{border-radius:30px;background:#d9edb6;color:#23432a;font-size:10px;font-weight:800;padding:6px 12px;white-space:nowrap}
-.event-kind.personal{background:var(--blue-pale);color:var(--blue);border:1px solid #bfd2e3}
-.event-kind.warning{background:var(--terra-pale);color:var(--terracotta);border:1px solid #e7bfb0}
-.today-row.personal-row{background:#f5f8fc;margin:0 -14px;padding:18px 14px;border-radius:12px}
-.overdue-note{background:#dcefe0;border-left:4px solid var(--green);border-radius:9px;color:#184733;font-size:12px;line-height:1.6;padding:12px 15px;margin-top:8px}
-.group-switch{display:flex;gap:3px;background:#e5e9df;padding:4px;border-radius:10px}
-.group-switch button{border:0;border-radius:8px;padding:5px 14px;min-height:32px;background:transparent;color:#405545;font:600 11px var(--sans);cursor:pointer}
-.group-switch button.active{background:#174d3c;color:#fff}
-.day-control{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:12px}
+/* Panel Mi Día minimalista (solo titulares clicables) */
+.today-panel{background:#f5f7f2;border:1px solid #d8e0d5;border-radius:18px;padding:8px 18px;box-shadow:var(--shadow)}
+.headline-item{width:100%;border:0;border-top:1px solid #e2e8df;background:transparent;padding:13px 8px;display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;cursor:pointer;border-radius:10px;transition:background .15s}
+.headline-item:first-child{border-top:0}
+.headline-item:hover{background:#eaf0e6}
+.headline-time{font-size:12px;font-weight:700;color:var(--green-dark);white-space:nowrap}
+.headline-time small{display:block;font-size:10px;font-weight:600;color:var(--muted)}
+.headline-title{font:600 16px/1.3 var(--serif);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.headline-tag{border-radius:20px;background:var(--green-pale);color:var(--green-dark);font-size:10px;font-weight:800;padding:5px 10px;white-space:nowrap}
+.headline-tag.personal{background:var(--blue-pale);color:var(--blue)}
+.headline-tag.warning{background:var(--terra-pale);color:var(--terracotta)}
+
+/* Grid en portada para Próximos 3 días y Cosas que hacer (solo titulares) */
+.home-minimal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}
+.minimal-box{background:#fffefa;border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.minimal-box-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.minimal-box-head h3{margin:0;font:600 18px/1.2 var(--serif);color:var(--ink)}
+.minimal-box-head span{font-size:11px;color:var(--muted)}
+.minimal-list{display:grid;gap:6px}
+.minimal-row{width:100%;border:1px solid #e6eae1;background:#fafbf8;border-radius:12px;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.minimal-row:hover{background:#eff4ec;border-color:#c2d2c3;transform:translateX(2px)}
+.minimal-row-title{font:600 14px/1.3 var(--serif);color:var(--ink)}
+.minimal-row-badge{font-size:10px;font-weight:800;padding:4px 9px;border-radius:20px;background:var(--green-pale);color:var(--green-dark);white-space:nowrap;flex-shrink:0}
+.minimal-row-badge.blue{background:var(--blue-pale);color:var(--blue)}
+.minimal-row-badge.terra{background:var(--terra-pale);color:var(--terracotta)}
+
+.group-switch{display:flex;gap:3px;background:#e8ece3;padding:4px;border-radius:10px}
+.group-switch button{border:0;border-radius:8px;padding:5px 14px;min-height:30px;background:transparent;color:#405545;font:600 11px var(--sans);cursor:pointer}
+.group-switch button.active{background:var(--green-dark);color:#fff}
+.day-control{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;flex-wrap:wrap}
+.day-control-nav{display:flex;align-items:center;gap:8px}
 .day-control button{border-radius:30px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font:700 11px var(--sans);padding:8px 14px;color:var(--green-dark);transition:.15s}
 .day-control button:hover{background:var(--green);color:#fff;border-color:var(--green)}
-.day-control span{font-size:10px;font-weight:700;color:#52624e;min-width:70px;text-align:center}
+.day-control span{font-size:11px;font-weight:800;color:var(--green-dark);min-width:80px;text-align:center}
 
 /* Calificaciones y evaluaciones */
 .grades-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -362,19 +374,18 @@
   .grades-grid,.subject-teacher-cols{grid-template-columns:1fr}
 }
 @media(max-width:1080px){
-  .stats-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .home-hub,.teachers-grid,.materials-grid{grid-template-columns:1fr}
+  .stats-strip,.home-minimal-grid,.teachers-grid,.materials-grid{grid-template-columns:1fr}
 }
 @media(max-width:720px){
   .layout{display:block}
   .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(295px,85vw);height:100dvh;transform:translateX(-105%);transition:transform .22s ease;box-shadow:12px 0 35px #29372b22}
   .sidebar.open{transform:translateX(0)}
   .content{padding:18px 15px 40px}
-  .stats-strip,.hub-grid-cards{grid-template-columns:1fr}
+  .stats-strip,.home-minimal-grid{grid-template-columns:1fr}
   .welcome{flex-direction:column;align-items:flex-start}
   .term-note{text-align:left}
-  .today-row{grid-template-columns:70px 1fr;gap:10px}
-  .event-kind{grid-column:2;justify-self:start}
+  .headline-item{grid-template-columns:72px 1fr}
+  .headline-tag{grid-column:2;justify-self:start}
   .delivery-row{grid-template-columns:46px 1fr}
   .due-state{grid-column:2;justify-self:start}
 }
@@ -387,9 +398,9 @@
   <div class="nav-label">Vistas del portal</div>
   <nav class="nav" aria-label="Menú principal">
     <button class="active" data-view="inicio"><span class="nav-symbol">⌂</span>Portada · Mi día</button>
-    <button data-view="notas"><span class="nav-symbol">★</span>Notas y tests<span class="nav-count">Todos 10 / 8</span></button>
-    <button data-view="asignaturas"><span class="nav-symbol">▤</span>Asignaturas<span class="nav-count">4</span></button>
+    <button data-view="asignaturas"><span class="nav-symbol">▤</span>Bloques y Profesores<span class="nav-count">4</span></button>
     <button data-view="profesores"><span class="nav-symbol">♟</span>Profesorado<span class="nav-count">7</span></button>
+    <button data-view="notas"><span class="nav-symbol">★</span>Notas y tests<span class="nav-count">10 / 8</span></button>
     <button data-view="entregas"><span class="nav-symbol">✎</span>Prácticas (CPROC)<span class="nav-count">4/4 ✓</span></button>
     <button data-view="materiales"><span class="nav-symbol">▧</span>Apuntes y Drive<span class="nav-count">13</span></button>
     <button data-view="correo"><span class="nav-symbol">✉</span>Correo clasificado<span class="nav-count">5</span></button>
@@ -444,58 +455,58 @@
 
   <section class="welcome">
     <div>
-      <div class="date-line" id="welcomeDate">Viernes, 16 de octubre de 2026</div>
+      <div class="date-line" id="welcomeDate">Sábado, 17 de octubre de 2026</div>
       <h1 id="welcomeTitle">Hola, Raquel.</h1>
-      <p id="welcomeSubtitle">Pincha en cualquier pestaña o tarjeta para abrir únicamente el apartado que quieras consultar, sin saturar la pantalla.</p>
+      <p id="welcomeSubtitle">Tu agenda del día y próximos titulares de un vistazo. Pincha en cualquier titular para ver todos sus datos.</p>
     </div>
     <div class="term-note">
       <strong>Primer cuatrimestre · 2026/27</strong>
-      <a href="#calendario" data-switch-view="calendario">Abrir calendario mensual ↗</a>
+      <a href="#calendarSection">Ir al calendario mensual ↓</a>
     </div>
   </section>
 
-  <!-- Barra de pestañas visual: muestra solo la sección elegida -->
+  <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
     <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">⌂ Portada</button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">★ Notas y Tests <span class="tab-badge">10 / 20 de 20</span></button>
-    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Asignaturas <span class="tab-badge">4</span></button>
+    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Bloques y Profesores <span class="tab-badge">4</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">♟ Profesorado <span class="tab-badge">7</span></button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">★ Notas y Tests <span class="tab-badge">10 / 8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">✎ Prácticas <span class="tab-badge">4/4 ✓</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">▧ Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">✉ Correo <span class="tab-badge">5</span></button>
-    <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">▦ Calendario</button>
   </div>
 
-  <!-- Indicadores rápidos con enlace directo -->
-  <div class="stats-strip" aria-label="Resumen académico rápido">
-    <button class="stat-card highlight-grade" data-detail="grades">
-      <span class="stat-kicker">Nota por correo · 14 oct</span>
-      <div class="stat-val">10 / 10</div>
-      <span class="stat-sub">Técnicas instrumentales (Procura) · 4 ptos. test + 6 ptos. escritos · Ver correo ↗</span>
+  <!-- Notas por correo y estado general a grosso modo -->
+  <div class="stats-strip" aria-label="Notas por correo a grosso modo">
+    <button class="stat-card" data-detail="grades">
+      <div>
+        <span class="stat-kicker">Nota por correo · 14 oct</span>
+        <span class="stat-title">Técnicas instrumentales (Procura)</span>
+      </div>
+      <span class="stat-val-pill">10 / 10</span>
     </button>
     <button class="stat-card highlight-test" data-detail="all_tests_summary">
-      <span class="stat-kicker">Tests CPROC / Testmoz</span>
-      <div class="stat-val">Todos 10 (y un 8)</div>
-      <span class="stat-sub">Todos los tests realizados · 10/10 en todos salvo uno con ~8 · Ver desglose ↗</span>
+      <div>
+        <span class="stat-kicker">Tests CPROC / Testmoz</span>
+        <span class="stat-title">Todos realizados (Test 16 oct: 20/20)</span>
+      </div>
+      <span class="stat-val-pill">10 (y un 8)</span>
     </button>
-    <button class="stat-card highlight-grade" data-switch-view="entregas">
-      <span class="stat-kicker">Prácticas en CPROC y Drive</span>
-      <div class="stat-val">4 / 4 enviadas ✓</div>
-      <span class="stat-sub">0 vencidas · Todas subidas a Google Drive y entregadas en CPROC →</span>
-    </button>
-    <button class="stat-card" data-switch-view="profesores">
-      <span class="stat-kicker">Docentes y apuntes</span>
-      <div class="stat-val">7 profesores</div>
-      <span class="stat-sub">Cada docente con enlace directo a su correo, práctica, apuntes y notas →</span>
+    <button class="stat-card" data-switch-view="entregas">
+      <div>
+        <span class="stat-kicker">Prácticas en CPROC y Drive</span>
+        <span class="stat-title">Todas subidas y enviadas</span>
+      </div>
+      <span class="stat-val-pill">4 / 4 ✓</span>
     </button>
   </div>
 
-  <!-- 1. PORTADA LIMPIA: MI DÍA + ACCESOS VISUALES -->
+  <!-- 1. PORTADA PRINCIPAL DESPEJADA: SOLO EL DÍA + PRÓXIMOS 3 DÍAS / COSAS QUE HACER (SOLO TITULARES) -->
   <section class="section" id="todaySection" data-section-view="inicio">
     <div class="section-title">
       <div>
-        <h2 id="dayHeading">Actividades de hoy</h2>
-        <p id="daySubtitle">Viernes, 16 de octubre · Colegio de Abogados</p>
+        <h2 id="dayHeading">Información del día</h2>
+        <p id="daySubtitle">Sábado, 17 de octubre de 2026</p>
       </div>
       <div class="group-switch" role="group" aria-label="Grupo horario">
         <button data-group="manana">Mañana</button>
@@ -504,86 +515,37 @@
     </div>
     <div class="today-panel">
       <div class="today-list" id="todayList"></div>
-      <div class="overdue-note" id="overdueNote"></div>
     </div>
     <div class="day-control">
-      <button id="previousDay" aria-label="Día anterior">‹ Anterior</button>
-      <span id="dayPosition">HOY</span>
-      <button id="nextDay" aria-label="Día siguiente">Siguiente ›</button>
-      <button data-switch-view="calendario">Elegir fecha en el calendario ▦</button>
+      <div class="day-control-nav">
+        <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
+        <span id="dayPosition">HOY · 17 OCT</span>
+        <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
+      </div>
+      <button id="resetTodayTop">Volver a hoy (17 oct)</button>
     </div>
 
-    <!-- Explorador visual de la portada sin saturar -->
-    <div class="home-hub">
-      <div class="hub-box">
-        <div class="hub-box-head">
-          <h3>¿Qué quieres consultar ahora?</h3>
-          <span style="font-size:11px;color:var(--muted)">Pincha para abrir</span>
+    <!-- Próximas 3 prácticas / sesiones de los 3 próximos días + Cosas que hacer (solo titulares clicables) -->
+    <div class="home-minimal-grid">
+      <div class="minimal-box">
+        <div class="minimal-box-head">
+          <h3>Próximos 3 días · Sesiones y prácticas</h3>
+          <span>Pincha en el titular para ver los datos</span>
         </div>
-        <div class="hub-grid-cards">
-          <button class="hub-visual-card" data-switch-view="asignaturas">
-            <div class="hub-visual-icon">▤</div>
-            <strong>Asignaturas en curso</strong>
-            <span>4 bloques · Despliega solo la asignatura que necesites ver</span>
-          </button>
-          <button class="hub-visual-card" data-accent="blue" data-switch-view="profesores">
-            <div class="hub-visual-icon">♟</div>
-            <strong>Tus 7 profesores</strong>
-            <span>Ficha limpia de cada docente con su correo, práctica, apuntes y nota</span>
-          </button>
-          <button class="hub-visual-card" data-accent="terra" data-switch-view="entregas">
-            <div class="hub-visual-icon">✎</div>
-            <strong>Prácticas (4/4 entregadas)</strong>
-            <span>Poder apud acta, Subsanación, Auto UP (2 envíos) y Caso Deontología</span>
-          </button>
-          <button class="hub-visual-card" data-accent="honey" data-switch-view="materiales">
-            <div class="hub-visual-icon">▧</div>
-            <strong>Apuntes, BOE y Drive</strong>
-            <span>Todos los PDFs, presentaciones, guías legislativas y test completo</span>
-          </button>
-        </div>
+        <div class="minimal-list" id="nextThreeDaysList"></div>
       </div>
 
-      <div class="hub-box">
-        <div class="hub-box-head">
-          <h3>Últimas notas y entregas</h3>
-          <button class="hub-more-btn" data-switch-view="notas">Ver todas →</button>
+      <div class="minimal-box">
+        <div class="minimal-box-head">
+          <h3>Cosas que hacer y entregas</h3>
+          <span>Solo titulares · Pincha para abrir</span>
         </div>
-        <div class="hub-mini-list">
-          <button class="hub-mini-item" data-detail="grades">
-            <div>
-              <b>Nota oficial por correo: Técnicas instrumentales</b>
-              <small>Javier Sánchez García · 4 test + 6 escritos (14 oct)</small>
-            </div>
-            <span class="hub-mini-pill">10 / 10</span>
-          </button>
-          <button class="hub-mini-item" data-detail="test_16oct">
-            <div>
-              <b>Test online: Proceso digital y TIC (20 preguntas)</b>
-              <small>C. Moreno y C. Sánchez · 16 oct (19:17) · Testmoz</small>
-            </div>
-            <span class="hub-mini-pill blue">20 / 20</span>
-          </button>
-          <button class="hub-mini-item" data-detail="all_tests_summary">
-            <div>
-              <b>Balance global de Tests en CPROC / Testmoz</b>
-              <small>Todos realizados · 10 en todos salvo uno con ~8</small>
-            </div>
-            <span class="hub-mini-pill blue">Todos 10 / 8</span>
-          </button>
-          <button class="hub-mini-item" data-switch-view="entregas">
-            <div>
-              <b>4 de 4 prácticas enviadas en CPROC y Drive</b>
-              <small>Apud acta · Subsanación · Auto UP · Deontología</small>
-            </div>
-            <span class="hub-mini-pill soft">4/4 Al día ✓</span>
-          </button>
-        </div>
+        <div class="minimal-list" id="todoHeadlinesList"></div>
       </div>
     </div>
   </section>
 
-  <!-- 2. NOTAS Y EVALUACIONES -->
+  <!-- 2. NOTAS Y EVALUACIONES (En su pestaña propia) -->
   <section class="section view-hidden" id="gradesSection" data-section-view="notas">
     <div class="section-title">
       <div>
@@ -595,17 +557,18 @@
     <div class="grades-grid" id="gradesGrid"></div>
   </section>
 
-  <!-- 3. BLOQUES DEL MÁSTER -> ASIGNATURAS -> PROFESORES (CORREO, PRÁCTICAS, APUNTES Y NOTAS) -->
-  <section class="section" id="subjectsSection" data-section-view="asignaturas">
+  <!-- 3. BLOQUES DEL MÁSTER -> ASIGNATURAS -> PROFESORES (En su pestaña propia para no saturar la portada) -->
+  <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
     <div class="section-title">
       <div>
-        <h2>Bloques del Máster · Asignaturas y Profesorado al detalle</h2>
-        <p>Dentro de cada bloque tienes cada asignatura, y dentro de cada asignatura cada profesor con acceso directo a su correo, sus prácticas, sus apuntes y su nota.</p>
+        <h2>Bloques del Máster · Asignaturas y Bloques de Profesores</h2>
+        <p>Dentro de cada bloque tienes sus asignaturas y los bloques completos de cada profesor con su correo, prácticas, apuntes y notas.</p>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="hub-more-btn" data-branch-view="todas">Todos los bloques</button>
         <button class="hub-more-btn" data-branch-view="Procura">Bloques Procura</button>
         <button class="hub-more-btn" data-branch-view="Abogacía">Bloques Abogacía</button>
+        <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="course-grid" id="courseGrid"></div>
@@ -684,10 +647,14 @@
   <section class="section" id="calendarSection">
     <div class="section-title">
       <div>
-        <h2>Calendario mensual</h2>
-        <p>Elige cualquier día para ver sus clases por grupo (mañana o tarde), su profesor y sus entregas.</p>
+        <h2>Calendario unificado (Máster + Ordenador + Google Calendar)</h2>
+        <p>Incluye todas tus sesiones del máster (octubre 2026 – enero 2027) y tus citas o compromisos personales de Apple Calendar y Google Calendar.</p>
       </div>
-      <button class="hub-more-btn" id="goTodayBtn">Ir a hoy (16 oct)</button>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="pill-btn blue" data-detail="personal_calendar_sync">★ Citas personales y avisos que te afectan ↗</button>
+        <a class="pill-link blue" href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer">Google Calendar ↗</a>
+        <button class="hub-more-btn" id="goTodayBtn">Ir a hoy (17 oct)</button>
+      </div>
     </div>
     <div class="calendar-wrap">
       <div class="calendar-head">
@@ -699,9 +666,10 @@
       </div>
       <div class="calendar-grid" id="calendarGrid"></div>
       <div class="calendar-legend">
-        <span><i class="legend-dot"></i>Clase / Actividad</span>
+        <span><i class="legend-dot"></i>Clase / Actividad del Máster</span>
         <span><i class="legend-dot terracotta"></i>Entrega o prueba</span>
-        <span>Selecciona cualquier día para ver sus clases y entregas arriba en «Actividades del día»</span>
+        <span><i class="legend-dot blue"></i>Personal / Google Calendar / Mac</span>
+        <span>Selecciona cualquier día para ver sus clases, entregas y citas personales arriba en «Actividades del día»</span>
       </div>
     </div>
   </section>
@@ -713,7 +681,7 @@
 </div>
 
 <script>
-const todayDate=new Date(2026,9,16);
+const todayDate=new Date(2026,9,17);
 let selectedDate=new Date(todayDate);
 let monthDate=new Date(todayDate);
 let group='tarde';
@@ -723,35 +691,288 @@ const driveFolderUrl='https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061
 const driveSearchUrl=q=>`https://drive.google.com/drive/u/0/search?q=${encodeURIComponent(q)}`;
 const outlookUrl='https://outlook.office.com/mail/';
 const cprocUrl='https://www.icpcoruna.com/copia-de-tfm-24-26-1';
+const gcalUrl='https://calendar.google.com/';
 const testmozReviewUrl='https://testmozusercontent.com/q/15705122/student/review';
 const testHtmlLocalUrl='historial-tests/originales/2026-10-16-testmoz-15705122.html';
 const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-transversales.md';
 
 const events={
+ '2026-10-01':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'},
+  {start:'18:45',end:'20:45',name:'Iniciación a la actividad profesional',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'}
+ ],
+ '2026-10-02':[
+  {start:'16:30',end:'18:30',name:'Oratoria Forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Iniciación a la actividad profesional',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-05':[
+  {start:'16:30',end:'20:45',name:'Organización de despacho',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-06':[
+  {start:'16:30',end:'20:45',name:'Organización de despacho',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-08':[
+  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-09':[
+  {start:'11:00',end:'12:00',name:'Ortodix',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'Clínica Ortodix',kind:'Cita · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-12':[
+  {start:'Todo el día',end:'',name:'Inicio periodo (Real)',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'Personal',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'10:00',end:'11:00',name:'Cancelar Google AI Pro',subject:'Calendario Familia / Mac',place:'Gestión personal',kind:'Aviso · Mac/Google',isPersonal:true,detailKey:'personal_calendar_sync'}
+ ],
+ '2026-10-13':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-14':[
+  {start:'11:00',end:'12:00',name:'Psico',subject:'Calendario Familia / Google Calendar',place:'Consulta',kind:'Cita · Personal',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad disciplinaria y proceso digital',teacher:'Carolina Moreno Vázquez',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'20:00',end:'20:45',name:'Building your first workflow with Cowork',subject:'Calendario Familia / Evento online (Goldcast)',place:'Online (events.goldcast.io)',kind:'Evento extra · Solapado 20:00',isPersonal:true,isWarning:true,extUrl:'https://events.goldcast.io/auth/link/4ccf5125-c1ee-4430-b716-f250b493b3e6/LXCuh7krOnw?eventID=d18dee2d-1458-44b4-9ac8-d4523ab5cddd&shortId=204765',detailKey:'personal_calendar_sync'}
+ ],
+ '2026-10-15':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'10:00',end:'13:00',name:'Bus Motril Estación – Aeropuerto Málaga',subject:'Calendario Familia · Asiento 31 · Localizador 1gjfccu',place:'Motril → Aeropuerto de Málaga (AGP)',kind:'Viaje · Mac/Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Oratoria Forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:40',end:'18:20',name:'Vuelo a Santiago de Compostela (Vueling VY 2653)',subject:'Calendario Familia · Confirmación YN5GPT (Coincidió con horario de tarde)',place:'Málaga (AGP) → Santiago (SCQ)',kind:'Vuelo · Solapado con clase',isPersonal:true,isWarning:true,detailKey:'personal_calendar_sync'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad disciplinaria / Procura',teacher:'Carolina Moreno Vázquez',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
  '2026-10-16':[
-  {start:'09:30',end:'11:30',name:'Responsabilidad disciplinaria y proceso digital',teacher:'Alex Sánchez Barge',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'11:45',end:'13:45',name:'Responsabilidad disciplinaria · actos de comunicación',teacher:'Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'16:30',end:'18:30',name:'Responsabilidad disciplinaria y proceso digital',teacher:'Alex Sánchez Barge',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'18:45',end:'20:45',name:'Responsabilidad disciplinaria · actos de comunicación (y Test 19:17)',teacher:'Carlos M. Sánchez Muiño',coTeacher:'Carolina Moreno Vázquez',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados',kind:'Clase + Test (20/20)'}
+  {start:'09:30',end:'11:30',name:'Responsabilidad disciplinaria y proceso digital',teacher:'Alex Sánchez Barge',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'11:45',end:'13:45',name:'Responsabilidad disciplinaria · actos de comunicación',teacher:'Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'13:00',end:'14:00',name:'Fontanero EGL',subject:'Calendario Familia / Mac',place:'Casa',kind:'Cita · Casa',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Oratoria Forense / Responsabilidad disciplinaria y proceso digital',teacher:'Alex Sánchez Barge',subject:'Técnicas instrumentales · Procura / Abogacía',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad disciplinaria · actos de comunicación (y Test 19:17)',teacher:'Carlos M. Sánchez Muiño',coTeacher:'Carolina Moreno Vázquez',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',taskKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (20/20)'}
+ ],
+ '2026-10-17':[
+  {start:'14:00',end:'17:00',name:'Comida Marcos y Reme',subject:'Calendario Familia · Reserva de parte de Sara Bolón («mesa con vistas a fila del PACO» · Tel. 981 73 80 39)',place:'Restaurante (Tel. 981 73 80 39)',kind:'Hoy · Personal / Familia',isPersonal:true,detailKey:'personal_calendar_sync'}
  ],
  '2026-10-19':[
-  {start:'09:30',end:'11:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'11:45',end:'13:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'}
+  {start:'09:30',end:'11:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'11:45',end:'13:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
  '2026-10-20':[
-  {start:'09:30',end:'11:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'11:45',end:'13:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'}
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'09:30',end:'11:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'11:45',end:'13:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial y proceso digital',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
- '2026-10-21':[{start:'Todo el día',end:'',name:'DATAfórum Justicia 2026',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · seguir actividades docentes',mailKey:'dataforum',place:'PALEXCO',kind:'Aviso Facultad'}],
- '2026-10-22':[{start:'Todo el día',end:'',name:'DATAfórum Justicia 2026',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · seguir actividades docentes',mailKey:'dataforum',place:'PALEXCO',kind:'Aviso Facultad'}],
- '2026-10-23':[{start:'Todo el día',end:'',name:'DATAfórum Justicia 2026',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · seguir actividades docentes',mailKey:'dataforum',place:'PALEXCO',kind:'Aviso Facultad'}],
+ '2026-10-21':[
+  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Sin clase presencial)',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · inscripción gratuita para computar asistencia (dataforumjusticia.es)',mailKey:'dataforum',place:'PALEXCO (A Coruña)',kind:'Aviso Facultad'}
+ ],
+ '2026-10-22':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Sin clase presencial)',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · seguir actividades docentes',mailKey:'dataforum',place:'PALEXCO (A Coruña)',kind:'Aviso Facultad'}
+ ],
+ '2026-10-23':[
+  {start:'09:30',end:'10:30',name:'Traumatólogo Raquel (Dr. Mejía Aguirre)',subject:'Calendario Familia · Coincide con el viernes de DATAfórum (sin clase presencial en Facultad)',place:'Hospital HM Modelo (Rúa Virrey Osorio, 30, 15011 A Coruña)',kind:'Cita médica · HM Modelo',isPersonal:true,isWarning:true,detailKey:'personal_calendar_sync'},
+  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Sin clase presencial)',teacher:'Decanato · Facultad de Derecho',subject:'Suspensión de clases en Facultad · seguir actividades docentes',mailKey:'dataforum',place:'PALEXCO (A Coruña)',kind:'Aviso Facultad'}
+ ],
  '2026-10-26':[
-  {start:'09:30',end:'11:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'},
-  {start:'16:30',end:'18:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados',kind:'Clase'}
+  {start:'09:30',end:'11:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Gestiones profesionales',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-27':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'10:00',end:'11:00',name:'Peluquería Stitch',subject:'Calendario Familia (¡Ojo si asistes a grupo de mañana!)',place:'Peluquería',kind:'Personal · Familia',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Mediación',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-28':[
+  {start:'16:30',end:'18:30',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Marketing de despacho',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-29':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Escritura forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-10-30':[
+  {start:'16:30',end:'18:30',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Escritura forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-02':[
+  {start:'16:30',end:'18:30',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Escritura forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-03':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Intervención de procuradores',subject:'Actuación procesal / Instrumentales · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Previsión social',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-04':[
+  {start:'16:30',end:'20:45',name:'Propiedad intelectual y protección de datos',subject:'Sustantivo civil / Mercantil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-05':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-06':[
+  {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-09':[
+  {start:'16:30',end:'20:45',name:'Propiedad horizontal',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-10':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'20:45',name:'Compraventa',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-11':[
+  {start:'16:30',end:'17:30',name:'Propiedad horizontal (1.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'17:45',end:'20:45',name:'Propiedad horizontal (2.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-12':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'20:45',name:'Cuestiones procesales, cautelares y monitorio',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-13':[
+  {start:'16:30',end:'20:45',name:'Demanda, contestación, reconvención y juicio ordinario',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-16':[
+  {start:'16:30',end:'20:45',name:'La prueba',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-17':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Fase oral del procedimiento civil',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Juicio verbal',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-18':[
+  {start:'11:00',end:'12:00',name:'Psico',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com) · ¡Atención si vas de mañana!',place:'Consulta',kind:'Cita · Personal',isPersonal:true,isWarning:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Terminación del proceso',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-19':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'20:45',name:'Recursos',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-20':[
+  {start:'16:30',end:'19:00',name:'Ejecución procesal',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-23':[
+  {start:'16:30',end:'18:30',name:'Ejecución hipotecaria',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'18:45',end:'20:45',name:'Ejecución no dineraria',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-24':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Gestión económica del proceso',subject:'Procesal civil · Abogacía / Procura',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-25':[
+  {start:'16:30',end:'20:45',name:'Ejecución procesal',subject:'Procesal civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-26':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora pendiente en cronograma)',subject:'Práctica procesal · Confirmar hora y compatibilidad con Pilates (08:00–09:00)',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado',isWarning:true,detailKey:'personal_calendar_sync'}
+ ],
+ '2026-11-27':[
+  {start:'18:45',end:'20:45',name:'Remuneración y fiscalidad',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-11-30':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2026-12-01':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Contrato de trabajo',subject:'Derecho laboral · Abogacía (¡Cambio de sede a Facultad!)',place:'Facultad de Derecho',kind:'Clase · Facultad'},
+  {start:'18:45',end:'20:45',name:'Tiempo de trabajo',subject:'Derecho laboral · Abogacía (¡Cambio de sede a Facultad!)',place:'Facultad de Derecho',kind:'Clase · Facultad'}
+ ],
+ '2026-12-02':[
+  {start:'16:30',end:'18:30',name:'Clasificación profesional',subject:'Derecho laboral · Abogacía',place:'Facultad de Derecho',kind:'Clase · Facultad'},
+  {start:'19:45',end:'20:45',name:'Modificación del contrato',subject:'Derecho laboral · Abogacía',place:'Facultad de Derecho',kind:'Clase · Facultad'}
+ ],
+ '2026-12-03':[
+  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+  {start:'16:30',end:'18:30',name:'Modificación del contrato',subject:'Derecho laboral · Abogacía',place:'Facultad de Derecho',kind:'Clase · Facultad'},
+  {start:'19:45',end:'20:45',name:'Contratas, subcontratas y cesión ilegal',subject:'Derecho laboral · Abogacía',place:'Facultad de Derecho',kind:'Clase · Facultad'}
+ ],
+ '2026-12-04':[
+  {start:'16:30',end:'18:00',name:'Poder disciplinario: faltas y sanciones',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-07':[
+  {start:'16:30',end:'18:00',name:'Suspensión del contrato',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-09':[
+  {start:'16:30',end:'20:45',name:'Extinción del contrato y despidos',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-10':[
+  {start:'16:30',end:'20:45',name:'Extinción del contrato y despidos',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-11':[
+  {start:'16:30',end:'17:30',name:'Extinción del contrato y despidos',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'17:30',end:'19:00',name:'Negociación colectiva, sindicatos y huelga',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-14':[
+  {start:'18:30',end:'20:30',name:'Seguridad Social',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-15':[
+  {start:'16:30',end:'20:45',name:'Seguridad Social',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-16':[
+  {start:'16:30',end:'18:00',name:'Protección por desempleo',subject:'Derecho laboral · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-17':[
+  {start:'16:30',end:'20:45',name:'Procedimiento laboral',subject:'Derecho laboral · Abogacía (Aula pendiente de indicar en cronograma)',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2026-12-18':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2026-12-22':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2027-01-07':[
+  {start:'16:30',end:'19:30',name:'Procedimiento Administrativo Común',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-08':[
+  {start:'16:30',end:'18:30',name:'Procedimiento Administrativo Común',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-11':[
+  {start:'16:30',end:'19:30',name:'Jurisdicción Contencioso-Administrativa',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-12':[
+  {start:'16:30',end:'19:30',name:'Jurisdicción Contencioso-Administrativa',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-13':[
+  {start:'16:30',end:'19:30',name:'Responsabilidad patrimonial',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-14':[
+  {start:'16:30',end:'19:30',name:'Expropiación forzosa',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-15':[
+  {start:'16:30',end:'19:30',name:'Contratación en el sector público',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-18':[
+  {start:'16:30',end:'19:30',name:'Contratación en el sector público',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-19':[
+  {start:'16:30',end:'19:00',name:'Extranjería',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-20':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2027-01-21':[
+  {start:'16:30',end:'19:00',name:'Extranjería',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-22':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2027-01-25':[
+  {start:'16:30',end:'20:15',name:'Ordenación del territorio, medio ambiente y urbanismo',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-26':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
+ ],
+ '2027-01-27':[
+  {start:'16:30',end:'20:15',name:'Ordenación del territorio, medio ambiente y urbanismo',subject:'Derecho administrativo · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+ ],
+ '2027-01-28':[
+  {start:'Todo el día',end:'',name:'Juicio simulado (Hora no indicada en cronograma)',subject:'Práctica procesal · Máster',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Juicio simulado'}
  ]
 };
 
@@ -853,6 +1074,26 @@ const mailSummaries={
 };
 
 const details={
+ personal_calendar_sync:{
+  kicker:'Calendario del ordenador (Apple Calendar) + Google Calendar',
+  title:'Citas personales, eventos extra y avisos que te afectan',
+  date:'Sincronizado el sábado, 17 de octubre de 2026 · Calendarios: raquel.escudero.valcarcelrios@gmail.com, Familia, Trabajo y Máster',
+  body:'Se han incorporado al calendario del portal todas las clases del primer cuatrimestre (octubre 2026 – enero 2027) junto con los compromisos personales y citas extra de tu ordenador y de tu Google Calendar que pueden afectarte o solaparse con tu organización:',
+  submissions:[
+   {label:'Hoy · Sábado 17 oct 2026 (14:00–17:00)',file:'Comida Marcos y Reme',pages:'Calendario Familia',url:gcalUrl,content:'Reserva anotada con el teléfono 981 73 80 39 («De parte de: SARA BOLÓN · mesa con vistas a fila del PACO»).',state:'Evento personal de hoy'},
+   {label:'Viernes 23 oct 2026 (09:30–10:30)',file:'Traumatólogo Raquel (Dr. Mejía Aguirre)',pages:'Hospital HM Modelo (Rúa Virrey Osorio, 30, A Coruña)',url:gcalUrl,content:'Cita médica por la mañana. Coincide con los días de DATAfórum Justicia 2026 (21–23 oct, sin clase presencial en la Facultad).',state:'Cita médica · Compatible con el turno de tarde'},
+   {label:'Martes 27 oct 2026 (10:00–11:00)',file:'Peluquería Stitch',pages:'Calendario Familia',url:gcalUrl,content:'Ese día tienes Pilates (08:00–09:00), Peluquería Stitch (10:00–11:00) y por la tarde clases de Mediación (16:30–18:30) e Intervención de procuradores (18:45–20:45).',state:'Sin solapamiento con tu turno de tarde'},
+   {label:'Miércoles 18 nov 2026 (11:00–12:00)',file:'Psico',pages:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',url:gcalUrl,content:'Consulta por la mañana (11:00–12:00). Por la tarde tienes clase de Terminación del proceso (16:30–18:30) en el Colegio de Abogados.',state:'Compatible con turno de tarde (afectaría si fueses de mañana)'},
+   {label:'Jueves 26 nov 2026 (08:00–09:00 y Todo el día)',file:'Pilates + Juicio simulado (Juzgado 1.ª Instancia n.º 4)',pages:'Google Calendar + Cronograma Máster',url:gcalUrl,content:'Hay programado un Juicio simulado en el Juzgado de Primera Instancia n.º 4 (con hora aún no indicada en el cronograma) el mismo día que tienes Pilates de 08:00 a 09:00. Conviene vigilar la hora cuando la publiquen.',state:'¡Atención! Vigilar hora del Juzgado'},
+   {label:'Martes y jueves (08:00–09:00)',file:'Pilates (16 sesiones entre oct y dic 2026)',pages:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',url:gcalUrl,content:'Sesiones fijas de 08:00 a 09:00 (20, 22, 27 y 29 oct; 3, 5, 10, 12, 17, 19, 24 y 26 nov; 1 y 3 dic). Te dejan margen antes de cualquier actividad de las 09:30.',state:'Integrado en todas las fechas del calendario'},
+   {label:'1, 2 y 3 dic 2026 (16:30–20:45)',file:'Cambio de sede: Clases en la Facultad de Derecho',pages:'Calendario Máster (Derecho laboral)',url:gcalUrl,content:'Las sesiones de Contrato de trabajo, Tiempo de trabajo, Clasificación profesional, Modificación del contrato y Contratas se imparten en la Facultad de Derecho en lugar del Colegio de Abogados.',state:'Aviso de desplazamiento'},
+   {label:'Eventos pasados de octubre (9–16 oct)',file:'Ortodix, Cancelar Google AI Pro, Psico, Cowork, Bus/Vuelo Vueling VY 2653 y Fontanero EGL',pages:'Calendarios Familia y Google',url:gcalUrl,content:'Incluidos en sus días correspondientes de octubre (9, 12, 14, 15 y 16 oct) para que tengas el historial completo de lo que coincidió con las clases.',state:'Registrados en el calendario'}
+  ],
+  source:'Lectura directa de Apple Calendar (macOS) y Google Calendar sincronizado (raquel.escudero.valcarcelrios@gmail.com, Familia, Trabajo y Máster) · 17 oct 2026',
+  attachments:[
+   {name:'Abrir Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',url:gcalUrl,kind:'Google Calendar'}
+  ]
+ },
  grades:{
   kicker:'Calificación por correo · Procura · Técnicas instrumentales',
   title:'Resultados de las pruebas · Nota final: 10 / 10',
@@ -1043,14 +1284,16 @@ const courses=[
   state:'En curso',
   subjects:[
    {
-    name:'Evaluación del bloque inicial · Pruebas del 1 de octubre',
-    period:'Pruebas: 1 oct 2026 · Nota publicada por correo: 14 oct 2026',
+    name:'Iniciación a la actividad profesional y organización de despacho',
+    period:'Sesiones: 1, 2, 5 y 6 oct 2026 · Colegio de Abogados',
     teachers:['Javier Sánchez García'],
     grade:{score:'10 / 10 (Sobresaliente)',detail:'4 ptos. Test + 6 ptos. Trabajos/escritos · Confirmado por correo el 14 oct',detailKey:'grades',actionLabel:'Ver correo de la nota (10/10) ↗'},
     tasks:[
      {title:'Pruebas del 1 de octubre (Test + Trabajos/escritos)',date:'Evaluado el 14 oct 2026 por correo',state:'Calificado: 10 / 10 ✓',detailKey:'grades',actionLabel:'Abrir desglose de nota ↗'}
     ],
     notes:[
+     {name:'Iniciación actividad profesional (Doc Google en Drive)',detailKey:'grades',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Organización de despacho (Doc Google en Drive)',detailKey:'grades',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Abrir Doc Drive ↗'},
      {name:'Tabla oficial de calificaciones (4 test + 6 escritos = 10)',detailKey:'grades',url:outlookUrl,label:'Ver en correo / Outlook ↗'}
     ],
     mails:['grades']
@@ -1063,15 +1306,16 @@ const courses=[
     tasks:[
      {title:'Test online: Proceso digital y TIC (Grupo de tarde)',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver las 20 preguntas ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'},
      {title:'Práctica 1: Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · Subida a Drive y enviada en CPROC',state:'Completada y enviada ✓',detailKey:'entrega_apud_acta',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Abrir PDF en Drive ↗'},
-     {title:'Práctica 2: Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · Tarea: ESCRITO SUBSANACIÓN',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver entrega ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Abrir PDF en Drive ↗'},
-     {title:'Práctica 3 (2 envíos): AUTO DECLARACION CON OFERTA DE VENTA UP',date:'16 oct 2026 · Documento_anonimizado.pdf + summary.docx',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver los 2 envíos ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Abrir en Drive ↗'}
+     {title:'Práctica 2: Escrito de subsanación (Doc Google editable en Drive)',date:'16 oct 2026 · Tarea: ESCRITO SUBSANACIÓN',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver entrega ↗',extUrl:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',extLabel:'Abrir Doc Drive ↗'},
+     {title:'Práctica 3 (2 envíos): Auto concurso UP (PDF 11 págs. + Word)',date:'16 oct 2026 · Documento_anonimizado.pdf + summary.docx',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver los 2 envíos ↗',extUrl:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',extLabel:'Abrir PDF en Drive ↗'}
     ],
     notes:[
-     {name:'Cuestionario completo de 20 preguntas y 4 opciones (Proceso digital y TIC)',detailKey:'test_16oct',url:testMdLocalUrl,label:'Abrir apuntes (.md) ↗'},
-     {name:'Archivo HTML original de la revisión en Testmoz',detailKey:'test_16oct',url:testHtmlLocalUrl,label:'Abrir HTML ↗'},
-     {name:'CertificadoRegistro.pdf (Apoderamiento apud acta)',detailKey:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),label:'Abrir en Drive ↗'},
-     {name:'Escrito de subsanación_signed.pdf',detailKey:'entrega_subsanacion',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),label:'Abrir en Drive ↗'},
-     {name:'Documento_anonimizado.pdf (11 págs.) + summary.docx (1 pág.)',detailKey:'entrega_auto_up',url:driveSearchUrl('Documento_anonimizado.pdf'),label:'Abrir en Drive ↗'},
+     {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google en Drive)',detailKey:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Escrito de subsanación (Documento Google en Drive)',detailKey:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'Abrir PDF Drive ↗'},
+     {name:'summary.docx (Resumen procesal en Drive)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Abrir Word Drive ↗'},
+     {name:'2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)',detailKey:'test_16oct',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',label:'Abrir PDF Drive ↗'},
+     {name:'Cuestionario completo de 20 preguntas y 4 opciones (.md)',detailKey:'test_16oct',url:testMdLocalUrl,label:'Abrir apuntes (.md) ↗'},
      {name:'Real Decreto-ley 6/2023 (Eficiencia digital Justicia · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',label:'BOE oficial ↗'}
     ],
     mails:['materials','grades']
@@ -1105,13 +1349,18 @@ const courses=[
     teachers:['Ana Vázquez Corte'],
     grade:{score:'Práctica enviada ✓ + Tests (10 / ~8)',detail:'Caso práctico subido a Drive y enviado en CPROC (ninguna vencida) · Test transversal del 16 oct: 10/10 (20/20)',detailKey:'assignment',actionLabel:'Ver ficha de la práctica ↗'},
     tasks:[
-     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional del procurador',date:'Subido a Drive y enviado en CPROC (MUAP 26/28 → Tareas publicadas)',state:'Completada y enviada en CPROC ✓',overdue:false,detailKey:'assignment',actionLabel:'Ver ficha y documentos ↗',extUrl:driveFolderUrl,extLabel:'Abrir Drive ↗'},
+     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Doc Google)',date:'Subido a Drive y enviado en CPROC',state:'Completada y enviada en CPROC ✓',overdue:false,detailKey:'assignment',actionLabel:'Ver ficha y documentos ↗',extUrl:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',extLabel:'Abrir Doc Drive ↗'},
      {title:'Test online transversal: Deontología y técnicas transversales',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver test (20/20) ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'}
     ],
     notes:[
+     {name:'Raquel Escudero_Derechos y deberes procuradores (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'Abrir PDF Drive ↗'},
+     {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'Abrir PDF Drive ↗'},
+     {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Deontología abogacía (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Abrir Doc Drive ↗'},
      {name:'Código Deontológico de los Procuradores',detailKey:'assignment',url:driveSearchUrl('Código Deontológico'),label:'Buscar en Drive ↗'},
-     {name:'Estatuto General de los Procuradores (RD 1281/2002)',detailKey:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'},
-     {name:'Documento de derechos y deberes del procurador',detailKey:'assignment',url:driveSearchUrl('derechos y deberes'),label:'Buscar en Drive ↗'}
+     {name:'Estatuto General de los Procuradores (RD 1281/2002)',detailKey:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
     ],
     mails:['assignment']
    }
@@ -1129,14 +1378,14 @@ const courses=[
     grade:{score:'4 / 4 prácticas enviadas ✓',detail:'Todas las prácticas de Drive están completadas y enviadas en CPROC (0 vencidas)',detailKey:'entrega_auto_up',actionLabel:'Ver entregas procesales ↗'},
     tasks:[
      {title:'Poder apud acta (CertificadoRegistro.pdf)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada ✓',detailKey:'entrega_apud_acta',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('CertificadoRegistro.pdf'),extLabel:'Drive ↗'},
-     {title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Escrito de subsanación_signed.pdf'),extLabel:'Drive ↗'},
-     {title:'Auto declaración con oferta de venta UP (2 envíos)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver ficha ↗',extUrl:driveSearchUrl('Documento_anonimizado.pdf'),extLabel:'Drive ↗'}
+     {title:'Escrito de subsanación (Doc Google en Drive)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada ✓',detailKey:'entrega_subsanacion',actionLabel:'Ver ficha ↗',extUrl:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',extLabel:'Abrir Doc Drive ↗'},
+     {title:'Auto declaración con oferta de venta UP (PDF en Drive)',date:'16 oct 2026 · CPROC y Drive',state:'Completada y enviada (2 envíos) ✓',detailKey:'entrega_auto_up',actionLabel:'Ver ficha ↗',extUrl:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',extLabel:'Abrir PDF Drive ↗'}
     ],
     notes:[
      {name:'CertificadoRegistro.pdf (Inscripción apud acta)',detailKey:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),label:'Abrir en Drive ↗'},
-     {name:'Escrito de subsanación_signed.pdf',detailKey:'entrega_subsanacion',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),label:'Abrir en Drive ↗'},
-     {name:'Documento_anonimizado.pdf (Auto concursal 11 págs.)',detailKey:'entrega_auto_up',url:driveSearchUrl('Documento_anonimizado.pdf'),label:'Abrir en Drive ↗'},
-     {name:'summary.docx (Resumen procesal 1 pág.)',detailKey:'entrega_auto_up',url:driveSearchUrl('summary.docx'),label:'Abrir en Drive ↗'}
+     {name:'Escrito de subsanación (Documento Google en Drive)',detailKey:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Documento_anonimizado.pdf (Auto concursal 11 págs. en Drive)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'Abrir PDF Drive ↗'},
+     {name:'summary.docx (Resumen procesal Word en Drive)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Abrir Word Drive ↗'}
     ],
     mails:['materials']
    }
@@ -1171,51 +1420,57 @@ const teacherDirectory=[
  {
   name:'Javier Sánchez García',
   branch:'Procura',
-  role:'Procura · Técnicas instrumentales (Evaluación bloque 1 oct)',
+  role:'Procura · Técnicas instrumentales e Iniciación profesional',
   subjectRef:'Procura|Técnicas instrumentales|0',
   gradeBadge:'Nota correo: 10 / 10',
-  summary:'Responsable en el correo de resultados de las pruebas del 1 de octubre de Técnicas instrumentales (Procura), remitido el 14 de octubre de 2026 con calificación final de 10 sobre 10.',
+  summary:'Responsable de Iniciación a la actividad profesional (1 oct) y calificación de Técnicas instrumentales (10/10). Sus apuntes y prácticas están en Drive.',
   mails:[{title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}],
   practices:[{title:'Pruebas del 1 de octubre: Test (4 ptos.) + Trabajos/escritos (6 ptos.) = 10',key:'grades',url:outlookUrl,urlLabel:'Ver en Outlook ↗'}],
   notes:[
+   {title:'Iniciación actividad profesional (Google Docs)',key:'grades',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',urlLabel:'Abrir Doc Drive ↗'},
    {title:'Desglose de calificación en tabla del correo (14 oct 2026)',key:'grades',url:outlookUrl,urlLabel:'Abrir Outlook ↗'}
   ]
  },
  {
   name:'Carolina Moreno Vázquez',
   branch:'Procura',
-  role:'Procura · Técnicas instrumentales, Deontología y Actuación procesal',
+  role:'Procura · Deontología, Técnicas instrumentales y Actuación procesal',
   subjectRef:'Procura|Técnicas instrumentales|1',
   gradeBadge:'Test: 10/10 (20/20) · 3 entregas ✓',
-  summary:'Docente de referencia en el test online del 16 de octubre de 2026 (20/20 aciertos = 10) y en las tres prácticas procesales completadas en Google Drive y enviadas en CPROC.',
+  summary:'Docente de referencia en el test de Proceso digital y TIC (20/20) y en las prácticas procesales y de subsanación completadas en Drive y enviadas en CPROC.',
   mails:[{title:'Ficha del Test online 16 oct (10/10) y entregas en CPROC',key:'test_16oct'}],
   practices:[
    {title:'Test online: Deontología y técnicas transversales (20/20 · Nota: 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'HTML original ↗'},
-   {title:'Entrega 1 (Enviada ✓): Poder apud acta (CertificadoRegistro.pdf)',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
-   {title:'Entrega 2 (Enviada ✓): Escrito de subsanación (Escrito de subsanación_signed.pdf)',key:'entrega_subsanacion',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),urlLabel:'Abrir en Drive ↗'},
-   {title:'Entrega 3 (Enviada · 2 envíos ✓): Auto declaración con oferta de venta UP',key:'entrega_auto_up',url:driveSearchUrl('Documento_anonimizado.pdf'),urlLabel:'Abrir en Drive ↗'}
+   {title:'Entrega 1 (Drive ✓): Poder apud acta (CertificadoRegistro.pdf)',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
+   {title:'Entrega 2 (Drive ✓): Escrito de subsanación (Doc Google)',key:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Entrega 3 (Drive ✓): Auto declaración concurso UP (11 págs. PDF)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',urlLabel:'Abrir PDF Drive ↗'},
+   {title:'Entrega 3 complementaria: summary.docx (Microsoft Word)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',urlLabel:'Abrir Word Drive ↗'}
   ],
   notes:[
-   {title:'Apuntes y 20 preguntas resueltas del Test de Proceso Digital y TIC (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
-   {title:'CertificadoRegistro.pdf + Escrito de subsanación_signed.pdf',key:'entrega_apud_acta',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'},
-   {title:'Documento_anonimizado.pdf (11 págs.) + summary.docx (1 pág.)',key:'entrega_auto_up',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
+   {title:'Escrito de subsanación (Doc Google editable en Drive)',key:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Apuntes y 20 preguntas resueltas del Test (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
+   {title:'Documento_anonimizado.pdf (Auto concursal en Drive)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',urlLabel:'Abrir PDF Drive ↗'},
+   {title:'summary.docx (Resumen concursal en Drive)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',urlLabel:'Abrir Word Drive ↗'}
   ]
  },
  {
   name:'Carlos M. Sánchez Muiño',
   branch:'Procura',
-  role:'Procura · Técnicas instrumentales (Proceso digital y actos de comunicación)',
+  role:'Procura · Técnicas instrumentales e Iniciación profesional',
   subjectRef:'Procura|Técnicas instrumentales|1',
   gradeBadge:'Test: 10 / 10 (20/20)',
-  summary:'Imparte las sesiones del viernes 16 de octubre (11:45–13:45 mañana y 18:45–20:45 tarde) sobre responsabilidad disciplinaria y actos de comunicación, y coautor del test online del 16 de octubre superado con 20/20 (10/10).',
+  summary:'Imparte sesiones de responsabilidad disciplinaria, actos de comunicación e iniciación profesional (2 y 16 oct). Coautor del test del 16 oct (20/20).',
   mails:[
    {title:'Material de clase · Actos de comunicación judicial (15 oct)',key:'materials'},
    {title:'Test online 16 oct · Proceso digital y TIC (10/10 · 20/20)',key:'test_16oct'}
   ],
   practices:[
-   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20 = 10)',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'}
+   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20 = 10)',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'},
+   {title:'Práctica 2/10_Práctica_Raquel Escudero .pdf en Drive',key:'materials',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',urlLabel:'Abrir PDF Drive ↗'}
   ],
   notes:[
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
    {title:'Cuestionario completo de 20 preguntas con las 4 opciones (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
    {title:'Copia HTML original de Testmoz (16 oct 2026)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Abrir HTML ↗'},
    {title:'Real Decreto-ley 6/2023 (Sede judicial, TEJU, Carpeta Justicia, CSV)',key:'test_16oct',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',urlLabel:'BOE oficial ↗'}
@@ -1245,24 +1500,26 @@ const teacherDirectory=[
   role:'Procura · Deontología y responsabilidad profesional',
   subjectRef:'Procura|Deontología y responsabilidad|0',
   gradeBadge:'Práctica enviada en CPROC ✓',
-  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador. Su caso práctico ya está completado, subido a Google Drive y enviado en CPROC (junto con los tests hechos).',
+  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador (8 y 9 oct). Tu trabajo está redactado y guardado en Google Drive y enviado en CPROC.',
   mails:[{title:'Caso práctico: Derechos, deberes y responsabilidad profesional (13/15 oct)',key:'assignment'}],
   practices:[
-   {title:'Caso práctico (Completado en Drive y enviado en CPROC ✓): Derechos, deberes y responsabilidad profesional',key:'assignment',url:driveFolderUrl,urlLabel:'Abrir en Drive ↗'}
+   {title:'Caso práctico en Drive: Raquel Escudero_Derechos y deberes procuradores (Doc Google)',key:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',urlLabel:'Abrir Doc Drive ↗'}
   ],
   notes:[
-   {title:'1. Código Deontológico de los Procuradores',key:'assignment',url:driveSearchUrl('Código Deontológico'),urlLabel:'Drive ↗'},
-   {title:'2. Estatuto General de los Procuradores (RD 1281/2002)',key:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'},
-   {title:'3. Documento de derechos y deberes del procurador',key:'assignment',url:driveSearchUrl('derechos y deberes'),urlLabel:'Drive ↗'}
+   {title:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',key:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Deontología_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',key:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',urlLabel:'Abrir PDF Drive ↗'},
+   {title:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',key:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',urlLabel:'Abrir PDF Drive ↗'},
+   {title:'Código Deontológico de los Procuradores',key:'assignment',url:driveSearchUrl('Código Deontológico'),urlLabel:'Buscar en Drive ↗'},
+   {title:'Estatuto General de los Procuradores (RD 1281/2002)',key:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
   ]
  },
  {
   name:'Alex Sánchez Barge',
   branch:'Procura',
-  role:'Procura · Técnicas instrumentales (Responsabilidad disciplinaria y proceso digital)',
+  role:'Procura · Técnicas instrumentales y Oratoria Forense',
   subjectRef:'Procura|Técnicas instrumentales|1',
   gradeBadge:'Tests hechos (10 / ~8)',
-  summary:'Imparte las sesiones del viernes 16 de octubre (09:30–11:30 mañana y 16:30–18:30 tarde) dentro del bloque de Responsabilidad disciplinaria y proceso digital en el Colegio de Abogados.',
+  summary:'Imparte Oratoria forense (1, 2, 15 y 16 oct) y sesiones de Proceso digital y responsabilidad disciplinaria en el Colegio de Abogados.',
   mails:[
    {title:'Material y cronograma de Técnicas instrumentales (15 oct)',key:'materials'},
    {title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}
@@ -1272,8 +1529,9 @@ const teacherDirectory=[
    {title:'Test online Proceso digital y TIC (16 oct · 20/20 = 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver HTML test ↗'}
   ],
   notes:[
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
    {title:'Banco de 20 preguntas de Proceso digital y TIC (16 oct)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
-   {title:'Carpeta de apuntes de la asignatura en Google Drive',key:'materials',url:driveFolderUrl,urlLabel:'Abrir Drive ↗'}
+   {title:'Carpeta «Máster apuntes» en Google Drive',key:'materials',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',urlLabel:'Abrir Drive ↗'}
   ]
  },
  {
@@ -1301,66 +1559,71 @@ const teacherDirectory=[
 const catalogMaterials=[
  {
   area:'procura',
-  kicker:'Calificación por correo · 14 oct 2026',
-  title:'Nota 10 / 10 · Pruebas Técnicas instrumentales (1 oct)',
+  kicker:'Bloque I: Deontología · Prof. Ana Vázquez Corte · 8–9 oct',
+  title:'Apuntes y práctica de Deontología de la Procura',
+  teacher:'Ana Vázquez Corte',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  mailKey:'assignment',
+  actionLabel:'Ver caso práctico y apuntes',
+  docs:[
+   {name:'Raquel Escudero_Derechos y deberes procuradores y responsabilidad profesional (Doc Google)',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Abrir en Drive ↗'},
+   {name:'Deontología de la procura (8/10-9/10) (Doc Google)',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Abrir en Drive ↗'},
+   {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'Abrir en Drive ↗'},
+   {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'Abrir en Drive ↗'}
+  ]
+ },
+ {
+  area:'procura',
+  kicker:'Bloque I: Deontología · Prof. Carmen Belo / Carlos Tomé · 13–14 oct',
+  title:'Responsabilidad disciplinaria de la Procura y Deontología',
+  teacher:'Carolina Moreno Vázquez',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  mailKey:'assignment',
+  actionLabel:'Ver documentos de clase',
+  docs:[
+   {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Abrir en Drive ↗'},
+   {name:'Deontología abogacía (Doc Google en Drive)',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Abrir en Drive ↗'},
+   {name:'Documento sin título (Apuntes complementarios en Drive)',url:'https://docs.google.com/document/d/15S4I7yf7qVrP8fGyETlN5Do9nc1uz6eCV4_nF9UnI2E/edit',label:'Abrir en Drive ↗'}
+  ]
+ },
+ {
+  area:'procura',
+  kicker:'Bloque II: Técnicas instrumentales · Prof. Daniel Garrido Pazos · 5–6 oct',
+  title:'Organización de despacho e Iniciación profesional',
   teacher:'Javier Sánchez García',
   subjectRef:'Procura|Técnicas instrumentales|0',
   mailKey:'grades',
-  actionLabel:'Ver correo y desglose (10/10)',
+  actionLabel:'Ver apuntes en Drive',
   docs:[
-   {name:'Tabla de notas: 4 test + 6 escritos = 10 final',url:outlookUrl,label:'Outlook ↗'}
+   {name:'Organización de despacho (Doc Google en Drive)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Abrir en Drive ↗'},
+   {name:'Iniciación actividad profesional (Doc Google en Drive)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Abrir en Drive ↗'}
   ]
  },
  {
   area:'procura',
-  kicker:'Test evaluado (20/20 · 100 %) · 16 oct 2026',
-  title:'Test: Proceso digital y TIC (Deontología y técnicas transversales)',
-  teacher:'Carlos M. Sánchez Muiño',
+  kicker:'Bloque II: Técnicas instrumentales / Actuación · C. Moreno y C. Sánchez · 14–16 oct',
+  title:'Proceso digital, TIC y Prácticas procesales en Drive',
+  teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|1',
   mailKey:'test_16oct',
-  actionLabel:'Ver 20 preguntas y opciones',
+  actionLabel:'Ver apuntes y prácticas en Drive',
   docs:[
-   {name:'2026-10-16-testmoz-15705122.html (Original)',url:testHtmlLocalUrl,label:'Abrir HTML ↗'},
-   {name:'2026-10-16-procura-deontologia.md (Estudio)',url:testMdLocalUrl,label:'Abrir .md ↗'},
-   {name:'Revisión online en Testmoz',url:testmozReviewUrl,label:'Testmoz ↗'}
+   {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Abrir en Drive ↗'},
+   {name:'Escrito de subsanación (Doc Google editable en Drive)',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Abrir en Drive ↗'},
+   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'Abrir en Drive ↗'},
+   {name:'summary.docx (Resumen del auto concursal)',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Abrir en Drive ↗'},
+   {name:'2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',label:'Abrir en Drive ↗'},
+   {name:'330d2e_d4ef5c0c3be847798841196867316ef6.pdf (Documento en Drive)',url:'https://drive.google.com/file/d/1w7MGH-8bGNzz-ooxV_14YVsEnskwsp-O/view',label:'Abrir en Drive ↗'}
   ]
  },
  {
   area:'procura',
-  kicker:'Prácticas en Drive y CPROC · 16 oct 2026',
-  title:'Poder apud acta y Escrito de subsanación',
-  teacher:'Carolina Moreno Vázquez',
-  subjectRef:'Procura|Técnicas instrumentales|1',
-  mailKey:'entrega_apud_acta',
-  actionLabel:'Ver fichas de entrega',
-  docs:[
-   {name:'CertificadoRegistro.pdf (Poder apud acta)',url:driveSearchUrl('CertificadoRegistro.pdf'),label:'En Drive ↗'},
-   {name:'Escrito de subsanación_signed.pdf',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),label:'En Drive ↗'},
-   {name:'Plataforma CPROC (Tareas entregadas)',url:cprocUrl,label:'CPROC ↗'}
-  ]
- },
- {
-  area:'procura',
-  kicker:'Práctica en Drive y CPROC (2 envíos) · 16 oct 2026',
-  title:'Auto declaración con oferta de venta UP',
-  teacher:'Carolina Moreno Vázquez',
-  subjectRef:'Procura|Técnicas instrumentales|1',
-  mailKey:'entrega_auto_up',
-  actionLabel:'Ver los 2 envíos',
-  docs:[
-   {name:'Documento_anonimizado.pdf (11 páginas)',url:driveSearchUrl('Documento_anonimizado.pdf'),label:'En Drive ↗'},
-   {name:'summary.docx (Resumen 1 página)',url:driveSearchUrl('summary.docx'),label:'En Drive ↗'},
-   {name:'Plataforma CPROC (Tarea AUTO UP)',url:cprocUrl,label:'CPROC ↗'}
-  ]
- },
- {
-  area:'procura',
-  kicker:'Apuntes de correo · 15 oct 2026 (Clases 19–20 oct)',
+  kicker:'Bloque II: Técnicas instrumentales · Prof. Sandra Mosteiro Costa · 19–20 oct',
   title:'Actos de comunicación judicial (4 documentos)',
   teacher:'Sandra Mosteiro Costa',
   subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'materials',
-  actionLabel:'Ver correo de materiales',
+  actionLabel:'Ver correo y materiales',
   docs:[
    {name:'Carta de presentación (Sandra Mosteiro)',url:driveSearchUrl('Carta de presentación'),label:'En Drive ↗'},
    {name:'Presentación de actos de comunicación',url:driveSearchUrl('actos de comunicación'),label:'En Drive ↗'},
@@ -1369,22 +1632,8 @@ const catalogMaterials=[
   ]
  },
  {
-  area:'procura',
-  kicker:'Caso práctico y normativa · 13/15 oct 2026',
-  title:'Derechos, deberes y responsabilidad profesional',
-  teacher:'Ana Vázquez Corte',
-  subjectRef:'Procura|Deontología y responsabilidad|0',
-  mailKey:'assignment',
-  actionLabel:'Ver correo e instrucciones',
-  docs:[
-   {name:'Código Deontológico de los Procuradores',url:driveSearchUrl('Código Deontológico'),label:'En Drive ↗'},
-   {name:'Estatuto General Procuradores (RD 1281/2002)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE ↗'},
-   {name:'Documento de derechos y deberes',url:driveSearchUrl('derechos y deberes'),label:'En Drive ↗'}
-  ]
- },
- {
   area:'abogacia',
-  kicker:'Módulo Abogacía · Correo 16 oct 2026 (Clases 19–26 oct)',
+  kicker:'Bloque II: Técnicas instrumentales Abogacía · Prof. Delgado Domínguez · 19–26 oct',
   title:'Responsabilidad civil y penal · turno de oficio',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|0',
@@ -1871,34 +2120,100 @@ const sameDay=(a,b)=>keyOf(a)===keyOf(b);
 const fmtFull=d=>new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);
 const fmtShort=d=>new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short'}).format(d).replace('.','');
 
+function openEventDetail(dateStr,idx){
+ const dParts=dateStr.split('-').map(Number);
+ const evDate=new Date(dParts[0],dParts[1]-1,dParts[2]);
+ const e=(events[dateStr]||[])[idx];
+ if(!e)return;
+ showAcademicDetail(`
+  <div class="detail-kicker">${e.kind} · ${fmtFull(evDate)}</div>
+  <h2>${e.name}</h2>
+  <div class="detail-date">Horario: <b>${e.start}${e.end?` – ${e.end}`:''}</b>${e.place?` · Lugar: <b>${e.place}</b>`:''}</div>
+  <div class="detail-block">
+   <b>Materia / Referencia</b>
+   <p>${e.subject}</p>
+   ${e.teacher?`<p style="margin-top:8px"><b>Profesorado:</b> <button class="teacher-link" data-teacher="${e.teacher}">${e.teacher} ↗</button>${e.coTeacher?` · <button class="teacher-link" data-teacher="${e.coTeacher}">${e.coTeacher} ↗</button>`:''}</p>`:''}
+  </div>
+  <div class="detail-block">
+   <b>Todos los datos, apuntes y enlaces de esta actividad</b>
+   <div class="action-pills">
+    ${e.subjectRef?`<button class="pill-btn solid-green" data-subject="${e.subjectRef}">▤ Abrir asignatura y bloque del profesor ↗</button>`:''}
+    ${e.teacher?`<button class="pill-btn" data-teacher="${e.teacher}">♟ Ficha de ${e.teacher} ↗</button>`:''}
+    ${e.mailKey?`<button class="pill-btn blue" data-detail="${e.mailKey}">✉ Ver correo y documentos adjuntos ↗</button>`:''}
+    ${e.taskKey?`<button class="pill-btn solid-blue" data-detail="${e.taskKey}">★ Ver test completo (20/20) ↗</button>`:''}
+    ${e.detailKey?`<button class="pill-btn blue" data-detail="${e.detailKey}">▦ Ver detalle completo de agenda ↗</button>`:''}
+    ${e.extUrl?`<a class="pill-link blue" href="${e.extUrl}" target="_blank" rel="noopener noreferrer">Abrir enlace externo ↗</a>`:''}
+    ${e.isPersonal?`<a class="pill-link" href="${gcalUrl}" target="_blank" rel="noopener noreferrer">Abrir Google Calendar ↗</a>`:''}
+    <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive ↗</a>
+   </div>
+  </div>
+ `);
+}
+
+function renderHomeHeadlines(){
+ const nextBox=document.getElementById('nextThreeDaysList');
+ const todoBox=document.getElementById('todoHeadlinesList');
+ if(!nextBox||!todoBox)return;
+
+ // Buscar los próximos 3 días con actividades / prácticas a partir del día siguiente al seleccionado
+ const upcoming=[];
+ const cursor=new Date(selectedDate);
+ for(let step=1;step<=18&&upcoming.length<3;step++){
+  cursor.setDate(cursor.getDate()+1);
+  const ck=keyOf(cursor);
+  const raw=events[ck]||[];
+  const filtered=raw.map((ev,idx)=>({ev,idx,ck,date:new Date(cursor)})).filter(item=>{
+   if(item.ev.isPersonal||item.ev.start==='Todo el día')return true;
+   return group==='manana'?item.ev.start<'14:00':item.ev.start>='14:00';
+  });
+  if(filtered.length){
+   // Tomamos la práctica/clase principal del día (priorizando Máster sobre personal para el titular de prácticas/sesiones)
+   const mainItem=filtered.find(x=>!x.ev.isPersonal)||filtered[0];
+   upcoming.push({date:new Date(cursor),ck,items:filtered,main:mainItem});
+  }
+ }
+
+ nextBox.innerHTML=upcoming.map(u=>`
+  <button class="minimal-row" data-event-ref="${u.ck}|${u.main.idx}">
+   <span class="minimal-row-title">${u.main.ev.name}</span>
+   <span class="minimal-row-badge">${fmtShort(u.date)} · ${u.main.ev.start} ↗</span>
+  </button>
+ `).join('')||'<div class="empty">No hay sesiones próximas registradas.</div>';
+
+ // Cosas que hacer y entregas (únicamente el titular clicable)
+ const todoItems=[
+  {title:'Preparar caso práctico y guía: Actos de comunicación judicial (19–20 oct)',detailKey:'materials',badge:'19–20 oct ↗',cls:'blue'},
+  {title:'Módulo Responsabilidad civil y penal · Turno de oficio (19, 20 y 26 oct)',detailKey:'schedule',badge:'19–26 oct ↗',cls:'blue'},
+  {title:'Inscripción estudiante DATAfórum Justicia 2026 (21–23 oct)',detailKey:'dataforum',badge:'21–23 oct ↗',cls:'terra'},
+  {title:'4 / 4 prácticas entregadas en CPROC y Drive (Ver todas las entregas)',switchView:'entregas',badge:'4/4 al día ✓',cls:''}
+ ];
+ todoBox.innerHTML=todoItems.map(item=>`
+  <button class="minimal-row" ${item.detailKey?`data-detail="${item.detailKey}"`:`data-switch-view="${item.switchView}"`}>
+   <span class="minimal-row-title">${item.title}</span>
+   <span class="minimal-row-badge ${item.cls}">${item.badge}</span>
+  </button>
+ `).join('');
+}
+
 function renderDay(){
- const k=keyOf(selectedDate),list=(events[k]||[]).filter(e=>{
-  if(group==='manana')return e.start==='Todo el día'||e.start<'14:00';
-  return e.start==='Todo el día'||e.start>='14:00';
+ const k=keyOf(selectedDate),raw=events[k]||[];
+ const list=raw.map((e,idx)=>({e,idx})).filter(({e})=>{
+  if(e.isPersonal||e.start==='Todo el día')return true;
+  if(group==='manana')return e.start<'14:00';
+  return e.start>='14:00';
  });
  document.getElementById('welcomeDate').textContent=fmtFull(selectedDate);
- document.getElementById('daySubtitle').textContent=`${fmtFull(selectedDate)} · ${list.length} actividad${list.length===1?'':'es'} · ${group==='manana'?'grupo de mañana':'grupo de tarde'}`;
- document.getElementById('dayHeading').textContent=sameDay(selectedDate,todayDate)?'Actividades de hoy':'Actividades del día';
- document.getElementById('dayPosition').textContent=sameDay(selectedDate,todayDate)?'HOY':fmtShort(selectedDate).toUpperCase();
- document.getElementById('todayList').innerHTML=list.length?list.map(e=>`
-  <div class="today-row">
-   <div class="time"><b>${e.start}</b>${e.end?`hasta ${e.end}`:''}</div>
-   <div>
-    <div class="event-name">${e.name}</div>
-    <div class="event-meta">
-     Docente: <button class="teacher-link" data-teacher="${e.teacher}">${e.teacher}</button>${e.coTeacher?` y <button class="teacher-link" data-teacher="${e.coTeacher}">${e.coTeacher}</button>`:''} · ${e.subject} · ${e.place}
-    </div>
-    <div class="event-actions">
-     ${e.subjectRef?`<button class="pill-btn" data-subject="${e.subjectRef}">Ver asignatura y apuntes ↗</button>`:''}
-     ${e.mailKey?`<button class="pill-btn blue" data-detail="${e.mailKey}">✉ Ver correo ↗</button>`:''}
-     ${e.taskKey?`<button class="pill-btn solid-green" data-detail="${e.taskKey}">★ Ver test (20/20) ↗</button>`:''}
-    </div>
-   </div>
-   <span class="event-kind">${e.kind}</span>
-  </div>
- `).join(''):'<div class="empty">No hay clases registradas para este día y grupo en el calendario actual.</div>';
- const overdue=deliveries.filter(d=>!d.submitted&&d.date<todayDate);
- document.getElementById('overdueNote').innerHTML=overdue.length?`<b>Aviso de entrega:</b> tienes ${overdue.length} entrega pendiente.`:'<b>✓ Todo al día (0 vencidas):</b> las <b>4 prácticas</b> están subidas a Google Drive y enviadas en CPROC, y <b>todos los tests</b> están hechos (con un <b>10 en todos salvo uno con ~8</b>). <button class="teacher-link" data-detail="all_tests_summary">Ver resumen completo ↗</button>';
+ document.getElementById('daySubtitle').textContent=`${fmtFull(selectedDate)} · Pincha en cualquier titular para ver todos sus datos`;
+ document.getElementById('dayHeading').textContent=sameDay(selectedDate,todayDate)?'Información de hoy':'Información del día';
+ document.getElementById('dayPosition').textContent=sameDay(selectedDate,todayDate)?`HOY · ${fmtShort(selectedDate).toUpperCase()}`:fmtShort(selectedDate).toUpperCase();
+ document.getElementById('todayList').innerHTML=list.length?list.map(({e,idx})=>`
+  <button class="headline-item" data-event-ref="${k}|${idx}">
+   <span class="headline-time">${e.start}${e.end?`<small>a ${e.end}</small>`:''}</span>
+   <span class="headline-title">${e.name}</span>
+   <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
+  </button>
+ `).join(''):'<div class="empty">No hay clases ni eventos personales registrados para este día.</div>';
+ renderHomeHeadlines();
  renderCalendar();
  renderDeliveries();
 }
@@ -1915,11 +2230,11 @@ function renderCalendar(){
   if(i<start){d=new Date(y,m-1,prevTotal-start+i+1);muted=true}
   else if(i>=start+total){d=new Date(y,m+1,i-(start+total)+1);muted=true}
   else d=new Date(y,m,i-start+1);
-  const k=keyOf(d),has=(events[k]||[]).length,hasDue=deliveries.some(x=>keyOf(x.date)===k);
+  const k=keyOf(d),dayEvs=events[k]||[],hasMaster=dayEvs.some(x=>!x.isPersonal),hasPersonal=dayEvs.some(x=>x.isPersonal),hasDue=deliveries.some(x=>keyOf(x.date)===k);
   const b=document.createElement('button');
   b.className='cal-day'+(muted?' muted':'')+(sameDay(d,selectedDate)?' selected':'')+(sameDay(d,todayDate)?' today':'');
-  b.setAttribute('aria-label',fmtFull(d)+(has?' · actividad':'')+(hasDue?' · entrega':''));
-  b.innerHTML=`<span class="num">${d.getDate()}</span>${has||hasDue?`<span class="dots">${has?'<i></i>':''}${hasDue?'<i class="deadline-dot"></i>':''}</span>`:''}`;
+  b.setAttribute('aria-label',fmtFull(d)+(hasMaster?' · clase máster':'')+(hasPersonal?' · evento personal':'')+(hasDue?' · entrega':''));
+  b.innerHTML=`<span class="num">${d.getDate()}</span>${hasMaster||hasPersonal||hasDue?`<span class="dots">${hasMaster?'<i></i>':''}${hasDue?'<i class="deadline-dot"></i>':''}${hasPersonal?'<i class="personal-dot"></i>':''}</span>`:''}`;
   b.addEventListener('click',()=>{
    selectedDate=new Date(d);
    if(d.getMonth()!==monthDate.getMonth())monthDate=new Date(d.getFullYear(),d.getMonth(),1);
@@ -1973,6 +2288,11 @@ function renderMail(q=''){
 }
 
 function setView(view,doScroll=true){
+ if(view==='calendario'){
+  document.getElementById('calendarSection').scrollIntoView({behavior:'smooth'});
+  closeMenu();
+  return;
+ }
  activeView=view;
  document.querySelectorAll('.nav [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  document.querySelectorAll('.view-tabs [data-view]').forEach(b=>{
@@ -1981,7 +2301,7 @@ function setView(view,doScroll=true){
   b.setAttribute('aria-selected',String(isAct));
  });
  document.querySelectorAll('[data-section-view]').forEach(sec=>{
-  const show=view==='inicio'?(sec.dataset.sectionView==='inicio'||sec.dataset.sectionView==='asignaturas'):sec.dataset.sectionView===view;
+  const show=sec.dataset.sectionView===view;
   sec.classList.toggle('view-hidden',!show);
  });
  if(doScroll)window.scrollTo({top:0,behavior:'smooth'});
@@ -2035,6 +2355,11 @@ document.getElementById('nextDay').addEventListener('click',()=>{
  monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
  renderDay();
 });
+document.getElementById('resetTodayTop').addEventListener('click',()=>{
+ selectedDate=new Date(todayDate);
+ monthDate=new Date(todayDate.getFullYear(),todayDate.getMonth(),1);
+ renderDay();
+});
 document.getElementById('previousMonth').addEventListener('click',()=>{
  monthDate.setMonth(monthDate.getMonth()-1);
  renderCalendar();
@@ -2065,6 +2390,12 @@ document.getElementById('search').addEventListener('input',e=>{
  }
 });
 document.addEventListener('click',e=>{
+ const evRef=e.target.closest('[data-event-ref]');
+ if(evRef){
+  const [dStr,idx]=evRef.dataset.eventRef.split('|');
+  openEventDetail(dStr,Number(idx));
+  return;
+ }
  const sv=e.target.closest('[data-switch-view]');
  if(sv){e.preventDefault();setView(sv.dataset.switchView);return}
  const fold=e.target.closest('[data-toggle-fold]');
