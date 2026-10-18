@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#140f0c">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161412">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -12,80 +12,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* --- PALETA OSCURA CÁLIDA: CAFÉ ESPRESSO, MOCA TOSTADO Y CREMA --- */
-  --bg:#140f0c;
-  --paper:#1c1511;
-  --paper-warm:#231a15;
-  --paper-card:#291f19;
-  --sidebar-bg:#19120e;
+  /* --- PALETA OSCURA EQUILIBRADA Y DESATURADA: SMOKY ESPRESSO & ANTIGUO PERGAMINO --- */
+  --bg:#161412;
+  --paper:#1b1916;
+  --paper-warm:#22201c;
+  --paper-card:#282521;
+  --sidebar-bg:#181614;
 
-  /* Tipografía: Crema de leche vaporizada y pergamino antiguo de lectura relajada */
-  --ink:#f7f2ea;
-  --ink-soft:#dcd0c2;
-  --muted:#a69584;
-  --line:#3d2f25;
-  --line-subtle:#2d221a;
+  /* Tipografía: Crema suave y pergamino antiguo de lectura relajada (sin deslumbramiento) */
+  --ink:#eae4db;
+  --ink-soft:#c2bab0;
+  --muted:#8e867d;
+  --line:#38342d;
+  --line-subtle:#2b2722;
 
-  /* Verde Laurel de Biblioteca (Clases del Máster, Plan de estudios, Estados completados) */
-  --green:#3d8759;
-  --green-dark:#8fe0ac;
-  --green-pale:#15271c;
-  --green-badge:#1f3b2a;
-  --green-border:#2e6642;
+  /* Verde Salvia / Laurel Académico (Desaturado, sereno y noble) */
+  --green:#4e755f;
+  --green-dark:#8fb19e;
+  --green-pale:#1a211d;
+  --green-badge:#222d26;
+  --green-border:#36473d;
 
-  /* Café Moca Tostado / Cuero Cálido (Reemplaza al azul por completo: Abogacía, Correos, Drive) */
-  --blue:#d48b47;
-  --blue-dark:#f5c492;
-  --blue-pale:#2a1c13;
-  --blue-badge:#3f2719;
-  --blue-border:#6d4428;
+  /* Café Moca / Caramelo Tostado (Desaturado: Abogacía, Correos, Drive, Tests) */
+  --blue:#ab835c;
+  --blue-dark:#ceb195;
+  --blue-pale:#231d17;
+  --blue-badge:#2e261f;
+  --blue-border:#47392c;
 
-  /* Burdeos Terciopelo / Vino Tinto Noble (Procura, Prácticas CPROC, Entregas) */
-  --terracotta:#b84355;
-  --terra-dark:#f092a0;
-  --terra-pale:#2a1318;
-  --terra-badge:#401d24;
-  --terra-border:#6e2532;
+  /* Burdeos Noble / Palo de Rosa Envejecido (Desaturado: Procura, Prácticas CPROC, Entregas) */
+  --terracotta:#985863;
+  --terra-dark:#c0949d;
+  --terra-pale:#231a1c;
+  --terra-badge:#302225;
+  --terra-border:#473235;
 
-  /* Oro Miel Cálido (Evaluación oficial, Notas 10/10 y 20/20, Logros) */
-  --honey:#dca03b;
-  --honey-dark:#fae0a2;
-  --honey-pale:#2b1f0f;
-  --honey-badge:#402c14;
-  --honey-border:#75511b;
+  /* Oro Miel Mate / Latón Antiguo (Desaturado: Evaluación oficial, Notas 10/10 y Logros) */
+  --honey:#b39257;
+  --honey-dark:#d5be92;
+  --honey-pale:#242018;
+  --honey-badge:#302a20;
+  --honey-border:#4a3e2b;
 
-  /* Ciruela / Mora Silvestre (Profesorado y Docentes) */
-  --plum:#a84b80;
-  --plum-dark:#e8a5cb;
-  --plum-pale:#2b1322;
-  --plum-badge:#401b33;
-  --plum-border:#6e2a53;
+  /* Ciruela / Mora Apagada (Profesorado y Claustro) */
+  --plum:#8a6078;
+  --plum-dark:#b696a8;
+  --plum-pale:#211a1f;
+  --plum-badge:#2d222b;
+  --plum-border:#42323e;
 
-  /* Caramelo Avellana / Capuchino (Google Drive y Apuntes) */
-  --sky:#c97e3a;
-  --sky-dark:#f5be87;
-  --sky-pale:#28190e;
-  --sky-badge:#3b2314;
-  --sky-border:#693e1e;
+  /* Caramelo Avellana Suave (Google Drive y Apuntes) */
+  --sky:#a47f5e;
+  --sky-dark:#c9af96;
+  --sky-pale:#231d17;
+  --sky-badge:#2f251d;
+  --sky-border:#45372b;
 
-  /* Coral Tostado / Melocotón Cálido */
-  --peach:#c95632;
-  --peach-dark:#f59f84;
-  --peach-pale:#2b1610;
-  --peach-badge:#3e2017;
-  --peach-border:#6d2e1b;
+  /* Coral Tostado Mate */
+  --peach:#9d6858;
+  --peach-dark:#c3988b;
+  --peach-pale:#231b18;
+  --peach-badge:#302420;
+  --peach-border:#47342f;
 
-  /* Lavanda Brezo Envejecida (Calendario mensual) */
-  --lilac:#945d9e;
-  --lilac-dark:#d8aee0;
-  --lilac-pale:#231526;
-  --lilac-badge:#351f3b;
-  --lilac-border:#5a3563;
+  /* Lavanda Grisácea (Calendario mensual) */
+  --lilac:#7e6686;
+  --lilac-dark:#ae9cb3;
+  --lilac-pale:#1f1a23;
+  --lilac-badge:#2a232f;
+  --lilac-border:#3e3345;
 
-  /* Sombras aterciopeladas oscuras con calidez ámbar */
-  --shadow-sm:0 1px 4px rgba(0,0,0,.4);
-  --shadow:0 4px 20px rgba(0,0,0,.55),0 1px 4px rgba(0,0,0,.35);
-  --shadow-hover:0 12px 30px rgba(0,0,0,.7),0 3px 10px rgba(0,0,0,.45);
+  /* Sombras aterciopeladas sutiles y suaves */
+  --shadow-sm:0 1px 3px rgba(0,0,0,.3);
+  --shadow:0 4px 18px rgba(0,0,0,.4),0 1px 4px rgba(0,0,0,.25);
+  --shadow-hover:0 10px 26px rgba(0,0,0,.55),0 2px 8px rgba(0,0,0,.35);
 
   /* Tipografía seleccionada para lectura relajada y cómoda */
   --serif:'Lora',Charter,'Sitka Text',Georgia,serif;
@@ -133,7 +133,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   width:46px;
   height:46px;
   border-radius:13px;
-  background:linear-gradient(135deg, #0a2a1b 0%, #164e33 60%, #257a52 100%);
+  background:linear-gradient(135deg, #22201b 0%, #36322b 60%, #4a443a 100%);
   color:#fffef9;
   display:grid;
   place-items:center;
@@ -207,8 +207,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   box-shadow:0 4px 12px rgba(0,0,0,.4);
 }
 .nav button.active{
-  background:linear-gradient(135deg, #3d2617 0%, #633c23 60%, #8c5630 100%);
-  border-color:#b37243;
+  background:linear-gradient(135deg, #29241e 0%, #393129 60%, #4c4136 100%);
+  border-color:#635546;
   color:#ffffff;
   font-weight:800;
   box-shadow:0 4px 16px rgba(0,0,0,.6);
@@ -474,8 +474,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:inline-flex;
   align-items:center;
   gap:6px;
-  background:var(--honey);
-  color:#140f0c;
+  background:#352d20;
+  color:var(--honey-dark);
+  border:1px solid var(--honey-border);
   padding:5px 12px;
   border-radius:8px;
   font-size:11.5px;
@@ -673,10 +674,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color:var(--ink);
 }
 .view-tab.active{
-  background:linear-gradient(135deg, #3d2617 0%, #633c23 100%);
+  background:linear-gradient(135deg, #29241e 0%, #393129 100%);
   color:#ffffff;
   box-shadow:0 2px 8px rgba(0,0,0,.5);
-  border-color:#8c5630;
+  border-color:#574b3d;
   font-weight:700;
 }
 .view-tab .tab-badge{
@@ -733,7 +734,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-green:hover{border-color:var(--green-border)}
 .home-hub-card.hub-green .hub-card-icon{
-  background:linear-gradient(135deg, #1b3826 0%, #2f6643 60%, #448f5f 100%);
+  background:linear-gradient(135deg, #1d2620 0%, #29362e 60%, #384a3f 100%);
   color:#ffffff;
   box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
@@ -746,7 +747,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-honey:hover{border-color:var(--honey-border)}
 .home-hub-card.hub-honey .hub-card-icon{
-  background:linear-gradient(135deg, #4d330c 0%, #7d5418 60%, #b87c25 100%);
+  background:linear-gradient(135deg, #28231a 0%, #393123 60%, #4e432f 100%);
   color:#ffffff;
   box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
@@ -759,7 +760,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-terra:hover{border-color:var(--terra-border)}
 .home-hub-card.hub-terra .hub-card-icon{
-  background:linear-gradient(135deg, #47131d 0%, #752231 60%, #a83549 100%);
+  background:linear-gradient(135deg, #281c1f 0%, #39272b 60%, #4f343a 100%);
   color:#ffffff;
   box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
@@ -772,7 +773,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-blue:hover{border-color:var(--blue-border)}
 .home-hub-card.hub-blue .hub-card-icon{
-  background:linear-gradient(135deg, #472611 0%, #78421f 60%, #b86933 100%);
+  background:linear-gradient(135deg, #28211a 0%, #392e23 60%, #4f3e2f 100%);
   color:#ffffff;
   box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
@@ -807,9 +808,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card:hover .hub-card-arrow{
   transform:translate(3px,-3px);
-  background:var(--honey);
-  color:#140f0c;
-  border-color:var(--honey);
+  background:#3d3427;
+  color:var(--honey-dark);
+  border-color:var(--honey-border);
 }
 
 /* Secciones generales */
@@ -862,7 +863,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   width:50px;
   height:50px;
   border-radius:14px;
-  background:linear-gradient(135deg, #3d2617 0%, #633c23 100%);
+  background:linear-gradient(135deg, #29241e 0%, #393129 100%);
   color:#ffffff;
   display:grid;
   place-items:center;
@@ -1113,9 +1114,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stat-card:first-child .stat-kicker{color:var(--honey-dark)}
 .stat-card:first-child .stat-title{color:var(--ink);font-size:16px}
 .stat-card:first-child .stat-val-pill{
-  background:var(--honey);
-  color:#140f0c;
-  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  background:#443722;
+  color:#faecd5;
+  border:1px solid #635033;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 
 /* Card 2: Tests CPROC / Testmoz 20/20 (Azul Oxford) */
@@ -1128,9 +1130,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stat-card.highlight-test .stat-kicker{color:var(--blue)}
 .stat-card.highlight-test .stat-title{color:var(--ink);font-size:16px}
 .stat-card.highlight-test .stat-val-pill{
-  background:var(--blue);
-  color:#140f0c;
-  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  background:#423425;
+  color:#f2e4d5;
+  border:1px solid #5e4a36;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 
 /* Card 3: Prácticas en CPROC 4/4 (Burdeos Terciopelo) */
@@ -1143,9 +1146,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stat-card:last-child .stat-kicker{color:var(--terracotta)}
 .stat-card:last-child .stat-title{color:var(--ink);font-size:16px}
 .stat-card:last-child .stat-val-pill{
-  background:var(--terracotta);
-  color:#ffffff;
-  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  background:#422a2e;
+  color:#efdbe0;
+  border:1px solid #5e3c42;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 
 .stat-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;display:block}
@@ -1538,7 +1542,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .cal-day:hover{background:var(--paper-warm);border-color:var(--honey-border)}
 .cal-day .num{font-size:14px;font-weight:600}
 .cal-day.muted{color:#a89e92;background:transparent;border-color:transparent}
-.cal-day.selected{background:var(--honey);border-color:var(--honey);color:#140f0c;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.cal-day.selected{background:#443722;border-color:var(--honey-border);color:#faecd5;font-weight:800;box-shadow:0 2px 10px rgba(0,0,0,.4)}
 .cal-day.today:not(.selected){border-color:var(--blue);background:var(--blue-pale)}
 .cal-day.today:not(.selected) .num{color:var(--blue);font-weight:800}
 .cal-day .dots{position:absolute;bottom:8px;left:11px;display:flex;gap:5px}
@@ -1922,6 +1926,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
     <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">Portada</button>
+    <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">Calendario mensual 🗓️</button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
@@ -4065,7 +4070,7 @@ function renderGrades(){
      ${details.test_16oct.questions.map(q=>`
       <div style="padding:10px 0;border-top:1px dashed var(--line)">
        <p style="color:var(--ink);font-weight:700;margin-bottom:6px">${q.q}</p>
-       ${q.opts.map((opt,oi)=>`<div class="quiz-opt ${oi===q.correct?'correct':''}" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${oi===q.correct?'#eaf4ec':'#fbfbfa'};color:${oi===q.correct?'#1b4332':'inherit'};font-weight:${oi===q.correct?'600':'400'}">${oi===q.correct?'✓ ':''}${opt}${oi===q.correct?' (Seleccionada · Correcta)':''}</div>`).join('')}
+       ${q.opts.map((opt,oi)=>`<div class="quiz-opt ${oi===q.correct?'correct':''}" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${oi===q.correct?'var(--green-pale)':'var(--paper-warm)'};color:${oi===q.correct?'var(--green-dark)':'var(--ink-soft)'};border:1px solid ${oi===q.correct?'var(--green-border)':'var(--line)'};font-weight:${oi===q.correct?'600':'400'}">${oi===q.correct?'✓ ':''}${opt}${oi===q.correct?' (Seleccionada · Correcta)':''}</div>`).join('')}
       </div>
      `).join('')}
     </div>
@@ -4198,7 +4203,7 @@ function renderTeacherInsideSubject(tName, sub){
   return `
    <div class="visual-resource-card" style="border-left:4px solid var(--green)">
     <div class="visual-resource-left">
-     <div style="width:44px;height:44px;border-radius:10px;background:#f3f8f4;border:1.5px solid #c8e4cf;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+     <div style="width:44px;height:44px;border-radius:10px;background:var(--green-pale);border:1.5px solid var(--green-border);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
       <span style="font:700 16px/1 var(--serif);color:var(--green-dark)">${dayNum}</span>
       <span style="font:700 9px var(--sans);color:var(--muted);text-transform:uppercase">${mCode}</span>
      </div>
@@ -4278,9 +4283,9 @@ function renderTeacherInsideSubject(tName, sub){
   ${practicesList.length ? `
    <div style="display:grid;gap:8px">
     ${practicesList.map(p=>`
-     <div class="visual-resource-card" style="border-left:4px solid #a84320">
+     <div class="visual-resource-card" style="border-left:4px solid var(--terracotta)">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:#fdf2eb;border-color:#f2c7b3;color:#852d11">✍️</div>
+       <div class="visual-resource-icon" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)">✍️</div>
        <div>
         <div class="visual-resource-title">${p.title}</div>
         ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
@@ -4318,7 +4323,7 @@ function renderTeacherInsideSubject(tName, sub){
     ${driveDocs.map(d=>`
      <div class="visual-resource-card" style="border-left:4px solid #246845">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:#edf7f0;border-color:#bce0c3;color:#195032">📄</div>
+       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📄</div>
        <div>
         <div class="visual-resource-title">${d.name}</div>
         <div class="visual-resource-sub">Google Drive · Documento de estudio</div>
@@ -4332,7 +4337,7 @@ function renderTeacherInsideSubject(tName, sub){
     ${pureNotes.map(n=>`
      <div class="visual-resource-card" style="border-left:4px solid #246845">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:#edf7f0;border-color:#bce0c3;color:#195032">📖</div>
+       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📖</div>
        <div>
         <div class="visual-resource-title">${n.title}</div>
         <div class="visual-resource-sub">Apuntes y guía didáctica</div>
@@ -4368,9 +4373,9 @@ function renderTeacherInsideSubject(tName, sub){
   ${testsList.length ? `
    <div style="display:grid;gap:8px">
     ${testsList.map(tst=>`
-     <div class="visual-resource-card" style="border-left:4px solid #945f18;background:#fffdf9">
+     <div class="visual-resource-card" style="border-left:4px solid var(--honey);background:var(--paper-card)">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:#fef7e9;border-color:#f6daa3;color:#78490a">🎯</div>
+       <div class="visual-resource-icon" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🎯</div>
        <div>
         <div class="visual-resource-title">${tst.title}</div>
         ${tst.status?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">⭐ Calificación: ${tst.status}</div>`:''}
@@ -4403,9 +4408,9 @@ function renderTeacherInsideSubject(tName, sub){
    <strong style="color:var(--ink);font-size:14px">⭐ Evaluación y calificación oficial:</strong>
    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Expediente oficial ↗</button>
   </div>
-  <div class="visual-resource-card" style="border-left:5px solid #82591a;background:#fffdf7;padding:16px 20px">
+  <div class="visual-resource-card" style="border-left:5px solid var(--honey);background:var(--paper-card);padding:16px 20px">
    <div class="visual-resource-left">
-    <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:#fcf5e5;border-color:#edd299;color:#6b4408">⭐</div>
+    <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
     <div>
      <div style="font:700 19px/1.2 var(--serif);color:#523508">${t.gradeBadge || 'Evaluación del Módulo'}</div>
      <div style="font-size:13px;color:#6d4812;margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
@@ -4477,7 +4482,7 @@ function renderTeacherInsideSubject(tName, sub){
      </div>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:10px;border-top:1px dashed #ded5c8;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:10px;border-top:1px dashed var(--line);flex-wrap:wrap;gap:8px">
      <span style="font-size:12px;color:var(--muted)">👤 <b>${t.name}</b> · ${t.role}</span>
      <button class="pill-btn" data-teacher="${t.name}">Ver perfil completo en Profesorado ↗</button>
     </div>
@@ -5392,8 +5397,11 @@ function renderDay(){
      <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
        ⭐ Ver calificaciones oficiales (10/10) →
      </button>
-     <button class="cozy-btn cozy-btn-blue" id="btnSeeTomorrow">
-       🗓️ Ver sesiones de mañana lunes (16:30 h) →
+     <button class="cozy-btn cozy-btn-blue" data-switch-view="calendario">
+       🗓️ Ver Calendario mensual completo →
+     </button>
+     <button class="cozy-btn" id="btnSeeTomorrow" style="border:1.5px solid var(--line);background:var(--paper-warm);color:var(--ink)">
+       ⏩ Ver sesiones de mañana lunes (16:30 h) →
      </button>
    </div>
   </div>`;
@@ -5530,12 +5538,6 @@ function renderMail(q=''){
 }
 
 function setView(view,doScroll=true){
- if(view==='calendario'){
-  setView('inicio',false);
-  document.getElementById('calendarSection').scrollIntoView({behavior:'smooth'});
-  closeMenu();
-  return;
- }
  activeView=view;
  document.querySelectorAll('.nav [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  document.querySelectorAll('.view-tabs [data-view]').forEach(b=>{
@@ -5544,9 +5546,15 @@ function setView(view,doScroll=true){
   b.setAttribute('aria-selected',String(isAct));
  });
  document.querySelectorAll('[data-section-view]').forEach(sec=>{
-  const show=sec.dataset.sectionView===view;
+  const sView=sec.dataset.sectionView;
+  let show = sView === view;
+  if(view === 'calendario' && sec.id === 'calendarSection') show = true;
+  if(view === 'inicio' && sec.id === 'calendarSection') show = true;
   sec.classList.toggle('view-hidden',!show);
  });
+ if(view==='calendario'){
+  renderCalendar();
+ }
  if(doScroll)window.scrollTo({top:0,behavior:'smooth'});
  closeMenu();
 }
