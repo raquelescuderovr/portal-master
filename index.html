@@ -484,8 +484,8 @@
   <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
     <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">⌂ Portada</button>
-    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Bloques y Profesores <span class="tab-badge">4</span></button>
-    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">♟ Profesorado <span class="tab-badge">7</span></button>
+    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Bloques → Asignaturas → Profesores <span class="tab-badge">3 Bloques</span></button>
+    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">♟ Profesorado <span class="tab-badge">10</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">★ Notas y Tests <span class="tab-badge">10 / 8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">✎ Prácticas <span class="tab-badge">4/4 ✓</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">▧ Apuntes y Drive <span class="tab-badge">13</span></button>
@@ -568,8 +568,8 @@
   <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
     <div class="section-title">
       <div>
-        <h2>Bloques del Máster · Asignaturas y Bloques de Profesores</h2>
-        <p>Dentro de cada bloque tienes sus asignaturas y los bloques completos de cada profesor con su correo, prácticas, apuntes y notas.</p>
+        <h2>Bloques del Máster ➔ Asignaturas ➔ Profesores</h2>
+        <p>Estructura jerárquica académica: dentro de cada Bloque accedes a su Asignatura, dentro de cada Asignatura a su Profesor/a, y en cada Profesor/a tienes sus 5 módulos: <b>★ Notas</b>, <b>✉ Correo</b>, <b>📁 Drive</b>, <b>✎ Prácticas</b> y <b>▧ Apuntes</b>.</p>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="hub-more-btn" data-branch-view="todas">Todos los bloques</button>
@@ -1288,13 +1288,58 @@ const details={
 const courses=[
  {
   branch:'Procura',
-  name:'Técnicas instrumentales',
+  name:'Deontología y responsabilidad',
+  blockNumber:'Bloque I',
+  blockTitle:'Bloque I: Deontología y responsabilidad profesional',
   state:'En curso',
+  officialOrder:1,
+  subjects:[
+   {
+    name:'Deontología y estatuto profesional del Procurador',
+    period:'Sesiones: 8, 9, 13 y 14 oct 2026 · Práctica completada en Drive y CPROC',
+    teachers:['Ana Vázquez Corte','Carmen Belo González','Carlos Tomé'],
+    grade:{score:'Práctica enviada ✓ + Tests (10 / ~8)',detail:'Caso práctico completado y entregado en CPROC (sin retraso) · Test transversal del 16 oct: 10/10 (20/20)',detailKey:'assignment',actionLabel:'Ver ficha de la práctica ↗'},
+    tasks:[
+     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Doc Google)',date:'Completada en Drive y enviada en CPROC',state:'Completada y enviada ✓',overdue:false,detailKey:'assignment',actionLabel:'Ver ficha y documentos ↗',extUrl:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',extLabel:'Abrir Doc Drive ↗'},
+     {title:'Test online transversal: Deontología y técnicas transversales',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver test (20/20) ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'}
+    ],
+    notes:[
+     {name:'Raquel Escudero_Derechos y deberes procuradores (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'Abrir PDF Drive ↗'},
+     {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'Abrir PDF Drive ↗'},
+     {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Abrir Doc Drive ↗'}
+    ],
+    mails:['assignment']
+   },
+   {
+    name:'Deontología y régimen profesional de la Abogacía',
+    period:'Sesiones de deontología profesional · Colegio de Abogados',
+    teachers:['Carmen Belo González'],
+    grade:{score:'En curso · Tests al día',detail:'Módulo de deontología profesional del ejercicio de la abogacía.',detailKey:'assignment',actionLabel:'Ver apuntes y normas ↗'},
+    tasks:[
+     {title:'Seguimiento y casos de deontología de la abogacía',date:'Octubre 2026',state:'Al día ✓',detailKey:'assignment',actionLabel:'Ver documentos ↗'}
+    ],
+    notes:[
+     {name:'Deontología abogacía (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Abrir Doc Drive ↗'},
+     {name:'Documento sin título (Apuntes deontología)',detailKey:'assignment',url:'https://docs.google.com/document/d/15S4I7yf7qVrP8fGyETlN5Do9nc1uz6eCV4_nF9UnI2E/edit',label:'Abrir Doc Drive ↗'}
+    ],
+    mails:['assignment']
+   }
+  ]
+ },
+ {
+  branch:'Procura',
+  name:'Técnicas instrumentales',
+  blockNumber:'Bloque II',
+  blockTitle:'Bloque II: Técnicas instrumentales (Calificación Oficial: 10 / 10)',
+  state:'En curso',
+  officialOrder:2,
   subjects:[
    {
     name:'Iniciación a la actividad profesional y organización de despacho',
-    period:'Sesiones: 1, 2, 5 y 6 oct 2026 · Colegio de Abogados',
-    teachers:['Javier Sánchez García'],
+    period:'Sesiones: 1, 2, 5 y 6 oct 2026 · Colegio de Abogados · Nota oficial: 10/10',
+    teachers:['Javier Sánchez García','Daniel Garrido Pazos'],
     grade:{score:'10 / 10 (Sobresaliente)',detail:'4 ptos. Test + 6 ptos. Trabajos/escritos · Confirmado por correo el 14 oct',detailKey:'grades',actionLabel:'Ver correo de la nota (10/10) ↗'},
     tasks:[
      {title:'Pruebas del 1 de octubre (Test + Trabajos/escritos)',date:'Evaluado el 14 oct 2026 por correo',state:'Calificado: 10 / 10 ✓',detailKey:'grades',actionLabel:'Abrir desglose de nota ↗'}
@@ -1309,7 +1354,7 @@ const courses=[
    {
     name:'Responsabilidad disciplinaria y proceso digital (Deontología y técnicas transversales)',
     period:'Sesiones y entregas: 16–20 oct 2026 · Colegio de Abogados y CPROC',
-    teachers:['Carolina Moreno Vázquez','Carlos M. Sánchez Muiño','Alex Sánchez Barge','Sandra Mosteiro Costa'],
+    teachers:['Carolina Moreno Vázquez','Carlos M. Sánchez Muiño','Alex Sánchez Barge'],
     grade:{score:'Test: 10 / 10 (20/20) · Todos los tests hechos',detail:'Test 16 oct: 10/10 (20/20) · Todos los tests hechos (10 en todos salvo uno con ~8) · 3 prácticas enviadas en CPROC ✓',detailKey:'test_16oct',actionLabel:'Ver test completo (20/20) ↗'},
     tasks:[
      {title:'Test online: Proceso digital y TIC (Grupo de tarde)',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver las 20 preguntas ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'},
@@ -1343,45 +1388,36 @@ const courses=[
      {name:'Jurisprudencia sobre plazos procesales (para caso práctico)',detailKey:'materials',url:driveSearchUrl('Jurisprudencia'),label:'Buscar en Drive ↗'}
     ],
     mails:['materials']
-   }
-  ]
- },
- {
-  branch:'Procura',
-  name:'Deontología y responsabilidad',
-  state:'En curso',
-  subjects:[
+   },
    {
-    name:'Derechos, deberes y responsabilidad profesional del procurador',
-    period:'Práctica entregada en CPROC y Drive (15 oct 2026) · Tests completados',
-    teachers:['Ana Vázquez Corte'],
-    grade:{score:'Práctica enviada ✓ + Tests (10 / ~8)',detail:'Caso práctico subido a Drive y enviado en CPROC (ninguna vencida) · Test transversal del 16 oct: 10/10 (20/20)',detailKey:'assignment',actionLabel:'Ver ficha de la práctica ↗'},
+    name:'Responsabilidad civil y penal y turno de oficio (Abogacía)',
+    period:'Sesiones: 19, 20 y 26 oct 2026 (6 h presenciales por grupo) · Colegio de Abogados',
+    teachers:['José Luis Delgado Domínguez'],
+    grade:{score:'En curso (19–26 oct)',detail:'Horarios y enlace a documentación recibidos por correo el 16 oct 2026',detailKey:'schedule',actionLabel:'Ver correo y horarios ↗'},
     tasks:[
-     {title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Doc Google)',date:'Subido a Drive y enviado en CPROC',state:'Completada y enviada en CPROC ✓',overdue:false,detailKey:'assignment',actionLabel:'Ver ficha y documentos ↗',extUrl:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',extLabel:'Abrir Doc Drive ↗'},
-     {title:'Test online transversal: Deontología y técnicas transversales',date:'16 oct 2026 · 19:17 · Testmoz',state:'Calificado: 10 / 10 (20/20) ✓',detailKey:'test_16oct',actionLabel:'Ver test (20/20) ↗',extUrl:testHtmlLocalUrl,extLabel:'HTML original ↗'}
+     {title:'Asistencia y seguimiento del módulo presencial (6 horas)',date:'19, 20 y 26 oct 2026 · Mañana y Tarde',state:'En curso',detailKey:'schedule',actionLabel:'Ver horarios por grupo ↗'},
+     {title:'Aviso DATAfórum Justicia 2026 (PALEXCO)',date:'21–23 oct 2026 · Confirmar instrucciones en el Máster',state:'Aviso Decanato',detailKey:'dataforum',actionLabel:'Ver aviso DATAfórum ↗'}
     ],
     notes:[
-     {name:'Raquel Escudero_Derechos y deberes procuradores (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Abrir Doc Drive ↗'},
-     {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Abrir Doc Drive ↗'},
-     {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'Abrir PDF Drive ↗'},
-     {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'Abrir PDF Drive ↗'},
-     {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Abrir Doc Drive ↗'},
-     {name:'Deontología abogacía (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Abrir Doc Drive ↗'},
-     {name:'Código Deontológico de los Procuradores',detailKey:'assignment',url:driveSearchUrl('Código Deontológico'),label:'Buscar en Drive ↗'},
-     {name:'Estatuto General de los Procuradores (RD 1281/2002)',detailKey:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
+     {name:'Documentación del módulo (enlazada desde el correo del 16 oct)',detailKey:'schedule',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'},
+     {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
+     {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE oficial ↗'}
     ],
-    mails:['assignment']
+    mails:['schedule','dataforum']
    }
   ]
  },
  {
   branch:'Procura',
   name:'Actuación procesal',
+  blockNumber:'Bloque III',
+  blockTitle:'Bloque III: Actuación procesal digital y postulación (CPROC)',
   state:'En curso',
+  officialOrder:3,
   subjects:[
    {
     name:'Práctica procesal digital: representación, subsanación y concurso (UP)',
-    period:'Entregas registradas: 15–16 oct 2026 · CPROC y Google Drive',
+    period:'Entregas registradas: 15–16 oct 2026 · CPROC y Google Drive · 4/4 enviadas',
     teachers:['Carolina Moreno Vázquez','Sandra Mosteiro Costa'],
     grade:{score:'4 / 4 prácticas enviadas ✓',detail:'Todas las prácticas de Drive están completadas y enviadas en CPROC (0 vencidas)',detailKey:'entrega_auto_up',actionLabel:'Ver entregas procesales ↗'},
     tasks:[
@@ -1402,7 +1438,10 @@ const courses=[
  {
   branch:'Abogacía',
   name:'Técnicas instrumentales',
+  blockNumber:'Bloque II (Abogacía)',
+  blockTitle:'Bloque II: Técnicas instrumentales · Abogacía',
   state:'En curso',
+  officialOrder:4,
   subjects:[
    {
     name:'Responsabilidad civil y penal · turno de oficio',
@@ -1426,40 +1465,138 @@ const courses=[
 
 const teacherDirectory=[
  {
+  name:'Ana Vázquez Corte',
+  branch:'Procura',
+  role:'Procura · Deontología y responsabilidad profesional',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  gradeBadge:'Práctica enviada ✓ · Test 10/10',
+  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador (8 y 9 oct). Tu trabajo está redactado y guardado en Google Drive y enviado en CPROC.',
+  grade:{score:'Práctica enviada en CPROC ✓',scoreLabel:'Test transversal: 10/10 (20/20)',detail:'Caso práctico completado en Drive y entregado en CPROC (sin retrasos ni vencimientos) · Test online del 16 oct: 20/20 (100 %).',detailKey:'assignment'},
+  mails:[{title:'Instrucciones del caso práctico y 3 documentos base (13/15 oct)',key:'assignment'}],
+  driveFiles:[
+   {name:'Raquel Escudero_Derechos y deberes procuradores y responsabilidad profesional',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Google Docs ↗'},
+   {name:'Deontología de la procura (8/10-9/10)',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Google Docs ↗'},
+   {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'PDF Drive ↗'},
+   {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'PDF Drive ↗'}
+  ],
+  practices:[
+   {title:'Caso práctico: Derechos, deberes y responsabilidad profesional del procurador',status:'Completada en Drive y enviada en CPROC ✓',key:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Test online transversal: Deontología y técnicas transversales (16 oct)',status:'Calificado: 10 / 10 (20/20) ✓',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver Testmoz ↗'}
+  ],
+  notes:[
+   {title:'Código Deontológico de los Procuradores',url:driveSearchUrl('Código Deontológico'),urlLabel:'Buscar en Drive ↗'},
+   {title:'Estatuto General de los Procuradores (RD 1281/2002)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
+  name:'Carmen Belo González',
+  branch:'Procura',
+  role:'Procura y Abogacía · Deontología profesional y régimen disciplinario',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  gradeBadge:'En curso · Tests al día',
+  summary:'Imparte las sesiones de deontología profesional y régimen disciplinario de la Procura y la Abogacía (13 y 14 oct).',
+  grade:{score:'Al día en evaluación',scoreLabel:'Módulo presencial',detail:'Módulo completado en sesiones presenciales del 13 y 14 de octubre · Cuestionarios al día.',detailKey:'assignment'},
+  mails:[{title:'Materiales y pautas de Deontología y régimen disciplinario',key:'assignment'}],
+  driveFiles:[
+   {name:'13/10 Responsabilidad disciplinaria de la Procura',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Google Docs ↗'},
+   {name:'Deontología abogacía',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Google Docs ↗'},
+   {name:'Documento sin título (Apuntes deontología)',url:'https://docs.google.com/document/d/15S4I7yf7qVrP8fGyETlN5Do9nc1uz6eCV4_nF9UnI2E/edit',label:'Google Docs ↗'}
+  ],
+  practices:[
+   {title:'Supuestos prácticos sobre régimen disciplinario y ejercicio profesional',status:'Al día ✓',key:'assignment',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
+  ],
+  notes:[
+   {title:'Código Deontológico de la Abogacía Española',url:driveSearchUrl('Código Deontológico Abogacía'),urlLabel:'Buscar en Drive ↗'},
+   {title:'Estatuto de la Procura y régimen de responsabilidad',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
+  name:'Carlos Tomé',
+  branch:'Procura',
+  role:'Procura · Deontología y régimen disciplinario',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  gradeBadge:'En curso',
+  summary:'Coordinador y docente en las sesiones de régimen estatutario y responsabilidad disciplinaria de la Procura.',
+  grade:{score:'Al día',scoreLabel:'Módulo presencial',detail:'Docencia de apoyo en el módulo de Deontología y régimen disciplinario.',detailKey:'assignment'},
+  mails:[{title:'Materiales de clase · Responsabilidad disciplinaria de la Procura',key:'assignment'}],
+  driveFiles:[
+   {name:'13/10 Responsabilidad disciplinaria de la Procura',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Google Docs ↗'}
+  ],
+  practices:[
+   {title:'Casos prácticos de infracciones y sanciones disciplinarias',status:'Al día ✓',key:'assignment',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
+  ],
+  notes:[
+   {title:'Régimen disciplinario de los Procuradores (Estatuto General)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
   name:'Javier Sánchez García',
   branch:'Procura',
   role:'Procura · Técnicas instrumentales e Iniciación profesional',
   subjectRef:'Procura|Técnicas instrumentales|0',
-  gradeBadge:'Nota correo: 10 / 10',
-  summary:'Responsable de Iniciación a la actividad profesional (1 oct) y calificación de Técnicas instrumentales (10/10). Sus apuntes y prácticas están en Drive.',
+  gradeBadge:'Nota oficial: 10 / 10',
+  summary:'Responsable de Iniciación a la actividad profesional (1 oct) y calificación de Técnicas instrumentales (10/10 comunicada el 14 oct).',
+  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Nota final oficial',detail:'4 puntos en Test (1 oct) + 6 puntos en Trabajos/escritos de iniciación = 10 / 10 comunicado por correo oficial el 14 oct 2026.',detailKey:'grades'},
   mails:[{title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}],
-  practices:[{title:'Pruebas del 1 de octubre: Test (4 ptos.) + Trabajos/escritos (6 ptos.) = 10',key:'grades',url:outlookUrl,urlLabel:'Ver en Outlook ↗'}],
+  driveFiles:[
+   {name:'Iniciación actividad profesional',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Google Docs ↗'},
+   {name:'Organización de despacho',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Google Docs ↗'}
+  ],
+  practices:[
+   {title:'Pruebas del 1 de octubre: Test (4 ptos.) + Trabajos/escritos (6 ptos.)',status:'Calificado: 10 / 10 (Sobresaliente) ✓',key:'grades',url:outlookUrl,urlLabel:'Ver tabla en Outlook ↗'}
+  ],
   notes:[
-   {title:'Iniciación actividad profesional (Google Docs)',key:'grades',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Desglose de calificación en tabla del correo (14 oct 2026)',key:'grades',url:outlookUrl,urlLabel:'Abrir Outlook ↗'}
+   {title:'Iniciación actividad profesional (Google Docs)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Tabla oficial de calificaciones en el correo de Secretaría',url:outlookUrl,urlLabel:'Abrir Outlook ↗'}
+  ]
+ },
+ {
+  name:'Daniel Garrido Pazos',
+  branch:'Procura',
+  role:'Procura · Técnicas instrumentales (Organización de despacho)',
+  subjectRef:'Procura|Técnicas instrumentales|0',
+  gradeBadge:'10 / 10 en módulo conjunto',
+  summary:'Docente en las sesiones de organización de despacho, sistemas de archivo y gestión colegial (5 y 6 oct).',
+  grade:{score:'10 / 10',scoreLabel:'Módulo conjunto',detail:'Calificación de 10/10 obtenida en el módulo de Iniciación y Organización de despacho.',detailKey:'grades'},
+  mails:[{title:'Comunicaciones de organización del despacho profesional (1–6 oct)',key:'grades'}],
+  driveFiles:[
+   {name:'Organización de despacho',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Google Docs ↗'},
+   {name:'Iniciación actividad profesional',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Google Docs ↗'}
+  ],
+  practices:[
+   {title:'Ejercicios prácticos de organización y gestión del despacho de procurador',status:'Completado con 10/10 ✓',key:'grades',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
+  ],
+  notes:[
+   {title:'Organización de despacho (Doc Google en Drive)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',urlLabel:'Abrir Doc Drive ↗'}
   ]
  },
  {
   name:'Carolina Moreno Vázquez',
   branch:'Procura',
-  role:'Procura · Deontología, Técnicas instrumentales y Actuación procesal',
+  role:'Procura · Deontología transversal, Proceso digital y Actuación procesal',
   subjectRef:'Procura|Técnicas instrumentales|1',
-  gradeBadge:'Test: 10/10 (20/20) · 3 entregas ✓',
-  summary:'Docente de referencia en el test de Proceso digital y TIC (20/20) y en las prácticas procesales y de subsanación completadas en Drive y enviadas en CPROC.',
+  gradeBadge:'Test: 10/10 (20/20) · 4 entregas ✓',
+  summary:'Docente del test oficial de Proceso digital y TIC (20/20 aciertos) y de las 4 prácticas procesales completadas en Drive y enviadas en CPROC.',
+  grade:{score:'Test: 10 / 10 (20/20)',scoreLabel:'4/4 prácticas enviadas',detail:'Test 16 oct superado con 20 de 20 aciertos (100 %) · 4 prácticas procesales completadas en Drive y enviadas con éxito en CPROC (0 vencidas).',detailKey:'test_16oct'},
   mails:[{title:'Ficha del Test online 16 oct (10/10) y entregas en CPROC',key:'test_16oct'}],
+  driveFiles:[
+   {name:'Subcarpeta «Prácticas» en Google Drive',url:'https://drive.google.com/drive/u/0/folders/1-xGG31nwuSqubd5pJUTpiGpllrJgs36e',label:'Carpeta Prácticas ↗'},
+   {name:'Escrito de subsanación',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Google Docs ↗'},
+   {name:'CertificadoRegistro.pdf (Poder apud acta en Drive)',url:driveSearchUrl('CertificadoRegistro.pdf'),label:'PDF Drive ↗'},
+   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'PDF Drive ↗'},
+   {name:'summary.docx (Resumen concursal)',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Word Drive ↗'},
+   {name:'TIC_ Resp. disciplinaria / proceso digital',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Google Docs ↗'}
+  ],
   practices:[
-   {title:'Test online: Deontología y técnicas transversales (20/20 · Nota: 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'HTML original ↗'},
-   {title:'Entrega 1 (Drive ✓): Poder apud acta (CertificadoRegistro.pdf)',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
-   {title:'Entrega 2 (Drive ✓): Escrito de subsanación (Doc Google)',key:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Entrega 3 (Drive ✓): Auto declaración concurso UP (11 págs. PDF)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',urlLabel:'Abrir PDF Drive ↗'},
-   {title:'Entrega 3 complementaria: summary.docx (Microsoft Word)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',urlLabel:'Abrir Word Drive ↗'}
+   {title:'Test online: Deontología y técnicas transversales (20/20 · Nota: 10)',status:'20 de 20 (100 %) ✓',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'HTML original ↗'},
+   {title:'Práctica 1: Poder apud acta (CertificadoRegistro.pdf)',status:'Completada y enviada en CPROC ✓',key:'entrega_apud_acta',url:driveSearchUrl('CertificadoRegistro.pdf'),urlLabel:'Abrir en Drive ↗'},
+   {title:'Práctica 2: Escrito de subsanación (Doc Google en Drive)',status:'Completada y enviada en CPROC ✓',key:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Práctica 3 (2 envíos): Auto UP (Documento_anonimizado.pdf + summary.docx)',status:'Completada y enviada (2 envíos) ✓',key:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',urlLabel:'Abrir PDF Drive ↗'}
   ],
   notes:[
-   {title:'Escrito de subsanación (Doc Google editable en Drive)',key:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Apuntes y 20 preguntas resueltas del Test (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
-   {title:'Documento_anonimizado.pdf (Auto concursal en Drive)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',urlLabel:'Abrir PDF Drive ↗'},
-   {title:'summary.docx (Resumen concursal en Drive)',key:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',urlLabel:'Abrir Word Drive ↗'}
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Apuntes y 20 preguntas resueltas del Test (.md)',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
+   {title:'Real Decreto-ley 6/2023 (Sede judicial electrónica, TEJU, Carpeta Justicia, CSV)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',urlLabel:'BOE oficial ↗'}
   ]
  },
  {
@@ -1468,20 +1605,50 @@ const teacherDirectory=[
   role:'Procura · Técnicas instrumentales e Iniciación profesional',
   subjectRef:'Procura|Técnicas instrumentales|1',
   gradeBadge:'Test: 10 / 10 (20/20)',
-  summary:'Imparte sesiones de responsabilidad disciplinaria, actos de comunicación e iniciación profesional (2 y 16 oct). Coautor del test del 16 oct (20/20).',
+  summary:'Imparte sesiones de responsabilidad disciplinaria, actos de comunicación e iniciación profesional. Coautor del test del 16 oct (20/20).',
+  grade:{score:'10 / 10 (20/20)',scoreLabel:'Testmoz CPROC',detail:'20 de 20 preguntas correctas en el test del 16 de octubre de Deontología y Técnicas transversales.',detailKey:'test_16oct'},
   mails:[
    {title:'Material de clase · Actos de comunicación judicial (15 oct)',key:'materials'},
    {title:'Test online 16 oct · Proceso digital y TIC (10/10 · 20/20)',key:'test_16oct'}
   ],
+  driveFiles:[
+   {name:'TIC_ Resp. disciplinaria / proceso digital',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Google Docs ↗'},
+   {name:'2/10_Práctica_Raquel Escudero .pdf',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',label:'PDF Drive ↗'},
+   {name:'330d2e_d4ef5c0c3be847798841196867316ef6.pdf',url:'https://drive.google.com/file/d/1w7MGH-8bGNzz-ooxV_14YVsEnskwsp-O/view',label:'PDF Drive ↗'}
+  ],
   practices:[
-   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20 = 10)',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'},
-   {title:'Práctica 2/10_Práctica_Raquel Escudero .pdf en Drive',key:'materials',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',urlLabel:'Abrir PDF Drive ↗'}
+   {title:'Test online: CAROLINA MORENO - CARLOS SÁNCHEZ (16 oct · 20/20 = 10)',status:'Calificado: 10 / 10 ✓',key:'test_16oct',url:testmozReviewUrl,urlLabel:'Revisión Testmoz ↗'},
+   {title:'Práctica 2/10_Práctica_Raquel Escudero .pdf en Drive',status:'Completada en Drive ✓',key:'materials',url:'https://drive.google.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view',urlLabel:'Abrir PDF Drive ↗'}
   ],
   notes:[
-   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Cuestionario completo de 20 preguntas con las 4 opciones (.md)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
-   {title:'Copia HTML original de Testmoz (16 oct 2026)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Abrir HTML ↗'},
-   {title:'Real Decreto-ley 6/2023 (Sede judicial, TEJU, Carpeta Justicia, CSV)',key:'test_16oct',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',urlLabel:'BOE oficial ↗'}
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Cuestionario completo de 20 preguntas con las 4 opciones (.md)',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
+   {title:'Copia HTML original de Testmoz (16 oct 2026)',url:testHtmlLocalUrl,urlLabel:'Abrir HTML ↗'}
+  ]
+ },
+ {
+  name:'Alex Sánchez Barge',
+  branch:'Procura',
+  role:'Procura · Técnicas instrumentales y Oratoria Forense',
+  subjectRef:'Procura|Técnicas instrumentales|1',
+  gradeBadge:'Tests al día (10 / ~8)',
+  summary:'Imparte Oratoria forense y sesiones de Proceso digital y responsabilidad disciplinaria en el Colegio de Abogados.',
+  grade:{score:'Tests al día: 10 (y ~8)',scoreLabel:'Cuestionarios CPROC',detail:'Todos los cuestionarios de la materia completados con 10 en todos ellos excepto uno calificado con un ~8.',detailKey:'all_tests_summary'},
+  mails:[
+   {title:'Material y cronograma de Técnicas instrumentales (15 oct)',key:'materials'},
+   {title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}
+  ],
+  driveFiles:[
+   {name:'Carpeta «Máster apuntes» en Google Drive',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',label:'Carpeta Drive ↗'},
+   {name:'TIC_ Resp. disciplinaria / proceso digital',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Google Docs ↗'}
+  ],
+  practices:[
+   {title:'Tests del bloque realizados (10 en todos salvo uno con ~8)',status:'100 % completados ✓',key:'all_tests_summary',url:cprocUrl,urlLabel:'Abrir CPROC ↗'},
+   {title:'Test online Proceso digital y TIC (16 oct · 20/20 = 10)',status:'Calificado: 10 / 10 ✓',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver HTML test ↗'}
+  ],
+  notes:[
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
+   {title:'Banco de 20 preguntas de Proceso digital y TIC (16 oct)',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'}
   ]
  },
  {
@@ -1490,56 +1657,22 @@ const teacherDirectory=[
   role:'Procura · Técnicas instrumentales (Actos de comunicación judicial)',
   subjectRef:'Procura|Técnicas instrumentales|2',
   gradeBadge:'4 documentos en correo',
-  summary:'Imparte las clases del lunes 19 y martes 20 de octubre (09:30–11:30 mañana y 16:30–18:30 tarde). Remitió por correo el 15 de octubre 4 documentos de estudio y práctica.',
+  summary:'Imparte las clases del 19 y 20 de octubre. Remitió por correo el 15 de octubre 4 documentos de estudio y práctica.',
+  grade:{score:'Materiales al día',scoreLabel:'Sesiones 19–20 oct',detail:'4 documentos remitidos por correo para preparar las sesiones y el caso de plazos procesales.',detailKey:'materials'},
   mails:[{title:'Material de clase · Actos de comunicación judicial (15 oct)',key:'materials'}],
-  practices:[
-   {title:'Caso práctico de plazos y actos de comunicación judicial (clases 19–20 oct)',key:'materials',url:driveSearchUrl('Jurisprudencia'),urlLabel:'Buscar en Drive ↗'}
-  ],
-  notes:[
-   {title:'1. Carta de presentación de Sandra Mosteiro Costa',key:'materials',url:driveSearchUrl('Carta de presentación'),urlLabel:'Drive ↗'},
-   {title:'2. Presentación de actos de comunicación judicial (diapositivas)',key:'materials',url:driveSearchUrl('actos de comunicación'),urlLabel:'Drive ↗'},
-   {title:'3. Guía legislativa de actos de comunicación',key:'materials',url:driveSearchUrl('Guía legislativa'),urlLabel:'Drive ↗'},
-   {title:'4. Jurisprudencia sobre plazos procesales',key:'materials',url:driveSearchUrl('Jurisprudencia'),urlLabel:'Drive ↗'}
-  ]
- },
- {
-  name:'Ana Vázquez Corte',
-  branch:'Procura',
-  role:'Procura · Deontología y responsabilidad profesional',
-  subjectRef:'Procura|Deontología y responsabilidad|0',
-  gradeBadge:'Práctica enviada en CPROC ✓',
-  summary:'Docente de Derechos, deberes y responsabilidad profesional del procurador (8 y 9 oct). Tu trabajo está redactado y guardado en Google Drive y enviado en CPROC.',
-  mails:[{title:'Caso práctico: Derechos, deberes y responsabilidad profesional (13/15 oct)',key:'assignment'}],
-  practices:[
-   {title:'Caso práctico en Drive: Raquel Escudero_Derechos y deberes procuradores (Doc Google)',key:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',urlLabel:'Abrir Doc Drive ↗'}
-  ],
-  notes:[
-   {title:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',key:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Deontología_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',key:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',urlLabel:'Abrir PDF Drive ↗'},
-   {title:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',key:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',urlLabel:'Abrir PDF Drive ↗'},
-   {title:'Código Deontológico de los Procuradores',key:'assignment',url:driveSearchUrl('Código Deontológico'),urlLabel:'Buscar en Drive ↗'},
-   {title:'Estatuto General de los Procuradores (RD 1281/2002)',key:'assignment',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
-  ]
- },
- {
-  name:'Alex Sánchez Barge',
-  branch:'Procura',
-  role:'Procura · Técnicas instrumentales y Oratoria Forense',
-  subjectRef:'Procura|Técnicas instrumentales|1',
-  gradeBadge:'Tests hechos (10 / ~8)',
-  summary:'Imparte Oratoria forense (1, 2, 15 y 16 oct) y sesiones de Proceso digital y responsabilidad disciplinaria en el Colegio de Abogados.',
-  mails:[
-   {title:'Material y cronograma de Técnicas instrumentales (15 oct)',key:'materials'},
-   {title:'Resultados de las pruebas · Técnicas instrumentales (14 oct)',key:'grades'}
+  driveFiles:[
+   {name:'Carpeta raíz «Máster» en Google Drive',url:driveFolderUrl,label:'Carpeta Máster ↗'},
+   {name:'1. Carta de presentación de Sandra Mosteiro Costa',url:driveSearchUrl('Carta de presentación'),label:'Buscar en Drive ↗'},
+   {name:'2. Presentación de actos de comunicación judicial (diapositivas)',url:driveSearchUrl('actos de comunicación'),label:'Buscar en Drive ↗'},
+   {name:'3. Guía legislativa de actos de comunicación',url:driveSearchUrl('Guía legislativa'),label:'Buscar en Drive ↗'},
+   {name:'4. Jurisprudencia sobre plazos procesales',url:driveSearchUrl('Jurisprudencia'),label:'Buscar en Drive ↗'}
   ],
   practices:[
-   {title:'Tests del bloque realizados (10 en todos salvo uno con ~8)',key:'all_tests_summary',url:cprocUrl,urlLabel:'Abrir CPROC ↗'},
-   {title:'Test online Proceso digital y TIC (16 oct · 20/20 = 10)',key:'test_16oct',url:testHtmlLocalUrl,urlLabel:'Ver HTML test ↗'}
+   {title:'Caso práctico sobre plazos procesales y actos de comunicación judicial',status:'Materiales recibidos ✓',key:'materials',url:driveSearchUrl('Jurisprudencia'),urlLabel:'Buscar en Drive ↗'}
   ],
   notes:[
-   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',key:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',urlLabel:'Abrir Doc Drive ↗'},
-   {title:'Banco de 20 preguntas de Proceso digital y TIC (16 oct)',key:'test_16oct',url:testMdLocalUrl,urlLabel:'Abrir .md ↗'},
-   {title:'Carpeta «Máster apuntes» en Google Drive',key:'materials',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',urlLabel:'Abrir Drive ↗'}
+   {title:'Guía legislativa de actos de comunicación (LEC y RDL 6/2023)',url:driveSearchUrl('Guía legislativa'),urlLabel:'Buscar en Drive ↗'},
+   {title:'Ley de Enjuiciamiento Civil (Ley 1/2000 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',urlLabel:'BOE oficial ↗'}
   ]
  },
  {
@@ -1549,17 +1682,20 @@ const teacherDirectory=[
   subjectRef:'Abogacía|Técnicas instrumentales|0',
   gradeBadge:'En curso (19–26 oct)',
   summary:'Imparte las 6 horas presenciales por grupo del módulo de Responsabilidad civil y penal y turno de oficio los días 19, 20 y 26 de octubre en el Colegio de Abogados.',
+  grade:{score:'En curso',scoreLabel:'6 h presenciales',detail:'Horarios oficiales y enlace a la documentación recibidos por correo el 16 oct 2026.',detailKey:'schedule'},
   mails:[
    {title:'Responsabilidad civil y penal · horarios del módulo (16 oct)',key:'schedule'},
    {title:'DATAfórum · suspensión de clases en la Facultad (15 oct)',key:'dataforum'}
   ],
+  driveFiles:[
+   {name:'Documentación del módulo enlazada en el correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'}
+  ],
   practices:[
-   {title:'Sesiones presenciales y casos del módulo (19, 20 y 26 oct)',key:'schedule',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
+   {title:'Casos prácticos presenciales de turno de oficio y responsabilidad',status:'En curso ✓',key:'schedule',url:driveFolderUrl,urlLabel:'Carpeta Drive ↗'}
   ],
   notes:[
-   {title:'Documentación del módulo enlazada en el correo del 16 oct',key:'schedule',url:driveSearchUrl('Responsabilidad civil'),urlLabel:'Buscar en Drive ↗'},
-   {title:'Estatuto General de la Abogacía Española (RD 135/2021)',key:'schedule',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',urlLabel:'BOE oficial ↗'},
-   {title:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio)',key:'schedule',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',urlLabel:'BOE oficial ↗'}
+   {title:'Estatuto General de la Abogacía Española (RD 135/2021)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',urlLabel:'BOE oficial ↗'},
+   {title:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',urlLabel:'BOE oficial ↗'}
   ]
  }
 ];
@@ -1692,14 +1828,20 @@ function renderGrades(){
 function renderTeacherInsideSubject(tName){
  const t=teacherDirectory.find(x=>x.name===tName);
  if(!t)return '';
+ const driveDocs=t.driveFiles||[];
+ const practicesList=t.practices||[];
+ const notesList=t.notes||[];
+ const mailsList=t.mails||[];
+ const gradeInfo=t.grade||{score:t.gradeBadge,scoreLabel:'Evaluación',detail:t.summary,detailKey:'grades'};
+
  return `
-  <div class="subject-teacher-card">
+  <div class="subject-teacher-card" id="docente-${encodeURIComponent(t.name)}">
    <div class="subject-teacher-head">
     <div>
      <h4 class="subject-teacher-name">
       <button class="teacher-link" style="text-decoration:none;font:inherit;color:inherit" data-teacher="${t.name}">♟ Profesor/a: ${t.name} <span aria-hidden="true">↗</span></button>
      </h4>
-     <div class="subject-teacher-role">${t.summary}</div>
+     <div class="subject-teacher-role">${t.role} · ${t.summary}</div>
     </div>
     <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
      <span class="teacher-grade-pill">★ ${t.gradeBadge}</span>
@@ -1707,53 +1849,100 @@ function renderTeacherInsideSubject(tName){
     </div>
    </div>
 
+   <!-- Las 5 secciones requeridas: 1. Notas | 2. Correo | 3. Drive | 4. Prácticas | 5. Apuntes -->
    <div class="subject-teacher-cols">
-    <!-- 1. Correo del profesor -->
-    <div class="st-col">
-     <b class="st-col-title">✉ Correo de ${t.name} (${t.mails.length})</b>
-     ${t.mails.map(m=>{
-      const msg=messages.find(x=>x.key===m.key);
-      return `
+
+    <!-- 1. NOTAS Y CALIFICACIÓN -->
+    <div class="st-col st-col-grades">
+     <b class="st-col-title">★ 1. Notas y Evaluación</b>
+     <div class="st-col-body">
+      <div class="st-score-callout">${gradeInfo.score}</div>
+      <div class="st-score-sub">${gradeInfo.scoreLabel?`<b>${gradeInfo.scoreLabel}</b><br>`:''}${gradeInfo.detail}</div>
+     </div>
+     <div class="st-col-foot">
+      <button class="pill-btn solid-green" data-detail="${gradeInfo.detailKey||'grades'}">Ver calificación oficial ↗</button>
+     </div>
+    </div>
+
+    <!-- 2. CORREO Y COMUNICACIÓN -->
+    <div class="st-col st-col-mails">
+     <b class="st-col-title">✉ 2. Correo de ${t.name} (${mailsList.length})</b>
+     <div class="st-col-body">
+      ${mailsList.length?mailsList.map(m=>{
+       const msg=messages.find(x=>x.key===m.key);
+       return `
+        <div class="st-item">
+         <strong>${m.title}</strong>
+         ${msg?`<div class="st-item-meta">${msg.date}</div>`:''}
+         <div class="item-links">
+          <button class="pill-btn blue" data-detail="${m.key}">Ver correo ↗</button>
+         </div>
+        </div>
+       `;
+      }).join(''):'<div class="st-item-meta">Sin correos directos registrados</div>'}
+     </div>
+     <div class="st-col-foot">
+      <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir en Outlook ↗</a>
+     </div>
+    </div>
+
+    <!-- 3. GOOGLE DRIVE (ACCESO DIRECTO) -->
+    <div class="st-col st-col-drive">
+     <b class="st-col-title">📁 3. Google Drive (${driveDocs.length})</b>
+     <div class="st-col-body">
+      ${driveDocs.length?driveDocs.map(d=>`
        <div class="st-item">
-        <strong>${m.title}</strong>
-        ${msg?`<div class="st-item-meta">${msg.date} · ${msg.meta}</div>`:''}
+        <strong>${d.name}</strong>
         <div class="item-links">
-         <button class="pill-btn blue" data-detail="${m.key}">Ver correo y adjuntos ↗</button>
-         <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir en Outlook ↗</a>
+         <a class="pill-link terra" href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label||'Abrir en Drive ↗'}</a>
         </div>
        </div>
-      `;
-     }).join('')}
+      `).join(''):'<div class="st-item-meta">Archivos en la carpeta general de Drive</div>'}
+     </div>
+     <div class="st-col-foot">
+      <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive ↗</a>
+     </div>
     </div>
 
-    <!-- 2. Prácticas, entregas y tests del profesor -->
-    <div class="st-col">
-     <b class="st-col-title">✎ Prácticas y tests de ${t.name} (${t.practices.length})</b>
-     ${t.practices.map(p=>`
-      <div class="st-item">
-       <strong>${p.title}</strong>
-       <div class="item-links">
-        <button class="pill-btn" data-detail="${p.key}">Ver práctica / nota ↗</button>
-        ${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel}</a>`:''}
-        <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
+    <!-- 4. PRÁCTICAS Y TESTS -->
+    <div class="st-col st-col-practices">
+     <b class="st-col-title">✎ 4. Prácticas y tests (${practicesList.length})</b>
+     <div class="st-col-body">
+      ${practicesList.length?practicesList.map(p=>`
+       <div class="st-item">
+        <strong>${p.title}</strong>
+        ${p.status?`<div class="st-item-meta" style="color:var(--green-dark);font-weight:700">${p.status}</div>`:''}
+        <div class="item-links">
+         ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ver práctica ↗</button>`:''}
+         ${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel||'Ver enlace ↗'}</a>`:''}
+        </div>
        </div>
-      </div>
-     `).join('')}
+      `).join(''):'<div class="st-item-meta">Sin entregas asignadas actualmente</div>'}
+     </div>
+     <div class="st-col-foot">
+      <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+     </div>
     </div>
 
-    <!-- 3. Apuntes y documentos del profesor -->
-    <div class="st-col">
-     <b class="st-col-title">▧ Apuntes y documentos de ${t.name} (${t.notes.length})</b>
-     ${t.notes.map(n=>`
-      <div class="st-item">
-       <strong>${n.title}</strong>
-       <div class="item-links">
-        <button class="pill-btn" data-detail="${n.key}">Ver ficha ↗</button>
-        <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel}</a>
+    <!-- 5. APUNTES Y TEMARIO -->
+    <div class="st-col st-col-notes">
+     <b class="st-col-title">▧ 5. Apuntes y temario (${notesList.length})</b>
+     <div class="st-col-body">
+      ${notesList.length?notesList.map(n=>`
+       <div class="st-item">
+        <strong>${n.title}</strong>
+        <div class="item-links">
+         ${n.key?`<button class="pill-btn" data-detail="${n.key}">Ficha ↗</button>`:''}
+         <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel||'Abrir ↗'}</a>
+        </div>
        </div>
-      </div>
-     `).join('')}
+      `).join(''):'<div class="st-item-meta">Temario en curso de clase</div>'}
+     </div>
+     <div class="st-col-foot">
+      <button class="pill-btn" data-teacher="${t.name}">Ficha del profesor ↗</button>
+     </div>
     </div>
+
    </div>
   </div>
  `;
@@ -1762,17 +1951,31 @@ function renderTeacherInsideSubject(tName){
 function renderCourses(filter=''){
  const grid=document.getElementById('courseGrid');
  const activeFilter=(filter==='todas')?'':filter;
- grid.innerHTML=courses.filter(c=>c.state==='En curso'&&(!activeFilter||c.branch===activeFilter)).map((c,cIdx)=>{
+ const sortedCourses=courses.filter(c=>c.state==='En curso'&&(!activeFilter||c.branch===activeFilter)).sort((a,b)=>(a.officialOrder||99)-(b.officialOrder||99));
+
+ grid.innerHTML=`
+  <!-- Guía de navegación jerárquica -->
+  <div class="st-tree-nav" style="margin-bottom:20px">
+   <b>Estructura jerárquica:</b>
+   <span class="view-tab active" style="padding:4px 10px;font-size:11px">1. Bloques del Máster</span>
+   <span style="color:#7a8a7c">➔</span>
+   <span class="view-tab active" style="padding:4px 10px;font-size:11px;background:#2d5c43">2. Asignaturas</span>
+   <span style="color:#7a8a7c">➔</span>
+   <span class="view-tab active" style="padding:4px 10px;font-size:11px;background:#3e6b52">3. Profesorado</span>
+   <span style="color:#7a8a7c">➔</span>
+   <span style="font-weight:700;color:var(--ink);background:#edf3eb;padding:4px 10px;border-radius:12px;border:1px solid #cadbc9">4. ★ Notas · ✉ Correo · 📁 Drive · ✎ Prácticas · ▧ Apuntes</span>
+  </div>
+ ` + (sortedCourses.map((c,cIdx)=>{
   const uniqueTeachers=[...new Set(c.subjects.flatMap(s=>s.teachers))];
   return `
-  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}">
+  <article class="course-card" data-area="${c.branch==='Abogacía'?'abogacia':'procura'}" style="margin-bottom:28px">
    <div class="course-card-head">
     <div>
-     <div class="course-kicker">Bloque del Máster · ${c.branch}</div>
-     <h3><button class="course-open" data-course="${courseKey(c)}">Bloque ${cIdx+1}: ${c.name} (${c.branch}) <span aria-hidden="true">↗</span></button></h3>
+     <div class="course-kicker">NIVEL 1: BLOQUE DEL MÁSTER · ${c.branch.toUpperCase()}</div>
+     <h3><button class="course-open" data-course="${courseKey(c)}">${c.blockTitle||('Bloque '+(cIdx+1)+': '+c.name+' ('+c.branch+')')} <span aria-hidden="true">↗</span></button></h3>
      <p>${c.subjects.length} asignatura${c.subjects.length===1?'':'s'} en este bloque · ${uniqueTeachers.length} profesor${uniqueTeachers.length===1?'':'es'} (${uniqueTeachers.join(', ')})</p>
     </div>
-    <span class="course-status">${c.state} · ${c.subjects.length} asignatura${c.subjects.length===1?'':'s'}</span>
+    <span class="course-status">${c.blockNumber||('Bloque '+(cIdx+1))} · ${c.state}</span>
    </div>
 
    ${c.subjects.map((sub,idx)=>`
@@ -1780,7 +1983,7 @@ function renderCourses(filter=''){
      <!-- Cabecera de la Asignatura dentro del Bloque -->
      <div class="subject-banner">
       <div>
-       <div class="subject-kicker">Asignatura ${idx+1} de ${c.subjects.length} · Bloque ${c.name} (${c.branch})</div>
+       <div class="subject-kicker">NIVEL 2: ASIGNATURA ${idx+1} DE ${c.subjects.length} · ${c.blockNumber||c.name}</div>
        <div class="subject-header-title">
         <button class="subject-open" data-subject="${courseKey(c)}|${idx}">▤ Asignatura: ${sub.name} <span aria-hidden="true">↗</span></button>
        </div>
@@ -1798,9 +2001,9 @@ function renderCourses(filter=''){
       `:''}
      </div>
 
-     <!-- Dentro de cada Asignatura: Cada Profesor con su Correo, sus Prácticas, sus Apuntes y su Nota -->
+     <!-- Dentro de cada Asignatura: Cada Profesor con sus 5 secciones -->
      <div class="subject-teachers-label">
-      <span>♟ Profesorado de esta asignatura (${sub.teachers.length}): correo, prácticas, apuntes y notas de cada profesor</span>
+      <span>♟ NIVEL 3: PROFESORADO DE ESTA ASIGNATURA (${sub.teachers.length}) ➔ EN CADA DOCENTE: NOTAS, CORREO, DRIVE, PRÁCTICAS Y APUNTES</span>
      </div>
      <div class="subject-teachers-grid">
       ${sub.teachers.map(tName=>renderTeacherInsideSubject(tName)).join('')}
@@ -1808,7 +2011,7 @@ function renderCourses(filter=''){
     </div>
    `).join('')}
   </article>
- `}).join('')||'<div class="empty">No hay bloques registrados para este filtro.</div>';
+ `}).join('')||'<div class="empty">No hay bloques registrados para este filtro.</div>');
 }
 
 function renderTeachers(q=''){
@@ -1981,6 +2184,13 @@ function openSubject(ref){
        </div>
       </div>
       <div style="margin-bottom:7px">
+       <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:#1e6a3f;margin-bottom:4px">📁 Google Drive (${(td.driveFiles||[]).length})</div>
+       <div class="action-pills">
+        ${(td.driveFiles||[]).map(d=>`<a class="pill-link terra" href="${d.url}" target="_blank" rel="noopener noreferrer">${d.name} ↗</a>`).join('')}
+        <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive ↗</a>
+       </div>
+      </div>
+      <div style="margin-bottom:7px">
        <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:#8c3d23;margin-bottom:4px">✎ Prácticas y tests de ${td.name}</div>
        <div class="action-pills">
         ${td.practices.map(p=>`<button class="pill-btn" data-detail="${p.key}">${p.title} ↗</button>${p.url?`<a class="pill-link terra" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel}</a>`:''}`).join('')}
@@ -2016,8 +2226,8 @@ function openTeacher(name){
   <div class="detail-kicker">${t.role}</div>
   <h2>${t.name}</h2>
   <div class="teacher-hero">
-   <b>Resumen docente y evaluación · ${t.gradeBadge}</b>
-   <p>${t.summary}</p>
+   <b>★ Evaluación y notas · ${t.gradeBadge}</b>
+   <p>${t.grade?t.grade.detail:t.summary}</p>
    <div style="margin-top:8px"><button class="pill-btn" data-subject="${t.subjectRef}">Ir a la asignatura del profesor ↗</button></div>
   </div>
   <div class="detail-block">
@@ -2026,10 +2236,23 @@ function openTeacher(name){
    <a class="outlook-btn-secondary" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Buscar correos de ${t.name} en Outlook ↗</a>
   </div>
   <div class="detail-block">
+   <b>📁 Documentos en Google Drive de ${t.name} (${(t.driveFiles||[]).length})</b>
+   ${(t.driveFiles||[]).map(d=>`
+    <div class="doc-direct-row" style="margin-bottom:6px">
+     <span>${d.name}</span>
+     <a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label||'Abrir en Drive ↗'}</a>
+    </div>
+   `).join('')}
+   <div class="action-pills" style="margin-top:10px">
+    <a class="drive-btn-secondary" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir carpeta Máster en Drive ↗</a>
+   </div>
+  </div>
+  <div class="detail-block">
    <b>✎ Prácticas y pruebas con ${t.name}</b>
    ${t.practices.map(p=>`
     <div class="subject-item-card">
      <strong>${p.title}</strong>
+     ${p.status?`<div style="font-size:11px;color:var(--green-dark);font-weight:700;margin:3px 0">${p.status}</div>`:''}
      <div class="item-links">
       <button class="pill-btn" data-detail="${p.key}">Abrir detalle en el portal ↗</button>
       ${p.url?`<a class="pill-link blue" href="${p.url}" target="_blank" rel="noopener noreferrer">${p.urlLabel}</a>`:''}
@@ -2048,9 +2271,6 @@ function openTeacher(name){
      </div>
     </div>
    `).join('')}
-   <div class="action-pills" style="margin-top:10px">
-    <a class="drive-btn-secondary" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir carpeta Máster en Drive ↗</a>
-   </div>
   </div>
  `);
 }
