@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#faf8f5">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#140f0c">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -12,77 +12,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf8f5;
-  --paper:#ffffff;
-  --paper-warm:#fdfcf9;
-  --paper-card:#ffffff;
-  --sidebar-bg:#f5f3ec;
-  --ink:#1c1917;
-  --ink-soft:#44403c;
-  --muted:#6b645b;
-  --line:#dfd9cc;
-  --line-subtle:#eee9de;
+  /* --- PALETA OSCURA CÁLIDA: CAFÉ ESPRESSO, MOCA TOSTADO Y CREMA --- */
+  --bg:#140f0c;
+  --paper:#1c1511;
+  --paper-warm:#231a15;
+  --paper-card:#291f19;
+  --sidebar-bg:#19120e;
 
-  /* Verde Laurel Británico (Clases del Máster, Plan de estudios, Estados completados) */
-  --green:#164e33;
-  --green-dark:#0a2a1b;
-  --green-pale:#eaf4ed;
-  --green-badge:#c8e5d2;
-  --green-border:#89cb9f;
+  /* Tipografía: Crema de leche vaporizada y pergamino antiguo de lectura relajada */
+  --ink:#f7f2ea;
+  --ink-soft:#dcd0c2;
+  --muted:#a69584;
+  --line:#3d2f25;
+  --line-subtle:#2d221a;
 
-  /* Azul Oxford Sedoso (Abogacía, Correos de Outlook, Citas personales) */
-  --blue:#193f70;
-  --blue-dark:#0d2340;
-  --blue-pale:#eaf2fb;
-  --blue-badge:#c8dff7;
-  --blue-border:#88b9ea;
+  /* Verde Laurel de Biblioteca (Clases del Máster, Plan de estudios, Estados completados) */
+  --green:#3d8759;
+  --green-dark:#8fe0ac;
+  --green-pale:#15271c;
+  --green-badge:#1f3b2a;
+  --green-border:#2e6642;
 
-  /* Burdeos Terciopelo (Procura, Prácticas CPROC, Entregas) */
-  --terracotta:#881e3d;
-  --terra-dark:#4d0a1e;
-  --terra-pale:#fdf1f4;
-  --terra-badge:#fad4dc;
-  --terra-border:#f2a9ba;
+  /* Café Moca Tostado / Cuero Cálido (Reemplaza al azul por completo: Abogacía, Correos, Drive) */
+  --blue:#d48b47;
+  --blue-dark:#f5c492;
+  --blue-pale:#2a1c13;
+  --blue-badge:#3f2719;
+  --blue-border:#6d4428;
+
+  /* Burdeos Terciopelo / Vino Tinto Noble (Procura, Prácticas CPROC, Entregas) */
+  --terracotta:#b84355;
+  --terra-dark:#f092a0;
+  --terra-pale:#2a1318;
+  --terra-badge:#401d24;
+  --terra-border:#6e2532;
 
   /* Oro Miel Cálido (Evaluación oficial, Notas 10/10 y 20/20, Logros) */
-  --honey:#9a620b;
-  --honey-dark:#5e3802;
-  --honey-pale:#fef8ea;
-  --honey-badge:#fbe5b8;
-  --honey-border:#e8be6e;
+  --honey:#dca03b;
+  --honey-dark:#fae0a2;
+  --honey-pale:#2b1f0f;
+  --honey-badge:#402c14;
+  --honey-border:#75511b;
 
-  /* Ciruela Académico (Profesorado y Docentes) */
-  --plum:#6f2b58;
-  --plum-dark:#431333;
-  --plum-pale:#fbf1f7;
-  --plum-badge:#f4d4e9;
-  --plum-border:#de9fca;
+  /* Ciruela / Mora Silvestre (Profesorado y Docentes) */
+  --plum:#a84b80;
+  --plum-dark:#e8a5cb;
+  --plum-pale:#2b1322;
+  --plum-badge:#401b33;
+  --plum-border:#6e2a53;
 
-  /* Azul Zafiro Nórdico (Google Drive y Apuntes) */
-  --sky:#145c82;
-  --sky-dark:#093247;
-  --sky-pale:#eaf5fa;
-  --sky-badge:#c8e4f2;
-  --sky-border:#84bedc;
+  /* Caramelo Avellana / Capuchino (Google Drive y Apuntes) */
+  --sky:#c97e3a;
+  --sky-dark:#f5be87;
+  --sky-pale:#28190e;
+  --sky-badge:#3b2314;
+  --sky-border:#693e1e;
 
-  /* Coral Cálido (Correo institucional) */
-  --peach:#b84318;
-  --peach-dark:#6e2308;
-  --peach-pale:#fef4ee;
-  --peach-badge:#fddcc9;
-  --peach-border:#f8b394;
+  /* Coral Tostado / Melocotón Cálido */
+  --peach:#c95632;
+  --peach-dark:#f59f84;
+  --peach-pale:#2b1610;
+  --peach-badge:#3e2017;
+  --peach-border:#6d2e1b;
 
-  /* Lavanda Brezo (Calendario mensual) */
-  --lilac:#6a3e7a;
-  --lilac-dark:#43214f;
-  --lilac-pale:#f8f2fa;
-  --lilac-badge:#ecdcf0;
-  --lilac-border:#d4b5dd;
+  /* Lavanda Brezo Envejecida (Calendario mensual) */
+  --lilac:#945d9e;
+  --lilac-dark:#d8aee0;
+  --lilac-pale:#231526;
+  --lilac-badge:#351f3b;
+  --lilac-border:#5a3563;
 
-  /* Sombras aterciopeladas nítidas */
-  --shadow-sm:0 1px 3px rgba(35,28,20,.05);
-  --shadow:0 4px 18px rgba(35,28,20,.08),0 1px 4px rgba(35,28,20,.04);
-  --shadow-hover:0 12px 28px rgba(35,28,20,.12),0 3px 8px rgba(35,28,20,.05);
+  /* Sombras aterciopeladas oscuras con calidez ámbar */
+  --shadow-sm:0 1px 4px rgba(0,0,0,.4);
+  --shadow:0 4px 20px rgba(0,0,0,.55),0 1px 4px rgba(0,0,0,.35);
+  --shadow-hover:0 12px 30px rgba(0,0,0,.7),0 3px 10px rgba(0,0,0,.45);
 
   /* Tipografía seleccionada para lectura relajada y cómoda */
   --serif:'Lora',Charter,'Sitka Text',Georgia,serif;
@@ -184,7 +187,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .nav button{
   width:100%;
   border:1.5px solid var(--line);
-  background:#ffffff;
+  background:var(--paper-warm);
   text-align:left;
   border-radius:12px;
   padding:10px 13px;
@@ -195,20 +198,20 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color:var(--ink);
   font:700 14px/1.2 var(--sans);
   transition:all .18s ease;
-  box-shadow:0 1px 3px rgba(35,28,20,.03);
+  box-shadow:0 1px 4px rgba(0,0,0,.25);
 }
 .nav button:hover{
-  background:#fdfcf9;
-  border-color:#b8af9f;
+  background:#2f241d;
+  border-color:#5c4738;
   transform:translateX(3px);
-  box-shadow:0 4px 10px rgba(35,28,20,.06);
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
 }
 .nav button.active{
-  background:linear-gradient(135deg, #0e3523 0%, #164e33 100%);
-  border-color:#0a2a1b;
+  background:linear-gradient(135deg, #3d2617 0%, #633c23 60%, #8c5630 100%);
+  border-color:#b37243;
   color:#ffffff;
   font-weight:800;
-  box-shadow:0 4px 14px rgba(22,78,51,.3);
+  box-shadow:0 4px 16px rgba(0,0,0,.6);
   transform:translateX(4px);
 }
 .nav button.active .nav-icon-pill{
@@ -306,28 +309,28 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   width:100%;
 }
 .side-branch-card.card-abogacia{
-  background:#ffffff;
+  background:var(--paper-warm);
   border:1.5px solid var(--blue-border);
   border-left:5px solid var(--blue);
-  box-shadow:0 2px 6px rgba(25,63,112,.05);
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 .side-branch-card.card-abogacia:hover{
-  background:var(--blue-pale);
+  background:#2f2219;
   border-color:var(--blue);
   transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(25,63,112,.12);
+  box-shadow:0 6px 16px rgba(0,0,0,.5);
 }
 .side-branch-card.card-procura{
-  background:#ffffff;
+  background:var(--paper-warm);
   border:1.5px solid var(--terra-border);
   border-left:5px solid var(--terracotta);
-  box-shadow:0 2px 6px rgba(136,30,61,.05);
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 .side-branch-card.card-procura:hover{
-  background:var(--terra-pale);
+  background:#2e181c;
   border-color:var(--terracotta);
   transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(136,30,61,.12);
+  box-shadow:0 6px 16px rgba(0,0,0,.5);
 }
 .sbc-top{
   display:flex;
@@ -358,10 +361,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .side-tree-accordion{
   border:1.5px solid var(--line);
   border-radius:14px;
-  background:#ffffff;
+  background:var(--paper-warm);
   margin-bottom:14px;
   overflow:hidden;
-  box-shadow:0 2px 6px rgba(35,28,20,.04);
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
 .side-tree-summary{
   padding:12px 14px;
@@ -373,12 +376,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   justify-content:space-between;
   align-items:center;
   user-select:none;
-  background:var(--paper-warm);
+  background:var(--paper);
   transition:background .15s ease;
 }
 .side-tree-summary::-webkit-details-marker{display:none}
-.side-tree-summary:hover{background:#ede6d9}
-.side-tree-accordion[open] .sta-arrow{transform:rotate(180deg)}
+.side-tree-summary:hover{background:#281e18}
 .sta-arrow{
   transition:transform .18s ease;
   font-size:13px;
@@ -435,7 +437,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px}
 .top-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .menu-toggle{border:1px solid var(--line);background:var(--paper-warm);width:40px;height:40px;border-radius:12px;display:grid;place-items:center;cursor:pointer;color:var(--green-dark);box-shadow:var(--shadow-sm);transition:all .18s}
-.menu-toggle:hover{background:#ece2d2;transform:translateY(-1px)}
+.menu-toggle:hover{background:#2f241d;color:var(--honey-dark);transform:translateY(-1px)}
 .top-quick{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .top-quick button,.top-quick a{border:1px solid var(--line);background:var(--paper-warm);border-radius:20px;padding:8px 15px;font-size:12.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;white-space:nowrap;text-decoration:none;box-shadow:0 1px 3px rgba(60,45,30,.04);transition:all .18s ease}
 .top-quick button[data-branch-view="Abogacía"]{color:var(--blue-dark);border-color:var(--blue-border);background:var(--blue-pale)}
@@ -447,16 +449,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .search:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(50,95,72,.15)}
 .search input{border:0;outline:0;background:transparent;width:100%;font:13.5px var(--sans);color:var(--ink)}
 .search input::placeholder{color:var(--muted);opacity:.85}
-.avatar{width:38px;height:38px;border-radius:50%;background:#e5d5be;color:#4f3926;display:grid;place-items:center;font-size:12.5px;font-weight:800;border:2px solid #fff;box-shadow:0 2px 8px rgba(60,45,30,.1)}
+.avatar{width:38px;height:38px;border-radius:50%;background:#382a20;color:var(--honey-dark);display:grid;place-items:center;font-size:12.5px;font-weight:800;border:2px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.4)}
 
 /* Cabecera acogedora cálida (Welcome Card) */
 /* ========================================================
    CABECERA PRINCIPAL EJECUTIVA DE ALTO IMPACTO (Welcome Card)
    ======================================================== */
 .welcome{
-  background:#ffffff;
+  background:var(--paper-card);
   border:1.5px solid var(--line);
-  border-top:5px solid var(--green);
+  border-top:5px solid var(--honey);
   border-radius:18px;
   padding:28px 32px;
   margin-bottom:26px;
@@ -472,8 +474,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:inline-flex;
   align-items:center;
   gap:6px;
-  background:var(--green);
-  color:#ffffff;
+  background:var(--honey);
+  color:#140f0c;
   padding:5px 12px;
   border-radius:8px;
   font-size:11.5px;
@@ -481,7 +483,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   letter-spacing:.06em;
   text-transform:uppercase;
   margin-bottom:12px;
-  box-shadow:0 2px 6px rgba(22,78,51,.25);
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 .welcome h1{
   font:700 clamp(30px,3.5vw,42px)/1.15 var(--serif);
@@ -507,7 +509,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .welcome-badge{
   border:1.5px solid var(--line);
-  background:#ffffff;
+  background:var(--paper-warm);
   border-radius:14px;
   padding:10px 16px;
   display:inline-flex;
@@ -516,7 +518,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   cursor:pointer;
   text-align:left;
   transition:all .18s ease;
-  box-shadow:0 2px 8px rgba(35,28,20,.05);
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
 }
 .welcome-badge:hover{
   transform:translateY(-2px);
@@ -524,18 +526,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .welcome-badge.badge-gold{
   border-left:5px solid var(--honey);
-  background:#fffdf8;
-  border-color:#edd59f;
+  background:#2b1f0f;
+  border-color:#75511b;
 }
 .welcome-badge.badge-gold .badge-icon{
   background:var(--honey);
-  color:#ffffff;
+  color:#140f0c;
 }
 .welcome-badge.badge-gold .badge-label{color:var(--honey-dark)}
 .welcome-badge.badge-mint{
   border-left:5px solid var(--green);
-  background:#f6fbf8;
-  border-color:#b5dec5;
+  background:#15271c;
+  border-color:#2e6642;
 }
 .welcome-badge.badge-mint .badge-icon{
   background:var(--green);
@@ -544,8 +546,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .welcome-badge.badge-mint .badge-label{color:var(--green)}
 .welcome-badge.badge-terra{
   border-left:5px solid var(--terracotta);
-  background:#fdf6f7;
-  border-color:#f6c0cc;
+  background:#2a1318;
+  border-color:#6e2532;
 }
 .welcome-badge.badge-terra .badge-icon{
   background:var(--terracotta);
@@ -554,13 +556,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .welcome-badge.badge-terra .badge-label{color:var(--terracotta)}
 .welcome-badge.badge-blue{
   border-left:5px solid var(--blue);
-  background:#f6f9fd;
-  border-color:#bcd7f4;
+  background:#2a1c13;
+  border-color:#6d4428;
   cursor:default;
 }
 .welcome-badge.badge-blue .badge-icon{
   background:var(--blue);
-  color:#ffffff;
+  color:#140f0c;
 }
 .welcome-badge.badge-blue .badge-label{color:var(--blue)}
 .welcome-badge .badge-icon{
@@ -634,12 +636,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:inline-flex;
   align-items:center;
   gap:2px;
-  background:#f4f1ea;
-  padding:3px;
-  border-radius:8px;
+  background:var(--sidebar-bg);
+  padding:4px;
+  border-radius:10px;
   margin-bottom:20px;
-  border:1px solid var(--line);
-  box-shadow:0 1px 2px rgba(0,0,0,.03);
+  border:1.5px solid var(--line);
+  box-shadow:0 1px 3px rgba(0,0,0,.3);
   overflow-x:auto;
   max-width:100%;
   scrollbar-width:none;
@@ -667,15 +669,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display:none !important;
 }
 .view-tab:hover{
-  background:rgba(255,255,255,.75);
+  background:var(--paper-warm);
   color:var(--ink);
 }
 .view-tab.active{
-  background:#ffffff;
-  color:var(--green-dark);
-  box-shadow:0 1px 3px rgba(0,0,0,.08);
-  border-color:rgba(0,0,0,.08);
-  font-weight:600;
+  background:linear-gradient(135deg, #3d2617 0%, #633c23 100%);
+  color:#ffffff;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  border-color:#8c5630;
+  font-weight:700;
 }
 .view-tab .tab-badge{
   font-size:10px;
@@ -689,9 +691,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   flex-shrink:0;
 }
 .view-tab.active .tab-badge{
-  background:var(--green-pale);
-  color:var(--green);
-  border:1px solid var(--green-border);
+  background:rgba(255,255,255,.25);
+  color:#ffffff;
 }
 
 /* ========================================================
@@ -704,7 +705,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   margin-bottom:28px;
 }
 .home-hub-card{
-  background:#ffffff;
+  background:var(--paper-card);
   border:1.5px solid var(--line);
   border-radius:16px;
   padding:20px 22px;
@@ -722,6 +723,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .home-hub-card:hover{
   transform:translateY(-3px);
   box-shadow:var(--shadow-hover);
+  background:#2f241d;
 }
 
 /* 1. Plan de estudios */
@@ -731,9 +733,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-green:hover{border-color:var(--green-border)}
 .home-hub-card.hub-green .hub-card-icon{
-  background:linear-gradient(135deg, #0e3523 0%, #164e33 60%, #257a52 100%);
+  background:linear-gradient(135deg, #1b3826 0%, #2f6643 60%, #448f5f 100%);
   color:#ffffff;
-  box-shadow:0 4px 12px rgba(22,78,51,.3);
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .home-hub-card.hub-green .hub-card-kicker{color:var(--green)}
 
@@ -744,9 +746,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-honey:hover{border-color:var(--honey-border)}
 .home-hub-card.hub-honey .hub-card-icon{
-  background:linear-gradient(135deg, #6e3e03 0%, #9a620b 60%, #c4831c 100%);
+  background:linear-gradient(135deg, #4d330c 0%, #7d5418 60%, #b87c25 100%);
   color:#ffffff;
-  box-shadow:0 4px 12px rgba(154,98,11,.3);
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .home-hub-card.hub-honey .hub-card-kicker{color:var(--honey-dark)}
 
@@ -757,9 +759,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-terra:hover{border-color:var(--terra-border)}
 .home-hub-card.hub-terra .hub-card-icon{
-  background:linear-gradient(135deg, #591024 0%, #881e3d 60%, #b52952 100%);
+  background:linear-gradient(135deg, #47131d 0%, #752231 60%, #a83549 100%);
   color:#ffffff;
-  box-shadow:0 4px 12px rgba(136,30,61,.3);
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .home-hub-card.hub-terra .hub-card-kicker{color:var(--terracotta)}
 
@@ -770,9 +772,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card.hub-blue:hover{border-color:var(--blue-border)}
 .home-hub-card.hub-blue .hub-card-icon{
-  background:linear-gradient(135deg, #0d2647 0%, #193f70 60%, #295e9e 100%);
+  background:linear-gradient(135deg, #472611 0%, #78421f 60%, #b86933 100%);
   color:#ffffff;
-  box-shadow:0 4px 12px rgba(25,63,112,.3);
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .home-hub-card.hub-blue .hub-card-kicker{color:var(--blue)}
 
@@ -805,9 +807,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .home-hub-card:hover .hub-card-arrow{
   transform:translate(3px,-3px);
-  background:var(--green);
-  color:#ffffff;
-  border-color:var(--green);
+  background:var(--honey);
+  color:#140f0c;
+  border-color:var(--honey);
 }
 
 /* Secciones generales */
@@ -823,15 +825,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .group-switch button{border:0;border-radius:8px;padding:6px 14px;min-height:30px;background:transparent;color:var(--ink-soft);font:700 12.5px var(--sans);cursor:pointer;transition:all .16s}
 .group-switch button.active{background:var(--green);color:#fff;font-weight:800;box-shadow:0 2px 6px rgba(22,78,51,.25)}
 .day-control-nav{display:flex;align-items:center;gap:8px}
-.day-control-nav button,#resetTodayTop{border-radius:20px;border:1.5px solid var(--line);background:#ffffff;cursor:pointer;font:800 12.5px var(--sans);padding:8px 15px;color:var(--green-dark);box-shadow:0 1px 3px rgba(35,28,20,.03);transition:all .16s}
-.day-control-nav button:hover,#resetTodayTop:hover{background:var(--green-pale);border-color:var(--green-border);transform:translateY(-1px)}
+.day-control-nav button,#resetTodayTop{border-radius:20px;border:1.5px solid var(--line);background:var(--paper-warm);cursor:pointer;font:800 12.5px var(--sans);padding:8px 15px;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.2);transition:all .16s}
+.day-control-nav button:hover,#resetTodayTop:hover{background:#2f241d;border-color:var(--honey-border);color:var(--honey-dark);transform:translateY(-1px)}
 .day-control-nav span{font-size:13px;font-weight:800;color:var(--green-dark);min-width:92px;text-align:center}
 
 /* Panel Mi Día (ALTO IMPACTO) */
-.today-panel{background:#ffffff;border:1.5px solid var(--line);border-radius:18px;padding:20px 24px;box-shadow:var(--shadow)}
+.today-panel{background:var(--paper-card);border:1.5px solid var(--line);border-radius:18px;padding:20px 24px;box-shadow:var(--shadow)}
 .today-list{display:grid;gap:10px}
-.headline-item{width:100%;border:1.5px solid var(--line);border-left:5px solid var(--green);background:#ffffff;padding:16px 18px;display:grid;grid-template-columns:105px minmax(0,1fr) auto;gap:16px;align-items:center;text-align:left;cursor:pointer;border-radius:14px;box-shadow:0 2px 6px rgba(35,28,20,.03);transition:all .18s ease}
-.headline-item:hover{transform:translateY(-2px);background:#ffffff;border-color:var(--green-border);box-shadow:var(--shadow-hover)}
+.headline-item{width:100%;border:1.5px solid var(--line);border-left:5px solid var(--green);background:var(--paper-warm);padding:16px 18px;display:grid;grid-template-columns:105px minmax(0,1fr) auto;gap:16px;align-items:center;text-align:left;cursor:pointer;border-radius:14px;box-shadow:0 2px 6px rgba(0,0,0,.3);transition:all .18s ease}
+.headline-item:hover{transform:translateY(-2px);background:#2d221a;border-color:var(--green-border);box-shadow:var(--shadow-hover)}
 .headline-time{font-size:13px;font-weight:800;color:#ffffff;white-space:nowrap;background:var(--green);padding:7px 11px;border-radius:10px;text-align:center;box-shadow:0 2px 6px rgba(22,78,51,.2)}
 .headline-time small{display:block;font-size:11px;font-weight:700;opacity:.9;margin-top:2px}
 .headline-title{font:700 17.5px/1.3 var(--serif);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -844,10 +846,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
    ======================================================== */
 .empty-cozy{
   padding:36px 30px;
-  background:#ffffff;
+  background:var(--paper-card);
   border-radius:18px;
   border:1.5px solid var(--line);
-  box-shadow:var(--shadow-sm);
+  box-shadow:var(--shadow);
   text-align:left;
 }
 .empty-cozy-top{
@@ -860,12 +862,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   width:50px;
   height:50px;
   border-radius:14px;
-  background:linear-gradient(135deg, #0e3523 0%, #164e33 100%);
+  background:linear-gradient(135deg, #3d2617 0%, #633c23 100%);
   color:#ffffff;
   display:grid;
   place-items:center;
   flex-shrink:0;
-  box-shadow:0 4px 12px rgba(22,78,51,.25);
+  box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .empty-cozy-icon-box svg{width:25px;height:25px}
 .empty-cozy-kicker{
@@ -962,10 +964,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border:1.5px solid var(--blue-border);
 }
 .cozy-btn-blue:hover{
-  background:#dbe9f7;
+  background:#382419;
   border-color:var(--blue);
+  color:var(--blue-dark);
   transform:translateY(-2px);
-  box-shadow:0 4px 12px rgba(25,63,112,.15);
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
 }
 .empty{padding:24px 6px;color:var(--muted);font:italic 14.5px var(--serif);text-align:center}
 
@@ -973,7 +976,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
    PRÓXIMOS DÍAS: CUADRÍCULA DE TARJETAS HORIZONTALES (RESALTADAS)
    ======================================================== */
 .next-days-box{
-  background:#ffffff;
+  background:var(--paper-card);
   border:1.5px solid var(--line);
   border-radius:18px;
   padding:24px 26px;
@@ -1005,7 +1008,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   gap:16px;
 }
 .next-day-card{
-  background:#ffffff;
+  background:var(--paper-card);
   border:1.5px solid var(--line);
   border-top:4px solid var(--green);
   border-radius:14px;
@@ -1016,7 +1019,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   flex-direction:column;
   justify-content:space-between;
   gap:14px;
-  box-shadow:0 2px 8px rgba(35,28,20,.04);
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
   transition:all .2s ease;
   width:100%;
 }
@@ -1081,7 +1084,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
    ======================================================== */
 .stats-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:26px}
 .stat-card{
-  background:#ffffff;
+  background:var(--paper-card);
   border:1.5px solid var(--line);
   border-radius:16px;
   padding:20px 24px;
@@ -1097,40 +1100,44 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stat-card:hover{
   transform:translateY(-3px);
   box-shadow:var(--shadow-hover);
+  background:#2f241d;
 }
 
 /* Card 1: 10/10 oficial por correo (Oro Miel) */
 .stat-card:first-child{
   border-left:5px solid var(--honey);
-  background:#fffdf8;
+  background:#2b1f0f;
+  border-color:#75511b;
 }
 .stat-card:first-child:hover{border-color:var(--honey-border)}
 .stat-card:first-child .stat-kicker{color:var(--honey-dark)}
 .stat-card:first-child .stat-title{color:var(--ink);font-size:16px}
 .stat-card:first-child .stat-val-pill{
   background:var(--honey);
-  color:#ffffff;
-  box-shadow:0 2px 8px rgba(154,98,11,.3);
+  color:#140f0c;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
 /* Card 2: Tests CPROC / Testmoz 20/20 (Azul Oxford) */
 .stat-card.highlight-test{
   border-left:5px solid var(--blue);
-  background:#f6f9fd;
+  background:#2a1c13;
+  border-color:#6d4428;
 }
 .stat-card.highlight-test:hover{border-color:var(--blue-border)}
 .stat-card.highlight-test .stat-kicker{color:var(--blue)}
 .stat-card.highlight-test .stat-title{color:var(--ink);font-size:16px}
 .stat-card.highlight-test .stat-val-pill{
   background:var(--blue);
-  color:#ffffff;
-  box-shadow:0 2px 8px rgba(25,63,112,.3);
+  color:#140f0c;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
 /* Card 3: Prácticas en CPROC 4/4 (Burdeos Terciopelo) */
 .stat-card:last-child{
   border-left:5px solid var(--terracotta);
-  background:#fdf6f7;
+  background:#2a1318;
+  border-color:#6e2532;
 }
 .stat-card:last-child:hover{border-color:var(--terra-border)}
 .stat-card:last-child .stat-kicker{color:var(--terracotta)}
@@ -1138,7 +1145,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stat-card:last-child .stat-val-pill{
   background:var(--terracotta);
   color:#ffffff;
-  box-shadow:0 2px 8px rgba(136,30,61,.3);
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
 .stat-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;display:block}
@@ -1174,10 +1181,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Pastillas de acción y botones (Pills) */
 .action-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.pill-btn,.pill-link{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#ffffff;color:var(--green-dark);border-radius:20px;padding:8px 16px;font:800 12.5px var(--sans);text-decoration:none;cursor:pointer;transition:all .16s ease;box-shadow:0 1px 3px rgba(35,28,20,.03)}
-.pill-btn:hover,.pill-link:hover{background:var(--green-pale);border-color:var(--green-border);transform:translateY(-1px);box-shadow:0 3px 8px rgba(22,78,51,.12)}
+.pill-btn,.pill-link{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--paper-warm);color:var(--ink);border-radius:20px;padding:8px 16px;font:800 12.5px var(--sans);text-decoration:none;cursor:pointer;transition:all .16s ease;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.pill-btn:hover,.pill-link:hover{background:#2f241d;border-color:var(--honey-border);transform:translateY(-1px);color:var(--honey-dark)}
 .pill-link.blue,.pill-btn.blue{background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue)}
-.pill-link.blue:hover,.pill-btn.blue:hover{background:#dfeefb;border-color:var(--blue)}
+.pill-link.blue:hover,.pill-btn.blue:hover{background:#382419;border-color:var(--blue);color:var(--blue-dark)}
 .pill-link.terra,.pill-btn.terra{background:var(--terra-pale);border-color:var(--terra-border);color:var(--terracotta)}
 .pill-link.terra:hover,.pill-btn.terra:hover{background:#fad4dc;border-color:var(--terracotta)}
 .pill-link.honey,.pill-btn.honey{background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)}
@@ -1188,47 +1195,47 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .pill-link.solid-green:hover,.pill-btn.solid-green:hover{background:var(--green-dark)}
 .pill-link.solid-blue,.pill-btn.solid-blue{background:var(--blue);border-color:var(--blue);color:#fff}
 .pill-link.solid-blue:hover,.pill-btn.solid-blue:hover{background:var(--blue-dark)}
-.hub-more-btn{border:1.5px solid var(--line);background:#ffffff;color:var(--green-dark);border-radius:20px;padding:8px 16px;font:800 12.5px var(--sans);cursor:pointer;transition:all .16s}
-.hub-more-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hub-more-btn{border:1.5px solid var(--line);background:var(--paper-warm);color:var(--ink);border-radius:20px;padding:8px 16px;font:800 12.5px var(--sans);cursor:pointer;transition:all .16s}
+.hub-more-btn:hover{background:var(--honey);color:#140f0c;border-color:var(--honey)}
 
-/* Bloques del Máster con Identidad de Color Temática Nítida */ Temática Nítida */ Temática Nítida */
+/* Bloques del Máster con Identidad de Color Temática Nítida */
 .course-grid{display:grid;grid-template-columns:1fr;gap:24px}
 .course-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
 
 /* Tema Bloque I: Deontología (Oro Viejo) */
 .course-card.theme-deontologia{border-top:4px solid var(--honey)}
-.course-card.theme-deontologia .course-card-head{background:#ffffff;border-left:5px solid var(--honey)}
+.course-card.theme-deontologia .course-card-head{background:#2b1f0f;border-left:5px solid var(--honey)}
 .course-card.theme-deontologia .course-kicker{color:var(--honey);background:var(--honey-pale);display:inline-block;padding:3px 10px;border-radius:6px;font-weight:700;border:1px solid var(--honey-border)}
 .course-card.theme-deontologia h3 button{color:var(--ink)}
 .course-card.theme-deontologia .course-status{background:var(--honey-pale);color:var(--honey-dark);border:1px solid var(--honey-border);font-weight:700}
-.course-card.theme-deontologia .subject-banner{background:#ffffff;border-color:var(--honey-border);border-left:4px solid var(--honey)}
+.course-card.theme-deontologia .subject-banner{background:#2b1f0f;border-color:var(--honey-border);border-left:4px solid var(--honey)}
 .course-card.theme-deontologia .subject-kicker{color:var(--honey);font-weight:700}
 
 /* Tema Bloque II: Técnicas instrumentales Procura (Verde Laurel) */
 .course-card.theme-instrumentales{border-top:4px solid var(--green)}
-.course-card.theme-instrumentales .course-card-head{background:#f8faf8;border-left:5px solid var(--green)}
+.course-card.theme-instrumentales .course-card-head{background:#15271c;border-left:5px solid var(--green)}
 .course-card.theme-instrumentales .course-kicker{color:var(--green);background:var(--green-pale);display:inline-block;padding:3px 10px;border-radius:6px;font-weight:700;border:1px solid var(--green-border)}
 .course-card.theme-instrumentales h3 button{color:var(--ink)}
 .course-card.theme-instrumentales .course-status{background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border);font-weight:700}
-.course-card.theme-instrumentales .subject-banner{background:#f8faf8;border-color:var(--green-border);border-left:4px solid var(--green)}
+.course-card.theme-instrumentales .subject-banner{background:#15271c;border-color:var(--green-border);border-left:4px solid var(--green)}
 .course-card.theme-instrumentales .subject-kicker{color:var(--green);font-weight:700}
 
 /* Tema Bloque III: Actuación procesal (Terracota Siena) */
 .course-card.theme-actuacion{border-top:4px solid var(--terracotta)}
-.course-card.theme-actuacion .course-card-head{background:#ffffff;border-left:5px solid var(--terracotta)}
+.course-card.theme-actuacion .course-card-head{background:#2a1318;border-left:5px solid var(--terracotta)}
 .course-card.theme-actuacion .course-kicker{color:var(--terracotta);background:var(--terra-pale);display:inline-block;padding:3px 10px;border-radius:6px;font-weight:700;border:1px solid var(--terra-border)}
 .course-card.theme-actuacion h3 button{color:var(--ink)}
 .course-card.theme-actuacion .course-status{background:var(--terra-badge);color:var(--terra-dark);border:1px solid var(--terra-border);font-weight:700}
-.course-card.theme-actuacion .subject-banner{background:#ffffff;border-color:var(--terra-border);border-left:4px solid var(--terracotta)}
+.course-card.theme-actuacion .subject-banner{background:#2a1318;border-color:var(--terra-border);border-left:4px solid var(--terracotta)}
 .course-card.theme-actuacion .subject-kicker{color:var(--terracotta);font-weight:700}
 
 /* Tema Bloque IV: Práctica jurídica civil y mercantil (Azul Jurídico) */
 .course-card.theme-abogacia{border-top:4px solid var(--blue)}
-.course-card.theme-abogacia .course-card-head{background:#f5f8fb;border-left:5px solid var(--blue)}
+.course-card.theme-abogacia .course-card-head{background:#2a1c13;border-left:5px solid var(--blue)}
 .course-card.theme-abogacia .course-kicker{color:var(--blue);background:var(--blue-pale);display:inline-block;padding:3px 10px;border-radius:6px;font-weight:700;border:1px solid var(--blue-border)}
 .course-card.theme-abogacia h3 button{color:var(--ink)}
 .course-card.theme-abogacia .course-status{background:var(--blue-badge);color:var(--blue-dark);border:1px solid var(--blue-border);font-weight:700}
-.course-card.theme-abogacia .subject-banner{background:#f5f8fb;border-color:var(--blue-border);border-left:4px solid var(--blue)}
+.course-card.theme-abogacia .subject-banner{background:#2a1c13;border-color:var(--blue-border);border-left:4px solid var(--blue)}
 .course-card.theme-abogacia .subject-kicker{color:var(--blue);font-weight:700}
 
 .course-card-head{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
@@ -1257,26 +1264,26 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-col{border-radius:16px;padding:15px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.02)}
 
 /* 1. Calificación: Crema Dorado Ámbar */
-.st-col.st-col-grades{background:#fffbeb;border:1.5px solid #fde047;border-top:5px solid #a86915}
-.st-col.st-col-grades .st-col-title{color:#663b03;border-bottom-color:#edd195}
+.st-col.st-col-grades{background:#2b1f0f;border:1.5px solid #75511b;border-top:5px solid var(--honey)}
+.st-col.st-col-grades .st-col-title{color:var(--honey-dark);border-bottom-color:#75511b}
 .st-col.st-col-grades .st-score-callout{color:#542f02}
 .st-col.st-col-grades .st-score-sub{color:#5c3905}
 
 /* 2. Correo: Azul Pizarra Suave */
-.st-col.st-col-mails{background:#edf5fc;border:1.5px solid #bcd7f0;border-top:5px solid #2c5a80}
-.st-col.st-col-mails .st-col-title{color:#153752;border-bottom-color:#b5d1ea}
+.st-col.st-col-mails{background:#2a1c13;border:1.5px solid #6d4428;border-top:5px solid var(--blue)}
+.st-col.st-col-mails .st-col-title{color:var(--blue-dark);border-bottom-color:#6d4428}
 
 /* 3. Google Drive: Menta / Laurel Suave */
-.st-col.st-col-drive{background:#ebf5ee;border:1.5px solid #bce0c3;border-top:5px solid #2e644b}
-.st-col.st-col-drive .st-col-title{color:#183e2c;border-bottom-color:#b4dac0}
+.st-col.st-col-drive{background:#15271c;border:1.5px solid #2e6642;border-top:5px solid var(--green)}
+.st-col.st-col-drive .st-col-title{color:var(--green-dark);border-bottom-color:#2e6642}
 
 /* 4. Prácticas y tests: Terracota / Melocotón Suave */
-.st-col.st-col-practices{background:#fff1f2;border:1.5px solid #fda4af;border-top:5px solid #a34d30}
-.st-col.st-col-practices .st-col-title{color:#6b2914;border-bottom-color:#ebd1bd}
+.st-col.st-col-practices{background:#2a1318;border:1.5px solid #6e2532;border-top:5px solid var(--terracotta)}
+.st-col.st-col-practices .st-col-title{color:var(--terra-dark);border-bottom-color:#6e2532}
 
 /* 5. Apuntes y temario: Pergamino Lino Cálido */
-.st-col.st-col-notes{background:#f8fafc;border:1.5px solid var(--line);border-top:5px solid #716252}
-.st-col.st-col-notes .st-col-title{color:var(--ink);border-bottom-color:#d7cbba}
+.st-col.st-col-notes{background:#231b16;border:1.5px solid var(--line);border-top:5px solid #8c725d}
+.st-col.st-col-notes .st-col-title{color:var(--ink);border-bottom-color:var(--line)}
 
 .st-col-title{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px dashed rgba(0,0,0,.15)}
 .st-col-body{display:grid;gap:7px;flex:1}
@@ -1294,81 +1301,79 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .subject-item-card{background:var(--paper-warm);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;font-size:13px;line-height:1.5}
 .subject-item-card:last-child{margin-bottom:0}
 .subject-item-card strong{display:block;font-size:13.5px;color:var(--ink);margin-bottom:2px}
-.subject-item-card.overdue{background:#fff1e7;border-color:#ecc8b5;color:#8c361e}
+.subject-item-card.overdue{background:#2a1410;border-color:#6e2e1a;color:#f09a84}
 .subject-item-card .item-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
 
 /* ========================================================
-   ESTILOS VISUALES MEJORADOS PARA MATERIAS (CÁLIDO, EDITORIAL Y TÁCTIL)
+   DISEÑO COZY, LIMPIO Y ESTRUCTURADO PARA MATERIAS
    ======================================================== */
 
-/* 1. Asignatura Acordeón Visual */
-.subject-accordion{background:#ffffff;border:1.5px solid #ded5c7;border-left:5px solid var(--green);border-radius:18px;margin-bottom:14px;overflow:hidden;transition:all .22s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 8px rgba(60,45,30,.04)}
-.subject-accordion:hover{border-color:var(--green-border);box-shadow:0 6px 18px rgba(60,45,30,.08);transform:translateY(-1px)}
-.subject-accordion[open]{border-color:var(--green);border-left-width:6px;box-shadow:0 8px 24px rgba(46,100,75,.1)}
+/* 1. Asignatura Acordeón Limpia */
+.subject-accordion{background:var(--paper-card);border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:all .18s ease;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.subject-accordion:hover{border-color:#b8a892;box-shadow:0 4px 12px rgba(35,28,20,.06)}
+.subject-accordion[open]{border-color:var(--green);border-left-width:5px;box-shadow:0 6px 18px rgba(46,100,75,.08)}
 .subject-accordion[data-branch="Abogacía"]{border-left-color:var(--blue)}
 .subject-accordion[data-branch="Procura"]{border-left-color:var(--terracotta)}
 
-.subject-summary{list-style:none;cursor:pointer;padding:16px 20px;background:var(--paper-warm);display:flex;align-items:center;gap:16px;user-select:none;transition:background .18s ease}
+.subject-summary{list-style:none;cursor:pointer;padding:14px 18px;background:var(--paper-warm);display:flex;align-items:center;justify-content:space-between;gap:14px;user-select:none;transition:background .15s ease}
 .subject-summary::-webkit-details-marker{display:none}
-.subject-summary:hover{background:#f3ece0}
-.subject-accordion[open] .subject-summary{background:#edf5ee;border-bottom:1.5px solid #d4e7d9}
+.subject-summary:hover{background:#2d221a}
+.subject-accordion[open] .subject-summary{background:#15271c;border-bottom:1.5px solid #2e6642}
 
-.subject-icon-box{width:46px;height:46px;border-radius:14px;background:#ffffff;border:1.5px solid #e1d6c5;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.subject-accordion[open] .subject-icon-box{background:var(--green-pale);border-color:var(--green-border)}
+.subject-summary-main{flex:1;min-width:0}
+.subject-title-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.subject-icon{font-size:18px}
+.subject-name{font:700 16.5px/1.3 var(--serif);color:var(--ink)}
 
-.subject-summary-content{flex:1;min-width:0}
-.subject-summary-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.subject-title{margin:0;font:700 18px/1.3 var(--serif);color:var(--ink)}
+.subject-meta-line{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:4px;font-size:12px;color:var(--muted)}
+.meta-dot{color:#c7b9a5;font-weight:bold}
 
-/* Titulares visuales debajo de la asignatura */
-.subject-visual-pills{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
-.sub-pill{font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;background:#ffffff;border:1px solid #ded5c7;color:var(--ink-soft)}
-.sub-pill-date{background:#f8f4ed;border-color:#e4dac9;color:#614d34}
-.sub-pill-teachers{background:#edf6ee;border-color:#c8e4ce;color:#1e4632}
-.sub-pill-prompt{background:#fff;border-color:#b7d9c0;color:var(--green-dark);font-weight:700}
-.subject-accordion[open] .sub-pill-prompt{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.subject-toggle-pill{font-size:11.5px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1.5px solid var(--green-border);padding:5px 12px;border-radius:16px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.subject-toggle-pill .arrow{display:inline-block;transition:transform .2s ease;font-size:11px}
+.subject-accordion[open] .subject-toggle-pill{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.subject-accordion[open] .subject-toggle-pill .arrow{transform:rotate(180deg)}
 
-.subject-expand-badge{font-size:12px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1.5px solid var(--green-border);padding:6px 14px;border-radius:20px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 4px rgba(0,0,0,.04);transition:all .18s ease}
-.subject-accordion .subject-expand-badge .arrow{display:inline-block;transition:transform .2s ease;font-size:12px}
-.subject-accordion[open] .subject-expand-badge{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
-.subject-accordion[open] .subject-expand-badge .arrow{transform:rotate(180deg)}
+.subject-details-body{padding:18px;background:var(--paper);display:grid;gap:16px}
 
-.subject-details-body{padding:20px;background:#ffffff}
+/* Información General de la Asignatura */
+.subject-general-info-card{background:var(--paper-warm);border:1.5px solid #e2ded4;border-radius:14px;padding:16px 18px}
+.sg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid #e5dfd4;margin-bottom:12px}
+.sg-title{margin:4px 0 0;font:700 18px/1.3 var(--serif);color:var(--ink)}
+.sg-grade-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 
-/* Visual Context Ribbon */
-.subject-ribbon{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--paper-warm);border:1px solid #e5ded2;border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:12.5px}
+.sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sg-col{display:flex;flex-direction:column;gap:3px}
+.sg-lbl{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.sg-val{font-size:13px;color:var(--ink);font-weight:600}
 
-/* 2. Tarjeta Visual del Docente */
-.teacher-collapsible{background:var(--paper-warm);border:1.5px solid #ded5c8;border-radius:18px;margin-bottom:14px;overflow:hidden;transition:all .2s ease;box-shadow:0 2px 6px rgba(0,0,0,.02)}
-.teacher-collapsible:last-child{margin-bottom:0}
-.teacher-collapsible:hover{border-color:#b9d8c2;box-shadow:0 4px 14px rgba(0,0,0,.05)}
-.teacher-collapsible[open]{border-color:var(--green);background:#ffffff;box-shadow:0 6px 20px rgba(46,100,75,.08)}
+/* Sección de Profesorado */
+.subject-teachers-section{display:grid;gap:10px}
+.st-sec-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);padding:0 2px}
+.st-sec-header strong{color:var(--ink);font-size:13.5px}
+.subject-teachers-wrapper{display:grid;gap:10px}
 
-.teacher-collapsible-summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:14px;user-select:none;background:#f9f5ed;transition:background .16s}
+/* 2. Tarjeta Visual del Docente (compacta, cerrada por defecto) */
+.teacher-collapsible{background:var(--paper-card);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:all .18s ease;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.teacher-collapsible:hover{border-color:#b9d8c2;box-shadow:0 3px 8px rgba(0,0,0,.04)}
+.teacher-collapsible[open]{border-color:var(--green);box-shadow:0 4px 14px rgba(46,100,75,.07)}
+
+.teacher-collapsible-summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:12px;user-select:none;background:var(--paper-warm);transition:background .15s}
 .teacher-collapsible-summary::-webkit-details-marker{display:none}
-.teacher-collapsible-summary:hover{background:#f0e7d8}
-.teacher-collapsible[open] .teacher-collapsible-summary{background:#edf6ef;border-bottom:1.5px solid #d5e9db}
+.teacher-collapsible-summary:hover{background:#2d221a}
+.teacher-collapsible[open] .teacher-collapsible-summary{background:#15271c;border-bottom:1.5px solid #2e6642}
 
-/* Avatar de Monograma */
-.teacher-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#e8f0ec,#d1e4d7);color:var(--green-dark);border:2px solid #ffffff;box-shadow:0 2px 6px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font:700 16px var(--serif);flex-shrink:0}
+.teacher-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3d2c1f,#241a14);color:var(--honey-dark);border:1.5px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;font:700 14px var(--serif);flex-shrink:0}
 .t-summary-main{flex:1;min-width:0}
-.t-summary-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.t-name{font:700 17.5px/1.2 var(--serif);color:var(--ink)}
+.t-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.t-name{font:700 15.5px/1.2 var(--serif);color:var(--ink)}
+.t-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-/* Titular visual debajo del docente */
-.t-visual-pills{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:5px}
-.t-pill{font-size:11.5px;padding:3px 9px;border-radius:16px;background:#ffffff;border:1px solid #ded5c8;color:var(--ink-soft);font-weight:600}
-.t-pill-role{color:#544634;background:#fbf8f2}
-.t-pill-sessions{color:#1e4632;background:#ebf6ed;border-color:#c4e2cb}
-.t-pill-invite{color:var(--green-dark);border-color:#b5d9be;font-weight:700}
-.teacher-collapsible[open] .t-pill-invite{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
-
-.t-collapsible-badge{font-size:11.5px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1.5px solid var(--green-border);padding:5px 12px;border-radius:18px;display:inline-flex;align-items:center;gap:5px}
-.t-collapsible-arrow{font-size:12px;transition:transform .2s ease;display:inline-block}
+.t-collapsible-badge{font-size:11px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1px solid var(--green-border);padding:4px 10px;border-radius:14px;display:inline-flex;align-items:center;gap:4px}
+.t-collapsible-arrow{font-size:11px;transition:transform .2s ease;display:inline-block}
 .teacher-collapsible[open] .t-collapsible-badge{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
 .teacher-collapsible[open] .t-collapsible-arrow{transform:rotate(180deg)}
 
-.teacher-collapsible-body{padding:18px;display:grid;gap:14px}
+.teacher-collapsible-body{padding:16px;display:grid;gap:12px;background:var(--paper)}
 
 /* ========================================================
    APARTADOS PINCHABLES COZY (LIMPIO, ESPACIOSO Y SERENO)
@@ -1383,8 +1388,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border-bottom:1px solid #ebe4d8;
 }
 .cozy-tab-btn{
-  border:1.5px solid #ded5c7;
-  background:#ffffff;
+  border:1.5px solid var(--line);
+  background:var(--paper-warm);
   color:var(--ink-soft);
   border-radius:20px;
   padding:7px 14px;
@@ -1395,11 +1400,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   align-items:center;
   gap:6px;
   user-select:none;
-  box-shadow:0 1px 3px rgba(0,0,0,.03);
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
 }
 .cozy-tab-btn:hover{
-  border-color:#b8a892;
-  background:#faf7f0;
+  border-color:var(--honey-border);
+  background:#2f241d;
   transform:translateY(-1px);
 }
 .cozy-tab-btn.active{
@@ -1412,7 +1417,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .cozy-tab-btn[data-teacher-tab="practicas"].active{background:var(--terra-pale);border-color:var(--terracotta);color:var(--terra-dark)}
 .cozy-tab-btn[data-teacher-tab="correos"].active{background:var(--blue-pale);border-color:var(--blue);color:var(--blue-dark)}
 .cozy-tab-btn[data-teacher-tab="tests"].active{background:var(--honey-pale);border-color:var(--honey);color:var(--honey-dark)}
-.cozy-tab-btn[data-teacher-tab="notas"].active{background:#fdf5e3;border-color:#a86915;color:#5c3905}
+.cozy-tab-btn[data-teacher-tab="notas"].active{background:#2b1f0f;border-color:var(--honey);color:var(--honey-dark)}
 
 /* Contenedor y Paneles Cozy: solo se muestra el apartado activo */
 .cozy-tab-panel-container{
@@ -1420,11 +1425,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 .cozy-tab-panel{
   display:none;
-  background:#ffffff;
-  border:1.5px solid #ded5c7;
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
   border-radius:16px;
   padding:18px 20px;
-  box-shadow:0 2px 8px rgba(35,28,20,.03);
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
   animation:cozyPanelFade .18s ease-out;
 }
 .cozy-tab-panel.active{
@@ -1437,19 +1442,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 /* Tarjetas Visuales de Items con Botones de Derivación */
-.visual-resource-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:#ffffff;border:1.5px solid #e7ded0;border-radius:12px;transition:all .18s ease;box-shadow:0 1px 3px rgba(0,0,0,.02)}
-.visual-resource-card:hover{border-color:#c7b8a1;box-shadow:0 3px 10px rgba(0,0,0,.05);transform:translateY(-1px)}
+.visual-resource-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:var(--paper-card);border:1.5px solid var(--line);border-radius:12px;transition:all .18s ease;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.visual-resource-card:hover{border-color:var(--honey-border);box-shadow:0 4px 12px rgba(0,0,0,.4);transform:translateY(-1px)}
 .visual-resource-left{display:flex;align-items:center;gap:12px;min-width:0}
 .visual-resource-icon{font-size:20px;width:36px;height:36px;border-radius:10px;background:var(--paper-warm);border:1px solid #ded5c8;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .visual-resource-title{font:700 14px var(--sans);color:var(--ink);line-height:1.3}
 .visual-resource-sub{font-size:12px;color:var(--muted);margin-top:2px}
 
 .visual-derive-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:12px;margin-top:4px;border:1.5px dashed}
-.v-banner-mails{background:#f1f7fc;border-color:#bad6ef;color:#184b73}
-.v-banner-practices{background:#fdf4ef;border-color:#f2c7b3;color:#852d11}
-.v-banner-notes{background:#f0f8f3;border-color:#bce0c3;color:#195032}
-.v-banner-tests{background:#fdf7eb;border-color:#f4d698;color:#78490a}
-.v-banner-grades{background:#fcf6e8;border-color:#ebd39b;color:#6b4408}
+.v-banner-mails{background:#2a1c13;border-color:#6d4428;color:var(--blue-dark)}
+.v-banner-practices{background:#2a1318;border-color:#6e2532;color:var(--terra-dark)}
+.v-banner-notes{background:#15271c;border-color:#2e6642;color:var(--green-dark)}
+.v-banner-tests{background:#2b1f0f;border-color:#75511b;color:var(--honey-dark)}
+.v-banner-grades{background:#2b1f0f;border-color:#75511b;color:var(--honey-dark)}
 
 
 /* Directorio de Profesorado */
@@ -1521,19 +1526,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Calendario */
 #calendarSection{margin-top:48px;padding-top:30px;border-top:2px solid var(--line)}
-.calendar-wrap{background:var(--paper-card);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow-sm)}
+.calendar-wrap{background:var(--paper-card);border:1.5px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
 .calendar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .calendar-head h3{margin:0;font:700 25px var(--serif);text-transform:capitalize;color:var(--ink)}
 .month-nav{display:flex;gap:8px}
 .month-nav button{border:1px solid var(--line);background:var(--paper);border-radius:50%;width:38px;height:38px;cursor:pointer;color:var(--green-dark);font-size:17px;box-shadow:0 1px 3px rgba(60,45,30,.04);transition:all .15s}
 .month-nav button:hover{background:var(--green-pale);border-color:var(--green-border)}
-.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.calendar-grid, #calendarGrid{display:grid !important;grid-template-columns:repeat(7,minmax(0,1fr)) !important;gap:6px !important}
 .weekday{text-align:center;color:var(--muted);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;padding:8px 0}
 .cal-day{position:relative;min-height:64px;border:1px solid var(--line);background:var(--paper);border-radius:12px;text-align:left;padding:9px 11px;color:var(--ink);cursor:pointer;transition:all .16s}
-.cal-day:hover{background:var(--green-pale);border-color:var(--green-border)}
+.cal-day:hover{background:var(--paper-warm);border-color:var(--honey-border)}
 .cal-day .num{font-size:14px;font-weight:600}
 .cal-day.muted{color:#a89e92;background:transparent;border-color:transparent}
-.cal-day.selected{background:var(--green-dark);border-color:var(--green-dark);color:#fff;font-weight:700;box-shadow:0 4px 14px rgba(30,67,49,.24)}
+.cal-day.selected{background:var(--honey);border-color:var(--honey);color:#140f0c;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.5)}
 .cal-day.today:not(.selected){border-color:var(--blue);background:var(--blue-pale)}
 .cal-day.today:not(.selected) .num{color:var(--blue);font-weight:800}
 .cal-day .dots{position:absolute;bottom:8px;left:11px;display:flex;gap:5px}
@@ -1621,16 +1626,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .side-filter-btn.active{background:var(--green-dark);color:#fff;box-shadow:0 2px 6px rgba(30,67,49,.2)}
 
 /* Árbol de navegación: Nivel 0 Rama (Abogados / Procuradores) */
-.st-branch{margin-bottom:10px;border:1px solid #dcd7ce;border-radius:12px;background:#fff;overflow:hidden}
+.st-branch{margin-bottom:10px;border:1px solid var(--line);border-radius:12px;background:var(--paper-card);overflow:hidden}
 .st-branch-head{padding:9px 11px;background:var(--paper-warm);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:6px;font:700 12.5px var(--serif);color:var(--ink);user-select:none;border-bottom:1px solid #e7ded0}
 .st-branch-head:hover{background:#ede5d8}
 .st-branch-title{display:flex;align-items:center;gap:6px}
 .st-branch-content{padding:8px 6px;display:flex;flex-direction:column;gap:8px}
 
 /* Nivel 1 Bloque del Máster */
-.st-block{border:1px solid #e3ded6;border-radius:10px;background:#faf9f6;overflow:hidden}
+.st-block{border:1px solid var(--line);border-radius:10px;background:var(--paper-card);overflow:hidden}
 .st-block-head{padding:8px 10px;background:#f3ede3;cursor:pointer;user-select:none;border-bottom:1px solid #e8e2d7}
-.st-block-head:hover{background:#ece4d7}
+.st-block-head:hover{background:#2d221a}
 .st-block-info{display:flex;flex-direction:column;gap:2px}
 .st-block-name{font-size:11.5px;color:var(--green-dark);font-weight:800}
 .st-block-desc{font-size:11px;color:var(--ink);font-weight:600;line-height:1.3}
@@ -1638,8 +1643,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-block-content{padding:7px 5px;display:flex;flex-direction:column;gap:7px}
 
 /* Nivel 2 Asignatura */
-.st-subject{border:1px solid #e6e2da;border-radius:8px;background:#fff;overflow:hidden}
-.st-subject-head{padding:7px 9px;background:#f8f6f2;cursor:pointer;user-select:none;border-bottom:1px solid #eeebe5}
+.st-subject{border:1px solid var(--line);border-radius:8px;background:var(--paper);overflow:hidden}
+.st-subject-head{padding:7px 9px;background:var(--paper-warm);cursor:pointer;user-select:none;border-bottom:1px solid var(--line)}
 .st-subject-head:hover{background:#f1ece3}
 .st-subject-info{display:flex;flex-direction:column;gap:2px}
 .st-subject-name{font-size:11px;color:var(--ink);font-weight:700;line-height:1.35}
@@ -1647,9 +1652,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-subject-content{padding:6px 5px;display:flex;flex-direction:column;gap:6px}
 
 /* Nivel 3 y 4 Profesor + Sesiones (Días y Horas) + Material */
-.st-teacher-card{border:1px solid #dce4db;border-radius:8px;padding:8px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.03)}
-.st-teacher-card.tomorrow{border-color:#f1d69d;background:#fffdf7;border-left:3px solid #b25e00}
-.st-teacher-card.upcoming{border-color:#badcbf;background:#f8fcf8}
+.st-teacher-card{border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--paper-warm);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.st-teacher-card.tomorrow{border-color:#75511b;background:#2b1f0f;border-left:3px solid var(--honey)}
+.st-teacher-card.upcoming{border-color:#2e6642;background:#15271c}
 .st-teacher-card.past{opacity:.9;background:#f9f9f8}
 .st-teacher-top{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin-bottom:3px}
 .st-teacher-name-btn{background:transparent;border:0;padding:0;font:800 11.5px var(--sans);color:var(--ink);cursor:pointer;text-align:left}
@@ -1665,9 +1670,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 /* Días y Horas programadas (Sesiones) */
 .st-sessions-box{background:var(--paper-warm);border:1px solid #e8e2d7;border-radius:7px;padding:6px 7px;margin:5px 0}
 .st-sessions-title{font-size:10px;font-weight:800;text-transform:uppercase;color:var(--green-dark);margin-bottom:4px;letter-spacing:.03em}
-.st-session-row{padding:4px 6px;border-radius:5px;font-size:10.5px;margin-bottom:4px;background:#fff;border:1px solid var(--line)}
+.st-session-row{padding:4px 6px;border-radius:5px;font-size:10.5px;margin-bottom:4px;background:var(--paper);border:1px solid var(--line)}
 .st-session-row:last-child{margin-bottom:0}
-.st-session-row.tomorrow{background:#fff8e8;border-color:#f3d79e;border-left:2.5px solid #b25e00}
+.st-session-row.tomorrow{background:#2b1f0f;border-color:#75511b;border-left:2.5px solid var(--honey)}
 .st-session-row.upcoming{background:#f3f9f3;border-color:#badcbf}
 .st-session-row.past{opacity:.85}
 .st-session-time-row{display:flex;justify-content:space-between;align-items:center;gap:4px;margin-bottom:2px}
@@ -1682,7 +1687,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-mat-btn{width:100%;background:#f5ede1;border:1px solid var(--line);padding:4px 6px;border-radius:6px;font:700 10px var(--sans);color:var(--ink);cursor:pointer;text-align:center;transition:all .15s}
 .st-mat-btn:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
 .st-count-pill{font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:10px}
-.st-count-pill.blue{background:#e5f0f8;color:#18537a}
+.st-count-pill.blue{background:#382419;color:var(--blue-dark)}
 .st-count-pill.terra{background:#faeee8;color:#8c361e}
 .st-count-pill.green{background:#e7f5ea;color:#1e6a38}
 
@@ -1692,13 +1697,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-sec-block{background:var(--paper-warm);border:1px solid #e7ded0;border-radius:6px;padding:5px 7px}
 .st-sec-header{display:flex;justify-content:space-between;align-items:center;gap:4px;margin-bottom:3px}
 .st-sec-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--ink)}
-.st-sec-block.st-sec-mails .st-sec-title{color:#1d496b}
+.st-sec-block.st-sec-mails .st-sec-title{color:var(--blue-dark)}
 .st-sec-block.st-sec-practices .st-sec-title{color:#8c3d23}
 .st-sec-block.st-sec-notes .st-sec-title{color:#1e6a3f}
 .st-sec-link{font-size:9.5px;color:var(--muted);text-decoration:none;font-weight:700}
 .st-sec-link:hover{color:var(--ink);text-decoration:underline}
 .st-sec-content{display:flex;flex-direction:column;gap:3px}
-.st-sec-item{display:flex;flex-direction:column;gap:1px;padding:3px 5px;background:#fff;border:1px solid #ebe5dc;border-radius:4px;font-size:10px}
+.st-sec-item{display:flex;flex-direction:column;gap:1px;padding:3px 5px;background:var(--paper);border:1px solid var(--line);border-radius:4px;font-size:10px}
 .st-item-btn{background:transparent;border:0;padding:0;font:700 10px var(--sans);color:var(--ink);cursor:pointer;text-align:left;line-height:1.25}
 .st-item-btn:hover{color:var(--green);text-decoration:underline}
 .st-item-text{font-size:10px;font-weight:600;color:var(--ink)}
@@ -2163,7 +2168,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <button id="nextMonth" aria-label="Mes siguiente">›</button>
         </div>
       </div>
-      <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="calendar-grid" id="calendarGrid" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px"></div>
       <div class="calendar-legend">
         <span><i class="legend-dot"></i>Clase / Actividad del Máster</span>
         <span><i class="legend-dot terracotta"></i>Entrega o prueba</span>
@@ -4234,9 +4239,9 @@ function renderTeacherInsideSubject(tName, sub){
     ${mailsList.map(m=>{
      const msg=messages.find(x=>x.key===m.key);
      return `
-      <div class="visual-resource-card" style="border-left:4px solid #2a5d85">
+      <div class="visual-resource-card" style="border-left:4px solid var(--blue)">
        <div class="visual-resource-left">
-        <div class="visual-resource-icon" style="background:#f0f6fc;border-color:#bad6ef;color:#184b73">✉️</div>
+        <div class="visual-resource-icon" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)">✉️</div>
         <div>
          <div class="visual-resource-title">${m.title}</div>
          ${msg?`<div class="visual-resource-sub">📅 ${msg.date} · 👤 De: ${msg.from||t.name}</div>`:''}
@@ -4814,47 +4819,69 @@ function renderCourses(branchFilter, statusFilter){
      </div>
     </div>
 
-    <!-- Asignaturas del bloque ordenadas cronológicamente con diseño visual y titulares -->
+    <!-- Asignaturas del bloque ordenadas cronológicamente con diseño visual, acogedor y progresivo -->
     <div class="course-subjects-list">
      ${c.subjects.map((sub,idx)=>`
       <details class="subject-accordion" id="subject-card-${encodeURIComponent(cKey)}-${idx}" data-subject-ref="${cKey}|${idx}" data-branch="${c.branch}">
        <summary class="subject-summary">
-        <div class="subject-icon-box" title="${c.branch}">
-         ${c.branch === 'Abogacía' ? '⚖️' : '📜'}
-        </div>
-
-        <div class="subject-summary-content">
-         <div class="subject-summary-top">
-          <span class="subject-title">📖 ${sub.name}</span>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-           ${sub.grade?`<span class="tag-score">⭐ ${sub.grade.score}</span>`:''}
-           <span class="subject-expand-badge">Ver profesorado (${sub.teachers.length}) <span class="arrow">▾</span></span>
-          </div>
+        <div class="subject-summary-main">
+         <div class="subject-title-line">
+          <span class="subject-icon">${c.branch === 'Abogacía' ? '⚖️' : '📜'}</span>
+          <span class="subject-name">${sub.name}</span>
+          ${sub.grade ? `<span class="tag-score" style="font-size:11.5px;padding:2px 8px">⭐ ${sub.grade.score}</span>` : ''}
          </div>
-
-         <!-- Subtítulo limpio y acogedor -->
-         <div style="font-size:12.5px;color:var(--muted);margin-top:5px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <span>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></span>
-          <span style="color:#d0c4b2">·</span>
-          <span>👤 Docente(s): <b style="color:var(--ink-soft)">${sub.teachers.join(', ') || 'Pendiente'}</b></span>
-          <span style="color:#d0c4b2">·</span>
-          <span style="color:var(--green-dark);font-weight:600">Pulsar para desplegar profesorado ▾</span>
+         <div class="subject-meta-line">
+          <span>🗓️ ${sub.period}</span>
+          <span class="meta-dot">·</span>
+          <span>👤 ${sub.teachers.length} docente${sub.teachers.length!==1?'s':''} (${sub.teachers.join(', ') || 'Pendiente'})</span>
          </div>
         </div>
+        <span class="subject-toggle-pill">
+         <span>Ver asignatura</span>
+         <span class="arrow">▾</span>
+        </span>
        </summary>
 
        <div class="subject-details-body">
-        <!-- Visual Context Ribbon -->
-        <div class="subject-ribbon">
-         <div>
-          <span class="course-badge ${c.branch==='Procura'?'terra':'blue'}" style="margin-right:6px">${c.branch}</span>
-          <b>${c.blockNumber}</b>: ${c.name}
+        <!-- 1. INFORMACIÓN DE LA ASIGNATURA GENERAL -->
+        <div class="subject-general-info-card">
+         <div class="sg-top">
+          <div>
+           <span class="course-badge ${c.branch==='Procura'?'terra':'blue'}">${c.branch} · ${c.blockNumber}</span>
+           <h4 class="sg-title">📖 ${sub.name}</h4>
+          </div>
+          ${sub.grade ? `
+           <div class="sg-grade-group">
+            <span class="tag-score" style="font-size:12.5px;padding:4px 10px">⭐ Calificación: ${sub.grade.score}</span>
+            <button class="pill-btn solid-honey" data-detail="${sub.grade.detailKey||'grades'}">Ver notas oficiales ↗</button>
+           </div>
+          ` : ''}
          </div>
-         ${sub.grade?`<button class="pill-btn solid-honey" style="font-size:11.5px;padding:4px 10px" data-detail="${sub.grade.detailKey||'grades'}">⭐ Ver nota oficial (${sub.grade.score}) ↗</button>`:''}
+         <div class="sg-grid">
+          <div class="sg-col">
+           <span class="sg-lbl">🗓️ Periodo del horario:</span>
+           <strong class="sg-val">${sub.period}</strong>
+          </div>
+          <div class="sg-col">
+           <span class="sg-lbl">👥 Docentes responsables:</span>
+           <strong class="sg-val">${sub.teachers.join(', ') || 'Pendiente de asignar'}</strong>
+          </div>
+          <div class="sg-col">
+           <span class="sg-lbl">📋 Estado oficial:</span>
+           <strong class="sg-val">${sub.grade ? '✓ Evaluada / Finalizada' : '⏳ En curso'}</strong>
+          </div>
+         </div>
         </div>
 
-        <div class="subject-teachers-wrapper">
-         ${sub.teachers.map(tName=>renderTeacherInsideSubject(tName, sub)).join('')}
+        <!-- 2. PROFESORES DE LA ASIGNATURA -->
+        <div class="subject-teachers-section">
+         <div class="st-sec-header">
+          <strong>👤 Docentes de la asignatura (${sub.teachers.length})</strong>
+          <span>Haz clic en un docente para desplegar sus apartados:</span>
+         </div>
+         <div class="subject-teachers-wrapper">
+          ${sub.teachers.map(tName=>renderTeacherInsideSubject(tName, sub)).join('')}
+         </div>
         </div>
        </div>
       </details>
@@ -5381,6 +5408,9 @@ function renderCalendar(){
  const y=monthDate.getFullYear(),m=monthDate.getMonth(),first=new Date(y,m,1),start=(first.getDay()+6)%7,total=new Date(y,m+1,0).getDate(),prevTotal=new Date(y,m,0).getDate();
  document.getElementById('monthLabel').textContent=new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric'}).format(first);
  const grid=document.getElementById('calendarGrid');
+ grid.style.display='grid';
+ grid.style.gridTemplateColumns='repeat(7,minmax(0,1fr))';
+ grid.style.gap='6px';
  const names=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
  grid.innerHTML=names.map(n=>`<div class="weekday">${n}</div>`).join('');
  const count=Math.ceil((start+total)/7)*7;
