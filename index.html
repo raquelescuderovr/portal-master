@@ -1270,75 +1270,71 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 .teacher-collapsible-body{padding:18px;display:grid;gap:14px}
 
-/* 3. Desplegables Interactivos Visuales */
-.t-interactive-dropdowns{display:grid;grid-template-columns:1fr;gap:12px}
-.t-section-accordion{border-radius:14px;border:1.5px solid #ded5c8;overflow:hidden;background:#ffffff;transition:all .2s ease;box-shadow:0 1px 4px rgba(0,0,0,.03)}
-.t-section-accordion:hover{box-shadow:0 3px 10px rgba(0,0,0,.06)}
-.t-section-accordion[open]{box-shadow:0 4px 16px rgba(0,0,0,.07)}
+/* ========================================================
+   APARTADOS PINCHABLES COZY (LIMPIO, ESPACIOSO Y SERENO)
+   ======================================================== */
+.cozy-tabs-strip{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid #ebe4d8;
+}
+.cozy-tab-btn{
+  border:1.5px solid #ded5c7;
+  background:#ffffff;
+  color:var(--ink-soft);
+  border-radius:20px;
+  padding:7px 14px;
+  font:600 12.5px var(--sans);
+  cursor:pointer;
+  transition:all .18s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  user-select:none;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.cozy-tab-btn:hover{
+  border-color:#b8a892;
+  background:#faf7f0;
+  transform:translateY(-1px);
+}
+.cozy-tab-btn.active{
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  font-weight:700;
+}
+/* Colores temáticos de pestaña activa */
+.cozy-tab-btn[data-teacher-tab="clases"].active{background:#edf6ef;border-color:var(--green);color:var(--green-dark)}
+.cozy-tab-btn[data-teacher-tab="apuntes"].active{background:var(--green-pale);border-color:var(--green);color:var(--green-dark)}
+.cozy-tab-btn[data-teacher-tab="practicas"].active{background:var(--terra-pale);border-color:var(--terracotta);color:var(--terra-dark)}
+.cozy-tab-btn[data-teacher-tab="correos"].active{background:var(--blue-pale);border-color:var(--blue);color:var(--blue-dark)}
+.cozy-tab-btn[data-teacher-tab="tests"].active{background:var(--honey-pale);border-color:var(--honey);color:var(--honey-dark)}
+.cozy-tab-btn[data-teacher-tab="notas"].active{background:#fdf5e3;border-color:#a86915;color:#5c3905}
 
-.t-sec-summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none;transition:background .16s}
-.t-sec-summary::-webkit-details-marker{display:none}
-
-.t-sec-lead{display:flex;align-items:center;gap:12px;min-width:0}
-.t-sec-icon-tile{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.t-sec-title-text{font:700 14px var(--sans);letter-spacing:-.01em}
-.t-sec-counter-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;margin-left:6px}
-
-.t-sec-actions-right{display:flex;align-items:center;gap:8px}
-.t-sec-dest-pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;text-transform:uppercase;letter-spacing:.04em}
-.t-sec-arrow{font-size:12px;font-weight:bold;transition:transform .2s ease;display:inline-block}
-.t-section-accordion[open] .t-sec-arrow{transform:rotate(180deg)}
-
-/* Colores Temáticos Visuales de Cada Desplegable */
-.t-sec-mails{border-color:#b9d7f2}
-.t-sec-mails .t-sec-summary{background:#f3f8fd}
-.t-sec-mails .t-sec-icon-tile{background:#2a5d85;color:#ffffff}
-.t-sec-mails .t-sec-title-text{color:#153752}
-.t-sec-mails .t-sec-counter-badge{background:#e0effb;color:#184b73;border:1px solid #b7d8f5}
-.t-sec-mails .t-sec-dest-pill{background:#184b73;color:#ffffff}
-.t-sec-mails[open]{border-color:#2a5d85}
-
-.t-sec-practices{border-color:#f4cbb8}
-.t-sec-practices .t-sec-summary{background:#fdf5f0}
-.t-sec-practices .t-sec-icon-tile{background:#a84320;color:#ffffff}
-.t-sec-practices .t-sec-title-text{color:#6b2812}
-.t-sec-practices .t-sec-counter-badge{background:#fae3d5;color:#852d11;border:1px solid #f2c7b3}
-.t-sec-practices .t-sec-dest-pill{background:#a84320;color:#ffffff}
-.t-sec-practices[open]{border-color:#a84320}
-
-.t-sec-notes{border-color:#bfe3c6}
-.t-sec-notes .t-sec-summary{background:#f2faf4}
-.t-sec-notes .t-sec-icon-tile{background:#246845;color:#ffffff}
-.t-sec-notes .t-sec-title-text{color:#143e27}
-.t-sec-notes .t-sec-counter-badge{background:#def2e3;color:#195032;border:1px solid #b9e0c1}
-.t-sec-notes .t-sec-dest-pill{background:#246845;color:#ffffff}
-.t-sec-notes[open]{border-color:#246845}
-
-.t-sec-tests{border-color:#f6daa3}
-.t-sec-tests .t-sec-summary{background:#fdf8ee}
-.t-sec-tests .t-sec-icon-tile{background:#945f18;color:#ffffff}
-.t-sec-tests .t-sec-title-text{color:#5c3a07}
-.t-sec-tests .t-sec-counter-badge{background:#faeccd;color:#78490a;border:1px solid #f4d698}
-.t-sec-tests .t-sec-dest-pill{background:#945f18;color:#ffffff}
-.t-sec-tests[open]{border-color:#945f18}
-
-.t-sec-grades{border-color:#ecdcb9}
-.t-sec-grades .t-sec-summary{background:#fcf7ec}
-.t-sec-grades .t-sec-icon-tile{background:#82591a;color:#ffffff}
-.t-sec-grades .t-sec-title-text{color:#523508}
-.t-sec-grades .t-sec-counter-badge{background:#f7edd3;color:#6b4408;border:1px solid #ebd39b}
-.t-sec-grades .t-sec-dest-pill{background:#82591a;color:#ffffff}
-.t-sec-grades[open]{border-color:#82591a}
-
-.t-sec-dates{border-color:#c8e4cf}
-.t-sec-dates .t-sec-summary{background:#f1f8f3}
-.t-sec-dates .t-sec-icon-tile{background:#1e4632;color:#ffffff}
-.t-sec-dates .t-sec-title-text{color:#143825}
-.t-sec-dates .t-sec-counter-badge{background:#dcf0e2;color:#184a2f;border:1px solid #bfe3ca}
-.t-sec-dates .t-sec-dest-pill{background:#1e4632;color:#ffffff}
-.t-sec-dates[open]{border-color:#1e4632}
-
-.t-sec-body{padding:16px;border-top:1px solid rgba(0,0,0,.08);display:grid;gap:10px;background:#ffffff}
+/* Contenedor y Paneles Cozy: solo se muestra el apartado activo */
+.cozy-tab-panel-container{
+  min-height:90px;
+}
+.cozy-tab-panel{
+  display:none;
+  background:#ffffff;
+  border:1.5px solid #ded5c7;
+  border-radius:16px;
+  padding:18px 20px;
+  box-shadow:0 2px 8px rgba(35,28,20,.03);
+  animation:cozyPanelFade .18s ease-out;
+}
+.cozy-tab-panel.active{
+  display:grid;
+  gap:12px;
+}
+@keyframes cozyPanelFade{
+  from{opacity:0;transform:translateY(4px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
 /* Tarjetas Visuales de Items con Botones de Derivación */
 .visual-resource-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:#ffffff;border:1.5px solid #e7ded0;border-radius:12px;transition:all .18s ease;box-shadow:0 1px 3px rgba(0,0,0,.02)}
