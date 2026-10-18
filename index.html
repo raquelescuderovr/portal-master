@@ -452,14 +452,44 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <div class="brand"><div class="brand-icon">c</div><div><div class="brand-name">Cuaderno</div><div class="brand-sub">Máster en Abogacía y Procura</div></div></div>
   <div class="nav-label">Vistas del portal</div>
   <nav class="nav" aria-label="Menú principal">
-    <button class="active" data-view="inicio"><span class="nav-symbol">⌂</span>Portada · Mi día</button>
-    <button data-view="asignaturas"><span class="nav-symbol">▤</span>Bloques y Profesores<span class="nav-count">4</span></button>
-    <button data-view="profesores"><span class="nav-symbol">♟</span>Profesorado<span class="nav-count">7</span></button>
-    <button data-view="notas"><span class="nav-symbol">★</span>Notas y tests<span class="nav-count">10 / 8</span></button>
-    <button data-view="entregas"><span class="nav-symbol">✎</span>Prácticas (CPROC)<span class="nav-count">4/4 ✓</span></button>
-    <button data-view="materiales"><span class="nav-symbol">▧</span>Apuntes y Drive<span class="nav-count">13</span></button>
-    <button data-view="correo"><span class="nav-symbol">✉</span>Correo clasificado<span class="nav-count">5</span></button>
-    <button data-view="calendario"><span class="nav-symbol">▦</span>Calendario mes</button>
+    <button class="active" data-view="inicio">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Portada · Mi día
+    </button>
+    <button data-view="asignaturas">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Bloques y Asignaturas
+      <span class="nav-count">4</span>
+    </button>
+    <button data-view="profesores">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profesorado
+      <span class="nav-count">7</span>
+    </button>
+    <button data-view="notas">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Notas y Tests
+      <span class="nav-count">10 / 8</span>
+    </button>
+    <button data-view="entregas">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Prácticas (CPROC)
+      <span class="nav-count">4/4 ✓</span>
+    </button>
+    <button data-view="materiales">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Apuntes y Drive
+      <span class="nav-count">13</span>
+    </button>
+    <button data-view="correo">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Correo clasificado
+      <span class="nav-count">5</span>
+    </button>
+    <button data-view="calendario">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Calendario mes
+    </button>
   </nav>
   <div class="branch">
     <div class="nav-label">Materias</div>
@@ -481,10 +511,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <div class="side-note">
     <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 18 oct 2026
     <div class="side-links">
-      <a class="side-drive-link" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Carpeta Máster en Drive ↗</a>
-      <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Bandeja de Outlook ↗</a>
-      <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">Plataforma CPROC (MUAP) ↗</a>
-      <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">HTML original Test 16 oct ↗</a>
+      <a class="side-drive-link" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">📁 Carpeta Máster en Drive ↗</a>
+      <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
+      <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
+      <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 HTML original Test 16 oct ↗</a>
     </div>
   </div>
 </aside>
@@ -511,8 +541,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="welcome">
     <div>
       <div class="date-line" id="welcomeDate">Domingo, 18 de octubre de 2026</div>
-      <h1 id="welcomeTitle">Hola, Raquel.</h1>
-      <p id="welcomeSubtitle">Tu agenda del día y próximos titulares de un vistazo. Pincha en cualquier titular para ver todos sus datos.</p>
+      <h1 id="welcomeTitle">Hola, Raquel ☕</h1>
+      <p id="welcomeSubtitle">Tu cuaderno de estudio, agenda y notas al día. Todo preparado para que te organices con calma.</p>
     </div>
     <div class="term-note">
       <strong>Primer cuatrimestre · 2026/27</strong>
@@ -522,13 +552,34 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
-    <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">⌂ Portada</button>
-    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">▤ Bloques → Asignaturas → Profesores <span class="tab-badge">3 Bloques</span></button>
-    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">♟ Profesorado <span class="tab-badge">10</span></button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">★ Notas y Tests <span class="tab-badge">10 / 8</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">✎ Prácticas <span class="tab-badge">4/4 ✓</span></button>
-    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">▧ Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">✉ Correo <span class="tab-badge">5</span></button>
+    <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Portada
+    </button>
+    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Bloques y Asignaturas <span class="tab-badge">4</span>
+    </button>
+    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Profesorado <span class="tab-badge">7</span>
+    </button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Notas y Tests <span class="tab-badge">10 / 8</span>
+    </button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Prácticas <span class="tab-badge">4/4 ✓</span>
+    </button>
+    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      Apuntes y Drive <span class="tab-badge">13</span>
+    </button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">
+      <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Correo <span class="tab-badge">5</span>
+    </button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL MINIMALISTA: SOLO EL DÍA (ANTERIOR/SIGUIENTE) + PRÓXIMOS 3 DÍAS (SOLO TITULARES) -->
@@ -545,7 +596,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
         </div>
         <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
-        <span style="background:var(--green-pale);color:var(--green-dark);border-radius:20px;padding:6px 12px;font-size:11px;font-weight:800;border:1px solid #c8d8cc">Turno de tarde</span>
       </div>
     </div>
     <div class="today-panel">
@@ -2471,7 +2521,7 @@ function renderDay(){
    <span class="headline-title">${e.name}</span>
    <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
   </button>
- `).join(''):'<div class="empty">No hay clases ni eventos personales registrados para este día.</div>';
+ `).join(''):`<div class="empty-cozy"><span class="empty-icon">☕</span><strong>Día libre de sesiones o compromisos</strong><p>No tienes clases ni citas registradas para esta fecha. Momento perfecto para repasar con calma o descansar.</p></div>`;
  renderHomeHeadlines();
  renderCalendar();
  renderDeliveries();
