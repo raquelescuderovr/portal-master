@@ -629,56 +629,69 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color:var(--green);
 }
 
-/* Pestañas de vista estilo libreta (ALTO CONTRASTE) */
+/* Pestañas de navegación superiores (barra ejecutiva ultra-compacta y sobria) */
 .view-tabs{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  background:var(--sidebar-bg);
-  padding:6px;
-  border-radius:14px;
-  margin-bottom:26px;
-  border:1.5px solid var(--line);
-  box-shadow:var(--shadow-sm);
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+  background:#f4f1ea;
+  padding:3px;
+  border-radius:8px;
+  margin-bottom:20px;
+  border:1px solid var(--line);
+  box-shadow:0 1px 2px rgba(0,0,0,.03);
+  overflow-x:auto;
+  max-width:100%;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.view-tabs::-webkit-scrollbar{
+  display:none;
 }
 .view-tab{
-  border:1.5px solid transparent;
+  border:1px solid transparent;
   background:transparent;
-  border-radius:10px;
-  padding:9px 16px;
-  font:700 13.5px var(--sans);
+  border-radius:6px;
+  padding:5px 11px;
+  font:500 12.5px/1.2 var(--sans);
   color:var(--ink-soft);
   cursor:pointer;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  transition:all .16s ease;
+  gap:5px;
+  white-space:nowrap;
+  flex-shrink:0;
+  transition:all .14s ease;
+}
+.view-tab svg{
+  display:none !important;
 }
 .view-tab:hover{
-  background:#ffffff;
-  color:var(--green-dark);
-  border-color:var(--line);
+  background:rgba(255,255,255,.75);
+  color:var(--ink);
 }
 .view-tab.active{
-  background:linear-gradient(135deg, #0e3523 0%, #164e33 100%);
-  color:#ffffff;
-  box-shadow:0 4px 12px rgba(22,78,51,.28);
-  border-color:#0a2a1b;
-  font-weight:800;
+  background:#ffffff;
+  color:var(--green-dark);
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+  border-color:rgba(0,0,0,.08);
+  font-weight:600;
 }
-.view-tab.active .nav-svg{color:#ffffff}
 .view-tab .tab-badge{
-  font-size:11px;
-  padding:2px 8px;
-  border-radius:8px;
-  background:#ded7c8;
-  color:var(--ink);
-  font-weight:800;
+  font-size:10px;
+  font-weight:600;
+  line-height:1;
+  padding:2px 6px;
+  border-radius:999px;
+  background:rgba(0,0,0,.06);
+  color:var(--muted);
+  white-space:nowrap;
+  flex-shrink:0;
 }
 .view-tab.active .tab-badge{
-  background:rgba(255,255,255,.25);
-  color:#ffffff;
-  border-color:transparent;
+  background:var(--green-pale);
+  color:var(--green);
+  border:1px solid var(--green-border);
 }
 
 /* ========================================================
@@ -1903,34 +1916,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <!-- Menú superior de secciones -->
   <div class="view-tabs" role="tablist" aria-label="Secciones del cuaderno">
-    <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      Portada
-    </button>
-    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      Bloques y Asignaturas <span class="tab-badge">8</span>
-    </button>
-    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Profesorado <span class="tab-badge">29</span>
-    </button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Notas y Tests <span class="tab-badge">10/8</span>
-    </button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      Prácticas <span class="tab-badge">4/4 ✓</span>
-    </button>
-    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-      Apuntes y Drive <span class="tab-badge">13</span>
-    </button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">
-      <svg class="nav-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Correo <span class="tab-badge">5</span>
-    </button>
+    <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">Portada</button>
+    <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
+    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Prácticas <span class="tab-badge">4/4</span></button>
+    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">5</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL MINIMALISTA: SOLO EL DÍA (ANTERIOR/SIGUIENTE) + PRÓXIMOS 3 DÍAS (SOLO TITULARES) -->
