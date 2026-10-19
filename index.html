@@ -445,10 +445,128 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .top-quick button:hover,.top-quick a:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm);border-color:var(--green-border);color:var(--green-dark)}
 .top-quick button.active{background:var(--green-dark);color:#fff;border-color:var(--green-dark);box-shadow:0 2px 8px rgba(30,67,49,.25)}
 .top-actions{display:flex;gap:12px;align-items:center}
-.search{width:min(290px,32vw);display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--line);background:var(--paper-warm);border-radius:14px;color:var(--muted);box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s}
+.search-wrap{position:relative}
+.search{width:min(350px,46vw);display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--line);background:var(--paper-warm);border-radius:14px;color:var(--muted);box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s}
 .search:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(50,95,72,.15)}
 .search input{border:0;outline:0;background:transparent;width:100%;font:13.5px var(--sans);color:var(--ink)}
 .search input::placeholder{color:var(--muted);opacity:.85}
+.search-clear-btn{background:none;border:none;color:var(--muted);cursor:pointer;padding:2px 6px;font-size:13px;line-height:1;border-radius:50%;display:none;align-items:center;justify-content:center;transition:all .15s ease}
+.search-clear-btn:hover{color:var(--ink);background:var(--paper-card)}
+.search.has-text .search-clear-btn{display:inline-flex}
+
+/* Desplegable Spotlight de Búsqueda Global */
+.search-dropdown{
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  width:min(540px,94vw);
+  max-height:480px;
+  overflow-y:auto;
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 18px 45px rgba(0,0,0,.5), 0 4px 14px rgba(0,0,0,.3);
+  z-index:1100;
+  display:none;
+  padding:10px 0;
+  overscroll-behavior:contain;
+}
+.search-dropdown.open{display:block}
+.search-dropdown-header{
+  padding:8px 16px 10px;
+  font-size:11.5px;
+  font-weight:700;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.search-dropdown-group-title{
+  padding:10px 16px 4px;
+  font-size:11px;
+  font-weight:800;
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.search-result-item{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:9px 16px;
+  cursor:pointer;
+  border-radius:0;
+  transition:background .15s ease;
+  color:inherit;
+  font:inherit;
+  border-bottom:1px solid rgba(255,255,255,.03);
+}
+.search-result-item:hover, .search-result-item.selected{
+  background:var(--paper-warm);
+}
+.search-result-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:3px;
+}
+.search-result-title{
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--ink);
+}
+.search-result-badge{
+  font-size:10.5px;
+  font-weight:700;
+  padding:2px 7px;
+  border-radius:10px;
+  white-space:nowrap;
+  background:var(--paper-warm);
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+}
+.search-result-badge.badge-asig{background:#172820;border-color:#2a4d3b;color:#a3e4c1}
+.search-result-badge.badge-prof{background:#231e33;border-color:#48386c;color:#cbb5f8}
+.search-result-badge.badge-mat{background:#162736;border-color:#274b68;color:#9fd0f6}
+.search-result-badge.badge-prac{background:#2d1e16;border-color:#5c3924;color:#f3b497}
+.search-result-badge.badge-mail{background:#2d2315;border-color:#594420;color:#f3d191}
+.search-result-badge.badge-cal{background:#1a2830;border-color:#2e4958;color:#9ed4ed}
+.search-result-badge.badge-grade{background:#2b2613;border-color:#594d1f;color:#edd374}
+.search-result-snippet{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.35;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.search-result-snippet mark{
+  background:rgba(212,175,55,.3);
+  color:var(--ink);
+  font-weight:700;
+  border-radius:3px;
+  padding:0 2px;
+}
+.search-empty-state{
+  padding:24px 18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+.search-empty-state strong{
+  display:block;
+  color:var(--ink);
+  margin-bottom:6px;
+  font-size:14px;
+}
 .avatar{width:38px;height:38px;border-radius:50%;background:#382a20;color:var(--honey-dark);display:grid;place-items:center;font-size:12.5px;font-weight:800;border:2px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.4)}
 
 /* Cabecera acogedora cálida (Welcome Card) */
@@ -1831,8 +1949,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="sidebar-academic-tree" id="sidebarAcademicTree">
       <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Bloques del horario ➔ Asignaturas ➔ Docentes con fechas de clase, apuntes, prácticas y correos</div>
       <div class="side-filter-strip" role="group" aria-label="Filtrar árbol de materias">
-        <button class="side-filter-btn active" data-side-filter="all">🗓️ Todo el curso (dadas y próximas)</button>
-        <button class="side-filter-btn" data-side-filter="upcoming">⏳ Por venir</button>
+        <button class="side-filter-btn active" data-side-filter="upcoming">⏳ Por venir</button>
+        <button class="side-filter-btn" data-side-filter="all">🗓️ Todo el curso (dadas y próximas)</button>
       </div>
       <div class="side-tree-list" id="sideTreeContent"></div>
     </div>
@@ -1863,7 +1981,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       </div>
     </div>
     <div class="top-actions">
-      <label class="search"><span>⌕</span><input id="search" placeholder="Buscar profesor, apunte o correo..." aria-label="Buscar"></label>
+      <div class="search-wrap">
+        <label class="search" id="searchBox" for="search">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" placeholder="Buscar en el Máster (asignatura, profe, apunte, correo)... [/]" aria-label="Buscar en el portal" autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Limpiar búsqueda" title="Limpiar búsqueda">✕</button>
+        </label>
+        <div class="search-dropdown" id="searchDropdown" role="region" aria-label="Resultados de búsqueda"></div>
+      </div>
       <div class="avatar" title="Raquel Escudero">RE</div>
     </div>
   </header>
@@ -1921,7 +2046,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="term-box-badge">1.er Cuatrimestre</div>
       <div class="term-box-period">1 oct 2026 — 31 ene 2027</div>
       <div class="term-box-footer">
-        <span>Revisión: 18 oct 2026</span>
+        <span>Revisión: 19 oct 2026</span>
         <span class="term-status-dot">● Al día</span>
       </div>
     </div>
@@ -2079,11 +2204,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
       <!-- Barra de filtro de estados con los 3 colores distintivos -->
       <div class="status-filter-strip" role="group" aria-label="Filtro de estado de asignaturas">
-        <b>Filtrar por estado:</b>
-        <button class="status-filter-btn active" data-subject-status-filter="all">Todas las materias</button>
+        <b>Estado:</b>
+        <button class="status-filter-btn active" data-subject-status-filter="all">Todas</button>
         <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose ahora</button>
         <button class="status-filter-btn status-btn-upcoming" data-subject-status-filter="upcoming">⏳ Por venir</button>
         <button class="status-filter-btn status-btn-past" data-subject-status-filter="past">✓ Ya cursadas</button>
+        <span style="border-left:1px solid var(--line);height:18px;margin:0 4px" aria-hidden="true"></span>
+        <b>Rama:</b>
+        <button class="status-filter-btn active" data-subject-branch-filter="todas">Todas</button>
+        <button class="status-filter-btn" data-subject-branch-filter="Abogacía">⚖️ Abogacía</button>
+        <button class="status-filter-btn" data-subject-branch-filter="Procura">🏛️ Procura</button>
         <span class="status-filter-summary" id="subjectFilterSummary">Mostrando asignaturas en estricto orden cronológico.</span>
       </div>
 
@@ -2121,7 +2251,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <h2>Profesorado: correo, práctica, apuntes y evaluación</h2>
         <p>Pincha en el nombre de cualquier docente para abrir su ficha completa o pulsa en «Desplegar vínculos» en su tarjeta.</p>
       </div>
-      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="pill-btn" id="btnToggleAllTeachers" style="font-size:11px;padding:6px 12px">Expandir todos ▾</button>
+        <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      </div>
+    </div>
+    <div class="status-filter-strip" role="group" aria-label="Filtrar profesorado" style="margin-bottom:18px">
+      <b>Filtrar:</b>
+      <button class="status-filter-btn active" data-teacher-filter="all">Todos los docentes (29)</button>
+      <button class="status-filter-btn" data-teacher-filter="Abogacía">⚖️ Rama Abogacía (16)</button>
+      <button class="status-filter-btn" data-teacher-filter="Procura">🏛️ Rama Procura (16)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-teacher-filter="upcoming">⏳ Con clases pendientes</button>
+      <span class="status-filter-summary" id="teacherFilterSummary">Mostrando los 29 docentes del claustro.</span>
     </div>
     <div class="teachers-grid" id="teachersGrid"></div>
   </section>
@@ -2153,6 +2294,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       </div>
       <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
+    <div class="status-filter-strip" role="group" aria-label="Filtrar materiales" style="margin-bottom:18px">
+      <b>Filtrar:</b>
+      <button class="status-filter-btn active" data-material-filter="all">Todos los materiales (13)</button>
+      <button class="status-filter-btn" data-material-filter="abogacia">⚖️ Rama Abogacía</button>
+      <button class="status-filter-btn" data-material-filter="procura">🏛️ Rama Procura</button>
+      <button class="status-filter-btn" data-material-filter="boe">📜 Normativa BOE</button>
+      <button class="status-filter-btn" data-material-filter="practicas">✍️ Guías y Prácticas</button>
+      <span class="status-filter-summary" id="materialFilterSummary">Mostrando recursos organizados por materia.</span>
+    </div>
     <div class="drive-banner">
       <div class="drive-banner-info">
         <strong>Carpeta «Máster» en Google Drive</strong>
@@ -2170,7 +2320,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <h2>Correo clasificado por asignatura y profesor</h2>
         <p>Mensajes revisados hasta el 16 de octubre de 2026 con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
       </div>
-      <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="pill-btn" id="btnToggleAllMails" style="font-size:11px;padding:6px 12px">Expandir todos ▾</button>
+        <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+      </div>
+    </div>
+    <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
+      <b>Filtrar:</b>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (5)</button>
+      <button class="status-filter-btn" data-mail-filter="notas">⭐ Calificaciones y notas</button>
+      <button class="status-filter-btn" data-mail-filter="practicas">✍️ Prácticas y CPROC</button>
+      <button class="status-filter-btn" data-mail-filter="avisos">📅 Avisos y convocatorias</button>
+      <span class="status-filter-summary" id="mailFilterSummary">5 comunicaciones clasificadas del Máster.</span>
     </div>
     <div class="outlook-banner">
       <div class="outlook-banner-info">
@@ -2846,10 +3007,10 @@ const courses=[
    },
    {
     name:'Actos de comunicación judicial',
-    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 · Próxima sesión mañana',
+    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 · Cursándose hoy y mañana',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
-    grade:{score:'⏳ Próxima sesión mañana · Materiales al día',detail:'Materiales recibidos por correo el 15 oct (4 documentos) · Sesiones presenciales 19 y 20 oct.',detailKey:'materials',actionLabel:'Ver 4 documentos en correo ↗'},
+    grade:{score:'🟢 En curso hoy · Materiales al día',detail:'Materiales recibidos por correo el 15 oct (4 documentos) · Sesiones presenciales 19 y 20 oct (16:30–18:30).',detailKey:'materials',actionLabel:'Ver 4 documentos en correo ↗'},
     notes:[
      {name:'1. Carta de presentación de Sandra Mosteiro Costa',detailKey:'materials',url:driveSearchUrl('Carta de presentación'),label:'Buscar en Drive ↗'},
      {name:'2. Presentación de actos de comunicación judicial (diapositivas)',detailKey:'materials',url:driveSearchUrl('actos de comunicación'),label:'Buscar en Drive ↗'},
@@ -3063,7 +3224,7 @@ const courses=[
     period:'19, 20 y 26 oct 2026 · Horario: 18:45–20:45 (19 y 20) y 16:30–18:30 (26) · 6 h presenciales',
     startDate:'2026-10-19',
     teachers:['José Luis Delgado Domínguez'],
-    grade:{score:'⏳ Próxima sesión mañana · 6 h presenciales',detail:'Horarios y documentación recibidos por correo el 16 oct · Sesiones 19, 20 y 26 oct.',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
+    grade:{score:'🟢 En curso hoy · 6 h presenciales',detail:'Horarios y documentación recibidos por correo el 16 oct · Sesiones 19, 20 y 26 oct (inicio hoy a las 18:45 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
@@ -3674,9 +3835,9 @@ const teacherDirectory=[
   name:'Sandra Mosteiro Costa',
   branch:'Procura',
   role:'Procuradora · Técnicas instrumentales (Actos de comunicación judicial)',
-  gradeBadge:'⏳ ¡Viene mañana lunes 19 oct (16:30)!',
+  gradeBadge:'🟢 ¡Imparte clase hoy lunes 19 oct (16:30 h)!',
   summary:'Actos de comunicación judicial: notificaciones, citaciones, emplazamientos, requerimientos y cómputo de plazos procesales (19 y 20 de octubre).',
-  grade:{score:'⏳ Próxima sesión mañana',scoreLabel:'Docencia por venir',detail:'Materiales recibidos por correo el 15 oct (4 documentos disponibles). Clases presenciales: 19 y 20 de octubre (16:30–18:30).',detailKey:'materials'},
+  grade:{score:'🟢 Sesión hoy a las 16:30',scoreLabel:'Docencia en curso hoy',detail:'Materiales recibidos por correo el 15 oct (4 documentos disponibles). Clases presenciales: 19 y 20 de octubre (16:30–18:30).',detailKey:'materials'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Marco general, notificaciones y requerimientos)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Citaciones, emplazamientos y caso práctico jurisprudencial)',place:'Colegio de Abogados (A Coruña)'}
@@ -3695,9 +3856,9 @@ const teacherDirectory=[
   name:'José Luis Delgado Domínguez',
   branch:'Abogacía',
   role:'Abogado · Responsabilidad civil y penal, aseguramiento y turno de oficio',
-  gradeBadge:'⏳ ¡Viene mañana lunes 19 oct (18:45)!',
+  gradeBadge:'🟢 ¡Imparte clase hoy lunes 19 oct (18:45 h)!',
   summary:'Responsabilidad civil y penal del abogado, cobertura de seguro de responsabilidad profesional y Turno de Oficio (19, 20 y 26 de octubre).',
-  grade:{score:'⏳ Próxima sesión mañana',scoreLabel:'Docencia por venir',detail:'Documentación y enlaces recibidos por correo el 16 oct. Sesiones presenciales: 19 y 20 oct (18:45–20:45) y 26 oct (16:30–18:30).',detailKey:'schedule'},
+  grade:{score:'🟢 Sesión hoy a las 18:45',scoreLabel:'Docencia en curso hoy',detail:'Documentación y enlaces recibidos por correo el 16 oct. Sesiones presenciales: 19 y 20 oct (18:45–20:45) y 26 oct (16:30–18:30).',detailKey:'schedule'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Responsabilidad civil y penal del abogado (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Aseguramiento de la responsabilidad profesional (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
@@ -4134,22 +4295,42 @@ function renderGrades(){
 }
 
 function getSessionStatus(dateStr){
- if(dateStr<'2026-10-18')return 'past';
- if(dateStr==='2026-10-19')return 'tomorrow';
+ const todayKey=keyOf(todayDate);
+ if(dateStr<todayKey)return 'past';
+ if(dateStr===todayKey)return 'today';
+ const tomorrow=new Date(todayDate);
+ tomorrow.setDate(tomorrow.getDate()+1);
+ if(dateStr===keyOf(tomorrow))return 'tomorrow';
  return 'upcoming';
 }
 
 function getTeacherUpcomingStatus(t){
  const sessions=t.sessions||[];
+ const todayKey=keyOf(todayDate);
  if(!sessions.length)return {state:'upcoming',label:'⏳ Docente programado',isUpcoming:true,upcomingCount:0,pastCount:0};
- const upcoming=sessions.filter(s=>s.date>='2026-10-18');
- const past=sessions.filter(s=>s.date<'2026-10-18');
- const hasTomorrow=sessions.some(s=>s.date==='2026-10-19');
+ const upcoming=sessions.filter(s=>s.date>=todayKey);
+ const past=sessions.filter(s=>s.date<todayKey);
+ const hasToday=sessions.some(s=>s.date===todayKey);
+ if(hasToday){
+  const sToday=sessions.find(s=>s.date===todayKey);
+  return {
+   state:'today',
+   label:`🟢 ¡Clase hoy (${sToday.time})!`,
+   isUpcoming:true,
+   upcomingCount:upcoming.length,
+   pastCount:past.length,
+   nextSession:sToday
+  };
+ }
+ const tomorrow=new Date(todayDate);
+ tomorrow.setDate(tomorrow.getDate()+1);
+ const tomorrowKey=keyOf(tomorrow);
+ const hasTomorrow=sessions.some(s=>s.date===tomorrowKey);
  if(hasTomorrow){
-  const sTomorrow=sessions.find(s=>s.date==='2026-10-19');
+  const sTomorrow=sessions.find(s=>s.date===tomorrowKey);
   return {
    state:'tomorrow',
-   label:`🔥 ¡Viene mañana lunes 19 oct (${sTomorrow.time})!`,
+   label:`⏳ Viene mañana (${sTomorrow.time})`,
    isUpcoming:true,
    upcomingCount:upcoming.length,
    pastCount:past.length,
@@ -4521,7 +4702,7 @@ function renderTeacherInsideSubject(tName, sub){
  `;
 }
 
-let currentSideFilter = 'all';
+let currentSideFilter = 'upcoming';
 
 function renderSidebarTree(mode){
  if(mode !== undefined) currentSideFilter = mode;
@@ -4971,28 +5152,59 @@ function renderGradePanel(t){
 
 let currentBranchFilter='todas';
 let currentSubjectStatusFilter='all';
+let currentTeacherFilter='all';
+let currentMaterialFilter='all';
+let currentMailFilter='all';
 let currentActiveSubject=null;
 let currentActiveTeacher=null;
 
+function escapeHtml(str){
+ return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeRegExp(str){
+ return String(str||'').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function parseSubjectEndDate(sub){
+ const sDate=sub.startDate||'';
+ const period=sub.period||'';
+ if(!period)return sDate;
+ const months={oct:10,nov:11,dic:12,ene:1,feb:2,mar:3,abr:4,may:5,jun:6};
+ let year=2026;
+ if(period.includes('2027'))year=2027;
+ const p=period.toLowerCase().replace(/octubre/g,'oct').replace(/noviembre/g,'nov').replace(/diciembre/g,'dic').replace(/enero/g,'ene');
+ const matches=[...p.matchAll(/(\d{1,2})\s*(?:al|,)?\s*(\d{1,2})?\s*(?:de|\s)?\s*(oct|nov|dic|ene)/g)];
+ if(matches.length){
+  const last=matches[matches.length-1];
+  const day=Number(last[2]||last[1]);
+  const month=months[last[3]];
+  if(month===1&&year===2026&&!period.includes('2027'))year=2027;
+  return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+ }
+ return sDate;
+}
+
 function getSubjectStatusInfo(sub){
  const sDate=sub.startDate||'';
- const isCurrent=(sDate==='2026-10-19')||(sub.period&&sub.period.includes('19')&&(sub.period.includes('oct')||sub.period.includes('20')));
- if(isCurrent){
+ const eDate=parseSubjectEndDate(sub);
+ const todayKey=keyOf(todayDate);
+
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
   return {
    status:'current',
-   label:'🟢 Cursándose ahora',
+   label:'🟢 Cursándose hoy',
    badgeClass:'status-current',
    cardClass:'status-current',
-   desc:'Docencia en curso esta semana (19–26 oct)'
+   desc:'Docencia activa hoy en el horario oficial'
   };
  }
- if(sDate<'2026-10-18'&&sDate!==''){
+ if(eDate < todayKey && eDate!==''){
   return {
    status:'past',
    label:'✓ Ya cursada',
    badgeClass:'status-past',
    cardClass:'status-past',
-   desc:'Docencia ya impartida (1 al 16 oct 2026)'
+   desc:'Materia ya impartida y completada'
   };
  }
  return {
@@ -5236,6 +5448,10 @@ function renderSubjectsList(branchFilter, statusFilter){
   b.classList.toggle('active', b.getAttribute('data-branch-view')===currentBranchFilter);
  });
 
+ document.querySelectorAll('[data-subject-branch-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-subject-branch-filter')===currentBranchFilter);
+ });
+
  document.querySelectorAll('[data-subject-status-filter]').forEach(b=>{
   b.classList.toggle('active', b.getAttribute('data-subject-status-filter')===statusMode);
  });
@@ -5270,13 +5486,13 @@ function renderSubjectsList(branchFilter, statusFilter){
  const summaryEl=document.getElementById('subjectFilterSummary');
  if(summaryEl){
   if(statusMode==='current'){
-   summaryEl.innerHTML=`Mostrando <b>${countCurrent} asignaturas cursándose ahora</b> (semana del 19 al 26 oct).`;
+   summaryEl.innerHTML=`Mostrando <b>${countCurrent} materia${countCurrent===1?'':'s'} cursándose hoy</b> (19 y 20 de octubre).`;
   }else if(statusMode==='upcoming'){
-   summaryEl.innerHTML=`Mostrando <b>${countUpcoming} asignaturas por venir</b> (a partir del 26/27 oct).`;
+   summaryEl.innerHTML=`Mostrando <b>${countUpcoming} asignaturas por venir</b> en el calendario oficial.`;
   }else if(statusMode==='past'){
-   summaryEl.innerHTML=`Mostrando <b>${countPast} asignaturas ya cursadas</b> (del 1 al 16 oct 2026).`;
+   summaryEl.innerHTML=`Mostrando <b>${countPast} asignaturas ya cursadas y completadas</b>.`;
   }else{
-   summaryEl.innerHTML=`Mostrando <b>${allItems.length} asignaturas</b> (${countCurrent} en curso, ${countUpcoming} por venir y ${countPast} ya cursadas).`;
+   summaryEl.innerHTML=`Mostrando <b>${allItems.length} asignaturas</b> (${countCurrent} en curso hoy, ${countUpcoming} por venir y ${countPast} ya cursadas).`;
   }
  }
 
@@ -5322,10 +5538,55 @@ function renderCourses(branchFilter, statusFilter){
  renderSubjectsList(branchFilter, statusFilter);
 }
 
-function renderTeachers(q=''){
+function renderTeachers(q='', filter=currentTeacherFilter){
+ if(filter !== undefined) currentTeacherFilter = filter;
  const grid=document.getElementById('teachersGrid');
  if(!grid)return;
- const list=teacherDirectory.filter(t=>!q||(t.name+' '+t.role+' '+t.summary).toLowerCase().includes(q.toLowerCase()));
+
+ document.querySelectorAll('[data-teacher-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-teacher-filter') === currentTeacherFilter);
+ });
+
+ let list = teacherDirectory;
+
+ if(currentTeacherFilter === 'Abogacía'){
+  list = list.filter(t => (t.branch || '').includes('Abogacía'));
+ } else if(currentTeacherFilter === 'Procura'){
+  list = list.filter(t => (t.branch || '').includes('Procura'));
+ } else if(currentTeacherFilter === 'upcoming'){
+  list = list.filter(t => getTeacherUpcomingStatus(t).isUpcoming);
+ }
+
+ if(q){
+  const lq = q.toLowerCase();
+  list = list.filter(t => {
+   const text = (t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' +
+     (t.sessions||[]).map(s=>s.topic+' '+s.place+' '+s.date).join(' ') + ' ' +
+     (t.driveFiles||[]).map(d=>d.name).join(' ') + ' ' +
+     (t.notes||[]).map(n=>n.title).join(' ') + ' ' +
+     (t.practices||[]).map(p=>p.title).join(' ')
+   ).toLowerCase();
+   return text.includes(lq);
+  });
+ }
+
+ const summaryEl = document.getElementById('teacherFilterSummary');
+ if(summaryEl){
+  let filterLabel = 'del claustro';
+  if(currentTeacherFilter === 'Abogacía') filterLabel = 'de la Rama Abogacía';
+  else if(currentTeacherFilter === 'Procura') filterLabel = 'de la Rama Procura';
+  else if(currentTeacherFilter === 'upcoming') filterLabel = 'con sesiones pendientes por impartir';
+  summaryEl.textContent = `Mostrando ${list.length} de ${teacherDirectory.length} docentes ${filterLabel}${q ? ` con «${q}»` : ''}.`;
+ }
+
+ if(!list.length){
+  grid.innerHTML = `<div class="empty" style="grid-column:1/-1;padding:32px;text-align:center;background:var(--paper-card);border:1.5px dashed var(--line);border-radius:14px">
+   <p style="font-size:14px;color:var(--ink);font-weight:700;margin-bottom:6px">No hay docentes que coincidan con los filtros seleccionados.</p>
+   <button type="button" class="pill-btn" onclick="renderTeachers('', 'all')" style="margin-top:8px">Restablecer filtros del profesorado ↺</button>
+  </div>`;
+  return;
+ }
+
  grid.innerHTML=list.map(t=>{
   const st=getTeacherUpcomingStatus(t);
   let badgeClass='teacher-badge-upcoming';
@@ -5445,10 +5706,48 @@ function renderTeachers(q=''){
  }).join('');
 }
 
-function renderMaterials(q=''){
+function renderMaterials(q='', filter=currentMaterialFilter){
+ if(filter !== undefined) currentMaterialFilter = filter;
  const grid=document.getElementById('materialsGrid');
  if(!grid)return;
- const list=catalogMaterials.filter(item=>!q||(item.title+' '+item.teacher+' '+item.docs.map(d=>d.name).join(' ')).toLowerCase().includes(q.toLowerCase()));
+
+ document.querySelectorAll('[data-material-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-material-filter') === currentMaterialFilter);
+ });
+
+ let list = catalogMaterials;
+
+ if(currentMaterialFilter === 'abogacia'){
+  list = list.filter(m => (m.area||'').toLowerCase() === 'abogacia');
+ } else if(currentMaterialFilter === 'procura'){
+  list = list.filter(m => (m.area||'').toLowerCase() === 'procura');
+ } else if(currentMaterialFilter === 'boe'){
+  list = list.filter(m => (m.docs||[]).some(d => (d.name||'').toLowerCase().includes('boe') || (d.label||'').toLowerCase().includes('boe') || (d.url||'').includes('boe.es')));
+ } else if(currentMaterialFilter === 'practicas'){
+  list = list.filter(m => (m.title||'').toLowerCase().includes('práctica') || (m.docs||[]).some(d=>(d.name||'').toLowerCase().includes('práctica') || (d.name||'').toLowerCase().includes('subsanación')));
+ }
+
+ if(q){
+  const lq = q.toLowerCase();
+  list = list.filter(item => {
+   const text = (item.title + ' ' + item.teacher + ' ' + item.kicker + ' ' + (item.docs||[]).map(d=>d.name).join(' ')).toLowerCase();
+   return text.includes(lq);
+  });
+ }
+
+ const summaryEl = document.getElementById('materialFilterSummary');
+ if(summaryEl){
+  summaryEl.textContent = `Mostrando ${list.length} bloques de materiales${q ? ` con «${q}»` : ''}.`;
+ }
+
+ if(!list.length){
+  grid.innerHTML = `<div class="empty" style="grid-column:1/-1;padding:32px;text-align:center;background:var(--paper-card);border:1.5px dashed var(--line);border-radius:14px">
+   <p style="font-size:14px;color:var(--ink);font-weight:700;margin-bottom:6px">No hay materiales para el filtro seleccionado.</p>
+   <button type="button" class="pill-btn" onclick="renderMaterials('', 'all')" style="margin-top:8px">Restablecer filtros de materiales ↺</button>
+  </div>`;
+  return;
+ }
+
  grid.innerHTML=list.map(item=>`
   <article class="material-card" data-area="${item.area}">
    <div>
@@ -5530,10 +5829,17 @@ function openSubject(ref){
 }
 
 function openTeacher(name){
+ if(currentTeacherFilter !== 'all'){
+  renderTeachers('', 'all');
+ }
  setView('profesores', false);
  setTimeout(()=>{
   const cardId = 'teacher-card-' + encodeURIComponent(name);
   let card = document.getElementById(cardId) || document.querySelector(`[data-teacher-card="${name}"]`);
+  if(!card){
+   renderTeachers('', 'all');
+   card = document.getElementById(cardId) || document.querySelector(`[data-teacher-card="${name}"]`);
+  }
   if(!card){
    card = Array.from(document.querySelectorAll('.teacher-card')).find(el=>{
     const h = el.querySelector('h3, button');
@@ -5598,6 +5904,9 @@ function openDetail(key){
  }
 
  // 4. Correo clasificado
+ if(currentMailFilter !== 'all'){
+  renderMail('', 'all');
+ }
  setView('correo', false);
  setTimeout(()=>{
   let row = document.getElementById('mail-card-' + key) || document.querySelector(`[data-mail-key="${key}"]`);
@@ -5734,39 +6043,35 @@ function renderDay(){
    <span class="headline-title">${e.name}</span>
    <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
   </button>
- `).join(''):`<div class="empty-cozy">
-   <div class="empty-cozy-top">
-     <div class="empty-cozy-icon-box">
-       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
-     </div>
-     <div>
-       <div class="empty-cozy-kicker">Agenda del día · Domingo</div>
-       <strong>Sin clases presenciales programadas para hoy</strong>
-     </div>
-   </div>
-   
-   <div class="empty-next-session-callout">
-     <span class="ens-badge">Próxima sesión oficial</span>
-     <span class="ens-text"><strong>Lunes 19 de octubre · 16:30 h</strong> — Actos de comunicación judicial (Sandra Mosteiro Costa)</span>
-   </div>
-
-   <p>Hoy domingo no hay clases del Máster en la sede del Colegio de Abogados. Puedes consultar los apuntes en Drive, revisar las calificaciones oficiales o comprobar la previsión de la semana entrante.</p>
-   
-   <div class="empty-cozy-actions">
-     <button class="cozy-btn cozy-btn-mint" data-switch-view="materiales">
-       📁 Explorar apuntes en Drive ↗
-     </button>
-     <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
-       ⭐ Ver calificaciones oficiales (10/10) →
-     </button>
-     <button class="cozy-btn cozy-btn-blue" data-switch-view="calendario">
-       🗓️ Ver Calendario mensual completo →
-     </button>
-     <button class="cozy-btn" id="btnSeeTomorrow" style="border:1.5px solid var(--line);background:var(--paper-warm);color:var(--ink)">
-       ⏩ Ver sesiones de mañana lunes (16:30 h) →
-     </button>
-   </div>
-  </div>`;
+ `).join(''):(() => {
+    const isWeekend = selectedDate.getDay()===0 || selectedDate.getDay()===6;
+    const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(selectedDate);
+    return `<div class="empty-cozy">
+    <div class="empty-cozy-top">
+      <div class="empty-cozy-icon-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+      </div>
+      <div>
+        <div class="empty-cozy-kicker">Agenda · ${dayName.charAt(0).toUpperCase() + dayName.slice(1)}</div>
+        <strong>Sin sesiones presenciales programadas para esta fecha</strong>
+      </div>
+    </div>
+    
+    <p>${isWeekend ? 'Fin de semana sin clases lectivas programadas en el Colegio de Abogados.' : 'No constan clases convocadas para este día en el calendario oficial.'} Puedes consultar los apuntes en Drive, revisar las notas o explorar las próximas asignaturas.</p>
+    
+    <div class="empty-cozy-actions">
+      <button class="cozy-btn cozy-btn-mint" data-switch-view="materiales">
+        📁 Explorar apuntes en Drive ↗
+      </button>
+      <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
+        ⭐ Ver notas y tests (10/10) →
+      </button>
+      <button class="cozy-btn cozy-btn-blue" data-switch-view="asignaturas">
+        📖 Ver asignaturas y bloques →
+      </button>
+    </div>
+   </div>`;
+  })();
   renderHomeHeadlines();
  renderCalendar();
  renderDeliveries();
@@ -5848,9 +6153,44 @@ function renderDeliveries(){
  document.getElementById('deliveryList').innerHTML=deliveries.map(renderRow).join('');
 }
 
-function renderMail(q=''){
- const list=messages.filter(m=>(m.title+' '+m.meta+' '+mailSummaries[m.key]).toLowerCase().includes(q.toLowerCase()));
- document.getElementById('mailList').innerHTML=list.map(m=>{
+function renderMail(q='', filter=currentMailFilter){
+ if(filter !== undefined) currentMailFilter = filter;
+ const listContainer = document.getElementById('mailList');
+ if(!listContainer) return;
+
+ document.querySelectorAll('[data-mail-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-mail-filter') === currentMailFilter);
+ });
+
+ let list = messages;
+
+ if(currentMailFilter === 'notas'){
+  list = list.filter(m => m.key === 'grades' || (m.title||'').toLowerCase().includes('nota'));
+ } else if(currentMailFilter === 'practicas'){
+  list = list.filter(m => m.key === 'assignment' || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica'));
+ } else if(currentMailFilter === 'avisos'){
+  list = list.filter(m => m.key === 'dataforum' || m.key === 'schedule' || m.key === 'materials');
+ }
+
+ if(q){
+  const lq = q.toLowerCase();
+  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
+ }
+
+ const summaryEl = document.getElementById('mailFilterSummary');
+ if(summaryEl){
+  summaryEl.textContent = `Mostrando ${list.length} de ${messages.length} correos clasificados${q ? ` con «${q}»` : ''}.`;
+ }
+
+ if(!list.length){
+  listContainer.innerHTML = `<div class="empty" style="padding:28px;text-align:center;background:var(--paper-card);border:1.5px dashed var(--line);border-radius:14px">
+   <p style="font-size:14px;color:var(--ink);font-weight:700;margin-bottom:6px">No hay correos para el filtro seleccionado.</p>
+   <button type="button" class="pill-btn" onclick="renderMail('', 'all')" style="margin-top:8px">Restablecer filtros de correo ↺</button>
+  </div>`;
+  return;
+ }
+
+ listContainer.innerHTML=list.map(m=>{
   const d = details[m.key];
   return `
   <div class="mail-row" id="mail-card-${m.key}" data-mail-key="${m.key}" role="region" aria-label="Correo: ${m.title}">
@@ -5990,21 +6330,399 @@ document.getElementById('goTodayBtn').addEventListener('click',()=>{
  setView('inicio',false);
  document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
 });
-document.getElementById('search').addEventListener('input',e=>{
- const q=e.target.value.trim();
- renderMail(q);
- renderTeachers(q);
- renderMaterials(q);
- if(q){
-  document.querySelectorAll('[data-section-view]').forEach(sec=>{
-   const show=['profesores','materiales','correo'].includes(sec.dataset.sectionView);
-   sec.classList.toggle('view-hidden',!show);
-  });
- }else{
-  setView(activeView);
+function renderSearchResults(query){
+ const dropdown = document.getElementById('searchDropdown');
+ const searchBox = document.getElementById('searchBox');
+ if(!dropdown) return;
+
+ const q = (query||'').trim();
+ if(!q){
+  dropdown.classList.remove('open');
+  dropdown.innerHTML = '';
+  searchBox?.classList.remove('has-text');
+  return;
  }
-});
+
+ searchBox?.classList.add('has-text');
+ const lq = q.toLowerCase();
+
+ // 1. Asignaturas y Bloques
+ const matchedSubjects = [];
+ courses.forEach(c => {
+  const cKey = courseKey(c);
+  c.subjects.forEach((sub, sIdx) => {
+   const tNames = (sub.teachers || []).join(' ');
+   const txt = (sub.name + ' ' + c.name + ' ' + c.blockTitle + ' ' + c.branch + ' ' + (sub.period||'') + ' ' + tNames).toLowerCase();
+   if(txt.includes(lq)){
+    matchedSubjects.push({
+     type: 'subject',
+     ref: `${cKey}|${sIdx}`,
+     title: sub.name,
+     kicker: `${c.branch} · ${c.blockNumber}`,
+     desc: `Docentes: ${sub.teachers.join(', ') || 'Varios'} · ${sub.period || c.period}`,
+     badge: 'Asignatura',
+     badgeClass: 'badge-asig'
+    });
+   }
+  });
+ });
+
+ // 2. Profesorado
+ const matchedTeachers = [];
+ teacherDirectory.forEach(t => {
+  const sessTxt = (t.sessions || []).map(s => s.topic + ' ' + s.place + ' ' + s.date).join(' ');
+  const docsTxt = (t.driveFiles || []).map(d => d.name).join(' ');
+  const txt = (t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' + sessTxt + ' ' + docsTxt).toLowerCase();
+  if(txt.includes(lq)){
+   const st = getTeacherUpcomingStatus(t);
+   matchedTeachers.push({
+    type: 'teacher',
+    name: t.name,
+    title: t.name,
+    kicker: `${t.role} · ${t.branch}`,
+    desc: `${t.sessions.length} sesiones · ${st.label}`,
+    badge: 'Profesor',
+    badgeClass: 'badge-prof'
+   });
+  }
+ });
+
+ // 3. Apuntes y Documentos
+ const matchedMaterials = [];
+ catalogMaterials.forEach(m => {
+  (m.docs || []).forEach(d => {
+   const txt = (d.name + ' ' + m.title + ' ' + m.teacher + ' ' + m.kicker).toLowerCase();
+   if(txt.includes(lq)){
+    matchedMaterials.push({
+     type: 'material',
+     url: d.url,
+     title: d.name,
+     kicker: `${m.teacher} · ${m.kicker}`,
+     desc: `${m.title} (Acceso directo a Drive / Documento)`,
+     mailKey: m.mailKey,
+     subjectRef: m.subjectRef,
+     badge: 'Apunte / Drive',
+     badgeClass: 'badge-mat'
+    });
+   }
+  });
+ });
+
+ // 4. Prácticas y Entregas
+ const matchedDeliveries = [];
+ deliveries.forEach(d => {
+  const txt = (d.title + ' ' + d.teacher + ' ' + d.subject + ' ' + d.status + ' ' + d.details + ' ' + d.file).toLowerCase();
+  if(txt.includes(lq)){
+   matchedDeliveries.push({
+    type: 'delivery',
+    detailKey: d.detailKey,
+    title: d.title,
+    kicker: `${d.teacher} · ${d.status}`,
+    desc: `${d.subject} · ${d.details}`,
+    badge: 'Práctica CPROC',
+    badgeClass: 'badge-prac'
+   });
+  }
+ });
+
+ // 5. Correos clasificados
+ const matchedMails = [];
+ messages.forEach(m => {
+  const sum = mailSummaries[m.key] || '';
+  const body = (details[m.key] && details[m.key].body) || '';
+  const txt = (m.title + ' ' + m.meta + ' ' + m.teacher + ' ' + sum + ' ' + body).toLowerCase();
+  if(txt.includes(lq)){
+   matchedMails.push({
+    type: 'mail',
+    key: m.key,
+    title: m.title,
+    kicker: `${m.date} · ${m.teacher || m.meta}`,
+    desc: sum,
+    badge: 'Correo',
+    badgeClass: 'badge-mail'
+   });
+  }
+ });
+
+ // 6. Sesiones y Clases
+ const matchedEvents = [];
+ Object.entries(events).forEach(([k, evList]) => {
+  evList.forEach((ev, idx) => {
+   const txt = (ev.name + ' ' + (ev.teacher||'') + ' ' + (ev.subject||'') + ' ' + (ev.place||'') + ' ' + (ev.kind||'') + ' ' + k).toLowerCase();
+   if(txt.includes(lq)){
+    matchedEvents.push({
+     type: 'event',
+     dateKey: k,
+     idx,
+     title: ev.name,
+     kicker: `${k} · ${ev.start}${ev.end ? '–'+ev.end : ''} · ${ev.place}`,
+     desc: `Docente: ${ev.teacher || ev.subject} · ${ev.kind}`,
+     badge: 'Clase / Sesión',
+     badgeClass: 'badge-cal'
+    });
+   }
+  });
+ });
+
+ // 7. Calificaciones y Tests
+ const matchedGrades = [];
+ gradeRecords.forEach(g => {
+  const txt = (g.title + ' ' + g.kicker + ' ' + g.score + ' ' + g.scoreLabel + ' ' + g.description).toLowerCase();
+  if(txt.includes(lq)){
+   matchedGrades.push({
+    type: 'grade',
+    id: g.id,
+    mailKey: g.mailKey,
+    title: `${g.title} (${g.score})`,
+    kicker: `${g.kicker} · ${g.scoreLabel}`,
+    desc: g.description,
+    badge: 'Nota / Test',
+    badgeClass: 'badge-grade'
+   });
+  }
+ });
+
+ const totalCount = matchedSubjects.length + matchedTeachers.length + matchedMaterials.length +
+                    matchedDeliveries.length + matchedMails.length + matchedEvents.length + matchedGrades.length;
+
+ if(totalCount === 0){
+  dropdown.innerHTML = `
+   <div class="search-empty-state">
+    <strong>Sin resultados para «${escapeHtml(q)}»</strong>
+    <p>No se encontró ninguna coincidencia directa en asignaturas, docentes, apuntes, prácticas, correos ni calendario.</p>
+    <p style="margin-top:6px;font-size:12px">Sugerencias: <em>Sandra, Delgado, Deontología, LexNET, Testmoz, Subsanación, Apuntes, Horario</em>.</p>
+   </div>
+  `;
+  dropdown.classList.add('open');
+  return;
+ }
+
+ const highlight = text => {
+  if(!text) return '';
+  const escaped = escapeHtml(text);
+  const regex = new RegExp(`(${escapeRegExp(q)})`, 'gi');
+  return escaped.replace(regex, '<mark>$1</mark>');
+ };
+
+ let html = `
+  <div class="search-dropdown-header">
+   <span>Coincidencias encontradas (${totalCount})</span>
+   <span style="font-size:10.5px;color:var(--muted)">Pulsa para ir directo · [Esc] para cerrar</span>
+  </div>
+ `;
+
+ const renderGroup = (title, items, renderItem) => {
+  if(!items.length) return '';
+  return `
+   <div class="search-dropdown-group-title">${title} (${items.length})</div>
+   ${items.slice(0, 5).map(renderItem).join('')}
+  `;
+ };
+
+ html += renderGroup('Asignaturas y Bloques', matchedSubjects, item => `
+  <button type="button" class="search-result-item" data-search-action="subject" data-ref="${item.ref}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} — ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Profesorado', matchedTeachers, item => `
+  <button type="button" class="search-result-item" data-search-action="teacher" data-name="${escapeHtml(item.name)}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} · ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Apuntes y Drive', matchedMaterials, item => `
+  <button type="button" class="search-result-item" data-search-action="material" data-url="${item.url}" data-mailkey="${item.mailKey||''}" data-subjectref="${item.subjectRef||''}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} — ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Prácticas y Entregas (CPROC)', matchedDeliveries, item => `
+  <button type="button" class="search-result-item" data-search-action="detail" data-key="${item.detailKey}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} · ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Correos y Avisos', matchedMails, item => `
+  <button type="button" class="search-result-item" data-search-action="detail" data-key="${item.key}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} · ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Clases y Horarios', matchedEvents, item => `
+  <button type="button" class="search-result-item" data-search-action="event" data-date="${item.dateKey}" data-idx="${item.idx}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} · ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ html += renderGroup('Calificaciones y Tests', matchedGrades, item => `
+  <button type="button" class="search-result-item" data-search-action="detail" data-key="${item.mailKey || item.id}">
+   <div class="search-result-top">
+    <span class="search-result-title">${highlight(item.title)}</span>
+    <span class="search-result-badge ${item.badgeClass}">${item.badge}</span>
+   </div>
+   <div class="search-result-snippet">${highlight(item.kicker)} · ${highlight(item.desc)}</div>
+  </button>
+ `);
+
+ dropdown.innerHTML = html;
+ dropdown.classList.add('open');
+}
+
+const searchEl = document.getElementById('search');
+if(searchEl){
+ searchEl.addEventListener('input', e => {
+  const q = e.target.value;
+  renderSearchResults(q);
+  renderMail(q);
+  renderTeachers(q);
+  renderMaterials(q);
+ });
+
+ searchEl.addEventListener('focus', e => {
+  if(e.target.value.trim()){
+   renderSearchResults(e.target.value);
+  }
+ });
+
+ searchEl.addEventListener('keydown', e => {
+  const dropdown = document.getElementById('searchDropdown');
+  if(!dropdown || !dropdown.classList.contains('open')) return;
+  const items = Array.from(dropdown.querySelectorAll('.search-result-item'));
+  if(!items.length) return;
+  const curIdx = items.findIndex(it => it.classList.contains('selected'));
+
+  if(e.key === 'ArrowDown'){
+   e.preventDefault();
+   const nextIdx = (curIdx + 1) % items.length;
+   items.forEach(it => it.classList.remove('selected'));
+   items[nextIdx].classList.add('selected');
+   items[nextIdx].scrollIntoView({block:'nearest'});
+  } else if(e.key === 'ArrowUp'){
+   e.preventDefault();
+   const prevIdx = (curIdx - 1 + items.length) % items.length;
+   items.forEach(it => it.classList.remove('selected'));
+   items[prevIdx].classList.add('selected');
+   items[prevIdx].scrollIntoView({block:'nearest'});
+  } else if(e.key === 'Enter'){
+   e.preventDefault();
+   const target = (curIdx >= 0) ? items[curIdx] : items[0];
+   if(target) target.click();
+  }
+ });
+}
 document.addEventListener('click',e=>{
+ const searchItem = e.target.closest('.search-result-item');
+ if(searchItem){
+  const action = searchItem.dataset.searchAction;
+  const dropdown = document.getElementById('searchDropdown');
+  if(dropdown) dropdown.classList.remove('open');
+  if(action === 'subject'){
+   openSubject(searchItem.dataset.ref);
+  } else if(action === 'teacher'){
+   openTeacher(searchItem.dataset.name);
+  } else if(action === 'material'){
+   if(searchItem.dataset.subjectref){
+    openSubject(searchItem.dataset.subjectref);
+   } else if(searchItem.dataset.mailkey){
+    openDetail(searchItem.dataset.mailkey);
+   } else if(searchItem.dataset.url){
+    window.open(searchItem.dataset.url, '_blank', 'noopener,noreferrer');
+   } else {
+    setView('materiales');
+   }
+  } else if(action === 'detail'){
+   openDetail(searchItem.dataset.key);
+  } else if(action === 'event'){
+   openEventDetail(searchItem.dataset.date, Number(searchItem.dataset.idx));
+  }
+  return;
+ }
+
+ if(e.target.closest('#searchClearBtn')){
+  const s = document.getElementById('search');
+  if(s){
+   s.value = '';
+   renderSearchResults('');
+   renderMail('');
+   renderTeachers('');
+   renderMaterials('');
+   s.focus();
+  }
+  return;
+ }
+
+ if(!e.target.closest('.search-wrap')){
+  document.getElementById('searchDropdown')?.classList.remove('open');
+ }
+
+ const tf = e.target.closest('[data-teacher-filter]');
+ if(tf){
+  renderTeachers(document.getElementById('search')?.value || '', tf.dataset.teacherFilter);
+  return;
+ }
+
+ const mf = e.target.closest('[data-material-filter]');
+ if(mf){
+  renderMaterials(document.getElementById('search')?.value || '', mf.dataset.materialFilter);
+  return;
+ }
+
+ const mailF = e.target.closest('[data-mail-filter]');
+ if(mailF){
+  renderMail(document.getElementById('search')?.value || '', mailF.dataset.mailFilter);
+  return;
+ }
+
+ const sbf = e.target.closest('[data-subject-branch-filter]');
+ if(sbf){
+  const branch = sbf.dataset.subjectBranchFilter;
+  renderSubjectsList(branch);
+  return;
+ }
+
+ if(e.target.closest('#btnToggleAllTeachers')){
+  const btn = document.getElementById('btnToggleAllTeachers');
+  const detailsList = Array.from(document.querySelectorAll('#teachersGrid details'));
+  const allOpen = detailsList.length > 0 && detailsList.every(d => d.open);
+  detailsList.forEach(d => d.open = !allOpen);
+  if(btn) btn.textContent = allOpen ? 'Expandir todos ▾' : 'Plegar todos ▴';
+  return;
+ }
+
+ if(e.target.closest('#btnToggleAllMails')){
+  const btn = document.getElementById('btnToggleAllMails');
+  const detailsList = Array.from(document.querySelectorAll('#mailList details'));
+  const allOpen = detailsList.length > 0 && detailsList.every(d => d.open);
+  detailsList.forEach(d => d.open = !allOpen);
+  if(btn) btn.textContent = allOpen ? 'Expandir todos ▾' : 'Plegar todos ▴';
+  return;
+ }
+
  const backS1=e.target.closest('#btnBackToScreen1')||e.target.closest('#btnBackToScreen1From3');
  if(backS1){
   showScreen1();
@@ -6151,12 +6869,36 @@ document.addEventListener('click',e=>{
  if(sidebar.classList.contains('open')&&!e.target.closest('#sidebar')&&!e.target.closest('#menuToggle'))closeMenu();
 });
 document.addEventListener('keydown',e=>{
+ if((e.key==='/' || ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k')) && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){
+  e.preventDefault();
+  const s = document.getElementById('search');
+  if(s){
+   s.focus();
+   s.select();
+  }
+ }
  if(e.key==='Escape'){
+  const dd = document.getElementById('searchDropdown');
+  const s = document.getElementById('search');
+  if(dd && dd.classList.contains('open')){
+   dd.classList.remove('open');
+   if(s){
+    s.value = '';
+    renderSearchResults('');
+    renderMail('');
+    renderTeachers('');
+    renderMaterials('');
+    s.blur();
+   }
+   return;
+  }
   if(activeView==='detalle'){
    closeDetailView();
+   return;
   }
-  if(sidebar.classList.contains('open')){
+  if(sidebar && sidebar.classList.contains('open')){
    closeMenu();
+   return;
   }
  }
 });
