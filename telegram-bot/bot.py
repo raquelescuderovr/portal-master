@@ -31,10 +31,10 @@ def api_request(method: str, params: dict = None, data: bytes = None, content_ty
         req = urllib.request.Request(url, headers=headers, method="GET")
 
     try:
-        with urllib.request.urlopen(req, timeout=35) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             return json.loads(resp.read().decode())
     except Exception as e:
-        print(f"[Telegram API] Error en {method}: {e}")
+        print(f"[Telegram API] Error en {method}: {e}", flush=True)
         return {"ok": False, "description": str(e)}
 
 def send_message(chat_id: int, text: str, parse_mode: str = "HTML") -> dict:
@@ -199,23 +199,23 @@ def run_polling():
         print("Por favor, crea tu bot con @BotFather y añade el token a telegram-bot/.env")
         sys.exit(1)
 
-    print("🚀 Bot de Telegram del Máster iniciado...")
+    print("🚀 Bot de Telegram del Máster iniciado y escuchando...", flush=True)
     offset = 0
     while True:
         try:
-            updates = api_request("getUpdates", params={"offset": offset, "timeout": 25})
+            updates = api_request("getUpdates", params={"offset": offset, "timeout": 10})
             if updates.get("ok"):
                 for u in updates.get("result", []):
                     offset = u["update_id"] + 1
                     handle_update(u)
             else:
-                time.sleep(3)
+                time.sleep(2)
         except KeyboardInterrupt:
-            print("\n🛑 Bot detenido.")
+            print("\n🛑 Bot detenido.", flush=True)
             break
         except Exception as e:
-            print(f"[Polling] Error: {e}")
-            time.sleep(5)
+            print(f"[Polling] Error: {e}", flush=True)
+            time.sleep(3)
 
 if __name__ == "__main__":
     run_polling()
