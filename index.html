@@ -4582,7 +4582,7 @@ const courses=[
   name:'Sustantivo civil',
   blockNumber:'Bloque II (Abogacía)',
   blockTitle:'Bloque II: Sustantivo civil y mercantil (Abogacía)',
-  state:'En curso',
+  state:'Por venir',
   officialOrder:5,
   period:'4 al 11 de noviembre de 2026 · Colegio de Abogados',
   startDate:'2026-11-04',
@@ -4640,7 +4640,7 @@ const courses=[
   name:'Procesal civil',
   blockNumber:'Bloque III (Abogacía)',
   blockTitle:'Bloque III: Procesal civil, litigación y juicios simulados (Abogacía)',
-  state:'En curso',
+  state:'Por venir',
   officialOrder:6,
   period:'12 al 30 de noviembre de 2026 · Colegio de Abogados y Juzgado de 1.ª Instancia n.º 4',
   startDate:'2026-11-12',
@@ -4740,7 +4740,7 @@ const courses=[
   name:'Derecho laboral',
   blockNumber:'Bloque IV (Abogacía)',
   blockTitle:'Bloque IV: Derecho del trabajo y de la Seguridad Social (Abogacía)',
-  state:'En curso',
+  state:'Por venir',
   officialOrder:7,
   period:'1 al 22 de diciembre de 2026 · Clases en Facultad de Derecho y Colegio de Abogados',
   startDate:'2026-12-01',
@@ -4841,7 +4841,7 @@ const courses=[
   name:'Derecho administrativo',
   blockNumber:'Bloque V (Abogacía)',
   blockTitle:'Bloque V: Derecho administrativo y contencioso-administrativo (Abogacía)',
-  state:'En curso',
+  state:'Por venir',
   officialOrder:8,
   period:'7 al 28 de enero de 2027 · Colegio de Abogados',
   startDate:'2027-01-07',
@@ -6504,6 +6504,55 @@ function getSubjectStatusInfo(sub){
  };
 }
 
+function parseBlockEndDate(course){
+ const period=course.period||'';
+ const months={oct:10,nov:11,dic:12,ene:1,feb:2,mar:3,abr:4,may:5,jun:6};
+ let year=2026;
+ if(period.includes('2027'))year=2027;
+ const p=period.toLowerCase().replace(/octubre/g,'oct').replace(/noviembre/g,'nov').replace(/diciembre/g,'dic').replace(/enero/g,'ene');
+ const matches=[...p.matchAll(/(\d{1,2})\s*(?:al|,)?\s*(\d{1,2})?\s*(?:de|\s)?\s*(oct|nov|dic|ene)/g)];
+ if(matches.length){
+  const last=matches[matches.length-1];
+  const day=Number(last[2]||last[1]);
+  const month=months[last[3]];
+  if(month===1&&year===2026&&!period.includes('2027'))year=2027;
+  return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+ }
+ return course.startDate||'';
+}
+
+function getBlockStatusInfo(course){
+ const sDate=course.startDate||'';
+ const eDate=parseBlockEndDate(course);
+ const todayKey=keyOf(todayDate);
+
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
+  return {
+   status:'current',
+   label:'🟢 En curso activo hoy',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia activa hoy según el calendario oficial'
+  };
+ }
+ if(eDate < todayKey && eDate!==''){
+  return {
+   status:'past',
+   label:'✓ Finalizado',
+   badgeClass:'status-past',
+   cardClass:'status-past',
+   desc:'Bloque formativo completado'
+  };
+ }
+ return {
+  status:'upcoming',
+  label:'⏳ Por venir',
+  badgeClass:'status-upcoming',
+  cardClass:'status-upcoming',
+  desc:'Programado para fechas posteriores del cuatrimestre'
+ };
+}
+
 function showScreen1(){
  const s1=document.getElementById('subScreen1');
  const s2=document.getElementById('subScreen2');
@@ -6761,7 +6810,6 @@ function renderSubjectsList(branchFilter, statusFilter){
 
  const allItems=[];
  courses.forEach(c=>{
-  if(c.state!=='En curso')return;
   if(branch&&c.branch!==branch)return;
 
   const cKey=courseKey(c);
@@ -6776,7 +6824,6 @@ function renderSubjectsList(branchFilter, statusFilter){
 
  let countCurrent=0, countUpcoming=0, countPast=0;
  courses.forEach(c=>{
-  if(c.state!=='En curso')return;
   if(branch&&c.branch!==branch)return;
   c.subjects.forEach(sub=>{
    const st=getSubjectStatusInfo(sub);
