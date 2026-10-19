@@ -5,7 +5,16 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%2220%22%20cy%3D%2220%22%20r%3D%2220%22%20fill%3D%22%23325e43%22/%3E%3Ctext%20x%3D%2212%22%20y%3D%2228%22%20fill%3D%22%23fffefa%22%20font-family%3D%22Georgia%22%20font-size%3D%2228%22%3Ec%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Máster Abogacía">
+<meta name="application-name" content="Máster Abogacía">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
 <title>Cuaderno · Máster en Abogacía y Procura</title>
 <script>
 (function(){
@@ -1686,6 +1695,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .teacher-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--terracotta)}
 .teacher-card[data-branch="Abogacía"] .teacher-kicker{color:var(--blue)}
 .teacher-grade-pill{background:var(--green-pale);border:1px solid var(--green-border);color:var(--green-dark);font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap}
+/* Pastillas de nota al lado del nombre en asignaturas y profesores ya cursados */
+.inline-grade-pill{display:inline-flex;align-items:center;gap:3px;background:#fdf3d8;border:1.5px solid #dfa539;color:#613802;font-size:11px;font-weight:800;padding:1.5px 7px;border-radius:8px;vertical-align:middle;margin-left:6px;white-space:nowrap;letter-spacing:0.01em;font-family:var(--sans);line-height:1.25;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
+.inline-grade-pill.pill-subtle{background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)}
+[data-theme="dark"] .inline-grade-pill{background:#2b1f0f;border-color:#8c6020;color:#ffd875}
+[data-theme="dark"] .inline-grade-pill.pill-subtle{background:#172820;border-color:#2a4d3b;color:#a3e4c1}
+.teacher-name-item{display:inline-flex;align-items:center;flex-wrap:nowrap}
 .teacher-summary{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:0}
 .teacher-sections{display:grid;gap:12px;border-top:1px solid var(--line-subtle);padding-top:14px}
 .teacher-sec-row{font-size:12.5px;line-height:1.5}
@@ -5058,9 +5073,9 @@ const teacherDirectory=[
   name:'Daniel Garrido Pazos',
   branch:'Abogacía',
   role:'Abogado · Técnicas instrumentales e iniciación profesional',
-  gradeBadge:'Completado ✓',
+  gradeBadge:'10 / 10 (Sobresaliente)',
   summary:'Iniciación al ejercicio de la abogacía, deberes deontológicos y organización interna del despacho profesional.',
-  grade:{score:'Completado ✓',scoreLabel:'Evaluación',detail:'Sesiones presenciales de los días 5 y 6 de octubre superadas.',detailKey:'grades'},
+  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'Sesiones presenciales de los días 5 y 6 de octubre superadas con nota de 10/10.',detailKey:'grades'},
   sessions:[
    {date:'2026-10-05',dayLabel:'Lunes 5 oct 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Iniciación a la abogacía + organización de despacho (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-06',dayLabel:'Martes 6 oct 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Iniciación a la abogacía + organización de despacho (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
@@ -5592,6 +5607,76 @@ const courseMail={
  'Procura|Deontología y responsabilidad':['assignment'],
  'Procura|Actuación procesal':['materials']
 };
+
+const teacherGradeMap={
+ 'Carlos M. Sánchez Muiño':'10 / 10 ★',
+ 'Javier C. Sánchez García':'10 / 10 ★',
+ 'Javier Sánchez García':'10 / 10 ★',
+ 'Carolina Moreno Vázquez':'10 / 10 (20/20)',
+ 'Alex Sánchez Barge':'10 / 10 (20/20)',
+ 'Daniel Garrido Pazos':'10 / 10 ★',
+ 'Ana Vázquez Corte':'Test 10/10 ✓',
+ 'Carmen Belo González':'Completado ✓',
+ 'Vanessa Amarelle':'Completado ✓',
+ 'Carlos Tomé':'Completado ✓',
+ 'Alejandra Sánchez':'Completado ✓'
+};
+
+function getSubjectGradeBadgeHtml(sub, isPast=true){
+ if(!sub || !isPast) return '';
+ const score = (sub.grade && sub.grade.score) ? sub.grade.score : '';
+ if(!score) return '';
+ const s = String(score).trim();
+ if(s.includes('10 / 10') || s.includes('10/10')){
+  let label = '10 / 10 ★';
+  if(s.includes('20/20')) label = '10 / 10 (20/20)';
+  return `<span class="inline-grade-pill" title="Calificación oficial en la materia: ${escapeHtml(s)}">⭐ ${label}</span>`;
+ }
+ if(s.toLowerCase().includes('test: 10') || s.toLowerCase().includes('test 10')){
+  return `<span class="inline-grade-pill" title="Calificación en test: 10 / 10">⭐ Test 10/10</span>`;
+ }
+ if(s.includes('~8') || s.includes(' 8 / 10')){
+  return `<span class="inline-grade-pill" title="Calificación obtenida: ${escapeHtml(s)}">⭐ ~8 / 10</span>`;
+ }
+ if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
+  return `<span class="inline-grade-pill pill-subtle" title="Materia completada y superada">✓ Completada</span>`;
+ }
+ return '';
+}
+
+function getTeacherGradeBadgeHtml(tInput, requirePast=true){
+ const tName = (typeof tInput === 'string') ? tInput : (tInput && tInput.name ? tInput.name : '');
+ if(!tName) return '';
+ const t = (typeof tInput === 'object') ? tInput : teacherDirectory.find(x => x.name === tName);
+ if(requirePast && t){
+  const st = getTeacherUpcomingStatus(t);
+  const hasPastSessions = (t.sessions || []).some(s => s.date < '2026-10-19');
+  if(!hasPastSessions && st.state !== 'past') return '';
+ }
+ const mapGrade = teacherGradeMap[tName];
+ if(mapGrade){
+  const isSubtle = mapGrade.includes('Completado');
+  return `<span class="inline-grade-pill${isSubtle ? ' pill-subtle' : ''}" title="Calificación con ${escapeHtml(tName)}: ${escapeHtml(mapGrade)}">${isSubtle ? '✓ ' : '⭐ '}${mapGrade.replace('✓', '').trim()}</span>`;
+ }
+ if(t && t.grade && t.grade.score){
+  const s = String(t.grade.score).trim();
+  if(s.includes('10 / 10') || s.includes('10/10')){
+   return `<span class="inline-grade-pill" title="Calificación con ${escapeHtml(tName)}: ${escapeHtml(s)}">⭐ 10 / 10 ★</span>`;
+  }
+  if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
+   return `<span class="inline-grade-pill pill-subtle" title="Docencia completada">✓ Completado</span>`;
+  }
+ }
+ return '';
+}
+
+function formatTeachersWithGrades(teachersList, isPast=true){
+ if(!Array.isArray(teachersList) || !teachersList.length) return 'Docente asignado';
+ return teachersList.map(tName => {
+  const badge = isPast ? getTeacherGradeBadgeHtml(tName, true) : '';
+  return `<span class="teacher-name-item">${escapeHtml(tName)}${badge}</span>`;
+ }).join(', ');
+}
 
 function renderGrades(){
  const grid=document.getElementById('gradesGrid');
@@ -6669,7 +6754,7 @@ function showScreen2(cKey, sIdx){
     `:''}
    </div>
 
-   <h3 class="sh-title">📖 ${sub.name}</h3>
+   <h3 class="sh-title">📖 ${sub.name}${stInfo.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</h3>
    <div style="color:var(--muted);font-size:13px;margin-top:6px">${course.name} · Calendario oficial</div>
 
    <div class="sh-grid">
@@ -6679,7 +6764,7 @@ function showScreen2(cKey, sIdx){
     </div>
     <div class="sh-col">
      <span class="sh-lbl">👥 Docentes responsables:</span>
-     <strong class="sh-val">${sub.teachers.join(', ')||'Pendiente de asignar'}</strong>
+     <strong class="sh-val">${formatTeachersWithGrades(sub.teachers, stInfo.status === 'past')}</strong>
     </div>
     <div class="sh-col">
      <span class="sh-lbl">📋 Estado oficial:</span>
@@ -6716,7 +6801,7 @@ function showScreen2(cKey, sIdx){
        <div class="teacher-drill-head">
         <div class="teacher-drill-avatar">${initials}</div>
         <div>
-         <div class="teacher-drill-name">👤 ${t.name}</div>
+         <div class="teacher-drill-name">👤 ${t.name}${getTeacherGradeBadgeHtml(t, true)}</div>
          <div class="teacher-drill-role">${t.role} · ${subSess.length} sesión${subSess.length===1?'':'es'}</div>
          <div style="margin-top:5px">
           <span class="${bClass}" style="font-size:11px">${st.label}</span>
@@ -6770,9 +6855,9 @@ function showScreen3(tName){
  const bc=document.getElementById('subScreen3Breadcrumb');
  if(bc){
   bc.innerHTML=`
-   <span>${sub.name}</span>
+   <span>${sub.name}${getSubjectGradeBadgeHtml(sub, true)}</span>
    <span class="bc-sep">/</span>
-   <b>Prof. ${t.name}</b>
+   <b>Prof. ${t.name}${getTeacherGradeBadgeHtml(t, true)}</b>
   `;
  }
 
@@ -6815,8 +6900,8 @@ function showScreen3(tName){
       <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch}</span>
       <span class="${bClass}">${st.label}</span>
      </div>
-     <h2 class="th-name" style="margin:6px 0 2px">👤 ${t.name}</h2>
-     <div class="th-role">${t.role} · ${sub.name}</div>
+     <h2 class="th-name" style="margin:6px 0 2px">👤 ${t.name}${getTeacherGradeBadgeHtml(t, true)}</h2>
+     <div class="th-role">${t.role} · ${sub.name}${getSubjectGradeBadgeHtml(sub, true)}</div>
     </div>
    </div>
    <div>
@@ -7002,7 +7087,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           <div style="display:grid;gap:4px">
            ${pastSubs.map(item => `
             <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 6px;background:var(--paper);border-radius:6px;border:1px solid var(--line);cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
-             <span style="font-weight:600;color:var(--ink)">${item.sub.name}</span>
+             <span style="font-weight:600;color:var(--ink)">📖 ${item.sub.name}${getSubjectGradeBadgeHtml(item.sub, true)}</span>
              <span class="status-pill status-past" style="font-size:10px;padding:1px 6px">✓ Impartida</span>
             </div>
            `).join('')}
@@ -7077,8 +7162,8 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
            return `
             <div class="mbc-sub-item" data-subject-card="${cKey}|${sIdx}" title="Ver ficha de ${sub.name}">
              <div>
-              <div class="mbc-sub-name">📖 ${sub.name}</div>
-              <div class="mbc-sub-teachers">👤 ${sub.teachers.join(', ') || 'Docente asignado'}</div>
+              <div class="mbc-sub-name">📖 ${sub.name}${subSt.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</div>
+              <div class="mbc-sub-teachers">👤 ${formatTeachersWithGrades(sub.teachers, subSt.status === 'past')}</div>
              </div>
              <span class="status-pill ${subSt.badgeClass}" style="font-size:10px;padding:2px 7px">${subSt.label}</span>
             </div>
@@ -7134,11 +7219,11 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
       ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
      </div>
 
-     <h3 class="sc-title">📖 ${sub.name}</h3>
+     <h3 class="sc-title">📖 ${sub.name}${stInfo.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</h3>
 
      <div class="sc-meta">
       <div>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></div>
-      <div>👤 Docente(s): <b style="color:var(--ink-soft)">${sub.teachers.join(', ')||'Pendiente'}</b></div>
+      <div>👤 Docente(s): <b style="color:var(--ink-soft)">${formatTeachersWithGrades(sub.teachers, stInfo.status === 'past')}</b></div>
      </div>
     </div>
 
@@ -7227,7 +7312,7 @@ function renderTeachers(q='', filter=currentTeacherFilter){
     <div class="teacher-card-head">
      <div>
       <div class="teacher-kicker">${t.role}</div>
-      <h3><button class="teacher-link" style="text-decoration:none;font:inherit;color:inherit;cursor:pointer" data-teacher="${t.name}">👤 ${t.name} ↗</button></h3>
+      <h3><button class="teacher-link" style="text-decoration:none;font:inherit;color:inherit;cursor:pointer" data-teacher="${t.name}">👤 ${t.name}${getTeacherGradeBadgeHtml(t, true)} ↗</button></h3>
      </div>
      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
       <span class="teacher-grade-pill">${t.gradeBadge}</span>
@@ -7740,7 +7825,7 @@ function renderDeliveries(){
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div>
     <div class="delivery-name"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit">${d.title} ↗</button></div>
-    <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}</button> · ${d.subject} · ${d.details}</div>
+    <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · ${d.subject} · ${d.details}</div>
 
     ${det && det.submissions ? `
      <details class="delivery-submissions-details" style="margin-top:8px;padding-top:6px;border-top:1px dashed var(--line);font-size:12px">
@@ -7995,10 +8080,12 @@ function renderSearchResults(query){
    const tNames = (sub.teachers || []).join(' ');
    const txt = (sub.name + ' ' + c.name + ' ' + c.blockTitle + ' ' + c.branch + ' ' + (sub.period||'') + ' ' + tNames).toLowerCase();
    if(txt.includes(lq)){
+    const subSt = getSubjectStatusInfo(sub);
+    const gradeTag = (subSt.status === 'past' && sub.grade) ? ((sub.grade.score.includes('10 / 10') || sub.grade.score.includes('10/10')) ? ' ⭐ 10 / 10 ★' : (sub.grade.score.includes('Test: 10') ? ' ⭐ Test 10/10' : ' ✓')) : '';
     matchedSubjects.push({
      type: 'subject',
      ref: `${cKey}|${sIdx}`,
-     title: sub.name,
+     title: sub.name + gradeTag,
      kicker: `${c.branch} · ${c.blockNumber}`,
      desc: `Docentes: ${sub.teachers.join(', ') || 'Varios'} · ${sub.period || c.period}`,
      badge: 'Asignatura',
@@ -8016,10 +8103,16 @@ function renderSearchResults(query){
   const txt = (t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' + sessTxt + ' ' + docsTxt).toLowerCase();
   if(txt.includes(lq)){
    const st = getTeacherUpcomingStatus(t);
+   const hasPast = (t.sessions || []).some(s => s.date < '2026-10-19') || st.state === 'past';
+   const mapGrade = teacherGradeMap[t.name];
+   let tGradeTag = '';
+   if(hasPast && mapGrade){
+    tGradeTag = ' ' + (mapGrade.includes('10') ? '⭐ ' + mapGrade : '✓');
+   }
    matchedTeachers.push({
     type: 'teacher',
     name: t.name,
-    title: t.name,
+    title: t.name + tGradeTag,
     kicker: `${t.role} · ${t.branch}`,
     desc: `${t.sessions.length} sesiones · ${st.label}`,
     badge: 'Profesor',

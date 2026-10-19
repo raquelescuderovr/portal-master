@@ -1,0 +1,29 @@
+{
+  "name": "Cuaderno · Máster en Abogacía y Procura",
+  "short_name": "Máster Abogacía",
+  "description": "Portal personal y cuaderno de seguimiento del Máster en Abogacía y Procura (MUAP)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#161412",
+  "theme_color": "#161412",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
