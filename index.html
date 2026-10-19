@@ -2353,6 +2353,622 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 [data-theme="light"] .st-count-pill.blue{background:var(--blue-badge);color:var(--blue-dark)}
 [data-theme="light"] .st-sec-block{border:1px solid var(--line)}
 
+/* Badges de estado de docentes y sesiones */
+.teacher-badge-today, .st-badge-today{
+  background:#162b1e;
+  color:#9de8b7;
+  border:1.5px solid #3c8257;
+  font-weight:800;
+  border-radius:12px;
+  padding:3px 9px;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  box-shadow:0 0 8px rgba(60,130,87,0.25);
+}
+.teacher-badge-tomorrow, .st-badge-tomorrow{
+  background:#fef3d6;
+  color:#8a4d00;
+  border:1px solid #f6d289;
+  font-weight:800;
+  border-radius:12px;
+  padding:3px 9px;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.teacher-badge-upcoming, .st-badge-upcoming{
+  background:#e7f5ea;
+  color:#1e6a38;
+  border:1px solid #bce4c6;
+  font-weight:700;
+  border-radius:12px;
+  padding:3px 9px;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.teacher-badge-past, .st-badge-past{
+  background:#f0eee9;
+  color:#6b736c;
+  border:1px solid #dcd7ce;
+  font-weight:600;
+  border-radius:12px;
+  padding:3px 9px;
+  font-size:11px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.st-session-row.today{
+  background:#f0f9f3;
+  border-color:#81c784;
+  border-left:3.5px solid #2e7d32;
+}
+[data-theme="light"] .teacher-badge-today, [data-theme="light"] .st-badge-today{
+  background:#e8f5e9;
+  color:#1b5e20;
+  border:1.5px solid #81c784;
+  box-shadow:0 1px 4px rgba(46,125,50,0.15);
+}
+
+/* Banner de materias y bloques activos en Portada */
+.active-master-banner{
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
+  border-left:5px solid var(--green);
+  border-radius:18px;
+  padding:20px 22px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow-sm);
+  transition:all .2s ease;
+}
+.active-master-banner:hover{
+  box-shadow:var(--shadow);
+  border-color:var(--green-border);
+}
+.amb-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+.amb-badge{
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:var(--green-pale);
+  color:var(--green-dark);
+  border:1px solid var(--green-border);
+  padding:3px 8px;
+  border-radius:10px;
+  display:inline-block;
+  margin-bottom:4px;
+}
+.amb-title{
+  margin:0;
+  font:700 20px/1.2 var(--serif);
+  color:var(--ink);
+}
+.amb-subtitle{
+  margin:3px 0 0;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.amb-view-all-btn{
+  background:var(--paper);
+  border:1.5px solid var(--line);
+  padding:8px 14px;
+  border-radius:10px;
+  font:700 12px var(--sans);
+  color:var(--green-dark);
+  cursor:pointer;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.amb-view-all-btn:hover{
+  background:var(--green-dark);
+  color:#ffffff;
+  border-color:var(--green-dark);
+}
+.amb-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:16px;
+}
+.amb-card{
+  background:var(--paper);
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:all .2s ease;
+}
+.amb-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-sm);
+}
+.amb-card.amb-card-procura{
+  border-left:4px solid var(--terracotta);
+}
+.amb-card.amb-card-abogacia{
+  border-left:4px solid var(--blue);
+}
+.amb-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+.amb-card-subject{
+  font:700 16px/1.3 var(--serif);
+  color:var(--ink);
+  margin:0 0 10px;
+}
+.amb-card-meta{
+  font-size:12.5px;
+  color:var(--ink-soft);
+  display:grid;
+  gap:5px;
+  margin-bottom:14px;
+  background:var(--paper-warm);
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #eae3d7;
+}
+.amb-card-meta b{
+  color:var(--ink);
+}
+.amb-card-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.amb-action-btn{
+  background:var(--green-dark);
+  color:#ffffff;
+  border:1px solid var(--green-dark);
+  padding:7px 12px;
+  border-radius:8px;
+  font:700 11.5px var(--sans);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .15s;
+}
+.amb-action-btn:hover{
+  background:var(--green);
+  border-color:var(--green);
+}
+.amb-action-btn.secondary{
+  background:var(--paper-card);
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+.amb-action-btn.secondary:hover{
+  background:var(--paper-warm);
+  border-color:var(--ink-soft);
+}
+
+/* Modos de vista y resumen de bloques en Asignaturas */
+.master-curriculum-summary{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:12px;
+  margin-bottom:18px;
+}
+.mcs-card{
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  transition:all .2s;
+}
+.mcs-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--honey-border);
+  box-shadow:var(--shadow);
+}
+.mcs-card.mcs-current{
+  border-left:4px solid var(--green);
+  background:linear-gradient(135deg, var(--green-pale) 0%, var(--paper-card) 60%);
+}
+.mcs-card.mcs-past{
+  border-left:4px solid #5c6962;
+}
+.mcs-card.mcs-upcoming{
+  border-left:4px solid #b39257;
+}
+.mcs-icon{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  flex-shrink:0;
+}
+.mcs-card.mcs-current .mcs-icon{background:#e7f5ea;color:var(--green-dark)}
+.mcs-card.mcs-past .mcs-icon{background:#f0eee9;color:#5c6962}
+.mcs-card.mcs-upcoming .mcs-icon{background:#fef3d6;color:#8a4d00}
+.mcs-label{
+  font-size:10.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--muted);
+}
+.mcs-title{
+  font:700 14px/1.2 var(--serif);
+  color:var(--ink);
+  margin-top:2px;
+}
+.mcs-sub{
+  font-size:11.5px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+/* Selector de vista de bloques */
+.block-view-mode-bar{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+  background:var(--paper-warm);
+  padding:6px;
+  border-radius:12px;
+  border:1px solid var(--line);
+}
+.block-mode-btn{
+  background:transparent;
+  border:0;
+  padding:8px 16px;
+  border-radius:8px;
+  font:700 12.5px var(--sans);
+  color:var(--ink-soft);
+  cursor:pointer;
+  transition:all .15s;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.block-mode-btn:hover{
+  background:rgba(0,0,0,.04);
+  color:var(--ink);
+}
+.block-mode-btn.active{
+  background:var(--green-dark);
+  color:#ffffff;
+  box-shadow:0 2px 6px rgba(27,77,46,.25);
+}
+
+/* Tarjetas de Bloques Formativos (Vista por Bloques) */
+.blocks-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));
+  gap:18px;
+  margin-bottom:20px;
+}
+.master-block-card{
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
+  border-radius:18px;
+  padding:20px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:14px;
+  box-shadow:var(--shadow);
+  transition:all .2s ease;
+}
+.master-block-card:hover{
+  border-color:var(--honey-border);
+  box-shadow:var(--shadow-hover);
+}
+.master-block-card.status-current{
+  border-left:6px solid var(--green);
+  background:linear-gradient(180deg, var(--green-pale) 0%, var(--paper-card) 70px);
+}
+.master-block-card.status-past{
+  border-left:6px solid #5c6962;
+  opacity:.96;
+}
+.master-block-card.status-upcoming{
+  border-left:6px solid #b39257;
+}
+.mbc-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+.mbc-title{
+  font:700 17px/1.3 var(--serif);
+  color:var(--ink);
+  margin:0 0 6px;
+}
+.mbc-period{
+  font-size:12.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:12px;
+}
+.mbc-subjects-box{
+  background:var(--paper-warm);
+  border:1px solid #e8e1d5;
+  border-radius:10px;
+  padding:10px 12px;
+}
+.mbc-subjects-head{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--green-dark);
+  margin-bottom:6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.mbc-subjects-list{
+  display:grid;
+  gap:6px;
+}
+.mbc-sub-item{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:7px 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  cursor:pointer;
+  transition:all .15s;
+}
+.mbc-sub-item:hover{
+  border-color:var(--green);
+  background:#ffffff;
+  transform:translateX(2px);
+}
+.mbc-sub-name{
+  font-weight:700;
+  color:var(--ink);
+}
+.mbc-sub-teachers{
+  font-size:11px;
+  color:var(--muted);
+}
+.mbc-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:10px;
+  border-top:1px dashed var(--line);
+  font-size:12px;
+  color:var(--muted);
+}
+
+
+/* ========================================================
+   DESTACADO PRIORITARIO: DOCENCIA DE HOY EN ASIGNATURAS
+   ======================================================== */
+.today-subjects-banner{
+  margin-bottom:24px;
+}
+.today-highlight-box{
+  background:linear-gradient(135deg, rgba(38,92,60,0.18) 0%, rgba(20,18,16,0.95) 100%);
+  border:1.5px solid var(--green-border);
+  border-top:4px solid var(--green);
+  border-radius:16px;
+  padding:20px 22px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+.thb-header{
+  margin-bottom:16px;
+}
+.thb-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--green-dark);
+  margin-bottom:4px;
+}
+.thb-kicker .pulse-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+  display:inline-block;
+  animation:thbPulse 2s infinite;
+}
+@keyframes thbPulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.4;transform:scale(0.8)}
+}
+.thb-title{
+  font:700 20px/1.25 var(--serif);
+  color:var(--ink);
+  letter-spacing:-0.2px;
+}
+.thb-sub{
+  font-size:13px;
+  color:var(--muted);
+  margin:4px 0 0;
+}
+.thb-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:14px;
+}
+.today-live-card{
+  background:var(--paper-card);
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:all 0.2s ease;
+  position:relative;
+}
+.today-live-card:hover{
+  border-color:var(--green-border);
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+  transform:translateY(-2px);
+}
+.today-live-card.branch-procura{
+  border-left:5px solid var(--terracotta);
+}
+.today-live-card.branch-abogacia{
+  border-left:5px solid var(--blue);
+}
+.tlc-top{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.tlc-badge{
+  background:var(--green-badge);
+  border:1px solid var(--green-border);
+  color:var(--green-dark);
+  font-size:11px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:12px;
+  letter-spacing:0.5px;
+}
+.tlc-time{
+  font-size:12px;
+  color:var(--ink-soft);
+  font-weight:700;
+  margin-left:auto;
+}
+.tlc-name{
+  font:700 17px/1.3 var(--serif);
+  color:var(--ink);
+  margin:0 0 10px 0;
+}
+.tlc-meta-row{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+  font-size:12.5px;
+  margin-bottom:14px;
+  background:var(--paper-warm);
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--line);
+}
+.tlc-label{color:var(--muted);font-size:11px}
+.tlc-val{color:var(--ink)}
+.tlc-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.tlc-btn-primary{
+  background:var(--green-dark);
+  color:#ffffff;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all 0.15s ease;
+}
+.tlc-btn-primary:hover{
+  background:var(--green);
+  color:#ffffff;
+  transform:translateX(2px);
+}
+.tlc-btn-secondary{
+  background:var(--paper-warm);
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+  padding:7px 12px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.15s ease;
+}
+.tlc-btn-secondary:hover{
+  border-color:var(--green-border);
+  color:var(--green-dark);
+}
+.today-highlight-empty{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:var(--paper-card);
+  border:1.5px dashed var(--line);
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:13px;
+  color:var(--muted);
+}
+.today-highlight-empty .the-icon{font-size:24px}
+.today-highlight-empty strong{color:var(--ink);display:block;margin-bottom:2px}
+
+[data-theme="light"] .today-highlight-box{
+  background:linear-gradient(135deg, #f3faee 0%, #ffffff 100%);
+  border-color:var(--green-border);
+  box-shadow:0 6px 20px rgba(38,92,60,0.08);
+}
+[data-theme="light"] .today-live-card{
+  background:#ffffff;
+  border-color:var(--line);
+}
+[data-theme="light"] .tlc-meta-row{
+  background:var(--paper-warm);
+}
+[data-theme="light"] .tlc-btn-primary{
+  background:var(--green);
+  color:#ffffff;
+}
+[data-theme="light"] .tlc-btn-primary:hover{
+  background:var(--green-dark);
+}
+
 </style>
 </head>
 <body>
@@ -2638,7 +3254,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="hub-card-text">
           <span class="hub-card-kicker">Plan de estudios</span>
           <strong class="hub-card-title">Bloques y Asignaturas</strong>
-          <span class="hub-card-meta">4 bloques temáticos · 7 docentes</span>
+          <span class="hub-card-meta">🟢 2 bloques activos hoy · 8 bloques en total</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -2678,6 +3294,72 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <span class="hub-card-arrow">↗</span>
       </a>
+    </div>
+
+    <!-- MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
+    <div class="active-master-banner" id="activeMasterBanner">
+      <div class="amb-header">
+        <div class="amb-title-wrap">
+          <span class="amb-badge">🟢 DOCENCIA EN ACTIVO HOY</span>
+          <h3 class="amb-title">Bloques y Materias cursándose hoy en el Máster</h3>
+          <p class="amb-subtitle">Lunes, 19 de octubre de 2026 · Colegio de Abogados de A Coruña (Turno de tarde: 16:30 — 20:45 h)</p>
+        </div>
+        <button class="amb-view-all-btn" data-switch-view="asignaturas">Ver los 8 bloques del plan ➔</button>
+      </div>
+
+      <div class="amb-grid">
+        <!-- Procura Bloque I -->
+        <article class="amb-card amb-card-procura">
+          <div class="amb-card-top">
+            <span class="course-badge terra">🏛️ Procura · Bloque I</span>
+            <span class="status-pill status-current">🟢 En curso hoy</span>
+          </div>
+          <h4 class="amb-card-subject">Actos de comunicación judicial</h4>
+          <div class="amb-card-meta">
+            <div>⏰ Horario: <b>16:30 — 18:30 h</b> (Sesión 1 de 2 · 19 y 20 oct)</div>
+            <div>👤 Docente: <b>Sandra Mosteiro Costa</b></div>
+            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
+            <div>📄 Materiales: <b>4 documentos recibidos el 15 oct en Drive</b></div>
+          </div>
+          <div class="amb-card-actions">
+            <button class="amb-action-btn" data-subject-card="Procura|Técnicas instrumentales|3">
+              <span>Ver asignatura y profes</span> ➔
+            </button>
+            <button class="amb-action-btn secondary" data-teacher-card="Sandra Mosteiro Costa">
+              <span>Docente 👤</span>
+            </button>
+            <button class="amb-action-btn secondary" data-detail="materials">
+              <span>Materiales 📁</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Abogacía Bloque I -->
+        <article class="amb-card amb-card-abogacia">
+          <div class="amb-card-top">
+            <span class="course-badge blue">⚖️ Abogacía · Bloque I</span>
+            <span class="status-pill status-current">🟢 En curso hoy</span>
+          </div>
+          <h4 class="amb-card-subject">Responsabilidad civil, penal y turno de oficio</h4>
+          <div class="amb-card-meta">
+            <div>⏰ Horario: <b>18:45 — 20:45 h</b> (Sesión 1 de 3)</div>
+            <div>👤 Docente: <b>José Luis Delgado Domínguez</b></div>
+            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
+            <div>✉️ Materiales: <b>Documentación enlazada en correo del 16 oct</b></div>
+          </div>
+          <div class="amb-card-actions">
+            <button class="amb-action-btn" data-subject-card="Abogacía|Técnicas instrumentales|3">
+              <span>Ver asignatura y profes</span> ➔
+            </button>
+            <button class="amb-action-btn secondary" data-teacher-card="José Luis Delgado Domínguez">
+              <span>Docente 👤</span>
+            </button>
+            <button class="amb-action-btn secondary" data-detail="schedule">
+              <span>Horarios y aviso ✉️</span>
+            </button>
+          </div>
+        </article>
+      </div>
     </div>
     <div class="section-title">
       <div>
@@ -2750,26 +3432,69 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <!-- 3. MATERIAS: PANTALLAS SEPARADAS (1: ASIGNATURAS -> 2: INFO ASIGNATURA Y PROFES -> 3: INFO DEL PROFESOR) -->
   <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
-    <!-- PANTALLA 1: LISTADO EXCLUSIVO DE ASIGNATURAS -->
+    <!-- PANTALLA 1: LISTADO EXCLUSIVO DE ASIGNATURAS Y BLOQUES FORMATIVOS -->
     <div id="subScreen1">
       <div class="section-title">
         <div>
-          <h2>Asignaturas del Máster</h2>
-          <p>Consulta las materias organizadas por ramas y su estado en el cronograma oficial (cursándose actualmente, por venir y ya impartidas).</p>
+          <h2>Bloques y Asignaturas del Máster</h2>
+          <p>Estructura oficial del plan de estudios: 8 bloques formativos (3 de Procura y 5 de Abogacía) y materias en curso activo hoy.</p>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="hub-more-btn active" data-branch-view="todas">⚖️ Todas las ramas</button>
           <button class="hub-more-btn" data-branch-view="Abogacía">⚖️ Rama Abogacía</button>
-          <button class="hub-more-btn" data-branch-view="Procura">⚖️ Rama Procura</button>
+          <button class="hub-more-btn" data-branch-view="Procura">🏛️ Rama Procura</button>
           <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
         </div>
       </div>
 
-      <!-- Barra de filtro de estados con los 3 colores distintivos -->
-      <div class="status-filter-strip" role="group" aria-label="Filtro de estado de asignaturas">
+      <!-- Resumen de estado de los 8 bloques formativos -->
+      <div class="master-curriculum-summary" aria-label="Resumen de bloques formativos">
+        <div class="mcs-card mcs-current" data-select-view-mode="active" title="Ver materias en curso activo hoy">
+          <div class="mcs-icon">🟢</div>
+          <div>
+            <span class="mcs-label">En curso activo hoy</span>
+            <div class="mcs-title">2 Bloques activos</div>
+            <div class="mcs-sub">Bloque I Procura y Bloque I Abogacía · 2 clases hoy</div>
+          </div>
+        </div>
+
+        <div class="mcs-card mcs-past" data-select-status-filter="past" title="Ver bloques y materias completadas">
+          <div class="mcs-icon">✓</div>
+          <div>
+            <span class="mcs-label">Bloque completado</span>
+            <div class="mcs-title">1 Bloque finalizado</div>
+            <div class="mcs-sub">Bloque II Procura (13 oct) · 10/10 oficial y prácticas al día</div>
+          </div>
+        </div>
+
+        <div class="mcs-card mcs-upcoming" data-select-status-filter="upcoming" title="Ver próximos bloques">
+          <div class="mcs-icon">⏳</div>
+          <div>
+            <span class="mcs-label">Próximos en el calendario</span>
+            <div class="mcs-title">5 Bloques por venir</div>
+            <div class="mcs-sub">Bloque III Procura (27 oct) · Bloques II–V Abogacía (nov–ene)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de modos de visualización intuitiva -->
+      <div class="block-view-mode-bar" role="tablist" aria-label="Modo de visualización">
+        <button class="block-mode-btn active" data-subject-view-mode="active" role="tab" aria-selected="true">
+          <span>🟢 En curso activo hoy</span>
+        </button>
+        <button class="block-mode-btn" data-subject-view-mode="blocks" role="tab" aria-selected="false">
+          <span>📚 Vista por Bloques (8 Bloques Formativos)</span>
+        </button>
+        <button class="block-mode-btn" data-subject-view-mode="subjects" role="tab" aria-selected="false">
+          <span>📋 Todas las Asignaturas (35 materias)</span>
+        </button>
+      </div>
+
+      <!-- Barra de filtro de estados y ramas con los colores distintivos -->
+      <div class="status-filter-strip" id="subjectFilterStrip" role="group" aria-label="Filtro de estado de asignaturas">
         <b>Estado:</b>
         <button class="status-filter-btn active" data-subject-status-filter="all">Todas</button>
-        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose ahora</button>
+        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose hoy</button>
         <button class="status-filter-btn status-btn-upcoming" data-subject-status-filter="upcoming">⏳ Por venir</button>
         <button class="status-filter-btn status-btn-past" data-subject-status-filter="past">✓ Ya cursadas</button>
         <span style="border-left:1px solid var(--line);height:18px;margin:0 4px" aria-hidden="true"></span>
@@ -2780,9 +3505,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="status-filter-summary" id="subjectFilterSummary">Mostrando asignaturas en estricto orden cronológico.</span>
       </div>
 
-      <!-- Contenedor espacioso de tarjetas de asignaturas -->
+      <!-- Contenedor espacioso de tarjetas de asignaturas y bloques -->
       <div class="spacious-subjects-grid" id="subjectsListGrid"></div>
-      <div class="course-note">Datos consolidados a 18 de octubre de 2026. Haz clic en cualquier asignatura para abrir su pantalla dedicada de información y profesorado.</div>
+      <div class="course-note">Datos consolidados a 19 de octubre de 2026. Haz clic en cualquier materia o bloque para abrir su información, profesorado y recursos asociados.</div>
     </div>
 
     <!-- PANTALLA 2: DETALLE DE LA ASIGNATURA SELECCIONADA -->
@@ -2959,7 +3684,7 @@ const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-tr
 const events={
  '2026-10-01':[
   {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'},
+  {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'},
   {start:'18:45',end:'20:45',name:'Iniciación a la actividad profesional',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'}
  ],
  '2026-10-02':[
@@ -2982,29 +3707,29 @@ const events={
   {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
  '2026-10-13':[
-  {start:'16:30',end:'18:30',name:'Responsabilidad disciplinaria de la Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-  {start:'18:45',end:'20:45',name:'Deontología y responsabilidad de la abogacía (Sesión 3)',teacher:'Carmen Belo y Carlos Tomé',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+  {start:'16:30',end:'18:30',name:'Responsabilidad disciplinaria de la Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|1',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'18:45',end:'20:45',name:'Deontología y responsabilidad de la abogacía (Sesión 3)',teacher:'Carmen Belo y Carlos Tomé',subject:'Técnicas instrumentales / Deontología · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
  ],
  '2026-10-14':[
-  {start:'16:30',end:'18:30',name:'Deontología y responsabilidad de la abogacía (Sesión 4)',teacher:'Carmen Belo y Carlos Tomé',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
-  {start:'18:45',end:'20:45',name:'Proceso digital en la Procura (LexNET y firma electrónica)',teacher:'Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
+  {start:'16:30',end:'18:30',name:'Deontología y responsabilidad de la abogacía (Sesión 4)',teacher:'Carmen Belo y Carlos Tomé',subject:'Técnicas instrumentales / Deontología · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
+  {start:'18:45',end:'20:45',name:'Proceso digital en la Procura (LexNET y firma electrónica)',teacher:'Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
  ],
  '2026-10-15':[
-  {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: simulación y recursos)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-  {start:'18:45',end:'20:45',name:'TIC, justicia digital y subsanación de defectos',teacher:'Carolina Moreno Vázquez y Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
+  {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: simulación y recursos)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'18:45',end:'20:45',name:'TIC, justicia digital y subsanación de defectos',teacher:'Carolina Moreno Vázquez y Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
  ],
  '2026-10-16':[
-  {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: conclusiones y estrados)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-  {start:'18:45',end:'20:45',name:'Taller de subsanaciones procesales y auto concursal UP + Test',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',detailKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (20/20)'}
+  {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: conclusiones y estrados)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'18:45',end:'20:45',name:'Taller de subsanaciones procesales y auto concursal UP + Test',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',detailKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (20/20)'}
  ],
  '2026-10-19':[
-  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Marco general y notificaciones)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal del abogado (Sesión 1)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Marco general y notificaciones)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal del abogado (Sesión 1)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
  ],
  '2026-10-20':[
   {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Citaciones, emplazamientos y caso práctico)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-  {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Citaciones, emplazamientos y caso práctico)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
  ],
  '2026-10-21':[
   {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 1 · Apertura)',teacher:'Decanato Facultad de Derecho',subject:'Aviso Decanato · Sin clases presenciales en Facultad (21–23 oct)',mailKey:'dataforum',place:'PALEXCO (A Coruña)',kind:'Evento · DATAfórum',isWarning:true}
@@ -3018,7 +3743,7 @@ const events={
   {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 3 · Clausura)',teacher:'Decanato Facultad de Derecho',subject:'Aviso Decanato · Sin clases presenciales en Facultad (21–23 oct)',mailKey:'dataforum',place:'PALEXCO (A Coruña)',kind:'Evento · DATAfórum',isWarning:true}
  ],
  '2026-10-26':[
-  {start:'16:30',end:'18:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|0',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
   {start:'18:45',end:'20:45',name:'Gestiones profesionales',teacher:'Mª Luisa Moure',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Abogacía|Técnicas instrumentales|4',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
   '2026-10-27':[
@@ -3290,18 +4015,18 @@ const gradeRecords=[
 ];
 
 const deliveries=[
- {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'},
- {date:new Date(2026,9,16),title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_subsanacion',file:'Escrito de subsanación_signed.pdf',details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'},
- {date:new Date(2026,9,16),title:'Auto declaración con oferta de venta UP (2 envíos)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',subjectRef:'Procura|Técnicas instrumentales|1',status:'Completada y enviada (2 envíos) ✓',submitted:true,detailKey:'entrega_auto_up',file:'Documento_anonimizado.pdf',file2:'summary.docx',details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'},
+ {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'},
+ {date:new Date(2026,9,16),title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_subsanacion',file:'Escrito de subsanación_signed.pdf',details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'},
+ {date:new Date(2026,9,16),title:'Auto declaración con oferta de venta UP (2 envíos)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada (2 envíos) ✓',submitted:true,detailKey:'entrega_auto_up',file:'Documento_anonimizado.pdf',file2:'summary.docx',details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'},
  {date:new Date(2026,9,15),title:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador',teacher:'Ana Vázquez Corte',subject:'Procura · Deontología y responsabilidad',subjectRef:'Procura|Deontología y responsabilidad|0',status:'Completada en Drive y enviada en CPROC ✓',submitted:true,detailKey:'assignment',file:'Derechos, deberes y responsabilidad',details:'Práctica subida a Google Drive y enviada dentro de plazo en CPROC (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador). Nota: CPROC no envía correo de confirmación.'}
 ];
 
 const messages=[
  {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
  {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
- {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|2'},
- {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|0'},
- {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|0'}
+ {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
+ {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
+ {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'}
 ];
 
 const mailSummaries={
@@ -3590,7 +4315,7 @@ const courses=[
   name:'Deontología y responsabilidad',
   blockNumber:'Bloque II (Procura)',
   blockTitle:'Bloque II: Deontología y responsabilidad profesional (Procura)',
-  state:'En curso',
+  state:'Completado',
   officialOrder:2,
   period:'8 al 13 de octubre de 2026 · Práctica completada en CPROC',
   startDate:'2026-10-08',
@@ -3630,7 +4355,7 @@ const courses=[
   name:'Actuación procesal',
   blockNumber:'Bloque III (Procura)',
   blockTitle:'Bloque III: Actuación procesal y práctica colegial (Procura)',
-  state:'En curso',
+  state:'Por venir',
   officialOrder:3,
   period:'27 de octubre al 27 de noviembre de 2026 · Colegio de Abogados y CPROC',
   startDate:'2026-10-27',
@@ -5904,10 +6629,25 @@ function showScreen2(cKey, sIdx){
 }
 
 function showScreen3(tName){
- if(!currentActiveSubject)return;
+ if(!currentActiveSubject){
+  for(const c of courses){
+   const sIdx=c.subjects.findIndex(s=>s.teachers && s.teachers.includes(tName));
+   if(sIdx!==-1){
+    currentActiveSubject={cKey:courseKey(c), sIdx, sub:c.subjects[sIdx], course:c};
+    break;
+   }
+  }
+ }
+ if(!currentActiveSubject){
+  openTeacher(tName);
+  return;
+ }
  const {sub,course}=currentActiveSubject;
  const t=teacherDirectory.find(x=>x.name===tName);
- if(!t)return;
+ if(!t){
+  openTeacher(tName);
+  return;
+ }
  currentActiveTeacher={tName,sub,course};
 
  const s1=document.getElementById('subScreen1');
@@ -6056,6 +6796,128 @@ function renderSubjectsList(branchFilter, statusFilter){
    summaryEl.innerHTML=`Mostrando <b>${countPast} asignaturas ya cursadas y completadas</b>.`;
   }else{
    summaryEl.innerHTML=`Mostrando <b>${allItems.length} asignaturas</b> (${countCurrent} en curso hoy, ${countUpcoming} por venir y ${countPast} ya cursadas).`;
+  }
+ }
+
+ // Renderizado del destacado superior: Docencia de Hoy según la rama activa
+ const todayBanner=document.getElementById('todaySubjectsBanner');
+ if(todayBanner){
+  const tKey=keyOf(todayDate);
+  const todayEvs=(events[tKey]||[]).filter(e=>!e.isPersonal);
+  const branchLabel=(currentBranchFilter==='todas')?'Todas las ramas':(currentBranchFilter==='Abogacía'?'Rama Abogacía':'Rama Procura');
+  
+  const todayMatches=[];
+  courses.forEach(c=>{
+   if(branch && c.branch!==branch)return;
+   const cKey=courseKey(c);
+   c.subjects.forEach((sub, sIdx)=>{
+    const st=getSubjectStatusInfo(sub);
+    const evMatch=todayEvs.find(ev=>{
+     if(ev.subjectRef===`${cKey}|${sIdx}`)return true;
+     if(sub.teachers.some(t=>ev.teacher && ev.teacher.includes(t)))return true;
+     if(ev.name && sub.name && (ev.name.toLowerCase().includes(sub.name.toLowerCase().slice(0,12)) || sub.name.toLowerCase().includes(ev.name.toLowerCase().slice(0,12))))return true;
+     return false;
+    });
+    if(evMatch || st.status==='current'){
+     todayMatches.push({
+      course:c,
+      cKey,
+      sub,
+      sIdx,
+      ev:evMatch||{
+       start:'16:30',
+       end:'20:45',
+       place:'Colegio de Abogados (A Coruña)',
+       teacher:sub.teachers.join(', ')
+      }
+     });
+    }
+   });
+  });
+
+  const uniqueToday=[];
+  const seen=new Set();
+  todayMatches.forEach(item=>{
+   const id=`${item.cKey}|${item.sIdx}`;
+   if(!seen.has(id)){
+    seen.add(id);
+    uniqueToday.push(item);
+   }
+  });
+
+  if(uniqueToday.length){
+   const dateFormatted = fmtFull(todayDate);
+   todayBanner.innerHTML=`
+    <div class="today-highlight-box">
+     <div class="thb-header">
+      <div class="thb-kicker">
+       <span class="pulse-dot"></span>
+       <span>🔥 DOCENCIA DE HOY · ${dateFormatted.toUpperCase()}</span>
+      </div>
+      <div class="thb-title">Materias y profesorado que se imparten en la jornada de hoy</div>
+      <p class="thb-sub">Acceso directo prioritario a la sesión de hoy (${branchLabel}). Haz clic para entrar a la materia o ver la ficha del docente:</p>
+     </div>
+     <div class="thb-cards-grid">
+      ${uniqueToday.map(item=>{
+       const {course, cKey, sub, sIdx, ev}=item;
+       const bName=course.branch;
+       const bClass=bName==='Procura'?'branch-procura':'branch-abogacia';
+       const badgeColor=bName==='Procura'?'terra':'blue';
+       const teacherName=sub.teachers[0]||ev.teacher||'Docente';
+       const initials=getTeacherInitials(teacherName);
+       return `
+        <article class="today-live-card ${bClass}">
+         <div>
+          <div class="tlc-top">
+           <span class="tlc-badge">🟢 EN CURSO HOY</span>
+           <span class="course-badge ${badgeColor}">${bName} · ${course.blockNumber}</span>
+           <span class="tlc-time">⏰ ${ev.start}${ev.end?' – '+ev.end:''}</span>
+          </div>
+          <h3 class="tlc-name">📖 ${sub.name}</h3>
+          <div class="tlc-meta-row">
+           <div style="display:flex;align-items:center;gap:10px">
+            <div class="th-avatar" style="width:34px;height:34px;font-size:13px;flex-shrink:0">${initials}</div>
+            <div>
+             <div class="tlc-label">Profesorado responsable:</div>
+             <strong class="tlc-val">${sub.teachers.join(', ')}</strong>
+            </div>
+           </div>
+           <div style="margin-top:8px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px">
+            <span>📍</span>
+            <span>${ev.place||'Colegio de Abogados (A Coruña)'}</span>
+            <span style="margin:0 4px">·</span>
+            <span>${sub.period}</span>
+           </div>
+          </div>
+         </div>
+         <div class="tlc-actions">
+          <button type="button" class="tlc-btn-primary" data-subject-card="${cKey}|${sIdx}">
+           <span>Entrar a la materia y profesorado</span>
+           <span aria-hidden="true">➔</span>
+          </button>
+          ${sub.teachers.map(tName=>`
+           <button type="button" class="tlc-btn-secondary" data-open-teacher-screen="${tName}">
+            👤 Ficha de ${tName.split(' ')[0]} ↗
+           </button>
+          `).join('')}
+         </div>
+        </article>
+       `;
+      }).join('')}
+     </div>
+    </div>
+   `;
+  } else {
+   const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(todayDate);
+   todayBanner.innerHTML=`
+    <div class="today-highlight-empty">
+     <span class="the-icon">🗓️</span>
+     <div>
+      <strong>Sin sesiones lectivas presenciales de ${branchLabel} para hoy ${dayName}</strong>
+      <p style="margin:2px 0 0">A continuación tienes la distribución íntegra de bloques temáticos y asignaturas del Máster.</p>
+     </div>
+    </div>
+   `;
   }
  }
 
