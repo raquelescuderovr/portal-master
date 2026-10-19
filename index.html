@@ -1,17 +1,28 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161412">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161412" id="metaThemeColor">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%2220%22%20cy%3D%2220%22%20r%3D%2220%22%20fill%3D%22%23325e43%22/%3E%3Ctext%20x%3D%2212%22%20y%3D%2228%22%20fill%3D%22%23fffefa%22%20font-family%3D%22Georgia%22%20font-size%3D%2228%22%3Ec%3C/text%3E%3C/svg%3E">
 <title>Cuaderno · Máster en Abogacía y Procura</title>
+<script>
+(function(){
+  try{
+    var pref = localStorage.getItem('muap-theme');
+    var isDark = pref ? (pref === 'dark') : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    var meta = document.getElementById('metaThemeColor');
+    if(meta) meta.setAttribute('content', isDark ? '#161412' : '#f7f4ee');
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
+:root, [data-theme="dark"]{
   /* --- PALETA OSCURA EQUILIBRADA Y DESATURADA: SMOKY ESPRESSO & ANTIGUO PERGAMINO --- */
   --bg:#161412;
   --paper:#1b1916;
@@ -90,6 +101,88 @@
   /* Tipografía seleccionada para lectura relajada y cómoda */
   --serif:'Lora',Charter,'Sitka Text',Georgia,serif;
   --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  color-scheme: dark;
+}
+
+[data-theme="light"]{
+  /* --- PALETA MODO DÍA CÁLIDO Y SERENO: CREMA, PERGAMINO Y VERDE ACADÉMICO --- */
+  --bg:#f7f4ee;
+  --paper:#ffffff;
+  --paper-warm:#f8f5ed;
+  --paper-card:#ffffff;
+  --sidebar-bg:#f3eee5;
+
+  /* Tipografía: Tinta espresso profunda, cálida y de alta legibilidad */
+  --ink:#1e1a16;
+  --ink-soft:#4a4136;
+  --muted:#7c7162;
+  --line:#e4ded1;
+  --line-subtle:#ede7dc;
+
+  /* Verde Salvia / Laurel Académico */
+  --green:#265c3c;
+  --green-dark:#19422a;
+  --green-pale:#ebf5ee;
+  --green-badge:#d7ebde;
+  --green-border:#b7dbc2;
+
+  /* Café Moca / Caramelo Tostado (Abogacía, Correos, Drive) */
+  --blue:#8b5b31;
+  --blue-dark:#643d1a;
+  --blue-pale:#fbf3ec;
+  --blue-badge:#f4e3d3;
+  --blue-border:#e2cbb9;
+
+  /* Burdeos Noble / Palo de Rosa (Procura, Prácticas CPROC) */
+  --terracotta:#8e3848;
+  --terra-dark:#682331;
+  --terra-pale:#fdf1f3;
+  --terra-badge:#f8dce1;
+  --terra-border:#e9bfc7;
+
+  /* Oro Miel Mate / Latón Antiguo (Evaluación oficial, Notas 10/10) */
+  --honey:#8c651b;
+  --honey-dark:#63460b;
+  --honey-pale:#fdf6e8;
+  --honey-badge:#fbecc8;
+  --honey-border:#e9d29c;
+
+  /* Ciruela / Mora Apagada (Profesorado y Claustro) */
+  --plum:#764465;
+  --plum-dark:#532c47;
+  --plum-pale:#fbf2f7;
+  --plum-badge:#f5dbe9;
+  --plum-border:#ddbad1;
+
+  /* Caramelo Avellana Suave (Google Drive y Apuntes) */
+  --sky:#845c38;
+  --sky-dark:#614021;
+  --sky-pale:#faf3ec;
+  --sky-badge:#f3e4d4;
+  --sky-border:#e0c9b6;
+
+  /* Coral Tostado Mate */
+  --peach:#8f4d3a;
+  --peach-dark:#6d3323;
+  --peach-pale:#fdf2ef;
+  --peach-badge:#f9dfd9;
+  --peach-border:#e6c1b7;
+
+  /* Lavanda Grisácea (Calendario mensual) */
+  --lilac:#6d5177;
+  --lilac-dark:#4f3558;
+  --lilac-pale:#f9f2fb;
+  --lilac-badge:#efdef0;
+  --lilac-border:#d6bbd9;
+
+  /* Sombras suaves y cálidas para modo día */
+  --shadow-sm:0 1px 3px rgba(60,45,30,.06);
+  --shadow:0 4px 18px rgba(60,45,30,.08),0 1px 4px rgba(60,45,30,.04);
+  --shadow-hover:0 10px 26px rgba(60,45,30,.13),0 2px 8px rgba(60,45,30,.06);
+
+  --serif:'Lora',Charter,'Sitka Text',Georgia,serif;
+  --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  color-scheme: light;
 }
 
 *{box-sizing:border-box}
@@ -1644,7 +1737,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Correo */
 .mail-row{width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;padding:18px 20px;display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:15px;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s ease}
-.mail-row:hover{background:#ffffff;border-color:var(--green-border);transform:translateY(-1px);box-shadow:var(--shadow)}
+.mail-row:hover{background:var(--paper-warm);border-color:var(--green-border);transform:translateY(-1px);box-shadow:var(--shadow)}
 .mail-mark{background:var(--blue-pale);color:var(--blue-dark);width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-weight:800;border:1px solid var(--blue-border);font-size:19px}
 .mail-subject{font-size:16px;font-weight:700;color:var(--ink)}
 .mail-meta{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:2px}
@@ -1701,7 +1794,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 .detail-chip{display:inline-block;padding:6px 12px;background:var(--sidebar-bg);border-radius:20px;margin:3px;font-size:12px;color:var(--ink-soft)}
 .academic-item,.related-mail{display:block;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:15px 17px;margin:8px 0;color:var(--ink);font:600 14.5px/1.45 var(--sans);cursor:pointer;box-shadow:var(--shadow-sm);transition:all .15s}
-.academic-item:hover,.related-mail:hover{background:#ffffff;border-color:var(--green-border);transform:translateY(-1px)}
+.academic-item:hover,.related-mail:hover{background:var(--paper-warm);border-color:var(--green-border);transform:translateY(-1px)}
 .academic-item small,.related-mail small{display:block;font-size:12.5px;font-weight:400;color:var(--muted);margin-top:4px;line-height:1.55}
 .related-action{display:block;font-size:12.5px;font-weight:700;color:var(--green-dark);margin-top:6px}
 .teacher-hero{background:var(--honey-pale);border-radius:16px;padding:18px 20px;margin-bottom:16px;border:1.5px solid var(--honey-border)}
@@ -1836,7 +1929,429 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-doc-link{color:var(--ink);text-decoration:none;font-weight:600;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .st-doc-link:hover{color:var(--green);text-decoration:underline}
 .st-item-status{font-size:9px;color:var(--green-dark);font-weight:700}
-.st-sec-empty{font-size:9.5px;color:var(--muted);font-style:italic;padding:2px 0}
+/* ========================================================
+   SELECTOR DE TEMA VISUAL (DÍA / NOCHE / AUTO)
+   ======================================================== */
+.theme-switch{
+  display:inline-flex;
+  align-items:center;
+  background:var(--paper-warm);
+  border:1.5px solid var(--line);
+  border-radius:24px;
+  padding:3px;
+  gap:2px;
+  box-shadow:var(--shadow-sm);
+  flex-shrink:0;
+  user-select:none;
+}
+.theme-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--ink-soft);
+  font:700 12px var(--sans);
+  padding:6px 11px;
+  border-radius:18px;
+  cursor:pointer;
+  transition:all .18s ease;
+  line-height:1;
+}
+.theme-btn:hover{
+  color:var(--ink);
+  background:rgba(255,255,255,.08);
+}
+[data-theme="light"] .theme-btn:hover{
+  background:rgba(0,0,0,.06);
+}
+.theme-btn.active{
+  background:#362f26;
+  border-color:var(--honey);
+  color:#fffef9;
+  box-shadow:0 2px 8px rgba(0,0,0,.45);
+  font-weight:800;
+}
+[data-theme="light"] .theme-btn.active{
+  background:#ffffff;
+  border-color:var(--green);
+  color:var(--green-dark);
+  box-shadow:0 2px 8px rgba(38,92,60,.18);
+}
+.theme-icon{
+  font-size:13px;
+  line-height:1;
+}
+.sidebar-top-theme{
+  margin:10px 0 14px;
+  padding:0 2px;
+}
+.sidebar-theme-wrap{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1.5px solid var(--line);
+}
+.sidebar-theme-title{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+@media(max-width:640px){
+  .top-actions .theme-btn .theme-label{display:none}
+  .top-actions .theme-btn{padding:6px 7px}
+}
+
+/* ========================================================
+   MODO DÍA (LIGHT MODE): ADAPTACIONES COZY Y ELEGANTES
+   ======================================================== */
+[data-theme="light"] .brand-icon{
+  background:linear-gradient(135deg, #265c3c 0%, #19422a 100%);
+  color:#ffffff;
+  box-shadow:0 4px 12px rgba(38,92,60,.25);
+}
+[data-theme="light"] .nav button{
+  background:#ffffff;
+  border-color:var(--line);
+  color:var(--ink);
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .nav button:hover{
+  background:#ede6da;
+  border-color:#cfbeaa;
+  box-shadow:0 4px 12px rgba(60,45,30,.1);
+}
+[data-theme="light"] .nav button.active{
+  background:linear-gradient(135deg, #265c3c 0%, #1a442b 100%);
+  border-color:#163d26;
+  color:#ffffff;
+  box-shadow:0 4px 14px rgba(38,92,60,.3);
+}
+[data-theme="light"] .side-branch-card.card-abogacia{
+  background:#ffffff;
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .side-branch-card.card-abogacia:hover{
+  background:var(--blue-pale);
+  border-color:var(--blue);
+  box-shadow:var(--shadow-hover);
+}
+[data-theme="light"] .side-branch-card.card-procura{
+  background:#ffffff;
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .side-branch-card.card-procura:hover{
+  background:var(--terra-pale);
+  border-color:var(--terracotta);
+  box-shadow:var(--shadow-hover);
+}
+[data-theme="light"] .side-tree-accordion{
+  background:#ffffff;
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .side-tree-summary{
+  background:#ffffff;
+}
+[data-theme="light"] .side-tree-summary:hover{
+  background:#f5efe4;
+}
+[data-theme="light"] .side-filter-btn:hover{
+  background:#ede6da;
+  color:var(--green-dark);
+}
+[data-theme="light"] .menu-toggle{
+  background:#ffffff;
+  color:var(--green-dark);
+}
+[data-theme="light"] .menu-toggle:hover{
+  background:#f5efe4;
+  color:var(--honey-dark);
+}
+[data-theme="light"] .top-quick button,
+[data-theme="light"] .top-quick a{
+  background:#ffffff;
+}
+[data-theme="light"] .top-quick button:hover,
+[data-theme="light"] .top-quick a:hover{
+  background:#fdfbf7;
+}
+[data-theme="light"] .search{
+  background:#ffffff;
+}
+[data-theme="light"] .search-dropdown{
+  background:#ffffff;
+  box-shadow:0 18px 45px rgba(60,45,30,.15), 0 4px 14px rgba(60,45,30,.08);
+}
+[data-theme="light"] .search-result-item:hover,
+[data-theme="light"] .search-result-item.selected{
+  background:var(--paper-warm);
+}
+[data-theme="light"] .search-result-badge.badge-asig{background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)}
+[data-theme="light"] .search-result-badge.badge-prof{background:var(--plum-pale);border-color:var(--plum-border);color:var(--plum-dark)}
+[data-theme="light"] .search-result-badge.badge-mat{background:#eaf2f8;border-color:#bcd5ea;color:#1e587d}
+[data-theme="light"] .search-result-badge.badge-prac{background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)}
+[data-theme="light"] .search-result-badge.badge-mail{background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)}
+[data-theme="light"] .search-result-badge.badge-cal{background:var(--lilac-pale);border-color:var(--lilac-border);color:var(--lilac-dark)}
+[data-theme="light"] .search-result-badge.badge-grade{background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)}
+[data-theme="light"] .avatar{
+  background:#f2e9dc;
+  color:var(--honey-dark);
+  border-color:var(--honey-border);
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .welcome{
+  background:#ffffff;
+}
+[data-theme="light"] .welcome-date-badge{
+  background:var(--honey-pale);
+  color:var(--honey-dark);
+  border-color:var(--honey-border);
+  box-shadow:none;
+}
+[data-theme="light"] .welcome-badge.badge-gold{background:var(--honey-pale);border-color:var(--honey-border)}
+[data-theme="light"] .welcome-badge.badge-gold .badge-icon{background:var(--honey);color:#ffffff}
+[data-theme="light"] .welcome-badge.badge-mint{background:var(--green-pale);border-color:var(--green-border)}
+[data-theme="light"] .welcome-badge.badge-mint .badge-icon{background:var(--green);color:#ffffff}
+[data-theme="light"] .welcome-badge.badge-terra{background:var(--terra-pale);border-color:var(--terra-border)}
+[data-theme="light"] .welcome-badge.badge-terra .badge-icon{background:var(--terracotta);color:#ffffff}
+[data-theme="light"] .welcome-badge.badge-blue{background:var(--blue-pale);border-color:var(--blue-border)}
+[data-theme="light"] .welcome-badge.badge-blue .badge-icon{background:var(--blue);color:#ffffff}
+[data-theme="light"] .welcome-term-box{background:var(--paper-warm);border-color:var(--line)}
+[data-theme="light"] .view-tab{background:#ffffff;border-color:var(--line);color:var(--ink-soft)}
+[data-theme="light"] .view-tab:hover{background:#f6f0e4;color:var(--ink)}
+[data-theme="light"] .view-tab.active{
+  background:linear-gradient(135deg, #265c3c 0%, #1a422a 100%);
+  color:#ffffff;
+  border-color:#163d26;
+  box-shadow:0 3px 12px rgba(38,92,60,.25);
+}
+[data-theme="light"] .home-hub-card{background:#ffffff}
+[data-theme="light"] .home-hub-card:hover{
+  background:#fdfbf7;
+  border-color:var(--green-border);
+}
+[data-theme="light"] .home-hub-card.hub-green .hub-card-icon{
+  background:linear-gradient(135deg, #265c3c 0%, #19422a 100%);
+  color:#ffffff;
+}
+[data-theme="light"] .home-hub-card.hub-honey .hub-card-icon{
+  background:linear-gradient(135deg, #8c651b 0%, #63460b 100%);
+  color:#ffffff;
+}
+[data-theme="light"] .home-hub-card.hub-terra .hub-card-icon{
+  background:linear-gradient(135deg, #8e3848 0%, #682331 100%);
+  color:#ffffff;
+}
+[data-theme="light"] .home-hub-card.hub-blue .hub-card-icon{
+  background:linear-gradient(135deg, #8b5b31 0%, #643d1a 100%);
+  color:#ffffff;
+}
+[data-theme="light"] .home-hub-card:hover .hub-card-arrow{
+  background:var(--paper-warm);
+  color:var(--honey-dark);
+  border-color:var(--honey-border);
+}
+[data-theme="light"] .empty-cozy-icon-box{
+  background:linear-gradient(135deg, #265c3c 0%, #19422a 100%);
+  color:#ffffff;
+  box-shadow:0 4px 12px rgba(38,92,60,.2);
+}
+[data-theme="light"] .day-control-nav button:hover,
+[data-theme="light"] #resetTodayTop:hover{
+  background:#f5efe4;
+}
+[data-theme="light"] .headline-item:hover{
+  background:#fdfbf7;
+  border-color:var(--green-border);
+}
+[data-theme="light"] .stat-card:hover{
+  background:#ffffff;
+  border-color:var(--green-border);
+}
+[data-theme="light"] .stat-card:first-child{
+  background:var(--honey-pale);
+  border-color:var(--honey-border);
+}
+[data-theme="light"] .stat-card:first-child .stat-val-pill{
+  background:var(--honey-badge);
+  color:var(--honey-dark);
+  border-color:var(--honey-border);
+  box-shadow:none;
+}
+[data-theme="light"] .stat-card.highlight-test{
+  background:var(--blue-pale);
+  border-color:var(--blue-border);
+}
+[data-theme="light"] .stat-card.highlight-test .stat-val-pill{
+  background:var(--blue-badge);
+  color:var(--blue-dark);
+  border-color:var(--blue-border);
+  box-shadow:none;
+}
+[data-theme="light"] .stat-card:last-child{
+  background:var(--terra-pale);
+  border-color:var(--terra-border);
+}
+[data-theme="light"] .stat-card:last-child .stat-val-pill{
+  background:var(--terra-badge);
+  color:var(--terra-dark);
+  border-color:var(--terra-border);
+  box-shadow:none;
+}
+[data-theme="light"] .course-card.theme-deontologia .course-card-head,
+[data-theme="light"] .course-card.theme-deontologia .subject-banner{
+  background:var(--honey-pale);
+}
+[data-theme="light"] .course-card.theme-instrumentales .course-card-head,
+[data-theme="light"] .course-card.theme-instrumentales .subject-banner{
+  background:var(--green-pale);
+}
+[data-theme="light"] .course-card.theme-actuacion .course-card-head,
+[data-theme="light"] .course-card.theme-actuacion .subject-banner{
+  background:var(--terra-pale);
+}
+[data-theme="light"] .course-card.theme-abogacia .course-card-head,
+[data-theme="light"] .course-card.theme-abogacia .subject-banner{
+  background:var(--blue-pale);
+}
+[data-theme="light"] .st-col.st-col-grades{
+  background:var(--honey-pale);
+  border:1.5px solid var(--honey-border);
+  border-top:5px solid var(--honey);
+}
+[data-theme="light"] .st-col.st-col-grades .st-col-title{
+  color:var(--honey-dark);
+  border-bottom-color:var(--honey-border);
+}
+[data-theme="light"] .st-col.st-col-grades .st-score-callout{color:var(--honey-dark)}
+[data-theme="light"] .st-col.st-col-grades .st-score-sub{color:var(--muted)}
+[data-theme="light"] .st-col.st-col-mails{
+  background:var(--blue-pale);
+  border:1.5px solid var(--blue-border);
+  border-top:5px solid var(--blue);
+}
+[data-theme="light"] .st-col.st-col-mails .st-col-title{
+  color:var(--blue-dark);
+  border-bottom-color:var(--blue-border);
+}
+[data-theme="light"] .st-col.st-col-drive{
+  background:var(--green-pale);
+  border:1.5px solid var(--green-border);
+  border-top:5px solid var(--green);
+}
+[data-theme="light"] .st-col.st-col-drive .st-col-title{
+  color:var(--green-dark);
+  border-bottom-color:var(--green-border);
+}
+[data-theme="light"] .st-col.st-col-practices{
+  background:var(--terra-pale);
+  border:1.5px solid var(--terra-border);
+  border-top:5px solid var(--terracotta);
+}
+[data-theme="light"] .st-col.st-col-practices .st-col-title{
+  color:var(--terra-dark);
+  border-bottom-color:var(--terra-border);
+}
+[data-theme="light"] .st-col.st-col-notes{
+  background:var(--paper-warm);
+  border:1.5px solid var(--line);
+  border-top:5px solid var(--sky);
+}
+[data-theme="light"] .status-pill.status-current{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+  color:var(--green-dark);
+  box-shadow:none;
+}
+[data-theme="light"] .status-pill.status-upcoming{
+  background:var(--honey-pale);
+  border-color:var(--honey-border);
+  color:var(--honey-dark);
+}
+[data-theme="light"] .status-pill.status-past{
+  background:var(--paper-warm);
+  border-color:var(--line);
+  color:var(--muted);
+}
+[data-theme="light"] .status-filter-btn:hover{
+  background:#f5efe4;
+  border-color:var(--green-border);
+  color:var(--ink);
+}
+[data-theme="light"] .status-filter-btn.status-btn-current.active{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+  color:var(--green-dark);
+}
+[data-theme="light"] .status-filter-btn.status-btn-upcoming.active{
+  background:var(--honey-pale);
+  border-color:var(--honey-border);
+  color:var(--honey-dark);
+}
+[data-theme="light"] .status-filter-btn.status-btn-past.active{
+  background:var(--paper-warm);
+  border-color:var(--line);
+  color:var(--muted);
+}
+[data-theme="light"] .subject-card-spacious.status-current{
+  border-left:6px solid var(--green);
+  background:linear-gradient(180deg, var(--green-pale) 0%, var(--paper-card) 60px);
+}
+[data-theme="light"] .teacher-drill-avatar,
+[data-theme="light"] .th-avatar{
+  background:linear-gradient(135deg, #ede4d5, #ded1be);
+  color:var(--honey-dark);
+  border-color:var(--line);
+}
+[data-theme="light"] .cozy-tabs-strip{border-bottom-color:var(--line)}
+[data-theme="light"] .cozy-tab-btn:hover{background:#f5efe4;border-color:var(--honey-border)}
+[data-theme="light"] .cozy-tab-btn[data-teacher-tab="clases"].active{background:var(--green-pale);border-color:var(--green);color:var(--green-dark)}
+[data-theme="light"] .cozy-tab-btn[data-teacher-tab="notas"].active{background:var(--honey-pale);border-color:var(--honey);color:var(--honey-dark)}
+[data-theme="light"] .visual-resource-icon{background:var(--paper-warm);border-color:var(--line)}
+[data-theme="light"] .v-banner-mails{background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)}
+[data-theme="light"] .v-banner-practices{background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)}
+[data-theme="light"] .v-banner-notes{background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)}
+[data-theme="light"] .v-banner-tests,
+[data-theme="light"] .v-banner-grades{background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)}
+[data-theme="light"] .cal-day.selected{
+  background:var(--honey-badge);
+  border-color:var(--honey);
+  color:var(--honey-dark);
+  box-shadow:var(--shadow-sm);
+}
+[data-theme="light"] .cal-day.selected .dots i{background:var(--green)}
+[data-theme="light"] .cal-day.selected .dots i.personal-dot{background:var(--blue)}
+[data-theme="light"] .st-branch-head:hover{background:#ede5d8}
+[data-theme="light"] .st-block-head{background:var(--paper-warm);border-bottom:1px solid var(--line)}
+[data-theme="light"] .st-block-head:hover{background:#ede5d8}
+[data-theme="light"] .st-subject-head:hover{background:#ede5d8}
+[data-theme="light"] .st-teacher-card.tomorrow{
+  background:#fff9eb;
+  border-color:#e5be70;
+  border-left:3px solid var(--honey);
+}
+[data-theme="light"] .st-teacher-card.upcoming{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+}
+[data-theme="light"] .st-session-row.tomorrow{
+  background:#fff8e8;
+  border-color:#ecd296;
+  border-left:2.5px solid var(--honey);
+}
+[data-theme="light"] .st-session-row.upcoming{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+}
+[data-theme="light"] .st-mat-btn{
+  background:var(--paper-warm);
+  border-color:var(--line);
+  color:var(--ink);
+}
+[data-theme="light"] .st-count-pill.blue{background:var(--blue-badge);color:var(--blue-dark)}
+[data-theme="light"] .st-sec-block{border:1px solid var(--line)}
 
 </style>
 </head>
@@ -1851,6 +2366,23 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="brand-name">Cuaderno</div>
       <div class="brand-sub">Máster en Abogacía y Procura</div>
       <div class="brand-user-pill">Raquel Escudero · 2026/27</div>
+    </div>
+  </div>
+
+  <div class="sidebar-top-theme">
+    <div class="theme-switch" role="group" aria-label="Modo de visualización" style="width:100%;justify-content:space-between">
+      <button type="button" class="theme-btn" data-theme-val="light" title="Modo día" aria-label="Activar modo día" style="flex:1;justify-content:center">
+        <span class="theme-icon" aria-hidden="true">☀️</span>
+        <span class="theme-label">Día</span>
+      </button>
+      <button type="button" class="theme-btn" data-theme-val="dark" title="Modo noche" aria-label="Activar modo noche" style="flex:1;justify-content:center">
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+        <span class="theme-label">Noche</span>
+      </button>
+      <button type="button" class="theme-btn" data-theme-val="auto" title="Automático según el navegador" aria-label="Tema automático según el navegador" style="flex:1;justify-content:center">
+        <span class="theme-icon" aria-hidden="true">💻</span>
+        <span class="theme-label">Auto</span>
+      </button>
     </div>
   </div>
 
@@ -1964,6 +2496,23 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
       <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 Test 16 oct (20/20) ↗</a>
     </div>
+    <div class="sidebar-theme-wrap">
+      <div class="sidebar-theme-title">Tema visual</div>
+      <div class="theme-switch" role="group" aria-label="Modo de visualización en menú" style="width:100%;justify-content:space-between">
+        <button type="button" class="theme-btn" data-theme-val="light" title="Modo día" aria-label="Activar modo día" style="flex:1;justify-content:center">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+          <span class="theme-label">Día</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme-val="dark" title="Modo noche" aria-label="Activar modo noche" style="flex:1;justify-content:center">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-label">Noche</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme-val="auto" title="Automático según el navegador" aria-label="Tema automático según el navegador" style="flex:1;justify-content:center">
+          <span class="theme-icon" aria-hidden="true">💻</span>
+          <span class="theme-label">Auto</span>
+        </button>
+      </div>
+    </div>
   </div>
 </aside>
 
@@ -1988,6 +2537,20 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Limpiar búsqueda" title="Limpiar búsqueda">✕</button>
         </label>
         <div class="search-dropdown" id="searchDropdown" role="region" aria-label="Resultados de búsqueda"></div>
+      </div>
+      <div class="theme-switch" role="group" aria-label="Modo de visualización (tema)">
+        <button type="button" class="theme-btn" data-theme-val="light" title="Modo día" aria-label="Activar modo día">
+          <span class="theme-icon" aria-hidden="true">☀️</span>
+          <span class="theme-label">Día</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme-val="dark" title="Modo noche" aria-label="Activar modo noche">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-label">Noche</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme-val="auto" title="Automático según el navegador" aria-label="Tema automático según el navegador">
+          <span class="theme-icon" aria-hidden="true">💻</span>
+          <span class="theme-label">Auto</span>
+        </button>
       </div>
       <div class="avatar" title="Raquel Escudero">RE</div>
     </div>
@@ -4532,7 +5095,7 @@ function renderTeacherInsideSubject(tName, sub){
   ${apuntesDocs.length ? `
    <div style="display:grid;gap:8px">
     ${driveDocs.map(d=>`
-     <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📄</div>
        <div>
@@ -4546,7 +5109,7 @@ function renderTeacherInsideSubject(tName, sub){
      </div>
     `).join('')}
     ${pureNotes.map(n=>`
-     <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📖</div>
        <div>
@@ -4623,8 +5186,8 @@ function renderTeacherInsideSubject(tName, sub){
    <div class="visual-resource-left">
     <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
     <div>
-     <div style="font:700 19px/1.2 var(--serif);color:#523508">${t.gradeBadge || 'Evaluación del Módulo'}</div>
-     <div style="font-size:13px;color:#6d4812;margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
+     <div style="font:700 19px/1.2 var(--serif);color:var(--honey-dark)">${t.gradeBadge || 'Evaluación del Módulo'}</div>
+     <div style="font-size:13px;color:var(--muted);margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
     </div>
    </div>
    <div class="derive-action-links">
@@ -5046,7 +5609,7 @@ function renderApuntesPanel(apuntesDocs, pureNotes, driveDocs){
   ${apuntesDocs.length ? `
    <div style="display:grid;gap:8px">
     ${driveDocs.map(d=>`
-     <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📄</div>
        <div>
@@ -5060,7 +5623,7 @@ function renderApuntesPanel(apuntesDocs, pureNotes, driveDocs){
      </div>
     `).join('')}
     ${pureNotes.map(n=>`
-     <div class="visual-resource-card" style="border-left:4px solid #246845">
+     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📖</div>
        <div>
@@ -5139,7 +5702,7 @@ function renderGradePanel(t){
    <div class="visual-resource-left">
     <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
     <div>
-     <div style="font:700 19px/1.2 var(--serif);color:#d5be92">${t.gradeBadge || 'Evaluación del Módulo'}</div>
+     <div style="font:700 19px/1.2 var(--serif);color:var(--honey-dark)">${t.gradeBadge || 'Evaluación del Módulo'}</div>
      <div style="font-size:13px;color:var(--muted);margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
     </div>
    </div>
@@ -6860,6 +7423,12 @@ document.addEventListener('click',e=>{
   setView('asignaturas');
   return;
  }
+ const themeBtn=e.target.closest('[data-theme-val]');
+ if(themeBtn){
+  const val=themeBtn.dataset.themeVal;
+  applyTheme(val, true);
+  return;
+ }
  const d=e.target.closest('[data-detail]');
  if(d){openDetail(d.dataset.detail);return}
  if(e.target.closest('#detailFullpageBack')||e.target.closest('#detailCloseBtn')||e.target.closest('.detail-close')||e.target.id==='detailBackdrop'){
@@ -6905,6 +7474,71 @@ document.addEventListener('keydown',e=>{
 window.addEventListener('resize',()=>{
  document.querySelectorAll('.branch-head[aria-expanded="true"]').forEach(b=>b.nextElementSibling.style.maxHeight=b.nextElementSibling.scrollHeight+'px');
 });
+
+/* ========================================================
+   CONTROLADOR DE TEMA VISUAL (MODO DÍA / NOCHE / AUTO)
+   ======================================================== */
+function applyTheme(targetVal, saveToStorage){
+ let resolvedTheme = 'dark';
+ const systemIsDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+ if(targetVal === 'auto'){
+  if(saveToStorage){
+   try{ localStorage.removeItem('muap-theme'); }catch(e){}
+  }
+  resolvedTheme = systemIsDark ? 'dark' : 'light';
+ } else if(targetVal === 'light' || targetVal === 'dark'){
+  if(saveToStorage){
+   try{ localStorage.setItem('muap-theme', targetVal); }catch(e){}
+  }
+  resolvedTheme = targetVal;
+ } else {
+  let stored = null;
+  try{ stored = localStorage.getItem('muap-theme'); }catch(e){}
+  if(stored === 'light' || stored === 'dark'){
+   resolvedTheme = stored;
+   targetVal = stored;
+  } else {
+   resolvedTheme = systemIsDark ? 'dark' : 'light';
+   targetVal = 'auto';
+  }
+ }
+
+ document.documentElement.setAttribute('data-theme', resolvedTheme);
+
+ const metaTheme = document.getElementById('metaThemeColor') || document.querySelector('meta[name="theme-color"]');
+ if(metaTheme){
+  metaTheme.setAttribute('content', resolvedTheme === 'dark' ? '#161412' : '#f7f4ee');
+ }
+
+ document.querySelectorAll('[data-theme-val]').forEach(btn=>{
+  const val = btn.dataset.themeVal;
+  const isActive = (val === targetVal);
+  btn.classList.toggle('active', isActive);
+  btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  if(val === 'auto'){
+   btn.title = 'Automático (navegador: ' + (systemIsDark ? 'noche' : 'día') + ')';
+  }
+ });
+}
+
+if(window.matchMedia){
+ const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+ const onSchemeChange = ()=>{
+  let stored = null;
+  try{ stored = localStorage.getItem('muap-theme'); }catch(e){}
+  if(!stored || stored === 'auto'){
+   applyTheme('auto', false);
+  }
+ };
+ if(colorSchemeQuery.addEventListener){
+  colorSchemeQuery.addEventListener('change', onSchemeChange);
+ } else if(colorSchemeQuery.addListener){
+  colorSchemeQuery.addListener(onSchemeChange);
+ }
+}
+
+applyTheme(null, false);
 
 renderDay();
 renderGrades();
