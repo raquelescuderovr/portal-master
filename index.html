@@ -1309,75 +1309,79 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .subject-item-card .item-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
 
 /* ========================================================
-   DISEÑO COZY, LIMPIO Y ESTRUCTURADO PARA MATERIAS
+   ESTRUCTURA DE PANTALLAS SEPARADAS Y COLORES DE ESTADO
    ======================================================== */
 
-/* 1. Asignatura Acordeón Limpia */
-.subject-accordion{background:var(--paper-card);border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:all .18s ease;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.subject-accordion:hover{border-color:#b8a892;box-shadow:0 4px 12px rgba(35,28,20,.06)}
-.subject-accordion[open]{border-color:var(--green);border-left-width:5px;box-shadow:0 6px 18px rgba(46,100,75,.08)}
-.subject-accordion[data-branch="Abogacía"]{border-left-color:var(--blue)}
-.subject-accordion[data-branch="Procura"]{border-left-color:var(--terracotta)}
+/* 1. Tres Colores Distintivos de Estado: Cursándose (Verde), Por venir (Miel/Ámbar), Ya cursada (Pizarra) */
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:14px;letter-spacing:.02em;user-select:none}
+.status-pill.status-current{background:#162b1e;border:1.5px solid #3c8257;color:#9de8b7;box-shadow:0 0 10px rgba(78,175,110,.2)}
+.status-pill.status-upcoming{background:#2a2115;border:1.5px solid #634b26;color:#ebd199}
+.status-pill.status-past{background:#1e2321;border:1.5px solid #3a453f;color:#a8b9b0}
 
-.subject-summary{list-style:none;cursor:pointer;padding:14px 18px;background:var(--paper-warm);display:flex;align-items:center;justify-content:space-between;gap:14px;user-select:none;transition:background .15s ease}
-.subject-summary::-webkit-details-marker{display:none}
-.subject-summary:hover{background:#2d221a}
-.subject-accordion[open] .subject-summary{background:#15271c;border-bottom:1.5px solid #2e6642}
+/* Barra y botones de filtro de estado */
+.status-filter-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper-card);border:1.5px solid var(--line);border-radius:16px;padding:12px 18px;margin:18px 0 24px}
+.status-filter-strip b{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.status-filter-btn{background:var(--paper-warm);border:1.5px solid var(--line);color:var(--ink);font:600 12.5px var(--sans);padding:7px 14px;border-radius:20px;cursor:pointer;transition:all .18s ease;display:inline-flex;align-items:center;gap:6px}
+.status-filter-btn:hover{background:#32271f;border-color:var(--green-border);color:var(--ink)}
+.status-filter-btn.active{background:var(--green-dark);border-color:var(--green);color:#ffffff;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.status-filter-btn.status-btn-current.active{background:#162b1e;border-color:#3c8257;color:#9de8b7}
+.status-filter-btn.status-btn-upcoming.active{background:#2a2115;border-color:#634b26;color:#ebd199}
+.status-filter-btn.status-btn-past.active{background:#1e2321;border-color:#3a453f;color:#a8b9b0}
+.status-filter-summary{font-size:12px;color:var(--muted);margin-left:auto}
 
-.subject-summary-main{flex:1;min-width:0}
-.subject-title-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.subject-icon{font-size:18px}
-.subject-name{font:700 16.5px/1.3 var(--serif);color:var(--ink)}
+/* Barra de Navegación de Pantalla (Migas de Pan y Botones de Retorno) */
+.screen-nav-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--paper-warm);border:1.5px solid var(--line);border-radius:16px;padding:14px 20px;margin-bottom:24px}
+.screen-back-btn{background:var(--paper-card);border:1.5px solid var(--green-border);color:var(--green-dark);font:700 13px var(--sans);padding:8px 18px;border-radius:20px;cursor:pointer;transition:all .18s ease;display:inline-flex;align-items:center;gap:6px}
+.screen-back-btn:hover{background:var(--green);color:#ffffff;border-color:var(--green)}
+.screen-back-btn.secondary{border-color:var(--line);color:var(--muted)}
+.screen-back-btn.secondary:hover{background:var(--paper-warm);color:var(--ink)}
+.screen-breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.screen-breadcrumb .bc-sep{color:var(--line);font-weight:bold}
+.screen-breadcrumb b{color:var(--ink)}
 
-.subject-meta-line{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:4px;font-size:12px;color:var(--muted)}
-.meta-dot{color:#c7b9a5;font-weight:bold}
+/* Pantalla 1: Cuadrícula y Tarjetas Despejadas de Asignaturas */
+.spacious-subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px;margin:20px 0}
+.subject-card-spacious{background:var(--paper-card);border:1.5px solid var(--line);border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;box-shadow:var(--shadow);transition:all .2s ease;cursor:pointer;position:relative}
+.subject-card-spacious:hover{transform:translateY(-2px);border-color:var(--honey-border);box-shadow:var(--shadow-hover)}
+.subject-card-spacious.status-current{border-left:6px solid #4caf50;background:linear-gradient(180deg,#19291e 0%,var(--paper-card) 60px)}
+.subject-card-spacious.status-upcoming{border-left:6px solid #b39257}
+.subject-card-spacious.status-past{border-left:6px solid #5c6962;opacity:.95}
 
-.subject-toggle-pill{font-size:11.5px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1.5px solid var(--green-border);padding:5px 12px;border-radius:16px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
-.subject-toggle-pill .arrow{display:inline-block;transition:transform .2s ease;font-size:11px}
-.subject-accordion[open] .subject-toggle-pill{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
-.subject-accordion[open] .subject-toggle-pill .arrow{transform:rotate(180deg)}
+.sc-top-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sc-title{font:700 19px/1.3 var(--serif);color:var(--ink);margin:4px 0 0}
+.sc-meta{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--muted);margin-top:4px}
+.sc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid var(--line);margin-top:auto}
+.sc-action-btn{background:var(--paper-warm);border:1.5px solid var(--line);color:var(--ink);font:600 13px var(--sans);padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .18s ease;display:inline-flex;align-items:center;gap:6px}
+.subject-card-spacious:hover .sc-action-btn{background:var(--green);border-color:var(--green);color:#fff}
 
-.subject-details-body{padding:18px;background:var(--paper);display:grid;gap:16px}
+/* Pantalla 2: Tarjeta Principal de Asignatura y Listado de Docentes */
+.subject-hero-card{background:var(--paper-card);border:1.5px solid var(--line);border-radius:20px;padding:28px 32px;box-shadow:var(--shadow);margin-bottom:24px}
+.subject-hero-card.status-current{border-left:8px solid #4caf50}
+.subject-hero-card.status-upcoming{border-left:8px solid #b39257}
+.subject-hero-card.status-past{border-left:8px solid #5c6962}
+.sh-title{font:700 25px/1.25 var(--serif);color:var(--ink);margin:10px 0 0}
+.sh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.sh-col{display:flex;flex-direction:column;gap:4px}
+.sh-lbl{font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.sh-val{font-size:14px;color:var(--ink);font-weight:600;line-height:1.4}
 
-/* Información General de la Asignatura */
-.subject-general-info-card{background:var(--paper-warm);border:1.5px solid #e2ded4;border-radius:14px;padding:16px 18px}
-.sg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid #e5dfd4;margin-bottom:12px}
-.sg-title{margin:4px 0 0;font:700 18px/1.3 var(--serif);color:var(--ink)}
-.sg-grade-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.subject-teachers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:16px}
+.teacher-drill-card{background:var(--paper-card);border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;transition:all .18s ease;cursor:pointer;box-shadow:var(--shadow-sm)}
+.teacher-drill-card:hover{border-color:var(--green-border);box-shadow:var(--shadow);transform:translateY(-2px)}
+.teacher-drill-head{display:flex;align-items:center;gap:14px}
+.teacher-drill-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#36281e,#221913);color:var(--honey-dark);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 16px var(--serif);flex-shrink:0}
+.teacher-drill-name{font:700 17px/1.25 var(--serif);color:var(--ink)}
+.teacher-drill-role{font-size:12px;color:var(--muted);margin-top:2px}
+.teacher-drill-btn{background:var(--paper-warm);border:1.5px solid var(--line);color:var(--ink);padding:8px 16px;border-radius:18px;font:600 12.5px var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:space-between;width:100%;box-sizing:border-box;transition:all .18s ease}
+.teacher-drill-card:hover .teacher-drill-btn{background:var(--green);border-color:var(--green);color:#fff}
 
-.sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.sg-col{display:flex;flex-direction:column;gap:3px}
-.sg-lbl{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.sg-val{font-size:13px;color:var(--ink);font-weight:600}
-
-/* Sección de Profesorado */
-.subject-teachers-section{display:grid;gap:10px}
-.st-sec-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);padding:0 2px}
-.st-sec-header strong{color:var(--ink);font-size:13.5px}
-.subject-teachers-wrapper{display:grid;gap:10px}
-
-/* 2. Tarjeta Visual del Docente (compacta, cerrada por defecto) */
-.teacher-collapsible{background:var(--paper-card);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:all .18s ease;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-.teacher-collapsible:hover{border-color:#b9d8c2;box-shadow:0 3px 8px rgba(0,0,0,.04)}
-.teacher-collapsible[open]{border-color:var(--green);box-shadow:0 4px 14px rgba(46,100,75,.07)}
-
-.teacher-collapsible-summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:12px;user-select:none;background:var(--paper-warm);transition:background .15s}
-.teacher-collapsible-summary::-webkit-details-marker{display:none}
-.teacher-collapsible-summary:hover{background:#2d221a}
-.teacher-collapsible[open] .teacher-collapsible-summary{background:#15271c;border-bottom:1.5px solid #2e6642}
-
-.teacher-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3d2c1f,#241a14);color:var(--honey-dark);border:1.5px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;font:700 14px var(--serif);flex-shrink:0}
-.t-summary-main{flex:1;min-width:0}
-.t-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.t-name{font:700 15.5px/1.2 var(--serif);color:var(--ink)}
-.t-sub{font-size:12px;color:var(--muted);margin-top:2px}
-
-.t-collapsible-badge{font-size:11px;font-weight:700;color:var(--green-dark);background:#ffffff;border:1px solid var(--green-border);padding:4px 10px;border-radius:14px;display:inline-flex;align-items:center;gap:4px}
-.t-collapsible-arrow{font-size:11px;transition:transform .2s ease;display:inline-block}
-.teacher-collapsible[open] .t-collapsible-badge{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
-.teacher-collapsible[open] .t-collapsible-arrow{transform:rotate(180deg)}
-
-.teacher-collapsible-body{padding:16px;display:grid;gap:12px;background:var(--paper)}
+/* Pantalla 3: Detalle del Profesor y Contenedor de Apartados */
+.teacher-hero-card{background:var(--paper-card);border:1.5px solid var(--line);border-radius:20px;padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.th-left{display:flex;align-items:center;gap:16px}
+.th-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#3c2b20,#1f1612);color:var(--honey-dark);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 20px var(--serif);flex-shrink:0}
+.th-name{font:700 22px/1.2 var(--serif);color:var(--ink)}
+.th-role{font-size:13px;color:var(--muted);margin-top:3px}
+.teacher-tabs-screen-container{background:var(--paper-card);border:1.5px solid var(--line);border-radius:20px;padding:24px 26px;box-shadow:var(--shadow)}
 
 /* ========================================================
    APARTADOS PINCHABLES COZY (LIMPIO, ESPACIOSO Y SERENO)
@@ -2056,32 +2060,58 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="grades-grid" id="gradesGrid"></div>
   </section>
 
-  <!-- 3. MATERIAS: ABOGACÍA / PROCURA -> BLOQUES -> ASIGNATURAS -> PROFESORES (FECHAS, APUNTES, PRÁCTICAS, CORREOS) -->
+  <!-- 3. MATERIAS: PANTALLAS SEPARADAS (1: ASIGNATURAS -> 2: INFO ASIGNATURA Y PROFES -> 3: INFO DEL PROFESOR) -->
   <section class="section view-hidden" id="subjectsSection" data-section-view="asignaturas">
-    <div class="section-title">
-      <div>
-        <h2>Materias: Abogacía / Procura ➔ Bloques ➔ Asignaturas ➔ Profesores</h2>
-        <p>Estructura jerárquica académica completa: división por ramas (Abogacía / Procura), bloques de asignaturas del horario oficial, docentes con las fechas que han dado clase y, en cada uno, sus apartados de apuntes, prácticas y correos.</p>
+    <!-- PANTALLA 1: LISTADO EXCLUSIVO DE ASIGNATURAS -->
+    <div id="subScreen1">
+      <div class="section-title">
+        <div>
+          <h2>Asignaturas del Máster</h2>
+          <p>Consulta las materias organizadas por ramas y su estado en el cronograma oficial (cursándose actualmente, por venir y ya impartidas).</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="hub-more-btn active" data-branch-view="todas">⚖️ Todas las ramas</button>
+          <button class="hub-more-btn" data-branch-view="Abogacía">⚖️ Rama Abogacía</button>
+          <button class="hub-more-btn" data-branch-view="Procura">⚖️ Rama Procura</button>
+          <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+        </div>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="hub-more-btn active" data-branch-view="todas">⚖️ Todas las ramas</button>
-        <button class="hub-more-btn" data-branch-view="Abogacía">⚖️ Rama Abogacía</button>
-        <button class="hub-more-btn" data-branch-view="Procura">⚖️ Rama Procura</button>
-        <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+
+      <!-- Barra de filtro de estados con los 3 colores distintivos -->
+      <div class="status-filter-strip" role="group" aria-label="Filtro de estado de asignaturas">
+        <b>Filtrar por estado:</b>
+        <button class="status-filter-btn active" data-subject-status-filter="all">Todas las materias</button>
+        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose ahora</button>
+        <button class="status-filter-btn status-btn-upcoming" data-subject-status-filter="upcoming">⏳ Por venir</button>
+        <button class="status-filter-btn status-btn-past" data-subject-status-filter="past">✓ Ya cursadas</button>
+        <span class="status-filter-summary" id="subjectFilterSummary">Mostrando asignaturas en estricto orden cronológico.</span>
       </div>
+
+      <!-- Contenedor espacioso de tarjetas de asignaturas -->
+      <div class="spacious-subjects-grid" id="subjectsListGrid"></div>
+      <div class="course-note">Datos consolidados a 18 de octubre de 2026. Haz clic en cualquier asignatura para abrir su pantalla dedicada de información y profesorado.</div>
     </div>
 
-    <!-- Barra de filtro de docencia: muestra por defecto todas las fechas (impartidas y pendientes) -->
-    <div class="status-filter-strip" role="group" aria-label="Filtro de estado de docencia">
-      <b>Filtrar docencia:</b>
-      <button class="status-filter-btn active" data-teacher-status-filter="all">🗓️ Todos los profesores y sesiones (dadas y programadas)</button>
-      <button class="status-filter-btn upcoming-highlight" data-teacher-status-filter="upcoming">⏳ Solo por venir</button>
-      <button class="status-filter-btn" data-teacher-status-filter="past">✓ Ya impartidos</button>
-      <span class="status-filter-summary" id="statusFilterSummary">Mostrando todos los bloques, docentes y sesiones en estricto orden cronológico.</span>
+    <!-- PANTALLA 2: DETALLE DE LA ASIGNATURA SELECCIONADA -->
+    <div id="subScreen2" style="display:none">
+      <div class="screen-nav-bar">
+        <button class="screen-back-btn" id="btnBackToScreen1">← Volver al listado de asignaturas</button>
+        <div class="screen-breadcrumb" id="subScreen2Breadcrumb"></div>
+      </div>
+      <div id="subScreen2Content"></div>
     </div>
 
-    <div class="course-grid" id="courseGrid"></div>
-    <div class="course-note">Datos consolidados a 18 de octubre de 2026 según el calendario oficial combinado: las asignaturas y los profesores se ordenan cronológicamente dentro de cada bloque, detallando las fechas, horarios y los apartados de apuntes, prácticas y correos de cada docente.</div>
+    <!-- PANTALLA 3: DETALLE DEL PROFESOR SELECCIONADO Y SUS APARTADOS -->
+    <div id="subScreen3" style="display:none">
+      <div class="screen-nav-bar">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button class="screen-back-btn" id="btnBackToScreen2">← Volver a la asignatura</button>
+          <button class="screen-back-btn secondary" id="btnBackToScreen1From3">Todas las asignaturas</button>
+        </div>
+        <div class="screen-breadcrumb" id="subScreen3Breadcrumb"></div>
+      </div>
+      <div id="subScreen3Content"></div>
+    </div>
   </section>
 
   <!-- 4. DIRECTORIO DE PROFESORADO -->
@@ -4704,224 +4734,592 @@ function renderSidebarTree(mode){
  container.innerHTML = htmlParts.join('');
 }
 
+function renderSessionsPanel(sessions){
+ const sessRows=sessions.map(s=>{
+  const sState=getSessionStatus(s.date);
+  let tagHtml=(sState==='tomorrow')?'<span class="teacher-badge-tomorrow">🔥 ¡Mañana!</span>':((sState==='upcoming')?'<span class="teacher-badge-upcoming">⏳ Programada</span>':'<span class="teacher-badge-past">✓ Impartida</span>');
+  const dParts=s.date.split('-');
+  const dayNum=dParts[2];
+  const mCode={'10':'OCT','11':'NOV','12':'DIC','01':'ENE'}[dParts[1]]||'OCT';
+  return `
+   <div class="visual-resource-card" style="border-left:4px solid var(--green)">
+    <div class="visual-resource-left">
+     <div style="width:44px;height:44px;border-radius:10px;background:var(--green-pale);border:1.5px solid var(--green-border);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+      <span style="font:700 16px/1 var(--serif);color:var(--green-dark)">${dayNum}</span>
+      <span style="font:700 9px var(--sans);color:var(--muted);text-transform:uppercase">${mCode}</span>
+     </div>
+     <div>
+      <div class="visual-resource-title">📖 ${s.topic}</div>
+      <div class="visual-resource-sub">⏰ ${s.time} (${s.hours}) · 📍 ${s.place}</div>
+     </div>
+    </div>
+    <div>${tagHtml}</div>
+   </div>
+  `;
+ }).join('');
+
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:gap:8px">
+   <strong style="color:var(--ink);font-size:14px">📅 Calendario de clases del docente (${sessions.length} sesiones):</strong>
+   <span class="course-badge green" style="font-size:11px">Horario oficial</span>
+  </div>
+  ${sessions.length ? `<div style="display:grid;gap:8px">${sessRows}</div>` : `
+   <div class="empty-cozy" style="padding:22px 18px">
+    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
+     <div class="empty-cozy-icon-box">☕</div>
+    </div>
+    <strong>Fechas de clase en preparación</strong>
+    <p style="margin-bottom:0">Las fechas y horarios de este módulo se publicarán en el calendario oficial.</p>
+   </div>
+  `}
+ `;
+}
+
+function renderMailsPanel(mailsList, t){
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+   <strong style="color:var(--ink);font-size:14px">✉️ Correos y avisos directos (${mailsList.length}):</strong>
+   <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Bandeja de entrada en Outlook ↗</a>
+  </div>
+  ${mailsList.length ? `
+   <div style="display:grid;gap:8px">
+    ${mailsList.map(m=>{
+     const msg=messages.find(x=>x.key===m.key);
+     return `
+      <div class="visual-resource-card" style="border-left:4px solid var(--blue)">
+       <div class="visual-resource-left">
+        <div class="visual-resource-icon" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)">✉️</div>
+        <div>
+         <div class="visual-resource-title">${m.title}</div>
+         ${msg?`<div class="visual-resource-sub">📅 ${msg.date} · 👤 De: ${msg.from||t.name}</div>`:''}
+        </div>
+       </div>
+       <div class="derive-action-links">
+        <button class="pill-btn blue" data-detail="${m.key}">Ver correo ↗</button>
+        <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+       </div>
+      </div>
+     `;
+    }).join('')}
+   </div>
+  ` : `
+   <div class="empty-cozy" style="padding:22px 18px">
+    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
+     <div class="empty-cozy-icon-box">☕</div>
+    </div>
+    <strong>Sin correos directos de este docente</strong>
+    <p style="margin-bottom:14px">No hay avisos específicos registrados para este docente. Puedes consultar tu buzón general del Máster.</p>
+    <div class="empty-cozy-actions">
+     <a class="cozy-btn cozy-btn-blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir Outlook de la Universidad ↗</a>
+    </div>
+   </div>
+  `}
+ `;
+}
+
+function renderPracticesPanel(practicesList){
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+   <strong style="color:var(--ink);font-size:14px">✍️ Prácticas y casos prácticos (${practicesList.length}):</strong>
+   <a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+  </div>
+  ${practicesList.length ? `
+   <div style="display:grid;gap:8px">
+    ${practicesList.map(p=>`
+     <div class="visual-resource-card" style="border-left:4px solid var(--terracotta)">
+      <div class="visual-resource-left">
+       <div class="visual-resource-icon" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)">✍️</div>
+       <div>
+        <div class="visual-resource-title">${p.title}</div>
+        ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
+       </div>
+      </div>
+      <div class="derive-action-links">
+       ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha ↗</button>`:''}
+       <a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>
+      </div>
+     </div>
+    `).join('')}
+   </div>
+  ` : `
+   <div class="empty-cozy" style="padding:22px 18px">
+    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
+     <div class="empty-cozy-icon-box" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terracotta)">🌿</div>
+    </div>
+    <strong>Sin prácticas pendientes de entrega</strong>
+    <p style="margin-bottom:14px">Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.</p>
+    <div class="empty-cozy-actions">
+     <a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>
+    </div>
+   </div>
+  `}
+ `;
+}
+
+function renderApuntesPanel(apuntesDocs, pureNotes, driveDocs){
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+   <strong style="color:var(--ink);font-size:14px">📚 Apuntes y documentación de estudio (${apuntesDocs.length}):</strong>
+   <a class="pill-link solid-green" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive del Máster ↗</a>
+  </div>
+  ${apuntesDocs.length ? `
+   <div style="display:grid;gap:8px">
+    ${driveDocs.map(d=>`
+     <div class="visual-resource-card" style="border-left:4px solid #246845">
+      <div class="visual-resource-left">
+       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📄</div>
+       <div>
+        <div class="visual-resource-title">${d.name}</div>
+        <div class="visual-resource-sub">Google Drive · Documento de estudio</div>
+       </div>
+      </div>
+      <div class="derive-action-links">
+       <a class="pill-link solid-green" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir archivo en Drive ↗</a>
+      </div>
+     </div>
+    `).join('')}
+    ${pureNotes.map(n=>`
+     <div class="visual-resource-card" style="border-left:4px solid #246845">
+      <div class="visual-resource-left">
+       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📖</div>
+       <div>
+        <div class="visual-resource-title">${n.title}</div>
+        <div class="visual-resource-sub">Apuntes y guía didáctica</div>
+       </div>
+      </div>
+      <div class="derive-action-links">
+       ${n.key?`<button class="pill-btn" data-detail="${n.key}">Ficha ↗</button>`:''}
+       <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">Ver documento ↗</a>
+      </div>
+     </div>
+    `).join('')}
+   </div>
+  ` : `
+   <div class="empty-cozy" style="padding:22px 18px">
+    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
+     <div class="empty-cozy-icon-box">☕</div>
+    </div>
+    <strong>Aún no hay apuntes subidos para este módulo</strong>
+    <p style="margin-bottom:14px">Puedes consultar la carpeta compartida en Google Drive donde se alojan los materiales de todas las asignaturas.</p>
+    <div class="empty-cozy-actions">
+     <a class="cozy-btn cozy-btn-mint" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir Carpeta Google Drive ↗</a>
+    </div>
+   </div>
+  `}
+ `;
+}
+
+function renderTestsPanel(testsList){
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+   <strong style="color:var(--ink);font-size:14px">📝 Tests y cuestionarios de evaluación (${testsList.length}):</strong>
+   <button class="pill-btn solid-honey" data-detail="all_tests_summary">Historial global de tests ↗</button>
+  </div>
+  ${testsList.length ? `
+   <div style="display:grid;gap:8px">
+    ${testsList.map(tst=>`
+     <div class="visual-resource-card" style="border-left:4px solid var(--honey);background:var(--paper-card)">
+      <div class="visual-resource-left">
+       <div class="visual-resource-icon" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🎯</div>
+       <div>
+        <div class="visual-resource-title">${tst.title}</div>
+        ${tst.status?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">⭐ Calificación: ${tst.status}</div>`:''}
+       </div>
+      </div>
+      <div class="derive-action-links">
+       ${tst.key?`<button class="pill-btn solid-honey" data-detail="${tst.key}">Ficha del test ↗</button>`:''}
+       <a class="pill-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">Test original en Testmoz ↗</a>
+      </div>
+     </div>
+    `).join('')}
+   </div>
+  ` : `
+   <div class="empty-cozy" style="padding:22px 18px">
+    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
+     <div class="empty-cozy-icon-box" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🌿</div>
+    </div>
+    <strong>Sin tests para este módulo</strong>
+    <p style="margin-bottom:14px">No hay tests o cuestionarios evaluables registrados para este docente. Puedes ver tu resumen global de tests.</p>
+    <div class="empty-cozy-actions">
+     <button class="cozy-btn cozy-btn-gold" data-detail="all_tests_summary">Ver resumen global de tests (10/10) ↗</button>
+    </div>
+   </div>
+  `}
+ `;
+}
+
+function renderGradePanel(t){
+ return `
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+   <strong style="color:var(--ink);font-size:14px">⭐ Evaluación y calificación oficial:</strong>
+   <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Expediente oficial ↗</button>
+  </div>
+  <div class="visual-resource-card" style="border-left:5px solid var(--honey);background:var(--paper-card);padding:16px 20px">
+   <div class="visual-resource-left">
+    <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
+    <div>
+     <div style="font:700 19px/1.2 var(--serif);color:#d5be92">${t.gradeBadge || 'Evaluación del Módulo'}</div>
+     <div style="font-size:13px;color:var(--muted);margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
+    </div>
+   </div>
+   <div class="derive-action-links">
+    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Ver detalle oficial ↗</button>
+   </div>
+  </div>
+ `;
+}
+
 let currentBranchFilter='todas';
-let currentTeacherStatusFilter='all';
+let currentSubjectStatusFilter='all';
+let currentActiveSubject=null;
+let currentActiveTeacher=null;
 
-function renderCourses(branchFilter, statusFilter){
+function getSubjectStatusInfo(sub){
+ const sDate=sub.startDate||'';
+ const isCurrent=(sDate==='2026-10-19')||(sub.period&&sub.period.includes('19')&&(sub.period.includes('oct')||sub.period.includes('20')));
+ if(isCurrent){
+  return {
+   status:'current',
+   label:'🟢 Cursándose ahora',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia en curso esta semana (19–26 oct)'
+  };
+ }
+ if(sDate<'2026-10-18'&&sDate!==''){
+  return {
+   status:'past',
+   label:'✓ Ya cursada',
+   badgeClass:'status-past',
+   cardClass:'status-past',
+   desc:'Docencia ya impartida (1 al 16 oct 2026)'
+  };
+ }
+ return {
+  status:'upcoming',
+  label:'⏳ Por venir',
+  badgeClass:'status-upcoming',
+  cardClass:'status-upcoming',
+  desc:'Programada según cronograma oficial'
+ };
+}
+
+function showScreen1(){
+ const s1=document.getElementById('subScreen1');
+ const s2=document.getElementById('subScreen2');
+ const s3=document.getElementById('subScreen3');
+ if(s1)s1.style.display='block';
+ if(s2)s2.style.display='none';
+ if(s3)s3.style.display='none';
+ renderSubjectsList();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showScreen2(cKey, sIdx){
+ const s1=document.getElementById('subScreen1');
+ const s2=document.getElementById('subScreen2');
+ const s3=document.getElementById('subScreen3');
+ if(s1)s1.style.display='none';
+ if(s2)s2.style.display='block';
+ if(s3)s3.style.display='none';
+
+ const course=courses.find(c=>courseKey(c)===cKey)||courses.find(c=>c.name===(cKey.split('|')[1]||''));
+ if(!course||!course.subjects[sIdx])return;
+ const sub=course.subjects[sIdx];
+ currentActiveSubject={cKey,sIdx,sub,course};
+
+ const bc=document.getElementById('subScreen2Breadcrumb');
+ if(bc){
+  bc.innerHTML=`
+   <span>Materias</span>
+   <span class="bc-sep">/</span>
+   <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch}</span>
+   <span class="bc-sep">/</span>
+   <span>${course.blockNumber}</span>
+   <span class="bc-sep">/</span>
+   <b>${sub.name}</b>
+  `;
+ }
+
+ const contentEl=document.getElementById('subScreen2Content');
+ if(!contentEl)return;
+ const stInfo=getSubjectStatusInfo(sub);
+
+ contentEl.innerHTML=`
+  <div class="subject-hero-card ${stInfo.cardClass}">
+   <div class="sc-top-bar">
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+     <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch} · ${course.blockNumber}</span>
+     <span class="status-pill ${stInfo.badgeClass}">${stInfo.label}</span>
+    </div>
+    ${sub.grade?`
+     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <span class="tag-score" style="font-size:13px;padding:4px 10px">⭐ ${sub.grade.score}</span>
+      <button class="pill-btn solid-honey" data-detail="${sub.grade.detailKey||'grades'}">Ver expediente oficial ↗</button>
+     </div>
+    `:''}
+   </div>
+
+   <h3 class="sh-title">📖 ${sub.name}</h3>
+   <div style="color:var(--muted);font-size:13px;margin-top:6px">${course.name} · Calendario oficial</div>
+
+   <div class="sh-grid">
+    <div class="sh-col">
+     <span class="sh-lbl">🗓️ Periodo y horario oficial:</span>
+     <strong class="sh-val">${sub.period}</strong>
+    </div>
+    <div class="sh-col">
+     <span class="sh-lbl">👥 Docentes responsables:</span>
+     <strong class="sh-val">${sub.teachers.join(', ')||'Pendiente de asignar'}</strong>
+    </div>
+    <div class="sh-col">
+     <span class="sh-lbl">📋 Estado oficial:</span>
+     <strong class="sh-val">${stInfo.desc}</strong>
+    </div>
+    <div class="sh-col">
+     <span class="sh-lbl">🏛️ Sede de clases:</span>
+     <strong class="sh-val">${course.branch==='Procura'?'Colegio de Abogados / Aula CPROC':'Colegio de Abogados / Facultad de Derecho'}</strong>
+    </div>
+   </div>
+  </div>
+
+  <div style="margin-top:28px">
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+    <div>
+     <h3 style="font:700 20px var(--serif);margin:0;color:var(--ink)">👤 Profesorado de la asignatura (${sub.teachers.length})</h3>
+     <p style="font-size:13px;color:var(--muted);margin:4px 0 0">Haz clic en cualquier profesor para acceder a su pantalla de clases, apuntes, prácticas, correos y notas:</p>
+    </div>
+   </div>
+
+   <div class="subject-teachers-grid">
+    ${sub.teachers.map(tName=>{
+     const t=teacherDirectory.find(x=>x.name===tName)||{name:tName,role:'Docente',branch:course.branch,sessions:[]};
+     const st=getTeacherUpcomingStatus(t);
+     const subSess=getSubSessions(sub, t);
+     const initials=getTeacherInitials(t.name);
+     let bClass='teacher-badge-upcoming';
+     if(st.state==='tomorrow')bClass='teacher-badge-tomorrow';
+     else if(st.state==='past')bClass='teacher-badge-past';
+
+     return `
+      <article class="teacher-drill-card" data-open-teacher-screen="${t.name}">
+       <div class="teacher-drill-head">
+        <div class="teacher-drill-avatar">${initials}</div>
+        <div>
+         <div class="teacher-drill-name">👤 ${t.name}</div>
+         <div class="teacher-drill-role">${t.role} · ${subSess.length} sesión${subSess.length===1?'':'es'}</div>
+         <div style="margin-top:5px">
+          <span class="${bClass}" style="font-size:11px">${st.label}</span>
+         </div>
+        </div>
+       </div>
+
+       <button class="teacher-drill-btn" data-open-teacher-screen="${t.name}">
+        <span>Ver información del profesor</span>
+        <span>➔</span>
+       </button>
+      </article>
+     `;
+    }).join('')}
+   </div>
+  </div>
+ `;
+
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showScreen3(tName){
+ if(!currentActiveSubject)return;
+ const {sub,course}=currentActiveSubject;
+ const t=teacherDirectory.find(x=>x.name===tName);
+ if(!t)return;
+ currentActiveTeacher={tName,sub,course};
+
+ const s1=document.getElementById('subScreen1');
+ const s2=document.getElementById('subScreen2');
+ const s3=document.getElementById('subScreen3');
+ if(s1)s1.style.display='none';
+ if(s2)s2.style.display='none';
+ if(s3)s3.style.display='block';
+
+ const bc=document.getElementById('subScreen3Breadcrumb');
+ if(bc){
+  bc.innerHTML=`
+   <span>${sub.name}</span>
+   <span class="bc-sep">/</span>
+   <b>Prof. ${t.name}</b>
+  `;
+ }
+
+ const contentEl=document.getElementById('subScreen3Content');
+ if(!contentEl)return;
+
+ const st=getTeacherUpcomingStatus(t);
+ const sessions=sub?getSubSessions(sub, t):(t.sessions||[]);
+ const driveDocs=t.driveFiles||[];
+ const allPractices=t.practices||[];
+ const notesList=t.notes||[];
+ const mailsList=t.mails||[];
+ const testsList=[
+  ...allPractices.filter(p=>(p.title||'').toLowerCase().includes('test')),
+  ...notesList.filter(n=>(n.title||'').toLowerCase().includes('test'))
+ ];
+ const practicesList=allPractices.filter(p=>!(p.title||'').toLowerCase().includes('test'));
+ const pureNotes=notesList.filter(n=>!(n.title||'').toLowerCase().includes('test'));
+ const apuntesDocs=[...driveDocs, ...pureNotes];
+ const initials=getTeacherInitials(t.name);
+
+ let bClass='teacher-badge-upcoming';
+ if(st.state==='tomorrow')bClass='teacher-badge-tomorrow';
+ else if(st.state==='past')bClass='teacher-badge-past';
+
+ const sessionsContent=renderSessionsPanel(sessions);
+ const apuntesContent=renderApuntesPanel(apuntesDocs, pureNotes, driveDocs);
+ const practicesContent=renderPracticesPanel(practicesList);
+ const mailsContent=renderMailsPanel(mailsList, t);
+ const testsContent=renderTestsPanel(testsList);
+ const gradeContent=renderGradePanel(t);
+
+ contentEl.innerHTML=`
+  <div class="teacher-hero-card">
+   <div class="th-left">
+    <div class="th-avatar">${initials}</div>
+    <div>
+     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch}</span>
+      <span class="${bClass}">${st.label}</span>
+     </div>
+     <h2 class="th-name" style="margin:6px 0 2px">👤 ${t.name}</h2>
+     <div class="th-role">${t.role} · ${sub.name}</div>
+    </div>
+   </div>
+   <div>
+    <button class="pill-btn" data-teacher="${t.name}">Ver en Claustro General ↗</button>
+   </div>
+  </div>
+
+  <div class="teacher-tabs-screen-container">
+   <div class="cozy-tabs-strip">
+    <button class="cozy-tab-btn active" data-teacher-tab="clases">📅 Clases (${sessions.length})</button>
+    <button class="cozy-tab-btn" data-teacher-tab="apuntes">📚 Apuntes (${apuntesDocs.length})</button>
+    <button class="cozy-tab-btn" data-teacher-tab="practicas">✍️ Prácticas (${practicesList.length})</button>
+    <button class="cozy-tab-btn" data-teacher-tab="correos">✉️ Correos (${mailsList.length})</button>
+    <button class="cozy-tab-btn" data-teacher-tab="tests">📝 Tests (${testsList.length})</button>
+    <button class="cozy-tab-btn" data-teacher-tab="notas">⭐ Notas</button>
+   </div>
+
+   <div class="cozy-tab-panel-container">
+    <div class="cozy-tab-panel cozy-panel-clases active">${sessionsContent}</div>
+    <div class="cozy-tab-panel cozy-panel-apuntes">${apuntesContent}</div>
+    <div class="cozy-tab-panel cozy-panel-practicas">${practicesContent}</div>
+    <div class="cozy-tab-panel cozy-panel-correos">${mailsContent}</div>
+    <div class="cozy-tab-panel cozy-panel-tests">${testsContent}</div>
+    <div class="cozy-tab-panel cozy-panel-notas">${gradeContent}</div>
+   </div>
+  </div>
+ `;
+
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderSubjectsList(branchFilter, statusFilter){
  if(branchFilter!==undefined)currentBranchFilter=branchFilter;
- if(statusFilter!==undefined)currentTeacherStatusFilter=statusFilter;
+ if(statusFilter!==undefined)currentSubjectStatusFilter=statusFilter;
 
- const grid=document.getElementById('courseGrid');
+ const grid=document.getElementById('subjectsListGrid');
  if(!grid)return;
 
  const branch=(currentBranchFilter==='todas')?'':currentBranchFilter;
- const statusMode=currentTeacherStatusFilter; // 'upcoming', 'all', 'past'
+ const statusMode=currentSubjectStatusFilter; // 'all', 'current', 'upcoming', 'past'
 
- // Update status filter buttons in DOM
- document.querySelectorAll('[data-teacher-status-filter]').forEach(b=>{
-  const isMatch=b.getAttribute('data-teacher-status-filter')===statusMode;
-  b.classList.toggle('active', isMatch);
-  if(b.getAttribute('data-teacher-status-filter')==='upcoming'){
-   b.classList.toggle('upcoming-highlight', isMatch);
-  }
- });
-
- // Update branch filter buttons in DOM
  document.querySelectorAll('[data-branch-view]').forEach(b=>{
   b.classList.toggle('active', b.getAttribute('data-branch-view')===currentBranchFilter);
  });
 
- // 1. Filter courses by branch
- let visibleCourses=courses.filter(c=>c.state==='En curso'&&(!branch||c.branch===branch));
+ document.querySelectorAll('[data-subject-status-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-subject-status-filter')===statusMode);
+ });
 
- // 2. Sort courses chronologically by startDate
- visibleCourses.sort((a,b)=>(a.startDate||'').localeCompare(b.startDate||''));
+ const allItems=[];
+ courses.forEach(c=>{
+  if(c.state!=='En curso')return;
+  if(branch&&c.branch!==branch)return;
 
- // 3. Filter and sort subjects and teachers chronologically
- const processedCourses=[];
-
- for(const c of visibleCourses){
-  const copyCourse={...c, subjects:[]};
-
-  // Sort subjects chronologically by startDate
-  const sortedSubjects=[...c.subjects].sort((a,b)=>(a.startDate||'').localeCompare(b.startDate||''));
-
-  for(const sub of sortedSubjects){
-   if(!sub.teachers.length && sub.name === c.name) continue;
-
-   // Match teacher objects
-   const tObjs=sub.teachers.map(tName=>teacherDirectory.find(x=>x.name===tName)||{name:tName,branch:c.branch,role:'Docente',gradeBadge:'Programado',summary:'',sessions:[]});
-
-   // Filter teachers according to statusMode
-   let filteredTeachers=tObjs;
-   if(statusMode==='upcoming'){
-    filteredTeachers=tObjs.filter(t=>getTeacherUpcomingStatus(t).isUpcoming);
-   }else if(statusMode==='past'){
-    filteredTeachers=tObjs.filter(t=>{
-     const st=getTeacherUpcomingStatus(t);
-     return !st.isUpcoming&&st.pastCount>0;
-    });
-   }
-
-   if(filteredTeachers.length>0){
-    // Sort teachers chronologically by earliest session date in this subject
-    filteredTeachers.sort((t1,t2)=>{
-     const s1=(t1.sessions&&t1.sessions[0])?t1.sessions[0].date:'9999-99-99';
-     const s2=(t2.sessions&&t2.sessions[0])?t2.sessions[0].date:'9999-99-99';
-     return s1.localeCompare(s2);
-    });
-
-    copyCourse.subjects.push({
-     ...sub,
-     teachers:filteredTeachers.map(t=>t.name)
-    });
-   }
-  }
-
-  if(copyCourse.subjects.length>0){
-   processedCourses.push(copyCourse);
-  }
- }
-
- // Summary label
- const filterSummaryEl=document.getElementById('statusFilterSummary');
- if(filterSummaryEl){
-  let countUpcoming=0;
-  teacherDirectory.forEach(t=>{
-   if(getTeacherUpcomingStatus(t).isUpcoming&&(!branch||t.branch===branch||t.branch==='Abogacía / Procura')){
-    countUpcoming++;
-   }
+  const cKey=courseKey(c);
+  c.subjects.forEach((sub, sIdx)=>{
+   const stInfo=getSubjectStatusInfo(sub);
+   if(statusMode!=='all'&&stInfo.status!==statusMode)return;
+   allItems.push({course:c, cKey, sub, sIdx, stInfo});
   });
-  if(statusMode==='upcoming'){
-   filterSummaryEl.innerHTML=`Mostrando <b>${countUpcoming} docentes por venir</b> (sesiones a partir de mañana 19 oct). Próximos: <b>Sandra Mosteiro</b> (16:30) y <b>José Delgado</b> (18:45).`;
+ });
+
+ allItems.sort((a,b)=>(a.sub.startDate||'').localeCompare(b.sub.startDate||''));
+
+ let countCurrent=0, countUpcoming=0, countPast=0;
+ courses.forEach(c=>{
+  if(c.state!=='En curso')return;
+  if(branch&&c.branch!==branch)return;
+  c.subjects.forEach(sub=>{
+   const st=getSubjectStatusInfo(sub);
+   if(st.status==='current')countCurrent++;
+   else if(st.status==='upcoming')countUpcoming++;
+   else if(st.status==='past')countPast++;
+  });
+ });
+
+ const summaryEl=document.getElementById('subjectFilterSummary');
+ if(summaryEl){
+  if(statusMode==='current'){
+   summaryEl.innerHTML=`Mostrando <b>${countCurrent} asignaturas cursándose ahora</b> (semana del 19 al 26 oct).`;
+  }else if(statusMode==='upcoming'){
+   summaryEl.innerHTML=`Mostrando <b>${countUpcoming} asignaturas por venir</b> (a partir del 26/27 oct).`;
   }else if(statusMode==='past'){
-   filterSummaryEl.innerHTML=`Mostrando docentes con clases ya impartidas (del 1 al 16 oct 2026).`;
+   summaryEl.innerHTML=`Mostrando <b>${countPast} asignaturas ya cursadas</b> (del 1 al 16 oct 2026).`;
   }else{
-   filterSummaryEl.innerHTML=`Mostrando todos los bloques, asignaturas, docentes y fechas de clase en estricto orden cronológico.`;
+   summaryEl.innerHTML=`Mostrando <b>${allItems.length} asignaturas</b> (${countCurrent} en curso, ${countUpcoming} por venir y ${countPast} ya cursadas).`;
   }
  }
 
- if(!processedCourses.length){
-  grid.innerHTML='<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">No hay bloques ni docentes que coincidan con los filtros seleccionados.</div>';
+ if(!allItems.length){
+  grid.innerHTML='<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted)">No hay asignaturas que coincidan con los filtros seleccionados.</div>';
   return;
  }
 
- const renderCourseCard = (c, cIdx) => {
-  const cKey=courseKey(c);
+ grid.innerHTML=allItems.map(item=>{
+  const {course, cKey, sub, sIdx, stInfo}=item;
   return `
-   <article class="course-card" data-branch="${c.branch}" id="course-block-${encodeURIComponent(cKey)}" data-course-key="${cKey}">
-    <div class="course-head">
-     <div>
-      <span class="course-badge ${c.branch==='Procura'?'terra':'blue'}">${c.branch}</span>
-      <h3 style="margin-top:6px">
-       <button class="course-open" data-course="${cKey}">${c.blockTitle||('Bloque '+(cIdx+1)+': '+c.name)}</button>
-      </h3>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">📅 Periodo oficial: <b>${c.period}</b></div>
+   <article class="subject-card-spacious ${stInfo.cardClass}" data-subject-card="${cKey}|${sIdx}">
+    <div>
+     <div class="sc-top-bar">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+       <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch} · ${course.blockNumber}</span>
+       <span class="status-pill ${stInfo.badgeClass}">${stInfo.label}</span>
+      </div>
+      ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
      </div>
-     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-      <span class="course-badge green">${c.subjects.length} asignaturas</span>
-      <button class="pill-btn" data-course="${cKey}">Ver bloque ↗</button>
+
+     <h3 class="sc-title">📖 ${sub.name}</h3>
+
+     <div class="sc-meta">
+      <div>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></div>
+      <div>👤 Docente(s): <b style="color:var(--ink-soft)">${sub.teachers.join(', ')||'Pendiente'}</b></div>
      </div>
     </div>
 
-    <!-- Asignaturas del bloque ordenadas cronológicamente con diseño visual, acogedor y progresivo -->
-    <div class="course-subjects-list">
-     ${c.subjects.map((sub,idx)=>`
-      <details class="subject-accordion" id="subject-card-${encodeURIComponent(cKey)}-${idx}" data-subject-ref="${cKey}|${idx}" data-branch="${c.branch}">
-       <summary class="subject-summary">
-        <div class="subject-summary-main">
-         <div class="subject-title-line">
-          <span class="subject-icon">${c.branch === 'Abogacía' ? '⚖️' : '📜'}</span>
-          <span class="subject-name">${sub.name}</span>
-          ${sub.grade ? `<span class="tag-score" style="font-size:11.5px;padding:2px 8px">⭐ ${sub.grade.score}</span>` : ''}
-         </div>
-         <div class="subject-meta-line">
-          <span>🗓️ ${sub.period}</span>
-          <span class="meta-dot">·</span>
-          <span>👤 ${sub.teachers.length} docente${sub.teachers.length!==1?'s':''} (${sub.teachers.join(', ') || 'Pendiente'})</span>
-         </div>
-        </div>
-        <span class="subject-toggle-pill">
-         <span>Ver asignatura</span>
-         <span class="arrow">▾</span>
-        </span>
-       </summary>
-
-       <div class="subject-details-body">
-        <!-- 1. INFORMACIÓN DE LA ASIGNATURA GENERAL -->
-        <div class="subject-general-info-card">
-         <div class="sg-top">
-          <div>
-           <span class="course-badge ${c.branch==='Procura'?'terra':'blue'}">${c.branch} · ${c.blockNumber}</span>
-           <h4 class="sg-title">📖 ${sub.name}</h4>
-          </div>
-          ${sub.grade ? `
-           <div class="sg-grade-group">
-            <span class="tag-score" style="font-size:12.5px;padding:4px 10px">⭐ Calificación: ${sub.grade.score}</span>
-            <button class="pill-btn solid-honey" data-detail="${sub.grade.detailKey||'grades'}">Ver notas oficiales ↗</button>
-           </div>
-          ` : ''}
-         </div>
-         <div class="sg-grid">
-          <div class="sg-col">
-           <span class="sg-lbl">🗓️ Periodo del horario:</span>
-           <strong class="sg-val">${sub.period}</strong>
-          </div>
-          <div class="sg-col">
-           <span class="sg-lbl">👥 Docentes responsables:</span>
-           <strong class="sg-val">${sub.teachers.join(', ') || 'Pendiente de asignar'}</strong>
-          </div>
-          <div class="sg-col">
-           <span class="sg-lbl">📋 Estado oficial:</span>
-           <strong class="sg-val">${sub.grade ? '✓ Evaluada / Finalizada' : '⏳ En curso'}</strong>
-          </div>
-         </div>
-        </div>
-
-        <!-- 2. PROFESORES DE LA ASIGNATURA -->
-        <div class="subject-teachers-section">
-         <div class="st-sec-header">
-          <strong>👤 Docentes de la asignatura (${sub.teachers.length})</strong>
-          <span>Haz clic en un docente para desplegar sus apartados:</span>
-         </div>
-         <div class="subject-teachers-wrapper">
-          ${sub.teachers.map(tName=>renderTeacherInsideSubject(tName, sub)).join('')}
-         </div>
-        </div>
-       </div>
-      </details>
-     `).join('')}
+    <div class="sc-footer">
+     <span style="font-size:12px;color:var(--muted)">${sub.teachers.length} docente${sub.teachers.length===1?'':'es'} asignado${sub.teachers.length===1?'':'s'}</span>
+     <button class="sc-action-btn" data-subject-card="${cKey}|${sIdx}">
+      <span>Ver asignatura y profes</span>
+      <span>➔</span>
+     </button>
     </div>
    </article>
   `;
- };
+ }).join('');
+}
 
- if(currentBranchFilter === 'todas'){
-  const abogaciaList = processedCourses.filter(c=>c.branch==='Abogacía');
-  const procuraList = processedCourses.filter(c=>c.branch==='Procura');
-  let outHtml = '';
-
-  if(abogaciaList.length){
-   outHtml += `
-    <div style="grid-column:1/-1;margin:10px 0 8px;padding:12px 18px;background:var(--blue-pale);border:1.5px solid var(--blue-border);border-radius:14px;display:flex;justify-content:space-between;align-items:center">
-     <div style="font:700 18px var(--serif);color:var(--blue-dark)">⚖️ Rama Abogacía (${abogaciaList.length} bloques del horario oficial)</div>
-     <span class="course-badge blue">ICAM / UDC</span>
-    </div>
-   ` + abogaciaList.map((c, idx) => renderCourseCard(c, idx)).join('');
-  }
-
-  if(procuraList.length){
-   outHtml += `
-    <div style="grid-column:1/-1;margin:24px 0 8px;padding:12px 18px;background:var(--terra-pale);border:1.5px solid var(--terra-border);border-radius:14px;display:flex;justify-content:space-between;align-items:center">
-     <div style="font:700 18px var(--serif);color:var(--terra-dark)">⚖️ Rama Procura (${procuraList.length} bloques del horario oficial)</div>
-     <span class="course-badge terra">CPROC / UDC</span>
-    </div>
-   ` + procuraList.map((c, idx) => renderCourseCard(c, idx)).join('');
-  }
-  grid.innerHTML = outHtml;
- } else {
-  grid.innerHTML = processedCourses.map((c, idx) => renderCourseCard(c, idx)).join('');
- }
+function renderCourses(branchFilter, statusFilter){
+ renderSubjectsList(branchFilter, statusFilter);
 }
 
 function renderTeachers(q=''){
@@ -5106,36 +5504,11 @@ function closeDetailView(){
 function openCourse(key){
  const parts=key.split('|');
  const branch=parts[0];
- const name=parts[1]||'';
-
- // 1. Cambiar la vista de la pantalla principal a Bloques y Asignaturas
  setView('asignaturas', false);
-
- // 2. Filtrar por la rama correspondiente (Abogacía o Procura)
  if(branch && (branch==='Abogacía'||branch==='Procura')){
-  renderCourses(branch);
+  currentBranchFilter=branch;
  }
-
- // 3. Buscar y enfocar la tarjeta del bloque directamente en la pantalla principal
- setTimeout(()=>{
-  const targetId = 'course-block-' + encodeURIComponent(key);
-  let card = document.getElementById(targetId) || document.querySelector(`[data-course-key="${key}"]`);
-  if(!card && name){
-   card = Array.from(document.querySelectorAll('.course-card')).find(el=>{
-    const h = el.querySelector('h3, .course-open');
-    return h && h.textContent.toLowerCase().includes(name.toLowerCase());
-   });
-  }
-  if(card){
-   document.querySelectorAll('.course-card').forEach(c=>c.classList.remove('highlight-focused'));
-   card.classList.add('highlight-focused');
-   card.scrollIntoView({behavior:'smooth', block:'start'});
-  } else {
-   window.scrollTo({top:0, behavior:'smooth'});
-  }
- }, 60);
-
- // 4. Destacar la materia en el menú lateral
+ showScreen1();
  document.querySelectorAll('.branch-link').forEach(bl=>{
   bl.classList.toggle('active', bl.dataset.course===key);
  });
@@ -5150,20 +5523,9 @@ function openSubject(ref){
 
  setView('asignaturas', false);
  if(branch && (branch==='Abogacía'||branch==='Procura')){
-  renderCourses(branch);
+  currentBranchFilter=branch;
  }
-
- setTimeout(()=>{
-  let subEl = document.getElementById(`subject-card-${encodeURIComponent(key)}-${index}`) || document.querySelector(`[data-subject-ref="${ref}"]`);
-  if(subEl){
-   if(subEl.tagName==='DETAILS')subEl.open=true;
-   document.querySelectorAll('.subject-accordion, .subject-item-card').forEach(s=>s.classList.remove('highlight-focused'));
-   subEl.classList.add('highlight-focused');
-   subEl.scrollIntoView({behavior:'smooth', block:'center'});
-  } else {
-   openCourse(key);
-  }
- }, 60);
+ showScreen2(key, index);
  closeMenu();
 }
 
@@ -5555,6 +5917,9 @@ function setView(view,doScroll=true){
  if(view==='calendario'){
   renderCalendar();
  }
+ if(view==='asignaturas'){
+  showScreen1();
+ }
  if(doScroll)window.scrollTo({top:0,behavior:'smooth'});
  closeMenu();
 }
@@ -5640,11 +6005,46 @@ document.getElementById('search').addEventListener('input',e=>{
  }
 });
 document.addEventListener('click',e=>{
+ const backS1=e.target.closest('#btnBackToScreen1')||e.target.closest('#btnBackToScreen1From3');
+ if(backS1){
+  showScreen1();
+  return;
+ }
+ const backS2=e.target.closest('#btnBackToScreen2');
+ if(backS2){
+  if(currentActiveSubject){
+   showScreen2(currentActiveSubject.cKey, currentActiveSubject.sIdx);
+  }else{
+   showScreen1();
+  }
+  return;
+ }
+ const scCard=e.target.closest('[data-subject-card]');
+ if(scCard){
+  const ref=scCard.dataset.subjectCard;
+  const parts=ref.split('|');
+  const sIdx=Number(parts.pop());
+  const cKey=parts.join('|');
+  showScreen2(cKey, sIdx);
+  return;
+ }
+ const openTS=e.target.closest('[data-open-teacher-screen]');
+ if(openTS){
+  const tName=openTS.dataset.openTeacherScreen;
+  showScreen3(tName);
+  return;
+ }
+ const ssf=e.target.closest('[data-subject-status-filter]');
+ if(ssf){
+  const status=ssf.dataset.subjectStatusFilter;
+  renderSubjectsList(undefined, status);
+  return;
+ }
  const tTab=e.target.closest('[data-teacher-tab]');
  if(tTab){
   e.preventDefault();
   const tabKey=tTab.dataset.teacherTab;
-  const container=tTab.closest('.teacher-collapsible-body')||tTab.closest('.teacher-collapsible');
+  const container=tTab.closest('.teacher-tabs-screen-container')||tTab.closest('.teacher-collapsible-body')||tTab.closest('.teacher-collapsible');
   if(container){
    container.querySelectorAll('[data-teacher-tab]').forEach(b=>b.classList.toggle('active',b===tTab));
    container.querySelectorAll('.cozy-tab-panel').forEach(p=>p.classList.toggle('active',p.classList.contains('cozy-panel-'+tabKey)));
@@ -5657,7 +6057,7 @@ document.addEventListener('click',e=>{
   setView('asignaturas');
   currentBranchFilter=branch;
   document.querySelectorAll('[data-branch-view]').forEach(b=>b.classList.toggle('active',b.dataset.branchView===branch));
-  renderCourses();
+  renderSubjectsList(branch);
   return;
  }
  const btnTom=e.target.closest('#btnSeeTomorrow');
@@ -5730,14 +6130,15 @@ document.addEventListener('click',e=>{
  const sf=e.target.closest('[data-teacher-status-filter]');
  if(sf){
   const status=sf.dataset.teacherStatusFilter;
-  renderCourses(undefined, status);
+  renderSubjectsList(undefined, status);
   return;
  }
  const bv=e.target.closest('[data-branch-view]');
  if(bv){
   const branch=bv.dataset.branchView;
-  renderCourses(branch);
+  currentBranchFilter=branch;
   document.querySelectorAll('[data-branch-view]').forEach(x=>x.classList.toggle('active',x===bv));
+  renderSubjectsList(branch);
   setView('asignaturas');
   return;
  }
