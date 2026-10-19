@@ -3324,12 +3324,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
       <div class="amb-grid">
         <!-- Procura Bloque I -->
-        <article class="amb-card amb-card-procura">
+        <article class="amb-card amb-card-procura" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">
           <div class="amb-card-top">
             <span class="course-badge terra">🏛️ Procura · Bloque I</span>
             <span class="status-pill status-current">🟢 En curso hoy</span>
           </div>
-          <h4 class="amb-card-subject">Actos de comunicación judicial</h4>
+          <h4 class="amb-card-subject" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">Actos de comunicación judicial</h4>
           <div class="amb-card-meta">
             <div>⏰ Horario: <b>16:30 — 18:30 h</b> (Sesión 1 de 2 · 19 y 20 oct)</div>
             <div>👤 Docente: <b>Sandra Mosteiro Costa</b></div>
@@ -3338,9 +3338,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
           <div class="amb-card-actions">
             <button class="amb-action-btn" data-subject-card="Procura|Técnicas instrumentales|3">
-              <span>Ver asignatura y profes</span> ➔
+              <span>Ver asignatura y clase</span> ➔
             </button>
-            <button class="amb-action-btn secondary" data-teacher-card="Sandra Mosteiro Costa">
+            <button class="amb-action-btn secondary" data-open-teacher-screen="Sandra Mosteiro Costa">
               <span>Docente 👤</span>
             </button>
             <button class="amb-action-btn secondary" data-detail="materials">
@@ -3350,12 +3350,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </article>
 
         <!-- Abogacía Bloque I -->
-        <article class="amb-card amb-card-abogacia">
+        <article class="amb-card amb-card-abogacia" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">
           <div class="amb-card-top">
             <span class="course-badge blue">⚖️ Abogacía · Bloque I</span>
             <span class="status-pill status-current">🟢 En curso hoy</span>
           </div>
-          <h4 class="amb-card-subject">Responsabilidad civil, penal y turno de oficio</h4>
+          <h4 class="amb-card-subject" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">Responsabilidad civil, penal y turno de oficio</h4>
           <div class="amb-card-meta">
             <div>⏰ Horario: <b>18:45 — 20:45 h</b> (Sesión 1 de 3)</div>
             <div>👤 Docente: <b>José Luis Delgado Domínguez</b></div>
@@ -3364,9 +3364,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
           <div class="amb-card-actions">
             <button class="amb-action-btn" data-subject-card="Abogacía|Técnicas instrumentales|3">
-              <span>Ver asignatura y profes</span> ➔
+              <span>Ver asignatura y clase</span> ➔
             </button>
-            <button class="amb-action-btn secondary" data-teacher-card="José Luis Delgado Domínguez">
+            <button class="amb-action-btn secondary" data-open-teacher-screen="José Luis Delgado Domínguez">
               <span>Docente 👤</span>
             </button>
             <button class="amb-action-btn secondary" data-detail="schedule">
@@ -3746,17 +3746,49 @@ const events={
   {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Citaciones, emplazamientos y caso práctico)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
   {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
  ],
- '2026-10-21':[
-  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 1 · Apertura)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato',subject:'Palexco · Auditorium (Planta 0) y Ágora (Auditorio Arao, Planta 2) · Libre acceso a ponencias',mailKey:'dataforum_instrucciones',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true}
- ],
- '2026-10-22':[
-  {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 2)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato',subject:'Palexco · Auditorium (Planta 0) y Ágora (Auditorio Arao, Planta 2) · Libre acceso a ponencias',mailKey:'dataforum_instrucciones',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true}
- ],
- '2026-10-23':[
-  {start:'09:30',end:'10:30',name:'Traumatólogo Raquel (Dr. Mejía Aguirre)',subject:'Hospital HM Modelo (Rúa Virrey Osorio, 30, A Coruña)',place:'Hospital HM Modelo',kind:'Cita médica · Personal',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 3 · Clausura)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato',subject:'Palexco · Auditorios Planta 0 y 2 · Justificante oficial de asistencia confirmado',mailKey:'dataforum_viernes',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true}
- ],
+  '2026-10-21':[
+   {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 1 · Apertura)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato UDC',subject:'Palexco · Auditorium (Planta 0) y Ágora (Auditorio Arao, Planta 2) · Libre acceso a ponencias',mailKey:'dataforum_instrucciones',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true},
+   {start:'09:40',end:'10:55',name:'IA Aplicada para Profesionales del Derecho',teacher:'Edgar Manjarín (Barcelona Supercomputing Center)',subject:'Taller práctico: Modelos de lenguaje e IA en tareas y análisis jurídico',detailKey:'df_ia_practica',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'09:55',end:'10:35',name:'¿Cómo es trabajar de Abogado y de Procurador? (Salidas del Máster)',teacher:'Lourdes Carballo (Decana Vigo) y Mª Dolores Cantó (Decana Murcia)',subject:'Salidas profesionales directas del Máster: Abogacía y Procura',detailKey:'df_salidas_profesionales',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'11:35',end:'13:00',name:'Inauguración oficial + Conferencia inaugural: El nuevo contrato social',teacher:'Manuel Olmedo (Secretario de Estado), Laura Castro (Vicerrectora IA UDC) y José Ignacio Latorre',subject:'Apertura oficial del congreso y lección inaugural',detailKey:'df_inauguracion',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'12:50',end:'13:20',name:'Legaltech y Abogacía: Global Legaltech Hub y Abogacía Europea',teacher:'Albert Ferré (Global Legaltech Hub) y Noemí Alarcón (CCBE)',subject:'Ecosistema legaltech y transformación digital en la abogacía',detailKey:'df_entrevistas_legaltech',place:'PALEXCO · Videopodcast',kind:'DATAfórum · Podcast'},
+   {start:'13:45',end:'14:10',name:'⚡ Opción A · IA para la gestión de documentos',teacher:'Carlos Hernández (Accenture) y Miguel Fonseca (Procesia)',subject:'Automatización y gestión documental [Incompatible con Ágora]',detailKey:'df_ia_documental',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'13:45',end:'14:10',name:'⚡ Opción B · ¿Cómo es trabajar de juez?',teacher:'Borja Pérez Muñiz (Juez Instancia) y Mª Zulema Gento (Magistrada AP A Coruña)',subject:'Carrera judicial, juzgados de instancia y práctica forense [Incompatible con TechLab]',detailKey:'df_trabajar_juez',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'13:50',end:'14:00',name:'Entrevista Alberto Gago, director general de la AESIA',teacher:'Alberto Gago Fernández (Director General de la AESIA)',subject:'Supervisión pública de la Inteligencia Artificial desde A Coruña',detailKey:'df_entrevista_gago',place:'PALEXCO · Videopodcast',kind:'DATAfórum · Podcast'},
+   {start:'14:10',end:'14:35',name:'⚡ Opción A · Búsqueda aumentada: RAG deliberativo en Justicia',teacher:'Tatiana Lassaca (NTT Data) y Rubén Vela (Laboratorio Innovación MPJRC)',subject:'Recuperación deliberativa de antecedentes y resoluciones [Incompatible con Ágora]',detailKey:'df_rag_deliberativo',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'14:10',end:'14:35',name:'⚡ Opción B · ¿Cómo es trabajar de fiscal?',teacher:'Teresa Peramato (Fiscal General del Estado)',subject:'Ministerio Fiscal, garantías y tutela ciudadana [Incompatible con TechLab]',detailKey:'df_trabajar_fiscal',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'15:50',end:'16:30',name:'★ Opción A (Recomendada TFG) · Delitos de odio. Desinformación',teacher:'Estefanía de Antonio (RTVE Verificación) y María Esteller (Subdirectora General AESIA)',subject:'Deepfakes, desinformación y tutela del honor e intimidad [Incompatible con Auditorio]',detailKey:'df_odio_desinfo',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'15:50',end:'16:30',name:'⚡ Opción B (Institucional) · El papel de los Consejos Generales (CGAE y CGPE)',teacher:'Salvador González (Presidente CGAE) y Alberto García Barrenechea (Presidente CGPE)',subject:'Transformación digital de la Abogacía y la Procura [Incompatible con Ágora]',detailKey:'df_consejos_generales',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'16:35',end:'17:05',name:'De la Justicia Digital a la Justicia Inteligente: el dato al servicio de las personas',teacher:'Manuel Luna (Presidente TSJ Murcia) y Raquel Lillo (Magistrada Instancia)',subject:'Gobernanza del dato, expediente digital y derechos ciudadanos',detailKey:'df_justicia_inteligente',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'17:10',end:'18:30',name:'Justicia y Cooperación Judicial Digital en Europa y Canadá',teacher:'Noemí Alarcón (Vicepresidenta CCBE), eu-LISA y Cyberjustice Lab Montreal',subject:'Litigación y cooperación transfronteriza digitalizada',detailKey:'df_cooperacion_europea',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'18:15',end:'18:35',name:'El consentimiento sexual en la era de la IA',teacher:'Francisco Jaqueti Fuster (Fiscalía / Nuevas Iniciativas)',subject:'Tipificación penal, imagen y tutela de la intimidad frente a IA generativa',detailKey:'df_consentimiento_ia',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'}
+  ],
+  '2026-10-22':[
+   {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+   {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 2)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato UDC',subject:'Palexco · Auditorium (Planta 0) y Ágora (Auditorio Arao, Planta 2) · Libre acceso a ponencias',mailKey:'dataforum_instrucciones',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true},
+   {start:'08:55',end:'09:20',name:'Las cifras de la Agencia Española de Protección de Datos',teacher:'Lorenzo Cotino Hueso (Presidente de la AEPD)',subject:'Privacidad, protección de datos y supervisión de la AEPD [Ojo: coincide justo tras Pilates]',detailKey:'df_aepd',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'09:25',end:'09:50',name:'⚡ Opción A · ¿Se compromete la justicia por el uso privado de IA del juez?',teacher:'Jordi Nieva Fenoll (Catedrático de Derecho Procesal UB)',subject:'Ética procesal, motivación fáctica e IA auxiliar en la judicatura [Incompatible con TechLab]',detailKey:'df_ia_juez_procesal',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'09:25',end:'09:45',name:'⚡ Opción B · LexNET Datos y Delta Justicia',teacher:'Jesús González (Pegasystems) y Luisangela Marot (EY)',subject:'Integración de datos en LexNET y automatización procesal [Incompatible con Ágora]',detailKey:'df_lexnet_datos',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'09:55',end:'11:05',name:'⚡ Opción A · ¿Una revolución inaplazable? Impacto de la IA en la Justicia',teacher:'Councilbox, Accenture, Pega, Minsait, Procesia, EY',subject:'Gran debate sobre la transformación de los juzgados por la IA [Solapa con MASC en TechLab]',detailKey:'df_revolucion_ia',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'10:15',end:'11:05',name:'★ Opción B (Mediación) · Digitalización de los MASC',teacher:'Karim Benyekhlef (Cyberjustice Lab Montreal) y Councilbox',subject:'Plataformas ODR de negociación extrajudicial y mediación electrónica [Solapa con Auditorio]',detailKey:'df_masc_digitales',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'12:20',end:'12:40',name:'Escritorio Virtual de Inmediación Digital',teacher:'Antonio Pernía Aznar (MPJRC) y Juan Miguel López (Councilbox)',subject:'Videocomparecencias y actuaciones telemáticas seguras en sede judicial',detailKey:'df_inmediacion_digital',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'12:35',end:'13:15',name:'Derechos digitales con perspectiva humana: de la norma a las personas',teacher:'Belén Arribas Sánchez (Abogada TIC e IA) y Octavio Gracia (ICAB)',subject:'Derechos digitales, ética algorítmica y tutela de la ciudadanía',detailKey:'df_derechos_digitales',place:'PALEXCO · Videopodcast',kind:'DATAfórum · Podcast'},
+   {start:'13:25',end:'14:30',name:'Derecho y justicia internacional en el nuevo (des)orden mundial',teacher:'Xulio Ferreiro (Decano Derecho UDC), Andrea Rizzi (El País), Mariola Urrea',subject:'Mesa de debate con el Decano de la Facultad de Derecho UDC',detailKey:'df_decano_internacional',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'16:00',end:'16:30',name:'La nueva regulación de la Inteligencia Artificial',teacher:'Javier Torres (Secretario General de la AESIA)',subject:'Aplicación práctica del Reglamento Europeo de IA supervisado por la AESIA',detailKey:'df_regulacion_aesia',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
+   {start:'16:20',end:'17:30',name:'⚡ Opción A (Procura) · Ejecución judicial, subastas y deuda judicializada',teacher:'Ana Enguix (Directora Legal y Procura de Lexer) y Bárbara Pitarque (Economistas)',subject:'Práctica de la ejecución procesal, subastas telemáticas y créditos [Incompatible con Auditorio]',detailKey:'df_ejecucion_subastas',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'16:20',end:'17:30',name:'⚡ Opción B · Innovación en entornos complejos: abogacía rural y discapacidad',teacher:'Alberto Tornero (PwC) y expertos del sector',subject:'Inclusión, acceso a la justicia y abogacía de proximidad [Incompatible con Ágora]',detailKey:'df_abogacia_rural',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'17:35',end:'18:45',name:'★ Recomendada · Legaltech: Tecnología en bufetes y departamentos de legal',teacher:'Asier Crespo (Microsoft), Juan Saavedra (Inditex), Sara Molina (Pérez-Llorca), Teresa Pereyra (Écija)',subject:'La sesión estrella sobre ejercicio profesional en grandes firmas y departamentos de legaltech',detailKey:'df_legaltech_empresas',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'}
+  ],
+  '2026-10-23':[
+   {start:'09:00',end:'10:00',name:'⚡ Opción A · Los Medios Adecuados de Solución de Controversias (MASC)',teacher:'Alberto García (MPRJRC), GEMME España, AGADECO y Procuradores CGPE',subject:'Impulso de los MASC y mediación en la Procura [Ojo: en conflicto con cita médica]',detailKey:'df_masc_viernes',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'09:30',end:'10:05',name:'⚡ Opción B · IA en España: Estrategia, control y política de Estado',teacher:'Alberto Gago (Director General de la AESIA) y Aleida Alcaide (DG IA)',subject:'Estrategia nacional de supervisión algorítmica [Ojo: en conflicto con cita médica]',detailKey:'df_estrategia_ia_aesia',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'09:30',end:'10:30',name:'Traumatólogo Raquel (Dr. Mejía Aguirre)',subject:'Hospital HM Modelo (Rúa Virrey Osorio, 30, A Coruña)',place:'Hospital HM Modelo',kind:'Cita médica · Personal',isPersonal:true,detailKey:'personal_calendar_sync'},
+   {start:'Todo el día',end:'',name:'DATAfórum Justicia 2026 (Jornada 3 · Clausura)',teacher:'D. Javier Hernández (Justicia Digital) / Decanato UDC',subject:'Palexco · Auditorios Planta 0 y 2 · Justificante oficial de asistencia confirmado',mailKey:'dataforum_viernes',place:'PALEXCO (A Coruña)',kind:'Evento oficial · DATAfórum',isWarning:true},
+   {start:'10:35',end:'11:00',name:'El derecho a entender',teacher:'Antonio Martín (Embajador de PLAIN en España · CEO de Cálamo & Cran)',subject:'Lenguaje claro, comunicación jurídica accesible y simplificación procesal',detailKey:'df_derecho_entender',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
+   {start:'11:45',end:'12:25',name:'Sostenibilidad y Justicia Digital en la Procura',teacher:'María Dolores Cantó (Decana del Ilustre Colegio de Procuradores de Murcia)',subject:'Digitalización integral, papel cero y modernización de la procura',detailKey:'df_procura_digital_sostenible',place:'PALEXCO · Videopodcast',kind:'DATAfórum · Podcast'},
+   {start:'12:00',end:'13:00',name:'Conferencia de Clausura: Félix Bolaños García',teacher:'Félix Bolaños García (Ministro de la Presidencia, Justicia y Relaciones con las Cortes)',subject:'Balance de legislatura y proyectos de transformación digital en la Justicia',detailKey:'df_conferencia_clausura',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'},
+   {start:'14:00',end:'14:35',name:'Clausura Institucional DATAfórum Justicia 2026',teacher:'Inés Rey (Alcaldesa da Coruña), Ricardo Cao (Rector UDC) y Félix Bolaños',subject:'Cierre formal del congreso por las instituciones coorganizadoras',detailKey:'df_clausura_institucional',place:'PALEXCO · Auditorio (Planta 0)',kind:'DATAfórum · Auditorio'}
+  ],
  '2026-10-26':[
   {start:'16:30',end:'18:30',name:'Responsabilidad civil y penal · turno de oficio',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
   {start:'18:45',end:'20:45',name:'Gestiones profesionales',teacher:'Mª Luisa Moure',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Abogacía|Técnicas instrumentales|4',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
@@ -3993,7 +4025,7 @@ const gradeRecords=[
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|1',
+  subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'test_16oct',
   description:'Test oficial «CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el viernes 16 de octubre de 2026 a las 19:17. Superado con 20/20 aciertos (10 sobre 10).',
   links:[
@@ -4018,7 +4050,7 @@ const gradeRecords=[
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Ana Vázquez Corte',
-  subjectRef:'Procura|Técnicas instrumentales|1',
+  subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'all_tests_summary',
   description:'Todos los tests publicados hasta la fecha en CPROC / Testmoz están hechos, con calificación de 10 en todos salvo en uno (~8). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
   links:[
@@ -4037,13 +4069,13 @@ const deliveries=[
 ];
 
 const messages=[
- {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
+ {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
  {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
- {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:'Abogacía|Técnicas instrumentales|3'},
+ {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:''},
+ {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:''},
  {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
+ {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:''},
  {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'}
 ];
@@ -4100,7 +4132,7 @@ const details={
   date:'Actualizado: sábado, 17 de octubre de 2026',
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|1',
+  subjectRef:'Procura|Técnicas instrumentales|2',
   body:'Estado general confirmado: 1) Todos los cuestionarios/tests de CPROC y Testmoz hasta la fecha están realizados y completados, con una calificación de 10 sobre 10 en todos ellos excepto en uno (calificado con un ~8). 2) Las 4 prácticas elaboradas y guardadas en Google Drive están todas completadas y enviadas en la plataforma CPROC (ninguna vencida). Nota: el formulario de entregas de CPROC muestra mensaje en pantalla al enviar pero no remite resguardo por correo electrónico.',
   gradeTable:{test:'10 en todos (salvo uno con ~8)',trabajos:'4 / 4 prácticas enviadas en CPROC',final:'100 % al día (0 vencidas)'},
   source:'Confirmación de la alumna + registros de Testmoz (16 oct 2026: 20/20 = 10), correo de Secretaría (14 oct 2026: 10/10) y carpeta «Máster» en Google Drive · 17 oct 2026',
@@ -4135,7 +4167,7 @@ const details={
   title:'Material de clase · Actos de comunicación judicial',
   date:'Correo recibido: miércoles, 15 de octubre de 2026 · Clases: 19 y 20 de octubre de 2026',
   teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Procura|Técnicas instrumentales|2',
+  subjectRef:'Procura|Técnicas instrumentales|3',
   body:'El correo remite los cuatro documentos de estudio de la profesora Sandra Mosteiro Costa para preparar las sesiones sobre actos de comunicación judicial y el caso práctico sobre plazos procesales. El cronograma sitúa sus clases el lunes 19 y martes 20 de octubre (09:30–11:30 grupo de mañana; 16:30–18:30 grupo de tarde).',
   source:'Correo de Administración del Máster · «Material de clase · Actos de comunicación judicial» · 15 oct 2026',
   attachments:[
@@ -4312,6 +4344,405 @@ const details={
    {q:'20. ¿Qué debe hacer el procurador con los escritos presentados digitalmente?',opts:['Guardar el justificante de presentación.','No guardar nada.','Imprimirlos siempre.','Compartirlos sin control.'],correct:0}
   ]
  }
+  ,
+  df_ia_practica:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'IA Aplicada para Profesionales del Derecho',
+   date:'Miércoles, 21 de octubre de 2026 · 09:40 – 10:55 h · PALEXCO',
+   teacher:'Edgar Manjarín (Barcelona Supercomputing Center)',
+   body:'Taller práctico y metodológico de 1 h 15 min enfocado a la aplicación real de modelos de lenguaje e inteligencia artificial en tareas jurídicas: redacción y resumen de documentos, análisis jurisprudencial predictivo y automatización de procesos para abogados y procuradores.
+
+★ RECOMENDACIÓN: Una de las sesiones más formativas y prácticas de todo el congreso para el ejercicio profesional diario.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · PALEXCO',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'},
+    {name:'Web oficial DATAfórum Justicia 2026',url:'https://dataforumjusticia.es/',kind:'Web oficial'}
+   ]
+  },
+  df_salidas_profesionales:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'¿Cómo es trabajar de Abogado y de Procurador? (Salidas del Máster)',
+   date:'Miércoles, 21 de octubre de 2026 · 09:55 – 10:35 h · PALEXCO',
+   teacher:'Lourdes Carballo (Decana Abogacía Vigo) y Mª Dolores Cantó (Decana Procuradores Murcia)',
+   body:'Sesión institucional y de orientación forense que aborda la realidad práctica, colegial y deontológica de la Abogacía y la Procura en los juzgados y tribunales actuales.
+
+• 09:55–10:15: «¿Cómo es trabajar de abogado?» con Lourdes Carballo.
+• 10:15–10:35: «¿Cómo es trabajar de procurador?» con Mª Dolores Cantó.
+
+★ Enlace directo con los dos bloques principales de tu Máster Universitario en Abogacía y Procura.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · PALEXCO',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_inauguracion:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'Inauguración oficial + Conferencia inaugural: El nuevo contrato social',
+   date:'Miércoles, 21 de octubre de 2026 · 11:35 – 13:00 h · PALEXCO',
+   teacher:'Manuel Olmedo (Secretario de Estado), Laura Castro (Vicerrectora IA UDC) y José Ignacio Latorre',
+   body:'Apertura formal de DATAfórum 2026 presidida por el Ministerio de Justicia y la Universidade da Coruña, seguida de la lección inaugural del catedrático y divulgador científico José Ignacio Latorre sobre «El nuevo contrato social: ética, tecnología y algoritmos en el ordenamiento jurídico».',
+   source:'Programa Oficial DATAfórum Justicia 2026 · PALEXCO',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_entrevistas_legaltech:{
+   kicker:'DATAfórum Justicia 2026 · Videopodcast (PALEXCO)',
+   title:'Legaltech y Abogacía: Global Legaltech Hub y Abogacía Europea (CCBE)',
+   date:'Miércoles, 21 de octubre de 2026 · 12:50 – 13:20 h · PALEXCO',
+   teacher:'Albert Ferré (Global Legaltech Hub) y Noemí Alarcón (Vicepresidenta CCBE)',
+   body:'Entrevistas en formato podcast sobre el ecosistema de startups legaltech, automatización de despachos y el marco normativo de la abogacía europea frente a la digitalización de la justicia.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · PALEXCO',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_ia_documental:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'⚡ Opción A · IA para la gestión de documentos',
+   date:'Miércoles, 21 de octubre de 2026 · 13:45 – 14:10 h · PALEXCO',
+   teacher:'Carlos Hernández (Accenture) y Miguel Fonseca (Procesia)',
+   body:'Presentación técnica de soluciones de procesamiento de lenguaje natural y clasificación inteligente de escritos y documentos procesales en el Expediente Judicial Electrónico.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 13:45 h con la sesión «¿Cómo es trabajar de juez?» en el Ágora. Puedes elegir la vertiente tecnológica documental (TechLab) o la visión de la judicatura local (Ágora).',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_trabajar_juez:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'⚡ Opción B · ¿Cómo es trabajar de juez?',
+   date:'Miércoles, 21 de octubre de 2026 · 13:45 – 14:10 h · PALEXCO',
+   teacher:'Borja Pérez Muñiz (Juez Instancia Ribeira) y Mª Zulema Gento (Magistrada Audiencia Provincial A Coruña)',
+   body:'Coloquio sobre la realidad judicial cotidiana en los juzgados de primera instancia y en la Audiencia Provincial de A Coruña: cargas de trabajo, vistas, valoración probatoria y herramientas telemáticas.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 13:45 h con la sesión «IA para la gestión de documentos» en TechLab.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_entrevista_gago:{
+   kicker:'DATAfórum Justicia 2026 · Videopodcast (PALEXCO)',
+   title:'Entrevista a Alberto Gago, director general de la AESIA',
+   date:'Miércoles, 21 de octubre de 2026 · 13:50 – 14:00 h · PALEXCO',
+   teacher:'Alberto Gago Fernández (Director General de la Agencia Española de Supervisión de IA)',
+   body:'Entrevista sobre los primeros pasos, líneas estratégicas y sandbox regulatorio de la AESIA, la primera agencia estatal europea de supervisión de inteligencia artificial, con sede en A Coruña.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Videopodcast',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_rag_deliberativo:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'⚡ Opción A · Búsqueda aumentada: RAG deliberativo en Justicia',
+   date:'Miércoles, 21 de octubre de 2026 · 14:10 – 14:35 h · PALEXCO',
+   teacher:'Tatiana Lassaca (NTT Data) y Rubén Vela (Laboratorio de Innovación MPJRC)',
+   body:'Demostración práctica de arquitecturas RAG (Retrieval-Augmented Generation) aplicadas al análisis deliberativo de antecedentes de hecho y fundamentos de derecho para agilizar borradores y resoluciones judiciales.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 14:10 h con la intervención de la Fiscal General del Estado en el Ágora.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_trabajar_fiscal:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'⚡ Opción B · ¿Cómo es trabajar de fiscal?',
+   date:'Miércoles, 21 de octubre de 2026 · 14:10 – 14:35 h · PALEXCO',
+   teacher:'Teresa Peramato Martín (Fiscal de Sala / Fiscalía General del Estado)',
+   body:'Exposición sobre las funciones del Ministerio Fiscal, la dirección de la investigación penal, la protección de víctimas vulnerables y los desafíos tecnológicos de la fiscalía.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 14:10 h con la sesión de RAG deliberativo en TechLab.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_odio_desinfo:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'★ Opción A (Recomendada TFG) · Delitos de odio. Desinformación',
+   date:'Miércoles, 21 de octubre de 2026 · 15:50 – 16:30 h · PALEXCO',
+   teacher:'Estefanía de Antonio (RTVE Verificación) y María Esteller (Subdirectora General de la AESIA)',
+   body:'★ MÁXIMA AFINIDAD CON TU INVESTIGACIÓN:
+Esta mesa aborda de lleno el objeto de tu publicación académica en Zenodo sobre deepfakes y desinformación: generación de contenidos sintéticos, manipulación de imagen y voz, vulneración de derechos fundamentales (honor, intimidad y propia imagen) y las respuestas desde la verificación de datos y la supervisión algorítmica de la AESIA.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 15:50 h con la mesa de los Presidentes de la Abogacía y la Procura en el Auditorio (Planta 0). Si te atrae la vertiente académica y de derecho digital, esta sesión es la elección ideal.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'},
+    {name:'Artículo Zenodo: «La respuesta del Derecho Civil a los deepfakes»',url:'https://doi.org/10.5281/zenodo.18386692',kind:'Publicación académica'}
+   ]
+  },
+  df_consejos_generales:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'⚡ Opción B (Institucional) · El papel de los Consejos Generales en la transformación de la Justicia',
+   date:'Miércoles, 21 de octubre de 2026 · 15:50 – 16:30 h · PALEXCO',
+   teacher:'Salvador González (Presidente CGAE) y Alberto García Barrenechea (Presidente CGPE)',
+   body:'Mesa redonda institucional al máximo nivel de la profesión: el Presidente del Consejo General de la Abogacía Española y el Presidente del Consejo General de Procuradores debaten sobre el nuevo marco normativo procesal, la interoperabilidad de plataformas (LexNET) y el papel de los colegios profesionales en la justicia telemática.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 15:50 h con la sesión sobre desinformación y la AESIA en el Ágora.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_justicia_inteligente:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'De la Justicia Digital a la Justicia Inteligente: el dato al servicio de las personas',
+   date:'Miércoles, 21 de octubre de 2026 · 16:35 – 17:05 h · PALEXCO',
+   teacher:'Manuel Luna (Presidente TSJ Murcia) y Raquel Lillo (Magistrada Instancia)',
+   body:'Exposición sobre la transición desde la digitalización en papel escaneado (PDFs) hacia la justicia orientada al dato estructurado: estadísticas predictivas, gestión procesal inteligente y garantías para el justiciable.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_cooperacion_europea:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'Justicia y Cooperación Judicial Digital en Europa y Canadá',
+   date:'Miércoles, 21 de octubre de 2026 · 17:10 – 18:30 h · PALEXCO',
+   teacher:'Noemí Alarcón (Vicepresidenta CCBE), eu-LISA y Cyberjustice Laboratory de Montréal',
+   body:'Mesa internacional sobre plataformas europeas e-CODEX, cooperación judicial civil y penal transfronteriza y lecciones aprendidas en los tribunales telemáticos canadienses.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_consentimiento_ia:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'El consentimiento sexual en la era de la IA',
+   date:'Miércoles, 21 de octubre de 2026 · 18:15 – 18:35 h · PALEXCO',
+   teacher:'Francisco Jaqueti Fuster (Fiscalía / Centro de Productos de Nuevas Iniciativas)',
+   body:'Análisis técnico-jurídico sobre la tipificación de delitos contra la intimidad y la libertad sexual cuando median ultrafalsificaciones (deepfakes no consentidos), pornografía sintética y tutela de los derechos de imagen.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_aepd:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'Las cifras de la Agencia Española de Protección de Datos',
+   date:'Jueves, 22 de octubre de 2026 · 08:55 – 09:20 h · PALEXCO',
+   teacher:'Lorenzo Cotino Hueso (Presidente de la AEPD)',
+   body:'Ponencia magistral del Presidente de la Agencia Española de Protección de Datos sobre balance sancionador, brechas de seguridad, tutela de menores y el impacto del Reglamento General de Protección de Datos (RGPD) en el entorno judicial.
+
+⚠️ AVISO DE AGENDA: Coincide justo después de tu sesión de Pilates (08:00–09:00 h). Si te da tiempo a desplazarte a PALEXCO es una sesión de enorme valor.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_ia_juez_procesal:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'⚡ Opción A · ¿Se ve comprometida la calidad de la justicia por el uso privado de IA por parte del juez?',
+   date:'Jueves, 22 de octubre de 2026 · 09:25 – 09:50 h · PALEXCO',
+   teacher:'Jordi Nieva Fenoll (Catedrático de Derecho Procesal de la Universidad de Barcelona)',
+   body:'Debate doctrinal y procesal de máximo nivel: el prestigioso procesalista Jordi Nieva analiza los riesgos del uso informal o privado de herramientas de IA generativa por los magistrados al redactar sentencias, valoración probatoria y derecho a un proceso con todas las garantías.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 09:25 h con la sesión sobre LexNET Datos en TechLab.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_lexnet_datos:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'⚡ Opción B · LexNET Datos y Delta Justicia',
+   date:'Jueves, 22 de octubre de 2026 · 09:25 – 09:45 h · PALEXCO',
+   teacher:'Jesús González (Pegasystems) y Luisangela Marot (EY)',
+   body:'Presentación sobre la evolución de LexNET hacia la extracción automática de metadatos y el sistema Delta Justicia para la tramitación ágil de escritos profesionales de abogados y procuradores.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide con la ponencia de Jordi Nieva en el Ágora.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_revolucion_ia:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'⚡ Opción A · ¿Una revolución inaplazable? Impacto de la IA en la Justicia',
+   date:'Jueves, 22 de octubre de 2026 · 09:55 – 11:05 h · PALEXCO',
+   teacher:'Mesa redonda: Councilbox, Accenture, Pega, Minsait, Procesia y EY',
+   body:'Gran mesa redonda industrial con los principales proveedores tecnológicos de la Administración de Justicia sobre el despliegue de soluciones cognitivas y plataformas analíticas.
+
+⚠️ SOLAPAMIENTO: Solapa entre las 10:15 y las 11:05 h con la sesión de MASC en TechLab.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_masc_digitales:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'★ Opción B (Mediación) · Digitalización de los MASC (Medios Adecuados de Solución de Controversias)',
+   date:'Jueves, 22 de octubre de 2026 · 10:15 – 11:05 h · PALEXCO',
+   teacher:'Karim Benyekhlef (Director Cyberjustice Lab Montreal) y Councilbox',
+   body:'★ AFINIDAD CON TU TRAYECTORIA DE MEDIADORA:
+Sesión específica sobre plataformas ODR (Online Dispute Resolution), mediación electrónica asistida y sistemas colaborativos para alcanzar acuerdos sin litigio judicial.
+
+⚠️ SOLAPAMIENTO: Ocurre en paralelo a la mesa de IA en el Auditorio.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_inmediacion_digital:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'Escritorio Virtual de Inmediación Digital',
+   date:'Jueves, 22 de octubre de 2026 · 12:20 – 12:40 h · PALEXCO',
+   teacher:'Antonio Pernía Aznar (MPJRC) y Juan Miguel López (Councilbox)',
+   body:'Demostración del sistema EVID para la celebración de vistas telemáticas seguras, fe pública judicial digital y acreditación de identidad procesal.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_derechos_digitales:{
+   kicker:'DATAfórum Justicia 2026 · Videopodcast (PALEXCO)',
+   title:'Derechos digitales con perspectiva humana: de la norma a las personas',
+   date:'Jueves, 22 de octubre de 2026 · 12:35 – 13:15 h · PALEXCO',
+   teacher:'Belén Arribas Sánchez (Abogada TIC e IA) y Octavio Gracia (ICAB)',
+   body:'Enfoque de derechos fundamentales en la transformación digital: límites a la vigilancia, sesgos de género en IA y tutela efectiva en entornos virtuales.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Videopodcast',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_decano_internacional:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'Derecho y justicia internacional en el nuevo (des)orden mundial',
+   date:'Jueves, 22 de octubre de 2026 · 13:25 – 14:30 h · PALEXCO',
+   teacher:'Xulio Ferreiro (Decano Derecho UDC), Andrea Rizzi (El País) y Mariola Urrea',
+   body:'Mesa de debate de máxima relevancia académica moderada por el Decano de tu Facultad de Derecho (Xulio Ferreiro), con analistas internacionales de El País y catedráticos de Derecho Internacional.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_regulacion_aesia:{
+   kicker:'DATAfórum Justicia 2026 · TechLab (PALEXCO)',
+   title:'La nueva regulación de la Inteligencia Artificial',
+   date:'Jueves, 22 de octubre de 2026 · 16:00 – 16:30 h · PALEXCO',
+   teacher:'Javier Torres (Secretario General de la AESIA)',
+   body:'Análisis directo de la autoridad reguladora: cómo afectará el Reglamento Europeo de IA (AI Act) a los sistemas de alto riesgo utilizados en justicia, contratación y peritajes judiciales.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · TechLab',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_ejecucion_subastas:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'⚡ Opción A (Procura) · Ejecución judicial, subastas y deuda judicializada',
+   date:'Jueves, 22 de octubre de 2026 · 16:20 – 17:30 h · PALEXCO',
+   teacher:'Ana Enguix (Directora Legal y Procura de Lexer) y Bárbara Pitarque (Economistas)',
+   body:'Sesión enfocada en la práctica diaria de la procura y la ejecución dineraria: gestión masiva de procedimientos, subastas electrónicas en el BOE y titulizaciones.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide a las 16:20 h con la mesa de abogacía rural y discapacidad en el Auditorio.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_abogacia_rural:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'⚡ Opción B · Innovación en entornos complejos: abogacía rural y discapacidad',
+   date:'Jueves, 22 de octubre de 2026 · 16:20 – 17:30 h · PALEXCO',
+   teacher:'Alberto Tornero (PwC) y expertos del sector',
+   body:'Mesa sobre el impacto de la brecha digital en partidos judiciales rurales y adaptaciones para personas con discapacidad.
+
+⚠️ INCOMPATIBILIDAD HORARIA: Coincide con la sesión de Procura y ejecución en el Ágora.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_legaltech_empresas:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'★ Recomendada · Legaltech: Tecnología e impacto en bufetes y departamentos de legal',
+   date:'Jueves, 22 de octubre de 2026 · 17:35 – 18:45 h · PALEXCO',
+   teacher:'Asier Crespo (Microsoft), Juan Saavedra (Inditex), Sara Molina (Pérez-Llorca), Teresa Pereyra (Écija)',
+   body:'★ LA MESA DE MAYOR NIVEL PROFESIONAL:
+Reúne a los directores jurídicos y socios de las entidades líderes en Derecho digital y contratación tecnológica: Asier Crespo (Director Jurídico de Microsoft España), Juan Saavedra (Responsable Legal Digital y Ecommerce de Inditex), Sara Molina (Socia de Pérez-Llorca) y Teresa Pereyra (Socia de Écija).
+
+Sesión imprescindible si orientas tu futuro a despachos de élite o asesoría jurídica de grandes corporaciones.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_masc_viernes:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'⚡ Opción A · Los Medios Adecuados de Solución de Controversias (MASC)',
+   date:'Viernes, 23 de octubre de 2026 · 09:00 – 10:00 h · PALEXCO',
+   teacher:'Alberto García (MPRJRC), GEMME España, AGADECO y Procuradores CGPE',
+   body:'Mesa de debate sobre el proyecto de ley de eficiencia procesal y la obligatoriedad del intento de mediación/MASC antes de la interposición de demanda civil.
+
+⚠️ CONFLICTO HORARIO: Coincide parcialmente con tu cita médica en HM Modelo (09:30–10:30 h).',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_estrategia_ia_aesia:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'⚡ Opción B · IA en España: Estrategia, control y política de Estado',
+   date:'Viernes, 23 de octubre de 2026 · 09:30 – 10:05 h · PALEXCO',
+   teacher:'Alberto Gago (Director General de la AESIA) y Aleida Alcaide (DG IA)',
+   body:'Estrategia gubernamental para el fomento y control de la IA soberana en España.
+
+⚠️ CONFLICTO HORARIO: Coincide exactamente con tu cita médica del traumatólogo en HM Modelo.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_derecho_entender:{
+   kicker:'DATAfórum Justicia 2026 · Ágora (Auditorio Arao, Planta 2)',
+   title:'El derecho a entender',
+   date:'Viernes, 23 de octubre de 2026 · 10:35 – 11:00 h · PALEXCO',
+   teacher:'Antonio Martín (Embajador de PLAIN en España · CEO de Cálamo & Cran)',
+   body:'Comunicación jurídica accesible y lenguaje claro: cómo eliminar el oscurantismo y la complejidad arcaica de las notificaciones, autos y resoluciones judiciales sin perder rigor procesal.
+
+★ Enlace idóneo tras tu consulta médica para incorporarte a PALEXCO.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Ágora',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_procura_digital_sostenible:{
+   kicker:'DATAfórum Justicia 2026 · Videopodcast (PALEXCO)',
+   title:'Sostenibilidad y Justicia Digital en la Procura',
+   date:'Viernes, 23 de octubre de 2026 · 11:45 – 12:25 h · PALEXCO',
+   teacher:'María Dolores Cantó (Decana del Ilustre Colegio de Procuradores de Murcia)',
+   body:'El papel de la procura en los objetivos de desarrollo sostenible (ODS), reducción de la huella de carbono mediante la digitalización y el expediente telemático.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Videopodcast',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_conferencia_clausura:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'Conferencia de Clausura: Félix Bolaños García',
+   date:'Viernes, 23 de octubre de 2026 · 12:00 – 13:00 h · PALEXCO',
+   teacher:'Félix Bolaños García (Ministro de la Presidencia, Justicia y Relaciones con las Cortes)',
+   body:'Intervención de clausura del Ministro de Justicia analizando el balance de inversiones tecnológicas del plan Justicia 2030, fondos europeos y próximas reformas legislativas en materia de eficiencia digital.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  },
+  df_clausura_institucional:{
+   kicker:'DATAfórum Justicia 2026 · Auditorio (Planta 0)',
+   title:'Clausura Institucional DATAfórum Justicia 2026',
+   date:'Viernes, 23 de octubre de 2026 · 14:00 – 14:35 h · PALEXCO',
+   teacher:'Inés Rey (Alcaldesa da Coruña), Ricardo Cao (Rector UDC) y Félix Bolaños',
+   body:'Cierre oficial y entrega de conclusiones de las tres jornadas de DATAfórum Justicia 2026 con los máximos representantes de la UDC, el Ayuntamiento de A Coruña y el Gobierno de España.',
+   source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
+   attachments:[
+    {name:'Itinerario personalizado DATAfórum (PDF elaborado)',url:'DATAFORUM_2026_Itinerario_Personalizado_Raquel_Escudero.pdf',kind:'Documento PDF local'}
+   ]
+  }
 };
 
 const courses=[
