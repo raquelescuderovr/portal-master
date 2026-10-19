@@ -6,19 +6,29 @@ Portal personal de seguimiento académico del **Máster Universitario en Abogac�
 
 ---
 
-## Estado actual (actualizado a 18 de octubre de 2026)
+## Estado actual (actualizado a 19 de octubre de 2026)
 
+- **Selector de tema (Modo Noche / Modo Día / Automático):**
+  - Selector accesible en la cabecera que permite alternar entre `🌙 Noche`, `☀️ Día` y `💻 Auto`.
+  - El modo automático detecta la preferencia del sistema operativo o navegador (`prefers-color-scheme`).
+  - Persistencia automática de la preferencia elegida en `localStorage`.
+- **Accesibilidad y contraste en filtros:**
+  - Optimización visual con contraste reforzado y variables semánticas para los botones y selectores de filtro de estado tanto en modo claro como en modo oscuro.
+- **Vista de materias y vinculación interactiva:**
+  - Vinculación bidireccional entre asignaturas y docentes asignados, con acceso directo a la ficha de cada profesor.
+  - Detección y distintivo automático `🔥 Hoy` en las materias con clases programadas para la jornada actual.
+  - Modo de visualización cronológica completa de todas las asignaturas del curso además de las materias en curso.
 - **Menú de la izquierda (árbol jerárquico completo e interactivo):**
   - Incorpora en la barra lateral izquierda la jerarquía en 5 niveles:
     **`Abogado / Procurador ➔ Bloque del máster ➔ Asignatura ➔ Profesor (con días y horas de clase) ➔ Material del profesor`**.
   - Cada nivel es colapsable/desplegable (`<details>`) con acceso directo a fichas, bloques y recursos.
   - Filtro interactivo en el menú izquierdo:
-    - **`⏳ Por venir (no impartidos)`** (activo por defecto): muestra de inmediato los docentes con sesiones a partir del 19 de octubre de 2026, destacando las sesiones de mañana lunes.
+    - **`⏳ Por venir (no impartidos)`** (activo por defecto): muestra de inmediato los docentes con sesiones a partir de hoy, destacando las sesiones del día.
     - **`🗓️ Todo el curso`**: despliega todos los bloques y el claustro al completo.
 - **Días y horas exactas por profesor:**
   - Desglose cronológico de cada sesión con fecha, día de la semana, horario (`16:30–18:30`, `18:45–20:45`, etc.), número de horas, tema específico y sede (Colegio de Abogados, Juzgado de 1.ª Instancia n.º 4, etc.).
-  - Distintivos visuales de estado: `🔥 ¡Mañana!` (lunes 19 oct), `⏳ Por venir` o `✓ Ya impartida`.
-- **Próximas sesiones inmediatas (mañana lunes 19 de octubre de 2026):**
+  - Distintivos visuales de estado: `🔥 Hoy` (lunes 19 oct), `⏳ Por venir` o `✓ Ya impartida`.
+- **Sesiones de hoy (lunes 19 de octubre de 2026):**
   - **Sandra Mosteiro Costa** (Procura · *Actos de comunicación judicial*): 16:30 – 18:30 (Colegio de Abogados). Materiales recibidos el 15 oct (4 documentos disponibles).
   - **José Luis Delgado Domínguez** (Abogacía · *Responsabilidad civil y penal, aseguramiento y turno de oficio*): 18:45 – 20:45 (Colegio de Abogados). Documentación recibida el 16 oct.
 - **Profesorado completo (29 docentes) y división en 3 apartados (`correos` / `prácticas` / `apuntes`):**
