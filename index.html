@@ -3351,6 +3351,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
       <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 Test 16 oct (20/20) ↗</a>
+      <a class="side-drive-link" href="historial-tests/originales/2026-10-20-testmoz-15707582.html" target="_blank" rel="noopener noreferrer">📝 Test 20 oct · S. Mosteiro (9/10) ↗</a>
     </div>
     <div class="sidebar-theme-wrap">
       <div class="sidebar-theme-title">Tema visual</div>
@@ -3927,6 +3928,9 @@ const gcalUrl='https://calendar.google.com/';
 const testmozReviewUrl='https://testmozusercontent.com/q/15705122/student/review';
 const testHtmlLocalUrl='historial-tests/originales/2026-10-16-testmoz-15705122.html';
 const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-transversales.md';
+const testmozSandraReviewUrl='https://testmozusercontent.com/q/15707582/student/review';
+const testHtmlSandraLocalUrl='historial-tests/originales/2026-10-20-testmoz-15707582.html';
+const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacion-sandra-mosteiro.md';
 
 const events={
  '2026-10-01':[
@@ -3975,7 +3979,7 @@ const events={
  ],
  '2026-10-20':[
   {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y caso práctico)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+  {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2 · Test: 9/10)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'test_20oct_sandra',detailKey:'test_20oct_sandra',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (9/10)'},
   {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2 de 3)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
  ],
     '2026-10-21':[
@@ -4273,6 +4277,30 @@ const gradeRecords=[
   ]
  },
  {
+  id:'grade_20oct_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 20 oct 2026 (17:44)',
+  title:'Actos de comunicación judicial · Sandra Mosteiro Costa',
+  score:'9 / 10',
+  scoreLabel:'9/10 (90 %)',
+  breakdown:[
+   {label:'Respuestas correctas',val:'9 de 10 (90 %)'},
+   {label:'Calificación',val:'9 / 10 · Sobresaliente'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Sandra Mosteiro Costa',
+  subjectRef:'Procura|Técnicas instrumentales|3',
+  mailKey:'test_20oct_sandra',
+  description:'Test oficial «SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el martes 20 de octubre de 2026 a las 17:44. Superado con 9/10 aciertos (9 sobre 10 · Sobresaliente). Cuestiones relativas a actos de comunicación judicial, LexNET, Reglamento (UE) 2020/1784 y auxilio judicial.',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas ↗',detailKey:'test_20oct_sandra',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlSandraLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdSandraLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozSandraReviewUrl,cls:'blue'},
+   {label:'Ficha de Sandra Mosteiro ↗',teacher:'Sandra Mosteiro Costa'}
+  ]
+ },
+ {
   id:'grades_all_tests',
   type:'global',
   kicker:'Balance global en CPROC / Testmoz · Todos realizados',
@@ -4298,9 +4326,8 @@ const gradeRecords=[
 ];
 
 const deliveries=[
- {date:new Date(2026,9,20),title:'Test de Actos de Comunicación Judicial (Reglamento UE 2020/1784)',teacher:'Sandra Mosteiro Costa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'Completada y enviada ✓',submitted:true,detailKey:'entrega_test_de_actos_de_comunica',details:'Análisis de formularios (Formulario K) y normativa de cooperación internacional y organización del servicio de notificaciones.'},
- {date:new Date(2026,9,20),title:'Test de Actos de Comunicación Judicial (Reglamento UE 2020/1784)',teacher:'Sandra Mosteiro Costa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'Completada y enviada ✓',submitted:true,detailKey:'entrega_test_de_actos_de_comunica',details:'Caso práctico sobre el uso de formularios en notificaciones transfronterizas (Formulario K como certificado de cumplimiento).'},
- {date:new Date(2026,9,20),title:'Caso práctico de Actos de Comunicación Judicial',teacher:'Sandra Mosteiro Costa',subject:'Procura (Actos de comunicación judicial)',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'Completada y enviada ✓',submitted:true,detailKey:'entrega_caso_pr_ctico_de_actos_de',details:'Caso práctico publicado en CEPROC sobre actos de comunicación judicial.'},
+ {date:new Date(2026,9,20),title:'Test online: Actos de comunicación judicial (Testmoz · 9/10 aciertos)',teacher:'Sandra Mosteiro Costa',subject:'Procura · Actos de comunicación judicial',subjectRef:'Procura|Técnicas instrumentales|3',status:'Completado y superado (9/10 · 90 %) ✓',submitted:true,detailKey:'test_20oct_sandra',file:'2026-10-20-testmoz-15707582.html',details:'Test oficial realizado en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE»). Superado con 9/10 aciertos (90 % · Sobresaliente · 17:44 h).'},
+ {date:new Date(2026,9,20),title:'Caso práctico de Actos de Comunicación Judicial',teacher:'Sandra Mosteiro Costa',subject:'Procura · Actos de comunicación judicial',subjectRef:'Procura|Técnicas instrumentales|3',status:'Completada y enviada ✓',submitted:true,detailKey:'entrega_caso_pr_ctico_de_actos_de',details:'Caso práctico publicado en CPROC sobre actos de comunicación judicial.'},
  {date:new Date(2026,9,29),title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 29 oct 2026 · 10 días)',submitted:false,detailKey:'entrega_delgado_parte_a',details:'Práctica de la clase del 19 oct: 1) Escrito de insostenibilidad de la pretensión como demandante. 2) Dictamen sobre arts. 5, 8, 20 y 21 LAJG (SERGAS y casación ante el TS manteniendo letrados privados). Plazo: 10 días naturales (hasta el 29 de octubre). Entrega: oficinas colegiales o secretariatecnico@icacor.org.'},
  {date:new Date(2026,9,30),title:'Parte de siniestro y Turno de Oficio (Parte B)',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 10 días tras 2.ª clase)',submitted:false,detailKey:'entrega_delgado_parte_b',details:'Práctica de la 2.ª sesión: 1) Parte de siniestro sobre responsabilidad profesional de la abogacía. 2) Cuestiones sobre requisitos de acceso al Turno de Oficio e incorporación colegial. Plazo: 10 días naturales tras la clase. Entrega: oficinas colegiales o secretariatecnico@icacor.org.'},
  {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'},
@@ -4310,6 +4337,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
  {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
  {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
@@ -4323,6 +4351,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_20oct_sandra:'NOTA DE TEST: 9 / 10 (90 % · Sobresaliente). Test oficial en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE») realizado el 20 de octubre a las 17:44 h. Se conserva la copia original HTML y el cuestionario íntegro en Markdown.',
  mail_deontologia_ana_vazquez:'NOTA OFICIAL: 8.8 / 10 (Test 40%: 3.8 + Trabajos 60%: 5.0). Calificaciones otorgadas por Dña. Ana Vázquez Corte correspondientes a las sesiones del 8 y 9 de octubre en Deontología y técnicas transversales.',
  dataforum_instrucciones:'El Máster remite indicación de D. Javier Hernández (Subdir. Gral. de Justicia Digital): ponencias en PALEXCO (Auditorium en Planta 0 y Ágora / Auditorio Arao en Planta 2) con libre acceso a todas las sesiones para el alumnado del Máster (2 adjuntos, 11 MB).',
  procura_resultados:'Secretaría de Procura comunica los resultados y seguimiento de las pruebas de evaluación correspondientes al módulo.',
@@ -4336,41 +4365,144 @@ const mailSummaries={
 };
 
 const details={
- entrega_test_de_actos_de_comunica:{
-  isDelivery:true,
-  kicker:'Práctica CEPROC · Deontología y Técnicas Transversales',
-  title:'Test de Actos de Comunicación Judicial (Reglamento UE 2020/1784)',
-  date:'Publicada: 20 oct 2026 · Plazo: 20/10/2026',
+ test_20oct_sandra:{
+  kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Actos de comunicación judicial',
+  title:'Test online · Actos de comunicación judicial (Sandra Mosteiro Costa)',
+  date:'Realizado: martes, 20 de octubre de 2026 · 17:44 (Grupo de tarde) · Calificación: 9 / 10 (9/10 aciertos)',
   teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Análisis de formularios (Formulario K) y normativa de cooperación internacional y organización del servicio de notificaciones.',
-  source:'Plataforma CEPROC (MUAP)',
+  subjectRef:'Procura|Técnicas instrumentales|3',
+  body:'Prueba oficial realizada en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida: 9 de 10 respuestas correctas (90 % · 9 sobre 10 · Sobresaliente). Cuestiones relativas a actos de comunicación judicial, LexNET, Reglamento (UE) 2020/1784 y estatuto del procurador. Debajo tienes las 10 preguntas íntegras con las respuestas seleccionadas y la solución oficial.',
+  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15707582/student/review) · 20 oct 2026',
   attachments:[
-   {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
-  ]
- },
- entrega_test_de_actos_de_comunica:{
-  isDelivery:true,
-  kicker:'Práctica CEPROC · Deontología y Técnicas Transversales',
-  title:'Test de Actos de Comunicación Judicial (Reglamento UE 2020/1784)',
-  date:'Publicada: 20 oct 2026 · Plazo: 20/10/2026',
-  teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Caso práctico sobre el uso de formularios en notificaciones transfronterizas (Formulario K como certificado de cumplimiento).',
-  source:'Plataforma CEPROC (MUAP)',
-  attachments:[
-   {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
+   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlSandraLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir documento Markdown completo (.md)',url:testMdSandraLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozSandraReviewUrl,kind:'Web Testmoz'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC'},
+   {name:'Ley de Enjuiciamiento Civil (arts. 149 a 168 LEC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial'},
+   {name:'Reglamento (UE) 2020/1784 (Notificaciones UE · BOE/DOUE)',url:'https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX%3A32020R1784',kind:'DOUE oficial'}
+  ],
+  questions:[
+   {
+    q:'1. Stella presenta una demanda civil sin abogado ni procurador. ¿Cómo se relaciona con la Administración de Justicia?',
+    opts:[
+     'Solo puede comunicarse y recibir notificaciones por canales electrónicos.',
+     'Solo puede comunicarse y recibir notificaciones por canales no electrónicos.',
+     'Puede elegir en todo momento si se comunica y recibe notificaciones por canales electrónicos o no.',
+     'No puede relacionarse directamente con la Administración de Justicia.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'2. En todo escrito que inicie un procedimiento, si el solicitante no se manifiesta sobre si quiere que los actos de comunicación los haga su procurador, ¿qué hace el órgano judicial?',
+    opts:[
+     'El LAJ da curso a los autos y los actos los realizan funcionarios del Cuerpo de Auxilio Judicial.',
+     'El juez da curso a los autos y los actos los realizan funcionarios del Cuerpo de Auxilio Judicial.',
+     'El LAJ da curso a los autos y los actos los realizan funcionarios del Cuerpo de Gestión Procesal y Administrativa.',
+     'El juez da curso a los autos y los actos los realizan funcionarios del Cuerpo de Gestión Procesal y Administrativa.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'3. Marta, procuradora, presenta por LexNET un escrito con documentos. ¿Qué acredita el resguardo electrónico que devuelve el sistema?',
+    opts:[
+     'El sistema no devuelve ningún resguardo.',
+     'Acredita la remisión y puesta a disposición, pero no la recepción por el destinatario ni los demás datos.',
+     'Acredita remisión, recepción, documentos e identificación de remitente y destinatario, pero no el procedimiento ni la fecha y hora.',
+     'Acredita remisión y puesta a disposición, recepción, descripción de documentos, identificación de remitente y destinatario, tipo de procedimiento, número y año, y fecha y hora de realización.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'4. Maite, procuradora, notifica una resolución a Fernando, que quiere que recoja sus manifestaciones contrarias. ¿Puede hacerlo?',
+    opts:[
+     'Sí, los procuradores están obligados a recoger las manifestaciones de los notificados.',
+     'Sí, porque los procuradores no figuran en el art. 152 LEC como ejecutores de actos de comunicación.',
+     'No, las manifestaciones deben hacerse siempre electrónicamente por la sede judicial electrónica.',
+     'No, en las notificaciones, citaciones y emplazamientos no se admite ni consigna respuesta del interesado, salvo que se hubiera mandado.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'5. ¿Qué norma debe usar un Juzgado para emplazar en un procedimiento civil a un demandado que reside en Praga?',
+    opts:[
+     'El Convenio de La Haya de 15 de noviembre de 1965.',
+     'El Reglamento (UE) 2020/1784, relativo a la notificación y traslado de documentos judiciales y extrajudiciales.',
+     'La Convención Interamericana sobre Exhortos o Cartas Rogatorias de 1975.',
+     'La Ley 29/2015, de cooperación jurídica internacional en materia civil.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'6. ¿Dónde se realizan los actos de comunicación con los procuradores?',
+    opts:[
+     'En la sede del tribunal o en el servicio común de recepción organizado por el Colegio de Procuradores.',
+     'Además, en la sede habilitada del Colegio de Abogados.',
+     'Además, en la sede de los Tribunales Superiores de Justicia.',
+     'Además, en las Gerencias Territoriales.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'7. Noa, procuradora, sufre un accidente con hospitalización (fuerza mayor). ¿Por cuánto tiempo máximo pueden los Colegios suspender el reenvío del servicio de notificaciones?',
+    opts:[
+     'Tres días hábiles.',
+     'Cinco días hábiles.',
+     'Diez días hábiles.',
+     'Veinte días hábiles.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'8. Fidel comunica por teléfono a su cliente que cesa en la representación. ¿Basta con eso?',
+    opts:[
+     'No: debe acreditar en autos la renuncia o cesación y seguir hasta que el poderdante designe otro procurador en diez días.',
+     'No: debe seguir hasta que el poderdante designe otro procurador en veinte días.',
+     'Sí: puede abandonar la representación a los tres días de la comunicación.',
+     'Sí: puede abandonar la representación a los cinco días de la comunicación.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'9. ¿Con qué antelación mínima debe avisarse de una parada técnica programada de LexNET?',
+    opts:[
+     'Diez días.',
+     'Veinte días.',
+     'Treinta días.',
+     'Un mes.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'10. El Tribunal de Instancia de Puebla de Sanabria emplaza a un demandado en Colonia. Cumplidos los trámites, ¿qué formulario del anexo I del Reglamento (UE) 2020/1784 expide el organismo receptor como certificado de cumplimiento?',
+    opts:[
+     'Formulario A.',
+     'Formulario D.',
+     'Formulario G.',
+     'Formulario K.'
+    ],
+    correct:3,
+    userAnswer:0
+   }
   ]
  },
  entrega_caso_pr_ctico_de_actos_de:{
   isDelivery:true,
-  kicker:'Práctica CEPROC · Procura (Actos de comunicación judicial)',
+  kicker:'Práctica CPROC · Procura (Actos de comunicación judicial)',
   title:'Caso práctico de Actos de Comunicación Judicial',
   date:'Publicada: 20 oct 2026 · Plazo: 22 oct 2026',
   teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Caso práctico publicado en CEPROC sobre actos de comunicación judicial.',
-  source:'Plataforma CEPROC (MUAP)',
+  subjectRef:'Procura|Técnicas instrumentales|3',
+  body:'Caso práctico publicado en CPROC sobre actos de comunicación judicial.',
+  source:'Plataforma CPROC (MUAP)',
   attachments:[
    {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
   ]
@@ -4871,18 +5003,20 @@ const courses=[
    },
    {
     name:'Actos de comunicación judicial',
-    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 · ¡Hoy última sesión!)',
+    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada) · Test: 9 / 10',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
-    grade:{score:'🟢 En curso hoy · Sesión 2 de 2',detail:'Sesión 2 de 2 presencial hoy martes 20 oct (16:30–18:30) · Citaciones, emplazamientos y caso práctico jurisprudencial · 4 documentos en Drive.',detailKey:'materials',actionLabel:'Ver 4 documentos en correo ↗'},
+    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado hoy 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
     notes:[
+     {name:'Test online Testmoz (9/10 aciertos · HTML original)',url:testHtmlSandraLocalUrl,label:'Ver test HTML ↗'},
+     {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdSandraLocalUrl,label:'Ver .md ↗'},
      {name:'1. Carta de presentación de Sandra Mosteiro Costa',detailKey:'materials',url:driveSearchUrl('Carta de presentación'),label:'Buscar en Drive ↗'},
      {name:'2. Presentación de actos de comunicación judicial (diapositivas)',detailKey:'materials',url:driveSearchUrl('actos de comunicación'),label:'Buscar en Drive ↗'},
      {name:'3. Guía legislativa de actos de comunicación',detailKey:'materials',url:driveSearchUrl('Guía legislativa'),label:'Buscar en Drive ↗'},
      {name:'4. Jurisprudencia sobre plazos procesales (para caso práctico)',detailKey:'materials',url:driveSearchUrl('Jurisprudencia'),label:'Buscar en Drive ↗'},
      {name:'Ley de Enjuiciamiento Civil (Ley 1/2000 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:['materials']
+    mails:['materials','test_20oct_sandra']
    }
   ]
  },
@@ -5702,16 +5836,18 @@ const teacherDirectory=[
   name:'Sandra Mosteiro Costa',
   branch:'Procura',
   role:'Procuradora · Técnicas instrumentales (Actos de comunicación judicial)',
-  gradeBadge:'🟢 Sesión 2 de 2 hoy martes 20 oct (16:30 h)',
-  summary:'Actos de comunicación judicial: notificaciones, citaciones, emplazamientos, requerimientos y cómputo de plazos procesales (19 y 20 de octubre).',
-  grade:{score:'🟢 Sesión 2 de 2 · 16:30 h',scoreLabel:'Docencia en curso hoy',detail:'Segunda y última sesión presencial hoy martes 20 oct (16:30–18:30) · Citaciones, emplazamientos y caso práctico · 4 documentos en Drive.',detailKey:'materials'},
+  gradeBadge:'⭐ Testmoz: 9 / 10 (90 % · Sobresaliente) ✓',
+  summary:'Actos de comunicación judicial: notificaciones, citaciones, emplazamientos, requerimientos y cómputo de plazos procesales (19 y 20 de octubre). Módulo finalizado con test oficial superado (9/10).',
+  grade:{score:'9 / 10 · Testmoz (90 %)',scoreLabel:'Evaluación',detail:'Test oficial completado el martes 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 1 de 2 · Marco general, notificaciones y requerimientos)',place:'Colegio de Abogados (A Coruña)'},
-   {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y caso práctico jurisprudencial)',place:'Colegio de Abogados (A Coruña)'}
+   {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y test oficial)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Materiales para la clase del lunes 19 y martes 20 de octubre (15 oct)',key:'materials'}],
-  practices:[{title:'Caso práctico sobre cómputo de plazos y validez de la notificación judicial',status:'Programado en clase hoy (20 oct)',key:'materials'}],
+  mails:[{title:'Materiales para la clase del lunes 19 y martes 20 de octubre (15 oct)',key:'materials'},{title:'Test online de actos de comunicación (20 oct · 9/10)',key:'test_20oct_sandra'}],
+  practices:[{title:'Test online: Actos de comunicación judicial (9/10)',status:'Superado (9/10 · 90 %) ✓',key:'test_20oct_sandra'},{title:'Caso práctico sobre cómputo de plazos y validez de la notificación judicial',status:'Realizado en clase (20 oct)',key:'materials'}],
   driveFiles:[
+   {name:'Revisión oficial Testmoz (9/10 · HTML conservado)',url:testHtmlSandraLocalUrl,label:'HTML ↗'},
+   {name:'Cuestionario y respuestas analizadas (.md)',url:testMdSandraLocalUrl,label:'Markdown ↗'},
    {name:'1. Carta de presentación de Sandra Mosteiro Costa',url:driveSearchUrl('Carta de presentación'),label:'Drive ↗'},
    {name:'2. Presentación de actos de comunicación judicial (diapositivas)',url:driveSearchUrl('actos de comunicación'),label:'Drive ↗'},
    {name:'3. Guía legislativa de actos de comunicación',url:driveSearchUrl('Guía legislativa'),label:'Drive ↗'},
@@ -6121,6 +6257,7 @@ const teacherGradeMap={
  'Carolina Moreno Vázquez':'10 / 10 (20/20)',
  'Alex Sánchez Barge':'10 / 10 (20/20)',
  'Daniel Garrido Pazos':'10 / 10 ★',
+ 'Sandra Mosteiro Costa':'9 / 10 (Testmoz) ★',
  'Ana Vázquez Corte':'8.8 / 10 ★',
  'Carmen Belo González':'Completado ✓',
  'Vanessa Amarelle':'Completado ✓',
@@ -6137,6 +6274,9 @@ function getSubjectGradeBadgeHtml(sub, isPast=true){
   let label = '10 / 10 ★';
   if(s.includes('20/20')) label = '10 / 10 (20/20)';
   return `<span class="inline-grade-pill" title="Calificación oficial en la materia: ${escapeHtml(s)}">⭐ ${label}</span>`;
+ }
+ if(s.includes('9 / 10') || s.includes('9/10')){
+  return `<span class="inline-grade-pill" title="Calificación en test: 9 / 10">⭐ 9 / 10 (Test)</span>`;
  }
  if(s.includes('8.8') || s.includes('8,8')){
   return `<span class="inline-grade-pill" title="Calificación obtenida: ${escapeHtml(s)}">⭐ 8.8 / 10 ★</span>`;
@@ -6172,6 +6312,9 @@ function getTeacherGradeBadgeHtml(tInput, requirePast=true){
   if(s.includes('10 / 10') || s.includes('10/10')){
    return `<span class="inline-grade-pill" title="Calificación con ${escapeHtml(tName)}: ${escapeHtml(s)}">⭐ 10 / 10 ★</span>`;
   }
+  if(s.includes('9 / 10') || s.includes('9/10')){
+   return `<span class="inline-grade-pill" title="Calificación con ${escapeHtml(tName)}: ${escapeHtml(s)}">⭐ 9 / 10 ★</span>`;
+  }
   if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
    return `<span class="inline-grade-pill pill-subtle" title="Docencia completada">✓ Completado</span>`;
   }
@@ -6191,22 +6334,59 @@ function renderGrades(){
  const grid=document.getElementById('gradesGrid');
  if(!grid)return;
  grid.innerHTML=gradeRecords.map(g=>{
-  const quizHtml = (g.id === 'grade_16oct_test' && details.test_16oct && details.test_16oct.questions) ? `
+  let quizHtml = '';
+  const quizDetail = (g.id === 'grade_16oct_test') ? details.test_16oct : ((g.id === 'grade_20oct_test') ? details.test_20oct_sandra : null);
+  if(quizDetail && quizDetail.questions && quizDetail.questions.length){
+   const totalQ = quizDetail.questions.length;
+   const correctCount = quizDetail.questions.filter(q => (q.userAnswer !== undefined ? q.userAnswer === q.correct : true)).length;
+   const summaryText = (g.id === 'grade_16oct_test')
+    ? `📝 Ver las 20 preguntas íntegras del test (con respuestas correctas · 20/20)`
+    : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`;
+
+   quizHtml = `
    <details class="quiz-dropdown" style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px">
     <summary style="cursor:pointer;font-weight:700;font-size:12px;color:var(--blue);display:flex;align-items:center;gap:6px">
-     <span>📝 Ver las 20 preguntas íntegras del test (con respuestas correctas · 20/20)</span>
+     <span>${summaryText}</span>
      <span style="font-size:10px">▾</span>
     </summary>
     <div style="margin-top:10px;font-size:12px">
-     ${details.test_16oct.questions.map(q=>`
+     ${quizDetail.questions.map(q=>{
+      const userAns = (q.userAnswer !== undefined) ? q.userAnswer : q.correct;
+      return `
       <div style="padding:10px 0;border-top:1px dashed var(--line)">
        <p style="color:var(--ink);font-weight:700;margin-bottom:6px">${q.q}</p>
-       ${q.opts.map((opt,oi)=>`<div class="quiz-opt ${oi===q.correct?'correct':''}" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${oi===q.correct?'var(--green-pale)':'var(--paper-warm)'};color:${oi===q.correct?'var(--green-dark)':'var(--ink-soft)'};border:1px solid ${oi===q.correct?'var(--green-border)':'var(--line)'};font-weight:${oi===q.correct?'600':'400'}">${oi===q.correct?'✓ ':''}${opt}${oi===q.correct?' (Seleccionada · Correcta)':''}</div>`).join('')}
+       ${q.opts.map((opt,oi)=>{
+        const isCorrect = (oi === q.correct);
+        const isUser = (oi === userAns);
+        let bg = 'var(--paper-warm)';
+        let color = 'var(--ink-soft)';
+        let border = 'var(--line)';
+        let tag = '';
+        if(isCorrect && isUser){
+         bg = 'var(--green-pale)';
+         color = 'var(--green-dark)';
+         border = 'var(--green-border)';
+         tag = ' (✓ Seleccionada · Correcta)';
+        } else if(isCorrect && !isUser){
+         bg = 'var(--green-pale)';
+         color = 'var(--green-dark)';
+         border = 'var(--green-border)';
+         tag = ' (✓ Respuesta correcta oficial)';
+        } else if(!isCorrect && isUser){
+         bg = '#fef2f2';
+         color = '#b91c1c';
+         border = '#fecaca';
+         tag = ' (✗ Tu respuesta marcada)';
+        }
+        return `<div class="quiz-opt" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${bg};color:${color};border:1px solid ${border};font-weight:${(isCorrect||isUser)?'600':'400'}">${isCorrect?'✓ ':(isUser?'✗ ':'')}${opt}${tag}</div>`;
+       }).join('')}
       </div>
-     `).join('')}
+      `;
+     }).join('')}
     </div>
    </details>
-  ` : '';
+   `;
+  }
 
 
   return `
@@ -8196,10 +8376,10 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grades' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez'){
+ if(key === 'test_16oct' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'grades' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez'){
   setView('notas', false);
   setTimeout(()=>{
-   let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') ? 'grade_ana_vazquez' : ((key === 'test_16oct') ? 'grade_16oct_test' : 'grades_all_tests'));
+   let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') ? 'grade_ana_vazquez' : ((key === 'test_16oct') ? 'grade_16oct_test' : ((key === 'test_20oct_sandra' || key === 'grade_20oct_test') ? 'grade_20oct_test' : 'grades_all_tests')));
    let card = document.getElementById(targetId);
    if(card){
     const d = card.querySelector('details');
