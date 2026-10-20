@@ -8122,10 +8122,10 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grades' || key === 'all_tests_summary'){
+ if(key === 'test_16oct' || key === 'grades' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez'){
   setView('notas', false);
   setTimeout(()=>{
-   let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'test_16oct') ? 'grade_16oct_test' : 'grades_all_tests');
+   let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') ? 'grade_ana_vazquez' : ((key === 'test_16oct') ? 'grade_16oct_test' : 'grades_all_tests'));
    let card = document.getElementById(targetId);
    if(card){
     const d = card.querySelector('details');
@@ -8422,7 +8422,7 @@ function renderMail(q='', filter=currentMailFilter){
  let list = messages;
 
  if(currentMailFilter === 'notas'){
-  list = list.filter(m => m.key === 'grades' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado'));
+  list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci'));
  } else if(currentMailFilter === 'practicas'){
   list = list.filter(m => m.key === 'assignment' || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica'));
  } else if(currentMailFilter === 'avisos'){

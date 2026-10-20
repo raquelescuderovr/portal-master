@@ -216,7 +216,12 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
         chat_history = chat_history[-16:]
 
     # Llamada a la API de Gemini (soporta Tool Calling y Multi-turn)
-    api_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+    api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    req_headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "Master-AI-Assistant/1.0",
+        "x-goog-api-key": GEMINI_API_KEY.strip()
+    }
 
     payload = {
         "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
@@ -233,7 +238,7 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
             req = urllib.request.Request(
                 api_url,
                 data=req_data,
-                headers={"Content-Type": "application/json", "User-Agent": "Master-AI-Assistant/1.0"},
+                headers=req_headers,
                 method="POST"
             )
 

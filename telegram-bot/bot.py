@@ -161,15 +161,25 @@ Ya no soy un simple bot de comandos: ahora podemos <b>conversar con total fluide
         send_message(chat_id, f"✍️ <b>Estado de entregas en CEPROC:</b>\n• <b>Balance:</b> {resp.get('balance')}\n• " + "\n• ".join(resp.get("ultimas", [])))
         return
 
-    # Detección inteligente de Clave de Gemini (AIzaSy...)
-    match_key = re.search(r"AIzaSy[A-Za-z0-9_-]{33}", text)
-    if match_key:
-        api_key_found = match_key.group(0)
+    # Detección inteligente de Clave de API (formato nuevo AQ... o clásico AIzaSy... o sk-...)
+    clean_text = text.strip()
+    is_api_key = (
+        clean_text.startswith("AQ.") or
+        clean_text.startswith("AIzaSy") or
+        clean_text.startswith("sk-") or
+        clean_text.startswith("gsk_") or
+        text.startswith("/key ")
+    )
+    if is_api_key:
+        api_key_found = clean_text.replace("/key ", "").strip()
         send_chat_action(chat_id, "typing")
         if save_gemini_key_from_chat(api_key_found):
-            send_message(chat_id, """🎉 <b>¡Clave de Gemini activada con éxito!</b>
+            send_message(chat_id, f"""🎉 <b>¡Clave de IA guardada y activada con éxito!</b>
 
-Ya tengo cerebro conversacional y visión artificial completa. A partir de ahora puedes pasarme fotos de casos prácticos con tus indicaciones y charlaremos fluidamente.""")
+He registrado tu clave: <code>{api_key_found[:8]}...{api_key_found[-4:]}</code>
+Ya tengo cerebro conversacional y visión artificial completa.
+
+Pruébame pasándome cualquier foto de un caso práctico con tus indicaciones o hazme cualquier consulta.""")
             return
 
     # Manejo de FOTOS / IMÁGENES (con o sin texto de acompañamiento)
