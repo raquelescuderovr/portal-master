@@ -3135,6 +3135,243 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   background:rgba(220,38,38,0.04);
 }
 
+/* Modal de Información Completa de la Entrega */
+.delivery-modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(15,12,10,0.72);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  overflow-y:auto;
+}
+.delivery-modal-backdrop.open{
+  display:flex;
+}
+.delivery-modal-dialog{
+  background:var(--paper);
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  max-width:780px;
+  width:100%;
+  max-height:90vh;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 24px 60px rgba(0,0,0,0.45);
+  overflow:hidden;
+  animation:modalSlideUp .22s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes modalSlideUp{
+  from{opacity:0;transform:translateY(16px) scale(0.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.delivery-modal-header{
+  padding:16px 22px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--paper-card);
+}
+.delivery-modal-kicker-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.delivery-modal-kicker{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:3px 9px;
+  border-radius:6px;
+}
+.delivery-modal-kicker.terra{background:var(--terra-pale);color:var(--terra-dark);border:1px solid var(--terra-border)}
+.delivery-modal-kicker.blue{background:var(--blue-pale);color:var(--blue-dark);border:1px solid var(--blue-border)}
+.delivery-modal-due{
+  font-size:11px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:6px;
+}
+.delivery-modal-due.red{background:rgba(220,38,38,0.18);color:#fca5a5;border:1px solid rgba(220,38,38,0.45)}
+.delivery-modal-due.amber{background:rgba(217,119,6,0.18);color:#fcd34d;border:1px solid rgba(217,119,6,0.4)}
+.delivery-modal-close{
+  background:transparent;
+  border:0;
+  font-size:26px;
+  line-height:1;
+  color:var(--muted);
+  cursor:pointer;
+  padding:2px 8px;
+  border-radius:8px;
+  transition:all .15s;
+}
+.delivery-modal-close:hover{
+  background:var(--line-subtle);
+  color:var(--ink);
+}
+.delivery-modal-body{
+  padding:22px 24px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  line-height:1.65;
+  font-size:13.5px;
+  color:var(--ink);
+}
+.delivery-modal-title{
+  font:700 22px/1.3 var(--serif);
+  color:var(--ink);
+  margin:0;
+}
+.delivery-modal-meta{
+  font-size:12.5px;
+  color:var(--muted);
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line-subtle);
+}
+.delivery-modal-content{
+  white-space:pre-line;
+  line-height:1.65;
+}
+.delivery-modal-docs{
+  margin-top:6px;
+  padding-top:12px;
+  border-top:1.5px dashed var(--line);
+  display:grid;
+  gap:6px;
+}
+.delivery-modal-footer{
+  padding:14px 22px;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:var(--paper-card);
+  flex-wrap:wrap;
+}
+.delivery-modal-action-btn{
+  border-radius:10px;
+  padding:8px 16px;
+  font:700 12.5px var(--sans);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .16s;
+  text-decoration:none;
+}
+.delivery-modal-action-btn.primary{
+  background:var(--terracotta);
+  color:#ffffff;
+  border:1px solid var(--terracotta);
+}
+.delivery-modal-action-btn.primary:hover{
+  opacity:.9;
+  transform:translateY(-1px);
+}
+.delivery-modal-action-btn.secondary{
+  background:var(--paper);
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+.delivery-modal-action-btn.secondary:hover{
+  border-color:var(--terracotta);
+  color:var(--terra-dark);
+}
+[data-theme="light"] .delivery-modal-backdrop{
+  background:rgba(20,18,15,0.55);
+}
+[data-theme="light"] .delivery-modal-due.red{
+  background:#fee2e2;
+  color:#991b1b;
+  border:1px solid #f87171;
+}
+[data-theme="light"] .delivery-modal-due.amber{
+  background:#fef3c7;
+  color:#92400e;
+  border:1px solid #fcd34d;
+}
+
+/* Apartado de Contacto Oficial en el menú lateral */
+.sidebar-contact-section{
+  margin-top:14px;
+  padding:0 2px;
+}
+.sidebar-contact-grid{
+  display:grid;
+  gap:7px;
+}
+.side-contact-card{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:10px 12px;
+  background:var(--paper);
+  border:1.2px solid var(--line);
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--ink);
+  transition:all .16s ease;
+  position:relative;
+}
+.side-contact-card:hover{
+  border-color:var(--green-border);
+  background:var(--paper-card);
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.06);
+}
+.scc-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+}
+.scc-role{
+  font-size:10.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.scc-chip{
+  font-size:9.5px;
+  font-weight:800;
+  padding:1px 6px;
+  border-radius:4px;
+}
+.scc-chip.blue{background:var(--blue-pale);color:var(--blue-dark);border:1px solid var(--blue-border)}
+.scc-chip.terra{background:var(--terra-pale);color:var(--terra-dark);border:1px solid var(--terra-border)}
+.scc-email{
+  font:700 11px/1.35 var(--mono, monospace);
+  color:var(--green-dark);
+  word-break:break-all;
+}
+.scc-hint{
+  font-size:10px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin-top:1px;
+}
+
 /* Modos de vista y resumen de bloques en Asignaturas */
 .master-curriculum-summary{
   display:grid;
@@ -3608,7 +3845,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <span class="nav-icon-pill icon-terra">
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
-      <span class="nav-label-text">Prácticas (CPROC)</span>
+      <span class="nav-label-text">Próximas entregas</span>
       <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 3 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
@@ -3721,6 +3958,33 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="side-tree-list" id="sideTreeContent"></div>
     </div>
   </details>
+
+  <!-- Apartado de Contacto Oficial con redacción directa en Outlook -->
+  <div class="sidebar-contact-section">
+    <div class="nav-label" style="padding:0 8px;margin:0 0 8px;display:flex;align-items:center;justify-content:space-between">
+      <span>✉️ Contacto · Escribir correo</span>
+      <span style="font-size:9.5px;font-weight:600;color:var(--muted)">Outlook Web</span>
+    </div>
+    <div class="sidebar-contact-grid">
+      <a class="side-contact-card" href="https://outlook.office.com/mail/deeplink/compose?to=master.abogacia%40icacor.org" target="_blank" rel="noopener noreferrer" title="Redactar correo a master.abogacia@icacor.org en Outlook Web">
+        <div class="scc-top">
+          <span class="scc-role">⚖️ Máster Abogacía</span>
+          <span class="scc-chip blue">ICACOR</span>
+        </div>
+        <span class="scc-email">master.abogacia@icacor.org</span>
+        <span class="scc-hint">Redactar en Outlook ↗</span>
+      </a>
+
+      <a class="side-contact-card" href="https://outlook.office.com/mail/deeplink/compose?to=accesoabogaciaprocura%40procuradorescoruna.com" target="_blank" rel="noopener noreferrer" title="Redactar correo a accesoabogaciaprocura@procuradorescoruna.com en Outlook Web">
+        <div class="scc-top">
+          <span class="scc-role">🏛️ Secretaría Procura</span>
+          <span class="scc-chip terra">CPROC</span>
+        </div>
+        <span class="scc-email">accesoabogaciaprocura@procuradorescoruna.com</span>
+        <span class="scc-hint">Redactar en Outlook ↗</span>
+      </a>
+    </div>
+  </div>
 
   <div class="side-note">
     <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 19 oct 2026
@@ -3862,60 +4126,40 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">5</span></button>
   </div>
 
-  <!-- 1. PORTADA PRINCIPAL MINIMALISTA: SOLO EL DÍA (ANTERIOR/SIGUIENTE) + PRÓXIMOS 3 DÍAS (SOLO TITULARES) -->
+  <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
   <section class="section" id="todaySection" data-section-view="inicio">
-    <!-- 4 Accesos visuales rápidos por área temática e importancia -->
-    <div class="home-hub-strip" aria-label="Accesos rápidos principales">
-      <button class="home-hub-card hub-green" data-switch-view="asignaturas">
-        <div class="hub-card-icon green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <!-- 1. INFORMACIÓN DEL DÍA + NAVEGACIÓN + PRÓXIMOS 3 DÍAS -->
+    <div class="section-title">
+      <div>
+        <h2 id="dayHeading">Información del día</h2>
+        <p id="daySubtitle">Martes, 20 de octubre de 2026</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div class="day-control-nav">
+          <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
+          <span id="dayPosition">HOY · 20 OCT</span>
+          <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
         </div>
-        <div class="hub-card-text">
-          <span class="hub-card-kicker">Plan de estudios</span>
-          <strong class="hub-card-title">Bloques y Asignaturas</strong>
-          <span class="hub-card-meta">🟢 2 bloques activos hoy · 8 bloques en total</span>
-        </div>
-        <span class="hub-card-arrow">↗</span>
-      </button>
-
-      <button class="home-hub-card hub-honey" data-switch-view="notas">
-        <div class="hub-card-icon honey">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <div class="hub-card-text">
-          <span class="hub-card-kicker">Evaluación oficial</span>
-          <strong class="hub-card-title">Notas de profesores y tests</strong>
-          <span class="hub-card-meta">2 notas de docentes (10 y 8.8) + Tests</span>
-        </div>
-        <span class="hub-card-arrow">↗</span>
-      </button>
-
-      <button class="home-hub-card hub-terra" data-switch-view="entregas">
-        <div class="hub-card-icon terra">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <div class="hub-card-text">
-          <span class="hub-card-kicker">Tareas y Prácticas</span>
-          <strong class="hub-card-title">Cosas pendientes (3)</strong>
-          <span class="hub-card-meta">⏳ Próxima entrega: 22 oct (Sandra Mosteiro)</span>
-        </div>
-        <span class="hub-card-arrow">↗</span>
-      </button>
-
-      <a class="home-hub-card hub-blue" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">
-        <div class="hub-card-icon blue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="hub-card-text">
-          <span class="hub-card-kicker">Google Drive</span>
-          <strong class="hub-card-title">Carpeta «Máster»</strong>
-          <span class="hub-card-meta">Apuntes, guías y casos en PDF</span>
-        </div>
-        <span class="hub-card-arrow">↗</span>
-      </a>
+        <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
+      </div>
+    </div>
+    <div class="today-panel">
+      <div class="today-list" id="todayList"></div>
     </div>
 
-    <!-- MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
+    <!-- Próximos 3 días (únicamente titulares clicables) -->
+    <div class="next-days-box">
+      <div class="minimal-box-head">
+        <div>
+          <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
+          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Martes 20, miércoles 21 y jueves 22 de octubre de 2026</p>
+        </div>
+        <span>Pincha en el titular para ver los datos</span>
+      </div>
+      <div class="minimal-list" id="nextThreeDaysList"></div>
+    </div>
+
+    <!-- 2. MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
     <div class="active-master-banner" id="activeMasterBanner">
       <div class="amb-header">
         <div class="amb-title-wrap">
@@ -3981,7 +4225,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       </div>
     </div>
 
-    <!-- MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y COSAS PENDIENTES -->
+    <!-- 3. MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y ENTREGAS PENDIENTES -->
     <div class="pending-tasks-banner" id="pendingTasksBanner">
       <div class="ptb-header">
         <div class="ptb-title-wrap">
@@ -3990,120 +4234,51 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
             <span class="ptb-urgent-chip">🚨 Próxima entrega: Jueves 22 oct</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Casos prácticos y escritos pendientes de entrega en CPROC y Colegio de Abogados con fecha límite y acceso directo a enunciados.</p>
+          <p class="ptb-subtitle">Casos prácticos y escritos pendientes de entrega en CPROC y Colegio de Abogados con profesor y fecha límite.</p>
         </div>
         <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (8) ➔</button>
       </div>
 
       <div class="ptb-grid">
         <!-- Tarjeta 1: Caso Práctico Sandra Mosteiro (URGENTE) -->
-        <article class="ptb-card urgent" id="homePendingSandra">
+        <article class="ptb-card urgent" id="homePendingSandra" data-detail="entrega_caso_pr_ctico_de_actos_de" style="cursor:pointer" title="Pincha para ver el enunciado y las instrucciones">
           <div class="ptb-card-top">
-            <span class="ptb-tag terra">🏛️ Procura · CPROC</span>
+            <span class="ptb-tag terra">🏛️ Práctica CPROC · Procura</span>
             <span class="ptb-due-badge red">🚨 Vence en 2 días · Jueves 22 oct</span>
           </div>
           <h4 class="ptb-card-title">Caso práctico 2026: Actos de comunicación judicial</h4>
           <div class="ptb-card-meta">
-            <div>👤 Docente: <b>D.ª Sandra Mosteiro Costa</b> (Procuradora ICP)</div>
-            <div>📚 Materia: <b>Deontología y Técnicas Transversales</b></div>
-            <div>📄 Enunciado: <b>6 escenarios prácticos de plazos procesales + 3 reflexiones</b></div>
-            <div>🏛️ Vía de entrega: <b>Plataforma CPROC (MUAP) → Tareas publicadas</b></div>
-          </div>
-          <div class="ptb-card-actions">
-            <button class="ptb-action-btn primary" data-detail="entrega_caso_pr_ctico_de_actos_de">
-              <span>Ver caso y escenarios</span> ↗
-            </button>
-            <a class="ptb-action-btn secondary" href="materiales/CASO_PRACTICO_2026_SANDRA.pdf" target="_blank" rel="noopener noreferrer">
-              <span>📄 Abrir PDF</span> ↗
-            </a>
-            <a class="ptb-action-btn secondary" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">
-              <span>🏛️ Subir en CPROC</span> ↗
-            </a>
+            <div>👤 Profesor: <b>D.ª Sandra Mosteiro Costa</b></div>
+            <div>⏳ Fecha límite: <b>Jueves, 22 de octubre de 2026</b></div>
           </div>
         </article>
 
         <!-- Tarjeta 2: Delgado Parte A -->
-        <article class="ptb-card" id="homePendingDelgadoA">
+        <article class="ptb-card" id="homePendingDelgadoA" data-detail="entrega_delgado_parte_a" style="cursor:pointer" title="Pincha para ver las instrucciones">
           <div class="ptb-card-top">
-            <span class="ptb-tag blue">⚖️ Abogacía · ICACOR</span>
+            <span class="ptb-tag blue">⚖️ Práctica ICACOR · Abogacía</span>
             <span class="ptb-due-badge amber">⏳ Plazo: Jueves 29 oct (9 días)</span>
           </div>
           <h4 class="ptb-card-title">Insostenibilidad de la pretensión y Asistencia Jurídica Gratuita (Parte A)</h4>
           <div class="ptb-card-meta">
-            <div>👤 Docente: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>📚 Materia: <b>Responsabilidad civil y penal, aseguramiento y turno de oficio</b></div>
-            <div>📄 Redacción: <b>Escrito de insostenibilidad + Dictamen arts. 5, 8, 20 y 21 LAJG</b></div>
-            <div>✉️ Entrega: <b>secretariatecnico@icacor.org o sede colegial</b></div>
-          </div>
-          <div class="ptb-card-actions">
-            <button class="ptb-action-btn primary" data-detail="entrega_delgado_parte_a">
-              <span>Ver instrucciones</span> ↗
-            </button>
-            <a class="ptb-action-btn secondary" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">
-              <span>📁 Borrador Drive</span> ↗
-            </a>
-            <a class="ptb-action-btn secondary" href="mailto:secretariatecnico@icacor.org">
-              <span>✉️ Enviar correo</span> ↗
-            </a>
+            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
+            <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b></div>
           </div>
         </article>
 
         <!-- Tarjeta 3: Delgado Parte B -->
-        <article class="ptb-card" id="homePendingDelgadoB">
+        <article class="ptb-card" id="homePendingDelgadoB" data-detail="entrega_delgado_parte_b" style="cursor:pointer" title="Pincha para ver las instrucciones">
           <div class="ptb-card-top">
-            <span class="ptb-tag blue">⚖️ Abogacía · ICACOR</span>
+            <span class="ptb-tag blue">⚖️ Práctica ICACOR · Abogacía</span>
             <span class="ptb-due-badge amber">⏳ Plazo: Viernes 30 oct (10 días)</span>
           </div>
           <h4 class="ptb-card-title">Parte de siniestro de RC y acceso al Turno de Oficio (Parte B)</h4>
           <div class="ptb-card-meta">
-            <div>👤 Docente: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>📚 Materia: <b>Aseguramiento de responsabilidad profesional</b></div>
-            <div>📄 Redacción: <b>Parte de declaración de siniestro RC + Cuestionario Turno de Oficio</b></div>
-            <div>✉️ Entrega: <b>secretariatecnico@icacor.org o sede colegial</b></div>
-          </div>
-          <div class="ptb-card-actions">
-            <button class="ptb-action-btn primary" data-detail="entrega_delgado_parte_b">
-              <span>Ver instrucciones</span> ↗
-            </button>
-            <a class="ptb-action-btn secondary" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">
-              <span>📁 Borrador Drive</span> ↗
-            </a>
-            <a class="ptb-action-btn secondary" href="mailto:secretariatecnico@icacor.org">
-              <span>✉️ Enviar correo</span> ↗
-            </a>
+            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
+            <div>⏳ Fecha límite: <b>Viernes, 30 de octubre de 2026</b></div>
           </div>
         </article>
       </div>
-    </div>
-
-    <div class="section-title">
-      <div>
-        <h2 id="dayHeading">Información del día</h2>
-        <p id="daySubtitle">Martes, 20 de octubre de 2026</p>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <div class="day-control-nav">
-          <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
-          <span id="dayPosition">HOY · 20 OCT</span>
-          <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
-        </div>
-        <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
-      </div>
-    </div>
-    <div class="today-panel">
-      <div class="today-list" id="todayList"></div>
-    </div>
-
-    <!-- Próximos 3 días (únicamente titulares clicables) -->
-    <div class="next-days-box">
-      <div class="minimal-box-head">
-        <div>
-          <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
-          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Martes 20, miércoles 21 y jueves 22 de octubre de 2026</p>
-        </div>
-        <span>Pincha en el titular para ver los datos</span>
-      </div>
-      <div class="minimal-list" id="nextThreeDaysList"></div>
     </div>
   </section>
 
@@ -4390,6 +4565,57 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span><i class="legend-dot blue"></i>Personal / Google Calendar / Mac</span>
         <span class="calendar-legend-hint">Selecciona cualquier día para ver sus clases, entregas y citas personales arriba en «Actividades del día»</span>
       </div>
+    </div>
+
+    <!-- 4 Accesos visuales rápidos por área temática e importancia -->
+    <div class="home-hub-strip" aria-label="Accesos rápidos principales" style="margin-top:28px">
+      <button class="home-hub-card hub-green" data-switch-view="asignaturas">
+        <div class="hub-card-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hub-card-text">
+          <span class="hub-card-kicker">Plan de estudios</span>
+          <strong class="hub-card-title">Bloques y Asignaturas</strong>
+          <span class="hub-card-meta">🟢 2 bloques activos hoy · 8 bloques en total</span>
+        </div>
+        <span class="hub-card-arrow">↗</span>
+      </button>
+
+      <button class="home-hub-card hub-honey" data-switch-view="notas">
+        <div class="hub-card-icon honey">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="hub-card-text">
+          <span class="hub-card-kicker">Evaluación oficial</span>
+          <strong class="hub-card-title">Notas de profesores y tests</strong>
+          <span class="hub-card-meta">2 notas de docentes (10 y 8.8) + Tests</span>
+        </div>
+        <span class="hub-card-arrow">↗</span>
+      </button>
+
+      <button class="home-hub-card hub-terra" data-switch-view="entregas">
+        <div class="hub-card-icon terra">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="hub-card-text">
+          <span class="hub-card-kicker">Tareas y Prácticas</span>
+          <strong class="hub-card-title">Cosas pendientes (3)</strong>
+          <span class="hub-card-meta">⏳ Próxima entrega: 22 oct (Sandra Mosteiro)</span>
+        </div>
+        <span class="hub-card-arrow">↗</span>
+      </button>
+
+      <a class="home-hub-card hub-blue" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">
+        <div class="hub-card-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="hub-card-text">
+          <span class="hub-card-kicker">Google Drive</span>
+          <strong class="hub-card-title">Carpeta «Máster»</strong>
+          <span class="hub-card-meta">Apuntes, guías y casos en PDF</span>
+        </div>
+        <span class="hub-card-arrow">↗</span>
+      </a>
     </div>
   </section>
 </main>
