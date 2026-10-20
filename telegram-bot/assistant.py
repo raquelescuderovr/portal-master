@@ -175,7 +175,7 @@ def execute_tool(func_name: str, args: dict) -> dict:
         }
     return {}
 
-def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type: str = "image/jpeg") -> str:
+def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type: str = "image/jpeg", image_bytes: bytes = None) -> str:
     """Envía un mensaje al LLM manteniendo el hilo conversacional y ejecutando acciones si se solicitan."""
     if not GEMINI_API_KEY:
         return (
@@ -183,27 +183,31 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
             "Puedes obtener tu clave gratuita en: <a href='https://aistudio.google.com/app/apikey'>Google AI Studio</a>."
         )
 
+    if image_bytes and not media_bytes:
+        media_bytes = image_bytes
+
     histories = load_histories()
     cid_str = str(chat_id)
     chat_history = histories.get(cid_str, [])
 
     # Construir el nuevo turno de usuario
     user_parts = []
-    if image_bytes:
-        # Optimizar tamaño de imagen para velocidad máxima si es necesario
-        if len(image_bytes) > 500 * 1024:
+    if media_bytes:
+        # Optimizar tamaño si es imagen
+        if mime_type.startswith("image/") and len(media_bytes) > 500 * 1024:
             tmp_in = "/tmp/asst_in.jpg"
             tmp_out = "/tmp/asst_opt.jpg"
             try:
                 with open(tmp_in, "wb") as f:
-                    f.write(image_bytes)
+                    f.write(media_bytes)
                 subprocess.run(["sips", "-Z", "1200", tmp_in, "--out", tmp_out], capture_output=True)
-                with open(tmp_out, "rb") as f:
-                    image_bytes = f.read()
+                if os.path.exists(tmp_out):
+                    with open(tmp_out, "rb") as f:
+                        media_bytes = f.read()
             except Exception:
                 pass
 
-        b64_data = base64.b64encode(image_bytes).decode("utf-8")
+        b64_data = base64.b64encode(media_bytes).decode("utf-8")
         user_parts.append({
             "inline_data": {
                 "mime_type": mime_type,
@@ -213,8 +217,11 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
 
     if user_text:
         user_parts.append({"text": user_text})
-    elif image_bytes and not user_text:
-        user_parts.append({"text": "Te comparto esta foto de un documento o caso práctico del Máster. Analízala y cuéntame qué contiene."})
+    elif media_bytes and not user_text:
+        if mime_type.startswith("audio/"):
+            user_parts.append({"text": "Mensaje de voz de Raquel. Escucha el audio atentamente, responde con naturalidad y atiende a sus dudas o indicaciones para el Máster."})
+        else:
+            user_parts.append({"text": "Te comparto esta foto de un documento o caso práctico del Máster. Analízala y cuéntame qué contiene."})
 
     chat_history.append({"role": "user", "parts": user_parts})
 

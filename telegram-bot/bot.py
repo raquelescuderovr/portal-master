@@ -81,7 +81,7 @@ def download_telegram_file(file_id: str) -> bytes:
     download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
     req = urllib.request.Request(download_url, headers={"User-Agent": "Master-Portal-Bot/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        return optimize_image_bytes(resp.read())
+        return resp.read()
 
 def is_authorized(user_id: int) -> bool:
     """Verifica si el remitente es Raquel."""
@@ -216,14 +216,44 @@ Pruébame pasándome cualquier foto de un caso práctico con tus indicaciones o 
         send_message(chat_id, reply)
         return
 
+    # Manejo de NOTAS DE VOZ (mensajes de audio grabados desde Telegram)
+    voice = msg.get("voice")
+    if voice:
+        send_chat_action(chat_id, "typing")
+        v_bytes = download_telegram_file(voice["file_id"])
+        v_mime = voice.get("mime_type", "audio/ogg")
+        reply = assistant.chat(
+            chat_id,
+            user_text=caption or "",
+            media_bytes=v_bytes,
+            mime_type=v_mime
+        )
+        send_message(chat_id, reply)
+        return
+
+    # Manejo de ARCHIVOS DE AUDIO (mp3, m4a, wav o audios reenviados)
+    audio = msg.get("audio")
+    if audio:
+        send_chat_action(chat_id, "typing")
+        a_bytes = download_telegram_file(audio["file_id"])
+        a_mime = audio.get("mime_type", "audio/mpeg")
+        reply = assistant.chat(
+            chat_id,
+            user_text=caption or "",
+            media_bytes=a_bytes,
+            mime_type=a_mime
+        )
+        send_message(chat_id, reply)
+        return
+
     # Manejo de DOCUMENTOS (PDFs o imágenes adjuntas como archivo)
     doc = msg.get("document")
     if doc:
         mime = doc.get("mime_type", "")
-        if "image" in mime or "pdf" in mime:
+        if "image" in mime or "pdf" in mime or "audio" in mime:
             send_chat_action(chat_id, "typing")
             doc_bytes = download_telegram_file(doc["file_id"])
-            reply = assistant.chat(chat_id, user_text=caption, image_bytes=doc_bytes, mime_type=mime)
+            reply = assistant.chat(chat_id, user_text=caption, media_bytes=doc_bytes, mime_type=mime)
             send_message(chat_id, reply)
             return
 
