@@ -1,11 +1,12 @@
 """Asistente conversacional inteligente para el Bot de Telegram del Máster.
-Soporta multi-turn chat, visión multimodal (fotos de casos y CEPROC) y llamadas a herramientas para actualizar el portal.
+Soporta multi-turn chat, visión multimodal (fotos de casos y CEPROC) y llamadas a herramientas/acciones para actualizar el portal.
 """
 import os
 import re
 import json
 import base64
 import urllib.request
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -16,70 +17,54 @@ import updater
 
 HISTORY_FILE = Path(__file__).resolve().parent / "chat_history.json"
 
-SYSTEM_PROMPT = """Eres el Asistente Académico Personal de Raquel Escudero Valcárcel-Ríos para el Máster Universitario en Abogacía y Procura (MUAP) en A Coruña (UDC, Ilustre Colegio Provincial de Abogados de A Coruña - ICACOR, y Colegio de Procuradores).
+def get_portal_summary() -> str:
+    """Extrae un resumen actualizado del estado de entregas y asignaturas desde index.html."""
+    try:
+        if not INDEX_HTML.exists():
+            return "Portal en desarrollo."
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            content = f.read()
 
-Tu personalidad y estilo:
-• Mantén una conversación fluida, inteligente, cercana, resolutiva y jurídicamente precisa.
-• No eres un simple robot de comandos: respondes, dialogas, debates casos jurídicos, resuelves dudas sobre las asignaturas y aceptas instrucciones matizadas.
-• Raquel te enviará a menudo fotos de casos prácticos (de CEPROC o repartidos en clase), pantallazos, correos reenviados o notas de voz, y te dará indicaciones complementarias (por ejemplo: "este caso es de Sandra Mosteiro, pero en clase dijo que la pregunta 3 no se responde y que la entrega es el viernes").
-• Escucha atentamente las instrucciones de Raquel. Si te pide que le ayudes con el caso o te hace preguntas, respóndelas con rigor.
-• Cuando Raquel te pida que registres o actualices el portal (o cuando te envíe un caso o correo claramente destinado a publicarse en su portal web), utiliza las herramientas disponibles (`guardar_practica` o `guardar_correo`) para actualizar el portal y publicar en GitHub.
-• Si falta algún dato esencial (como el profesor o la fecha de entrega y no se puede deducir de la imagen/texto), pregúntaselo con naturalidad antes o al guardar.
+        summary_lines = []
+        # Buscar entregas
+        m_deliv = re.search(r'const deliveries=\[(.*?)\];', content, re.DOTALL)
+        if m_deliv:
+            raw_delivs = m_deliv.group(1)
+            titles = re.findall(r"title:'(.*?)'.*?teacher:'(.*?)'.*?status:'(.*?)'", raw_delivs)
+            summary_lines.append("Entregas registradas en el portal:")
+            for t, te, st in titles[:6]:
+                summary_lines.append(f"  • {t} | Docente: {te} | Estado: {st}")
 
-Contexto actual del Máster:
-• Raquel cursa el primer cuatrimestre (octubre 2026 – enero 2027) en el turno de tarde (Grupo 2).
-• Profesores destacados actuales: Sandra Mosteiro Costa (Actos de comunicación judicial · Procura), José Luis Delgado Domínguez (Responsabilidad civil y penal, aseguramiento y turno de oficio · Abogacía), Ana Vázquez Corte (Deontología Procura), Carolina Moreno Vázquez (Justicia digital y poder apud acta), Daniel Garrido Pazos (Iniciación profesional).
-• Plataformas: CEPROC (icpcoruna.com), Outlook Web (master.abogacia@icacor.org, accesoabogaciaprocura@..., UDC) y Google Drive.
-• Portal publicado: https://raquelescuderovr.github.io/portal-master/
+        return "\n".join(summary_lines)
+    except Exception:
+        return "Información del portal disponible."
+
+def build_system_instruction() -> str:
+    portal_info = get_portal_summary()
+    return f"""Eres el Asistente Académico Personal de Raquel Escudero Valcárcel-Ríos para el Máster Universitario en Abogacía y Procura (MUAP) en A Coruña (UDC, Ilustre Colegio Provincial de Abogados de A Coruña - ICACOR, y Colegio de Procuradores).
+
+Tu personalidad y estilo de conversación:
+• Mantén una conversación completamente fluida, inteligente, cercana, resolutiva y jurídicamente precisa (al estilo ChatGPT / Gemini avanzado).
+• No eres un simple robot de comandos rígidos: dialogas, explicas casos prácticos, analizas enunciados o leyes (LAJG, LEC, LECrim, etc.), propones esquemas procesales y aceptas instrucciones y matices que te dé Raquel.
+• Raquel te enviará con frecuencia fotos o capturas de pantalla de casos prácticos (de CEPROC o repartidos en clase), pantallazos de correos o avisos institucionales, y te dará explicaciones complementarias (por ejemplo: "el profesor dijo que la pregunta 3 es opcional y que el plazo vence el viernes").
+• Escucha atentamente sus indicaciones y responde a sus dudas con rigor jurídico y claridad práctica.
+• Cuando Raquel te pida que registres una entrega, o cuando te pase una práctica o correo que claramente corresponda añadir al portal académico, incluye al final de tu respuesta una directiva de acción con formato JSON:
+  [ACCION:GUARDAR_PRACTICA:{{"titulo": "...", "docente": "...", "materia": "...", "plazo": "...", "detalles": "..."}}]
+  o bien para correos y avisos:
+  [ACCION:GUARDAR_CORREO:{{"titulo": "...", "remitente": "...", "docente": "...", "materia": "...", "resumen": "...", "cuerpo": "..."}}]
+
+Estado actual del portal de Raquel:
+{portal_info}
+
+Contexto docente y académico:
+• Turno de tarde (Grupo 2).
+• Docentes actuales destacados:
+  - José Luis Delgado Domínguez: Responsabilidad civil y penal, aseguramiento y turno de oficio (Abogacía).
+  - Sandra Mosteiro Costa: Actos de comunicación judicial (Procura).
+  - Carolina Moreno Vázquez: Justicia digital, poder apud acta y subsanación (Procura).
+  - Ana Vázquez Corte: Deontología y responsabilidad profesional (Procura).
+• Web pública del portal: {PORTAL_PUBLIC_URL}
 """
-
-TOOLS_SPEC = [
-    {
-        "function_declarations": [
-            {
-                "name": "guardar_practica",
-                "description": "Registra una práctica, caso práctico o tarea de CEPROC o de clase en el portal académico y lo publica en GitHub.",
-                "parameters": {
-                    "type": "OBJECT",
-                    "properties": {
-                        "titulo": {"type": "STRING", "description": "Título conciso y claro de la práctica"},
-                        "docente": {"type": "STRING", "description": "Nombre del profesor/a responsable"},
-                        "materia": {"type": "STRING", "description": "Nombre de la asignatura o bloque"},
-                        "plazo": {"type": "STRING", "description": "Fecha y hora límite de entrega"},
-                        "detalles": {"type": "STRING", "description": "Descripción del caso, preguntas a resolver o indicaciones de Raquel"}
-                    },
-                    "required": ["titulo", "docente", "materia", "plazo", "detalles"]
-                }
-            },
-            {
-                "name": "guardar_correo",
-                "description": "Registra un correo electrónico, comunicado institucional o aviso oficial en el portal académico y lo publica en GitHub.",
-                "parameters": {
-                    "type": "OBJECT",
-                    "properties": {
-                        "titulo": {"type": "STRING", "description": "Título o asunto del aviso"},
-                        "remitente": {"type": "STRING", "description": "Dirección o institución remitente (ICACOR, Procuradores, UDC)"},
-                        "docente": {"type": "STRING", "description": "Docente relacionado si aplica (o Administración)"},
-                        "materia": {"type": "STRING", "description": "Asignatura o materia relacionada"},
-                        "resumen": {"type": "STRING", "description": "Resumen ejecutivo en 1 o 2 líneas"},
-                        "cuerpo": {"type": "STRING", "description": "Contenido completo o puntos clave del mensaje"}
-                    },
-                    "required": ["titulo", "remitente", "resumen", "cuerpo"]
-                }
-            },
-            {
-                "name": "consultar_hoy",
-                "description": "Consulta las clases, horarios y sedes programadas para la jornada actual.",
-                "parameters": {"type": "OBJECT", "properties": {}}
-            },
-            {
-                "name": "consultar_entregas",
-                "description": "Consulta el estado actual de todas las prácticas y entregas de CEPROC.",
-                "parameters": {"type": "OBJECT", "properties": {}}
-            }
-        ]
-    }
-]
 
 def load_histories() -> dict:
     """Carga los historiales de conversación persistidos."""
@@ -100,19 +85,20 @@ def save_histories(histories: dict):
         print(f"[Assistant] Error al guardar historial: {e}")
 
 def reset_chat_history(chat_id: int):
-    """Limpia el historial de la conversación."""
+    """Limpia el historial de la conversación para ese chat."""
     h = load_histories()
-    if str(chat_id) in h:
-        del h[str(chat_id)]
+    cid_str = str(chat_id)
+    if cid_str in h:
+        del h[cid_str]
         save_histories(h)
 
-def execute_tool(func_name: str, args: dict) -> dict:
-    """Ejecuta una herramienta solicitada por Gemini."""
+def execute_action(action_type: str, args: dict) -> str:
+    """Ejecuta una acción detectada en el mensaje de la IA y actualiza el portal."""
     try:
         with open(INDEX_HTML, "r", encoding="utf-8") as f:
             current_content = f.read()
 
-        if func_name == "guardar_practica":
+        if action_type == "GUARDAR_PRACTICA":
             titulo = args.get("titulo", "Caso práctico")
             docente = args.get("docente", "Docente asignado")
             materia = args.get("materia", "Actuación procesal")
@@ -122,20 +108,13 @@ def execute_tool(func_name: str, args: dict) -> dict:
 
             new_html = updater.add_ceproc_task(
                 current_content, now_str, titulo, docente, materia,
-                "Procura|Técnicas instrumentales|2", "Pendiente de realizar", plazo, detalles
+                "Abogacía|Técnicas instrumentales|3", f"⏳ Pendiente (Plazo: {plazo})", plazo, detalles
             )
             commit_msg = f"Añadir práctica: {titulo} ({docente}) [vía Telegram]"
-            success = updater.save_and_commit(new_html, commit_msg)
-            return {
-                "success": success,
-                "action": "guardar_practica",
-                "titulo": titulo,
-                "docente": docente,
-                "plazo": plazo,
-                "url": PORTAL_PUBLIC_URL
-            }
+            updater.save_and_commit(new_html, commit_msg)
+            return f"\n\n📌 <b>Registrado en el portal:</b> «{titulo}» ({plazo})\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
 
-        elif func_name == "guardar_correo":
+        elif action_type == "GUARDAR_CORREO":
             titulo = args.get("titulo", "Aviso académico")
             remitente = args.get("remitente", "master.abogacia@icacor.org")
             docente = args.get("docente", "Administración del Máster")
@@ -150,53 +129,67 @@ def execute_tool(func_name: str, args: dict) -> dict:
                 docente, "Abogacía|Técnicas instrumentales|3", resumen, cuerpo, remitente
             )
             commit_msg = f"Incorporar aviso: {titulo} [vía Telegram]"
-            success = updater.save_and_commit(new_html, commit_msg)
-            return {
-                "success": success,
-                "action": "guardar_correo",
-                "titulo": titulo,
-                "remitente": remitente,
-                "url": PORTAL_PUBLIC_URL
-            }
-
-        elif func_name == "consultar_hoy":
-            return {
-                "fecha": "Martes 20 oct 2026",
-                "sesiones": [
-                    {"hora": "08:00 – 09:00", "actividad": "Pilates (personal)"},
-                    {"hora": "16:30 – 18:30", "docente": "Sandra Mosteiro Costa", "materia": "Actos de comunicación judicial (Sesión 2 de 2)", "sede": "Colegio de Abogados"},
-                    {"hora": "18:45 – 20:45", "docente": "José Luis Delgado Domínguez", "materia": "Responsabilidad civil y penal (Sesión 2 de 3)", "sede": "Colegio de Abogados"}
-                ]
-            }
-
-        elif func_name == "consultar_entregas":
-            return {
-                "balance": "4 / 4 prácticas enviadas (0 vencidas)",
-                "ultimas": ["Poder apud acta ✓", "Escrito de subsanación ✓", "Auto declaración UP (2 envíos) ✓", "Caso Deontología Procura ✓"]
-            }
+            updater.save_and_commit(new_html, commit_msg)
+            return f"\n\n📌 <b>Aviso incorporado al portal:</b> «{titulo}»\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
 
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        print(f"[Assistant] Error al ejecutar acción {action_type}: {e}")
+        return f"\n\n⚠️ <i>Nota: Hubo un inconveniente al actualizar el archivo local: {e}</i>"
 
-    return {"error": f"Herramienta desconocida: {func_name}"}
+    return ""
+
+def execute_tool(func_name: str, args: dict) -> dict:
+    """Función de conveniencia para comandos de consulta directa."""
+    if func_name == "consultar_hoy":
+        return {
+            "fecha": "Martes 20 oct 2026",
+            "sesiones": [
+                {"hora": "16:30 – 18:30", "docente": "Sandra Mosteiro Costa", "materia": "Actos de comunicación judicial (Sesión 2 de 2)", "sede": "Colegio de Abogados"},
+                {"hora": "18:45 – 20:45", "docente": "José Luis Delgado Domínguez", "materia": "Responsabilidad civil y penal (Sesión 2 de 3)", "sede": "Colegio de Abogados"}
+            ]
+        }
+    elif func_name == "consultar_entregas":
+        return {
+            "balance": "6 prácticas registradas (2 pendientes de José Luis Delgado)",
+            "ultimas": [
+                "⏳ Casos prácticos: Insostenibilidad y AJG (Plazo: 29 oct 2026 · Delgado)",
+                "⏳ Parte de siniestro y Turno de Oficio (Plazo: 10 días tras 2.ª clase · Delgado)",
+                "✓ Poder apud acta (Carolina Moreno)",
+                "✓ Escrito de subsanación (Carolina Moreno)",
+                "✓ Auto declaración UP (Carolina Moreno)",
+                "✓ Deontología Procura (Ana Vázquez Corte)"
+            ]
+        }
+    return {}
 
 def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type: str = "image/jpeg") -> str:
-    """Envía un mensaje al LLM manteniendo el hilo conversacional y ejecutando herramientas."""
+    """Envía un mensaje al LLM manteniendo el hilo conversacional y ejecutando acciones si se solicitan."""
     if not GEMINI_API_KEY:
         return (
             "⚠️ <b>Falta configurar la clave de IA (GEMINI_API_KEY)</b> en el archivo <code>.env</code>.\n\n"
-            "Para que pueda mantener una <b>conversación inteligente y fluida contigo</b> (analizar fotos de casos, debatir instrucciones y redactar respuestas como ChatGPT), "
-            "solo necesitas obtener tu clave gratuita en 10 segundos en: "
-            "<a href='https://aistudio.google.com/app/apikey'>Google AI Studio</a> y añadirla al <code>.env</code>."
+            "Puedes obtener tu clave gratuita en: <a href='https://aistudio.google.com/app/apikey'>Google AI Studio</a>."
         )
 
     histories = load_histories()
     cid_str = str(chat_id)
     chat_history = histories.get(cid_str, [])
 
-    # Construir el nuevo mensaje del usuario
+    # Construir el nuevo turno de usuario
     user_parts = []
     if image_bytes:
+        # Optimizar tamaño de imagen para velocidad máxima si es necesario
+        if len(image_bytes) > 500 * 1024:
+            tmp_in = "/tmp/asst_in.jpg"
+            tmp_out = "/tmp/asst_opt.jpg"
+            try:
+                with open(tmp_in, "wb") as f:
+                    f.write(image_bytes)
+                subprocess.run(["sips", "-Z", "1200", tmp_in, "--out", tmp_out], capture_output=True)
+                with open(tmp_out, "rb") as f:
+                    image_bytes = f.read()
+            except Exception:
+                pass
+
         b64_data = base64.b64encode(image_bytes).decode("utf-8")
         user_parts.append({
             "inline_data": {
@@ -204,83 +197,85 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
                 "data": b64_data
             }
         })
+
     if user_text:
         user_parts.append({"text": user_text})
     elif image_bytes and not user_text:
-        user_parts.append({"text": "Te paso esta captura o foto de un caso/documento del Máster. Analízala y cuéntame qué contiene."})
+        user_parts.append({"text": "Te comparto esta foto de un documento o caso práctico del Máster. Analízala y cuéntame qué contiene."})
 
     chat_history.append({"role": "user", "parts": user_parts})
 
-    # Limitar tamaño de historial (últimos 16 turnos) para no saturar contexto
-    if len(chat_history) > 16:
-        chat_history = chat_history[-16:]
+    # Limitar el historial a los últimos 10 turnos para mantener agilidad y frescura de contexto
+    if len(chat_history) > 10:
+        chat_history = chat_history[-10:]
 
-    # Llamada a la API de Gemini (soporta Tool Calling y Multi-turn)
-    api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-    req_headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "Master-AI-Assistant/1.0",
-        "x-goog-api-key": GEMINI_API_KEY.strip()
-    }
+    system_inst = build_system_instruction()
 
-    payload = {
-        "system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]},
-        "contents": chat_history,
-        "tools": TOOLS_SPEC,
-        "generationConfig": {"temperature": 0.4}
-    }
+    # Modelos a intentar (gemini-3.5-flash y gemini-3.5-flash-lite)
+    models_to_try = [
+        ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}}),
+        ("gemini-3.5-flash-lite", {}),
+        ("gemini-3.1-flash-lite", {})
+    ]
 
-    try:
-        final_answer = ""
-        # Bucle de interacción (soporta llamadas a funciones)
-        for _ in range(3):
-            req_data = json.dumps(payload).encode("utf-8")
-            req = urllib.request.Request(
-                api_url,
-                data=req_data,
-                headers=req_headers,
-                method="POST"
-            )
+    resp_text = ""
+    last_err = None
 
-            with urllib.request.urlopen(req, timeout=30) as resp:
+    for m_name, extra_gen_cfg in models_to_try:
+        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent?key={GEMINI_API_KEY.strip()}"
+        
+        gen_cfg = {"temperature": 0.3}
+        gen_cfg.update(extra_gen_cfg)
+
+        payload = {
+            "system_instruction": {"parts": [{"text": system_inst}]},
+            "contents": chat_history,
+            "generationConfig": gen_cfg
+        }
+
+        req_data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            api_url,
+            data=req_data,
+            headers={"Content-Type": "application/json", "User-Agent": "Master-AI-Assistant/2.0"},
+            method="POST"
+        )
+
+        try:
+            with urllib.request.urlopen(req, timeout=35) as resp:
                 resp_json = json.loads(resp.read().decode())
+                candidate = resp_json.get("candidates", [{}])[0]
+                parts = candidate.get("content", {}).get("parts", [])
+                text_parts = [p["text"] for p in parts if "text" in p]
+                resp_text = "\n".join(text_parts).strip()
+                if resp_text:
+                    break
+        except Exception as err:
+            last_err = err
+            print(f"[Assistant] Error con {m_name}: {err}. Probando siguiente modelo...", flush=True)
 
-            candidate = resp_json.get("candidates", [{}])[0]
-            model_parts = candidate.get("content", {}).get("parts", [])
+    if not resp_text:
+        return f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(last_err)}</code>"
 
-            # Comprobar si hay functionCall
-            function_calls = [p["functionCall"] for p in model_parts if "functionCall" in p]
-            text_parts = [p["text"] for p in model_parts if "text" in p]
+    # Detectar y procesar posibles acciones automáticas
+    action_note = ""
+    action_pattern = r'\[ACCION:(GUARDAR_PRACTICA|GUARDAR_CORREO):(\{.*?\})\]'
+    match = re.search(action_pattern, resp_text, re.DOTALL)
+    if match:
+        act_type = match.group(1)
+        try:
+            act_args = json.loads(match.group(2))
+            action_note = execute_action(act_type, act_args)
+        except Exception as e:
+            print(f"[Assistant] Error al parsear JSON de acción: {e}")
+        # Limpiar la etiqueta de acción del texto visible para la usuaria
+        resp_text = re.sub(action_pattern, '', resp_text).strip()
 
-            if not function_calls:
-                final_answer = "\n".join(text_parts).strip()
-                chat_history.append({"role": "model", "parts": model_parts})
-                break
+    final_reply = resp_text + action_note
 
-            # Si hay llamadas a funciones: ejecutarlas y devolver el resultado
-            chat_history.append({"role": "model", "parts": model_parts})
-            func_results_parts = []
+    # Guardar en el historial la respuesta limpia del modelo
+    chat_history.append({"role": "model", "parts": [{"text": resp_text}]})
+    histories[cid_str] = chat_history
+    save_histories(histories)
 
-            for fc in function_calls:
-                f_name = fc["name"]
-                f_args = fc.get("args", {})
-                res = execute_tool(f_name, f_args)
-                func_results_parts.append({
-                    "functionResponse": {
-                        "name": f_name,
-                        "response": {"output": res}
-                    }
-                })
-
-            chat_history.append({"role": "function", "parts": func_results_parts})
-            payload["contents"] = chat_history
-
-        # Guardar historial actualizado
-        histories[cid_str] = chat_history
-        save_histories(histories)
-
-        return final_answer or "✅ Instrucción procesada correctamente."
-
-    except Exception as e:
-        print(f"[Assistant] Error en API Gemini: {e}")
-        return f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(e)}</code>"
+    return final_reply

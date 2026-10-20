@@ -50,6 +50,24 @@ def send_chat_action(chat_id: int, action: str = "typing"):
     payload = json.dumps({"chat_id": chat_id, "action": action}).encode("utf-8")
     api_request("sendChatAction", data=payload)
 
+def optimize_image_bytes(raw_bytes: bytes) -> bytes:
+    """Optimiza el tamaño de la imagen con sips en macOS para procesado rápido."""
+    if len(raw_bytes) < 600 * 1024:
+        return raw_bytes
+    tmp_in = "/tmp/tg_in.jpg"
+    tmp_out = "/tmp/tg_opt.jpg"
+    try:
+        with open(tmp_in, "wb") as f:
+            f.write(raw_bytes)
+        import subprocess
+        subprocess.run(["sips", "-Z", "1200", tmp_in, "--out", tmp_out], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if os.path.exists(tmp_out):
+            with open(tmp_out, "rb") as f:
+                return f.read()
+    except Exception:
+        pass
+    return raw_bytes
+
 def download_telegram_file(file_id: str) -> bytes:
     """Descarga un archivo o imagen desde los servidores de Telegram."""
     file_info = api_request("getFile", params={"file_id": file_id})
@@ -59,7 +77,7 @@ def download_telegram_file(file_id: str) -> bytes:
     download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
     req = urllib.request.Request(download_url, headers={"User-Agent": "Master-Portal-Bot/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.read()
+        return optimize_image_bytes(resp.read())
 
 def is_authorized(user_id: int) -> bool:
     """Verifica si el remitente es Raquel."""

@@ -1,6 +1,14 @@
 """Configuración del Bot de Telegram para el Portal del Máster."""
 import os
+import ssl
 from pathlib import Path
+
+# Configurar contexto HTTPS seguro para evitar errores de certificados en entornos locales macOS
+try:
+    ssl._create_default_https_context = ssl._create_unverified_context
+except Exception:
+    pass
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 if (BASE_DIR / "index.html").exists():

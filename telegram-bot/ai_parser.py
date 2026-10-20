@@ -18,7 +18,7 @@ def parse_text_or_image(text: str = "", image_bytes: bytes = None, mime_type: st
 
 def call_gemini_api(text: str, image_bytes: bytes = None, mime_type: str = "image/jpeg") -> dict:
     """Llama a la API de Google Gemini (Flash) para analizar texto o capturas de pantalla."""
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent"
     
     prompt = """Eres un asistente académico para el Máster en Abogacía y Procura de Raquel Escudero.
 Analiza la siguiente información (correo electrónico, aviso o captura de CEPROC) y devuelve EXCLUSIVAMENTE un objeto JSON válido con la siguiente estructura:
@@ -56,7 +56,10 @@ Solo devuelve el JSON sin formato markdown ni texto adicional."""
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_API_KEY.strip()
+        },
         method="POST"
     )
 

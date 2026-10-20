@@ -4298,6 +4298,8 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,9,29),title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 29 oct 2026 · 10 días)',submitted:false,detailKey:'entrega_delgado_parte_a',details:'Práctica de la clase del 19 oct: 1) Escrito de insostenibilidad de la pretensión como demandante. 2) Dictamen sobre arts. 5, 8, 20 y 21 LAJG (SERGAS y casación ante el TS manteniendo letrados privados). Plazo: 10 días naturales (hasta el 29 de octubre). Entrega: oficinas colegiales o secretariatecnico@icacor.org.'},
+ {date:new Date(2026,9,30),title:'Parte de siniestro y Turno de Oficio (Parte B)',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 10 días tras 2.ª clase)',submitted:false,detailKey:'entrega_delgado_parte_b',details:'Práctica de la 2.ª sesión: 1) Parte de siniestro sobre responsabilidad profesional de la abogacía. 2) Cuestiones sobre requisitos de acceso al Turno de Oficio e incorporación colegial. Plazo: 10 días naturales tras la clase. Entrega: oficinas colegiales o secretariatecnico@icacor.org.'},
  {date:new Date(2026,9,16),title:'Poder apud acta (CertificadoRegistro.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_apud_acta',file:'CertificadoRegistro.pdf',details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'},
  {date:new Date(2026,9,16),title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Técnicas instrumentales / Actuación procesal',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada en CPROC ✓',submitted:true,detailKey:'entrega_subsanacion',file:'Escrito de subsanación_signed.pdf',details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'},
  {date:new Date(2026,9,16),title:'Auto declaración con oferta de venta UP (2 envíos)',teacher:'Carolina Moreno Vázquez',subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',subjectRef:'Procura|Técnicas instrumentales|2',status:'Completada y enviada (2 envíos) ✓',submitted:true,detailKey:'entrega_auto_up',file:'Documento_anonimizado.pdf',file2:'summary.docx',details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'},
@@ -4505,6 +4507,36 @@ const details={
   attachments:[
    {name:'Carteles y convocatorias en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
+ },
+ entrega_delgado_parte_a:{
+  isDelivery:true,
+  kicker:'Práctica pendiente · Abogacía · Turno de oficio y Asistencia Jurídica Gratuita',
+  title:'Casos prácticos: Insostenibilidad y AJG (Parte A)',
+  date:'Plazo: 10 días naturales desde la clase del 19 oct 2026 (límite: 29 de octubre de 2026)',
+  teacher:'José Luis Delgado Domínguez',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Enunciado entregado en clase por D. José Luis Delgado Domínguez compuesto por dos ejercicios prácticos:\n1) Elaborar un escrito de insostenibilidad de la pretensión fundamentado desde la posición de la parte actora/demandante.\n2) Dictamen jurídico sobre la aplicación de los artículos 5, 8, 20 y 21 de la Ley 1/1996 de Asistencia Jurídica Gratuita (LAJG):\n• Supuesto: Paciente operado en el SERGAS con secuelas que obtuvo condena de 100.000 € en el TSJ Galicia con gastos acreditados de 150.000 €; recurre en casación ante el Tribunal Supremo manteniendo la designación de profesionales privados y solicita el reintegro de honorarios e indemnización complementaria.\n• Vía de entrega: Presentación física en las oficinas colegiales del ICACOR o envío al correo electrónico oficial secretariatecnico@icacor.org.',
+  source:'Enunciado impreso facilitado en clase presencial por el docente · 19 oct 2026',
+  attachments:[
+   {name:'Correo oficial ICACOR: secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial'},
+   {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
+  ],
+  extra:'⏳ Plazo oficial de 10 días naturales a contar desde la sesión del 19/10/2026 (vence el 29/10/2026).'
+ },
+ entrega_delgado_parte_b:{
+  isDelivery:true,
+  kicker:'Práctica pendiente · Abogacía · Responsabilidad profesional y Turno de Oficio',
+  title:'Parte de siniestro y Turno de Oficio (Parte B)',
+  date:'Plazo: 10 días naturales tras la segunda sesión lectiva',
+  teacher:'José Luis Delgado Domínguez',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Segunda parte de la práctica del módulo de D. José Luis Delgado Domínguez:\n1) Cumplimentación de un parte de siniestro de responsabilidad civil profesional del abogado.\n2) Cuestiones prácticas y debate sobre los requisitos de acceso al Turno de Oficio e implicaciones de la incorporación colegial según el ámbito territorial.\n• Vía de entrega: Oficinas colegiales del ICACOR o mediante correo electrónico a secretariatecnico@icacor.org.',
+  source:'Enunciado impreso facilitado en clase presencial por el docente · 19 oct 2026',
+  attachments:[
+   {name:'Correo oficial ICACOR: secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial'},
+   {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
+  ],
+  extra:'⏳ Plazo de 10 días naturales a partir de la celebración de la segunda clase.'
  },
  entrega_apud_acta:{
   isDelivery:true,
