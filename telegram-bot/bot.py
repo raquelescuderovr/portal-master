@@ -41,9 +41,13 @@ def api_request(method: str, params: dict = None, data: bytes = None, content_ty
         return {"ok": False, "description": str(e)}
 
 def send_message(chat_id: int, text: str, parse_mode: str = "HTML") -> dict:
-    """Envía un mensaje de texto por Telegram."""
+    """Envía un mensaje de texto por Telegram con fallback automático a texto plano."""
     payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": parse_mode}).encode("utf-8")
-    return api_request("sendMessage", data=payload)
+    resp = api_request("sendMessage", data=payload)
+    if not resp.get("ok") and parse_mode:
+        payload_plain = json.dumps({"chat_id": chat_id, "text": text}).encode("utf-8")
+        resp = api_request("sendMessage", data=payload_plain)
+    return resp
 
 def send_chat_action(chat_id: int, action: str = "typing"):
     """Envía la acción de 'escribiendo...' a Telegram."""
@@ -243,7 +247,15 @@ def run_polling():
             if updates.get("ok"):
                 for u in updates.get("result", []):
                     offset = u["update_id"] + 1
-                    handle_update(u)
+                    try:
+                        handle_update(u)
+                    except Exception as err:
+                        print(f"[Handler] Error procesando update {u.get('update_id')}: {err}", flush=True)
+                        import traceback
+                        traceback.print_exc()
+                        c_id = u.get("message", {}).get("chat", {}).get("id")
+                        if c_id:
+                            send_message(c_id, f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(err)}</code>")
             else:
                 time.sleep(2)
         except KeyboardInterrupt:

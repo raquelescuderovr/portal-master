@@ -224,11 +224,11 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
 
     system_inst = build_system_instruction()
 
-    # Modelos a intentar (gemini-3.5-flash y gemini-3.5-flash-lite)
+    # Modelos a intentar (priorizando gemini-3.5-flash-lite para respuesta instantánea en ~1 segundo)
     models_to_try = [
-        ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}}),
         ("gemini-3.5-flash-lite", {}),
-        ("gemini-3.1-flash-lite", {})
+        ("gemini-3.1-flash-lite", {}),
+        ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}})
     ]
 
     resp_text = ""
@@ -255,7 +255,7 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
         )
 
         try:
-            with urllib.request.urlopen(req, timeout=35) as resp:
+            with urllib.request.urlopen(req, timeout=18) as resp:
                 resp_json = json.loads(resp.read().decode())
                 candidate = resp_json.get("candidates", [{}])[0]
                 parts = candidate.get("content", {}).get("parts", [])
