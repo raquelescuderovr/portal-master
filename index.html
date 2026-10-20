@@ -1382,7 +1382,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   flex-shrink:0;
 }
 
-.grades-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.grades-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
 .grade-card{background:var(--paper);border:1.5px solid var(--line);border-left:5px solid var(--honey);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;box-shadow:var(--shadow)}
 .grade-card[data-type="test"]{border-color:var(--line);border-left-color:var(--blue)}
 .grade-card[data-type="global"]{border-color:var(--line);border-left-color:var(--honey)}
@@ -2368,7 +2368,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 [data-theme="light"] .st-count-pill.blue{background:var(--blue-badge);color:var(--blue-dark)}
 [data-theme="light"] .st-sec-block{border:1px solid var(--line)}
 
-/* Badges de estado de docentes y sesiones */
+/* Badges de estado de docentes y sesiones (Adaptados a modo oscuro y claro) */
 .teacher-badge-today, .st-badge-today{
   background:#162b1e;
   color:#9de8b7;
@@ -2383,9 +2383,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   box-shadow:0 0 8px rgba(60,130,87,0.25);
 }
 .teacher-badge-tomorrow, .st-badge-tomorrow{
-  background:#fef3d6;
-  color:#8a4d00;
-  border:1px solid #f6d289;
+  background:#2b1f0f;
+  color:#ffd875;
+  border:1.5px solid #8c6020;
   font-weight:800;
   border-radius:12px;
   padding:3px 9px;
@@ -2395,9 +2395,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   gap:4px;
 }
 .teacher-badge-upcoming, .st-badge-upcoming{
-  background:#e7f5ea;
-  color:#1e6a38;
-  border:1px solid #bce4c6;
+  background:#15251d;
+  color:#8cdba8;
+  border:1.5px solid #28543b;
   font-weight:700;
   border-radius:12px;
   padding:3px 9px;
@@ -2407,9 +2407,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   gap:4px;
 }
 .teacher-badge-past, .st-badge-past{
-  background:#f0eee9;
-  color:#6b736c;
-  border:1px solid #dcd7ce;
+  background:rgba(255,255,255,0.06);
+  color:#a39d94;
+  border:1px solid rgba(255,255,255,0.12);
   font-weight:600;
   border-radius:12px;
   padding:3px 9px;
@@ -2418,16 +2418,241 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   align-items:center;
   gap:4px;
 }
-.st-session-row.today{
-  background:#f0f9f3;
-  border-color:#81c784;
-  border-left:3.5px solid #2e7d32;
-}
+
 [data-theme="light"] .teacher-badge-today, [data-theme="light"] .st-badge-today{
   background:#e8f5e9;
   color:#1b5e20;
   border:1.5px solid #81c784;
   box-shadow:0 1px 4px rgba(46,125,50,0.15);
+}
+[data-theme="light"] .teacher-badge-tomorrow, [data-theme="light"] .st-badge-tomorrow{
+  background:#fef3d6;
+  color:#8a4d00;
+  border:1.5px solid #f6d289;
+}
+[data-theme="light"] .teacher-badge-upcoming, [data-theme="light"] .st-badge-upcoming{
+  background:#e7f5ea;
+  color:#1e6a38;
+  border:1.5px solid #bce4c6;
+}
+[data-theme="light"] .teacher-badge-past, [data-theme="light"] .st-badge-past{
+  background:#f0eee9;
+  color:#6b736c;
+  border:1px solid #dcd7ce;
+}
+
+.st-session-row.today{
+  background:#162b1e;
+  border-color:#3c8257;
+  border-left:3.5px solid #3c8257;
+}
+[data-theme="light"] .st-session-row.today{
+  background:#f0f9f3;
+  border-color:#81c784;
+  border-left:3.5px solid #2e7d32;
+}
+
+/* Pastillas de calificación en la cabecera del docente */
+.teacher-grade-pill{
+  font-size:11.5px;
+  font-weight:700;
+  padding:4px 12px;
+  border-radius:20px;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+}
+.teacher-grade-pill.completed{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+  color:var(--green-dark);
+}
+.teacher-grade-pill.pending{
+  background:#2b1f0f;
+  border:1px solid #75511b;
+  color:#ffd875;
+}
+[data-theme="light"] .teacher-grade-pill.pending{
+  background:#fef7e7;
+  border-color:#f6d289;
+  color:#8a4d00;
+}
+
+/* Detalle y Desplegables de Docente */
+.teacher-sessions-details{
+  margin-top:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper-warm);
+  overflow:hidden;
+  transition:all .18s ease;
+}
+.teacher-sessions-details summary{
+  cursor:pointer;
+  list-style:none;
+  padding:11px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font:700 12.5px var(--sans);
+  color:var(--ink);
+  user-select:none;
+  background:transparent;
+  transition:background .15s ease;
+}
+.teacher-sessions-details summary::-webkit-details-marker{display:none}
+.teacher-sessions-details summary:hover{
+  background:rgba(255,255,255,0.03);
+  color:var(--green-dark);
+}
+.teacher-sessions-details[open] summary{
+  border-bottom:1px solid var(--line-subtle);
+  color:var(--green-dark);
+}
+.teacher-sessions-details summary .t-summary-chevron{
+  font-size:12px;
+  transition:transform .2s ease;
+  color:var(--muted);
+}
+.teacher-sessions-details[open] summary .t-summary-chevron{
+  transform:rotate(180deg);
+}
+.teacher-sessions-content{
+  padding:14px;
+  display:grid;
+  gap:12px;
+  background:var(--paper);
+}
+
+/* Caja de Sesiones de Clase */
+.teacher-sessions-box{
+  background:var(--paper-warm);
+  border:1px solid var(--line-subtle);
+  border-radius:12px;
+  padding:12px 14px;
+}
+.teacher-sessions-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line-subtle);
+  font:700 12px var(--sans);
+  color:var(--ink);
+}
+.teacher-sessions-head .branch-tag{
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+}
+.teacher-sessions-list{
+  display:grid;
+  gap:8px;
+}
+
+/* Tarjeta individual de sesión */
+.teacher-session-row{
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 13px;
+  display:grid;
+  gap:6px;
+  transition:all .16s ease;
+}
+.teacher-session-row:hover{
+  border-color:var(--green-border);
+  transform:translateY(-1px);
+}
+.teacher-session-row.today{
+  border-left:3.5px solid var(--green);
+  background:rgba(46,125,50,0.08);
+}
+.teacher-session-row.tomorrow{
+  border-left:3.5px solid var(--honey);
+  background:rgba(217,143,26,0.08);
+}
+.teacher-session-row.past{
+  opacity:0.92;
+}
+
+.teacher-session-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.teacher-session-date-time{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font:700 12px var(--sans);
+  color:var(--ink);
+}
+.teacher-session-time-pill{
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+}
+.teacher-session-topic{
+  font:600 13px/1.45 var(--sans);
+  color:var(--ink);
+}
+.teacher-session-place{
+  font-size:11.5px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+/* Bloques de Correos, Prácticas y Apuntes */
+.teacher-sub-group{
+  background:var(--paper-warm);
+  border:1px solid var(--line-subtle);
+  border-radius:12px;
+  padding:12px 14px;
+  display:grid;
+  gap:8px;
+}
+.teacher-sub-group-title{
+  font:700 11.5px var(--sans);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.teacher-practice-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:8px 12px;
+  font-size:12px;
+}
+.teacher-practice-item .t-prac-title{
+  font-weight:600;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.teacher-practice-item .t-prac-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
 /* Banner de materias y bloques activos en Portada */
@@ -3280,8 +3505,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div class="hub-card-text">
           <span class="hub-card-kicker">Evaluación oficial</span>
-          <strong class="hub-card-title">Notas 10/10 y tests</strong>
-          <span class="hub-card-meta">Oficial por correo + Test 20/20</span>
+          <strong class="hub-card-title">Notas de profesores y tests</strong>
+          <span class="hub-card-meta">2 notas de docentes (10 y 8.8) + Tests</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -3412,7 +3637,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Calificaciones, notas por correo y tests evaluados</h2>
-        <p>Todos los tests realizados (10 en todos salvo uno con ~8) y nota oficial de 10/10 por correo en Técnicas instrumentales.</p>
+        <p>Notas oficiales por correo de profesores (10/10 con Javier Sánchez y 8.8 con Ana Vázquez) y tests online realizados (20/20 en el test de Carolina Moreno).</p>
       </div>
       <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
@@ -3422,9 +3647,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card" data-detail="grades">
         <div>
           <span class="stat-kicker">Nota por correo · 14 oct</span>
-          <span class="stat-title">Técnicas instrumentales (Procura)</span>
+          <span class="stat-title">Técnicas instrum. · Javier Sánchez</span>
         </div>
         <span class="stat-val-pill">10 / 10</span>
+      </button>
+      <button class="stat-card" data-detail="grade_ana_vazquez">
+        <div>
+          <span class="stat-kicker">Nota por correo · 19 oct</span>
+          <span class="stat-title">Deontología · Ana Vázquez</span>
+        </div>
+        <span class="stat-val-pill">8.8 / 10</span>
       </button>
       <button class="stat-card highlight-test" data-detail="all_tests_summary">
         <div>
@@ -3713,12 +3945,12 @@ const events={
   {start:'16:30',end:'20:45',name:'Organización de despacho',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
  '2026-10-08':[
-  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'mail_deontologia_ana_vazquez',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Nota (8.8/10)'},
   {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
  '2026-10-09':[
   {start:'11:00',end:'12:00',name:'Ortodix',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'Clínica Ortodix',kind:'Cita · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'assignment',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+  {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'mail_deontologia_ana_vazquez',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Nota (8.8/10)'},
   {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
  ],
  '2026-10-13':[
@@ -3993,6 +4225,29 @@ const gradeRecords=[
   ]
  },
  {
+  id:'grade_ana_vazquez',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 19 oct 2026',
+  title:'Deontología y técnicas transversales · Procura (Clases 8 y 9 de octubre)',
+  score:'8.8 / 10',
+  scoreLabel:'Nota docente',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'3.8 / 4 puntos'},
+   {label:'II. Trabajos escritos (60 %)',val:'5.0 / 6 puntos'},
+   {label:'Calificación otorgada',val:'8.8 / 10 · Notable alto'}
+  ],
+  teacher:'Ana Vázquez Corte',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  mailKey:'mail_deontologia_ana_vazquez',
+  description:'Calificaciones otorgadas por Dña. Ana Vázquez Corte y remitidas oficialmente a Raquel el 19 de octubre de 2026 («Materia: Deontología y técnicas transversales»), correspondientes a las actividades evaluables de las sesiones del 8 y 9 de octubre. Ponderables por la coordinación del MUAP con las de los demás docentes.',
+  links:[
+   {label:'✉ Abrir correo de la nota (19 oct) ↗',detailKey:'mail_deontologia_ana_vazquez',cls:'solid-green'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Deontología y responsabilidad|0'},
+   {label:'Ficha de Ana Vázquez Corte ↗',teacher:'Ana Vázquez Corte'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
   id:'grade_16oct_test',
   type:'test',
   kicker:'Prueba online evaluada en Testmoz / CPROC · 16 oct 2026 (19:17)',
@@ -4050,12 +4305,7 @@ const deliveries=[
 ];
 
 const messages=[
- {date:'19 oct 2026',title:'nota técnicas instrumentales y deontología',meta:'master.abogacia@icacor.org · Máster Abogacía y Procura',key:'mail_431870',teacher:'Administración del Máster',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Añádelo también ha las notas',meta:'master.abogacia@icacor.org · Máster Abogacía y Procura',key:'mail_431857',teacher:'Administración del Máster',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'nota técnicas instrumentales y deontología',meta:'master.abogacia@icacor.org · Máster Abogacía y Procura',key:'mail_431841',teacher:'Administración del Máster',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Pon de título "nota técnicas instrumentales y deontología" y ponlo en las n',meta:'master.abogacia@icacor.org · Máster Abogacía y Procura',key:'mail_431818',teacher:'Administración del Máster',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Estimada Estudiante:',meta:'accesoabogaciaprocura@procuradores... · Procura',key:'mail_431779',teacher:'Secretaría Colegio de Procuradores',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Esto lo tines añadido? Estimada Estudiante:',meta:'accesoabogaciaprocura@procuradores... · Procura',key:'mail_431745',teacher:'Secretaría Colegio de Procuradores',subjectRef:'Abogacía|Técnicas instrumentales|3'},
+ {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
  {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
  {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:''},
@@ -4068,12 +4318,7 @@ const messages=[
 ];
 
 const mailSummaries={
- mail_431870:'Título: nota técnicas instrumentales y deontología',
- mail_431857:'Añádelo también ha las notas',
- mail_431841:'Título: nota técnicas instrumentales y deontología',
- mail_431818:'Pon de título "nota técnicas instrumentales y deontología" y ponlo en las notas también',
- mail_431779:'Estimada Estudiante:\n \nComo continuación de la clase impartida el pasado día clase celebrada el pasado día  8 y 9 /10/2026 de en la titulación "Máster...',
- mail_431745:'Esto lo tines añadido? Estimada Estudiante:\n \nComo continuación de la clase impartida el pasado día clase celebrada el pasado día  8 y 9 /10/2026 de e...',
+ mail_deontologia_ana_vazquez:'NOTA OFICIAL: 8.8 / 10 (Test 40%: 3.8 + Trabajos 60%: 5.0). Calificaciones otorgadas por Dña. Ana Vázquez Corte correspondientes a las sesiones del 8 y 9 de octubre en Deontología y técnicas transversales.',
  dataforum_instrucciones:'El Máster remite indicación de D. Javier Hernández (Subdir. Gral. de Justicia Digital): ponencias en PALEXCO (Auditorium en Planta 0 y Ágora / Auditorio Arao en Planta 2) con libre acceso a todas las sesiones para el alumnado del Máster (2 adjuntos, 11 MB).',
  procura_resultados:'Secretaría de Procura comunica los resultados y seguimiento de las pruebas de evaluación correspondientes al módulo.',
  dataforum_viernes:'Administración del Máster confirma a Raquel la facilitación de justificante oficial de asistencia para la jornada del viernes 23 en DATAfórum (compatible con cita médica a las 09:30).',
@@ -4086,75 +4331,18 @@ const mailSummaries={
 };
 
 const details={
- mail_431870:{
-  kicker:'Comunicación académica · Máster',
-  title:'nota técnicas instrumentales y deontología',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Administración del Máster',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Título: nota técnicas instrumentales y deontología',
-  source:'master.abogacia@icacor.org · Máster Abogacía y Procura',
+ mail_deontologia_ana_vazquez:{
+  kicker:'Calificaciones oficiales por correo · Procura',
+  title:'Calificaciones de Deontología y técnicas transversales (Nota: 8.8 / 10)',
+  date:'Recibido: lunes, 19 oct 2026 · Remitido por la docente',
+  teacher:'Ana Vázquez Corte',
+  subjectRef:'Procura|Deontología y responsabilidad|0',
+  body:'Estimada Estudiante:\n\nComo continuación de la clase impartida el pasado día celebrada el pasado día 8 y 9/10/2026 en la titulación "Máster Universitario en Abogacía y Procura" (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña), me complace remitirle las calificaciones que otorgué a las actividades evaluables que realizó en su momento, esperando le puedan ser de utilidad y ayuda.\n\nMATERIA: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\nCONTENIDOS: Deontología de la Procura, Derechos y deberes de la Procura, Código Deontológico de la Procura, Supuestos prácticos, Código Deontológico de la Procura, Protección de datos, blanqueo de capitales y secreto profesional, Responsabilidad civil, Responsabilidad penal y Otros supuestos de responsabilidad.\n\n• I. TEST (40%): 3.8 / 4 puntos\n• II. TRABAJO/S ESCRITO/S (60%): 5.0 / 6 puntos\n• NOTA FINAL OTORGADA POR LA DOCENTE: 8.8 / 10 (Notable alto)\n\nObservación: En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia.\n\nRecibe un cordial saludo\n\nFdo.: Ana Vázquez Corte',
+  source:'master.abogacia@icacor.org / secretaría de Procura · Dña. Ana Vázquez Corte',
   attachments:[
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
- mail_431857:{
-  kicker:'Comunicación académica · Máster',
-  title:'Añádelo también ha las notas',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Administración del Máster',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Añádelo también ha las notas',
-  source:'master.abogacia@icacor.org · Máster Abogacía y Procura',
-  attachments:[
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
- mail_431841:{
-  kicker:'Comunicación académica · Máster',
-  title:'nota técnicas instrumentales y deontología',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Administración del Máster',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Título: nota técnicas instrumentales y deontología',
-  source:'master.abogacia@icacor.org · Máster Abogacía y Procura',
-  attachments:[
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
- mail_431818:{
-  kicker:'Comunicación académica · Máster',
-  title:'Pon de título "nota técnicas instrumentales y deontología" y ponlo en las n',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Administración del Máster',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Pon de título "nota técnicas instrumentales y deontología" y ponlo en las notas también',
-  source:'master.abogacia@icacor.org · Máster Abogacía y Procura',
-  attachments:[
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
- mail_431779:{
-  kicker:'Comunicación académica · Máster',
-  title:'Estimada Estudiante:',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Secretaría Colegio de Procuradores',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Estimada Estudiante:\n \nComo continuación de la clase impartida el pasado día clase celebrada el pasado día  8 y 9 /10/2026 de en la titulación "Máster Universitario en Abogacía y Procura" (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña), me complace remitirle las calificaciones que otorgué a las actividades evaluables que realizó en su momento, esperando le puedan ser de utilidad y ayuda. \nMATERIA: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\nCONTENIDOS: Deontología de la Procura, Derechos y deberes de la Procura, Código Deontológico de la Procura, Supuestos prácticos, Código Deontológico de la Procura, Protección de datos, blanqueo de capitales y secreto profesional, Responsabilidad civil, Responsabilidad penal y Otros supuestos de responsabilidad.\nI.\nTEST\n(40%)\nII.\nTRABALLO/S ESCRITO/S\n(60%)\nNOTA\nFINAL\n3.8\n5\n8.8\n \nObservación: En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia.\n \nRecibe un cordial saludo\n \nFdo.: Ana Vázquez Corte',
-  source:'accesoabogaciaprocura@procuradores... · Procura',
-  attachments:[
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
- mail_431745:{
-  kicker:'Comunicación académica · Máster',
-  title:'Esto lo tines añadido? Estimada Estudiante:',
-  date:'Recibido: 19 oct 2026',
-  teacher:'Secretaría Colegio de Procuradores',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Esto lo tines añadido? Estimada Estudiante:\n \nComo continuación de la clase impartida el pasado día clase celebrada el pasado día  8 y 9 /10/2026 de en la titulación "Máster Universitario en Abogacía y Procura" (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña), me complace remitirle las calificaciones que otorgué a las actividades evaluables que realizó en su momento, esperando le puedan ser de utilidad y ayuda. \nMATERIA: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\nCONTENIDOS: Deontología de la Procura, Derechos y deberes de la Procura, Código Deontológico de la Procura, Supuestos prácticos, Código Deontológico de la Procura, Protección de datos, blanqueo de capitales y secreto profesional, Responsabilidad civil, Responsabilidad penal y Otros supuestos de responsabilidad.\nI.\nTEST\n(40%)\nII.\nTRABALLO/S ESCRITO/S\n(60%)\nNOTA\nFINAL\n3.8\n5\n8.8\n \nObservación: En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia.\n \nRecibe un cordial saludo\n \nFdo.: Ana Vázquez Corte',
-  source:'accesoabogaciaprocura@procuradores... · Procura',
-  attachments:[
+   {name:'Ver en pestaña de Notas (8.8 / 10)',detailKey:'grade_ana_vazquez',kind:'Calificaciones'},
+   {name:'Ficha de Dña. Ana Vázquez Corte',teacher:'Ana Vázquez Corte',kind:'Docente'},
+   {name:'Ver asignatura de Deontología',subjectRef:'Procura|Deontología y responsabilidad|0',kind:'Asignatura'},
    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
   ]
  },
@@ -4639,7 +4827,7 @@ const courses=[
     period:'8 y 9 oct 2026 · Horario: 16:30 – 18:30 · Práctica entregada en CPROC',
     startDate:'2026-10-08',
     teachers:['Ana Vázquez Corte'],
-    grade:{score:'Práctica enviada ✓ + Test 10/10',detail:'Caso práctico completado y entregado en CPROC (sin retraso) · Test transversal del 16 oct: 10/10 (20/20)',detailKey:'assignment',actionLabel:'Ver ficha de la práctica ↗'},
+    grade:{score:'8.8 / 10 (Test 3.8 + Trabajos 5)',detail:'Calificación otorgada por Dña. Ana Vázquez Corte comunicada por correo el 19 oct: Test (40%): 3.8 + Trabajos escritos (60%): 5.0 = 8.8 / 10 (ponderable por coordinación MUAP)',detailKey:'mail_deontologia_ana_vazquez',actionLabel:'Ver nota oficial ↗'},
     notes:[
      {name:'Raquel Escudero_Derechos y deberes procuradores (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit',label:'Google Docs ↗'},
      {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Google Docs ↗'},
@@ -4648,7 +4836,7 @@ const courses=[
      {name:'Código Deontológico de los Procuradores (Consejo General)',url:driveSearchUrl('Código Deontológico'),label:'Buscar en Drive ↗'},
      {name:'Estatuto General de los Procuradores de España (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
     ],
-    mails:['assignment']
+    mails:['mail_deontologia_ana_vazquez','assignment']
    },
    {
     name:'Responsabilidad disciplinaria de la Procura',
@@ -5330,15 +5518,18 @@ const teacherDirectory=[
   name:'Ana Vázquez Corte',
   branch:'Procura',
   role:'Procuradora · Deontología y responsabilidad profesional',
-  gradeBadge:'Calificación pendiente',
+  gradeBadge:'8.8 / 10 ★',
   summary:'Deontología de la Procura, principios rectores, secreto profesional y relaciones con los órganos judiciales.',
-  grade:{score:'Calificación pendiente',scoreLabel:'Evaluación',detail:'Sesiones de los días 8 y 9 de octubre completadas.',detailKey:'grades'},
+  grade:{score:'8.8 / 10 (Notable)',scoreLabel:'Calificación otorgada',detail:'Test (40%): 3.8 + Trabajos escritos (60%): 5.0 · Nota oficial comunicada por correo el 19 oct',detailKey:'mail_deontologia_ana_vazquez'},
   sessions:[
    {date:'2026-10-08',dayLabel:'Jueves 8 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Deontología de la Procura (Principios rectores y secreto profesional)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-09',dayLabel:'Viernes 9 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Deontología y responsabilidad de la Procura (Régimen disciplinario)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Sesiones de Deontología de la Procura',key:'grades'}],
-  practices:[{title:'Caso práctico sobre deber de confidencialidad',status:'Entregado ✓',key:'grades'}],
+  mails:[
+   {title:'Calificaciones oficiales de Deontología (19 oct · Nota: 8.8)',key:'mail_deontologia_ana_vazquez'},
+   {title:'Caso práctico de Deontología (enviado en CPROC)',key:'assignment'}
+  ],
+  practices:[{title:'Caso práctico sobre deber de confidencialidad',status:'Calificación: 5.0 / 6 (Trabajos) ✓',key:'mail_deontologia_ana_vazquez'}],
   driveFiles:[{name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf',url:driveSearchUrl('Deontologia_Clase_Completa'),label:'PDF Drive ↗'}],
   notes:[{title:'Código Deontológico de los Procuradores (Consejo General)',url:cprocUrl,urlLabel:'Ver normativa ↗'}]
  },
@@ -5845,7 +6036,7 @@ const courseKey=c=>`${c.branch}|${c.name}`;
 const courseMail={
  'Abogacía|Técnicas instrumentales':['dataforum_instrucciones','dataforum_viernes','schedule','dataforum','udc_avisos'],
  'Procura|Técnicas instrumentales':['grades','procura_resultados','materials'],
- 'Procura|Deontología y responsabilidad':['assignment'],
+ 'Procura|Deontología y responsabilidad':['mail_deontologia_ana_vazquez','assignment'],
  'Procura|Actuación procesal':['materials']
 };
 
@@ -5856,7 +6047,7 @@ const teacherGradeMap={
  'Carolina Moreno Vázquez':'10 / 10 (20/20)',
  'Alex Sánchez Barge':'10 / 10 (20/20)',
  'Daniel Garrido Pazos':'10 / 10 ★',
- 'Ana Vázquez Corte':'Test 10/10 ✓',
+ 'Ana Vázquez Corte':'8.8 / 10 ★',
  'Carmen Belo González':'Completado ✓',
  'Vanessa Amarelle':'Completado ✓',
  'Carlos Tomé':'Completado ✓',
@@ -5872,6 +6063,9 @@ function getSubjectGradeBadgeHtml(sub, isPast=true){
   let label = '10 / 10 ★';
   if(s.includes('20/20')) label = '10 / 10 (20/20)';
   return `<span class="inline-grade-pill" title="Calificación oficial en la materia: ${escapeHtml(s)}">⭐ ${label}</span>`;
+ }
+ if(s.includes('8.8') || s.includes('8,8')){
+  return `<span class="inline-grade-pill" title="Calificación obtenida: ${escapeHtml(s)}">⭐ 8.8 / 10 ★</span>`;
  }
  if(s.toLowerCase().includes('test: 10') || s.toLowerCase().includes('test 10')){
   return `<span class="inline-grade-pill" title="Calificación en test: 10 / 10">⭐ Test 10/10</span>`;
@@ -7662,28 +7856,28 @@ function renderTeachers(q='', filter=currentTeacherFilter){
       <div class="teacher-kicker">${t.role}</div>
       <h3><button class="teacher-link" style="text-decoration:none;font:inherit;color:inherit;cursor:pointer" data-teacher="${t.name}">👤 ${t.name}${getTeacherGradeBadgeHtml(t, true)} ↗</button></h3>
      </div>
-     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-      <span class="teacher-grade-pill">${t.gradeBadge}</span>
+     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+      <span class="teacher-grade-pill ${t.gradeBadge.toLowerCase().includes('pendiente') ? 'pending' : (t.gradeBadge.toLowerCase().includes('completado') ? 'completed' : '')}">${t.gradeBadge}</span>
       <span class="${badgeClass}">${st.label}</span>
      </div>
     </div>
     <p class="teacher-summary" style="margin-top:8px">${t.grade ? t.grade.detail : t.summary}</p>
-    <div style="font-size:11px;color:var(--muted);margin-top:6px">
+    <div style="font-size:11.5px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:6px">
      📅 ${sessions.length} sesiones programadas · ${st.upcomingCount ? `<b>${st.upcomingCount} pendientes por venir</b>` : 'todas impartidas'}
     </div>
 
     <!-- Desplegable dentro de la tarjeta con todas las sesiones, correos, prácticas y apuntes -->
-    <details class="teacher-sessions-details" style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px">
-     <summary style="cursor:pointer;font-weight:700;font-size:12px;color:var(--green-dark);display:flex;align-items:center;gap:6px">
+    <details class="teacher-sessions-details">
+     <summary>
       <span>📅 Ver fechas de clase (${sessions.length} sesiones), correos y apuntes</span>
-      <span style="font-size:10px">▾</span>
+      <span class="t-summary-chevron">▾</span>
      </summary>
-     <div style="margin-top:10px">
+     <div class="teacher-sessions-content">
       ${sessions.length ? `
-       <div class="teacher-sessions-box" style="margin-bottom:12px">
+       <div class="teacher-sessions-box">
         <div class="teacher-sessions-head">
          <span>📅 Días y horas de clase</span>
-         <span style="font-weight:600;font-size:10.5px">${t.branch} · Colegio de Abogados</span>
+         <span class="branch-tag">${t.branch} · Colegio de Abogados</span>
         </div>
         <div class="teacher-sessions-list">
          ${sessions.map(s=>{
@@ -7691,11 +7885,15 @@ function renderTeachers(q='', filter=currentTeacherFilter){
           const tagHtml = (sState==='today') ? '<span class="teacher-badge-today">🟢 ¡Hoy en clase!</span>' : ((sState==='tomorrow') ? '<span class="teacher-badge-tomorrow">🔥 ¡Mañana!</span>' : ((sState==='upcoming') ? '<span class="teacher-badge-upcoming">⏳ Por venir</span>' : '<span class="teacher-badge-past">✓ Ya impartida</span>'));
           return `
            <div class="teacher-session-row ${sState}">
-            <div class="teacher-session-date">🗓️ ${s.dayLabel}</div>
-            <div class="teacher-session-time">⏰ ${s.time} <span style="color:var(--muted);font-weight:400">(${s.hours})</span></div>
+            <div class="teacher-session-top">
+             <div class="teacher-session-date-time">
+              <span>🗓️ ${s.dayLabel}</span>
+              <span class="teacher-session-time-pill">⏰ ${s.time} (${s.hours})</span>
+             </div>
+             <div>${tagHtml}</div>
+            </div>
             <div class="teacher-session-topic" title="${s.topic}">📖 ${s.topic}</div>
             <div class="teacher-session-place">📍 ${s.place}</div>
-            <div>${tagHtml}</div>
            </div>
           `;
          }).join('')}
@@ -7704,24 +7902,26 @@ function renderTeachers(q='', filter=currentTeacherFilter){
       ` : ''}
 
       ${mailsList.length ? `
-       <div style="margin-bottom:10px">
-        <b style="font-size:11.5px;color:var(--ink)">✉️ Correos (${mailsList.length}):</b>
-        <div style="margin-top:4px">
-         ${mailsList.map(m=>`<button class="pill-btn blue" data-detail="${m.key}" style="margin:2px 4px 2px 0">✉ ${m.title} ↗</button>`).join('')}
-         <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer" style="margin-top:2px">Buscar en Outlook ↗</a>
+       <div class="teacher-sub-group">
+        <div class="teacher-sub-group-title">✉️ Comunicaciones y correos (${mailsList.length})</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+         ${mailsList.map(m=>`<button class="pill-btn blue" data-detail="${m.key}">✉ ${m.title} ↗</button>`).join('')}
+         <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Buscar en Outlook ↗</a>
         </div>
        </div>
       ` : ''}
 
       ${practicesList.length ? `
-       <div style="margin-bottom:10px">
-        <b style="font-size:11.5px;color:var(--ink)">✍️ Prácticas (${practicesList.length}):</b>
-        <div style="margin-top:4px">
+       <div class="teacher-sub-group">
+        <div class="teacher-sub-group-title">✍️ Prácticas y tareas evaluables (${practicesList.length})</div>
+        <div style="display:grid;gap:6px">
          ${practicesList.map(p=>`
-          <div style="font-size:11.5px;margin-bottom:3px">
-           <span>📝 ${p.title}</span>
-           ${p.status ? `<span style="color:var(--green-dark);font-weight:700"> (${p.status})</span>` : ''}
-           ${p.key ? `<button class="pill-btn" data-detail="${p.key}" style="font-size:10px;padding:2px 6px;margin-left:4px">Ver detalle ↗</button>` : ''}
+          <div class="teacher-practice-item">
+           <span class="t-prac-title">📝 ${p.title}</span>
+           <div class="t-prac-actions">
+            ${p.status ? `<span class="inline-grade-pill pill-subtle">${p.status}</span>` : ''}
+            ${p.key ? `<button class="pill-btn" data-detail="${p.key}">Ver detalle ↗</button>` : ''}
+           </div>
           </div>
          `).join('')}
         </div>
@@ -7729,17 +7929,17 @@ function renderTeachers(q='', filter=currentTeacherFilter){
       ` : ''}
 
       ${(driveDocs.length || notesList.length) ? `
-       <div style="margin-bottom:8px">
-        <b style="font-size:11.5px;color:var(--ink)">📚 Apuntes y documentación (${driveDocs.length + notesList.length}):</b>
-        <div style="margin-top:4px">
+       <div class="teacher-sub-group">
+        <div class="teacher-sub-group-title">📚 Apuntes y documentación (${driveDocs.length + notesList.length})</div>
+        <div style="display:grid;gap:6px">
          ${driveDocs.map(d=>`
-          <div class="doc-direct-row" style="margin-bottom:4px">
+          <div class="doc-direct-row">
            <span>📄 ${d.name}</span>
            <a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label || 'Abrir en Drive ↗'}</a>
           </div>
          `).join('')}
          ${notesList.map(n=>`
-          <div class="doc-direct-row" style="margin-bottom:4px">
+          <div class="doc-direct-row">
            <span>📖 ${n.title}</span>
            <a href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel || 'Abrir ↗'}</a>
           </div>
@@ -7750,10 +7950,12 @@ function renderTeachers(q='', filter=currentTeacherFilter){
      </div>
     </details>
 
-    <div class="action-pills" style="margin-top:12px">
-     ${t.mails[0]?`<button class="pill-btn blue" data-detail="${t.mails[0].key}">Ver correo ↗</button>`:''}
-     ${(t.driveFiles||[])[0]?`<a class="pill-link terra" href="${t.driveFiles[0].url}" target="_blank" rel="noopener noreferrer">Ver Drive ↗</a>`:''}
-     <button class="pill-btn" data-teacher="${t.name}">Ver sesiones y ficha ↗</button>
+    <div class="teacher-card-footer" style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--line-subtle)">
+     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+      ${t.mails[0]?`<button class="pill-btn blue" data-detail="${t.mails[0].key}">✉ Correo ↗</button>`:''}
+      ${(t.driveFiles||[])[0]?`<a class="pill-link terra" href="${t.driveFiles[0].url}" target="_blank" rel="noopener noreferrer">📁 Drive ↗</a>`:''}
+     </div>
+     <button class="pill-btn" data-teacher="${t.name}">Ver sesiones y ficha ➔</button>
     </div>
    </div>
   </article>
