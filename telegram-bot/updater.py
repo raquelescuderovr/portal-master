@@ -98,6 +98,57 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
 
     return content
 
+def add_grade_entry(content: str, grade_id: str, title: str, kicker: str, score: str, score_label: str,
+                    teacher: str, subject_ref: str, mail_key: str, description: str, breakdown: list) -> str:
+    """Inserta una calificación oficial en gradeRecords y actualiza teacherGradeMap."""
+    s_id = re.sub(r'[^a-zA-Z0-9_]', '_', grade_id.strip().lower())
+    s_title = sanitize_js_string(title)
+    s_kicker = sanitize_js_string(kicker)
+    s_score = sanitize_js_string(score)
+    s_score_label = sanitize_js_string(score_label or "Nota docente")
+    s_teacher = sanitize_js_string(teacher)
+    s_subref = sanitize_js_string(subject_ref)
+    s_mail_key = sanitize_js_string(mail_key)
+    s_desc = sanitize_js_string(description)
+
+    breakdown_js = ",\n   ".join([
+        f"{{label:'{sanitize_js_string(b.get('label', ''))}',val:'{sanitize_js_string(b.get('val', ''))}'}}"
+        for b in breakdown
+    ])
+
+    grade_entry = f""" {{
+  id:'{s_id}',
+  type:'mail',
+  kicker:'{s_kicker}',
+  title:'{s_title}',
+  score:'{s_score}',
+  scoreLabel:'{s_score_label}',
+  breakdown:[
+   {breakdown_js}
+  ],
+  teacher:'{s_teacher}',
+  subjectRef:'{s_subref}',
+  mailKey:'{s_mail_key}',
+  description:'{s_desc}',
+  links:[
+   {{label:'✉ Abrir correo de la nota ↗',detailKey:'{s_mail_key}',cls:'solid-green'}},
+   {{label:'Ver asignatura ↗',subjectRef:'{s_subref}'}},
+   {{label:'Ficha de {s_teacher} ↗',teacher:'{s_teacher}'}},
+   {{label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}}
+  ]
+ }},
+"""
+    if "const gradeRecords=[" in content:
+        content = content.replace("const gradeRecords=[\n", "const gradeRecords=[\n" + grade_entry, 1)
+
+    if s_teacher and "const teacherGradeMap={" in content:
+        if f"'{s_teacher}'" in content:
+            content = re.sub(rf"'{re.escape(s_teacher)}':\s*'[^']*'", f"'{s_teacher}':'{s_score} ★'", content)
+        else:
+            content = content.replace("const teacherGradeMap={\n", f"const teacherGradeMap={{\n '{s_teacher}':'{s_score} ★',\n", 1)
+
+    return content
+
 def save_and_commit(new_content: str, commit_msg: str) -> bool:
     """Guarda los cambios localmente o a través de la API de GitHub."""
     # 1. Modo Local si el archivo existe
