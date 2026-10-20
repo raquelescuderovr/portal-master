@@ -1,25 +1,28 @@
-"""Bot de Telegram para el Portal del Máster (Python nativo, sin dependencias externas)."""
+"""Bot de Telegram Conversacional para el Máster en Abogacía y Procura.
+Soporta diálogo fluido, visión multimodal (casos prácticos y CEPROC) y llamadas a herramientas para actualizar el portal.
+"""
 import os
 import sys
 import json
 import time
+import re
 import urllib.request
 import urllib.parse
 from datetime import datetime
 
 from config import (
     TELEGRAM_BOT_TOKEN, TELEGRAM_ALLOWED_USER, GITHUB_TOKEN,
-    GITHUB_REPO, PORTAL_PUBLIC_URL, INDEX_HTML
+    GITHUB_REPO, PORTAL_PUBLIC_URL, INDEX_HTML, ENV_PATH
 )
 import updater
-import ai_parser
+import assistant
 
 TELEGRAM_API_BASE = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 def api_request(method: str, params: dict = None, data: bytes = None, content_type: str = "application/json") -> dict:
     """Realiza una petición a la API de Telegram."""
     url = f"{TELEGRAM_API_BASE}/{method}"
-    headers = {"User-Agent": "Master-Portal-Bot/1.0"}
+    headers = {"User-Agent": "Master-Portal-Bot/2.0"}
 
     if data is not None:
         headers["Content-Type"] = content_type
@@ -42,6 +45,11 @@ def send_message(chat_id: int, text: str, parse_mode: str = "HTML") -> dict:
     payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": parse_mode}).encode("utf-8")
     return api_request("sendMessage", data=payload)
 
+def send_chat_action(chat_id: int, action: str = "typing"):
+    """Envía la acción de 'escribiendo...' a Telegram."""
+    payload = json.dumps({"chat_id": chat_id, "action": action}).encode("utf-8")
+    api_request("sendChatAction", data=payload)
+
 def download_telegram_file(file_id: str) -> bytes:
     """Descarga un archivo o imagen desde los servidores de Telegram."""
     file_info = api_request("getFile", params={"file_id": file_id})
@@ -49,15 +57,48 @@ def download_telegram_file(file_id: str) -> bytes:
         return b""
     file_path = file_info["result"]["file_path"]
     download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
-    req = urllib.request.Request(download_url, headers={"User-Agent": "Master-Portal-Bot/1.0"})
+    req = urllib.request.Request(download_url, headers={"User-Agent": "Master-Portal-Bot/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.read()
 
 def is_authorized(user_id: int) -> bool:
     """Verifica si el remitente es Raquel."""
     if not TELEGRAM_ALLOWED_USER:
-        return True  # Si no está configurado, permite el primer uso y avisa
+        return True  # Permitir primer uso para vincular
     return str(user_id) == str(TELEGRAM_ALLOWED_USER)
+
+def save_gemini_key_from_chat(key: str) -> bool:
+    """Guarda automáticamente la clave de Gemini en el .env si Raquel la envía."""
+    try:
+        lines = []
+        if ENV_PATH.exists():
+            with open(ENV_PATH, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+
+        new_lines = []
+        replaced = False
+        for line in lines:
+            if line.strip().startswith("GEMINI_API_KEY="):
+                new_lines.append(f'GEMINI_API_KEY="{key}"\n')
+                replaced = True
+            else:
+                new_lines.append(line)
+
+        if not replaced:
+            new_lines.append(f'GEMINI_API_KEY="{key}"\n')
+
+        with open(ENV_PATH, "w", encoding="utf-8") as f:
+            f.writelines(new_lines)
+
+        os.environ["GEMINI_API_KEY"] = key
+        # Recargar en assistant y config
+        import config
+        config.GEMINI_API_KEY = key
+        assistant.GEMINI_API_KEY = key
+        return True
+    except Exception as e:
+        print(f"[Bot] Error guardando clave: {e}", flush=True)
+        return False
 
 def handle_update(update: dict):
     """Procesa un update recibido de Telegram."""
@@ -68,30 +109,36 @@ def handle_update(update: dict):
     chat_id = msg["chat"]["id"]
     user_id = msg["from"]["id"]
     user_name = msg["from"].get("first_name", "Raquel")
-    text = msg.get("text", "")
-    caption = msg.get("caption", "")
+    text = msg.get("text", "").strip()
+    caption = msg.get("caption", "").strip()
 
-    # Seguridad: comprobar autorización
     if not is_authorized(user_id):
         send_message(chat_id, f"⛔ Acceso no autorizado. Tu Telegram ID es: <code>{user_id}</code>")
         return
 
     # Comando /start
     if text == "/start":
-        send_message(chat_id, f"""🎓 <b>¡Hola, {user_name}! Asistente del Máster conectado.</b>
+        send_message(chat_id, f"""🎓 <b>¡Hola, {user_name}! Asistente conversacional del Máster listo.</b>
 
-Tu Telegram ID es: <code>{user_id}</code>
+Ya no soy un simple bot de comandos: ahora podemos <b>conversar con total fluidez</b>.
 
-<b>¿Qué puedo hacer por ti?</b>
-• 📩 <b>Reenvíame cualquier correo</b> del máster (ICACOR, Procuradores o UDC) y lo publico en el portal.
-• 📸 <b>Mándame una captura de CEPROC</b> y extraeré la tarea y su fecha de entrega.
-• ✍️ <b>Escríbeme o dicta una nota</b> con avisos de clase.
+<b>¿Qué puedes hacer?</b>
+• 📸 <b>Mándame la foto de un caso práctico</b> y cuéntame tus notas (ej: <i>«mira este caso de Sandra Mosteiro, pero la pregunta 2 no se responde y la entrega es el viernes a las 14h»</i>).
+• 📩 <b>Reenvíame correos o avisos de CEPROC</b> y dime si quieres cambiar o destacar algo.
+• 💬 <b>Pregúntame cualquier duda</b> jurídica, de las asignaturas o del calendario.
+• ⚡ <b>Dime «Súbelo al portal»</b> cuando quieras que publique la práctica o el correo.
 
 <b>Comandos útiles:</b>
-/hoy — Clases y horario de la jornada actual
-/entregas — Prácticas y tareas de CEPROC
-/web — Enlace a tu portal en GitHub Pages
-/ayuda — Instrucciones completas""")
+/hoy — Clases y horarios de la jornada
+/entregas — Estado de prácticas de CEPROC
+/limpiar — Reinicia el hilo de conversación actual
+/web — Enlace a tu web pública""")
+        return
+
+    # Comando /limpiar o /reset
+    if text in ("/limpiar", "/reset"):
+        assistant.reset_chat_history(chat_id)
+        send_message(chat_id, "🧹 <i>Historial de conversación reiniciado. ¿En qué te ayudo ahora?</i>")
         return
 
     # Comando /web
@@ -101,105 +148,66 @@ Tu Telegram ID es: <code>{user_id}</code>
 
     # Comando /hoy
     if text == "/hoy":
-        send_message(chat_id, """🗓️ <b>Docencia de hoy (19 de octubre):</b>
-• <b>16:30 – 18:30 h:</b> Sandra Mosteiro Costa (Procura) · <i>Actos de comunicación judicial</i>
-• <b>18:45 – 20:45 h:</b> José Luis Delgado Domínguez (Abogacía) · <i>Responsabilidad civil y penal</i>
-📍 <i>Colegio de Abogados (A Coruña)</i>""")
+        send_chat_action(chat_id, "typing")
+        resp = assistant.execute_tool("consultar_hoy", {})
+        sesiones_txt = "\n".join([f"• <b>{s['hora']}:</b> {s.get('docente', s.get('actividad'))} ({s.get('materia', '')})" for s in resp.get("sesiones", [])])
+        send_message(chat_id, f"🗓️ <b>Docencia de hoy ({resp.get('fecha')}):</b>\n{sesiones_txt}\n📍 <i>Colegio de Abogados</i>")
         return
 
     # Comando /entregas
     if text == "/entregas":
-        send_message(chat_id, """✍️ <b>Estado de entregas y CEPROC:</b>
-• <b>Poder apud acta:</b> Entregado ✓
-• <b>Escrito de subsanación:</b> Entregado ✓
-• <b>Auto declaración con oferta UP:</b> Entregado (2 envíos) ✓
-• <b>Caso Deontología Procura:</b> Entregado ✓
-📊 <b>Balance:</b> 4 / 4 prácticas enviadas (0 vencidas).""")
+        send_chat_action(chat_id, "typing")
+        resp = assistant.execute_tool("consultar_entregas", {})
+        send_message(chat_id, f"✍️ <b>Estado de entregas en CEPROC:</b>\n• <b>Balance:</b> {resp.get('balance')}\n• " + "\n• ".join(resp.get("ultimas", [])))
         return
 
-    # Manejo de FOTOS / CAPTURAS (ej. CEPROC)
-    photos = msg.get("photo")
-    if photos:
-        send_message(chat_id, "🔍 <i>Analizando captura de pantalla...</i>")
-        largest_photo = photos[-1]  # Mejor resolución
-        img_bytes = download_telegram_file(largest_photo["file_id"])
+    # Detección inteligente de Clave de Gemini (AIzaSy...)
+    match_key = re.search(r"AIzaSy[A-Za-z0-9_-]{33}", text)
+    if match_key:
+        api_key_found = match_key.group(0)
+        send_chat_action(chat_id, "typing")
+        if save_gemini_key_from_chat(api_key_found):
+            send_message(chat_id, """🎉 <b>¡Clave de Gemini activada con éxito!</b>
 
-        parsed = ai_parser.parse_text_or_image(text=caption, image_bytes=img_bytes, mime_type="image/jpeg")
-        process_and_save(chat_id, parsed)
-        return
-
-    # Manejo de MENSAJES DE TEXTO O REENVÍOS DE CORREO
-    if text:
-        send_message(chat_id, "⚡ <i>Procesando información y actualizando portal...</i>")
-        parsed = ai_parser.parse_text_or_image(text=text)
-        process_and_save(chat_id, parsed)
-
-def process_and_save(chat_id: int, parsed: dict):
-    """Inserta la información en el portal y confirma por Telegram."""
-    try:
-        # Leer index.html actual
-        if not INDEX_HTML.exists():
-            send_message(chat_id, "⚠️ No se localizó index.html en local. Verificando repositorio...")
+Ya tengo cerebro conversacional y visión artificial completa. A partir de ahora puedes pasarme fotos de casos prácticos con tus indicaciones y charlaremos fluidamente.""")
             return
 
-        with open(INDEX_HTML, "r", encoding="utf-8") as f:
-            current_content = f.read()
+    # Manejo de FOTOS / IMÁGENES (con o sin texto de acompañamiento)
+    photos = msg.get("photo")
+    if photos:
+        send_chat_action(chat_id, "typing")
+        largest_photo = photos[-1]
+        img_bytes = download_telegram_file(largest_photo["file_id"])
 
-        p_type = parsed.get("type", "mail")
-        title = parsed.get("title", "Aviso académico")
-        date_str = parsed.get("date", datetime.now().strftime("%d oct %Y"))
-        teacher = parsed.get("sender_or_teacher", "Docente asignado")
-        subject = parsed.get("subject", "Módulo en curso")
-        sub_ref = parsed.get("subject_ref", "Abogacía|Técnicas instrumentales|3")
-        summary = parsed.get("summary", title)
-        body = parsed.get("body", "")
-        meta = parsed.get("meta", "Comunicaciones del Máster")
+        # Pasar la foto y la indicación de Raquel al asistente conversacional
+        reply = assistant.chat(chat_id, user_text=caption, image_bytes=img_bytes, mime_type="image/jpeg")
+        send_message(chat_id, reply)
+        return
 
-        if p_type == "ceproc_task":
-            deadline = parsed.get("deadline", "Próxima sesión")
-            new_html = updater.add_ceproc_task(
-                current_content, date_str, title, teacher, subject, sub_ref,
-                "Pendiente de realizar", deadline, body or summary
-            )
-            commit_msg = f"Añadir práctica CEPROC: {title} ({teacher})"
-            tipo_label = "✍️ <b>Nueva práctica en CEPROC</b>"
-            extra_info = f"⏰ <b>Plazo:</b> {deadline}"
-        else:
-            key_name = "mail_" + str(int(time.time()))[-6:]
-            new_html = updater.add_mail_entry(
-                current_content, date_str, title, meta, key_name,
-                teacher, sub_ref, summary, body, meta
-            )
-            commit_msg = f"Incorporar correo: {title} ({meta})"
-            tipo_label = "📩 <b>Nuevo correo / aviso incorporado</b>"
-            extra_info = f"👤 <b>Docente / Fuente:</b> {teacher}"
+    # Manejo de DOCUMENTOS (PDFs o imágenes adjuntas como archivo)
+    doc = msg.get("document")
+    if doc:
+        mime = doc.get("mime_type", "")
+        if "image" in mime or "pdf" in mime:
+            send_chat_action(chat_id, "typing")
+            doc_bytes = download_telegram_file(doc["file_id"])
+            reply = assistant.chat(chat_id, user_text=caption, image_bytes=doc_bytes, mime_type=mime)
+            send_message(chat_id, reply)
+            return
 
-        # Guardar y hacer push
-        success = updater.save_and_commit(new_html, commit_msg)
-
-        if success:
-            send_message(chat_id, f"""✅ <b>¡Portal actualizado y publicado!</b>
-
-{tipo_label}
-📌 <b>Título:</b> {title}
-{extra_info}
-📚 <b>Materia:</b> {subject}
-
-🔗 <a href="{PORTAL_PUBLIC_URL}">Ver cambios en la web del Máster</a>""")
-        else:
-            send_message(chat_id, f"⚠️ Se procesaron los datos ({title}), pero ocurrió un problema al hacer push a GitHub.")
-
-    except Exception as e:
-        send_message(chat_id, f"❌ Error al procesar: <code>{str(e)}</code>")
+    # Manejo de MENSAJES DE TEXTO CONVERSACIONALES
+    if text:
+        send_chat_action(chat_id, "typing")
+        reply = assistant.chat(chat_id, user_text=text)
+        send_message(chat_id, reply)
 
 def run_polling():
     """Bucle principal de polling de Telegram."""
     if not TELEGRAM_BOT_TOKEN:
-        print("❌ Error: TELEGRAM_BOT_TOKEN no está definido en config o en .env")
-        print("Por favor, crea tu bot con @BotFather y añade el token a telegram-bot/.env")
+        print("❌ Error: TELEGRAM_BOT_TOKEN no está definido en config o en .env", flush=True)
         sys.exit(1)
 
-    print("🚀 Bot de Telegram del Máster iniciado y escuchando...", flush=True)
+    print("🚀 Bot de Telegram Conversacional del Máster iniciado y escuchando...", flush=True)
     offset = 0
     while True:
         try:
