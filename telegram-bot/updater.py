@@ -98,6 +98,32 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
 
     return content
 
+def mark_delivery_completed(content: str, search_query: str) -> tuple:
+    """Busca una entrega por término clave (título o docente) y la marca como completada."""
+    m = re.search(r'(const deliveries=\[\s*)(.*?)(\s*\];)', content, re.DOTALL)
+    if not m:
+        return content, False
+
+    deliveries_block = m.group(2)
+    lines = deliveries_block.splitlines(True)
+    found = False
+    new_lines = []
+    sq_lower = search_query.strip().lower()
+
+    for line in lines:
+        if not found and sq_lower in line.lower() and 'submitted:false' in line:
+            line = re.sub(r"status:'[^']+'", "status:'Completada y enviada ✓'", line)
+            line = line.replace('submitted:false', 'submitted:true')
+            found = True
+        new_lines.append(line)
+
+    if found:
+        new_block = m.group(1) + "".join(new_lines) + m.group(3)
+        content = content[:m.start()] + new_block + content[m.end():]
+        return content, True
+
+    return content, False
+
 def add_grade_entry(content: str, grade_id: str, title: str, kicker: str, score: str, score_label: str,
                     teacher: str, subject_ref: str, mail_key: str, description: str, breakdown: list) -> str:
     """Inserta una calificación oficial en gradeRecords y actualiza teacherGradeMap."""

@@ -52,6 +52,9 @@ Tu personalidad y estilo de conversación:
   [ACCION:GUARDAR_PRACTICA:{{"titulo": "...", "docente": "...", "materia": "...", "plazo": "...", "detalles": "..."}}]
   o bien para correos y avisos:
   [ACCION:GUARDAR_CORREO:{{"titulo": "...", "remitente": "...", "docente": "...", "materia": "...", "resumen": "...", "cuerpo": "..."}}]
+  o cuando Raquel te indique que ya ha entregado o completado una práctica pendiente:
+  [ACCION:COMPLETAR_PRACTICA:{{"termino": "título o docente de la práctica"}}]
+
 
 Estado actual del portal de Raquel:
 {portal_info}
@@ -131,6 +134,16 @@ def execute_action(action_type: str, args: dict) -> str:
             commit_msg = f"Incorporar aviso: {titulo} [vía Telegram]"
             updater.save_and_commit(new_html, commit_msg)
             return f"\n\n📌 <b>Aviso incorporado al portal:</b> «{titulo}»\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
+
+        elif action_type == "COMPLETAR_PRACTICA":
+            termino = args.get("termino", "")
+            new_html, found = updater.mark_delivery_completed(current_content, termino)
+            if found:
+                commit_msg = f"Marcar entrega completada: {termino} [vía Telegram]"
+                updater.save_and_commit(new_html, commit_msg)
+                return f"\n\n✅ <b>Práctica marcada como entregada en tu portal web:</b> «{termino}»\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver portal</a>"
+            else:
+                return f"\n\n⚠️ <i>No se encontró ninguna entrega pendiente que coincida con «{termino}».</i>"
 
     except Exception as e:
         print(f"[Assistant] Error al ejecutar acción {action_type}: {e}")
@@ -259,7 +272,7 @@ def chat(chat_id: int, user_text: str = "", image_bytes: bytes = None, mime_type
 
     # Detectar y procesar posibles acciones automáticas
     action_note = ""
-    action_pattern = r'\[ACCION:(GUARDAR_PRACTICA|GUARDAR_CORREO):(\{.*?\})\]'
+    action_pattern = r'\[ACCION:(GUARDAR_PRACTICA|GUARDAR_CORREO|COMPLETAR_PRACTICA):(\{.*?\})\]'
     match = re.search(action_pattern, resp_text, re.DOTALL)
     if match:
         act_type = match.group(1)
