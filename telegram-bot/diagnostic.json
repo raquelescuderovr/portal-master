@@ -1,0 +1,12 @@
+{
+  "token_len": 17,
+  "token_prefix": "89526179",
+  "token_suffix": "GUAX",
+  "gemini_len": 53,
+  "gemini_prefix": "AQ.Ab8RN",
+  "gemini_suffix": "cleA",
+  "telegram_error": "HTTP Error 401: Unauthorized",
+  "telegram_response": null,
+  "gemini_error": "HTTP Error 503: Service Unavailable",
+  "gemini_ok": false
+}
