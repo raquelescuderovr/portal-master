@@ -240,9 +240,11 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
 
     resp_text = ""
     last_err = None
-
     for m_name, extra_gen_cfg in models_to_try:
-        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent?key={GEMINI_API_KEY.strip()}"
+        clean_key = GEMINI_API_KEY.strip()
+        api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent"
+        if not clean_key.startswith("AQ."):
+            api_url += f"?key={clean_key}"
         
         gen_cfg = {"temperature": 0.3}
         gen_cfg.update(extra_gen_cfg)
@@ -254,10 +256,15 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
         }
 
         req_data = json.dumps(payload).encode("utf-8")
+        headers = {
+            "Content-Type": "application/json",
+            "User-Agent": "Master-AI-Assistant/2.0",
+            "x-goog-api-key": clean_key
+        }
         req = urllib.request.Request(
             api_url,
             data=req_data,
-            headers={"Content-Type": "application/json", "User-Agent": "Master-AI-Assistant/2.0"},
+            headers=headers,
             method="POST"
         )
 
