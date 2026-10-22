@@ -3982,7 +3982,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 3 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 2 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4022,7 +4022,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <button class="side-pending-item" data-detail="entrega_delgado_parte_a" title="Plazo: 29 de octubre de 2026 · ICACOR">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
-            <strong class="spi-date">29 oct · En 9 días</strong>
+            <strong class="spi-date">29 oct · En 7 días</strong>
             <span class="spi-platform blue">ICACOR</span>
           </div>
           <div class="spi-title">Parte A: Insostenibilidad y AJG</div>
@@ -4032,7 +4032,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <button class="side-pending-item" data-detail="entrega_delgado_parte_b" title="Plazo: 30 de octubre de 2026 · ICACOR">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
-            <strong class="spi-date">30 oct · En 10 días</strong>
+            <strong class="spi-date">30 oct · En 8 días</strong>
             <span class="spi-platform blue">ICACOR</span>
           </div>
           <div class="spi-title">Parte B: Siniestro RC y Turno Oficio</div>
@@ -4247,7 +4247,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Prácticas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">3 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">2 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">5</span></button>
   </div>
@@ -4362,7 +4362,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
           <p class="ptb-subtitle">Casos prácticos y escritos pendientes de entrega en Colegio de Abogados con profesor y fecha límite.</p>
         </div>
-        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (8) ➔</button>
+        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (7) ➔</button>
       </div>
 
       <div class="ptb-grid">
@@ -4400,40 +4400,64 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Calificaciones, notas por correo y tests evaluados</h2>
-        <p>Notas oficiales por correo de profesores (10/10 con Javier Sánchez y 8.8 con Ana Vázquez) y tests online realizados (20/20 en el test de Carolina Moreno).</p>
+        <p>Notas oficiales por correo de profesores (10/10 con Javier Sánchez y 8.8 con Ana Vázquez) y tests online de clase (20/20 con Carolina Moreno y 9/10 con Sandra Mosteiro).</p>
       </div>
       <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
+    </div>
+
+    <!-- Explicación del modelo de calificaciones: 3 niveles diferenciados -->
+    <div style="background:var(--paper-card);border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;padding:16px 20px;margin-bottom:20px;display:grid;gap:12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
+          <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
+        </strong>
+        <span class="due-state submitted" style="font-size:11px">2 notas por correo · 2 tests superados · 5 prácticas entregadas</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
+        <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:4px">1. ✉️ Nota conjunta del profesor (por correo)</div>
+          <p style="color:var(--ink-soft);margin:0">Es la calificación global que envía el docente al finalizar su bloque (ej. <strong>Javier Sánchez 10/10</strong> y <strong>Ana Vázquez 8.8/10</strong>). Pondera la nota conjunta de tests (40 %) y la nota conjunta de trabajos/escritos prácticos (60 %).</p>
+        </div>
+        <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
+          <div style="font-weight:700;color:var(--blue);margin-bottom:4px">2. 📝 Tests online de clase (cuestionarios tipo test)</div>
+          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct y <strong>9/10 con Sandra Mosteiro</strong> el 20 oct). Tienen su propia nota independiente y no son casos prácticos.</p>
+        </div>
+        <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
+          <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
+          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (5 entregadas con éxito y 2 pendientes con Delgado).</p>
+        </div>
+      </div>
     </div>
 
     <!-- Resumen de notas por correo y tests (dentro de Notas y Tests) -->
     <div class="stats-strip" aria-label="Notas por correo a grosso modo" style="margin-bottom:20px">
       <button class="stat-card" data-detail="grades">
         <div>
-          <span class="stat-kicker">Nota por correo · 14 oct</span>
+          <span class="stat-kicker">Nota conjunta correo · 14 oct</span>
           <span class="stat-title">Técnicas instrum. · Javier Sánchez</span>
         </div>
         <span class="stat-val-pill">10 / 10</span>
       </button>
       <button class="stat-card" data-detail="grade_ana_vazquez">
         <div>
-          <span class="stat-kicker">Nota por correo · 19 oct</span>
+          <span class="stat-kicker">Nota conjunta correo · 19 oct</span>
           <span class="stat-title">Deontología · Ana Vázquez</span>
         </div>
         <span class="stat-val-pill">8.8 / 10</span>
       </button>
       <button class="stat-card highlight-test" data-detail="all_tests_summary">
         <div>
-          <span class="stat-kicker">Tests CPROC / Testmoz</span>
-          <span class="stat-title">Todos realizados (Test 16 oct: 20/20)</span>
+          <span class="stat-kicker">Tests online de clase</span>
+          <span class="stat-title">2 realizados (Test 16 oct: 20/20 · 20 oct: 9/10)</span>
         </div>
-        <span class="stat-val-pill">10 (y un 8)</span>
+        <span class="stat-val-pill">10 y 9 ★</span>
       </button>
       <button class="stat-card" data-switch-view="entregas">
         <div>
-          <span class="stat-kicker">Prácticas en CPROC y Drive</span>
-          <span class="stat-title">Todas subidas y enviadas</span>
+          <span class="stat-kicker">Prácticas entregadas (CPROC)</span>
+          <span class="stat-title">5 entregadas en 3 asignaturas</span>
         </div>
-        <span class="stat-val-pill">4 / 4 ✓</span>
+        <span class="stat-val-pill">5 / 5 ✓</span>
       </button>
     </div>
 
@@ -4569,22 +4593,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Prácticas y entregas (2 pendientes de entrega · 6 completadas y superadas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR) y 6 prácticas ya enviadas y registradas.</p>
+        <h2>Próximas entregas y prácticas (2 pendientes · 5 completadas en 3 asignaturas)</h2>
+        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR) y 5 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">2 pendientes · 6 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">2 pendientes · 5 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (8)</button>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (7)</button>
       <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (2)</button>
-      <button class="status-filter-btn" data-delivery-filter="completed">✓ Completadas (6)</button>
-      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Plataforma CPROC</button>
-      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / ICACOR</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 8 prácticas (2 pendientes y 6 completadas).</span>
+      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (5 en 3 asignaturas)</button>
+      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (5)</button>
+      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / ICACOR (2)</button>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 7 prácticas (2 pendientes y 5 completadas en 3 asignaturas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -4827,7 +4851,7 @@ const events={
    {start:'12:35',end:'13:15',name:'Derechos digitales con perspectiva humana: de la norma a las personas',teacher:'Belén Arribas Sánchez (Abogada TIC e IA) y Octavio Gracia (ICAB)',subject:'Derechos digitales, ética algorítmica y tutela de la ciudadanía',detailKey:'df_derechos_digitales',place:'PALEXCO · Videopodcast',kind:'DATAfórum · Podcast'},
    {start:'16:00',end:'16:30',name:'La nueva regulación de la Inteligencia Artificial',teacher:'Javier Torres (Secretario General de la AESIA)',subject:'Aplicación práctica del Reglamento Europeo de IA supervisado por la AESIA',detailKey:'df_regulacion_aesia',place:'PALEXCO · TechLab',kind:'DATAfórum · TechLab'},
    {start:'17:35',end:'18:45',name:'★ Recomendada · Legaltech: Tecnología en bufetes y departamentos de legal',teacher:'Asier Crespo (Microsoft), Juan Saavedra (Inditex), Sara Molina (Pérez-Llorca), Teresa Pereyra (Écija)',subject:'La sesión estrella sobre ejercicio profesional en grandes firmas y departamentos de legaltech',detailKey:'df_legaltech_empresas',place:'PALEXCO · Ágora (Auditorio Arao, Planta 2)',kind:'DATAfórum · Ágora'},
-   {start:'23:59',end:'',name:'✓ ENTREGADO: Caso práctico 2026 (Sandra Mosteiro)',teacher:'Sandra Mosteiro Costa',subject:'Procura · Deontología y Técnicas Transversales (CPROC · Comprobante grabado)',detailKey:'entrega_caso_pr_ctico_de_actos_de',place:'Plataforma CPROC (MUAP) → Tareas publicadas',kind:'Entrega práctica (Completada ✓)'}
+   {start:'12:51',end:'',name:'✓ ENTREGADA: Caso práctico 2026 (Sandra Mosteiro) · 12:51 h en CPROC',teacher:'Sandra Mosteiro Costa',subject:'Procura · Deontología y Técnicas Transversales (CPROC · «La Tarea se ha entregado con éxito»)',detailKey:'entrega_caso_pr_ctico_de_actos_de',place:'Plataforma CPROC (MUAP) → Tareas publicadas',kind:'Entrega práctica (Completada ✓)'}
   ],
   '2026-10-23':[
    {start:'09:30',end:'10:30',name:'Traumatólogo Raquel (Dr. Mejía Aguirre)',subject:'Hospital HM Modelo (Rúa Virrey Osorio, 30, A Coruña)',place:'Hospital HM Modelo',kind:'Cita médica · Personal',isPersonal:true,detailKey:'personal_calendar_sync'},
@@ -5411,23 +5435,26 @@ const details={
  },
  entrega_caso_pr_ctico_de_actos_de:{
   isDelivery:true,
-  kicker:'Práctica Evaluables CPROC · Entregada el 22 de octubre de 2026 ✓',
+  kicker:'Práctica entregada con éxito en CPROC ✓ · 22 de octubre de 2026',
   title:'Caso práctico 2026: Actos de comunicación judicial (Sandra Mosteiro Costa)',
-  date:'Entregada: 22 oct 2026 · Plataforma CPROC (Comprobante grabado en pantalla) ✓',
+  date:'Entregada: jueves, 22 de octubre de 2026 (12:51 h) · Estado: Completada y enviada en CPROC («✓ La Tarea se ha entregado con éxito»)',
   teacher:'Sandra Mosteiro Costa',
   subjectRef:'Procura|Técnicas instrumentales|3',
-  body:'Caso práctico oficial evaluable publicado en la plataforma CPROC (MUAP 26/28 → Tareas publicadas → «CASO PRÁCTICO 2026 - SANDRA»).\n\n• Materia: Deontología y Técnicas Transversales (Procura · Actos de comunicación judicial)\n• Docente: D.ª Sandra Mosteiro Costa (Procuradora ICP)\n• Fecha límite de entrega: Jueves, 22 de octubre de 2026\n• Estructura del ejercicio:\n  1) Escenario 1: Día inicial y día final (cómputo de 20 días hábiles de apelación tras notificación por LexNET remitida el 12 feb a las 13:45 h y abierta el 16 feb; día de gracia hasta las 15:00 h; efectos de remisión a las 15:30 h).\n  2) Escenario 2: Interrupción por aclaración (solicitud el 17 feb y auto denegatorio el 23 feb; cómputo ex art. 448.2 LEC con reinicio íntegro; solicitud posterior de complemento).\n  3) Escenario 3: Errores materiales (rectificación aritmética en 2 días hábiles vs rectificación ex art. 214.3 LEC transcurrido el plazo; corrección de oficio de errata).\n  4) Escenario 4: Suspensión por copia de la grabación del juicio (solicitud el último día a las 21:55 h; suspensión acordada por el LAJ; doctrina del TS sobre plazo y confianza legítima).\n  5) Escenario 5: Renuncia del abogado a mitad de plazo y fuerza mayor (diez días concedidos por el juzgado; doctrina del TS ante declaración de extemporaneidad por la Audiencia e intervención quirúrgica).\n  6) Escenario 6: Plazos sustantivos y día de gracia (prescripción de honorarios art. 1967 CC; presentación a las 22:40 h vs al día siguiente con día de gracia; doctrina TS sobre inaplicabilidad del art. 135.5 LEC a plazos sustantivos).\n  7) Preguntas de reflexión: Rigor del TS con traslado de copias (arts. 276-277 LEC); sentido del día de gracia con sede electrónica 24h; principio de confianza legítima.',
-  source:'Plataforma CPROC (MUAP) → Tareas publicadas (Comprobante de envío registrado)',
+  body:'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC el 22/10/2026 a las 12:51 h\\n\\nESCENARIO 1. DÍA INICIAL Y DÍA FINAL (Arts. 151.2, 133 y 135.5 LEC)\\n• Notificación tenida por realizada el viernes 13 de febrero de 2026 (remitida el jueves 12 feb a las 13:45 h, antes de las 15:00 h). La fecha de apertura efectiva por el procurador (16 feb) no altera el cómputo (art. 151.2 LEC).\\n• Cómputo de 20 días hábiles de apelación: Comienza el lunes 16 de febrero y concluye el viernes 13 de marzo de 2026 (desglose: 16-20 feb = 5 d; 23-27 feb = 10 d; 2-6 mar = 15 d; 9-13 mar = 20 d).\\n• Día de gracia (art. 135.5 LEC): El último momento para presentar válidamente el recurso es el lunes 16 de marzo de 2026 hasta las 15:00 h.\\n• Presentación a las 12:00 h del día de gracia: En plazo. Presentación a las 16:00 h: Extemporánea y precluida.\\n• Hipótesis remisión a las 15:30 h del 12 feb: Se recibe el 13 feb y se notifica el lunes 16 feb. Plazo: del 17 feb al 16 mar; día de gracia: martes 17 mar hasta las 15:00 h.\\n\\nESCENARIO 2. INTERRUPCIÓN POR ACLARACIÓN (Art. 215.5 LEC y doctrina TS)\\n• La solicitud de aclaración del 17 feb interrumpe el plazo de apelación.\\n• Doctrina legal del Pleno Sala 1.ª del TS (Auto de 4 de octubre de 2011, ROJ ATS 10217/2011): El plazo no se reanuda por los días restantes sino que SE REINICIA ÍNTEGRAMENTE por 20 días hábiles.\\n• Notificación del auto denegatorio (remitido 23 feb a las 12:00 h): Notificado el martes 24 feb. El nuevo plazo inicia el miércoles 25 feb y concluye el miércoles 25 de marzo de 2026. Día de gracia: jueves 26 de marzo hasta las 15:00 h.\\n• Solicitud sucesiva de complemento infundada: No reabre de nuevo el plazo según reiterada jurisprudencia del TS para evitar maniobras dilatorias o fraudulentas.\\n\\nESCENARIO 3. ERRORES MATERIALES (Art. 214.3 LEC y 267 LOPJ)\\n• Error aritmético manifiesto (214.3 LEC y 267.3 LOPJ): Puede solicitarse en cualquier momento, incluso tras expirar los 2 días hábiles de aclaración ordinaria.\\n• Corrección de oficio por el Juzgado: El tribunal está facultado para rectificar de oficio los errores materiales y aritméticos en cualquier momento.\\n\\nESCENARIO 4. SUSPENSIÓN POR COPIA DE LA GRABACIÓN (Art. 134.2 LEC y confianza legítima)\\n• Doctrina del TS (STS 27 de mayo de 2020 y 3 de marzo de 2021): La solicitud de copia de vista el último día no suspende ipso iure el cómputo si la parte pudo solicitarla con diligencia previa.\\n• Efecto del auto del LAJ acordando la suspensión: Por el principio constitucional de confianza legítima y tutela judicial efectiva (art. 24 CE, STC 158/2007), la parte no puede resultar perjudicada por un acto judicial erróneo. El recurso es admisible dentro del plazo concedido por el LAJ.\\n\\nESCENARIO 5. RENUNCIA DEL ABOGADO A MITAD DE PLAZO Y FUERZA MAYOR\\n• Renuncia de letrado: No suspende automáticamente el cómputo salvo justa causa conferida por el juzgado. Si el tribunal concede 10 días para designar abogado y éste apela en plazo, la inadmisión por la Audiencia vulnera el art. 24 CE.\\n• Intervención quirúrgica urgente del letrado: Constituye causa legal de fuerza mayor (art. 134.2 LEC). Acreditada la imposibilidad, procede la suspensión o rescisión del plazo precluido.\\n\\nESCENARIO 6. PLAZOS SUSTANTIVOS Y DÍA DE GRACIA (Art. 1967 CC vs Art. 135.5 LEC)\\n• Reclamación de honorarios (art. 1967 CC): Plazo sustantivo de prescripción de 3 años.\\n• Presentación a las 22:40 h por LexNET: Válida, hábil todo el día natural hasta las 23:59 h.\\n• Presentación en "día de gracia" (135.5 LEC): DOCTRINA DEL TS: El art. 135.5 LEC solo rige para plazos procesales. NO aplica a la prescripción o caducidad sustantiva del Código Civil. La acción habrá prescrito.\\n\\nPREGUNTAS DE REFLEXIÓN\\n1. Traslado previo de copias (arts. 276 y 277 LEC): Doctrina estricta del Pleno del TS (Sentencias 2017 y 2018). El procurador debe trasladar copia previamente vía LexNET y acreditarlo; la omisión determina la inadmisión del recurso sin posibilidad de subsanación tardía.\\n2. Sentido del día de gracia existiendo sede 24h: Mantiene su vigencia como garantía ante caídas de servidor, fallos en firma electrónica y aseguramiento del derecho de defensa.\\n3. Confianza legítima: El ciudadano no debe sufrir indefensión por actos inductores a error emanados del propio órgano judicial.',
+  source:'Plataforma CPROC (MUAP) → Tareas publicadas · Entrega realizada el 22/10/2026 (12:51 h) con resguardo en pantalla «✓ La Tarea se ha entregado con éxito»',
   submissions:[
-   {label:'Comprobante de entrega',file:'2026-10-22-grabacion-entrega-caso-practico-sandra-mosteiro.mov',pages:'Vídeo de pantalla',content:'Grabación del proceso de entrega hasta la confirmación de "enviado correctamente"',state:'Entregado correctamente el 22/10/2026',url:casoSandraVideoLocalUrl}
+   {label:'Documento entregado (Google Docs)',file:'Deontología y Técnicas Transversales_Raquel Escudero',pages:'Resolución íntegra (6 escenarios + 3 reflexiones)',url:casoSandraGDocUrl,content:'Resolución jurídica completa elaborada por Raquel Escudero Valcárcel-Ríos para la materia de Sandra Mosteiro Costa.',state:'Entregada en CPROC ✓ (22/10/2026, 12:51 h)'},
+   {label:'Grabación de pantalla de la entrega',file:'2026-10-22-grabacion-entrega-caso-practico-sandra-mosteiro.mov',pages:'Vídeo comprobante local',url:casoSandraVideoLocalUrl,content:'Grabación del proceso completo de entrega en la plataforma CPROC hasta la pantalla de confirmación exitosa.',state:'Comprobante oficial registrado'},
+   {label:'Resolución completa en Markdown',file:'2026-10-22-resolucion-caso-practico-sandra-mosteiro-raquel-escudero.md',pages:'19.500 caracteres · 188 líneas',url:casoSandraResolucionLocalUrl,content:'Copia local íntegra en Markdown con el desglose de artículos LEC, sentencias del TS y reflexiones jurídicas.',state:'Guardado en el portal'}
   ],
   attachments:[
-   {name:'Ver grabación en pantalla de la entrega (.mov)',url:casoSandraVideoLocalUrl,kind:'Vídeo comprobante ↗'},
-   {name:'Abrir PDF oficial del caso práctico (CASO PRÁCTICO 2026 - SANDRA.pdf)',url:casoSandraPdfLocalUrl,kind:'PDF en portal'},
-   {name:'Abrir desglose completo en Markdown (.md)',url:casoSandraMdLocalUrl,kind:'Markdown en portal'},
-   {name:'Subir a plataforma CPROC (Entrega de tareas)',url:cprocTareasUrl,kind:'Web CPROC ↗'},
-   {name:'Ley de Enjuiciamiento Civil (arts. 130 a 168 y 448 a 458 LEC)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial ↗'},
-   {name:'Reglamento (UE) 2020/1784 (Notificaciones en la UE)',url:'https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX%3A32020R1784',kind:'DOUE oficial ↗'}
+   {name:'Abrir documento en Google Docs (Deontología y Técnicas Transversales_Raquel Escudero)',url:casoSandraGDocUrl,kind:'Google Docs ↗'},
+   {name:'Abrir resolución completa en Markdown (.md)',url:casoSandraResolucionLocalUrl,kind:'Markdown en portal'},
+   {name:'Ver vídeo comprobante de entrega en CPROC (.mov)',url:casoSandraVideoLocalUrl,kind:'Vídeo comprobante ↗'},
+   {name:'Abrir carpeta Prácticas en Google Drive',url:practicasGdriveUrl,kind:'Google Drive ↗'},
+   {name:'PDF oficial del enunciado (CASO PRÁCTICO 2026 - SANDRA.pdf)',url:casoSandraPdfLocalUrl,kind:'PDF en portal'},
+   {name:'Enunciado en Markdown (.md)',url:casoSandraMdLocalUrl,kind:'Markdown en portal'},
+   {name:'Plataforma CPROC (Entrega de tareas)',url:cprocTareasUrl,kind:'Web CPROC ↗'}
   ]
  },
  mail_deontologia_ana_vazquez:{
@@ -9332,11 +9359,16 @@ function openDetail(key){
  if(key.startsWith('entrega_') || key === 'assignment'){
   setView('entregas', false);
   setTimeout(()=>{
-   let row = document.getElementById('delivery-row-' + key) || document.querySelector(`[data-delivery-key="${key}"]`);
+   let row = document.getElementById('delivery-row-' + key) || document.getElementById('delivered-card-' + key) || document.querySelector(`[data-delivery-key="${key}"]`);
    if(row){
+    let p = row.closest('details');
+    while(p){
+     p.open = true;
+     p = p.parentElement ? p.parentElement.closest('details') : null;
+    }
     const d = row.querySelector('details');
     if(d) d.open = true;
-    document.querySelectorAll('.delivery-row').forEach(r=>r.classList.remove('highlight-focused'));
+    document.querySelectorAll('.delivery-row, .delivery-detail-card').forEach(r=>r.classList.remove('highlight-focused'));
     row.classList.add('highlight-focused');
     row.scrollIntoView({behavior:'smooth', block:'center'});
    }
@@ -9701,64 +9733,142 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega (plazos: 29 y 30 de octubre).`;
+   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega (plazos: 29 y 30 de octubre · ICACOR).`;
   } else if(currentDeliveryFilter === 'completed'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas y pruebas ya completadas y superadas.`;
+   summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
   } else if(currentDeliveryFilter === 'cproc'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas de la rama de Procura (plataforma CPROC).`;
   } else if(currentDeliveryFilter === 'icacor'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas de la rama de Abogacía (secretaría técnica ICACOR).`;
   } else {
-   summaryEl.textContent = `Mostrando 8 prácticas (${pendingCount} pendientes de entrega y ${completedCount} superadas).`;
+   summaryEl.textContent = `Mostrando ${deliveries.length} prácticas (${pendingCount} pendientes de entrega y ${completedCount} superadas en 3 asignaturas).`;
   }
  }
 
- const renderRow = d => {
-  const det = details[d.detailKey];
-  const isUrgent = !d.submitted && (d.detailKey === 'entrega_caso_pr_ctico_de_actos_de');
+ const renderPendingRow = d => {
   return `
-  <div class="delivery-row${isUrgent ? ' urgent-row' : ''}" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
+  <div class="delivery-row" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div>
     <div class="delivery-name"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit">${d.title} ↗</button></div>
     <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · ${d.subject} · ${d.details}</div>
 
-    ${det && det.submissions ? `
-     <details class="delivery-submissions-details" style="margin-top:8px;padding-top:6px;border-top:1px dashed var(--line);font-size:12px">
-      <summary style="cursor:pointer;font-weight:700;color:var(--terracotta);display:flex;align-items:center;gap:6px">
-       <span>📄 Ver archivos subidos a CPROC y Drive (${det.submissions.length})</span>
-       <span style="font-size:10px">▾</span>
-      </summary>
-      <div style="margin-top:6px">
-       ${det.submissions.map((s,i)=>`
-        <div style="padding:6px 0;border-top:${i?'1px dashed var(--line)':'0'}">
-         <p style="color:var(--ink);font-weight:700;margin-bottom:2px">${s.label}: ${s.file} (${s.pages})</p>
-         <p style="font-size:11.5px;margin-bottom:3px">${s.content}</p>
-         <p style="color:var(--green-dark);font-size:11px;font-weight:600;margin-bottom:4px">✓ ${s.state}</p>
-         <a class="pill-link" href="${s.url}" target="_blank" rel="noopener noreferrer">Abrir ${s.file} en Google Drive ↗</a>
-        </div>
-       `).join('')}
-      </div>
-     </details>
-    ` : ''}
-
-    <div class="action-pills" style="margin-top:6px">
-     <button class="pill-btn" data-detail="${d.detailKey}">Ver detalles ↗</button>
-     ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
-     ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
-     ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
-      <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Ver vídeo entrega ↗</a>
-      <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF oficial ↗</a>
-      <a class="pill-link" href="${casoSandraMdLocalUrl}" target="_blank" rel="noopener noreferrer">Enunciado (.md) ↗</a>
-      <a class="pill-link blue" href="${cprocTareasUrl}" target="_blank" rel="noopener noreferrer">CPROC (Tareas) ↗</a>
-     ` : (d.detailKey.startsWith('entrega_delgado') ? `
-      <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-      <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Borrador en Drive ↗</a>
-     ` : `<a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>`)}
+    <div class="action-pills" style="margin-top:8px">
+     <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+     <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+     <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Borrador en Drive ↗</a>
     </div>
    </div>
-   <span class="due-state${d.submitted ? ' submitted' : (isUrgent ? ' pending-urgent' : ' pending')}">${d.status}</span>
+   <span class="due-state pending">${d.status}</span>
   </div>
+  `;
+ };
+
+ const renderCompletedAccordions = (items) => {
+  if(!items.length) return '';
+  const bySubject = {};
+  items.forEach(d => {
+   const sName = d.subjectName || d.subject;
+   if(!bySubject[sName]) bySubject[sName] = [];
+   bySubject[sName].push(d);
+  });
+
+  return `
+  <details class="delivered-group-accordion" open>
+   <summary class="delivered-main-summary">
+    <div style="display:flex;align-items:center;gap:10px">
+     <span style="font-size:18px">📦</span>
+     <span>Prácticas ya entregadas (${items.length} entregas en ${Object.keys(bySubject).length} asignaturas)</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+     <span class="due-state submitted" style="font-size:11px">100 % al día · 0 vencidas ✓</span>
+     <span class="sta-arrow">▾</span>
+    </div>
+   </summary>
+   <div class="delivered-subjects-tree">
+    ${Object.entries(bySubject).map(([subName, subItems]) => {
+     const teacherName = subItems[0].teacher;
+     return `
+     <details class="subject-delivery-accordion" open>
+      <summary class="subject-delivery-summary">
+       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-size:16px">📚</span>
+        <div>
+         <div style="font-weight:700;color:var(--ink)">${subName}</div>
+         <div style="font-size:11.5px;color:var(--muted);font-weight:500">Docente: ${teacherName} · ${subItems.length} ${subItems.length === 1 ? 'práctica entregada' : 'prácticas entregadas'} con éxito en CPROC</div>
+        </div>
+       </div>
+       <div style="display:flex;align-items:center;gap:8px">
+        <span class="due-state submitted" style="font-size:11px">✓ ${subItems.length} ${subItems.length === 1 ? 'entrega' : 'entregas'}</span>
+        <span class="sub-arrow">▾</span>
+       </div>
+      </summary>
+      <div class="subject-delivery-body">
+       ${subItems.map(d => {
+        const det = details[d.detailKey] || {};
+        return `
+        <article class="delivery-detail-card" id="delivered-card-${d.detailKey}" data-delivery-key="${d.detailKey}">
+         <div class="delivery-detail-card-head">
+          <div>
+           <h4 class="delivery-detail-card-title">${d.title}</h4>
+           <div class="delivery-detail-card-meta">
+            <strong>Docente:</strong> <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · <strong>Estado:</strong> ${d.status}
+           </div>
+          </div>
+          <span class="due-state submitted">${d.status}</span>
+         </div>
+
+         ${det.body ? `
+         <div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
+           📋 Toda la información y resolución de la entrega:
+          </div>
+          <div class="delivery-full-text-box">${det.body}</div>
+         </div>
+         ` : ''}
+
+         ${det.submissions && det.submissions.length ? `
+         <div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
+           📄 Archivos y comprobantes de la entrega (${det.submissions.length}):
+          </div>
+          <div class="delivery-detail-files-list">
+           ${det.submissions.map(s => `
+            <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+             <div>
+              <strong style="color:var(--ink)">${s.label}:</strong> <span style="font-weight:600">${s.file}</span> ${s.pages ? `<span style="color:var(--muted)">(${s.pages})</span>` : ''}
+              ${s.content ? `<div style="color:var(--ink-soft);font-size:11px;margin-top:2px">${s.content}</div>` : ''}
+              ${s.state ? `<div style="color:var(--green-dark);font-size:11px;font-weight:600;margin-top:2px">✓ ${s.state}</div>` : ''}
+             </div>
+             ${s.url ? `<a class="pill-link blue" href="${s.url}" target="_blank" rel="noopener noreferrer">Abrir archivo ↗</a>` : ''}
+            </div>
+           `).join('')}
+          </div>
+         </div>
+         ` : ''}
+
+         <div class="action-pills" style="margin-top:6px">
+          <button class="pill-btn" data-detail="${d.detailKey}">Ficha modal ↗</button>
+          ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
+           <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Google Docs (Entrega) ↗</a>
+           <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Resolución completa (.md) ↗</a>
+           <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Vídeo comprobante CPROC ↗</a>
+           <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF del caso ↗</a>
+           <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">Carpeta Prácticas Drive ↗</a>
+          ` : ''}
+          ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
+          ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
+          <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+         </div>
+        </article>
+        `;
+       }).join('')}
+      </div>
+     </details>
+     `;
+    }).join('')}
+   </div>
+  </details>
   `;
  };
 
@@ -9770,21 +9880,24 @@ function renderDeliveries(filter = currentDeliveryFilter){
   return;
  }
 
- if(currentDeliveryFilter === 'all'){
+ if(currentDeliveryFilter === 'pending'){
+  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${filtered.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+  html += filtered.map(renderPendingRow).join('');
+  listContainer.innerHTML = html;
+ } else if(currentDeliveryFilter === 'completed'){
+  listContainer.innerHTML = renderCompletedAccordions(filtered);
+ } else {
   const pendingItems = filtered.filter(d => !d.submitted);
   const completedItems = filtered.filter(d => d.submitted);
   let html = '';
   if(pendingItems.length){
    html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
-   html += pendingItems.map(renderRow).join('');
+   html += pendingItems.map(renderPendingRow).join('');
   }
   if(completedItems.length){
-   html += `<div class="delivery-group-header" style="margin-top:24px"><span>✓ Prácticas entregadas y superadas (${completedItems.length})</span><span style="font-size:11px;color:var(--green-dark);font-weight:700">Registradas en CPROC / Drive</span></div>`;
-   html += completedItems.map(renderRow).join('');
+   html += renderCompletedAccordions(completedItems);
   }
   listContainer.innerHTML = html;
- } else {
-  listContainer.innerHTML = filtered.map(renderRow).join('');
  }
 }
 
