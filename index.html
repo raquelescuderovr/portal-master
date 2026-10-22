@@ -5226,6 +5226,29 @@ const events={
 
 const gradeRecords=[
  {
+  id:'grade_carlos_sanchez_2oct',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 22 oct 2026 (13:24)',
+  title:'Técnicas instrumentales · Procura (Pruebas del 2 de octubre)',
+  score:'10 / 10',
+  scoreLabel:'Nota docente',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'4 / 4 puntos'},
+   {label:'II. Traballos escritos (60 %)',val:'6 / 6 puntos'},
+   {label:'Calificación otorgada',val:'10 / 10 · Sobresaliente'}
+  ],
+  teacher:'Carlos M. Sánchez Muiño',
+  subjectRef:'Procura|Técnicas instrumentales|1',
+  mailKey:'mail_carlos_sanchez_2oct',
+  description:'Calificaciones comunicadas oficialmente por la Secretaría del Colegio de Procuradores de A Coruña el 22 de octubre de 2026 a las 13:24 h («Resultados de las pruebas del 2/10/2026 - Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño»), correspondientes a la clase del 2 de octubre (formas de ejercicio, organización y marketing del despacho, técnicas de comunicación y previsión social).',
+  links:[
+   {label:'✉ Abrir correo de la nota (22 oct) ↗',detailKey:'mail_carlos_sanchez_2oct',cls:'solid-green'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Técnicas instrumentales|1'},
+   {label:'Ficha de Carlos M. Sánchez Muiño ↗',teacher:'Carlos M. Sánchez Muiño'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
   id:'grade_1oct',
   type:'mail',
   kicker:'Evaluación oficial por correo · 14 oct 2026',
@@ -5440,6 +5463,11 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'22 oct 2026 (13:24)',title:'Calificaciones oficiales · Técnicas instrumentales (Nota: 10 / 10 · Carlos Miguel Sánchez Muiño)',meta:'accesoabogaciaprocura@procuradores-coruna.com · D. Carlos Miguel Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carlos_sanchez_2oct',teacher:'Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|1'},
+ {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
+ {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
+ {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:''},
+ {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:''},
  {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
  {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
@@ -5454,6 +5482,11 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_carlos_sanchez_2oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente). Calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño correspondientes a la sesión del 2 de octubre de Técnicas instrumentales (Procura).',
+ materials_sandra_22oct:'Remite la presentación en PowerPoint, el test y las soluciones al mismo correspondientes al módulo de Actos de comunicación judicial impartido por Sandra Mosteiro Costa.',
+ materials_moure_22oct:'Remite la documentación de estudio para la clase de Gestión del despacho profesional de la próxima semana con María Luisa Moure Sagasti.',
+ materials_carnota_21oct:'Carta de presentación y notas sobre materia registral para preparar la sesión del 28 de octubre con María Pilar Carnota García.',
+ presentation_goimil_21oct:'Carta de presentación oficial de la docente D.ª María Rita Goimil Martínez, Procuradora del MUAP.',
  test_20oct_sandra:'NOTA DE TEST: 9 / 10 (90 % · Sobresaliente). Test oficial en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE») realizado el 20 de octubre a las 17:44 h. Se conserva la copia original HTML y el cuestionario íntegro en Markdown.',
  mail_deontologia_ana_vazquez:'NOTA OFICIAL: 8.8 / 10 (Test 40%: 3.8 + Trabajos 60%: 5.0). Calificaciones otorgadas por Dña. Ana Vázquez Corte correspondientes a las sesiones del 8 y 9 de octubre en Deontología y técnicas transversales.',
  dataforum_instrucciones:'El Máster remite indicación de D. Javier Hernández (Subdir. Gral. de Justicia Digital): ponencias en PALEXCO (Auditorium en Planta 0 y Ágora / Auditorio Arao en Planta 2) con libre acceso a todas las sesiones para el alumnado del Máster (2 adjuntos, 11 MB).',
@@ -5468,6 +5501,67 @@ const mailSummaries={
 };
 
 const details={
+ mail_carlos_sanchez_2oct:{
+  kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
+  title:'Resultados de las pruebas del 2/10/2026 · Carlos Miguel Sánchez Muiño (Nota: 10 / 10)',
+  date:'Correo recibido: jueves, 22 de octubre de 2026 (13:24) · Clase celebrada: 02/10/2026',
+  teacher:'Carlos M. Sánchez Muiño',
+  subjectRef:'Procura|Técnicas instrumentales|1',
+  body:'Comunicación oficial remitida por el Departamento de Secretaría del Ilustre Colegio de Procuradores de A Coruña (accesoabogaciaprocura@procuradores-coruna.com) trasladando las calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño en la materia «TÉCNICAS INSTRUMENTALES» (Formas de ejercicio de la profesión, organización del despacho, marketing del despacho, técnicas de comunicación de Procura y previsión social de Procura):\n\n• I. TEST (40 %): 4 puntos (sobre 4).\n• II. TRABAJOS ESCRITOS (60 %): 6 puntos (sobre 6).\n• NOTA FINAL: 10 / 10 (Sobresaliente).\n\nObservación del docente: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: Carlos Miguel Sánchez Muiño».',
+  source:'Correo de accesoabogaciaprocura@procuradores-coruna.com · «Resultados de las pruebas del 2/10/2026 -Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño» · 22 oct 2026, 13:24 h',
+  attachments:[
+   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ materials_sandra_22oct:{
+  kicker:'Materiales y soluciones · Procura · Actos de comunicación judicial',
+  title:'Documentación complementaria y soluciones del test (Sandra Mosteiro Costa)',
+  date:'Correo recibido: jueves, 22 de octubre de 2026 (13:09)',
+  teacher:'Sandra Mosteiro Costa',
+  subjectRef:'Procura|Técnicas instrumentales|3',
+  body:'La docente D.ª Sandra Mosteiro Costa, procuradora, solicita remitir al estudiantado del MUAP la documentación adjunta consistente en:\n1) Presentación en PowerPoint de las clases de actos de comunicación judicial.\n2) Test y las soluciones al mismo.\nTodo ello relativo a las sesiones presenciales y al caso práctico evaluable.',
+  source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Docente- Sandra Mosteiro Costa, Procuradora- Remisión de documentación al estudiantado del MUAP» · 22 oct 2026, 13:09 h',
+  attachments:[
+   {name:'Ver adjuntos en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
+  ]
+ },
+ materials_moure_22oct:{
+  kicker:'Documentación de estudio · Abogacía · Gestión de despachos',
+  title:'Documentación para la clase de Gestión (D.ª María Luisa Moure Sagasti)',
+  date:'Correo recibido: jueves, 22 de octubre de 2026 (13:06)',
+  teacher:'María Luisa Moure Sagasti',
+  subjectRef:'',
+  body:'La Administración del Máster (master.abogacia@icacor.org) remite la información y materiales para la clase que impartirá la docente D.ª María Luisa Moure Sagasti, abogada, relativa a la gestión profesional del despacho de abogacía programada para la próxima semana.',
+  source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Documentación sobre la clase de Gestión de la próxima semana» · 22 oct 2026, 13:06 h',
+  attachments:[
+   {name:'Ver documentación en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ materials_carnota_21oct:{
+  kicker:'Presentación y apuntes · Procura · Materia registral',
+  title:'Carta de presentación y notas registrales · Clase 28 oct (D.ª María Pilar Carnota García)',
+  date:'Correo recibido: miércoles, 21 de octubre de 2026 (17:09) · Sesión: 28 de octubre',
+  teacher:'María Pilar Carnota García',
+  subjectRef:'',
+  body:'La docente D.ª María Pilar Carnota García, Procuradora, solicita la remisión de la documentación preparatoria para la clase del 28 de octubre de 2026, consistente en su carta de presentación y notas sobre materia registral aplicada a la Procura.',
+  source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Docente Dª. María Pilar Carnota García [Procuradora] carta presentación MUAP 2026-2027, clase 28 de octubre» · 21 oct 2026, 17:09 h',
+  attachments:[
+   {name:'Ver adjuntos en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ presentation_goimil_21oct:{
+  kicker:'Presentación docente · Procura',
+  title:'Carta de presentación · D.ª María Rita Goimil Martínez (Procuradora)',
+  date:'Correo recibido: miércoles, 21 de octubre de 2026 (17:08)',
+  teacher:'María Rita Goimil Martínez',
+  subjectRef:'',
+  body:'Remisión de la carta de presentación oficial de la docente D.ª María Rita Goimil Martínez, Procuradora del Máster Universitario en Abogacía y Procura.',
+  source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Presentación de la docente D.ª María Rita Goimil Martínez» · 21 oct 2026, 17:08 h',
+  attachments:[
+   {name:'Ver correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
  test_20oct_sandra:{
   kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Actos de comunicación judicial',
   title:'Test online · Actos de comunicación judicial (Sandra Mosteiro Costa)',
@@ -6791,14 +6885,15 @@ const teacherDirectory=[
   role:'Procurador · Formas de ejercicio, organización y justicia digital',
   gradeBadge:'10 / 10 · 4 prácticas enviadas ✓',
   summary:'Formas de ejercicio, organización del despacho de procuradores, TIC y justicia digital en la Procura.',
-  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'Testmoz 20/20 (100 %) y 4 prácticas procesales subidas a Drive y enviadas en CPROC (0 vencidas).',detailKey:'test_16oct'},
+  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'10/10 en sesión 2 oct (Test 4/4 + Escritos 6/6) y 10/10 en Testmoz 16 oct (20/20 aciertos).',detailKey:'mail_carlos_sanchez_2oct'},
   sessions:[
    {date:'2026-10-02',dayLabel:'Viernes 2 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Formas de ejercicio y organización del despacho de procuradores',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-15',dayLabel:'Jueves 15 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'TIC y administración de justicia en la Procura',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Justicia digital y expediente judicial electrónico (con Carolina Moreno)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Calificaciones oficiales Procura (14 oct)',key:'grades'},{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}],
+  mails:[{title:'Calificación pruebas 2 oct (10/10 · 22 oct)',key:'mail_carlos_sanchez_2oct'},{title:'Calificaciones oficiales Procura (14 oct)',key:'grades'},{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}],
   practices:[
+   {title:'Pruebas evaluables del 2 oct (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carlos_sanchez_2oct'},
    {title:'Test online de justicia digital (20/20 aciertos)',status:'10 / 10 ✓',key:'test_16oct'},
    {title:'Escrito de subsanación procesal telemática',status:'Enviado en CPROC ✓',key:'entrega_subsanacion'}
   ],
@@ -6961,7 +7056,7 @@ const teacherDirectory=[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 1 de 2 · Marco general, notificaciones y requerimientos)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y test oficial)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Materiales para la clase del lunes 19 y martes 20 de octubre (15 oct)',key:'materials'},{title:'Test online de actos de comunicación (20 oct · 9/10)',key:'test_20oct_sandra'}],
+  mails:[{title:'PowerPoint, test y soluciones (22 oct)',key:'materials_sandra_22oct'},{title:'Materiales para la clase del lunes 19 y martes 20 de octubre (15 oct)',key:'materials'},{title:'Test online de actos de comunicación (20 oct · 9/10)',key:'test_20oct_sandra'}],
   practices:[
    {title:'Caso práctico 2026: Actos de comunicación judicial',status:'Completada y entregada en CPROC (22 oct) ✓',key:'entrega_caso_pr_ctico_de_actos_de'},
    {title:'Test online: Actos de comunicación judicial (9/10)',status:'Superado (9/10 · 90 %) ✓',key:'test_20oct_sandra'}
