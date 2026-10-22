@@ -34,5 +34,5 @@ TELEGRAM_ALLOWED_USER = os.environ.get("TELEGRAM_ALLOWED_USER", "").strip()  # C
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()  # Para commits en la nube
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "raquelescuderovr/portal-master").strip()
 GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main").strip()
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()  # Opcional para OCR de fotos
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 PORTAL_PUBLIC_URL = os.environ.get("PORTAL_PUBLIC_URL", "https://raquelescuderovr.github.io/portal-master/").strip()

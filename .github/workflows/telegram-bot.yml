@@ -1,6 +1,12 @@
 name: Bot de Telegram 24/7
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'telegram-bot/**'
+      - '.github/workflows/telegram-bot.yml'
   schedule:
     # Se ejecuta cada 5 horas automáticamente para mantenerlo siempre despierto
     - cron: '0 */5 * * *'
