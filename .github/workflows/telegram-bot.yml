@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'telegram-bot/**'
-      - '.github/workflows/telegram-bot.yml'
   schedule:
     # Se ejecuta cada 5 horas automáticamente para mantenerlo siempre despierto
     - cron: '0 */5 * * *'
@@ -37,12 +34,31 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f telegram-bot/requirements.txt ]; then pip install -r telegram-bot/requirements.txt; fi
 
+      - name: Comprobar configuración y credenciales
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -c "
+          import os, sys
+          t = os.environ.get('TELEGRAM_BOT_TOKEN', '').strip().strip('\'\"')
+          g = os.environ.get('GEMINI_API_KEY', '').strip().strip('\'\"')
+          if not t:
+              print('❌ TELEGRAM_BOT_TOKEN no está configurado en GitHub Secrets', flush=True)
+              sys.exit(1)
+          if not g:
+              print('❌ GEMINI_API_KEY no está configurado en GitHub Secrets', flush=True)
+              sys.exit(1)
+          print('✅ Credenciales recibidas correctamente.', flush=True)
+          "
+
       - name: Ejecutar Bot de Telegram
         env:
+          PYTHONUNBUFFERED: "1"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
           GITHUB_BRANCH: main
         run: |
-          python telegram-bot/bot.py
+          python -u telegram-bot/bot.py

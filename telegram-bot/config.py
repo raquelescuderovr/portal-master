@@ -29,10 +29,10 @@ if ENV_PATH.exists():
                 os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 # Variables obligatorias y opcionales
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-TELEGRAM_ALLOWED_USER = os.environ.get("TELEGRAM_ALLOWED_USER", "").strip()  # Chat ID de Raquel
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()  # Para commits en la nube
-GITHUB_REPO = os.environ.get("GITHUB_REPO", "raquelescuderovr/portal-master").strip()
-GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main").strip()
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
-PORTAL_PUBLIC_URL = os.environ.get("PORTAL_PUBLIC_URL", "https://raquelescuderovr.github.io/portal-master/").strip()
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip().strip("'\"")
+TELEGRAM_ALLOWED_USER = (os.environ.get("TELEGRAM_ALLOWED_USER", "").strip().strip("'\"")) or "317669290"  # Chat ID de Raquel
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip().strip("'\"")  # Para commits en la nube
+GITHUB_REPO = os.environ.get("GITHUB_REPO", "raquelescuderovr/portal-master").strip().strip("'\"")
+GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main").strip().strip("'\"")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip().strip("'\"")
+PORTAL_PUBLIC_URL = os.environ.get("PORTAL_PUBLIC_URL", "https://raquelescuderovr.github.io/portal-master/").strip().strip("'\"")

@@ -18,7 +18,7 @@ import updater
 HISTORY_FILE = Path(__file__).resolve().parent / "chat_history.json"
 
 def get_portal_summary() -> str:
-    """Extrae un resumen actualizado del estado de entregas y asignaturas desde index.html."""
+    """Extrae un resumen actualizado del estado de entregas y agenda desde index.html."""
     try:
         if not INDEX_HTML.exists():
             return "Portal en desarrollo."
@@ -26,14 +26,62 @@ def get_portal_summary() -> str:
             content = f.read()
 
         summary_lines = []
-        # Buscar entregas
+
+        # 1. Entregas pendientes y completadas
         m_deliv = re.search(r'const deliveries=\[(.*?)\];', content, re.DOTALL)
         if m_deliv:
             raw_delivs = m_deliv.group(1)
-            titles = re.findall(r"title:'(.*?)'.*?teacher:'(.*?)'.*?status:'(.*?)'", raw_delivs)
-            summary_lines.append("Entregas registradas en el portal:")
-            for t, te, st in titles[:6]:
-                summary_lines.append(f"  • {t} | Docente: {te} | Estado: {st}")
+            deliv_blocks = re.findall(r'\{(.*?)\}', raw_delivs, re.DOTALL)
+            pendientes = []
+            completadas = []
+            for b in deliv_blocks:
+                t = re.search(r"title:'(.*?)'", b)
+                te = re.search(r"teacher:'(.*?)'", b)
+                st = re.search(r"status:'(.*?)'", b)
+                sub = re.search(r"submitted:(true|false)", b)
+                title = t.group(1) if t else "Sin título"
+                teacher = te.group(1) if te else "Docente"
+                status = st.group(1) if st else ""
+                is_sub = (sub.group(1) == "true") if sub else False
+
+                if is_sub or "✓" in status:
+                    completadas.append(f"  ✓ {title} ({teacher})")
+                else:
+                    pendientes.append(f"  ⏳ {title} · Docente: {teacher} · Estado: {status}")
+
+            summary_lines.append("ENTREGAS EN EL PORTAL ACADÉMICO:")
+            if pendientes:
+                summary_lines.append("Prácticas pendientes:")
+                summary_lines.extend(pendientes)
+            else:
+                summary_lines.append("No hay prácticas pendientes registradas.")
+            if completadas:
+                summary_lines.append(f"Prácticas ya entregadas ({len(completadas)}):")
+                summary_lines.extend(completadas[:5])
+
+        # 2. Agenda y clases del día
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        dates_to_check = [today_str]
+        if "2026" not in today_str:
+            dates_to_check.append("2026-10-22")
+
+        for d in dates_to_check:
+            m_events = re.search(r"'" + d + r"':\s*\[(.*?)\]\s*(?:,|\})", content, re.DOTALL)
+            if m_events:
+                summary_lines.append(f"\nAGENDA Y CLASES DEL DÍA ({d}):")
+                raw_ev = m_events.group(1)
+                ev_blocks = re.findall(r'\{(.*?)\}', raw_ev, re.DOTALL)
+                for eb in ev_blocks:
+                    st = re.search(r"start:'(.*?)'", eb)
+                    nm = re.search(r"name:'(.*?)'", eb)
+                    tc = re.search(r"teacher:'(.*?)'", eb)
+                    pl = re.search(r"place:'(.*?)'", eb)
+                    start = st.group(1) if st else ""
+                    name = nm.group(1) if nm else ""
+                    teacher = f" | {tc.group(1)}" if tc else ""
+                    place = f" ({pl.group(1)})" if pl else ""
+                    summary_lines.append(f"  • {start}: {name}{teacher}{place}")
+                break
 
         return "\n".join(summary_lines)
     except Exception:
@@ -153,26 +201,66 @@ def execute_action(action_type: str, args: dict) -> str:
 
 def execute_tool(func_name: str, args: dict) -> dict:
     """Función de conveniencia para comandos de consulta directa."""
-    if func_name == "consultar_hoy":
-        return {
-            "fecha": "Martes 20 oct 2026",
-            "sesiones": [
-                {"hora": "16:30 – 18:30", "docente": "Sandra Mosteiro Costa", "materia": "Actos de comunicación judicial (Sesión 2 de 2)", "sede": "Colegio de Abogados"},
-                {"hora": "18:45 – 20:45", "docente": "José Luis Delgado Domínguez", "materia": "Responsabilidad civil y penal (Sesión 2 de 3)", "sede": "Colegio de Abogados"}
-            ]
-        }
-    elif func_name == "consultar_entregas":
-        return {
-            "balance": "6 prácticas registradas (2 pendientes de José Luis Delgado)",
-            "ultimas": [
-                "⏳ Casos prácticos: Insostenibilidad y AJG (Plazo: 29 oct 2026 · Delgado)",
-                "⏳ Parte de siniestro y Turno de Oficio (Plazo: 10 días tras 2.ª clase · Delgado)",
-                "✓ Poder apud acta (Carolina Moreno)",
-                "✓ Escrito de subsanación (Carolina Moreno)",
-                "✓ Auto declaración UP (Carolina Moreno)",
-                "✓ Deontología Procura (Ana Vázquez Corte)"
-            ]
-        }
+    try:
+        content = ""
+        if INDEX_HTML.exists():
+            with open(INDEX_HTML, "r", encoding="utf-8") as f:
+                content = f.read()
+
+        if func_name == "consultar_hoy":
+            today_str = datetime.now().strftime("%Y-%m-%d")
+            dates_to_check = [today_str]
+            if "2026" not in today_str:
+                dates_to_check.append("2026-10-22")
+
+            sesiones = []
+            for d in dates_to_check:
+                m_events = re.search(r"'" + d + r"':\s*\[(.*?)\]\s*(?:,|\})", content, re.DOTALL)
+                if m_events:
+                    raw_ev = m_events.group(1)
+                    ev_blocks = re.findall(r'\{(.*?)\}', raw_ev, re.DOTALL)
+                    for eb in ev_blocks:
+                        st = re.search(r"start:'(.*?)'", eb)
+                        nm = re.search(r"name:'(.*?)'", eb)
+                        tc = re.search(r"teacher:'(.*?)'", eb)
+                        pl = re.search(r"place:'(.*?)'", eb)
+                        sesiones.append({
+                            "hora": st.group(1) if st else "",
+                            "actividad": nm.group(1) if nm else "",
+                            "docente": tc.group(1) if tc else "",
+                            "sede": pl.group(1) if pl else "Colegio de Abogados"
+                        })
+                    return {"fecha": d, "sesiones": sesiones}
+
+        elif func_name == "consultar_entregas":
+            m_deliv = re.search(r'const deliveries=\[(.*?)\];', content, re.DOTALL)
+            pendientes = []
+            completadas = []
+            if m_deliv:
+                raw_delivs = m_deliv.group(1)
+                deliv_blocks = re.findall(r'\{(.*?)\}', raw_delivs, re.DOTALL)
+                for b in deliv_blocks:
+                    t = re.search(r"title:'(.*?)'", b)
+                    te = re.search(r"teacher:'(.*?)'", b)
+                    st = re.search(r"status:'(.*?)'", b)
+                    sub = re.search(r"submitted:(true|false)", b)
+                    title = t.group(1) if t else "Sin título"
+                    teacher = te.group(1) if te else "Docente"
+                    status = st.group(1) if st else ""
+                    is_sub = (sub.group(1) == "true") if sub else False
+
+                    if is_sub or "✓" in status:
+                        completadas.append(f"✓ {title} ({teacher})")
+                    else:
+                        pendientes.append(f"⏳ {title} ({teacher} · {status})")
+
+            return {
+                "balance": f"{len(pendientes)} pendientes · {len(completadas)} completadas",
+                "ultimas": pendientes + completadas[:4]
+            }
+    except Exception as e:
+        print(f"[Assistant] Error en execute_tool: {e}")
+
     return {}
 
 def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type: str = "image/jpeg", image_bytes: bytes = None) -> str:

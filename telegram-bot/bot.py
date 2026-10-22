@@ -269,7 +269,14 @@ def run_polling():
         print("❌ Error: TELEGRAM_BOT_TOKEN no está definido en config o en .env", flush=True)
         sys.exit(1)
 
-    print("🚀 Bot de Telegram Conversacional del Máster iniciado y escuchando...", flush=True)
+    me = api_request("getMe")
+    if not me.get("ok"):
+        print(f"❌ Error al conectar con Telegram: {me.get('description')}", flush=True)
+        sys.exit(1)
+
+    bot_username = me.get("result", {}).get("username", "MasterBot")
+    print(f"🚀 Bot @{bot_username} iniciado y escuchando mensajes...", flush=True)
+
     offset = 0
     while True:
         try:
@@ -287,12 +294,14 @@ def run_polling():
                         if c_id:
                             send_message(c_id, f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(err)}</code>")
             else:
-                time.sleep(2)
+                desc = updates.get("description", "Respuesta no OK")
+                print(f"[Polling] Error en getUpdates: {desc}", flush=True)
+                time.sleep(3)
         except KeyboardInterrupt:
             print("\n🛑 Bot detenido.", flush=True)
             break
         except Exception as e:
-            print(f"[Polling] Error: {e}", flush=True)
+            print(f"[Polling] Error inesperado: {e}", flush=True)
             time.sleep(3)
 
 if __name__ == "__main__":
