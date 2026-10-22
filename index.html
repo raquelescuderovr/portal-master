@@ -3442,6 +3442,159 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   background:#fbf9f4;
 }
 
+/* Dossier de calificaciones por profesor y asignatura */
+.teacher-grade-dossier{
+  background:var(--paper);
+  border:1.5px solid var(--line);
+  border-left:5px solid var(--green);
+  border-radius:16px;
+  padding:22px;
+  display:grid;
+  gap:16px;
+  box-shadow:var(--shadow-sm);
+  transition:all .18s ease;
+}
+.teacher-grade-dossier:hover{
+  border-color:var(--green-border);
+  box-shadow:var(--shadow);
+}
+.teacher-grade-dossier.has-pending{
+  border-left-color:var(--terracotta);
+}
+.teacher-grade-dossier.has-test{
+  border-left-color:var(--blue);
+}
+.teacher-grade-dossier.has-mail-grade{
+  border-left-color:var(--honey);
+}
+.tgd-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  flex-wrap:wrap;
+  border-bottom:1px dashed var(--line);
+  padding-bottom:14px;
+}
+.tgd-title-group{
+  display:grid;
+  gap:3px;
+}
+.tgd-kicker{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+.tgd-teacher-name{
+  font:700 20px/1.25 var(--serif);
+  color:var(--ink);
+  margin:0;
+}
+.tgd-subject{
+  font-size:13px;
+  color:var(--ink-soft);
+  font-weight:600;
+}
+.tgd-badge{
+  padding:6px 14px;
+  border-radius:12px;
+  font:700 12.5px var(--sans);
+  text-align:right;
+  flex-shrink:0;
+}
+.tgd-badge.gold{
+  background:var(--honey);
+  color:#fff;
+  box-shadow:0 2px 8px rgba(154,98,11,.25);
+}
+.tgd-badge.blue{
+  background:var(--blue);
+  color:#fff;
+  box-shadow:0 2px 8px rgba(25,63,112,.25);
+}
+.tgd-badge.green{
+  background:var(--green-dark);
+  color:#fff;
+  box-shadow:0 2px 8px rgba(34,70,51,.25);
+}
+.tgd-badge.amber{
+  background:#fef3c7;
+  color:#92400e;
+  border:1px solid #fcd34d;
+}
+[data-theme="dark"] .tgd-badge.amber{
+  background:#2a2115;
+  color:#ebd199;
+  border-color:#634b26;
+}
+.tgd-blocks-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+}
+.tgd-block{
+  background:var(--paper-warm);
+  border:1px solid var(--line-subtle);
+  border-radius:12px;
+  padding:14px 16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:10px;
+}
+.tgd-block.highlight-mail{
+  border-color:var(--honey-border);
+  background:rgba(217,119,6,0.04);
+}
+.tgd-block.highlight-test{
+  border-color:var(--blue-border);
+  background:rgba(30,58,138,0.04);
+}
+.tgd-block.highlight-practice{
+  border-color:var(--green-border);
+  background:rgba(34,70,51,0.04);
+}
+.tgd-block-title{
+  font-size:11.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+}
+.tgd-block-score{
+  font:800 22px/1 var(--serif);
+  color:var(--ink);
+  margin:4px 0 2px;
+}
+.tgd-block-desc{
+  font-size:12.5px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin:0;
+}
+.tgd-sublist{
+  display:grid;
+  gap:6px;
+  margin-top:4px;
+}
+.tgd-subitem{
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:5px 8px;
+  border-radius:6px;
+  background:var(--paper);
+  border:1px solid var(--line-subtle);
+}
+
 /* Apartado de Contacto Oficial en el menú lateral */
 .sidebar-contact-section{
   margin-top:14px;
@@ -4431,34 +4584,45 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <!-- Resumen de notas por correo y tests (dentro de Notas y Tests) -->
     <div class="stats-strip" aria-label="Notas por correo a grosso modo" style="margin-bottom:20px">
-      <button class="stat-card" data-detail="grades">
+      <button class="stat-card" data-grade-filter="teachers" title="Ver expedientes agrupados por profesor">
         <div>
-          <span class="stat-kicker">Nota conjunta correo · 14 oct</span>
-          <span class="stat-title">Técnicas instrum. · Javier Sánchez</span>
+          <span class="stat-kicker">Expediente docente</span>
+          <span class="stat-title">5 profesores con actividad evaluable</span>
         </div>
-        <span class="stat-val-pill">10 / 10</span>
+        <span class="stat-val-pill">5 docentes</span>
       </button>
-      <button class="stat-card" data-detail="grade_ana_vazquez">
+      <button class="stat-card" data-grade-filter="mail" title="Ver solo calificaciones globales remitidas por correo">
         <div>
-          <span class="stat-kicker">Nota conjunta correo · 19 oct</span>
-          <span class="stat-title">Deontología · Ana Vázquez</span>
+          <span class="stat-kicker">Notas conjuntas por correo</span>
+          <span class="stat-title">Javier Sánchez (10/10) · Ana Vázquez (8.8/10)</span>
         </div>
-        <span class="stat-val-pill">8.8 / 10</span>
+        <span class="stat-val-pill">2 oficiales</span>
       </button>
-      <button class="stat-card highlight-test" data-detail="all_tests_summary">
+      <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">2 realizados (Test 16 oct: 20/20 · 20 oct: 9/10)</span>
+          <span class="stat-title">2 realizados (16 oct: 20/20 · 20 oct: 9/10)</span>
         </div>
         <span class="stat-val-pill">10 y 9 ★</span>
       </button>
-      <button class="stat-card" data-switch-view="entregas">
+      <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
-          <span class="stat-kicker">Prácticas entregadas (CPROC)</span>
+          <span class="stat-kicker">Casos prácticos y trabajos</span>
           <span class="stat-title">5 entregadas en 3 asignaturas</span>
         </div>
         <span class="stat-val-pill">5 / 5 ✓</span>
       </button>
+    </div>
+
+    <!-- Barra de selección de visualización: Por Profesor, Por Categoría o Todo -->
+    <div class="status-filter-strip" role="group" aria-label="Organizar calificaciones" style="margin-bottom:18px">
+      <b>Organizar por:</b>
+      <button class="status-filter-btn active" data-grade-filter="teachers">👤 Por Profesor y Asignatura</button>
+      <button class="status-filter-btn" data-grade-filter="mail">✉️ Notas conjuntas por correo</button>
+      <button class="status-filter-btn" data-grade-filter="test">📝 Tests online de clase</button>
+      <button class="status-filter-btn" data-grade-filter="practices">📁 Casos prácticos y entregas</button>
+      <button class="status-filter-btn" data-grade-filter="all">🗂️ Todas las tarjetas</button>
+      <span class="status-filter-summary" id="gradeFilterSummary">Mostrando expedientes completos agrupados por docente y asignatura.</span>
     </div>
 
     <div class="grades-grid" id="gradesGrid"></div>
@@ -7293,88 +7457,467 @@ function formatTeachersWithGrades(teachersList, isPast=true){
  }).join(', ');
 }
 
-function renderGrades(){
- const grid=document.getElementById('gradesGrid');
- if(!grid)return;
- grid.innerHTML=gradeRecords.map(g=>{
-  let quizHtml = '';
-  const quizDetail = (g.id === 'grade_16oct_test') ? details.test_16oct : ((g.id === 'grade_20oct_test') ? details.test_20oct_sandra : null);
-  if(quizDetail && quizDetail.questions && quizDetail.questions.length){
-   const totalQ = quizDetail.questions.length;
-   const correctCount = quizDetail.questions.filter(q => (q.userAnswer !== undefined ? q.userAnswer === q.correct : true)).length;
-   const summaryText = (g.id === 'grade_16oct_test')
-    ? `📝 Ver las 20 preguntas íntegras del test (con respuestas correctas · 20/20)`
-    : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`;
+let currentGradeFilter = 'teachers';
 
-   quizHtml = `
-   <details class="quiz-dropdown" style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px">
-    <summary style="cursor:pointer;font-weight:700;font-size:12px;color:var(--blue);display:flex;align-items:center;gap:6px">
-     <span>${summaryText}</span>
-     <span style="font-size:10px">▾</span>
-    </summary>
-    <div style="margin-top:10px;font-size:12px">
-     ${quizDetail.questions.map(q=>{
-      const userAns = (q.userAnswer !== undefined) ? q.userAnswer : q.correct;
-      return `
-      <div style="padding:10px 0;border-top:1px dashed var(--line)">
-       <p style="color:var(--ink);font-weight:700;margin-bottom:6px">${q.q}</p>
-       ${q.opts.map((opt,oi)=>{
-        const isCorrect = (oi === q.correct);
-        const isUser = (oi === userAns);
-        let bg = 'var(--paper-warm)';
-        let color = 'var(--ink-soft)';
-        let border = 'var(--line)';
-        let tag = '';
-        if(isCorrect && isUser){
-         bg = 'var(--green-pale)';
-         color = 'var(--green-dark)';
-         border = 'var(--green-border)';
-         tag = ' (✓ Seleccionada · Correcta)';
-        } else if(isCorrect && !isUser){
-         bg = 'var(--green-pale)';
-         color = 'var(--green-dark)';
-         border = 'var(--green-border)';
-         tag = ' (✓ Respuesta correcta oficial)';
-        } else if(!isCorrect && isUser){
-         bg = '#fef2f2';
-         color = '#b91c1c';
-         border = '#fecaca';
-         tag = ' (✗ Tu respuesta marcada)';
-        }
-        return `<div class="quiz-opt" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${bg};color:${color};border:1px solid ${border};font-weight:${(isCorrect||isUser)?'600':'400'}">${isCorrect?'✓ ':(isUser?'✗ ':'')}${opt}${tag}</div>`;
-       }).join('')}
-      </div>
-      `;
-     }).join('')}
-    </div>
-   </details>
-   `;
-  }
+function renderSingleGradeCard(g){
+ let quizHtml = '';
+ const quizDetail = (g.id === 'grade_16oct_test') ? details.test_16oct : ((g.id === 'grade_20oct_test') ? details.test_20oct_sandra : null);
+ if(quizDetail && quizDetail.questions && quizDetail.questions.length){
+  const totalQ = quizDetail.questions.length;
+  const correctCount = quizDetail.questions.filter(q => (q.userAnswer !== undefined ? q.userAnswer === q.correct : true)).length;
+  const summaryText = (g.id === 'grade_16oct_test')
+   ? `📝 Ver las 20 preguntas íntegras del test (con respuestas correctas · 20/20)`
+   : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`;
 
-
-  return `
-  <article class="grade-card" data-type="${g.type}" id="${g.id}">
-   <div>
-    <div class="grade-head">
-     <div>
-      <div class="grade-kicker">${g.kicker}</div>
-      <h3 class="grade-title"><button class="subject-open" data-subject="${g.subjectRef}">${g.title} ↗</button></h3>
-      <div class="grade-meta">Docente: <button class="teacher-link" data-teacher="${g.teacher}">${g.teacher}</button>${g.coTeacher?` · <button class="teacher-link" data-teacher="${g.coTeacher}">${g.coTeacher}</button>`:''}</div>
+  quizHtml = `
+  <details class="quiz-dropdown" style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px">
+   <summary style="cursor:pointer;font-weight:700;font-size:12px;color:var(--blue);display:flex;align-items:center;gap:6px">
+    <span>${summaryText}</span>
+    <span style="font-size:10px">▾</span>
+   </summary>
+   <div style="margin-top:10px;font-size:12px">
+    ${quizDetail.questions.map(q=>{
+     const userAns = (q.userAnswer !== undefined) ? q.userAnswer : q.correct;
+     return `
+     <div style="padding:10px 0;border-top:1px dashed var(--line)">
+      <p style="color:var(--ink);font-weight:700;margin-bottom:6px">${q.q}</p>
+      ${q.opts.map((opt,oi)=>{
+       const isCorrect = (oi === q.correct);
+       const isUser = (oi === userAns);
+       let bg = 'var(--paper-warm)';
+       let color = 'var(--ink-soft)';
+       let border = 'var(--line)';
+       let tag = '';
+       if(isCorrect && isUser){
+        bg = 'var(--green-pale)';
+        color = 'var(--green-dark)';
+        border = 'var(--green-border)';
+        tag = ' (✓ Seleccionada · Correcta)';
+       } else if(isCorrect && !isUser){
+        bg = 'var(--green-pale)';
+        color = 'var(--green-dark)';
+        border = 'var(--green-border)';
+        tag = ' (✓ Respuesta correcta oficial)';
+       } else if(!isCorrect && isUser){
+        bg = '#fef2f2';
+        color = '#b91c1c';
+        border = '#fecaca';
+        tag = ' (✗ Tu respuesta marcada)';
+       }
+       return `<div class="quiz-opt" style="margin-bottom:3px;padding:3px 8px;border-radius:6px;background:${bg};color:${color};border:1px solid ${border};font-weight:${(isCorrect||isUser)?'600':'400'}">${isCorrect?'✓ ':(isUser?'✗ ':'')}${opt}${tag}</div>`;
+      }).join('')}
      </div>
-     <div class="grade-badge"><strong>${g.score}</strong><small>${g.scoreLabel}</small></div>
-    </div>
-    <p class="grade-meta" style="margin:10px 0">${g.description}</p>
-    <div class="grade-breakdown">
-     ${g.breakdown.map(b=>`<div class="grade-stat">${b.label}<b>${b.val}</b></div>`).join('')}
-    </div>
-    ${quizHtml}
+     `;
+    }).join('')}
    </div>
-   <div class="action-pills" style="margin-top:12px">
-    ${g.links.map(l=>l.detailKey?`<button class="pill-btn ${l.cls||''}" data-detail="${l.detailKey}">${l.label}</button>`:l.subjectRef?`<button class="pill-btn ${l.cls||''}" data-subject="${l.subjectRef}">${l.label}</button>`:l.teacher?`<button class="pill-btn ${l.cls||''}" data-teacher="${l.teacher}">${l.label}</button>`:`<a class="pill-link ${l.cls||''}" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('')}
+  </details>
+  `;
+ }
+
+ return `
+ <article class="grade-card" data-type="${g.type}" id="${g.id}">
+  <div>
+   <div class="grade-head">
+    <div>
+     <div class="grade-kicker">${g.kicker}</div>
+     <h3 class="grade-title"><button class="subject-open" data-subject="${g.subjectRef}">${g.title} ↗</button></h3>
+     <div class="grade-meta">Docente: <button class="teacher-link" data-teacher="${g.teacher}">${g.teacher}</button>${g.coTeacher?` · <button class="teacher-link" data-teacher="${g.coTeacher}">${g.coTeacher}</button>`:''}</div>
+    </div>
+    <div class="grade-badge"><strong>${g.score}</strong><small>${g.scoreLabel}</small></div>
+   </div>
+   <p class="grade-meta" style="margin:10px 0">${g.description}</p>
+   <div class="grade-breakdown">
+    ${g.breakdown.map(b=>`<div class="grade-stat">${b.label}<b>${b.val}</b></div>`).join('')}
+   </div>
+   ${quizHtml}
+  </div>
+  <div class="action-pills" style="margin-top:12px">
+   ${g.links.map(l=>l.detailKey?`<button class="pill-btn ${l.cls||''}" data-detail="${l.detailKey}">${l.label}</button>`:l.subjectRef?`<button class="pill-btn ${l.cls||''}" data-subject="${l.subjectRef}">${l.label}</button>`:l.teacher?`<button class="pill-btn ${l.cls||''}" data-teacher="${l.teacher}">${l.label}</button>`:`<a class="pill-link ${l.cls||''}" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('')}
+  </div>
+ </article>
+ `;
+}
+
+function renderTeacherDossiers(){
+ const dossiers = [
+  {
+   id: 'dossier-javier-sanchez',
+   teacher: 'Javier Sánchez García',
+   subject: 'Técnicas instrumentales · Rama Procura (Sesión 1 oct 2026)',
+   subjectRef: 'Procura|Técnicas instrumentales|0',
+   kicker: 'Materia finalizada y evaluada íntegramente por correo',
+   badgeClass: 'gold',
+   badgeText: '10 / 10 · Oficial por correo',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Oficial',
+     score: '10 / 10',
+     desc: 'Calificación final comunicada oficialmente por la Secretaría de Procura / Javier Sánchez en el correo del 14 oct 2026 («Resultados de las pruebas · Técnicas instrumentales»).',
+     subitems: [
+      {label: 'Ponderación total', val: '10 / 10 · Sobresaliente'},
+      {label: 'Fecha comunicación', val: '14 oct 2026'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Test Presencial / Online',
+     score: '4 / 4 puntos',
+     desc: 'Cuestionario de evaluación continua realizado el 1 de octubre en el marco de la primera sesión presencial de Técnicas instrumentales.',
+     subitems: [
+      {label: 'Puntuación test', val: '4.0 de 4.0 ptos (100 %)'},
+      {label: 'Aporte a nota final', val: '40 % del total'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Trabajos y Casos Prácticos',
+     score: '6 / 6 puntos',
+     desc: 'Resolución de casos y redacción de escritos procesales de técnicas instrumentales evaluados con la máxima nota.',
+     subitems: [
+      {label: 'Puntuación prácticas', val: '6.0 de 6.0 ptos (100 %)'},
+      {label: 'Aporte a nota final', val: '60 % del total'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Abrir correo de la nota (14 oct) ↗', detailKey: 'grades', cls: 'solid-green'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|0'},
+    {label: 'Ficha de Javier Sánchez García ↗', teacher: 'Javier Sánchez García'}
+   ]
+  },
+  {
+   id: 'dossier-ana-vazquez',
+   teacher: 'Ana Vázquez Corte',
+   subject: 'Deontología y técnicas transversales · Rama Procura (Sesiones 8 y 9 oct 2026)',
+   subjectRef: 'Procura|Deontología y responsabilidad|0',
+   kicker: 'Materia finalizada y calificada oficialmente por correo',
+   badgeClass: 'gold',
+   badgeText: '8.8 / 10 · Oficial por correo',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Docente',
+     score: '8.8 / 10',
+     desc: 'Nota remitida oficialmente por Dña. Ana Vázquez Corte el 19 oct 2026 («Materia: Deontología y técnicas transversales»). Ponderable por coordinación.',
+     subitems: [
+      {label: 'Calificación global', val: '8.8 / 10 · Notable alto'},
+      {label: 'Fecha de correo', val: '19 oct 2026'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Test de Deontología (40 %)',
+     score: '3.8 / 4 puntos',
+     desc: 'Prueba tipo test de 4 puntos sobre deberes, régimen disciplinario y deontología de la Procura.',
+     subitems: [
+      {label: 'Puntuación en test', val: '3.8 de 4.0 ptos (95 %)'},
+      {label: 'Porcentaje nota', val: '40 %'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Caso Práctico CPROC (60 %)',
+     score: '5.0 / 6 puntos',
+     desc: 'Caso «Derechos, deberes y responsabilidad profesional del procurador» entregado en CPROC el 15 oct.',
+     subitems: [
+      {label: 'Calificación escrita', val: '5.0 de 6.0 ptos (83 %)'},
+      {label: 'Estado entrega CPROC', val: 'Entregada con éxito ✓'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Abrir correo de la nota (19 oct) ↗', detailKey: 'mail_deontologia_ana_vazquez', cls: 'solid-green'},
+    {label: '📁 Ver caso entregado (15 oct) ↗', detailKey: 'assignment'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Deontología y responsabilidad|0'},
+    {label: 'Ficha de Ana Vázquez Corte ↗', teacher: 'Ana Vázquez Corte'}
+   ]
+  },
+  {
+   id: 'dossier-sandra-mosteiro',
+   teacher: 'Sandra Mosteiro Costa',
+   subject: 'Actos de comunicación judicial · Rama Procura (Sesión 20 oct 2026)',
+   subjectRef: 'Procura|Técnicas instrumentales|3',
+   kicker: 'Test completado (9/10) · Caso práctico entregado con éxito en CPROC',
+   badgeClass: 'blue',
+   badgeText: '9/10 Test · Caso Entregado ✓',
+   cardClass: 'has-test',
+   blocks: [
+    {
+     cls: 'highlight-test',
+     title: '📝 Test Online en Testmoz (90 %)',
+     score: '9 / 10',
+     desc: 'Test oficial de clase completado el martes 20 oct a las 17:44 con 9/10 aciertos (Sobresaliente). Preguntas íntegras disponibles en el portal.',
+     subitems: [
+      {label: 'Aciertos en test', val: '9 de 10 (90 %)'},
+      {label: 'Calificación test', val: '9 / 10 · Sobresaliente'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Caso Práctico 2026 en CPROC',
+     score: 'Entregado ✓',
+     desc: 'Caso práctico oficial de 6 supuestos LEC, LexNET, auxilio judicial y 3 reflexiones entregado con éxito en CPROC el 22 oct a las 12:51 h.',
+     subitems: [
+      {label: 'Fecha entrega CPROC', val: '22 oct 2026 · 12:51 h'},
+      {label: 'Archivos vinculados', val: 'PDF, Doc Google, Markdown y .mov'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta por Correo',
+     score: 'Pendiente',
+     desc: 'La Secretaría y la docente remitirán el desglose oficial conjunto por correo electrónico una vez corregido el caso práctico.',
+     subitems: [
+      {label: 'Test online', val: '9 / 10 registrado ✓'},
+      {label: 'Caso entregado', val: 'En revisión docente'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '📝 Ver preguntas y respuestas del test (20 oct) ↗', detailKey: 'test_20oct_sandra', cls: 'solid-blue'},
+    {label: '📁 Ver entrega del caso práctico en CPROC ↗', detailKey: 'entrega_caso_pr_ctico_de_actos_de', cls: 'solid-green'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|3'},
+    {label: 'Ficha de Sandra Mosteiro Costa ↗', teacher: 'Sandra Mosteiro Costa'}
+   ]
+  },
+  {
+   id: 'dossier-carolina-moreno',
+   teacher: 'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',
+   subject: 'Deontología y técnicas transversales · Proceso digital y TIC (Sesión 16 oct 2026)',
+   subjectRef: 'Procura|Técnicas instrumentales|2',
+   kicker: 'Test perfecto (20/20) · 3 prácticas entregadas con éxito en CPROC',
+   badgeClass: 'blue',
+   badgeText: '20/20 Test · 3 Prácticas ✓',
+   cardClass: 'has-test',
+   blocks: [
+    {
+     cls: 'highlight-test',
+     title: '📝 Test Online en Testmoz (100 %)',
+     score: '20 / 20 (10/10)',
+     desc: 'Test oficial de clase completado el viernes 16 oct a las 19:17 con 20/20 aciertos sin ningún fallo. Desglose íntegro disponible.',
+     subitems: [
+      {label: 'Aciertos en test', val: '20 de 20 (100 %)'},
+      {label: 'Calificación test', val: '10 / 10 · Matrícula de honor'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Prácticas Entregadas en CPROC',
+     score: '3 de 3 enviadas ✓',
+     desc: '1) Apoderamiento apud acta, 2) Escrito de subsanación firmado, y 3) Auto declaración con oferta de venta UP (2 envíos en CPROC).',
+     subitems: [
+      {label: 'Poder apud acta', val: 'Entregada 16 oct ✓'},
+      {label: 'Escrito subsanación', val: 'Entregada 16 oct ✓'},
+      {label: 'Auto UP (2 envíos)', val: 'Entregada 16 oct ✓'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta por Correo',
+     score: 'Pendiente',
+     desc: 'Pendiente de remisión del correo con la ponderación global conjunta tras la evaluación de los 3 documentos entregados.',
+     subitems: [
+      {label: 'Test online', val: '20 / 20 registrado ✓'},
+      {label: 'Entregas CPROC', val: 'Completadas al 100 %'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '📝 Ver las 20 preguntas del test (16 oct) ↗', detailKey: 'test_16oct', cls: 'solid-blue'},
+    {label: '📁 Ver entregas de Carolina Moreno en el portal ↗', detailKey: 'entrega_apud_acta'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|2'},
+    {label: 'Ficha de Carolina Moreno Vázquez ↗', teacher: 'Carolina Moreno Vázquez'}
+   ]
+  },
+  {
+   id: 'dossier-jose-luis-delgado',
+   teacher: 'José Luis Delgado Domínguez',
+   subject: 'Responsabilidad civil y penal, aseguramiento y turno de oficio · Abogacía',
+   subjectRef: 'Abogacía|Técnicas instrumentales|3',
+   kicker: 'Módulo en desarrollo · 2 prácticas con plazo de entrega activo',
+   badgeClass: 'amber',
+   badgeText: '2 entregas en plazo activo',
+   cardClass: 'has-pending',
+   blocks: [
+    {
+     cls: 'highlight-practice',
+     title: '📁 Prácticas en Plazo de Entrega',
+     score: '2 pendientes',
+     desc: 'Trabajos encargados en las clases del 19 y 20 de octubre. Plazo de 10 días naturales (envío al ICACOR o sede colegial).',
+     subitems: [
+      {label: 'Parte A (Insostenibilidad)', val: 'Plazo: 29 oct 2026 (7 días)'},
+      {label: 'Parte B (Parte siniestro)', val: 'Plazo: 30 oct 2026 (8 días)'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Test / Evaluación Continua',
+     score: 'En curso',
+     desc: 'Módulo de responsabilidad profesional del abogado en desarrollo presencial.',
+     subitems: [
+      {label: 'Sesiones impartidas', val: '19 y 20 oct 2026'},
+      {label: 'Evaluación teórica', val: 'Presencial / ICACOR'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta por Correo',
+     score: 'Pendiente',
+     desc: 'Se remitirá por la secretaría del ICACOR una vez presentados y corregidos los dictámenes y escritos del turno de oficio.',
+     subitems: [
+      {label: 'Estado', val: 'Plazo abierto para entregar'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '⏳ Ver entrega Parte A (plazo 29 oct) ↗', detailKey: 'entrega_delgado_parte_a', cls: 'solid-green'},
+    {label: '⏳ Ver entrega Parte B (plazo 30 oct) ↗', detailKey: 'entrega_delgado_parte_b'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Abogacía|Técnicas instrumentales|3'},
+    {label: 'Ficha de José Luis Delgado Domínguez ↗', teacher: 'José Luis Delgado Domínguez'}
+   ]
+  }
+ ];
+
+ return dossiers.map(d => `
+  <article class="teacher-grade-dossier ${d.cardClass}" id="${d.id}">
+   <div class="tgd-header">
+    <div class="tgd-title-group">
+     <div class="tgd-kicker">${d.kicker}</div>
+     <h3 class="tgd-teacher-name"><button class="teacher-link" data-teacher="${d.teacher}" style="font:inherit;color:inherit;text-align:left;background:none;border:none;padding:0;cursor:pointer">${d.teacher}</button></h3>
+     <div class="tgd-subject"><button class="subject-open" data-subject="${d.subjectRef}" style="font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer">${d.subject} ↗</button></div>
+    </div>
+    <div class="tgd-badge ${d.badgeClass}">${d.badgeText}</div>
+   </div>
+
+   <div class="tgd-blocks-grid">
+    ${d.blocks.map(b => `
+     <div class="tgd-block ${b.cls}">
+      <div>
+       <div class="tgd-block-title">
+        <span>${b.title}</span>
+       </div>
+       <div class="tgd-block-score">${b.score}</div>
+       <p class="tgd-block-desc">${b.desc}</p>
+      </div>
+      <div class="tgd-sublist">
+       ${b.subitems.map(si => `
+        <div class="tgd-subitem">
+         <span style="color:var(--ink-soft)">${si.label}</span>
+         <b style="color:var(--ink);text-align:right">${si.val}</b>
+        </div>
+       `).join('')}
+      </div>
+     </div>
+    `).join('')}
+   </div>
+
+   <div class="action-pills" style="margin-top:4px">
+    ${d.actions.map(l => l.detailKey ? `<button class="pill-btn ${l.cls||''}" data-detail="${l.detailKey}">${l.label}</button>` : l.subjectRef ? `<button class="pill-btn ${l.cls||''}" data-subject="${l.subjectRef}">${l.label}</button>` : l.teacher ? `<button class="pill-btn ${l.cls||''}" data-teacher="${l.teacher}">${l.label}</button>` : `<a class="pill-link ${l.cls||''}" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('')}
    </div>
   </article>
-  `;
- }).join('');
+ `).join('');
+}
+
+function renderPracticesGradeView(){
+ const submittedList = deliveries.filter(d => d.submitted);
+ const pendingList = deliveries.filter(d => !d.submitted);
+
+ return `
+ <div style="display:grid;gap:18px">
+  <div style="background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow-sm)">
+   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;border-bottom:1px dashed var(--line);padding-bottom:10px">
+    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0">✓ Casos prácticos y entregas realizadas (${submittedList.length})</h3>
+    <button class="pill-btn solid-green" data-switch-view="entregas">Ir a pestaña de Entregas ↗</button>
+   </div>
+   <div style="display:grid;gap:12px">
+    ${submittedList.map(del => `
+     <div style="background:var(--paper-warm);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+       <div>
+        <div style="font-size:11px;font-weight:700;color:var(--green-dark);text-transform:uppercase">${del.subject}</div>
+        <div style="font-size:15px;font-weight:700;color:var(--ink)">${del.title}</div>
+        <div style="font-size:12px;color:var(--ink-soft)">Docente: <button class="teacher-link" data-teacher="${del.teacher}">${del.teacher}</button></div>
+       </div>
+       <span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border)">${del.status}</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:0">${del.details}</p>
+      <div class="action-pills" style="margin-top:4px">
+       <button class="pill-btn solid-green" data-detail="${del.detailKey}">Abrir resolución y archivos ↗</button>
+       <button class="pill-btn" data-subject="${del.subjectRef}">Ver asignatura ↗</button>
+      </div>
+     </div>
+    `).join('')}
+   </div>
+  </div>
+
+  <div style="background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow-sm)">
+   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;border-bottom:1px dashed var(--line);padding-bottom:10px">
+    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0">⏳ Casos prácticos con plazo activo (${pendingList.length})</h3>
+    <button class="pill-btn" data-switch-view="entregas">Gestionar entregas ↗</button>
+   </div>
+   <div style="display:grid;gap:12px">
+    ${pendingList.map(del => `
+     <div style="background:var(--paper-warm);border:1px solid #fed7aa;border-left:4px solid var(--terracotta);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+       <div>
+        <div style="font-size:11px;font-weight:700;color:var(--terracotta);text-transform:uppercase">${del.subject}</div>
+        <div style="font-size:15px;font-weight:700;color:var(--ink)">${del.title}</div>
+        <div style="font-size:12px;color:var(--ink-soft)">Docente: <button class="teacher-link" data-teacher="${del.teacher}">${del.teacher}</button></div>
+       </div>
+       <span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:#fff7ed;color:#9a3412;border:1px solid #fdba74">${del.status}</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:0">${del.details}</p>
+      <div class="action-pills" style="margin-top:4px">
+       <button class="pill-btn solid-green" data-detail="${del.detailKey}">Ver instrucciones del caso ↗</button>
+       <button class="pill-btn" data-subject="${del.subjectRef}">Ver asignatura ↗</button>
+      </div>
+     </div>
+    `).join('')}
+   </div>
+  </div>
+ </div>
+ `;
+}
+
+function renderGrades(filter){
+ if(filter) currentGradeFilter = filter;
+ const filterToApply = currentGradeFilter || 'teachers';
+ const grid = document.getElementById('gradesGrid');
+ if(!grid) return;
+
+ document.querySelectorAll('[data-grade-filter]').forEach(b => {
+  b.classList.toggle('active', b.dataset.gradeFilter === filterToApply);
+ });
+
+ const sumEl = document.getElementById('gradeFilterSummary');
+ if(sumEl){
+  if(filterToApply === 'teachers'){
+   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (5 profesores con actividad evaluable).';
+  } else if(filterToApply === 'mail'){
+   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Javier Sánchez 10/10 y Ana Vázquez 8.8/10).';
+  } else if(filterToApply === 'test'){
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20 y 20 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
+  } else if(filterToApply === 'practices'){
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 2 pendientes con Delgado).';
+  } else {
+   sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
+  }
+ }
+
+ if(filterToApply === 'teachers'){
+  grid.innerHTML = renderTeacherDossiers();
+ } else if(filterToApply === 'practices'){
+  grid.innerHTML = renderPracticesGradeView();
+ } else if(filterToApply === 'mail'){
+  grid.innerHTML = gradeRecords.filter(g => g.type === 'mail').map(renderSingleGradeCard).join('');
+ } else if(filterToApply === 'test'){
+  grid.innerHTML = gradeRecords.filter(g => g.type === 'test').map(renderSingleGradeCard).join('');
+ } else {
+  grid.innerHTML = gradeRecords.map(renderSingleGradeCard).join('');
+ }
 }
 
 function getSessionStatus(dateStr){
@@ -9340,6 +9883,11 @@ function openDetail(key){
 
  // 1. Calificaciones y tests
  if(key === 'test_16oct' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'grades' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez'){
+  let targetFilter = 'teachers';
+  if(key === 'test_16oct' || key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetFilter = 'test';
+  else if(key === 'grades' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') targetFilter = 'mail';
+  else if(key === 'all_tests_summary') targetFilter = 'all';
+  renderGrades(targetFilter);
   setView('notas', false);
   setTimeout(()=>{
    let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') ? 'grade_ana_vazquez' : ((key === 'test_16oct') ? 'grade_16oct_test' : ((key === 'test_20oct_sandra' || key === 'grade_20oct_test') ? 'grade_20oct_test' : 'grades_all_tests')));
@@ -9347,7 +9895,7 @@ function openDetail(key){
    if(card){
     const d = card.querySelector('details');
     if(d) d.open = true;
-    document.querySelectorAll('.grade-card').forEach(c=>c.classList.remove('highlight-focused'));
+    document.querySelectorAll('.grade-card, .teacher-grade-dossier').forEach(c=>c.classList.remove('highlight-focused'));
     card.classList.add('highlight-focused');
     card.scrollIntoView({behavior:'smooth', block:'start'});
    }
@@ -10500,6 +11048,12 @@ document.addEventListener('click',e=>{
  const df = e.target.closest('[data-delivery-filter]');
  if(df){
   renderDeliveries(df.dataset.deliveryFilter);
+  return;
+ }
+
+ const gf = e.target.closest('[data-grade-filter]');
+ if(gf){
+  renderGrades(gf.dataset.gradeFilter);
   return;
  }
 
