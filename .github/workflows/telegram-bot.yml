@@ -37,58 +37,27 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f telegram-bot/requirements.txt ]; then pip install -r telegram-bot/requirements.txt; fi
 
-      - name: Comprobar configuración y diagnosticar conectividad
+      - name: Comprobar credenciales
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -c "
-          import os, sys, urllib.request, json
+          import os, sys
           t = os.environ.get('TELEGRAM_BOT_TOKEN', '').strip().strip('\'\"')
           g = os.environ.get('GEMINI_API_KEY', '').strip().strip('\'\"')
-          
-          diag = {
-              'token_len': len(t),
-              'token_prefix': t[:8] if t else '',
-              'token_suffix': t[-4:] if t else '',
-              'gemini_len': len(g),
-              'gemini_prefix': g[:8] if g else '',
-              'gemini_suffix': g[-4:] if g else '',
-              'telegram_error': None,
-              'telegram_response': None,
-              'gemini_error': None,
-              'gemini_ok': False
-          }
-          
-          try:
-              req = urllib.request.Request(f'https://api.telegram.org/bot{t}/getMe', headers={'User-Agent': 'Mozilla/5.0'})
-              with urllib.request.urlopen(req, timeout=12) as r:
-                  res = json.loads(r.read())
-                  diag['telegram_response'] = res
-          except Exception as e:
-              diag['telegram_error'] = str(e)
-          
-          try:
-              req = urllib.request.Request(
-                  'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent',
-                  data=json.dumps({'contents': [{'parts': [{'text': 'ping'}]}]}).encode(),
-                  headers={'Content-Type': 'application/json', 'x-goog-api-key': g}
-              )
-              with urllib.request.urlopen(req, timeout=12) as r:
-                  diag['gemini_ok'] = True
-          except Exception as e:
-              diag['gemini_error'] = str(e)
-          
-          with open('telegram-bot/diagnostic.json', 'w') as f:
-              json.dump(diag, f, indent=2)
-          print('Diagnóstico generado:', json.dumps(diag, indent=2))
+          if not t:
+              print('❌ TELEGRAM_BOT_TOKEN no está configurado en GitHub Secrets.', flush=True)
+              sys.exit(1)
+          if len(t) < 35:
+              print(f'❌ TELEGRAM_BOT_TOKEN parece incompleto (tiene {len(t)} caracteres, debe tener ~46 caracteres).', flush=True)
+              print('   Copia el token completo desde BotFather o desde la guía.', flush=True)
+              sys.exit(1)
+          if not g:
+              print('❌ GEMINI_API_KEY no está configurado en GitHub Secrets.', flush=True)
+              sys.exit(1)
+          print(f'✅ Claves validadas correctamente (Telegram: {len(t)} chars, Gemini: {len(g)} chars).', flush=True)
           "
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add telegram-bot/diagnostic.json
-          git commit -m "Auto-diagnóstico de conectividad [skip ci]" || true
-          git push || true
 
       - name: Ejecutar Bot de Telegram
         env:
