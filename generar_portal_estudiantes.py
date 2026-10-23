@@ -142,8 +142,114 @@ def build_student_portal():
     html = html.replace('Raquel Escudero_Derechos y deberes procuradores (Doc Google)', 'Caso práctico de Deontología (CPROC)')
     html = html.replace('RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos', 'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nCaso práctico oficial evaluable')
 
-    # 7. CSS para inputs de notas y checks de entregas
+    # 7. CSS con nueva paleta diferenciada (Oxford Navy / Zafiro Pizarra) y controles de estudiantes
     student_custom_css = """
+/* ========================================================
+   PALETA EXCLUSIVA PORTAL ESTUDIANTES: AZUL ACADÉMICO OXFORD
+   (Diferenciada de la paleta crema y espresso de Raquel)
+   ======================================================== */
+:root, [data-theme="dark"] {
+  --bg: #0b1118;
+  --paper: #111923;
+  --paper-warm: #16202c;
+  --paper-card: #1c2837;
+  --sidebar-bg: #0e151f;
+
+  --ink: #eaf0f8;
+  --ink-soft: #b6c7db;
+  --muted: #768ea8;
+  --line: #223448;
+  --line-subtle: #192736;
+
+  /* Azul Zafiro Académico */
+  --green: #3a82b8;
+  --green-dark: #7ec0ee;
+  --green-pale: #122232;
+  --green-badge: #172d42;
+  --green-border: #254668;
+
+  /* Acento Abogacía: Azul Acero */
+  --blue: #529fd5;
+  --blue-dark: #97ccf5;
+  --blue-pale: #132436;
+  --blue-badge: #1a334d;
+  --blue-border: #284c71;
+
+  /* Acento Procura / Entregas: Carmesí Borgoña */
+  --terracotta: #c45768;
+  --terra-dark: #e58d9a;
+  --terra-pale: #261619;
+  --terra-badge: #381e23;
+  --terra-border: #562c34;
+
+  /* Oro y notas */
+  --honey: #dca03d;
+  --honey-dark: #edd084;
+  --honey-pale: #261e12;
+  --honey-badge: #382b17;
+  --honey-border: #5a4421;
+}
+
+[data-theme="light"] {
+  /* Fondo y tarjetas: Azul Hielo Universitario & Pizarra Suave */
+  --bg: #f2f5fa;
+  --paper: #ffffff;
+  --paper-warm: #e9f0f8;
+  --paper-card: #ffffff;
+  --sidebar-bg: #e2ecf6;
+
+  /* Tipografía: Azul Marino Muy Oscuro de Alta Nitidez */
+  --ink: #0d1b2a;
+  --ink-soft: #2f435a;
+  --muted: #5c748e;
+  --line: #cddbe8;
+  --line-subtle: #dbe6f1;
+
+  /* Color primario institucional: Azul Marino Oxford */
+  --green: #1b4965;
+  --green-dark: #0e2e42;
+  --green-pale: #e4f0f8;
+  --green-badge: #d1e5f3;
+  --green-border: #a8cee5;
+
+  /* Acento Abogacía: Azul Prusia */
+  --blue: #205c80;
+  --blue-dark: #123d57;
+  --blue-pale: #e7f3fa;
+  --blue-badge: #d4eaf6;
+  --blue-border: #add5ed;
+
+  /* Acento Procura / Entregas: Carmesí Académico */
+  --terracotta: #9b2c3b;
+  --terra-dark: #6e1c27;
+  --terra-pale: #fdf0f2;
+  --terra-badge: #f9d8dd;
+  --terra-border: #ebb4bd;
+
+  /* Oro Académico */
+  --honey: #9b6814;
+  --honey-dark: #6b4609;
+  --honey-pale: #fef7ec;
+  --honey-badge: #fbeacf;
+  --honey-border: #ebd1a2;
+}
+
+.portal-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-pale);
+  border: 1.5px solid var(--green-border);
+  color: var(--green-dark);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* ESTILOS PERSONALIZADOS DEL PORTAL DEL ESTUDIANTE (NOTAS Y CHECKS LOCALSTORAGE) */
 .student-eval-bar {
   background: var(--paper-warm);
@@ -875,10 +981,24 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>"""
     html = html.replace(old_pending_row, new_pending_row)
 
+    # 12. Ajustar barra de accesos rápidos para la versión de estudiantes
+    html = html.replace(
+        '<a href="portal-estudiantes.html" target="_blank" rel="noopener noreferrer" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark);font-weight:700">🎓 Portal Estudiantes ↗</a>',
+        '<span class="portal-mode-pill">🎓 Portal Estudiantes · Versión Compartida</span>'
+    )
+    html = html.replace(
+        '<a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>',
+        '<a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>'
+    )
+
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
 
-    print(f"✅ ¡Portal de estudiantes generado con éxito en: {out_path} ({len(html)} bytes)!")
+    alias_path = os.path.join(base_dir, 'estudiantes.html')
+    with open(alias_path, 'w', encoding='utf-8') as f:
+        f.write(html)
+
+    print(f"✅ ¡Portal de estudiantes generado con éxito en: {out_path} y {alias_path} ({len(html)} bytes)!")
 
 if __name__ == '__main__':
     build_student_portal()

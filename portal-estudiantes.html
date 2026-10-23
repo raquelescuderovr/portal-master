@@ -2038,6 +2038,45 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .st-doc-link{color:var(--ink);text-decoration:none;font-weight:600;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .st-doc-link:hover{color:var(--green);text-decoration:underline}
 .st-item-status{font-size:9px;color:var(--green-dark);font-weight:700}
+
+/* Acordeones desplegables con flecha para tests y prácticas bajo cada profesor */
+.st-teacher-work-accordion{margin:5px 0 3px;border:1px solid var(--line);border-radius:6px;background:var(--paper);overflow:hidden}
+.st-teacher-work-summary{padding:4px 7px;font-size:10px;font-weight:700;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:var(--paper-warm);user-select:none;transition:background .15s}
+.st-teacher-work-summary::-webkit-details-marker{display:none}
+.st-teacher-work-summary:hover{background:#f1ece3}
+[data-theme="light"] .st-teacher-work-summary:hover{background:#ede5d8}
+.st-teacher-work-summary .work-arrow{font-size:9px;color:var(--muted);transition:transform .18s ease}
+.st-teacher-work-accordion[open] > .st-teacher-work-summary .work-arrow{transform:rotate(180deg)}
+.st-teacher-work-body{padding:4px 6px 5px;display:flex;flex-direction:column;gap:3px;border-top:1px dashed var(--line);background:var(--paper)}
+.st-teacher-work-item{display:flex;justify-content:space-between;align-items:center;gap:4px;font-size:9.5px;padding:3px 5px;border-radius:4px;background:var(--paper-warm);border:1px solid var(--line)}
+.st-teacher-work-item .work-title-btn{background:transparent;border:0;padding:0;font:600 9.5px var(--sans);color:var(--ink);cursor:pointer;text-align:left;line-height:1.25}
+.st-teacher-work-item .work-title-btn:hover{color:var(--green);text-decoration:underline}
+.st-teacher-work-item .work-status-badge{font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;white-space:nowrap;background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border)}
+.st-teacher-work-item .work-status-badge.pending{background:var(--terra-pale);color:var(--terracotta);border-color:var(--terra-border)}
+
+/* Desplegables de profesores dentro de las tarjetas de la sección de asignaturas */
+.sc-teachers-accordion-box{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:8px}
+.sc-teacher-block{background:var(--paper-warm);border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;transition:border-color .15s}
+.sc-teacher-block:hover{border-color:var(--green-border)}
+.sc-teacher-header-line{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.sc-teacher-name-wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sc-teacher-title-btn{background:transparent;border:0;padding:0;font:700 13.5px var(--sans);color:var(--ink);cursor:pointer;text-align:left}
+.sc-teacher-title-btn:hover{color:var(--green);text-decoration:underline}
+.sc-teacher-sub-accordion{margin-top:7px;margin-left:8px;border-left:2.5px solid var(--green-border);padding-left:10px;border-radius:0}
+.sc-teacher-sub-accordion details{margin-bottom:5px;border:1px solid var(--line);border-radius:8px;background:var(--paper);overflow:hidden}
+.sc-teacher-sub-accordion summary{padding:6px 10px;font-size:11.5px;font-weight:700;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:var(--paper-warm);user-select:none;transition:background .15s}
+.sc-teacher-sub-accordion summary::-webkit-details-marker{display:none}
+.sc-teacher-sub-accordion summary:hover{background:#ede5d8}
+.sc-teacher-sub-accordion summary .work-arrow{font-size:10px;color:var(--muted);transition:transform .18s ease}
+.sc-teacher-sub-accordion details[open] > summary .work-arrow{transform:rotate(180deg)}
+.sc-teacher-work-list{padding:6px 10px 8px;display:flex;flex-direction:column;gap:4px;border-top:1px dashed var(--line);background:var(--paper)}
+.sc-work-card-row{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:4px 7px;border-radius:6px;background:var(--paper-warm);border:1px solid var(--line);font-size:11px}
+.sc-work-card-row button{background:transparent;border:0;padding:0;font:600 11px var(--sans);color:var(--ink);cursor:pointer;text-align:left}
+.sc-work-card-row button:hover{color:var(--green);text-decoration:underline}
+.sc-work-card-row .sc-badge-score{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border);white-space:nowrap}
+.sc-work-card-row .sc-badge-score.pending{background:var(--terra-pale);color:var(--terracotta);border-color:var(--terra-border)}
+.sc-work-empty{font-size:10.5px;color:var(--muted);font-style:italic;padding:3px 2px}
+
 /* ========================================================
    SELECTOR DE TEMA VISUAL (DÍA / NOCHE / AUTO)
    ======================================================== */
@@ -4162,6 +4201,112 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 
+/* ========================================================
+   PALETA EXCLUSIVA PORTAL ESTUDIANTES: AZUL ACADÉMICO OXFORD
+   (Diferenciada de la paleta crema y espresso de Raquel)
+   ======================================================== */
+:root, [data-theme="dark"] {
+  --bg: #0b1118;
+  --paper: #111923;
+  --paper-warm: #16202c;
+  --paper-card: #1c2837;
+  --sidebar-bg: #0e151f;
+
+  --ink: #eaf0f8;
+  --ink-soft: #b6c7db;
+  --muted: #768ea8;
+  --line: #223448;
+  --line-subtle: #192736;
+
+  /* Azul Zafiro Académico */
+  --green: #3a82b8;
+  --green-dark: #7ec0ee;
+  --green-pale: #122232;
+  --green-badge: #172d42;
+  --green-border: #254668;
+
+  /* Acento Abogacía: Azul Acero */
+  --blue: #529fd5;
+  --blue-dark: #97ccf5;
+  --blue-pale: #132436;
+  --blue-badge: #1a334d;
+  --blue-border: #284c71;
+
+  /* Acento Procura / Entregas: Carmesí Borgoña */
+  --terracotta: #c45768;
+  --terra-dark: #e58d9a;
+  --terra-pale: #261619;
+  --terra-badge: #381e23;
+  --terra-border: #562c34;
+
+  /* Oro y notas */
+  --honey: #dca03d;
+  --honey-dark: #edd084;
+  --honey-pale: #261e12;
+  --honey-badge: #382b17;
+  --honey-border: #5a4421;
+}
+
+[data-theme="light"] {
+  /* Fondo y tarjetas: Azul Hielo Universitario & Pizarra Suave */
+  --bg: #f2f5fa;
+  --paper: #ffffff;
+  --paper-warm: #e9f0f8;
+  --paper-card: #ffffff;
+  --sidebar-bg: #e2ecf6;
+
+  /* Tipografía: Azul Marino Muy Oscuro de Alta Nitidez */
+  --ink: #0d1b2a;
+  --ink-soft: #2f435a;
+  --muted: #5c748e;
+  --line: #cddbe8;
+  --line-subtle: #dbe6f1;
+
+  /* Color primario institucional: Azul Marino Oxford */
+  --green: #1b4965;
+  --green-dark: #0e2e42;
+  --green-pale: #e4f0f8;
+  --green-badge: #d1e5f3;
+  --green-border: #a8cee5;
+
+  /* Acento Abogacía: Azul Prusia */
+  --blue: #205c80;
+  --blue-dark: #123d57;
+  --blue-pale: #e7f3fa;
+  --blue-badge: #d4eaf6;
+  --blue-border: #add5ed;
+
+  /* Acento Procura / Entregas: Carmesí Académico */
+  --terracotta: #9b2c3b;
+  --terra-dark: #6e1c27;
+  --terra-pale: #fdf0f2;
+  --terra-badge: #f9d8dd;
+  --terra-border: #ebb4bd;
+
+  /* Oro Académico */
+  --honey: #9b6814;
+  --honey-dark: #6b4609;
+  --honey-pale: #fef7ec;
+  --honey-badge: #fbeacf;
+  --honey-border: #ebd1a2;
+}
+
+.portal-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-pale);
+  border: 1.5px solid var(--green-border);
+  color: var(--green-dark);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* ESTILOS PERSONALIZADOS DEL PORTAL DEL ESTUDIANTE (NOTAS Y CHECKS LOCALSTORAGE) */
 .student-eval-bar {
   background: var(--paper-warm);
@@ -4543,9 +4688,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <button data-branch-view="todas" class="active">Todas</button>
         <button data-branch-view="Abogacía">Abogacía</button>
         <button data-branch-view="Procura">Procuradores</button>
-        <a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>
+        <a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>
         <a href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
         <a href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
+        <span class="portal-mode-pill">🎓 Portal Estudiantes · Versión Compartida</span>
       </div>
     </div>
     <div class="top-actions">
@@ -7844,6 +7990,74 @@ function formatTeachersWithGrades(teachersList, isPast=true){
  }).join(', ');
 }
 
+function isLikelyWorkTest(title){
+ const l = String(title || '').toLowerCase();
+ if(!l.includes('test') && !l.includes('cuestionario')) return false;
+ if(l.includes('tabla oficial') || l.includes('calificaciones oficiales') || l.includes('concurso') || l.includes('demanda') || l.includes('ley')) return false;
+ return true;
+}
+
+function getTeacherWorkItems(sub, tName){
+ const t = (typeof teacherDirectory !== 'undefined' ? teacherDirectory.find(x => x.name === tName) : null) || { practices: [], notes: [] };
+ const practices = t.practices || [];
+ const notes = (sub && sub.notes) ? sub.notes : [];
+
+ const rawTests = [
+  ...practices.filter(p => isLikelyWorkTest(p.title)),
+  ...notes.filter(n => isLikelyWorkTest(n.name))
+ ];
+ const uniqueTests = [];
+ const seenT = new Set();
+ rawTests.forEach(item => {
+  const key = item.key || item.detailKey || item.name || item.title;
+  if (!seenT.has(key)) {
+   seenT.add(key);
+   uniqueTests.push({
+    title: item.title || item.name,
+    status: item.status || '10 / 10 (100 %) ✓',
+    key: item.key || item.detailKey || ''
+   });
+  }
+ });
+
+ const tPractices = practices.filter(p => {
+  const l = String(p.title || '').toLowerCase();
+  return !isLikelyWorkTest(p.title) && !l.includes('pruebas evaluables') && !l.includes('resultados de pruebas');
+ });
+ const dels = (typeof deliveries !== 'undefined' ? deliveries : []).filter(d => {
+  return d.teacher === tName || (d.teacher && d.teacher.includes(tName));
+ });
+
+ const uniquePractices = [];
+ const seenP = new Set();
+ dels.forEach(d => {
+  const key = d.detailKey || d.title;
+  if (!seenP.has(key)) {
+   seenP.add(key);
+   uniquePractices.push({
+    title: d.title,
+    status: d.status || (d.submitted ? 'Entregada ✓' : 'Pendiente'),
+    key: d.detailKey || '',
+    submitted: d.submitted
+   });
+  }
+ });
+ tPractices.forEach(p => {
+  const key = p.key || p.title;
+  if (!seenP.has(key)) {
+   seenP.add(key);
+   uniquePractices.push({
+    title: p.title,
+    status: p.status || 'Completada ✓',
+    key: p.key || '',
+    submitted: true
+   });
+  }
+ });
+
+ return { tests: uniqueTests, practices: uniquePractices };
+}
+
 let currentGradeFilter = 'teachers';
 
 function renderSingleGradeCard(g){
@@ -8988,17 +9202,55 @@ function renderSidebarTree(mode){
       </div>
      `;
 
+     const workData = getTeacherWorkItems(sub, t.name);
+     const teacherGradeHtml = getTeacherGradeBadgeHtml(t.name, false);
+
+     const workAccordions = `
+      <details class="st-teacher-work-accordion" open>
+       <summary class="st-teacher-work-summary">
+        <span>📝 Tests (${workData.tests.length})</span>
+        <span class="work-arrow">▾</span>
+       </summary>
+       <div class="st-teacher-work-body">
+        ${workData.tests.length ? workData.tests.map(tst => `
+         <div class="st-teacher-work-item">
+          ${tst.key ? `<button class="work-title-btn" data-detail="${tst.key}">${escapeHtml(tst.title)}</button>` : `<span style="font-weight:600">${escapeHtml(tst.title)}</span>`}
+          <span class="work-status-badge">${escapeHtml(tst.status)}</span>
+         </div>
+        `).join('') : '<div style="font-size:9.5px;color:var(--muted);font-style:italic;padding:2px 0">— Sin tests programados</div>'}
+       </div>
+      </details>
+
+      <details class="st-teacher-work-accordion" open>
+       <summary class="st-teacher-work-summary">
+        <span>✍️ Prácticas (${workData.practices.length})</span>
+        <span class="work-arrow">▾</span>
+       </summary>
+       <div class="st-teacher-work-body">
+        ${workData.practices.length ? workData.practices.map(pr => `
+         <div class="st-teacher-work-item">
+          ${pr.key ? `<button class="work-title-btn" data-detail="${pr.key}">${escapeHtml(pr.title)}</button>` : `<span style="font-weight:600">${escapeHtml(pr.title)}</span>`}
+          <span class="work-status-badge ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>
+         </div>
+        `).join('') : '<div style="font-size:9.5px;color:var(--muted);font-style:italic;padding:2px 0">— Sin prácticas asignadas</div>'}
+       </div>
+      </details>
+     `;
+
      tHtmlList.push(`
       <div class="st-teacher-card ${st.state}" id="side-teacher-${encodeURIComponent(t.name)}">
        <div class="st-teacher-top">
-        <button class="st-teacher-name-btn" data-teacher="${t.name}">👤 ${t.name}</button>
+        <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+         <button class="st-teacher-name-btn" data-teacher="${t.name}">👤 ${t.name}</button>
+         ${teacherGradeHtml}
+        </div>
         <span class="st-badge st-badge-${st.state}">${st.label}</span>
        </div>
        <div class="st-teacher-role">${t.role}</div>
        ${sessionsBlock}
+       ${workAccordions}
        <div class="st-teacher-sections">
         ${apuntesSection}
-        ${practicasSection}
         ${correosSection}
        </div>
        <div class="st-teacher-materials" style="margin-top:6px">
@@ -9008,12 +9260,17 @@ function renderSidebarTree(mode){
      `);
     }
 
+    const subGradeHtml = getSubjectGradeBadgeHtml(sub, false);
+
     renderedSubjects.push(`
      <details class="st-subject" open>
       <summary class="st-subject-head">
        <div class="st-subject-info">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
-         <b class="st-subject-name">📖 ${sub.name}</b>
+         <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+          <b class="st-subject-name">📖 ${sub.name}</b>
+          ${subGradeHtml}
+         </div>
          <button class="pill-btn" style="font-size:9.5px;padding:2px 6px" data-subject="${cKey}|${actualIdx}">Ficha ↗</button>
         </div>
         <span class="st-subject-dates">🗓️ ${sub.period}</span>
@@ -10035,6 +10292,61 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
 
  grid.innerHTML = allItems.map(item => {
   const {course, cKey, sub, sIdx, stInfo} = item;
+
+  const teachersAccordions = (sub.teachers && sub.teachers.length) ? `
+   <div class="sc-teachers-accordion-box">
+    <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px">
+     👤 Profesorado y actividades evaluables (${sub.teachers.length}):
+    </div>
+    ${sub.teachers.map(tName => {
+     const t = (typeof teacherDirectory !== 'undefined' ? teacherDirectory.find(x => x.name === tName) : null) || { role: 'Docente' };
+     const w = getTeacherWorkItems(sub, tName);
+     const tGradeHtml = getTeacherGradeBadgeHtml(tName, false);
+     return `
+      <div class="sc-teacher-block">
+       <div class="sc-teacher-header-line">
+        <div class="sc-teacher-name-wrap">
+         <button class="sc-teacher-title-btn" data-teacher="${escapeHtml(tName)}">👤 ${escapeHtml(tName)}</button>
+         ${tGradeHtml}
+        </div>
+        <span style="font-size:11px;color:var(--muted)">${escapeHtml(t.role || 'Docente')}</span>
+       </div>
+       <div class="sc-teacher-sub-accordion">
+        <details open>
+         <summary>
+          <span>📝 Tests (${w.tests.length})</span>
+          <span class="work-arrow">▾</span>
+         </summary>
+         <div class="sc-teacher-work-list">
+          ${w.tests.length ? w.tests.map(tst => `
+           <div class="sc-work-card-row">
+            ${tst.key ? `<button data-detail="${tst.key}">📝 ${escapeHtml(tst.title)}</button>` : `<span>📝 ${escapeHtml(tst.title)}</span>`}
+            <span class="sc-badge-score">${escapeHtml(tst.status)}</span>
+           </div>
+          `).join('') : '<div class="sc-work-empty">— Sin tests para este módulo</div>'}
+         </div>
+        </details>
+        <details open>
+         <summary>
+          <span>📁 Prácticas (${w.practices.length})</span>
+          <span class="work-arrow">▾</span>
+         </summary>
+         <div class="sc-teacher-work-list">
+          ${w.practices.length ? w.practices.map(pr => `
+           <div class="sc-work-card-row">
+            ${pr.key ? `<button data-detail="${pr.key}">✍️ ${escapeHtml(pr.title)}</button>` : `<span>✍️ ${escapeHtml(pr.title)}</span>`}
+            <span class="sc-badge-score ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>
+           </div>
+          `).join('') : '<div class="sc-work-empty">— Sin prácticas asignadas</div>'}
+         </div>
+        </details>
+       </div>
+      </div>
+     `;
+    }).join('')}
+   </div>
+  ` : '';
+
   return `
    <article class="subject-card-spacious ${stInfo.cardClass}" data-subject-card="${cKey}|${sIdx}">
     <div>
@@ -10046,12 +10358,14 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
       ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
      </div>
 
-     <h3 class="sc-title">📖 ${sub.name}${stInfo.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</h3>
+     <h3 class="sc-title">📖 ${sub.name}${getSubjectGradeBadgeHtml(sub, false)}</h3>
 
      <div class="sc-meta">
       <div>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></div>
-      <div>👤 Docente(s): <b style="color:var(--ink-soft)">${formatTeachersWithGrades(sub.teachers, stInfo.status === 'past')}</b></div>
+      <div>👤 Docente(s): <b style="color:var(--ink-soft)">${formatTeachersWithGrades(sub.teachers, false)}</b></div>
      </div>
+
+     ${teachersAccordions}
     </div>
 
     <div class="sc-footer">

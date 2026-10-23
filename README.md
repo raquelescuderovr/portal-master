@@ -2,8 +2,8 @@
 
 Portal personal de seguimiento académico del **Máster Universitario en Abogacía y Procura**, diseñado en un único archivo (`index.html`) con HTML, CSS y JavaScript nativos, sin dependencias externas.
 
-🔗 **Web publicada (Personal):** [https://raquelescuderovr.github.io/portal-master/](https://raquelescuderovr.github.io/portal-master/)  
-🎓 **Portal para Estudiantes (Compartido):** [https://raquelescuderovr.github.io/portal-master/portal-estudiantes.html](https://raquelescuderovr.github.io/portal-master/portal-estudiantes.html)
+🔗 **Web publicada (Personal de Raquel):** [https://raquelescuderovr.github.io/portal-master/](https://raquelescuderovr.github.io/portal-master/)  
+🎓 **Portal para Estudiantes (Compartido):** [https://raquelescuderovr.github.io/portal-master/portal-estudiantes.html](https://raquelescuderovr.github.io/portal-master/portal-estudiantes.html) o [https://raquelescuderovr.github.io/portal-master/estudiantes.html](https://raquelescuderovr.github.io/portal-master/estudiantes.html)
 
 ---
 

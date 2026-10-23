@@ -455,7 +455,7 @@ def save_and_commit(new_content: str, commit_msg: str) -> bool:
             if gen_script.exists():
                 try:
                     subprocess.run([sys.executable, str(gen_script)], check=True)
-                    subprocess.run(["git", "-C", str(PORTAL_DIR), "add", "portal-estudiantes.html"], check=True)
+                    subprocess.run(["git", "-C", str(PORTAL_DIR), "add", "portal-estudiantes.html", "estudiantes.html"], check=True)
                 except Exception as eg:
                     print(f"[Updater] Aviso al regenerar portal-estudiantes.html: {eg}")
 
