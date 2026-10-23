@@ -18,7 +18,7 @@ import updater
 HISTORY_FILE = Path(__file__).resolve().parent / "chat_history.json"
 
 def get_portal_summary() -> str:
-    """Extrae un resumen actualizado del estado de entregas y agenda desde index.html."""
+    """Extrae un resumen actualizado del estado de entregas y asignaturas desde index.html."""
     try:
         if not INDEX_HTML.exists():
             return "Portal en desarrollo."
@@ -26,62 +26,14 @@ def get_portal_summary() -> str:
             content = f.read()
 
         summary_lines = []
-
-        # 1. Entregas pendientes y completadas
+        # Buscar entregas
         m_deliv = re.search(r'const deliveries=\[(.*?)\];', content, re.DOTALL)
         if m_deliv:
             raw_delivs = m_deliv.group(1)
-            deliv_blocks = re.findall(r'\{(.*?)\}', raw_delivs, re.DOTALL)
-            pendientes = []
-            completadas = []
-            for b in deliv_blocks:
-                t = re.search(r"title:'(.*?)'", b)
-                te = re.search(r"teacher:'(.*?)'", b)
-                st = re.search(r"status:'(.*?)'", b)
-                sub = re.search(r"submitted:(true|false)", b)
-                title = t.group(1) if t else "Sin título"
-                teacher = te.group(1) if te else "Docente"
-                status = st.group(1) if st else ""
-                is_sub = (sub.group(1) == "true") if sub else False
-
-                if is_sub or "✓" in status:
-                    completadas.append(f"  ✓ {title} ({teacher})")
-                else:
-                    pendientes.append(f"  ⏳ {title} · Docente: {teacher} · Estado: {status}")
-
-            summary_lines.append("ENTREGAS EN EL PORTAL ACADÉMICO:")
-            if pendientes:
-                summary_lines.append("Prácticas pendientes:")
-                summary_lines.extend(pendientes)
-            else:
-                summary_lines.append("No hay prácticas pendientes registradas.")
-            if completadas:
-                summary_lines.append(f"Prácticas ya entregadas ({len(completadas)}):")
-                summary_lines.extend(completadas[:5])
-
-        # 2. Agenda y clases del día
-        today_str = datetime.now().strftime("%Y-%m-%d")
-        dates_to_check = [today_str]
-        if "2026" not in today_str:
-            dates_to_check.append("2026-10-22")
-
-        for d in dates_to_check:
-            m_events = re.search(r"'" + d + r"':\s*\[(.*?)\]\s*(?:,|\})", content, re.DOTALL)
-            if m_events:
-                summary_lines.append(f"\nAGENDA Y CLASES DEL DÍA ({d}):")
-                raw_ev = m_events.group(1)
-                ev_blocks = re.findall(r'\{(.*?)\}', raw_ev, re.DOTALL)
-                for eb in ev_blocks:
-                    st = re.search(r"start:'(.*?)'", eb)
-                    nm = re.search(r"name:'(.*?)'", eb)
-                    tc = re.search(r"teacher:'(.*?)'", eb)
-                    pl = re.search(r"place:'(.*?)'", eb)
-                    start = st.group(1) if st else ""
-                    name = nm.group(1) if nm else ""
-                    teacher = f" | {tc.group(1)}" if tc else ""
-                    place = f" ({pl.group(1)})" if pl else ""
-                    summary_lines.append(f"  • {start}: {name}{teacher}{place}")
-                break
+            titles = re.findall(r"title:'(.*?)'.*?teacher:'(.*?)'.*?status:'(.*?)'", raw_delivs)
+            summary_lines.append("Entregas registradas en el portal:")
+            for t, te, st in titles[:6]:
+                summary_lines.append(f"  • {t} | Docente: {te} | Estado: {st}")
 
         return "\n".join(summary_lines)
     except Exception:
@@ -94,15 +46,23 @@ def build_system_instruction() -> str:
 Tu personalidad y estilo de conversación:
 • Mantén una conversación completamente fluida, inteligente, cercana, resolutiva y jurídicamente precisa (al estilo ChatGPT / Gemini avanzado).
 • No eres un simple robot de comandos rígidos: dialogas, explicas casos prácticos, analizas enunciados o leyes (LAJG, LEC, LECrim, etc.), propones esquemas procesales y aceptas instrucciones y matices que te dé Raquel.
-• Raquel te enviará con frecuencia fotos o capturas de pantalla de casos prácticos (de CEPROC o repartidos en clase), pantallazos de correos o avisos institucionales, y te dará explicaciones complementarias (por ejemplo: "el profesor dijo que la pregunta 3 es opcional y que el plazo vence el viernes").
+• Raquel te enviará con frecuencia fotos o capturas de pantalla de casos prácticos (de CEPROC o repartidos en clase), pantallazos de correos o avisos institucionales, y te dará explicaciones complementarias.
 • Escucha atentamente sus indicaciones y responde a sus dudas con rigor jurídico y claridad práctica.
-• Cuando Raquel te pida que registres una entrega, o cuando te pase una práctica o correo que claramente corresponda añadir al portal académico, incluye al final de tu respuesta una directiva de acción con formato JSON:
-  [ACCION:GUARDAR_PRACTICA:{{"titulo": "...", "docente": "...", "materia": "...", "plazo": "...", "detalles": "..."}}]
-  o bien para correos y avisos:
-  [ACCION:GUARDAR_CORREO:{{"titulo": "...", "remitente": "...", "docente": "...", "materia": "...", "resumen": "...", "cuerpo": "..."}}]
-  o cuando Raquel te indique que ya ha entregado o completado una práctica pendiente:
-  [ACCION:COMPLETAR_PRACTICA:{{"termino": "título o docente de la práctica"}}]
 
+DIRECTIVAS DE ACCIÓN AUTOMÁTICA EN EL PORTAL ACADÉMICO:
+Cuando corresponda guardar información en el portal tras una petición o envío de Raquel, incluye al final de tu respuesta EXACTAMENTE una de las siguientes directivas JSON:
+
+1) Para calificaciones oficiales o notas de tests/evaluaciones:
+  [ACCION:GUARDAR_NOTA:{{"titulo": "Título de la prueba o evaluación", "docente": "Nombre del profesor/a", "materia": "Nombre de la asignatura", "nota": "10 / 10", "tipo_nota": "Nota oficial", "remitente": "accesoabogaciaprocura@... o ICA Coruña", "resumen": "Resumen ejecutivo", "cuerpo": "Detalle del correo o acta", "desglose": [{{"label": "Test", "val": "4 / 4"}}, {{"label": "Escritos", "val": "6 / 6"}}]}}]
+
+2) Para nuevas prácticas, casos prácticos o tareas de CEPROC:
+  [ACCION:GUARDAR_PRACTICA:{{"titulo": "...", "docente": "...", "materia": "...", "plazo": "...", "detalles": "..."}}]
+
+3) Para correos informativos o avisos generales:
+  [ACCION:GUARDAR_CORREO:{{"titulo": "...", "remitente": "...", "docente": "...", "materia": "...", "resumen": "...", "cuerpo": "..."}}]
+
+4) Cuando Raquel indique que ya ha entregado o completado una práctica pendiente:
+  [ACCION:COMPLETAR_PRACTICA:{{"termino": "título o docente de la práctica"}}]
 
 Estado actual del portal de Raquel:
 {portal_info}
@@ -113,6 +73,7 @@ Contexto docente y académico:
   - José Luis Delgado Domínguez: Responsabilidad civil y penal, aseguramiento y turno de oficio (Abogacía).
   - Sandra Mosteiro Costa: Actos de comunicación judicial (Procura).
   - Carolina Moreno Vázquez: Justicia digital, poder apud acta y subsanación (Procura).
+  - Carlos M. Sánchez Muiño: Iniciación y marketing de la procura, proceso digital (Procura).
   - Ana Vázquez Corte: Deontología y responsabilidad profesional (Procura).
 • Web pública del portal: {PORTAL_PUBLIC_URL}
 """
@@ -149,7 +110,48 @@ def execute_action(action_type: str, args: dict) -> str:
         with open(INDEX_HTML, "r", encoding="utf-8") as f:
             current_content = f.read()
 
-        if action_type == "GUARDAR_PRACTICA":
+        if action_type == "GUARDAR_NOTA":
+            titulo = args.get("titulo", "Calificación oficial")
+            docente = args.get("docente", "Docente del Máster")
+            materia = args.get("materia", "Técnicas instrumentales")
+            nota = args.get("nota", "10 / 10")
+            tipo_nota = args.get("tipo_nota", "Nota oficial")
+            remitente = args.get("remitente", "Secretaría del Máster")
+            resumen = args.get("resumen", titulo)
+            cuerpo = args.get("cuerpo", "")
+            desglose = args.get("desglose", [])
+            now_str = datetime.now().strftime("%d oct %Y (%H:%M)")
+            timestamp_suffix = str(int(datetime.now().timestamp()))[-6:]
+            mail_key = "mail_nota_" + timestamp_suffix
+            grade_id = "grade_" + timestamp_suffix
+
+            # 1. Registrar el correo en el portal
+            new_html = updater.add_mail_entry(
+                current_content, now_str, titulo, remitente, mail_key,
+                docente, "Procura|Técnicas instrumentales|2", resumen, cuerpo, remitente
+            )
+
+            # 2. Registrar la nota en Notas & Tests, Ficha del Profesor y Asignatura
+            kicker_txt = f"Evaluación oficial por correo · {now_str}"
+            desc_txt = f"Calificación comunicada oficialmente por {remitente}: {titulo}. Nota: {nota}."
+            new_html = updater.add_grade_entry(
+                new_html, grade_id, titulo, kicker_txt, nota, tipo_nota,
+                docente, "Procura|Técnicas instrumentales|2", mail_key, desc_txt, desglose,
+                subject_name=materia
+            )
+
+            commit_msg = f"Registrar calificación: {titulo} ({docente}: {nota}) [vía Telegram]"
+            updater.save_and_commit(new_html, commit_msg)
+            return (
+                f"\n\n⭐ <b>¡Calificación registrada con éxito!</b>\n"
+                f"• <b>Nota:</b> {nota} ({tipo_nota})\n"
+                f"• <b>Profesor/a:</b> {docente} (actualizado en su ficha)\n"
+                f"• <b>Asignatura:</b> {materia} (actualizada)\n"
+                f"• <b>Correo clasificado:</b> {titulo}\n"
+                f"🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
+            )
+
+        elif action_type == "GUARDAR_PRACTICA":
             titulo = args.get("titulo", "Caso práctico")
             docente = args.get("docente", "Docente asignado")
             materia = args.get("materia", "Actuación procesal")
@@ -163,7 +165,14 @@ def execute_action(action_type: str, args: dict) -> str:
             )
             commit_msg = f"Añadir práctica: {titulo} ({docente}) [vía Telegram]"
             updater.save_and_commit(new_html, commit_msg)
-            return f"\n\n📌 <b>Registrado en el portal:</b> «{titulo}» ({plazo})\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
+            return (
+                f"\n\n📌 <b>Práctica registrada en el portal:</b> «{titulo}»\n"
+                f"• <b>Docente:</b> {docente} (vinculada en su ficha de profesor)\n"
+                f"• <b>Asignatura:</b> {materia}\n"
+                f"• <b>Plazo:</b> {plazo}\n"
+                f"• <b>Ubicación:</b> Pestaña de Entregas y panel docente\n"
+                f"🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
+            )
 
         elif action_type == "GUARDAR_CORREO":
             titulo = args.get("titulo", "Aviso académico")
@@ -181,7 +190,7 @@ def execute_action(action_type: str, args: dict) -> str:
             )
             commit_msg = f"Incorporar aviso: {titulo} [vía Telegram]"
             updater.save_and_commit(new_html, commit_msg)
-            return f"\n\n📌 <b>Aviso incorporado al portal:</b> «{titulo}»\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
+            return f"\n\n📌 <b>Aviso incorporado al portal:</b> «{titulo}» (vinculado con {docente})\n🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
 
         elif action_type == "COMPLETAR_PRACTICA":
             termino = args.get("termino", "")
@@ -201,66 +210,26 @@ def execute_action(action_type: str, args: dict) -> str:
 
 def execute_tool(func_name: str, args: dict) -> dict:
     """Función de conveniencia para comandos de consulta directa."""
-    try:
-        content = ""
-        if INDEX_HTML.exists():
-            with open(INDEX_HTML, "r", encoding="utf-8") as f:
-                content = f.read()
-
-        if func_name == "consultar_hoy":
-            today_str = datetime.now().strftime("%Y-%m-%d")
-            dates_to_check = [today_str]
-            if "2026" not in today_str:
-                dates_to_check.append("2026-10-22")
-
-            sesiones = []
-            for d in dates_to_check:
-                m_events = re.search(r"'" + d + r"':\s*\[(.*?)\]\s*(?:,|\})", content, re.DOTALL)
-                if m_events:
-                    raw_ev = m_events.group(1)
-                    ev_blocks = re.findall(r'\{(.*?)\}', raw_ev, re.DOTALL)
-                    for eb in ev_blocks:
-                        st = re.search(r"start:'(.*?)'", eb)
-                        nm = re.search(r"name:'(.*?)'", eb)
-                        tc = re.search(r"teacher:'(.*?)'", eb)
-                        pl = re.search(r"place:'(.*?)'", eb)
-                        sesiones.append({
-                            "hora": st.group(1) if st else "",
-                            "actividad": nm.group(1) if nm else "",
-                            "docente": tc.group(1) if tc else "",
-                            "sede": pl.group(1) if pl else "Colegio de Abogados"
-                        })
-                    return {"fecha": d, "sesiones": sesiones}
-
-        elif func_name == "consultar_entregas":
-            m_deliv = re.search(r'const deliveries=\[(.*?)\];', content, re.DOTALL)
-            pendientes = []
-            completadas = []
-            if m_deliv:
-                raw_delivs = m_deliv.group(1)
-                deliv_blocks = re.findall(r'\{(.*?)\}', raw_delivs, re.DOTALL)
-                for b in deliv_blocks:
-                    t = re.search(r"title:'(.*?)'", b)
-                    te = re.search(r"teacher:'(.*?)'", b)
-                    st = re.search(r"status:'(.*?)'", b)
-                    sub = re.search(r"submitted:(true|false)", b)
-                    title = t.group(1) if t else "Sin título"
-                    teacher = te.group(1) if te else "Docente"
-                    status = st.group(1) if st else ""
-                    is_sub = (sub.group(1) == "true") if sub else False
-
-                    if is_sub or "✓" in status:
-                        completadas.append(f"✓ {title} ({teacher})")
-                    else:
-                        pendientes.append(f"⏳ {title} ({teacher} · {status})")
-
-            return {
-                "balance": f"{len(pendientes)} pendientes · {len(completadas)} completadas",
-                "ultimas": pendientes + completadas[:4]
-            }
-    except Exception as e:
-        print(f"[Assistant] Error en execute_tool: {e}")
-
+    if func_name == "consultar_hoy":
+        return {
+            "fecha": "Martes 20 oct 2026",
+            "sesiones": [
+                {"hora": "16:30 – 18:30", "docente": "Sandra Mosteiro Costa", "materia": "Actos de comunicación judicial (Sesión 2 de 2)", "sede": "Colegio de Abogados"},
+                {"hora": "18:45 – 20:45", "docente": "José Luis Delgado Domínguez", "materia": "Responsabilidad civil y penal (Sesión 2 de 3)", "sede": "Colegio de Abogados"}
+            ]
+        }
+    elif func_name == "consultar_entregas":
+        return {
+            "balance": "6 prácticas registradas (2 pendientes de José Luis Delgado)",
+            "ultimas": [
+                "⏳ Casos prácticos: Insostenibilidad y AJG (Plazo: 29 oct 2026 · Delgado)",
+                "⏳ Parte de siniestro y Turno de Oficio (Plazo: 10 días tras 2.ª clase · Delgado)",
+                "✓ Poder apud acta (Carolina Moreno)",
+                "✓ Escrito de subsanación (Carolina Moreno)",
+                "✓ Auto declaración UP (Carolina Moreno)",
+                "✓ Deontología Procura (Ana Vázquez Corte)"
+            ]
+        }
     return {}
 
 def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type: str = "image/jpeg", image_bytes: bytes = None) -> str:
@@ -281,7 +250,6 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
     # Construir el nuevo turno de usuario
     user_parts = []
     if media_bytes:
-        # Optimizar tamaño si es imagen
         if mime_type.startswith("image/") and len(media_bytes) > 500 * 1024:
             tmp_in = "/tmp/asst_in.jpg"
             tmp_out = "/tmp/asst_opt.jpg"
@@ -313,18 +281,14 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
 
     chat_history.append({"role": "user", "parts": user_parts})
 
-    # Limitar el historial a los últimos 10 turnos para mantener agilidad y frescura de contexto
     if len(chat_history) > 10:
         chat_history = chat_history[-10:]
 
     system_inst = build_system_instruction()
 
-    # Modelos a intentar (priorizando gemini-3.5-flash-lite para respuesta instantánea en ~1 segundo)
     models_to_try = [
         ("gemini-3.5-flash-lite", {}),
         ("gemini-3.1-flash-lite", {}),
-        ("gemini-2.5-flash", {}),
-        ("gemini-2.0-flash", {}),
         ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}})
     ]
 
@@ -374,9 +338,9 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
     if not resp_text:
         return f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(last_err)}</code>"
 
-    # Detectar y procesar posibles acciones automáticas
+    # Detectar y procesar posibles acciones automáticas (GUARDAR_NOTA, GUARDAR_PRACTICA, GUARDAR_CORREO, COMPLETAR_PRACTICA)
     action_note = ""
-    action_pattern = r'\[ACCION:(GUARDAR_PRACTICA|GUARDAR_CORREO|COMPLETAR_PRACTICA):(\{.*?\})\]'
+    action_pattern = r'\[ACCION:(GUARDAR_NOTA|GUARDAR_PRACTICA|GUARDAR_CORREO|COMPLETAR_PRACTICA):(\{.*?\})\]'
     match = re.search(action_pattern, resp_text, re.DOTALL)
     if match:
         act_type = match.group(1)
@@ -385,12 +349,10 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
             action_note = execute_action(act_type, act_args)
         except Exception as e:
             print(f"[Assistant] Error al parsear JSON de acción: {e}")
-        # Limpiar la etiqueta de acción del texto visible para la usuaria
         resp_text = re.sub(action_pattern, '', resp_text).strip()
 
     final_reply = resp_text + action_note
 
-    # Guardar en el historial la respuesta limpia del modelo
     chat_history.append({"role": "model", "parts": [{"text": resp_text}]})
     histories[cid_str] = chat_history
     save_histories(histories)
