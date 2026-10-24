@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 """
 generar_portal_estudiantes.py
-Genera portal-estudiantes.html a partir de index.html con:
-1. Filtro 100% estricto de eventos, citas médicas y horarios personales de Raquel.
-2. Limpieza de notas fijas y activación de casillero interactivo en localStorage:
-   - Casilla de calificación del propio test.
-   - Zona junto al nombre del profesor para redactar observaciones y poner la nota final del profesor.
-3. Botón de verificación (check) en las entregas para marcar como entregadas y guardado en localStorage.
-4. Limpieza de enlaces privados a Google Drive y personalización de cabecera para el estudiante.
+Genera portal-estudiantes.html y estudiantes.html a partir de index.html:
+1. Paleta solemne, austera e institucional ("Modo Derecho / Toga y Estrado Judicial").
+2. Filtro 100% estricto de eventos personales, citas médicas y notas fijas de Raquel.
+3. Desvinculación de Google Drive y Google Docs: sin enlaces privados inaccesibles.
+4. Entregas limpias con inicio a cero (ninguna pre-marcada) y casillas de verificación interactivas con guardado en localStorage.
+5. Calificaciones: cuaderno de evaluación interactivo del estudiante con casilla para nota del test, nota final del profesor y anotaciones en localStorage.
+6. Filtro del buzón de correo: se excluyen los correos de calificaciones personales y se conservan íntegros todos los comunicados docentes, calendarios y materiales.
+7. Horario oficial de clases: turno de tarde de 16:30 a 20:45 h.
 """
 
 import re
@@ -19,6 +20,7 @@ def build_student_portal():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     src_path = os.path.join(base_dir, 'index.html')
     out_path = os.path.join(base_dir, 'portal-estudiantes.html')
+    alias_path = os.path.join(base_dir, 'estudiantes.html')
 
     if not os.path.exists(src_path):
         print(f"Error: {src_path} no encontrado.")
@@ -27,15 +29,15 @@ def build_student_portal():
     with open(src_path, 'r', encoding='utf-8') as f:
         html = f.read()
 
-    # 1. Título y meta del documento
+    # -------------------------------------------------------------
+    # 1. TÍTULO, USUARIO Y CABECERA DE BIENVENIDA
+    # -------------------------------------------------------------
     html = re.sub(
         r'<title>.*?</title>',
         '<title>Portal del Estudiante · Máster en Abogacía y Procura (MUAP)</title>',
         html,
         count=1
     )
-
-    # 2. Avatar, usuario y cabecera de bienvenida
     html = html.replace('<div class="brand-user-pill">Raquel Escudero · 2026/27</div>', '<div class="brand-user-pill">Estudiante · MUAP 2026/27</div>')
     html = html.replace('<div class="avatar" title="Raquel Escudero">RE</div>', '<div class="avatar" title="Máster en Abogacía y Procura">⚖️</div>')
     html = html.replace('<h1 id="welcomeTitle">Hola, Raquel</h1>', '<h1 id="welcomeTitle">Portal del Estudiante · MUAP</h1>')
@@ -44,7 +46,7 @@ def build_student_portal():
         '<p id="welcomeSubtitle">Seguimiento académico, agenda oficial, profesorado, entregas y notas del Máster Universitario en Abogacía y Procura (2026–2027).</p>'
     )
 
-    # 3. Badges de bienvenida
+    # Badges de bienvenida
     badge_gold_original = """        <button class="welcome-badge badge-gold" data-switch-view="notas" title="Calificación oficial comunicada por correo">
           <span class="badge-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -54,7 +56,6 @@ def build_student_portal():
             <strong class="badge-value">10 / 10 · Sobresaliente</strong>
           </div>
         </button>"""
-
     badge_gold_replacement = """        <div class="welcome-badge badge-gold" title="Máster Universitario en Abogacía y Procura">
           <span class="badge-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -64,7 +65,6 @@ def build_student_portal():
             <strong class="badge-value">1.er Cuatrimestre · 26/27</strong>
           </div>
         </div>"""
-
     if badge_gold_original in html:
         html = html.replace(badge_gold_original, badge_gold_replacement)
 
@@ -77,7 +77,6 @@ def build_student_portal():
             <strong class="badge-value">20 / 20 (100% aciertos)</strong>
           </div>
         </button>"""
-
     badge_mint_replacement = """        <button class="welcome-badge badge-mint" data-switch-view="notas" title="Mis notas y cuaderno personal de evaluación">
           <span class="badge-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
@@ -87,16 +86,16 @@ def build_student_portal():
             <strong class="badge-value" id="welcomeGradesSummary">Mi Cuaderno de Notas</strong>
           </div>
         </button>"""
-
     if badge_mint_original in html:
         html = html.replace(badge_mint_original, badge_mint_replacement)
 
-    # 4. Filtrar eventos personales en events={ ... }
+    # -------------------------------------------------------------
+    # 2. FILTRAR EVENTOS PERSONALES EN events = { ... }
+    # -------------------------------------------------------------
     m_events = re.search(r'(const events=\{)(.*?)(\n\};\n\nconst gradeRecords=)', html, re.DOTALL)
     if m_events:
         events_code = m_events.group(2)
         days = re.findall(r"('(\d{4}-\d{2}-\d{2})':\s*\[)(.*?)(\])(?=,\s*'\d{4}-\d{2}-\d{2}'|\s*$)", events_code, re.DOTALL)
-        
         new_events_lines = []
         for prefix, day_str, evs_content, suffix in days:
             ev_objects = re.findall(r'(\{[^{}]*?\})', evs_content, re.DOTALL)
@@ -111,12 +110,53 @@ def build_student_portal():
                 new_events_lines.append(f" '{day_str}':[\n   " + ",\n   ".join(clean_evs) + "\n  ]")
             else:
                 new_events_lines.append(f" '{day_str}':[]")
-        
         cleaned_events_code = ",\n".join(new_events_lines)
         html = html[:m_events.start(2)] + cleaned_events_code + html[m_events.end(2):]
-        print("✓ Eventos personales filtrados correctamente.")
+        print("✓ Eventos personales filtrados.")
 
-    # 5. Reemplazar details sensibles (citas médicas, archivos personales)
+    # -------------------------------------------------------------
+    # 3. FILTRAR MENSAJES (CORREO) - EXCLUIR NOTAS PERSONALES
+    # -------------------------------------------------------------
+    m_msg = re.search(r'(const messages\s*=\s*\[)(.*?)(\];\s*const)', html, re.DOTALL)
+    if m_msg:
+        excluded_keys = {
+            'mail_carolina_carlos_23oct',
+            'mail_carlos_sanchez_2oct',
+            'test_20oct_sandra',
+            'mail_deontologia_ana_vazquez',
+            'procura_resultados',
+            'grades'
+        }
+        raw_items = m_msg.group(2)
+        clean_msgs = []
+        for item in re.finditer(r'\{[^{}]*?\}', raw_items):
+            item_str = item.group(0)
+            skip = False
+            for k in excluded_keys:
+                if f"key:'{k}'" in item_str or f'key:"{k}"' in item_str:
+                    skip = True
+                    break
+            if any(term in item_str for term in ['Nota:', 'Calificaciones oficiales', 'Resultados de las pruebas', 'Test online realizado']):
+                skip = True
+            if not skip:
+                # Limpiar referencias a Drive en el meta
+                item_str = item_str.replace(' · subido a Drive y enviado en CPROC', ' · Caso práctico en CPROC')
+                clean_msgs.append(item_str)
+        
+        new_messages_code = "\n " + ",\n ".join(clean_msgs) + "\n"
+        html = html[:m_msg.start(2)] + new_messages_code + html[m_msg.end(2):]
+        
+        # Actualizar badge en pestaña Correo
+        html = re.sub(
+            r'<button class="view-tab" data-view="correo" role="tab"[^>]*>Correo <span class="tab-badge">\d+</span></button>',
+            f'<button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">{len(clean_msgs)}</span></button>',
+            html
+        )
+        print(f"✓ Buzón de correo filtrado: {len(clean_msgs)} comunicados académicos oficiales conservados (excluidas notas personales).")
+
+    # -------------------------------------------------------------
+    # 4. LIMPIAR OBJETO DETAILS (CITAS MÉDICAS Y ARCHIVOS PRIVADOS)
+    # -------------------------------------------------------------
     idx_sync = html.find(' personal_calendar_sync:{')
     idx_grades = html.find(' grades:{', idx_sync if idx_sync != -1 else 0)
     if idx_sync != -1 and idx_grades != -1:
@@ -132,106 +172,230 @@ def build_student_portal():
     html = html.replace('2026-10-22-resolucion-caso-practico-sandra-mosteiro-raquel-escudero.md', '')
     html = html.replace('2026-10-22-grabacion-entrega-caso-practico-sandra-mosteiro.mov', '')
 
-    # 6. Limpiar enlaces personales de Google Drive y Docs
-    html = re.sub(r"https://drive\.google\.com/file/d/1UoOKt1ey1-IS3yG1PqGKIOyBCRwFqYUL/view", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
-    html = re.sub(r"https://docs\.google\.com/document/d/18wuu8b50ESlwGpeI80jlzFnveZGSYE9mYRBz6qTb5ic/edit", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
-    html = re.sub(r"https://docs\.google\.com/document/d/1Yck7gqjmnmB56mgi8oy5I_JoQupxKs08L2lyzPEKcjY/edit\?tab=t\.0", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+    # -------------------------------------------------------------
+    # 5. DESVINCULACIÓN TOTAL DE GOOGLE DRIVE Y GOOGLE DOCS
+    # -------------------------------------------------------------
+    # Reemplazo de variables de URL
+    html = re.sub(
+        r"const driveFolderUrl='[^']*';",
+        "const driveFolderUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';",
+        html
+    )
+    html = re.sub(
+        r"const practicasGdriveUrl='[^']*';",
+        "const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';",
+        html
+    )
+    html = re.sub(
+        r"function driveSearchUrl\(q\)\{return 'https://drive\.google\.com/[^']*';\}",
+        "function driveSearchUrl(q){return 'https://www.icpcoruna.com/copia-de-entrega-de-tareas';}",
+        html
+    )
+    
+    # Reemplazar enlaces específicos a Google Docs y Google Drive por CPROC o BOE
+    html = re.sub(r"https://drive\.google\.com/file/d/[a-zA-Z0-9_\-]+/view", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+    html = re.sub(r"https://drive\.google\.com/drive/u/0/folders/[a-zA-Z0-9_\-]+", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+    html = re.sub(r"https://docs\.google\.com/document/d/[a-zA-Z0-9_\-]+/edit(?:\?[^\s\'\"]*)?", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+
+    # Textos de botones y títulos
     html = html.replace('Raquel Escudero_Derechos y deberes procuradores y responsabilidad profesional (Doc Google)', 'Caso práctico: Derechos, deberes y responsabilidad profesional (CPROC)')
     html = html.replace('2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)', 'Práctica 2 de octubre (CPROC)')
     html = html.replace('2/10_Práctica_Raquel Escudero .pdf', 'Práctica 2 de octubre')
     html = html.replace('Raquel Escudero_Derechos y deberes procuradores (Doc Google)', 'Caso práctico de Deontología (CPROC)')
     html = html.replace('RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos', 'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nCaso práctico oficial evaluable')
+    html = html.replace('Abrir en Drive ↗', 'Plataforma CPROC ↗')
+    html = html.replace('PDF Drive ↗', 'Documento oficial ↗')
+    html = html.replace('Carpeta Drive ↗', 'CPROC Tareas ↗')
+    html = html.replace('Buscar en Drive ↗', 'Normativa y CPROC ↗')
+    html = html.replace('Google Docs ↗', 'CPROC ↗')
+    html = html.replace('Borrador en Drive ↗', 'Plataforma CPROC ↗')
+    html = html.replace('Google Docs (Entrega) ↗', 'Enunciado oficial ↗')
+    html = html.replace('Vídeo comprobante CPROC ↗', 'Plataforma CPROC ↗')
+    html = html.replace('Resolución completa (.md) ↗', 'Instrucciones del caso ↗')
+    html = html.replace('Carpeta Prácticas Drive ↗', 'CPROC Tareas ↗')
+    html = html.replace('Apuntes y Drive', 'Materiales y Normativa')
 
-    # 7. CSS con nueva paleta diferenciada (Oxford Navy / Zafiro Pizarra) y controles de estudiantes
+    # Reemplazo en barra superior y accesos directos
+    html = html.replace(
+        '<a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>',
+        '<a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>'
+    )
+    html = html.replace(
+        '<a href="portal-estudiantes.html" target="_blank" rel="noopener noreferrer" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark);font-weight:700">🎓 Portal Estudiantes ↗</a>',
+        '<span class="portal-mode-pill">🎓 Portal del Estudiante · Versión Oficial</span>'
+    )
+    html = html.replace(
+        '<a class="home-hub-card hub-blue" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">',
+        '<a class="home-hub-card hub-blue" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">'
+    )
+    html = html.replace(
+        '<a class="drive-btn" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Abrir Carpeta Google Drive ↗</a>',
+        '<a class="drive-btn" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">Acceder a CPROC Tareas ↗</a>'
+    )
+    print("✓ Enlaces privados a Google Drive y Docs desvinculados por completo.")
+
+    # -------------------------------------------------------------
+    # 6. LIMPIAR NOTAS FIJAS EN courses = [...]
+    # -------------------------------------------------------------
+    # Reemplazar calificaciones fijas en asignaturas por evaluación continua
+    html = re.sub(
+        r"grade:\{score:'10 / 10 \(Sobresaliente\)',scoreLabel:'Calificación oficial',detail:'[^']*',detailKey:'[^']*'\}",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
+        html
+    )
+    html = re.sub(
+        r"grade:\{score:'8\.8 / 10 \(Notable\)',scoreLabel:'Calificación otorgada',detail:'[^']*',detailKey:'[^']*'\}",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
+        html
+    )
+    html = re.sub(
+        r"grade:\{score:'Nota oficial: 10 / 10 \(Sobresaliente\)',scoreLabel:'Calificación oficial',detail:'[^']*',detailKey:'[^']*'\}",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
+        html
+    )
+    html = re.sub(
+        r"grade:\{score:'10 / 10 · 20/20 aciertos',scoreLabel:'Evaluación',detail:'[^']*',detailKey:'[^']*'\}",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Cuestionario oficial en Testmoz y casos prácticos en CPROC.',detailKey:'dossiers'}",
+        html
+    )
+    html = re.sub(
+        r"grade:\{score:'9 / 10 · Testmoz \(90 %\)',scoreLabel:'Evaluación',detail:'[^']*',detailKey:'[^']*'\}",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Test oficial en Testmoz y caso evaluable en CPROC.',detailKey:'dossiers'}",
+        html
+    )
+    html = html.replace(' · Calificación oficial: 10 / 10', '')
+    html = html.replace(' · Test: 9 / 10', '')
+    html = html.replace(' · Práctica entregada en CPROC', '')
+    print("✓ Notas fijas de asignaturas convertidas en evaluación continua neutral.")
+
+    # -------------------------------------------------------------
+    # 7. ENTREGAS: INICIO A CERO Y CHECKBOXES INTERACTIVOS
+    # -------------------------------------------------------------
+    m_del = re.search(r'(const deliveries\s*=\s*\[)(.*?)(\];\s*const)', html, re.DOTALL)
+    if m_del:
+        del_content = m_del.group(2)
+        # 1) Excluir el registro de notas de Carolina y Carlos
+        del_content = re.sub(
+            r'\{\s*date:new Date\(2026,9,23\),\s*title:\'Resultados de pruebas y trabajos[^\}]*?\},?',
+            '',
+            del_content
+        )
+        # 2) Todas las entregas inician como no entregadas (submitted: false)
+        del_content = del_content.replace('submitted:true', 'submitted:false')
+        del_content = del_content.replace('submitted: true', 'submitted: false')
+        # 3) Limpiar campos de archivos privados
+        del_content = re.sub(r"file2:'2026-10-22-grabacion-entrega-caso-practico-sandra-mosteiro\.mov',?", "", del_content)
+        del_content = re.sub(r"file2:'summary\.docx',?", "", del_content)
+        # 4) Limpiar estados de Raquel
+        del_content = re.sub(r"status:'Entregada con éxito en CPROC ✓[^\']*'", "status:'⏳ Pendiente de marcar'", del_content)
+        del_content = re.sub(r"status:'⏳ Pendiente \(Plazo:[^\']*'\)", "status:'⏳ Pendiente de marcar'", del_content)
+        # 5) Limpiar textos de details
+        del_content = del_content.replace(' en Google Drive y Markdown local.', '.')
+        del_content = del_content.replace('Subida a Google Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
+        del_content = del_content.replace('Subida a Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
+        del_content = del_content.replace('Subidos a Google Drive y enviados con éxito en CPROC.', 'Plataforma oficial CPROC (MUAP).')
+        del_content = del_content.replace('Práctica subida a Google Drive y enviada dentro de plazo en CPROC', 'Plataforma oficial CPROC (MUAP)')
+
+        html = html[:m_del.start(2)] + del_content + html[m_del.end(2):]
+        print("✓ Colección de entregas reajustada con inicio limpio a cero.")
+
+    # -------------------------------------------------------------
+    # 8. CSS: PALETA SOLEMNE INSTITUCIONAL ("MODO DERECHO / TOGA Y ESTRADO")
+    # -------------------------------------------------------------
     student_custom_css = """
 /* ========================================================
-   PALETA EXCLUSIVA PORTAL ESTUDIANTES: AZUL ACADÉMICO OXFORD
-   (Diferenciada de la paleta crema y espresso de Raquel)
+   PALETA SOLEMNE INSTITUCIONAL: ABOGACÍA Y PROCURA (MODO DERECHO)
    ======================================================== */
 :root, [data-theme="dark"] {
-  --bg: #0b1118;
-  --paper: #111923;
-  --paper-warm: #16202c;
-  --paper-card: #1c2837;
-  --sidebar-bg: #0e151f;
+  /* Fondo y tarjetas: Sala de Togas & Despacho Jurídico Solemne */
+  --bg: #0c0f13;
+  --paper: #12161e;
+  --paper-warm: #181e28;
+  --paper-card: #131720;
+  --sidebar-bg: #0e1218;
 
-  --ink: #eaf0f8;
-  --ink-soft: #b6c7db;
-  --muted: #768ea8;
-  --line: #223448;
-  --line-subtle: #192736;
+  /* Tipografía: Marfil y plata nítida de alta legibilidad */
+  --ink: #e8ecf2;
+  --ink-soft: #adb5c2;
+  --muted: #727c8a;
+  --line: #222936;
+  --line-subtle: #191f2b;
 
-  /* Azul Zafiro Académico */
-  --green: #3a82b8;
-  --green-dark: #7ec0ee;
-  --green-pale: #122232;
-  --green-badge: #172d42;
-  --green-border: #254668;
+  /* Azul Toga Institucional (Austero y Solemne) */
+  --green: #294d73;
+  --green-dark: #8cb6dc;
+  --green-pale: #101a26;
+  --green-badge: #152435;
+  --green-border: #234263;
 
-  /* Acento Abogacía: Azul Acero */
-  --blue: #529fd5;
-  --blue-dark: #97ccf5;
-  --blue-pale: #132436;
-  --blue-badge: #1a334d;
-  --blue-border: #284c71;
+  /* Azul Abogacía / Estrado */
+  --blue: #325b84;
+  --blue-dark: #9bc0e4;
+  --blue-pale: #121c27;
+  --blue-badge: #182839;
+  --blue-border: #284a6e;
 
-  /* Acento Procura / Entregas: Carmesí Borgoña */
-  --terracotta: #c45768;
-  --terra-dark: #e58d9a;
-  --terra-pale: #261619;
-  --terra-badge: #381e23;
-  --terra-border: #562c34;
+  /* Granate Lacre Notarial / Sello Judicial (Entregas y plazos) */
+  --terracotta: #8a343c;
+  --terra-dark: #dc828c;
+  --terra-pale: #221215;
+  --terra-badge: #2e171b;
+  --terra-border: #54272f;
 
-  /* Oro y notas */
-  --honey: #dca03d;
-  --honey-dark: #edd084;
-  --honey-pale: #261e12;
-  --honey-badge: #382b17;
-  --honey-border: #5a4421;
+  /* Bronce Antiguo / Latón de Biblioteca Jurídica */
+  --honey: #95722f;
+  --honey-dark: #dfba6c;
+  --honey-pale: #221a10;
+  --honey-badge: #2e2314;
+  --honey-border: #564020;
+
+  --plum: #623f5b;
 }
 
 [data-theme="light"] {
-  /* Fondo y tarjetas: Azul Hielo Universitario & Pizarra Suave */
-  --bg: #f2f5fa;
+  /* Fondo y tarjetas: Papel Verjurado Calizo / Alabastro Institucional */
+  --bg: #f4f5f7;
   --paper: #ffffff;
-  --paper-warm: #e9f0f8;
+  --paper-warm: #eaedf2;
   --paper-card: #ffffff;
-  --sidebar-bg: #e2ecf6;
+  --sidebar-bg: #e5e9f0;
 
-  /* Tipografía: Azul Marino Muy Oscuro de Alta Nitidez */
-  --ink: #0d1b2a;
-  --ink-soft: #2f435a;
-  --muted: #5c748e;
-  --line: #cddbe8;
-  --line-subtle: #dbe6f1;
+  /* Tipografía: Tinta Ferrogálica Profunda (Negro Solemne de Tribunal) */
+  --ink: #0f141a;
+  --ink-soft: #2d3642;
+  --muted: #5e6875;
+  --line: #cbd3de;
+  --line-subtle: #dbe2eb;
 
-  /* Color primario institucional: Azul Marino Oxford */
-  --green: #1b4965;
-  --green-dark: #0e2e42;
-  --green-pale: #e4f0f8;
-  --green-badge: #d1e5f3;
-  --green-border: #a8cee5;
+  /* Azul Marino Toga / Magistratura Institucional */
+  --green: #142a42;
+  --green-dark: #0a1725;
+  --green-pale: #e7eff6;
+  --green-badge: #d4e2ee;
+  --green-border: #acc4d8;
 
-  /* Acento Abogacía: Azul Prusia */
-  --blue: #205c80;
-  --blue-dark: #123d57;
-  --blue-pale: #e7f3fa;
-  --blue-badge: #d4eaf6;
-  --blue-border: #add5ed;
+  /* Azul Abogacía Clásica */
+  --blue: #1c3856;
+  --blue-dark: #0f2032;
+  --blue-pale: #e9f0f7;
+  --blue-badge: #d7e4f1;
+  --blue-border: #b0c9df;
 
-  /* Acento Procura / Entregas: Carmesí Académico */
-  --terracotta: #9b2c3b;
-  --terra-dark: #6e1c27;
-  --terra-pale: #fdf0f2;
-  --terra-badge: #f9d8dd;
-  --terra-border: #ebb4bd;
+  /* Granate Sello Notarial / Lacre Procesal */
+  --terracotta: #661a22;
+  --terra-dark: #450f15;
+  --terra-pale: #f7ebed;
+  --terra-badge: #edd4d7;
+  --terra-border: #d7acb2;
 
-  /* Oro Académico */
-  --honey: #9b6814;
-  --honey-dark: #6b4609;
-  --honey-pale: #fef7ec;
-  --honey-badge: #fbeacf;
-  --honey-border: #ebd1a2;
+  /* Bronce Antiguo / Latón Noble */
+  --honey: #70521e;
+  --honey-dark: #4d3713;
+  --honey-pale: #f7f3eb;
+  --honey-badge: #ede4d1;
+  --honey-border: #d7c6a4;
+
+  --plum: #482a42;
 }
 
 .portal-mode-pill {
@@ -294,7 +458,7 @@ def build_student_portal():
 .student-eval-field input:focus, .student-eval-field textarea:focus {
   outline: none;
   border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(34, 94, 62, 0.15);
+  box-shadow: 0 0 0 3px rgba(20, 42, 66, 0.15);
 }
 .student-save-status {
   font-size: 11.5px;
@@ -337,7 +501,7 @@ def build_student_portal():
 .student-test-input-wrap input:focus {
   outline: none;
   border-color: var(--green-dark);
-  box-shadow: 0 0 0 3px rgba(34, 94, 62, 0.2);
+  box-shadow: 0 0 0 3px rgba(20, 42, 66, 0.2);
 }
 .delivery-check-btn {
   display: inline-flex;
@@ -348,7 +512,7 @@ def build_student_portal():
   color: var(--ink);
   padding: 7px 14px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -375,7 +539,7 @@ def build_student_portal():
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
 }
 .privacy-banner {
@@ -398,7 +562,9 @@ def build_student_portal():
 """
     html = html.replace('</style>', student_custom_css + '\n</style>', 1)
 
-    # 8. Reemplazar la función renderTeacherDossiers con los inputs interactivos de test, nota final y redacción
+    # -------------------------------------------------------------
+    # 9. REEMPLAZAR renderTeacherDossiers CON INTERACTIVIDAD LOCALSTORAGE
+    # -------------------------------------------------------------
     idx_dossiers = html.find('function renderTeacherDossiers()')
     end_idx_dossiers = html.find('function renderPracticesGradeView()', idx_dossiers)
 
@@ -448,55 +614,54 @@ function renderTeacherDossiers(){
       cls: 'highlight-mail',
       title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño correspondientes a la sesión del 2 de octubre (Test 40% + Trabajos escritos 60%).',
+      desc: 'Test 40 % + Casos prácticos y técnica procesal 60 %.',
       subitems: [
-       {label: 'Ponderación total', val: 'Test (4) + Trabajos (6)'},
-       {label: 'Fecha comunicación', val: '22 oct 2026'}
+       {label: 'Ponderación oficial', val: 'Test 40% + Escritos 60%'},
+       {label: 'Fecha de la sesión', val: '2 oct 2026'}
       ]
      },
      {
       cls: 'highlight-test',
-      title: '📝 Test de Clase (40 %)',
+      title: '📝 Test de Técnicas instrumentales',
       score: '4.0 ptos máx.',
-      desc: 'Cuestionario tipo test sobre formas de ejercicio, marketing y técnicas de comunicación en la Procura.',
+      desc: 'Cuestionario de evaluación continua presencial sobre iniciación y tramitación procesal.',
       subitems: [
-       {label: 'Aporte a nota final', val: '40 % (4 ptos)'},
-       {label: 'Modalidad', val: 'Presencial / Aula'}
+       {label: 'Aporte a nota final', val: '40 % del total'},
+       {label: 'Puntuación máx.', val: '4.0 puntos'}
       ]
      },
      {
       cls: 'highlight-practice',
-      title: '📁 Trabajos Escritos (60 %)',
+      title: '📁 Práctica Procesal de Aula',
       score: '6.0 ptos máx.',
-      desc: 'Ejercicios prácticos y redacción entregados relativos a previsión social y organización profesional.',
+      desc: 'Resolución de casos de tramitación procesal y técnica forense.',
       subitems: [
-       {label: 'Aporte a nota final', val: '60 % (6 ptos)'},
-       {label: 'Estado', val: 'Evaluado'}
+       {label: 'Aporte a nota final', val: '60 % del total'},
+       {label: 'Puntuación máx.', val: '6.0 puntos'}
       ]
      }
     ],
     actions: [
-     {label: '✉ Abrir correo oficial (22 oct) ↗', detailKey: 'mail_carlos_sanchez_2oct', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|1'},
-     {label: 'Ficha de Carlos M. Sánchez Muiño ↗', teacher: 'Carlos M. Sánchez Muiño'}
+     {label: 'Ficha de Carlos M. Sánchez Muiño ↗', teacher: 'Carlos Miguel Sánchez Muiño'}
     ]
    },
    {
     id: 'dossier-javier-sanchez',
-    teacher: 'Javier Sánchez García',
+    teacher: 'Javier Carlos Sánchez García',
     subject: 'Técnicas instrumentales · Rama Procura (Sesión 1 oct 2026)',
     subjectRef: 'Procura|Técnicas instrumentales|0',
-    kicker: 'Materia finalizada · Evaluación continua de clase',
-    testName: 'Test presencial de Técnicas instrumentales (40%)',
+    kicker: 'Materia finalizada · Evaluación continua de iniciación profesional',
+    testName: 'Test de Técnicas instrumentales (40%)',
     blocks: [
      {
       cls: 'highlight-mail',
-      title: '✉️ Calificación Conjunta Oficial',
+      title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Calificación comunicada por la Secretaría de Procura / Javier Sánchez García en el correo del 14 oct («Resultados de las pruebas · Técnicas instrumentales»).',
+      desc: 'Desglose conjunto oficial de la sesión inaugural.',
       subitems: [
-       {label: 'Ponderación', val: 'Test 40% + Escritos 60%'},
-       {label: 'Fecha comunicación', val: '14 oct 2026'}
+       {label: 'Criterio ponderado', val: 'Test 40% + Práctica 60%'},
+       {label: 'Sesión', val: '1 oct 2026'}
       ]
      },
      {
@@ -521,7 +686,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '✉ Abrir correo de la nota (14 oct) ↗', detailKey: 'grades', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|0'},
      {label: 'Ficha de Javier Sánchez García ↗', teacher: 'Javier Sánchez García'}
     ]
@@ -531,17 +695,17 @@ function renderTeacherDossiers(){
     teacher: 'Ana Vázquez Corte',
     subject: 'Deontología y técnicas transversales · Rama Procura (Sesiones 8 y 9 oct 2026)',
     subjectRef: 'Procura|Deontología y responsabilidad|0',
-    kicker: 'Materia finalizada y evaluada · Calificación docente por correo',
+    kicker: 'Materia finalizada y evaluada · Calificación docente',
     testName: 'Test de Deontología (40%)',
     blocks: [
      {
       cls: 'highlight-mail',
       title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Nota remitida oficialmente por Dña. Ana Vázquez Corte por correo electrónico («Materia: Deontología y técnicas transversales»).',
+      desc: 'Materia: Deontología y técnicas transversales.',
       subitems: [
        {label: 'Criterio', val: 'Test 40% + Caso CPROC 60%'},
-       {label: 'Fecha de correo', val: '19 oct 2026'}
+       {label: 'Fecha de impartición', val: '8 y 9 oct 2026'}
       ]
      },
      {
@@ -566,7 +730,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '✉ Abrir correo de la nota (19 oct) ↗', detailKey: 'mail_deontologia_ana_vazquez', cls: 'solid-green'},
      {label: '📁 Ver caso en CPROC (15 oct) ↗', detailKey: 'assignment'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Deontología y responsabilidad|0'},
      {label: 'Ficha de Ana Vázquez Corte ↗', teacher: 'Ana Vázquez Corte'}
@@ -612,7 +775,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '📝 Ver preguntas y respuestas del test (20 oct) ↗', detailKey: 'test_20oct_sandra', cls: 'solid-blue'},
      {label: '📁 Ver caso práctico en el portal ↗', detailKey: 'entrega_caso_pr_ctico_de_actos_de', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|3'},
      {label: 'Ficha de Sandra Mosteiro Costa ↗', teacher: 'Sandra Mosteiro Costa'}
@@ -649,16 +811,15 @@ function renderTeacherDossiers(){
      {
       cls: 'highlight-mail',
       title: '✉️ Calificación Conjunta por Correo',
-      score: 'Pendiente',
-      desc: 'Pendiente de remisión del correo con la ponderación global conjunta tras la corrección de los 3 documentos procesales.',
+      score: 'Ponderación Oficial',
+      desc: '40 % Test de evaluación continua + 60 % Prácticas procesales de CPROC.',
       subitems: [
-       {label: 'Test online', val: 'Completado en clase'},
-       {label: 'Tareas CPROC', val: 'Entregadas en plataforma'}
+       {label: 'Test online', val: '40 % de la nota'},
+       {label: 'Tareas CPROC', val: '60 % de la nota'}
       ]
      }
     ],
     actions: [
-     {label: '📝 Ver las 20 preguntas del test (16 oct) ↗', detailKey: 'test_16oct', cls: 'solid-blue'},
      {label: '📁 Ver tareas de CPROC en el portal ↗', detailKey: 'entrega_apud_acta'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|2'},
      {label: 'Ficha de Carolina Moreno Vázquez ↗', teacher: 'Carolina Moreno Vázquez'}
@@ -824,14 +985,15 @@ function handleStudentGradeChange(teacherId){
 }
 \n\n"""
         html = html[:idx_dossiers] + new_dossiers_code + html[end_idx_dossiers:]
-        print("✓ renderTeacherDossiers adaptada correctamente con inputs de test, nota final y redacción.")
-    else:
-        print("Aviso: No se encontraron los índices para renderTeacherDossiers.")
+        print("✓ renderTeacherDossiers adaptada con inputs interactivos de test, nota final y redacción.")
 
-    # 9. Inyectar script de entregas interactivas
-    delivery_script = """
-/* GESTIÓN DE ENTREGAS CON CHECKBOX LOCALSTORAGE */
-function isDeliveryChecked(detailKey){
+    # -------------------------------------------------------------
+    # 10. REEMPLAZAR renderDeliveries PARA SINCRONIZAR CHECKBOXES CON LOCALSTORAGE
+    # -------------------------------------------------------------
+    idx_render_del = html.find('function renderDeliveries(filter = currentDeliveryFilter){')
+    idx_end_render_del = html.find('\nfunction renderSessionTimeline(', idx_render_del)
+    if idx_render_del != -1 and idx_end_render_del != -1:
+        custom_render_deliveries_code = """function isDeliveryChecked(detailKey){
   try {
     return localStorage.getItem('muap_deliv_check_' + detailKey) === 'true';
   } catch(e){
@@ -845,87 +1007,174 @@ function toggleDeliveryCheck(detailKey, btnEl){
     const newVal = !current;
     localStorage.setItem('muap_deliv_check_' + detailKey, newVal ? 'true' : 'false');
     
-    // Actualizar todos los botones de esta entrega en pantalla
-    document.querySelectorAll(`[data-delivery-check-key="${detailKey}"]`).forEach(btn => {
-      btn.classList.toggle('checked', newVal);
-      const textSpan = btn.querySelector('.check-text');
-      const boxSpan = btn.querySelector('.check-box');
-      if(textSpan) textSpan.textContent = newVal ? '✓ Entregada por mí' : 'Marcar como entregada';
-      if(boxSpan) boxSpan.textContent = newVal ? '✓' : '';
-    });
-
-    // Actualizar la fila en la lista de entregas si existe
-    const rowEl = document.getElementById('delivery-row-' + detailKey);
-    if(rowEl){
-      const badgeSpan = rowEl.querySelector('.due-state');
-      if(badgeSpan){
-        badgeSpan.className = 'due-state ' + (newVal ? 'delivered' : 'pending');
-        badgeSpan.textContent = newVal ? 'Entregada por mí ✓' : '⏳ Pendiente';
-      }
-    }
-
+    // Re-renderizar entregas y actualizar contadores
+    renderDeliveries(currentDeliveryFilter);
     updateDeliveryCounts();
   } catch(e){}
 }
 
 function updateDeliveryCounts(){
-  const pendingKeys = ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'];
   let pendingCount = 0;
-  pendingKeys.forEach(k => {
-    if(!isDeliveryChecked(k)) pendingCount++;
+  deliveries.forEach(d => {
+    if(!isDeliveryChecked(d.detailKey)) pendingCount++;
   });
 
-  // Actualizar badge en menú superior
+  // Badge en pestaña superior
   const tabBadge = document.querySelector('[data-view="entregas"] .tab-badge');
   if(tabBadge){
     tabBadge.textContent = pendingCount > 0 ? `${pendingCount} pend.` : '¡Al día! ✓';
     tabBadge.style.background = pendingCount > 0 ? 'var(--terracotta)' : 'var(--green)';
   }
 
-  // Actualizar banner en portada
+  // Banner en portada
   const ptbBadge = document.querySelector('.ptb-badge');
   if(ptbBadge){
     ptbBadge.textContent = pendingCount > 0 ? `⚠️ ${pendingCount} PRÁCTICAS PENDIENTES` : '🎉 ¡TODAS LAS PRÁCTICAS ENTREGADAS!';
     ptbBadge.className = 'ptb-badge ' + (pendingCount > 0 ? 'alert' : 'success');
   }
 
-  // Actualizar badge en cabecera de bienvenida
+  // Badge en bienvenida
   const welcomeDeliveriesBadge = document.querySelector('.welcome-badge.badge-terra .badge-value');
   if(welcomeDeliveriesBadge){
     welcomeDeliveriesBadge.textContent = pendingCount > 0 ? `${pendingCount} por entregar · Próx: 29 oct` : '¡Todas entregadas! 🎉';
   }
 }
 
-// Inicializar checks al cargar la página
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    updateDeliveryCounts();
-    updateHomeGradesBadge();
-    // Marcar los botones según localStorage
-    ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'].forEach(k => {
-      const isChk = isDeliveryChecked(k);
-      document.querySelectorAll(`[data-delivery-check-key="${k}"]`).forEach(btn => {
-        btn.classList.toggle('checked', isChk);
-        const textSpan = btn.querySelector('.check-text');
-        const boxSpan = btn.querySelector('.check-box');
-        if(textSpan) textSpan.textContent = isChk ? '✓ Entregada por mí' : 'Marcar como entregada';
-        if(boxSpan) boxSpan.textContent = isChk ? '✓' : '';
-      });
-      const rowEl = document.getElementById('delivery-row-' + k);
-      if(rowEl && isChk){
-        const badgeSpan = rowEl.querySelector('.due-state');
-        if(badgeSpan){
-          badgeSpan.className = 'due-state delivered';
-          badgeSpan.textContent = 'Entregada por mí ✓';
-        }
-      }
-    });
-  }, 100);
-});
-"""
-    html = html.replace('</script>', delivery_script + '\n</script>', 1)
+function renderDeliveries(filter = currentDeliveryFilter){
+ if(filter !== undefined) currentDeliveryFilter = filter;
+ const listContainer = document.getElementById('deliveryList');
+ if(!listContainer) return;
 
-    # 10. Modificar las tarjetas del banner de entregas pendientes en portada
+ document.querySelectorAll('[data-delivery-filter]').forEach(b=>{
+  b.classList.toggle('active', b.getAttribute('data-delivery-filter') === currentDeliveryFilter);
+ });
+
+ // Aplicar el estado interactivo del estudiante desde localStorage
+ deliveries.forEach(d => {
+  d.submitted = isDeliveryChecked(d.detailKey);
+  d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+ });
+
+ const pendingCount = deliveries.filter(d => !d.submitted).length;
+ const completedCount = deliveries.filter(d => d.submitted).length;
+
+ const rangeEl = document.getElementById('deliveryRange');
+ if(rangeEl){
+  rangeEl.textContent = `${pendingCount} pendientes · ${completedCount} marcadas como entregadas`;
+ }
+
+ let filtered = deliveries;
+ if(currentDeliveryFilter === 'pending'){
+  filtered = deliveries.filter(d => !d.submitted);
+ } else if(currentDeliveryFilter === 'completed'){
+  filtered = deliveries.filter(d => d.submitted);
+ } else if(currentDeliveryFilter === 'cproc'){
+  filtered = deliveries.filter(d => (d.subject||'').toLowerCase().includes('procura') || (d.status||'').toLowerCase().includes('cproc') || (d.details||'').toLowerCase().includes('cproc'));
+ } else if(currentDeliveryFilter === 'icacor'){
+  filtered = deliveries.filter(d => (d.subject||'').toLowerCase().includes('abogacía') || (d.details||'').toLowerCase().includes('icacor') || (d.teacher||'').toLowerCase().includes('delgado'));
+ }
+
+ const summaryEl = document.getElementById('deliveryFilterSummary');
+ if(summaryEl){
+  if(currentDeliveryFilter === 'pending'){
+   summaryEl.textContent = `Mostrando tus prácticas pendientes (${filtered.length}).`;
+  } else if(currentDeliveryFilter === 'completed'){
+   summaryEl.textContent = `Mostrando tus prácticas marcadas como entregadas (${filtered.length}).`;
+  } else if(currentDeliveryFilter === 'cproc'){
+   summaryEl.textContent = `Mostrando prácticas de la plataforma CPROC (${filtered.length}).`;
+  } else if(currentDeliveryFilter === 'icacor'){
+   summaryEl.textContent = `Mostrando prácticas del Colegio de Abogados (${filtered.length}).`;
+  } else {
+   summaryEl.textContent = `Mostrando el listado completo de entregas del máster (${filtered.length}).`;
+  }
+ }
+
+ const renderRow = (d) => {
+  const isChk = d.submitted;
+  return `
+  <div class="delivery-row" id="delivery-row-${d.detailKey}">
+   <div style="flex:1;min-width:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <strong style="color:var(--ink);font-size:14.5px">${d.title}</strong>
+    </div>
+    <div class="delivery-meta" style="margin-top:4px">
+     <span>Docente: <b>${d.teacher}</b></span>
+     <span>Materia: <b>${d.subject}</b></span>
+    </div>
+    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45">${d.details}</div>` : ''}
+
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
+     <div class="action-pills">
+      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+      <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+     </div>
+     <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
+      <span class="check-box">${isChk ? '✓' : ''}</span>
+      <span class="check-text">${isChk ? '✓ Entregada por mí' : 'Marcar como entregada'}</span>
+     </button>
+    </div>
+   </div>
+   <span class="due-state ${isChk ? 'delivered' : 'pending'}">${d.status}</span>
+  </div>
+  `;
+ };
+
+ const renderCompletedGroup = (items) => {
+  if(!items.length) return '';
+  return `
+  <details class="delivered-group-accordion" open style="margin-top:18px">
+   <summary class="delivered-main-summary">
+    <div style="display:flex;align-items:center;gap:10px">
+     <span style="font-size:18px">📦</span>
+     <span>Prácticas marcadas como entregadas por ti (${items.length})</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+     <span class="due-state submitted" style="font-size:11px">Completadas ✓</span>
+     <span class="sta-arrow">▾</span>
+    </div>
+   </summary>
+   <div class="delivered-subjects-tree" style="padding:10px 14px">
+    ${items.map(renderRow).join('')}
+   </div>
+  </details>
+  `;
+ };
+
+ if(!filtered.length){
+  listContainer.innerHTML = `<div class="empty" style="padding:28px;text-align:center;background:var(--paper-card);border:1.5px dashed var(--line);border-radius:14px">
+   <p style="font-size:14px;color:var(--ink);font-weight:700;margin-bottom:6px">No hay prácticas para el filtro seleccionado.</p>
+   <button type="button" class="pill-btn" onclick="renderDeliveries('all')" style="margin-top:8px">Restablecer filtros de entregas ↺</button>
+  </div>`;
+  return;
+ }
+
+ if(currentDeliveryFilter === 'pending'){
+  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${filtered.length})</span><span style="font-size:11px;color:var(--honey-dark);font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+  html += filtered.map(renderRow).join('');
+  listContainer.innerHTML = html;
+ } else if(currentDeliveryFilter === 'completed'){
+  listContainer.innerHTML = renderCompletedGroup(filtered);
+ } else {
+  const pendingItems = filtered.filter(d => !d.submitted);
+  const completedItems = filtered.filter(d => d.submitted);
+  let html = '';
+  if(pendingItems.length){
+   html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:var(--honey-dark);font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+   html += pendingItems.map(renderRow).join('');
+  }
+  if(completedItems.length){
+   html += renderCompletedGroup(completedItems);
+  }
+  listContainer.innerHTML = html;
+ }
+}
+"""
+        html = html[:idx_render_del] + custom_render_deliveries_code + html[idx_end_render_del:]
+        print("✓ Función renderDeliveries completamente adaptada con persistencia interactiva en localStorage.")
+
+    # -------------------------------------------------------------
+    # 11. INYECTAR BOTONES CHECK EN BANNER DE PORTADA
+    # -------------------------------------------------------------
     old_card_delgado_a = """          <div class="ptb-card-meta">
             <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
             <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b></div>
@@ -962,43 +1211,47 @@ window.addEventListener('DOMContentLoaded', () => {
         </article>"""
     html = html.replace(old_card_delgado_b, new_card_delgado_b)
 
-    # 11. Añadir botón check en la lista completa de entregas (renderPendingRow)
-    old_pending_row = """    <div class="action-pills" style="margin-top:8px">
-     <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-     <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-     <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Borrador en Drive ↗</a>
-    </div>"""
+    # -------------------------------------------------------------
+    # 12. INICIALIZAR CONTADORES AL ARRANCAR
+    # -------------------------------------------------------------
+    init_script = """
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+    
+    // Sincronizar botones de la portada con localStorage
+    ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'].forEach(k => {
+      const isChk = typeof isDeliveryChecked === 'function' && isDeliveryChecked(k);
+      document.querySelectorAll(`[data-delivery-check-key="${k}"]`).forEach(btn => {
+        btn.classList.toggle('checked', isChk);
+        const textSpan = btn.querySelector('.check-text');
+        const boxSpan = btn.querySelector('.check-box');
+        if(textSpan) textSpan.textContent = isChk ? '✓ Entregada por mí' : 'Marcar como entregada';
+        if(boxSpan) boxSpan.textContent = isChk ? '✓' : '';
+      });
+    });
+  }, 100);
+});
+"""
+    html = html.replace('</script>', init_script + '\n</script>', 1)
 
-    new_pending_row = """    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
-     <div class="action-pills">
-      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-      <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-     </div>
-     <button class="delivery-check-btn ${isDeliveryChecked(d.detailKey)?'checked':''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
-      <span class="check-box">${isDeliveryChecked(d.detailKey)?'✓':''}</span>
-      <span class="check-text">${isDeliveryChecked(d.detailKey)?'✓ Entregada por mí':'Marcar como entregada'}</span>
-     </button>
-    </div>"""
-    html = html.replace(old_pending_row, new_pending_row)
+    # -------------------------------------------------------------
+    # 13. ASEGURAR HORARIO EXACTO DEL TURNO DE TARDE (16:30 — 20:45 h)
+    # -------------------------------------------------------------
+    html = re.sub(r'16:30\s*[—–-]\s*20:30\s*h', '16:30 — 20:45 h', html)
+    html = re.sub(r'4:30\s*[—–-]\s*8:30', '4:30 a 20:45 h', html)
 
-    # 12. Ajustar barra de accesos rápidos para la versión de estudiantes
-    html = html.replace(
-        '<a href="portal-estudiantes.html" target="_blank" rel="noopener noreferrer" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark);font-weight:700">🎓 Portal Estudiantes ↗</a>',
-        '<span class="portal-mode-pill">🎓 Portal Estudiantes · Versión Compartida</span>'
-    )
-    html = html.replace(
-        '<a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>',
-        '<a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>'
-    )
-
+    # -------------------------------------------------------------
+    # 14. GUARDAR ARCHIVOS GENERADOS
+    # -------------------------------------------------------------
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
 
-    alias_path = os.path.join(base_dir, 'estudiantes.html')
     with open(alias_path, 'w', encoding='utf-8') as f:
         f.write(html)
 
-    print(f"✅ ¡Portal de estudiantes generado con éxito en: {out_path} y {alias_path} ({len(html)} bytes)!")
+    print(f"✅ ¡Portal de estudiantes generado con éxito en:\n   - {out_path}\n   - {alias_path}\n   ({len(html)} bytes)!")
 
 if __name__ == '__main__':
     build_student_portal()

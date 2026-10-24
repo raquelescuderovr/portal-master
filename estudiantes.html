@@ -27,80 +27,14 @@
   }catch(e){}
 })();
 
-/* GESTIÓN DE ENTREGAS CON CHECKBOX LOCALSTORAGE */
-function isDeliveryChecked(detailKey){
-  try {
-    return localStorage.getItem('muap_deliv_check_' + detailKey) === 'true';
-  } catch(e){
-    return false;
-  }
-}
-
-function toggleDeliveryCheck(detailKey, btnEl){
-  try {
-    const current = isDeliveryChecked(detailKey);
-    const newVal = !current;
-    localStorage.setItem('muap_deliv_check_' + detailKey, newVal ? 'true' : 'false');
-    
-    // Actualizar todos los botones de esta entrega en pantalla
-    document.querySelectorAll(`[data-delivery-check-key="${detailKey}"]`).forEach(btn => {
-      btn.classList.toggle('checked', newVal);
-      const textSpan = btn.querySelector('.check-text');
-      const boxSpan = btn.querySelector('.check-box');
-      if(textSpan) textSpan.textContent = newVal ? '✓ Entregada por mí' : 'Marcar como entregada';
-      if(boxSpan) boxSpan.textContent = newVal ? '✓' : '';
-    });
-
-    // Actualizar la fila en la lista de entregas si existe
-    const rowEl = document.getElementById('delivery-row-' + detailKey);
-    if(rowEl){
-      const badgeSpan = rowEl.querySelector('.due-state');
-      if(badgeSpan){
-        badgeSpan.className = 'due-state ' + (newVal ? 'delivered' : 'pending');
-        badgeSpan.textContent = newVal ? 'Entregada por mí ✓' : '⏳ Pendiente';
-      }
-    }
-
-    updateDeliveryCounts();
-  } catch(e){}
-}
-
-function updateDeliveryCounts(){
-  const pendingKeys = ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'];
-  let pendingCount = 0;
-  pendingKeys.forEach(k => {
-    if(!isDeliveryChecked(k)) pendingCount++;
-  });
-
-  // Actualizar badge en menú superior
-  const tabBadge = document.querySelector('[data-view="entregas"] .tab-badge');
-  if(tabBadge){
-    tabBadge.textContent = pendingCount > 0 ? `${pendingCount} pend.` : '¡Al día! ✓';
-    tabBadge.style.background = pendingCount > 0 ? 'var(--terracotta)' : 'var(--green)';
-  }
-
-  // Actualizar banner en portada
-  const ptbBadge = document.querySelector('.ptb-badge');
-  if(ptbBadge){
-    ptbBadge.textContent = pendingCount > 0 ? `⚠️ ${pendingCount} PRÁCTICAS PENDIENTES` : '🎉 ¡TODAS LAS PRÁCTICAS ENTREGADAS!';
-    ptbBadge.className = 'ptb-badge ' + (pendingCount > 0 ? 'alert' : 'success');
-  }
-
-  // Actualizar badge en cabecera de bienvenida
-  const welcomeDeliveriesBadge = document.querySelector('.welcome-badge.badge-terra .badge-value');
-  if(welcomeDeliveriesBadge){
-    welcomeDeliveriesBadge.textContent = pendingCount > 0 ? `${pendingCount} por entregar · Próx: 29 oct` : '¡Todas entregadas! 🎉';
-  }
-}
-
-// Inicializar checks al cargar la página
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    updateDeliveryCounts();
-    updateHomeGradesBadge();
-    // Marcar los botones según localStorage
+    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+    
+    // Sincronizar botones de la portada con localStorage
     ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'].forEach(k => {
-      const isChk = isDeliveryChecked(k);
+      const isChk = typeof isDeliveryChecked === 'function' && isDeliveryChecked(k);
       document.querySelectorAll(`[data-delivery-check-key="${k}"]`).forEach(btn => {
         btn.classList.toggle('checked', isChk);
         const textSpan = btn.querySelector('.check-text');
@@ -108,14 +42,6 @@ window.addEventListener('DOMContentLoaded', () => {
         if(textSpan) textSpan.textContent = isChk ? '✓ Entregada por mí' : 'Marcar como entregada';
         if(boxSpan) boxSpan.textContent = isChk ? '✓' : '';
       });
-      const rowEl = document.getElementById('delivery-row-' + k);
-      if(rowEl && isChk){
-        const badgeSpan = rowEl.querySelector('.due-state');
-        if(badgeSpan){
-          badgeSpan.className = 'due-state delivered';
-          badgeSpan.textContent = 'Entregada por mí ✓';
-        }
-      }
     });
   }, 100);
 });
@@ -4202,93 +4128,98 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 
 /* ========================================================
-   PALETA EXCLUSIVA PORTAL ESTUDIANTES: AZUL ACADÉMICO OXFORD
-   (Diferenciada de la paleta crema y espresso de Raquel)
+   PALETA SOLEMNE INSTITUCIONAL: ABOGACÍA Y PROCURA (MODO DERECHO)
    ======================================================== */
 :root, [data-theme="dark"] {
-  --bg: #0b1118;
-  --paper: #111923;
-  --paper-warm: #16202c;
-  --paper-card: #1c2837;
-  --sidebar-bg: #0e151f;
+  /* Fondo y tarjetas: Sala de Togas & Despacho Jurídico Solemne */
+  --bg: #0c0f13;
+  --paper: #12161e;
+  --paper-warm: #181e28;
+  --paper-card: #131720;
+  --sidebar-bg: #0e1218;
 
-  --ink: #eaf0f8;
-  --ink-soft: #b6c7db;
-  --muted: #768ea8;
-  --line: #223448;
-  --line-subtle: #192736;
+  /* Tipografía: Marfil y plata nítida de alta legibilidad */
+  --ink: #e8ecf2;
+  --ink-soft: #adb5c2;
+  --muted: #727c8a;
+  --line: #222936;
+  --line-subtle: #191f2b;
 
-  /* Azul Zafiro Académico */
-  --green: #3a82b8;
-  --green-dark: #7ec0ee;
-  --green-pale: #122232;
-  --green-badge: #172d42;
-  --green-border: #254668;
+  /* Azul Toga Institucional (Austero y Solemne) */
+  --green: #294d73;
+  --green-dark: #8cb6dc;
+  --green-pale: #101a26;
+  --green-badge: #152435;
+  --green-border: #234263;
 
-  /* Acento Abogacía: Azul Acero */
-  --blue: #529fd5;
-  --blue-dark: #97ccf5;
-  --blue-pale: #132436;
-  --blue-badge: #1a334d;
-  --blue-border: #284c71;
+  /* Azul Abogacía / Estrado */
+  --blue: #325b84;
+  --blue-dark: #9bc0e4;
+  --blue-pale: #121c27;
+  --blue-badge: #182839;
+  --blue-border: #284a6e;
 
-  /* Acento Procura / Entregas: Carmesí Borgoña */
-  --terracotta: #c45768;
-  --terra-dark: #e58d9a;
-  --terra-pale: #261619;
-  --terra-badge: #381e23;
-  --terra-border: #562c34;
+  /* Granate Lacre Notarial / Sello Judicial (Entregas y plazos) */
+  --terracotta: #8a343c;
+  --terra-dark: #dc828c;
+  --terra-pale: #221215;
+  --terra-badge: #2e171b;
+  --terra-border: #54272f;
 
-  /* Oro y notas */
-  --honey: #dca03d;
-  --honey-dark: #edd084;
-  --honey-pale: #261e12;
-  --honey-badge: #382b17;
-  --honey-border: #5a4421;
+  /* Bronce Antiguo / Latón de Biblioteca Jurídica */
+  --honey: #95722f;
+  --honey-dark: #dfba6c;
+  --honey-pale: #221a10;
+  --honey-badge: #2e2314;
+  --honey-border: #564020;
+
+  --plum: #623f5b;
 }
 
 [data-theme="light"] {
-  /* Fondo y tarjetas: Azul Hielo Universitario & Pizarra Suave */
-  --bg: #f2f5fa;
+  /* Fondo y tarjetas: Papel Verjurado Calizo / Alabastro Institucional */
+  --bg: #f4f5f7;
   --paper: #ffffff;
-  --paper-warm: #e9f0f8;
+  --paper-warm: #eaedf2;
   --paper-card: #ffffff;
-  --sidebar-bg: #e2ecf6;
+  --sidebar-bg: #e5e9f0;
 
-  /* Tipografía: Azul Marino Muy Oscuro de Alta Nitidez */
-  --ink: #0d1b2a;
-  --ink-soft: #2f435a;
-  --muted: #5c748e;
-  --line: #cddbe8;
-  --line-subtle: #dbe6f1;
+  /* Tipografía: Tinta Ferrogálica Profunda (Negro Solemne de Tribunal) */
+  --ink: #0f141a;
+  --ink-soft: #2d3642;
+  --muted: #5e6875;
+  --line: #cbd3de;
+  --line-subtle: #dbe2eb;
 
-  /* Color primario institucional: Azul Marino Oxford */
-  --green: #1b4965;
-  --green-dark: #0e2e42;
-  --green-pale: #e4f0f8;
-  --green-badge: #d1e5f3;
-  --green-border: #a8cee5;
+  /* Azul Marino Toga / Magistratura Institucional */
+  --green: #142a42;
+  --green-dark: #0a1725;
+  --green-pale: #e7eff6;
+  --green-badge: #d4e2ee;
+  --green-border: #acc4d8;
 
-  /* Acento Abogacía: Azul Prusia */
-  --blue: #205c80;
-  --blue-dark: #123d57;
-  --blue-pale: #e7f3fa;
-  --blue-badge: #d4eaf6;
-  --blue-border: #add5ed;
+  /* Azul Abogacía Clásica */
+  --blue: #1c3856;
+  --blue-dark: #0f2032;
+  --blue-pale: #e9f0f7;
+  --blue-badge: #d7e4f1;
+  --blue-border: #b0c9df;
 
-  /* Acento Procura / Entregas: Carmesí Académico */
-  --terracotta: #9b2c3b;
-  --terra-dark: #6e1c27;
-  --terra-pale: #fdf0f2;
-  --terra-badge: #f9d8dd;
-  --terra-border: #ebb4bd;
+  /* Granate Sello Notarial / Lacre Procesal */
+  --terracotta: #661a22;
+  --terra-dark: #450f15;
+  --terra-pale: #f7ebed;
+  --terra-badge: #edd4d7;
+  --terra-border: #d7acb2;
 
-  /* Oro Académico */
-  --honey: #9b6814;
-  --honey-dark: #6b4609;
-  --honey-pale: #fef7ec;
-  --honey-badge: #fbeacf;
-  --honey-border: #ebd1a2;
+  /* Bronce Antiguo / Latón Noble */
+  --honey: #70521e;
+  --honey-dark: #4d3713;
+  --honey-pale: #f7f3eb;
+  --honey-badge: #ede4d1;
+  --honey-border: #d7c6a4;
+
+  --plum: #482a42;
 }
 
 .portal-mode-pill {
@@ -4351,7 +4282,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .student-eval-field input:focus, .student-eval-field textarea:focus {
   outline: none;
   border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(34, 94, 62, 0.15);
+  box-shadow: 0 0 0 3px rgba(20, 42, 66, 0.15);
 }
 .student-save-status {
   font-size: 11.5px;
@@ -4394,7 +4325,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .student-test-input-wrap input:focus {
   outline: none;
   border-color: var(--green-dark);
-  box-shadow: 0 0 0 3px rgba(34, 94, 62, 0.2);
+  box-shadow: 0 0 0 3px rgba(20, 42, 66, 0.2);
 }
 .delivery-check-btn {
   display: inline-flex;
@@ -4405,7 +4336,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   color: var(--ink);
   padding: 7px 14px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -4432,7 +4363,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
 }
 .privacy-banner {
@@ -4527,7 +4458,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <span class="nav-icon-pill icon-sky">
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
       </span>
-      <span class="nav-label-text">Apuntes y Drive</span>
+      <span class="nav-label-text">Materiales y Normativa</span>
       <span class="nav-badge-pill badge-sky">13</span>
     </button>
     <button class="nav-btn-correo" data-view="correo">
@@ -4654,7 +4585,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <div class="side-note">
     <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 19 oct 2026
     <div class="side-links">
-      <a class="side-drive-link" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">📁 Carpeta Máster en Drive ↗</a>
+      <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">📁 Carpeta Máster en Drive ↗</a>
       <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
       <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 Test 16 oct (20/20) ↗</a>
@@ -4688,10 +4619,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <button data-branch-view="todas" class="active">Todas</button>
         <button data-branch-view="Abogacía">Abogacía</button>
         <button data-branch-view="Procura">Procuradores</button>
-        <a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>
+        <a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">Drive ↗</a>
         <a href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
         <a href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
-        <span class="portal-mode-pill">🎓 Portal Estudiantes · Versión Compartida</span>
+        <span class="portal-mode-pill">🎓 Portal del Estudiante · Versión Oficial</span>
       </div>
     </div>
     <div class="top-actions">
@@ -4744,7 +4675,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Turno de tarde</span>
-            <strong class="badge-value">16:30 — 20:30 h</strong>
+            <strong class="badge-value">16:30 — 20:45 h</strong>
           </div>
         </div>
       </div>
@@ -4768,8 +4699,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">2 pend.</span></button>
-    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">5</span></button>
+    <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">15</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5182,7 +5113,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong>Carpeta «Máster» en Google Drive</strong>
         <p>Repositorio privado con tus apuntes, guías, casos prácticos y entregas (`CertificadoRegistro.pdf`, `Escrito de subsanación_signed.pdf`, `Documento_anonimizado.pdf`, `summary.docx`). Cada documento inferior tiene botón directo para localizarlo en Drive.</p>
       </div>
-      <a class="drive-btn" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Abrir carpeta Máster en Drive ↗</a>
+      <a class="drive-btn" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">Abrir carpeta Máster en Drive ↗</a>
     </div>
     <div class="materials-grid" id="materialsGrid"></div>
   </section>
@@ -5285,7 +5216,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="hub-card-arrow">↗</span>
       </button>
 
-      <a class="home-hub-card hub-blue" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">
+      <a class="home-hub-card hub-blue" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">
         <div class="hub-card-icon blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         </div>
@@ -5309,7 +5240,7 @@ let monthDate=new Date(todayDate);
 let group='tarde';
 let activeView='inicio';
 
-const driveFolderUrl='https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ';
+const driveFolderUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const driveSearchUrl=q=>`https://drive.google.com/drive/u/0/search?q=${encodeURIComponent(q)}`;
 const outlookUrl='https://outlook.office.com/mail/';
 const cprocUrl='https://www.icpcoruna.com/copia-de-tfm-24-26-1';
@@ -5325,7 +5256,7 @@ const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.
 const casoSandraVideoLocalUrl='materiales/';
 const casoSandraResolucionLocalUrl='materiales/';
 const casoSandraGDocUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
-const practicasGdriveUrl='https://drive.google.com/drive/u/0/folders/1-xGG31nwuSqubd5pJUTpiGpllrJgs36e';
+const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const cprocTareasUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 
 const events={ '2026-10-01':[
@@ -5749,7 +5680,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
- {date:new Date(2026,9,23),title:'Resultados de pruebas y trabajos (Deontología y Técnicas Transversales)',teacher:'Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: Completado)',submitted:false,detailKey:'entrega_resultados_de_pruebas_y_t',details:'Calificación final: 10 (Test: 4 / Trabajos escritos: 6)'},
+ 
  {
   date:new Date(2026,9,29),
   title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',
@@ -5781,12 +5712,12 @@ const deliveries=[
   subject:'Procura · Actos de comunicación judicial',
   subjectRef:'Procura|Técnicas instrumentales|3',
   subjectName:'Actos de comunicación judicial (Procura)',
-  status:'Entregada con éxito en CPROC ✓ (22 oct 12:51 h)',
-  submitted:true,
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
   detailKey:'entrega_caso_pr_ctico_de_actos_de',
   file:'CASO_PRACTICO_2026_SANDRA.pdf',
   file2:'',
-  details:'Caso práctico oficial evaluable entregado con éxito en CPROC el 22 de octubre de 2026 a las 12:51 h («✓ La Tarea se ha entregado con éxito»). Resolución completa de los 6 escenarios de la LEC, LexNET, doctrina del TS y 3 preguntas de reflexión en Google Drive y Markdown local.'
+  details:'Caso práctico oficial evaluable entregado con éxito en CPROC el 22 de octubre de 2026 a las 12:51 h («✓ La Tarea se ha entregado con éxito»). Resolución completa de los 6 escenarios de la LEC, LexNET, doctrina del TS y 3 preguntas de reflexión.'
  },
  {
   date:new Date(2026,9,16),
@@ -5795,11 +5726,11 @@ const deliveries=[
   subject:'Procura · Técnicas instrumentales / Actuación procesal',
   subjectRef:'Procura|Técnicas instrumentales|2',
   subjectName:'Actuación procesal y técnicas instrumentales (Procura)',
-  status:'Entregada con éxito en CPROC ✓ (16 oct)',
-  submitted:true,
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
   detailKey:'entrega_apud_acta',
   file:'CertificadoRegistro.pdf',
-  details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'
+  details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Plataforma oficial CPROC (MUAP) («La Tarea se ha entregado con éxito»).'
  },
  {
   date:new Date(2026,9,16),
@@ -5808,11 +5739,11 @@ const deliveries=[
   subject:'Procura · Técnicas instrumentales / Actuación procesal',
   subjectRef:'Procura|Técnicas instrumentales|2',
   subjectName:'Actuación procesal y técnicas instrumentales (Procura)',
-  status:'Entregada con éxito en CPROC ✓ (16 oct)',
-  submitted:true,
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
   detailKey:'entrega_subsanacion',
   file:'Escrito de subsanación_signed.pdf',
-  details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'
+  details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Plataforma oficial CPROC (MUAP).'
  },
  {
   date:new Date(2026,9,16),
@@ -5821,12 +5752,12 @@ const deliveries=[
   subject:'Procura · Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',
   subjectRef:'Procura|Técnicas instrumentales|2',
   subjectName:'Actuación procesal y técnicas instrumentales (Procura)',
-  status:'Entregada con éxito en CPROC ✓ (2 envíos · 16 oct)',
-  submitted:true,
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
   detailKey:'entrega_auto_up',
   file:'Documento_anonimizado.pdf',
-  file2:'summary.docx',
-  details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'
+  
+  details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Plataforma oficial CPROC (MUAP).'
  },
  {
   date:new Date(2026,9,15),
@@ -5835,36 +5766,30 @@ const deliveries=[
   subject:'Procura · Deontología y responsabilidad',
   subjectRef:'Procura|Deontología y responsabilidad|0',
   subjectName:'Deontología y responsabilidad profesional (Procura)',
-  status:'Entregada con éxito en CPROC ✓ (15 oct)',
-  submitted:true,
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
   detailKey:'assignment',
   file:'Derechos, deberes y responsabilidad',
-  details:'Práctica subida a Google Drive y enviada dentro de plazo en CPROC (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador).'
+  details:'Plataforma oficial CPROC (MUAP) (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador).'
  }
 ];
 
 const messages=[
- {date:'23 oct 2026 (13:21)',title:'Calificaciones oficiales · Deontología y TIC (Nota: 10 / 10 · Carolina Moreno y Carlos Sánchez)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Carolina Moreno Vázquez y Carlos M. Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carolina_carlos_23oct',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|2'},
  {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2'},
  {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1'},
  {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:''},
  {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
- {date:'22 oct 2026 (13:24)',title:'Calificaciones oficiales · Técnicas instrumentales (Nota: 10 / 10 · Carlos Miguel Sánchez Muiño)',meta:'accesoabogaciaprocura@procuradores-coruna.com · D. Carlos Miguel Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carlos_sanchez_2oct',teacher:'Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|1'},
  {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
  {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
  {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:''},
  {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:''},
- {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
  {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
- {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
  {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:''},
  {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:''},
  {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
  {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
- {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'}
+ {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · Caso práctico en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'}
 ];
 
 const mailSummaries={
@@ -6159,7 +6084,7 @@ const details={
    {label:'Resolución completa en Markdown',file:'',pages:'19.500 caracteres · 188 líneas',url:casoSandraResolucionLocalUrl,content:'Copia local íntegra en Markdown con el desglose de artículos LEC, sentencias del TS y reflexiones jurídicas.',state:'Guardado en el portal'}
   ],
   attachments:[
-   {name:'Abrir documento en Google Docs (Deontología y Técnicas Transversales_Raquel Escudero)',url:casoSandraGDocUrl,kind:'Google Docs ↗'},
+   {name:'Abrir documento en Google Docs (Deontología y Técnicas Transversales_Raquel Escudero)',url:casoSandraGDocUrl,kind:'CPROC ↗'},
    {name:'Abrir resolución completa en Markdown (.md)',url:casoSandraResolucionLocalUrl,kind:'Markdown en portal'},
    {name:'Ver vídeo comprobante de entrega en CPROC (.mov)',url:casoSandraVideoLocalUrl,kind:'Vídeo comprobante ↗'},
    {name:'Abrir carpeta Prácticas en Google Drive',url:practicasGdriveUrl,kind:'Google Drive ↗'},
@@ -6603,13 +6528,13 @@ const courses=[
   subjects:[
    {
     name:'Iniciación a la actividad de la Procura y organización',
-    period:'1 y 2 oct 2026 · Horario: 18:45 – 20:45 · Calificación oficial: 10 / 10',
+    period:'1 y 2 oct 2026 · Horario: 18:45 – 20:45',
     startDate:'2026-10-01',
     teachers:['Javier C. Sánchez García','Carlos M. Sánchez Muiño'],
     grade:{score:'10 / 10 (Sobresaliente)',detail:'4 ptos. Test + 6 ptos. Trabajos/escritos · Nota oficial comunicada por correo el 14 oct',detailKey:'grades',actionLabel:'Ver nota oficial ↗'},
     notes:[
-     {name:'Iniciación actividad profesional (Doc Google en Drive)',detailKey:'grades',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Google Docs ↗'},
-     {name:'Organización de despacho (Doc Google en Drive)',detailKey:'grades',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Google Docs ↗'},
+     {name:'Iniciación actividad profesional (Doc Google en Drive)',detailKey:'grades',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Organización de despacho (Doc Google en Drive)',detailKey:'grades',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Tabla oficial de calificaciones (Javier Sánchez García · Test + Escritos = 10)',detailKey:'grades',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Calificaciones oficiales Carlos Miguel Sánchez Muiño (Test + Escritos = 10)',detailKey:'mail_carlos_sanchez_2oct',url:outlookUrl,label:'Ver en Outlook ↗'}
     ],
@@ -6622,22 +6547,22 @@ const courses=[
     teachers:['Alejandra Sánchez'],
     grade:{score:'Completado ✓',detail:'Taller de técnica de estrados, argumentación y exposición procesal oral.',detailKey:'grades',actionLabel:'Ver taller ↗'},
     notes:[
-     {name:'Carpeta «Máster apuntes» en Google Drive',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',label:'Carpeta Drive ↗'}
+     {name:'Carpeta «Máster apuntes» en Google Drive',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC Tareas ↗'}
     ],
     mails:['grades']
    },
    {
     name:'Responsabilidad disciplinaria, TIC y justicia digital',
-    period:'14 al 16 oct 2026 · Colegio de Abogados y CPROC · Calificación oficial: 10 / 10',
+    period:'14 al 16 oct 2026 · Colegio de Abogados y CPROC',
     startDate:'2026-10-14',
     teachers:['Carolina Moreno Vázquez','Carlos M. Sánchez Muiño','Alex Sánchez Barge'],
     grade:{score:'Nota oficial: 10 / 10 ★ (Sobresaliente)',detail:'Calificaciones oficiales comunicadas por el Colegio de Procuradores el 23 oct (13:21 h): Test 4/4 (40 %) + Trabajos escritos 6/6 (60 %) = 10 / 10.',detailKey:'mail_carolina_carlos_23oct',actionLabel:'Ver nota oficial (10/10) ↗'},
     notes:[
-     {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',detailKey:'test_16oct',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Google Docs ↗'},
-     {name:'Escrito de subsanación (Doc Google en Drive)',detailKey:'entrega_subsanacion',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Google Docs ↗'},
-     {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'PDF Drive ↗'},
-     {name:'summary.docx (Resumen procesal en Drive)',detailKey:'entrega_auto_up',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Word Drive ↗'},
-     {name:'Práctica 2 de octubre (CPROC)',detailKey:'test_16oct',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'PDF Drive ↗'},
+     {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',detailKey:'test_16oct',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Escrito de subsanación (Doc Google en Drive)',detailKey:'entrega_subsanacion',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',detailKey:'entrega_auto_up',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Documento oficial ↗'},
+     {name:'summary.docx (Resumen procesal en Drive)',detailKey:'entrega_auto_up',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Word Drive ↗'},
+     {name:'Práctica 2 de octubre (CPROC)',detailKey:'test_16oct',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Documento oficial ↗'},
      {name:'Cuestionario completo de 20 preguntas y 4 opciones (.md)',detailKey:'test_16oct',url:testMdLocalUrl,label:'Ver .md ↗'},
      {name:'Real Decreto-ley 6/2023 (Eficiencia digital de la Justicia · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',label:'BOE oficial ↗'}
     ],
@@ -6645,7 +6570,7 @@ const courses=[
    },
    {
     name:'Actos de comunicación judicial',
-    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada) · Test: 9 / 10',
+    period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada)',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
     grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado hoy 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
@@ -6656,10 +6581,10 @@ const courses=[
       {name:'Plataforma CPROC: Tareas publicadas (Entregada 22 oct ✓)',url:cprocTareasUrl,label:'Ir a CPROC ↗'},
      {name:'Test online Testmoz (9/10 aciertos · HTML original)',url:testHtmlSandraLocalUrl,label:'Ver test HTML ↗'},
      {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdSandraLocalUrl,label:'Ver .md ↗'},
-     {name:'1. Carta de presentación de Sandra Mosteiro Costa',detailKey:'materials',url:driveSearchUrl('Carta de presentación'),label:'Buscar en Drive ↗'},
-     {name:'2. Presentación de actos de comunicación judicial (diapositivas)',detailKey:'materials',url:driveSearchUrl('actos de comunicación'),label:'Buscar en Drive ↗'},
-     {name:'3. Guía legislativa de actos de comunicación',detailKey:'materials',url:driveSearchUrl('Guía legislativa'),label:'Buscar en Drive ↗'},
-     {name:'4. Jurisprudencia sobre plazos procesales (para caso práctico)',detailKey:'materials',url:driveSearchUrl('Jurisprudencia'),label:'Buscar en Drive ↗'},
+     {name:'1. Carta de presentación de Sandra Mosteiro Costa',detailKey:'materials',url:driveSearchUrl('Carta de presentación'),label:'Normativa y CPROC ↗'},
+     {name:'2. Presentación de actos de comunicación judicial (diapositivas)',detailKey:'materials',url:driveSearchUrl('actos de comunicación'),label:'Normativa y CPROC ↗'},
+     {name:'3. Guía legislativa de actos de comunicación',detailKey:'materials',url:driveSearchUrl('Guía legislativa'),label:'Normativa y CPROC ↗'},
+     {name:'4. Jurisprudencia sobre plazos procesales (para caso práctico)',detailKey:'materials',url:driveSearchUrl('Jurisprudencia'),label:'Normativa y CPROC ↗'},
      {name:'Ley de Enjuiciamiento Civil (Ley 1/2000 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
     mails:['materials','test_20oct_sandra','entrega_caso_pr_ctico_de_actos_de']
@@ -6678,16 +6603,16 @@ const courses=[
   subjects:[
    {
     name:'Deontología y estatuto profesional del Procurador',
-    period:'8 y 9 oct 2026 · Horario: 16:30 – 18:30 · Práctica entregada en CPROC',
+    period:'8 y 9 oct 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-10-08',
     teachers:['Ana Vázquez Corte'],
     grade:{score:'8.8 / 10 (Test 3.8 + Trabajos 5)',detail:'Calificación otorgada por Dña. Ana Vázquez Corte comunicada por correo el 19 oct: Test (40%): 3.8 + Trabajos escritos (60%): 5.0 = 8.8 / 10 (ponderable por coordinación MUAP)',detailKey:'mail_deontologia_ana_vazquez',actionLabel:'Ver nota oficial ↗'},
     notes:[
-     {name:'Caso práctico de Deontología (CPROC)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Google Docs ↗'},
-     {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Google Docs ↗'},
-     {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'PDF Drive ↗'},
-     {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',detailKey:'assignment',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'PDF Drive ↗'},
-     {name:'Código Deontológico de los Procuradores (Consejo General)',url:driveSearchUrl('Código Deontológico'),label:'Buscar en Drive ↗'},
+     {name:'Caso práctico de Deontología (CPROC)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Documento oficial ↗'},
+     {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Documento oficial ↗'},
+     {name:'Código Deontológico de los Procuradores (Consejo General)',url:driveSearchUrl('Código Deontológico'),label:'Normativa y CPROC ↗'},
      {name:'Estatuto General de los Procuradores de España (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
     ],
     mails:['mail_deontologia_ana_vazquez','assignment']
@@ -6699,7 +6624,7 @@ const courses=[
     teachers:['Carmen Belo González'],
     grade:{score:'Módulo completado ✓ · Tests al día',detail:'Sesión presencial de régimen disciplinario y deontología colegial.',detailKey:'assignment',actionLabel:'Ver apuntes ↗'},
     notes:[
-     {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Google Docs ↗'},
+     {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Estatuto de la Procura y régimen sancionador',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
     ],
     mails:['assignment']
@@ -6734,7 +6659,7 @@ const courses=[
     teachers:['María P. Carnota García'],
     grade:{score:'⏳ Por venir · 28 oct',detail:'Tramitaciones ante registros, órganos administrativos y colegiales.',detailKey:'materials'},
     notes:[
-     {name:'Guía de trámites registrales y notariales del procurador',url:driveFolderUrl,label:'Carpeta Drive ↗'}
+     {name:'Guía de trámites registrales y notariales del procurador',url:driveFolderUrl,label:'CPROC Tareas ↗'}
     ],
     mails:['materials']
    },
@@ -6837,7 +6762,7 @@ const courses=[
     teachers:['Alejandra Sánchez'],
     grade:{score:'Completado ✓',detail:'Oratoria forense y comunicación procesal en estrados.',detailKey:'grades',actionLabel:'Ver taller ↗'},
     notes:[
-     {name:'Carpeta «Máster apuntes» en Drive',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',label:'Carpeta Drive ↗'}
+     {name:'Carpeta «Máster apuntes» en Drive',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC Tareas ↗'}
     ],
     mails:['grades']
    },
@@ -6848,8 +6773,8 @@ const courses=[
     teachers:['Daniel Garrido Pazos'],
     grade:{score:'10 / 10 (Sobresaliente)',detail:'Módulo conjunto completado con calificación de 10/10.',detailKey:'grades',actionLabel:'Ver nota ↗'},
     notes:[
-     {name:'Organización de despacho (Doc Google)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Google Docs ↗'},
-     {name:'Iniciación actividad profesional (Doc Google)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Google Docs ↗'}
+     {name:'Organización de despacho (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Iniciación actividad profesional (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'}
     ],
     mails:['grades']
    },
@@ -6860,8 +6785,8 @@ const courses=[
     teachers:['Vanessa Amarelle','Carlos Tomé'],
     grade:{score:'Completado ✓ · Cuestionarios al día',detail:'Ética profesional, secreto profesional, incompatibilidades y régimen de responsabilidad.',detailKey:'assignment',actionLabel:'Ver apuntes ↗'},
     notes:[
-     {name:'Deontología abogacía (Doc Google en Drive)',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Google Docs ↗'},
-     {name:'Código Deontológico de la Abogacía Española (CGAE)',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Buscar en Drive ↗'}
+     {name:'Deontología abogacía (Doc Google en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
+     {name:'Código Deontológico de la Abogacía Española (CGAE)',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Normativa y CPROC ↗'}
     ],
     mails:['assignment']
    },
@@ -6872,7 +6797,7 @@ const courses=[
     teachers:['José Luis Delgado Domínguez'],
     grade:{score:'🟢 En curso hoy · Sesión 2 de 3',detail:'Sesión 2 de 3 presencial hoy martes 20 oct (18:45–20:45 h) · Aseguramiento de la responsabilidad civil y penal · 3ª sesión (Turno de Oficio) el lunes 26 oct.',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
-     {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'},
+     {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Normativa y CPROC ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
      {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE oficial ↗'}
     ],
@@ -6907,7 +6832,7 @@ const courses=[
     teachers:['Jaime Martul'],
     grade:{score:'⏳ Por venir · 28 oct',detail:'Estrategia de despacho, marca personal y captación de clientes.',detailKey:'materials'},
     notes:[
-     {name:'Publicidad y captación en el Código Deontológico de la Abogacía',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Buscar en Drive ↗'}
+     {name:'Publicidad y captación en el Código Deontológico de la Abogacía',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Normativa y CPROC ↗'}
     ],
     mails:['materials']
    },
@@ -6918,7 +6843,7 @@ const courses=[
     teachers:['Javier García y Santiago Varela'],
     grade:{score:'⏳ Por venir · 29, 30 oct y 2 nov',detail:'Redacción forense, estructura de demandas y estilo argumentativo procesal.',detailKey:'materials'},
     notes:[
-     {name:'Guía de estilo forense y modelos procesales',url:driveFolderUrl,label:'Carpeta Drive ↗'}
+     {name:'Guía de estilo forense y modelos procesales',url:driveFolderUrl,label:'CPROC Tareas ↗'}
     ],
     mails:['materials']
    },
@@ -7087,7 +7012,7 @@ const courses=[
     teachers:['Luis Merino'],
     grade:{score:'⏳ Por venir · 26 y 30 nov',detail:'Simulaciones procesales con roles de abogado/procurador en sala de vistas judicial.',detailKey:'schedule'},
     notes:[
-     {name:'Guiones de sala y asignación de casos para juicios simulados',url:driveFolderUrl,label:'Carpeta Drive ↗'}
+     {name:'Guiones de sala y asignación de casos para juicios simulados',url:driveFolderUrl,label:'CPROC Tareas ↗'}
     ],
     mails:['schedule']
    }
@@ -7288,7 +7213,7 @@ const courses=[
     teachers:['Docente pendiente de asignar'],
     grade:{score:'⏳ Por venir · 20, 22, 26 y 28 ene',detail:'Simulaciones de vistas del procedimiento abreviado contencioso-administrativo.',detailKey:'schedule'},
     notes:[
-     {name:'Guiones de casos contenciosos para vistas simuladas',url:driveFolderUrl,label:'Carpeta Drive ↗'}
+     {name:'Guiones de casos contenciosos para vistas simuladas',url:driveFolderUrl,label:'CPROC Tareas ↗'}
     ],
     mails:['schedule']
    }
@@ -7312,7 +7237,7 @@ const teacherDirectory=[
   ],
   mails:[{title:'Materiales comunicación y oratoria · Equipo Bével (23 oct)',key:'materials_bevel_23oct'},{title:'Comunicación académica sobre el taller de Oratoria',key:'grades'}],
   practices:[{title:'Ejercicios orales y simulaciones de estrados',status:'Completado ✓',key:'grades'}],
-  driveFiles:[{name:'Carpeta «Máster apuntes» en Google Drive',url:'https://drive.google.com/drive/u/0/folders/1CH_lVe8xW9hDRNgqliPeF4L7Czota0gO',label:'Carpeta Drive ↗'}],
+  driveFiles:[{name:'Carpeta «Máster apuntes» en Google Drive',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC Tareas ↗'}],
   notes:[{title:'Guía práctica de oratoria y argumentación forense',url:driveFolderUrl,urlLabel:'Ver en Drive ↗'}]
  },
  {
@@ -7321,7 +7246,7 @@ const teacherDirectory=[
   role:'Procurador · Formas de ejercicio, organización y justicia digital',
   gradeBadge:'10 / 10 (Doble 10 oficial) ★',
   summary:'Formas de ejercicio, organización del despacho de procuradores, TIC y justicia digital en la Procura.',
-  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'Doble 10/10 oficial: sesión 2 oct (Test 4/4 + Escritos 6/6 = 10) y sesiones 14-16 oct con Carolina Moreno (Test 4/4 + Escritos 6/6 = 10).',detailKey:'mail_carlos_sanchez_2oct'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-02',dayLabel:'Viernes 2 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Formas de ejercicio y organización del despacho de procuradores',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-15',dayLabel:'Jueves 15 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'TIC y administración de justicia en la Procura',place:'Colegio de Abogados (A Coruña)'},
@@ -7335,8 +7260,8 @@ const teacherDirectory=[
    {title:'Escrito de subsanación procesal telemática',status:'Enviado en CPROC ✓',key:'entrega_subsanacion'}
   ],
   driveFiles:[
-   {name:'Iniciación actividad profesional (Doc Google)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit'},
-   {name:'Organización de despacho (Doc Google)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit'},
+   {name:'Iniciación actividad profesional (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
+   {name:'Organización de despacho (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
    {name:'Práctica 2 de octubre',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'}
   ],
   notes:[{title:'Real Decreto-ley 6/2023 (Eficiencia digital de la Justicia · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2023-25758',urlLabel:'BOE oficial ↗'}]
@@ -7347,13 +7272,13 @@ const teacherDirectory=[
   role:'Procurador · Marco institucional de la Procura y estatuto',
   gradeBadge:'10 / 10 (Sobresaliente)',
   summary:'Iniciación a la actividad de la Procura, funciones procesales, marco estatutario y colegial.',
-  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'4 ptos. Test + 6 ptos. Trabajos y escritos. Calificación oficial comunicada por correo el 14 oct.',detailKey:'grades'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-01',dayLabel:'Jueves 1 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Iniciación a la actividad de la Procura (Marco institucional y estatuto)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Calificaciones oficiales Procura',key:'grades'}],
   practices:[{title:'Cuestionario y caso práctico de iniciación profesional',status:'Calificación: 10/10 ✓',key:'grades'}],
-  driveFiles:[{name:'Iniciación actividad profesional (Doc Google)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit'}],
+  driveFiles:[{name:'Iniciación actividad profesional (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'}],
   notes:[{title:'Estatuto General de los Procuradores de España (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-8929',urlLabel:'BOE oficial ↗'}]
  },
  {
@@ -7362,14 +7287,14 @@ const teacherDirectory=[
   role:'Abogado · Técnicas instrumentales e iniciación profesional',
   gradeBadge:'10 / 10 (Sobresaliente)',
   summary:'Iniciación al ejercicio de la abogacía, deberes deontológicos y organización interna del despacho profesional.',
-  grade:{score:'10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'Sesiones presenciales de los días 5 y 6 de octubre superadas con nota de 10/10.',detailKey:'grades'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-05',dayLabel:'Lunes 5 oct 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Iniciación a la abogacía + organización de despacho (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-06',dayLabel:'Martes 6 oct 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Iniciación a la abogacía + organización de despacho (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Inicio de clases Abogacía e iniciación',key:'welcome'}],
   practices:[{title:'Caso de organización y régimen de despacho',status:'Completado ✓',key:'grades'}],
-  driveFiles:[{name:'Organización de despacho (Doc Google)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit'}],
+  driveFiles:[{name:'Organización de despacho (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'}],
   notes:[{title:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',urlLabel:'BOE oficial ↗'}]
  },
  {
@@ -7378,7 +7303,7 @@ const teacherDirectory=[
   role:'Procuradora · Deontología y responsabilidad profesional',
   gradeBadge:'8.8 / 10 ★',
   summary:'Deontología de la Procura, principios rectores, secreto profesional y relaciones con los órganos judiciales.',
-  grade:{score:'8.8 / 10 (Notable)',scoreLabel:'Calificación otorgada',detail:'Test (40%): 3.8 + Trabajos escritos (60%): 5.0 · Nota oficial comunicada por correo el 19 oct',detailKey:'mail_deontologia_ana_vazquez'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-08',dayLabel:'Jueves 8 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Deontología de la Procura (Principios rectores y secreto profesional)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-09',dayLabel:'Viernes 9 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Deontología y responsabilidad de la Procura (Régimen disciplinario)',place:'Colegio de Abogados (A Coruña)'}
@@ -7388,7 +7313,7 @@ const teacherDirectory=[
    {title:'Caso práctico de Deontología (enviado en CPROC)',key:'assignment'}
   ],
   practices:[{title:'Caso práctico sobre deber de confidencialidad',status:'Calificación: 5.0 / 6 (Trabajos) ✓',key:'mail_deontologia_ana_vazquez'}],
-  driveFiles:[{name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf',url:driveSearchUrl('Deontologia_Clase_Completa'),label:'PDF Drive ↗'}],
+  driveFiles:[{name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf',url:driveSearchUrl('Deontologia_Clase_Completa'),label:'Documento oficial ↗'}],
   notes:[{title:'Código Deontológico de los Procuradores (Consejo General)',url:cprocUrl,urlLabel:'Ver normativa ↗'}]
  },
  {
@@ -7404,7 +7329,7 @@ const teacherDirectory=[
   ],
   mails:[{title:'Módulo de deontología de la abogacía',key:'welcome'}],
   practices:[{title:'Caso sobre régimen deontológico de la abogacía',status:'Superado ✓',key:'grades'}],
-  driveFiles:[{name:'Documento sin título (Apuntes deontología)',url:driveSearchUrl('deontología'),label:'Google Docs ↗'}],
+  driveFiles:[{name:'Documento sin título (Apuntes deontología)',url:driveSearchUrl('deontología'),label:'CPROC ↗'}],
   notes:[{title:'Código Deontológico de la Abogacía Española (CGAE)',url:'https://www.abogacia.es/conozcanos/codigo-deontologico/',urlLabel:'CGAE oficial ↗'}]
  },
  {
@@ -7419,7 +7344,7 @@ const teacherDirectory=[
   ],
   mails:[{title:'Régimen disciplinario de la Procura',key:'grades'}],
   practices:[{title:'Caso de apertura de expediente disciplinario colegial',status:'Completado ✓',key:'grades'}],
-  driveFiles:[{name:'13/10 Responsabilidad disciplinaria de la Procura',url:driveSearchUrl('Responsabilidad disciplinaria'),label:'Google Docs ↗'}],
+  driveFiles:[{name:'13/10 Responsabilidad disciplinaria de la Procura',url:driveSearchUrl('Responsabilidad disciplinaria'),label:'CPROC ↗'}],
   notes:[{title:'Reglamento de Procedimiento Disciplinario de la Procura',url:cprocUrl,urlLabel:'CPROC ↗'}]
  },
  {
@@ -7435,7 +7360,7 @@ const teacherDirectory=[
   ],
   mails:[{title:'Deontología y responsabilidad del abogado',key:'welcome'}],
   practices:[{title:'Caso de conflicto de intereses entre clientes',status:'Superado ✓',key:'grades'}],
-  driveFiles:[{name:'Deontología abogacía (Google Docs en Drive)',url:driveSearchUrl('Deontología abogacía'),label:'Google Docs ↗'}],
+  driveFiles:[{name:'Deontología abogacía (Google Docs en Drive)',url:driveSearchUrl('Deontología abogacía'),label:'CPROC ↗'}],
   notes:[{title:'Jurisprudencia sobre responsabilidad civil del abogado (Drive)',url:driveFolderUrl,urlLabel:'Drive ↗'}]
  },
  {
@@ -7444,7 +7369,7 @@ const teacherDirectory=[
   role:'Procuradora · Proceso digital, justicia digital y actuación procesal',
   gradeBadge:'10 / 10 (Oficial) ★',
   summary:'Proceso digital, plataforma LexNET, resoluciones judiciales telemáticas y taller práctico de expedientes.',
-  grade:{score:'Nota oficial: 10 / 10 (Sobresaliente)',scoreLabel:'Calificación oficial',detail:'Calificaciones oficiales remitidas por Secretaría de Procura (23 oct): Test 4/4 (40 %) + Trabajos escritos 6/6 (60 %) = 10 / 10.',detailKey:'mail_carolina_carlos_23oct'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-14',dayLabel:'Miércoles 14 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Proceso digital en la Procura (LexNET, firma electrónica y presentación telemática)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Justicia digital y taller de casos prácticos (con Carlos M. Sánchez Muiño)',place:'Colegio de Abogados (A Coruña)'}
@@ -7457,13 +7382,13 @@ const teacherDirectory=[
    {title:'Caso práctico Auto Concursal UP',status:'Enviado en CPROC ✓',key:'entrega_auto_up'}
   ],
   driveFiles:[
-   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view'},
-   {name:'summary.docx (Resumen concursal)',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view'},
-   {name:'Escrito de subsanación (Doc Google)',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit'},
-   {name:'CertificadoRegistro.pdf (Poder apud acta en Drive)',url:driveSearchUrl('CertificadoRegistro'),label:'PDF Drive ↗'}
+   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
+   {name:'summary.docx (Resumen concursal)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
+   {name:'Escrito de subsanación (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
+   {name:'CertificadoRegistro.pdf (Poder apud acta en Drive)',url:driveSearchUrl('CertificadoRegistro'),label:'Documento oficial ↗'}
   ],
   notes:[
-   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit'},
+   {title:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'},
    {title:'Cuestionario completo de 20 preguntas y 4 opciones (.md)',url:testMdLocalUrl}
   ]
  },
@@ -7473,7 +7398,7 @@ const teacherDirectory=[
   role:'Procurador · Justicia digital, subsanaciones telemáticas y TIC',
   gradeBadge:'20/20 (10/10) · Prácticas al día ✓',
   summary:'Justicia digital, taller de subsanaciones procesales y presentación telemática de escritos en CPROC.',
-  grade:{score:'10 / 10 · 20/20 aciertos',scoreLabel:'Evaluación',detail:'Módulo completado junto con Carlos M. Sánchez Muiño y Carolina Moreno.',detailKey:'test_16oct'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Cuestionario oficial en Testmoz y casos prácticos en CPROC.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-15',dayLabel:'Jueves 15 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'TIC, justicia digital y subsanación de defectos en la presentación telemática',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Taller de subsanaciones procesales y auto concursal UP',place:'Colegio de Abogados (A Coruña)'}
@@ -7489,7 +7414,7 @@ const teacherDirectory=[
   role:'Procuradora · Técnicas instrumentales (Actos de comunicación judicial)',
   gradeBadge:'⭐ Testmoz: 9 / 10 (90 % · Sobresaliente) ✓',
   summary:'Actos de comunicación judicial: notificaciones, citaciones, emplazamientos, requerimientos y cómputo de plazos procesales (19 y 20 de octubre). Módulo finalizado con test oficial superado (9/10).',
-  grade:{score:'9 / 10 · Testmoz (90 %)',scoreLabel:'Evaluación',detail:'Test oficial completado el martes 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Test oficial en Testmoz y caso evaluable en CPROC.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 1 de 2 · Marco general, notificaciones y requerimientos)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y test oficial)',place:'Colegio de Abogados (A Coruña)'}
@@ -7818,10 +7743,10 @@ const catalogMaterials=[
   mailKey:'assignment',
   actionLabel:'Ver caso práctico y apuntes',
   docs:[
-   {name:'Caso práctico: Derechos, deberes y responsabilidad profesional (CPROC)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Abrir en Drive ↗'},
-   {name:'Deontología de la procura (8/10-9/10) (Doc Google)',url:'https://docs.google.com/document/d/1qNBiaiQnQgeFDJ-YnknJ5mUtJMBUMMKwG8TGL7r3Y6g/edit',label:'Abrir en Drive ↗'},
-   {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',url:'https://drive.google.com/file/d/1x3LPXiaBGQLWvrLeyiIhxQJ3FyJOLcVD/view',label:'Abrir en Drive ↗'},
-   {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',url:'https://drive.google.com/file/d/1gNkIjdpFn7LmNFjXWFhbfZXkOFLmiGmi/view',label:'Abrir en Drive ↗'}
+   {name:'Caso práctico: Derechos, deberes y responsabilidad profesional (CPROC)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Deontología de la procura (8/10-9/10) (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf (PDF en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Apuntes_Deontologia_Desarrollados_Sesiones_3_y_4.pdf (PDF en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'}
   ]
  },
  {
@@ -7833,9 +7758,9 @@ const catalogMaterials=[
   mailKey:'assignment',
   actionLabel:'Ver documentos de clase',
   docs:[
-   {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Abrir en Drive ↗'},
-   {name:'Deontología abogacía (Doc Google en Drive)',url:'https://docs.google.com/document/d/1hbjq4id0yuyFxy499Y7Q3XbAMAI0dA7ocZT_EOt7XlY/edit',label:'Abrir en Drive ↗'},
-   {name:'Documento sin título (Apuntes complementarios en Drive)',url:'https://docs.google.com/document/d/15S4I7yf7qVrP8fGyETlN5Do9nc1uz6eCV4_nF9UnI2E/edit',label:'Abrir en Drive ↗'}
+   {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Deontología abogacía (Doc Google en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Documento sin título (Apuntes complementarios en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'}
   ]
  },
  {
@@ -7847,8 +7772,8 @@ const catalogMaterials=[
   mailKey:'grades',
   actionLabel:'Ver apuntes en Drive',
   docs:[
-   {name:'Organización de despacho (Doc Google en Drive)',url:'https://docs.google.com/document/d/1YX_a22JX6YLbBuzpG1qBRmHCpjm473tY7OXRS4jP85M/edit',label:'Abrir en Drive ↗'},
-   {name:'Iniciación actividad profesional (Doc Google en Drive)',url:'https://docs.google.com/document/d/1NMWvSJ66JWN9MIj89IMtHkyHqnTDzoVDosCK4hDLzeE/edit',label:'Abrir en Drive ↗'}
+   {name:'Organización de despacho (Doc Google en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Iniciación actividad profesional (Doc Google en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'}
   ]
  },
  {
@@ -7860,12 +7785,12 @@ const catalogMaterials=[
   mailKey:'test_16oct',
   actionLabel:'Ver apuntes y prácticas en Drive',
   docs:[
-   {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://docs.google.com/document/d/11XO7sQ0cytgr0jC_0BG_cP7lKXsQH9H58xH677QLs7w/edit',label:'Abrir en Drive ↗'},
-   {name:'Escrito de subsanación (Doc Google editable en Drive)',url:'https://docs.google.com/document/d/1p3-CrxobG-H9QPZkEx-C36XBAXq9nANHAnj505R5cL8/edit',label:'Abrir en Drive ↗'},
-   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://drive.google.com/file/d/15HMj-QSoJY3Kfqa5B9gM4RWWiOZuW3pN/view',label:'Abrir en Drive ↗'},
-   {name:'summary.docx (Resumen del auto concursal)',url:'https://drive.google.com/file/d/1PwP5AEMSaL9BH3WSq-Uh5VlFPNYToTty/view',label:'Abrir en Drive ↗'},
-   {name:'Práctica 2 de octubre (CPROC)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Abrir en Drive ↗'},
-   {name:'330d2e_d4ef5c0c3be847798841196867316ef6.pdf (Documento en Drive)',url:'https://drive.google.com/file/d/1w7MGH-8bGNzz-ooxV_14YVsEnskwsp-O/view',label:'Abrir en Drive ↗'}
+   {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Escrito de subsanación (Doc Google editable en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'summary.docx (Resumen del auto concursal)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'Práctica 2 de octubre (CPROC)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'},
+   {name:'330d2e_d4ef5c0c3be847798841196867316ef6.pdf (Documento en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Plataforma CPROC ↗'}
   ]
  },
  {
@@ -8184,55 +8109,54 @@ function renderTeacherDossiers(){
       cls: 'highlight-mail',
       title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño correspondientes a la sesión del 2 de octubre (Test 40% + Trabajos escritos 60%).',
+      desc: 'Test 40 % + Casos prácticos y técnica procesal 60 %.',
       subitems: [
-       {label: 'Ponderación total', val: 'Test (4) + Trabajos (6)'},
-       {label: 'Fecha comunicación', val: '22 oct 2026'}
+       {label: 'Ponderación oficial', val: 'Test 40% + Escritos 60%'},
+       {label: 'Fecha de la sesión', val: '2 oct 2026'}
       ]
      },
      {
       cls: 'highlight-test',
-      title: '📝 Test de Clase (40 %)',
+      title: '📝 Test de Técnicas instrumentales',
       score: '4.0 ptos máx.',
-      desc: 'Cuestionario tipo test sobre formas de ejercicio, marketing y técnicas de comunicación en la Procura.',
+      desc: 'Cuestionario de evaluación continua presencial sobre iniciación y tramitación procesal.',
       subitems: [
-       {label: 'Aporte a nota final', val: '40 % (4 ptos)'},
-       {label: 'Modalidad', val: 'Presencial / Aula'}
+       {label: 'Aporte a nota final', val: '40 % del total'},
+       {label: 'Puntuación máx.', val: '4.0 puntos'}
       ]
      },
      {
       cls: 'highlight-practice',
-      title: '📁 Trabajos Escritos (60 %)',
+      title: '📁 Práctica Procesal de Aula',
       score: '6.0 ptos máx.',
-      desc: 'Ejercicios prácticos y redacción entregados relativos a previsión social y organización profesional.',
+      desc: 'Resolución de casos de tramitación procesal y técnica forense.',
       subitems: [
-       {label: 'Aporte a nota final', val: '60 % (6 ptos)'},
-       {label: 'Estado', val: 'Evaluado'}
+       {label: 'Aporte a nota final', val: '60 % del total'},
+       {label: 'Puntuación máx.', val: '6.0 puntos'}
       ]
      }
     ],
     actions: [
-     {label: '✉ Abrir correo oficial (22 oct) ↗', detailKey: 'mail_carlos_sanchez_2oct', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|1'},
-     {label: 'Ficha de Carlos M. Sánchez Muiño ↗', teacher: 'Carlos M. Sánchez Muiño'}
+     {label: 'Ficha de Carlos M. Sánchez Muiño ↗', teacher: 'Carlos Miguel Sánchez Muiño'}
     ]
    },
    {
     id: 'dossier-javier-sanchez',
-    teacher: 'Javier Sánchez García',
+    teacher: 'Javier Carlos Sánchez García',
     subject: 'Técnicas instrumentales · Rama Procura (Sesión 1 oct 2026)',
     subjectRef: 'Procura|Técnicas instrumentales|0',
-    kicker: 'Materia finalizada · Evaluación continua de clase',
-    testName: 'Test presencial de Técnicas instrumentales (40%)',
+    kicker: 'Materia finalizada · Evaluación continua de iniciación profesional',
+    testName: 'Test de Técnicas instrumentales (40%)',
     blocks: [
      {
       cls: 'highlight-mail',
-      title: '✉️ Calificación Conjunta Oficial',
+      title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Calificación comunicada por la Secretaría de Procura / Javier Sánchez García en el correo del 14 oct («Resultados de las pruebas · Técnicas instrumentales»).',
+      desc: 'Desglose conjunto oficial de la sesión inaugural.',
       subitems: [
-       {label: 'Ponderación', val: 'Test 40% + Escritos 60%'},
-       {label: 'Fecha comunicación', val: '14 oct 2026'}
+       {label: 'Criterio ponderado', val: 'Test 40% + Práctica 60%'},
+       {label: 'Sesión', val: '1 oct 2026'}
       ]
      },
      {
@@ -8257,7 +8181,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '✉ Abrir correo de la nota (14 oct) ↗', detailKey: 'grades', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|0'},
      {label: 'Ficha de Javier Sánchez García ↗', teacher: 'Javier Sánchez García'}
     ]
@@ -8267,17 +8190,17 @@ function renderTeacherDossiers(){
     teacher: 'Ana Vázquez Corte',
     subject: 'Deontología y técnicas transversales · Rama Procura (Sesiones 8 y 9 oct 2026)',
     subjectRef: 'Procura|Deontología y responsabilidad|0',
-    kicker: 'Materia finalizada y evaluada · Calificación docente por correo',
+    kicker: 'Materia finalizada y evaluada · Calificación docente',
     testName: 'Test de Deontología (40%)',
     blocks: [
      {
       cls: 'highlight-mail',
       title: '✉️ Calificación Docente Conjunta',
       score: 'Ponderación Oficial',
-      desc: 'Nota remitida oficialmente por Dña. Ana Vázquez Corte por correo electrónico («Materia: Deontología y técnicas transversales»).',
+      desc: 'Materia: Deontología y técnicas transversales.',
       subitems: [
        {label: 'Criterio', val: 'Test 40% + Caso CPROC 60%'},
-       {label: 'Fecha de correo', val: '19 oct 2026'}
+       {label: 'Fecha de impartición', val: '8 y 9 oct 2026'}
       ]
      },
      {
@@ -8302,7 +8225,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '✉ Abrir correo de la nota (19 oct) ↗', detailKey: 'mail_deontologia_ana_vazquez', cls: 'solid-green'},
      {label: '📁 Ver caso en CPROC (15 oct) ↗', detailKey: 'assignment'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Deontología y responsabilidad|0'},
      {label: 'Ficha de Ana Vázquez Corte ↗', teacher: 'Ana Vázquez Corte'}
@@ -8348,7 +8270,6 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '📝 Ver preguntas y respuestas del test (20 oct) ↗', detailKey: 'test_20oct_sandra', cls: 'solid-blue'},
      {label: '📁 Ver caso práctico en el portal ↗', detailKey: 'entrega_caso_pr_ctico_de_actos_de', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|3'},
      {label: 'Ficha de Sandra Mosteiro Costa ↗', teacher: 'Sandra Mosteiro Costa'}
@@ -8385,16 +8306,15 @@ function renderTeacherDossiers(){
      {
       cls: 'highlight-mail',
       title: '✉️ Calificación Conjunta por Correo',
-      score: 'Pendiente',
-      desc: 'Pendiente de remisión del correo con la ponderación global conjunta tras la corrección de los 3 documentos procesales.',
+      score: 'Ponderación Oficial',
+      desc: '40 % Test de evaluación continua + 60 % Prácticas procesales de CPROC.',
       subitems: [
-       {label: 'Test online', val: 'Completado en clase'},
-       {label: 'Tareas CPROC', val: 'Entregadas en plataforma'}
+       {label: 'Test online', val: '40 % de la nota'},
+       {label: 'Tareas CPROC', val: '60 % de la nota'}
       ]
      }
     ],
     actions: [
-     {label: '📝 Ver las 20 preguntas del test (16 oct) ↗', detailKey: 'test_16oct', cls: 'solid-blue'},
      {label: '📁 Ver tareas de CPROC en el portal ↗', detailKey: 'entrega_apud_acta'},
      {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|2'},
      {label: 'Ficha de Carolina Moreno Vázquez ↗', teacher: 'Carolina Moreno Vázquez'}
@@ -9757,7 +9677,7 @@ function showScreen2(cKey, sIdx, optTeacherName){
  const subDriveDocs = (sub.notes||[]).map(n=>({
   name: n.name,
   url: n.url,
-  label: n.label || 'Abrir en Drive ↗',
+  label: n.label || 'Plataforma CPROC ↗',
   detailKey: n.detailKey
  }));
  // 2. From t.driveFiles
@@ -10534,7 +10454,7 @@ function renderTeachers(q='', filter=currentTeacherFilter){
          ${driveDocs.map(d=>`
           <div class="doc-direct-row">
            <span>📄 ${d.name}</span>
-           <a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label || 'Abrir en Drive ↗'}</a>
+           <a href="${d.url}" target="_blank" rel="noopener noreferrer">${d.label || 'Plataforma CPROC ↗'}</a>
           </div>
          `).join('')}
          ${notesList.map(n=>`
@@ -10621,7 +10541,7 @@ function renderMaterials(q='', filter=currentMaterialFilter){
    </div>
    <div class="material-card-actions">
     <button class="teacher-link" data-detail="${item.mailKey}">${item.actionLabel||'Ver ficha y origen'} ↗</button>
-    <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive ↗</a>
+    <a class="pill-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>
    </div>
   </article>
  `).join('');
@@ -10644,7 +10564,7 @@ const viewNames={
  profesores:'Profesorado',
  notas:'Notas y Tests',
  entregas:'Prácticas (CPROC)',
- materiales:'Apuntes y Drive',
+ materiales:'Materiales y Normativa',
  correo:'Correo clasificado'
 };
 
@@ -11140,15 +11060,10 @@ function renderDeliveries(filter = currentDeliveryFilter){
     <div class="delivery-name"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit">${d.title} ↗</button></div>
     <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · ${d.subject} · ${d.details}</div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
-     <div class="action-pills">
-      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-      <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-     </div>
-     <button class="delivery-check-btn ${isDeliveryChecked(d.detailKey)?'checked':''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
-      <span class="check-box">${isDeliveryChecked(d.detailKey)?'✓':''}</span>
-      <span class="check-text">${isDeliveryChecked(d.detailKey)?'✓ Entregada por mí':'Marcar como entregada'}</span>
-     </button>
+    <div class="action-pills" style="margin-top:8px">
+     <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+     <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+     <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
     </div>
    </div>
    <span class="due-state pending">${d.status}</span>
@@ -11242,11 +11157,11 @@ function renderDeliveries(filter = currentDeliveryFilter){
          <div class="action-pills" style="margin-top:6px">
           <button class="pill-btn" data-detail="${d.detailKey}">Ficha modal ↗</button>
           ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
-           <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Google Docs (Entrega) ↗</a>
-           <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Resolución completa (.md) ↗</a>
-           <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Vídeo comprobante CPROC ↗</a>
+           <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Enunciado oficial ↗</a>
+           <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Instrucciones del caso ↗</a>
+           <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
            <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF del caso ↗</a>
-           <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">Carpeta Prácticas Drive ↗</a>
+           <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>
           ` : ''}
           ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
           ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
@@ -11716,7 +11631,7 @@ function renderSearchResults(query){
   </button>
  `);
 
- html += renderGroup('Apuntes y Drive', matchedMaterials, item => `
+ html += renderGroup('Materiales y Normativa', matchedMaterials, item => `
   <button type="button" class="search-result-item" data-search-action="material" data-url="${item.url}" data-mailkey="${item.mailKey||''}" data-subjectref="${item.subjectRef||''}">
    <div class="search-result-top">
     <span class="search-result-title">${highlight(item.title)}</span>
