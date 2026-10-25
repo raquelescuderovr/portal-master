@@ -7973,6 +7973,8 @@ const courseMail={
 
 const teacherGradeMap = {};
 
+const isStudentPortal = true;
+
 function escapeAttr(str){
  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
@@ -7993,7 +7995,10 @@ function findSubjectLocation(sub){
 function getDossierIdForTeacher(tName){
  if(!tName) return '';
  const n = tName.toLowerCase();
- if(n.includes('carolina moreno') || n.includes('sánchez muiño') || n.includes('sánchez barge')) return 'dossier-carolina-moreno';
+ if(n.includes('carlos') && (n.includes('sánchez') || n.includes('muiño'))){
+  return (isStudentPortal || typeof getStudentGradeData === 'function') ? 'dossier-carlos-sanchez' : 'dossier-carolina-moreno';
+ }
+ if(n.includes('carolina moreno') || n.includes('sánchez barge') || n.includes('sánchez muiño')) return 'dossier-carolina-moreno';
  if(n.includes('sandra mosteiro')) return 'dossier-sandra-mosteiro';
  if(n.includes('ana vázquez')) return 'dossier-ana-vazquez';
  if(n.includes('javier') && n.includes('sánchez')) return 'dossier-javier-sanchez';
@@ -8022,10 +8027,15 @@ function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
                  localStorage.getItem('muap_sub_grade_' + subKey) || '';
  } catch(e){}
 
- // 2. Student evaluation in localStorage from dossiers if available
+ // 2. Student evaluation in localStorage from dossiers or teachers if available
  let studentEvalGrade = '';
  if(!directCustom && sub.teachers && sub.teachers.length){
   for(const tName of sub.teachers){
+   try {
+    const tg = localStorage.getItem('muap_teacher_grade_' + encodeURIComponent(tName.trim()));
+    if(tg){ studentEvalGrade = tg; break; }
+   } catch(e){}
+
    const dId = getDossierIdForTeacher(tName);
    if(dId && typeof getStudentGradeData === 'function'){
     try {
@@ -8053,60 +8063,115 @@ function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
 
  const customGrade = directCustom || studentEvalGrade;
 
- // 3. Official score
+ // 3. Academic / official status determination
+ let gradeKind = 'empty'; // 'final' | 'test' | 'completed' | 'custom' | 'empty'
  let officialScore = '';
  let officialDetail = '';
+ let displayLabel = '';
+ let badgeIcon = '⭐';
+ let badgeClass = '';
  let detailKey = (sub.grade && sub.grade.detailKey) || '';
  let testKey = '';
 
- if(sub.grade && sub.grade.score){
-  const s = String(sub.grade.score).trim();
-  const lowerS = s.toLowerCase();
-  if(!lowerS.includes('evaluación continua') && !lowerS.includes('ponderación oficial') && !lowerS.includes('por venir') && !lowerS.includes('en curso') && !lowerS.includes('materiales recibidos')){
-   officialScore = s;
-   officialDetail = sub.grade.detail || '';
-  }
- }
+ const lowerName = cleanSubName.toLowerCase();
+ const teachers = sub.teachers || [];
 
- if(!officialScore && sub.teachers){
-  for(const tName of sub.teachers){
-   if(typeof teacherGradeMap !== 'undefined' && teacherGradeMap[tName]){
-    officialScore = teacherGradeMap[tName];
-    break;
+ if(!isStudentPortal){
+  if(lowerName.includes('proceso digital') || teachers.includes('Carolina Moreno Vázquez')){
+   gradeKind = 'final';
+   officialScore = '10 / 10 ★';
+   officialDetail = 'Nota final oficial: 10 / 10 (Sobresaliente) comunicada el 23 oct (Test 4/4 + Trabajos 6/6). Docencia conjunta de Carolina Moreno y Carlos Sánchez.';
+   displayLabel = 'Final: 10 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   testKey = 'test_16oct';
+   if(!detailKey) detailKey = 'mail_carolina_carlos_23oct';
+  } else if(lowerName.includes('actos de comunicación') || teachers.includes('Sandra Mosteiro Costa')){
+   gradeKind = 'test';
+   officialScore = 'Test: 9 / 10 (90 %)';
+   officialDetail = 'Test online oficial en Testmoz con 9/10 aciertos (90 %). Calificación final de módulo aún no remitida por el profesorado.';
+   displayLabel = 'Test: 9 / 10 (90%)';
+   badgeIcon = '📝';
+   badgeClass = 'grade-badge-test';
+   testKey = 'test_20oct_sandra';
+   if(!detailKey) detailKey = 'test_20oct_sandra';
+  } else if(lowerName.includes('iniciación a la actividad') || teachers.includes('Javier Sánchez García') || teachers.includes('Javier C. Sánchez García')){
+   gradeKind = 'final';
+   officialScore = '10 / 10 ★';
+   officialDetail = 'Nota final oficial: 10 / 10 (Sobresaliente) comunicada por correo el 14 oct (Test + Escritos). Docencia de Javier Sánchez y Carlos Sánchez.';
+   displayLabel = 'Final: 10 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   if(!detailKey) detailKey = 'grades';
+  } else if(lowerName.includes('estatuto y responsabilidad') || lowerName.includes('deontología y estatuto') || teachers.includes('Ana Vázquez Corte')){
+   gradeKind = 'final';
+   officialScore = '8.8 / 10 ★';
+   officialDetail = 'Nota final oficial: 8.8 / 10 (Notable alto) comunicada el 19 oct por Ana Vázquez Corte: Test 3.8/4 + Trabajos 5.0/6 = 8.8 / 10.';
+   displayLabel = 'Final: 8.8 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   if(!detailKey) detailKey = 'mail_deontologia_ana_vazquez';
+  } else if(lowerName.includes('oratoria forense') || teachers.includes('Alejandra Sánchez')){
+   gradeKind = 'completed';
+   officialScore = 'Taller superado';
+   officialDetail = 'Taller práctico de oratoria forense completado con éxito (4 sesiones presenciales de estrados).';
+   displayLabel = 'Taller superado';
+   badgeIcon = '✓';
+   badgeClass = 'grade-badge-completed';
+   if(!detailKey) detailKey = 'grades';
+  } else if(lowerName.includes('disciplinario') || teachers.includes('Carmen Belo González')){
+   gradeKind = 'completed';
+   officialScore = 'Completada';
+   officialDetail = 'Sesión presencial de régimen disciplinario de la Procura completada y cuestionarios al día.';
+   displayLabel = 'Completada';
+   badgeIcon = '✓';
+   badgeClass = 'grade-badge-completed';
+   if(!detailKey) detailKey = 'assignment';
+  } else if(teachers.includes('Vanessa Amarelle') || teachers.includes('Carlos Tomé')){
+   gradeKind = 'completed';
+   officialScore = 'Completada';
+   officialDetail = 'Deontología y responsabilidad de la abogacía completada.';
+   displayLabel = 'Completada';
+   badgeIcon = '✓';
+   badgeClass = 'grade-badge-completed';
+   if(!detailKey) detailKey = 'assignment';
+  } else if(teachers.includes('Daniel Garrido Pazos')){
+   gradeKind = 'completed';
+   officialScore = 'Prácticas al día';
+   officialDetail = 'Iniciación profesional y prácticas al día.';
+   displayLabel = 'Prácticas al día';
+   badgeIcon = '✓';
+   badgeClass = 'grade-badge-completed';
+   if(!detailKey) detailKey = 'grades';
+  } else if(teachers.includes('José Luis Delgado Domínguez')){
+   if(!detailKey) detailKey = 'entrega_delgado';
+  }
+
+  // Fallback check if sub.grade.score has something
+  if(!officialScore && sub.grade && sub.grade.score){
+   const s = String(sub.grade.score).trim();
+   const lowerS = s.toLowerCase();
+   if(!lowerS.includes('evaluación continua') && !lowerS.includes('ponderación oficial') && !lowerS.includes('por venir') && !lowerS.includes('en curso') && !lowerS.includes('materiales recibidos')){
+    officialScore = s;
+    officialDetail = sub.grade.detail || '';
+    if(lowerS.includes('test')){
+     gradeKind = 'test';
+     badgeClass = 'grade-badge-test';
+     badgeIcon = '📝';
+     displayLabel = s;
+    } else if(lowerS.includes('completad') || lowerS.includes('superad')){
+     gradeKind = 'completed';
+     badgeClass = 'grade-badge-completed';
+     badgeIcon = '✓';
+     displayLabel = 'Completada';
+    } else {
+     gradeKind = 'final';
+     badgeClass = 'grade-badge-final';
+     badgeIcon = '🏆';
+     displayLabel = s;
+    }
    }
   }
- }
-
- // Match tests & details
- const lowerName = cleanSubName.toLowerCase();
- if(lowerName.includes('proceso digital') || (sub.teachers||[]).includes('Carolina Moreno Vázquez')){
-  testKey = 'test_16oct';
-  if(!detailKey) detailKey = 'mail_carolina_carlos_23oct';
-  if(!officialScore) officialScore = '10 / 10 ★';
-  if(!officialDetail) officialDetail = 'Test 4/4 (40 %) + Trabajos 6/6 (60 %) = 10 / 10';
- } else if(lowerName.includes('actos de comunicación') || (sub.teachers||[]).includes('Sandra Mosteiro Costa')){
-  testKey = 'test_20oct_sandra';
-  if(!detailKey) detailKey = 'test_20oct_sandra';
-  if(!officialScore) officialScore = '9 / 10 (Test)';
-  if(!officialDetail) officialDetail = 'Test oficial en Testmoz con 9/10 aciertos (90 %)';
- } else if(lowerName.includes('iniciación a la actividad') || (sub.teachers||[]).includes('Javier Sánchez García') || (sub.teachers||[]).includes('Javier C. Sánchez García')){
-  if(!detailKey) detailKey = 'grades';
-  if(!officialScore) officialScore = '10 / 10 ★';
-  if(!officialDetail) officialDetail = 'Nota oficial comunicada por correo (10/10 Sobresaliente)';
- } else if(lowerName.includes('estatuto y responsabilidad') || (sub.teachers||[]).includes('Ana Vázquez Corte')){
-  if(!detailKey) detailKey = 'mail_deontologia_ana_vazquez';
-  if(!officialScore) officialScore = '8.8 / 10 ★';
-  if(!officialDetail) officialDetail = 'Test 3.8/4 + Trabajos 5/6 = 8.8 / 10';
- } else if(lowerName.includes('oratoria forense') || (sub.teachers||[]).includes('Alejandra Sánchez')){
-  if(!detailKey) detailKey = 'grades';
-  if(!officialScore) officialScore = 'Completado ✓';
-  if(!officialDetail) officialDetail = 'Taller práctico de oratoria forense superado';
- } else if(lowerName.includes('disciplinario') || (sub.teachers||[]).includes('Carmen Belo González')){
-  if(!detailKey) detailKey = 'assignment';
-  if(!officialScore) officialScore = 'Completado ✓';
-  if(!officialDetail) officialDetail = 'Módulo completado · Tests y asistencia al día';
- } else if((sub.teachers||[]).includes('José Luis Delgado Domínguez')){
-  if(!detailKey) detailKey = 'entrega_delgado';
  }
 
  if(!detailKey) detailKey = 'grades';
@@ -8119,6 +8184,17 @@ function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
   }
  }
 
+ // If user customized the grade, override label, icon and badgeClass
+ if(customGrade){
+  gradeKind = 'custom';
+  displayLabel = customGrade;
+  if(displayLabel.length > 18) displayLabel = displayLabel.substring(0, 16) + '…';
+  badgeIcon = '✏️';
+  badgeClass = 'grade-badge-custom';
+ }
+
+ const hasGrade = Boolean(customGrade || officialScore);
+
  return {
   sub,
   cKey,
@@ -8128,11 +8204,15 @@ function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
   cleanSubName,
   isPast,
   status: subSt.status,
+  gradeKind,
+  displayLabel,
+  badgeIcon,
+  badgeClass,
   customGrade,
   officialScore,
   officialDetail,
   effectiveScore: customGrade || officialScore,
-  hasGrade: Boolean(customGrade || officialScore),
+  hasGrade,
   isCustom: Boolean(customGrade),
   isOfficial: Boolean(!customGrade && officialScore),
   detailKey,
@@ -8152,32 +8232,23 @@ function getSubjectGradeBadgeHtml(sub, isPast=true, cKey='', sIdx=null){
  const safeDossierId = escapeAttr(info.dossierId || '');
 
  if(info.hasGrade){
-  const s = String(info.effectiveScore).trim();
-  let icon = '⭐';
-  let label = s;
-  if(s.includes('10 / 10') || s.includes('10/10')){
-   label = '10 / 10 ★';
-   if(s.includes('20/20')) label = '10 / 10 (20/20)';
-  } else if(s.includes('9 / 10') || s.includes('9/10')){
-   label = '9 / 10';
-  } else if(s.includes('8.8') || s.includes('8,8')){
-   label = '8.8 / 10 ★';
-  } else if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
-   icon = '✓';
-   label = 'Completada';
-  } else if(label.length > 18){
-   label = label.substring(0, 16) + '…';
+  let tooltip = '';
+  if(info.isCustom){
+   tooltip = `Calificación anotada por ti: ${info.customGrade} (clic para editar o ver tests)`;
+  } else if(info.gradeKind === 'final'){
+   tooltip = `Calificación final oficial: ${info.officialScore} (clic para ver expediente o editar)`;
+  } else if(info.gradeKind === 'test'){
+   tooltip = `Nota de test: ${info.officialScore} · Calificación final pendiente (clic para ver test)`;
+  } else {
+   tooltip = `Módulo completado: ${info.officialScore} (clic para ver detalles)`;
   }
-
-  const badgeCls = info.isCustom ? 'grade-user' : (label.includes('Completad') ? 'pill-subtle' : '');
-  const tooltip = info.isCustom ? `Calificación anotada por ti: ${s} (clic para editar o ver tests)` : `Calificación oficial: ${s} (clic para ver expediente o editar)`;
 
   return `
    <span class="subject-grade-wrap" onclick="event.stopPropagation()">
-    <span class="subject-grade-badge ${badgeCls}" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="${escapeAttr(tooltip)}">
-     <span class="sgb-score">${icon} ${escapeHtml(label)}</span>
+    <span class="subject-grade-badge ${info.badgeClass}" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="${escapeAttr(tooltip)}">
+     <span class="sgb-score">${info.badgeIcon} ${escapeHtml(info.displayLabel)}</span>
      <button type="button" class="sgb-test-btn" onclick="navigateToSubjectGradeTest('${safeDetailKey}', '${safeDossierId}', '${safeSubKey}', event)" title="Ver tests y evaluación en Notas">📝 Tests ↗</button>
-     <button type="button" class="sgb-edit-btn" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="Editar nota" aria-label="Editar nota">✏️</button>
+     <button type="button" class="sgb-edit-btn" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="Editar o consultar nota" aria-label="Editar o consultar nota">✏️</button>
     </span>
    </span>
   `;
@@ -8251,7 +8322,16 @@ function openSubjectGradeModal(subKey, evt){
  const offScore = document.getElementById('sgmOfficialScore');
  const offDesc = document.getElementById('sgmOfficialDesc');
  if(offScore && offDesc){
-  if(info.officialScore){
+  if(info.gradeKind === 'final'){
+   offScore.innerHTML = `🏆 <b style="color:var(--honey-dark)">Final oficial: ${escapeHtml(info.officialScore)}</b>`;
+   offDesc.textContent = info.officialDetail || 'Calificación final oficial del Máster en Abogacía y Procura comunicada por correo.';
+  } else if(info.gradeKind === 'test'){
+   offScore.innerHTML = `📝 <b style="color:#2563eb">Nota de test: ${escapeHtml(info.officialScore)}</b> · <span style="color:var(--muted);font-weight:600">Calificación final pendiente</span>`;
+   offDesc.textContent = info.officialDetail || 'Test oficial realizado en Testmoz. La calificación final del módulo está pendiente de remisión por el profesorado.';
+  } else if(info.gradeKind === 'completed'){
+   offScore.innerHTML = `✓ <b style="color:var(--green-dark)">Docencia completada: ${escapeHtml(info.officialScore)}</b>`;
+   offDesc.textContent = info.officialDetail || 'Módulo y sesiones prácticas superadas.';
+  } else if(info.officialScore){
    offScore.innerHTML = `⭐ <b>${escapeHtml(info.officialScore)}</b>`;
    offDesc.textContent = info.officialDetail || 'Calificación oficial del Máster en Abogacía y Procura.';
   } else {
@@ -8323,6 +8403,49 @@ function saveSubjectGradeFromModal(){
  const inputEl = document.getElementById('sgmInput');
  if(!inputEl || !currentModalSubKey) return;
  const val = inputEl.value.trim();
+
+ if(currentModalSubKey.startsWith('teacher:')){
+  const tName = decodeURIComponent(currentModalSubKey.slice(8)).trim();
+  try {
+   if(val){
+    localStorage.setItem('muap_teacher_grade_' + encodeURIComponent(tName), val);
+   } else {
+    localStorage.removeItem('muap_teacher_grade_' + encodeURIComponent(tName));
+   }
+
+   // Sync with teacher dossier in Notas
+   const dId = getDossierIdForTeacher(tName);
+   if(dId && typeof saveStudentGradeData === 'function'){
+    saveStudentGradeData(dId, { finalGrade: val });
+   }
+
+   // Also sync with the subject(s) taught by this teacher
+   for(const c of courses){
+    for(const s of (c.subjects||[])){
+     if((s.teachers||[]).some(x => x.toLowerCase().includes(tName.toLowerCase()) || tName.toLowerCase().includes(x.toLowerCase()))){
+      if(val){
+       localStorage.setItem('muap_sub_grade_' + encodeURIComponent(s.name.trim()), val);
+      } else {
+       localStorage.removeItem('muap_sub_grade_' + encodeURIComponent(s.name.trim()));
+      }
+     }
+    }
+   }
+  } catch(e){}
+
+  closeSubjectGradeModal();
+
+  if(typeof renderTeachers === 'function') renderTeachers();
+  if(typeof renderSubjectsList === 'function') renderSubjectsList();
+  if(typeof renderSidebarTree === 'function') renderSidebarTree();
+  if(typeof renderGrades === 'function') renderGrades();
+  if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+
+  if(typeof showToastNotification === 'function'){
+   showToastNotification(val ? `✓ Calificación guardada para ${tName}: ${val}` : `✓ Calificación vaciada para ${tName}`);
+  }
+  return;
+ }
 
  let course = null, sIdx = 0, sub = null;
  if(currentModalSubKey.includes('|')){
@@ -8458,7 +8581,16 @@ function openTeacherGradeModal(tName, evt){
  const offScore = document.getElementById('sgmOfficialScore');
  const offDesc = document.getElementById('sgmOfficialDesc');
  if(offScore && offDesc){
-  if(info.officialScore){
+  if(info.gradeKind === 'final'){
+   offScore.innerHTML = `🏆 <b style="color:var(--honey-dark)">Final oficial: ${escapeHtml(info.officialScore)}</b>`;
+   offDesc.textContent = info.officialDetail || (t.grade ? t.grade.detail : 'Calificación final oficial del Máster.');
+  } else if(info.gradeKind === 'test'){
+   offScore.innerHTML = `📝 <b style="color:#2563eb">Nota de test: ${escapeHtml(info.officialScore)}</b> · <span style="color:var(--muted);font-weight:600">Calificación final pendiente</span>`;
+   offDesc.textContent = info.officialDetail || (t.grade ? t.grade.detail : 'Test online oficial. La calificación final del módulo está pendiente de remisión.');
+  } else if(info.gradeKind === 'completed'){
+   offScore.innerHTML = `✓ <b style="color:var(--green-dark)">Docencia completada: ${escapeHtml(info.officialScore)}</b>`;
+   offDesc.textContent = info.officialDetail || (t.grade ? t.grade.detail : 'Docencia y sesiones prácticas superadas.');
+  } else if(info.officialScore){
    offScore.innerHTML = `⭐ <b>${escapeHtml(info.officialScore)}</b>`;
    offDesc.textContent = t.grade ? t.grade.detail : 'Calificación oficial registrada.';
   } else {
@@ -8525,7 +8657,7 @@ function navigateToTeacherDossier(dossierId, evt){
   return;
  }
  if(typeof closeSubjectGradeModal === 'function') closeSubjectGradeModal();
- if(typeof renderGrades === 'function') renderGrades('mail');
+ if(typeof renderGrades === 'function') renderGrades('teachers');
  setView('notas', false);
  setTimeout(()=>{
   const card = document.getElementById(dossierId);
@@ -8561,6 +8693,17 @@ function getTeacherGradeInfo(tInput){
    dossierGrade = sg.finalGrade || sg.testGrade;
   }
  }
+ if(!customGrade && !dossierGrade && dossierId){
+  try {
+   const raw = localStorage.getItem('muap_clean_v3_' + dossierId) || localStorage.getItem('muap_eval_' + dossierId);
+   if(raw){
+    const parsed = JSON.parse(raw);
+    if(parsed && (parsed.finalGrade || parsed.testGrade)){
+     dossierGrade = parsed.finalGrade || parsed.testGrade;
+    }
+   }
+  } catch(e){}
+ }
 
  // 3. Subject grade from subject taught by this teacher
  let subGrade = '';
@@ -8578,11 +8721,69 @@ function getTeacherGradeInfo(tInput){
   } catch(e){}
  }
 
- // 4. Teacher grade map or official score
- const mapGrade = teacherGradeMap[tName] || '';
- const officialScore = (t && t.grade && t.grade.score) ? String(t.grade.score).trim() : '';
+ // 4. Teacher grade map entry
+ const mapEntry = (!isStudentPortal) ? (teacherGradeMap[tName] || teacherGradeMap[tName.trim()] || null) : null;
+ let gradeKind = 'empty';
+ let officialScore = '';
+ let displayLabel = '';
+ let badgeIcon = '⭐';
+ let badgeClass = '';
+ let pillClass = '';
+ let officialDetail = '';
 
- const effectiveScore = customGrade || dossierGrade || subGrade || mapGrade || (officialScore.includes('/ 10') ? officialScore : '');
+ if(mapEntry){
+  if(typeof mapEntry === 'object'){
+   gradeKind = mapEntry.kind;
+   officialScore = mapEntry.score;
+   displayLabel = mapEntry.label;
+   badgeIcon = mapEntry.icon;
+   badgeClass = mapEntry.badgeClass;
+   pillClass = mapEntry.pillClass;
+   officialDetail = mapEntry.full;
+  } else {
+   officialScore = String(mapEntry);
+   displayLabel = officialScore;
+   badgeIcon = officialScore.includes('Completad') ? '✓' : '⭐';
+   badgeClass = officialScore.includes('Completad') ? 'grade-badge-completed' : 'grade-badge-final';
+   pillClass = officialScore.includes('Completad') ? 'grade-pill-completed' : 'grade-pill-final';
+  }
+ } else if(!isStudentPortal && t && t.grade && t.grade.score){
+  const s = String(t.grade.score).trim();
+  const lowerS = s.toLowerCase();
+  if(!lowerS.includes('por venir') && !lowerS.includes('en curso') && !lowerS.includes('materiales recibidos')){
+   officialScore = s;
+   if(lowerS.includes('test')){
+    gradeKind = 'test';
+    badgeClass = 'grade-badge-test';
+    pillClass = 'grade-pill-test';
+    badgeIcon = '📝';
+    displayLabel = s;
+   } else if(lowerS.includes('completad') || lowerS.includes('superad')){
+    gradeKind = 'completed';
+    badgeClass = 'grade-badge-completed';
+    pillClass = 'grade-pill-completed';
+    badgeIcon = '✓';
+    displayLabel = 'Completado';
+   } else {
+    gradeKind = 'final';
+    badgeClass = 'grade-badge-final';
+    pillClass = 'grade-pill-final';
+    badgeIcon = '🏆';
+    displayLabel = s;
+   }
+  }
+ }
+
+ if(customGrade || dossierGrade || subGrade){
+  gradeKind = 'custom';
+  displayLabel = customGrade || dossierGrade || subGrade;
+  if(displayLabel.length > 18) displayLabel = displayLabel.substring(0, 16) + '…';
+  badgeIcon = '✏️';
+  badgeClass = 'grade-badge-custom';
+  pillClass = 'grade-pill-custom';
+ }
+
+ const effectiveScore = customGrade || dossierGrade || subGrade || officialScore;
  const hasGrade = Boolean(effectiveScore);
  const isCustom = Boolean(customGrade || dossierGrade || subGrade);
 
@@ -8590,10 +8791,16 @@ function getTeacherGradeInfo(tInput){
   tName,
   t,
   dossierId,
+  gradeKind,
+  displayLabel,
+  badgeIcon,
+  badgeClass,
+  pillClass,
   effectiveScore,
   hasGrade,
   isCustom,
-  officialScore
+  officialScore,
+  officialDetail
  };
 }
 
@@ -8605,30 +8812,21 @@ function getTeacherGradeBadgeHtml(tInput, requirePast=false){
  const safeDossierId = escapeAttr(info.dossierId || '');
 
  if(info.hasGrade){
-  const s = String(info.effectiveScore).trim();
-  let icon = '⭐';
-  let label = s;
-  if(s.includes('10 / 10') || s.includes('10/10')){
-   label = '10 / 10 ★';
-   if(s.includes('20/20')) label = '10 / 10 (20/20)';
-  } else if(s.includes('9 / 10') || s.includes('9/10')){
-   label = '9 / 10';
-  } else if(s.includes('8.8') || s.includes('8,8')){
-   label = '8.8 / 10 ★';
-  } else if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
-   icon = '✓';
-   label = 'Completado';
-  } else if(label.length > 18){
-   label = label.substring(0, 16) + '…';
+  let tooltip = '';
+  if(info.isCustom){
+   tooltip = `Calificación anotada con ${info.tName}: ${info.effectiveScore} (clic para editar o ver en Notas)`;
+  } else if(info.gradeKind === 'final'){
+   tooltip = `Calificación final oficial con ${info.tName}: ${info.officialScore} (Sobresaliente)`;
+  } else if(info.gradeKind === 'test'){
+   tooltip = `Nota de test con ${info.tName}: ${info.officialScore} · Calificación final pendiente`;
+  } else {
+   tooltip = `Docencia completada con ${info.tName}: ${info.officialScore}`;
   }
-
-  const badgeCls = info.isCustom ? 'grade-user' : (label.includes('Completad') ? 'pill-subtle' : '');
-  const tooltip = `Calificación con ${info.tName}: ${s} (clic para editar o ver en Notas)`;
 
   return `
    <span class="subject-grade-wrap teacher-grade-wrap" onclick="event.stopPropagation()">
-    <span class="subject-grade-badge ${badgeCls}" onclick="openTeacherGradeModal('${safeTName}', event)" title="${escapeAttr(tooltip)}">
-     <span class="sgb-score">${icon} ${escapeHtml(label)}</span>
+    <span class="subject-grade-badge ${info.badgeClass}" onclick="openTeacherGradeModal('${safeTName}', event)" title="${escapeAttr(tooltip)}">
+     <span class="sgb-score">${info.badgeIcon} ${escapeHtml(info.displayLabel)}</span>
      ${info.dossierId ? `<button type="button" class="sgb-test-btn" onclick="navigateToTeacherDossier('${safeDossierId}', event)" title="Ver en Cuaderno de Notas">📝 Notas ↗</button>` : ''}
      <button type="button" class="sgb-edit-btn" onclick="openTeacherGradeModal('${safeTName}', event)" title="Editar nota" aria-label="Editar nota">✏️</button>
     </span>
@@ -8826,11 +9024,31 @@ function getStudentGradeData(teacherId){
   }
 }
 
+function getTeacherNamesForDossier(dossierId){
+ if(!dossierId) return [];
+ if(dossierId === 'dossier-carolina-moreno') return ['Carolina Moreno Vázquez', 'Carlos M. Sánchez Muiño', 'Alex Sánchez Barge'];
+ if(dossierId === 'dossier-carlos-sanchez') return ['Carlos Miguel Sánchez Muiño', 'Carlos M. Sánchez Muiño'];
+ if(dossierId === 'dossier-sandra-mosteiro') return ['Sandra Mosteiro Costa'];
+ if(dossierId === 'dossier-ana-vazquez') return ['Ana Vázquez Corte'];
+ if(dossierId === 'dossier-javier-sanchez') return ['Javier Sánchez García', 'Javier Carlos Sánchez García', 'Javier C. Sánchez García'];
+ if(dossierId === 'dossier-jose-luis-delgado') return ['José Luis Delgado Domínguez'];
+ return [];
+}
+
 function saveStudentGradeData(teacherId, data){
   try {
     const current = getStudentGradeData(teacherId);
     const updated = { ...current, ...data };
     localStorage.setItem('muap_clean_v3_' + teacherId, JSON.stringify(updated));
+    const effective = (updated.finalGrade || updated.testGrade || '').trim();
+    const tNames = getTeacherNamesForDossier(teacherId);
+    tNames.forEach(tn => {
+      if(effective){
+        localStorage.setItem('muap_teacher_grade_' + encodeURIComponent(tn), effective);
+      } else {
+        localStorage.removeItem('muap_teacher_grade_' + encodeURIComponent(tn));
+      }
+    });
     updateHomeGradesBadge();
     if(typeof renderSubjectsList === 'function') renderSubjectsList();
     if(typeof renderSidebarTree === 'function') renderSidebarTree();
@@ -13448,13 +13666,13 @@ document.addEventListener('click', (e) => {
         </div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
           <span style="font-size:11px;color:var(--muted);font-weight:700">Rápido:</span>
-          <button type="button" class="sgm-quick-chip" data-chip="10 / 10 ★">10 / 10 ★</button>
-          <button type="button" class="sgm-quick-chip" data-chip="9.5 / 10">9.5 / 10</button>
-          <button type="button" class="sgm-quick-chip" data-chip="9 / 10 (Test)">9 / 10 (Test)</button>
-          <button type="button" class="sgm-quick-chip" data-chip="8.8 / 10">8.8 / 10</button>
-          <button type="button" class="sgm-quick-chip" data-chip="8.0 / 10">8.0 / 10</button>
-          <button type="button" class="sgm-quick-chip" data-chip="Completada ✓">Completada ✓</button>
-          <button type="button" class="sgm-quick-chip chip-clear" data-chip="">🗑️ Quitar</button>
+          <button type="button" class="sgm-quick-chip chip-final" data-chip="10 / 10 ★">🏆 Final 10 / 10 ★</button>
+          <button type="button" class="sgm-quick-chip chip-final" data-chip="8.8 / 10 ★">🏆 Final 8.8 / 10 ★</button>
+          <button type="button" class="sgm-quick-chip chip-test" data-chip="Test: 20 / 20">📝 Test 20 / 20</button>
+          <button type="button" class="sgm-quick-chip chip-test" data-chip="Test: 9 / 10">📝 Test 9 / 10</button>
+          <button type="button" class="sgm-quick-chip chip-completed" data-chip="Taller superado">✓ Taller superado</button>
+          <button type="button" class="sgm-quick-chip chip-completed" data-chip="Completada ✓">✓ Completada</button>
+          <button type="button" class="sgm-quick-chip chip-clear" data-chip="">🗑️ Quitar nota</button>
         </div>
         <p style="font-size:11.5px;color:var(--muted);margin:8px 0 0">
           🔒 Se guarda con persistencia local en tu navegador (localStorage) y se refleja en los itinerarios de cada bloque y en Notas y Tests.

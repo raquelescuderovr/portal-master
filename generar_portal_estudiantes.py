@@ -632,6 +632,9 @@ def generate_student_portal_html(html: str) -> str:
         "status:'Entrega en CPROC',key:'assignment'"
     )
 
+    # Neutralizar portal de estudiantes con bandera estricta
+    html = html.replace('const isStudentPortal = false;', 'const isStudentPortal = true;')
+
     print("✓ Notas fijas de asignaturas, profesorado y expedientes convertidas en evaluación continua neutral.")
 
     # -------------------------------------------------------------
@@ -1169,11 +1172,31 @@ function getStudentGradeData(teacherId){
   }
 }
 
+function getTeacherNamesForDossier(dossierId){
+ if(!dossierId) return [];
+ if(dossierId === 'dossier-carolina-moreno') return ['Carolina Moreno Vázquez', 'Carlos M. Sánchez Muiño', 'Alex Sánchez Barge'];
+ if(dossierId === 'dossier-carlos-sanchez') return ['Carlos Miguel Sánchez Muiño', 'Carlos M. Sánchez Muiño'];
+ if(dossierId === 'dossier-sandra-mosteiro') return ['Sandra Mosteiro Costa'];
+ if(dossierId === 'dossier-ana-vazquez') return ['Ana Vázquez Corte'];
+ if(dossierId === 'dossier-javier-sanchez') return ['Javier Sánchez García', 'Javier Carlos Sánchez García', 'Javier C. Sánchez García'];
+ if(dossierId === 'dossier-jose-luis-delgado') return ['José Luis Delgado Domínguez'];
+ return [];
+}
+
 function saveStudentGradeData(teacherId, data){
   try {
     const current = getStudentGradeData(teacherId);
     const updated = { ...current, ...data };
     localStorage.setItem('muap_clean_v3_' + teacherId, JSON.stringify(updated));
+    const effective = (updated.finalGrade || updated.testGrade || '').trim();
+    const tNames = getTeacherNamesForDossier(teacherId);
+    tNames.forEach(tn => {
+      if(effective){
+        localStorage.setItem('muap_teacher_grade_' + encodeURIComponent(tn), effective);
+      } else {
+        localStorage.removeItem('muap_teacher_grade_' + encodeURIComponent(tn));
+      }
+    });
     updateHomeGradesBadge();
     if(typeof renderSubjectsList === 'function') renderSubjectsList();
     if(typeof renderSidebarTree === 'function') renderSidebarTree();
