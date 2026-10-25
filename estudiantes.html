@@ -10508,7 +10508,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
           <div>
            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px">
-            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0">📖 ${item.sub.name}</h4>
+            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0;display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, false, cKey, item.sIdx)}</h4>
             <span class="status-pill ${item.st.badgeClass}" style="font-size:11px;padding:2px 8px">${item.st.label}</span>
            </div>
            <div style="font-size:13px;color:var(--ink-soft)">
@@ -10539,7 +10539,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           <div style="display:grid;gap:4px">
            ${pastSubs.map(item => `
             <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 6px;background:var(--paper);border-radius:6px;border:1px solid var(--line);cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
-             <span style="font-weight:600;color:var(--ink)">📖 ${item.sub.name}${getSubjectGradeBadgeHtml(item.sub, true)}</span>
+             <span style="font-weight:600;color:var(--ink);display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, true, cKey, item.sIdx)}</span>
              <span class="status-pill status-past" style="font-size:10px;padding:1px 6px">✓ Impartida</span>
             </div>
            `).join('')}
@@ -10553,7 +10553,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           <div style="display:grid;gap:4px">
            ${upcomingSubs.map(item => `
             <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 6px;background:var(--paper);border-radius:6px;border:1px solid var(--line);cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
-             <span style="font-weight:600;color:var(--ink)">${item.sub.name}</span>
+             <span style="font-weight:600;color:var(--ink);display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, false, cKey, item.sIdx)}</span>
              <span class="status-pill status-upcoming" style="font-size:10px;padding:1px 6px">⏳ Por venir</span>
             </div>
            `).join('')}
@@ -10618,7 +10618,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
            return `
             <div class="mbc-sub-item" data-subject-card="${cKey}|${sIdx}" title="Ver ficha de ${sub.name}">
              <div>
-              <div class="mbc-sub-name">📖 ${sub.name}${subSt.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</div>
+              <div class="mbc-sub-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, subSt.status === 'past', cKey, sIdx)}</div>
               <div class="mbc-sub-teachers">👤 ${formatTeachersWithGrades(sub.teachers, subSt.status === 'past')}</div>
              </div>
              <span class="status-pill ${subSt.badgeClass}" style="font-size:10px;padding:2px 7px">${subSt.label}</span>
@@ -10730,7 +10730,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
       ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
      </div>
 
-     <h3 class="sc-title">📖 ${sub.name}${getSubjectGradeBadgeHtml(sub, false)}</h3>
+     <h3 class="sc-title" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, false, cKey, sIdx)}</h3>
 
      <div class="sc-meta">
       <div>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></div>
