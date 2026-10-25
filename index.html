@@ -5507,6 +5507,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,9,25),title:'Parte de siniestro de Responsabilidad Civil Profesional',teacher:'José Luis Delgado Domínguez',subject:'Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: Completado)',submitted:false,detailKey:'entrega_parte_de_siniestro_de_res',details:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.'},
  {
   date:new Date(2026,9,29),
   title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',
@@ -5649,6 +5650,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_parte_de_siniestro_de_res:{
+  isDelivery:true,
+  kicker:'Práctica CEPROC · Responsabilidad civil y penal, aseguramiento y turno de oficio',
+  title:'Parte de siniestro de Responsabilidad Civil Profesional',
+  date:'Publicada: 25 oct 2026 · Plazo: Completado',
+  teacher:'José Luis Delgado Domínguez',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.',
+  source:'Plataforma CEPROC (MUAP)',
+  attachments:[
+   {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
+  ]
+ },
  mail_carolina_carlos_23oct:{
   kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
   title:'Resultados de las pruebas del 14, 15 y 16/10/2026 · Carolina Moreno y Carlos Sánchez (Nota: 10 / 10)',
@@ -6649,6 +6663,7 @@ const courses=[
     teachers:['José Luis Delgado Domínguez'],
     grade:{score:'En curso · 2 de 3 sesiones',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) programada para el lunes 26 oct (16:30–18:30 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
+     {name:'Práctica CPROC: Parte de siniestro de Responsabilidad Civil Profesional',detailKey:'entrega_parte_de_siniestro_de_res',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
      {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE oficial ↗'}
@@ -7302,7 +7317,8 @@ const teacherDirectory=[
    {date:'2026-10-26',dayLabel:'Lunes 26 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Organización y funcionamiento del Turno de Oficio y Asistencia Jurídica Gratuita (Sesión 3 de 3)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Documentación para las clases del 19 y 20 de octubre (16 oct)',key:'schedule'}],
-  practices:[{title:'Caso de responsabilidad profesional del abogado y cobertura de póliza',status:'Programado en clase (20-26 oct)',key:'schedule'}],
+  practices:[
+   {title:'Parte de siniestro de Responsabilidad Civil Profesional',status:'⏳ Pendiente (Plazo: Completado)',key:'entrega_parte_de_siniestro_de_res'},{title:'Caso de responsabilidad profesional del abogado y cobertura de póliza',status:'Programado en clase (20-26 oct)',key:'schedule'}],
   driveFiles:[{name:'Documentación del módulo enlazada en el correo del 16 oct',url:outlookUrl,label:'Abrir correo ↗'}],
   notes:[{title:'Ley 1/1996 de Asistencia Jurídica Gratuita (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',urlLabel:'BOE oficial ↗'}]
  },
