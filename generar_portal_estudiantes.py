@@ -1177,6 +1177,7 @@ function saveStudentGradeData(teacherId, data){
     updateHomeGradesBadge();
     if(typeof renderSubjectsList === 'function') renderSubjectsList();
     if(typeof renderSidebarTree === 'function') renderSidebarTree();
+    if(typeof renderTeachers === 'function') renderTeachers();
   } catch(e){}
 }
 
@@ -1185,7 +1186,7 @@ function clearAllStudentGrades(){
   try {
     for(let i = localStorage.length - 1; i >= 0; i--){
       const k = localStorage.key(i);
-      if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_') || k.startsWith('muap_clean_v3_') || k.startsWith('muap_sub_grade_'))){
+      if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_') || k.startsWith('muap_clean_v3_') || k.startsWith('muap_sub_grade_') || k.startsWith('muap_teacher_grade_'))){
         localStorage.removeItem(k);
       }
     }
@@ -1194,6 +1195,7 @@ function clearAllStudentGrades(){
   updateHomeGradesBadge();
   if(typeof renderSubjectsList === 'function') renderSubjectsList();
   if(typeof renderSidebarTree === 'function') renderSidebarTree();
+  if(typeof renderTeachers === 'function') renderTeachers();
 }
 
 function updateHomeGradesBadge(){
