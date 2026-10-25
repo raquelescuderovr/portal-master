@@ -24,22 +24,6 @@
     if(meta) meta.setAttribute('content', isDark ? '#161412' : '#f7f4ee');
   }catch(e){}
 })();
-
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    deliveries.forEach(d => {
-      d.submitted = isDeliveryChecked(d.detailKey);
-      d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
-    });
-    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
-    if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
-    if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
-    if(typeof renderDeliveries === 'function') renderDeliveries();
-    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
-    if(typeof renderMonth === 'function') renderMonth();
-  }, 50);
-});
-
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -4609,7 +4593,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </span>
       <span class="nav-label-text">Notas y Tests</span>
-      <span class="nav-badge-pill badge-honey highlight-pill">10 / 10 ★</span>
+      <span class="nav-badge-pill badge-honey" id="sideNavGradesBadge">Mi Cuaderno</span>
     </button>
     <button class="nav-btn-entregas" data-view="entregas">
       <span class="nav-icon-pill icon-terra">
@@ -4839,7 +4823,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">Calendario mensual 🗓️</button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">Entregas</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">15</span></button>
@@ -5297,6 +5281,9 @@ const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-tr
 const testmozSandraReviewUrl='https://testmozusercontent.com/q/15707582/student/review';
 const testHtmlSandraLocalUrl='historial-tests/originales/2026-10-20-testmoz-15707582.html';
 const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacion-sandra-mosteiro.md';
+const casoDelgadoParteAFotoUrl='materiales/enunciado-delgado-parte-a.svg';
+const casoDelgadoParteBFotoUrl='materiales/enunciado-delgado-parte-b.svg';
+const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
 const casoSandraVideoLocalUrl='materiales/';
@@ -5562,6 +5549,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,9,25),title:'Parte de siniestro de Responsabilidad Civil Profesional',teacher:'José Luis Delgado Domínguez',subject:'Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: Completado)',submitted:false,detailKey:'entrega_parte_de_siniestro_de_res',details:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.'},
  {
   date:new Date(2026,9,29),
   title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',
@@ -5698,6 +5686,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_parte_de_siniestro_de_res:{
+  isDelivery:true,
+  kicker:'Práctica CEPROC · Responsabilidad civil y penal, aseguramiento y turno de oficio',
+  title:'Parte de siniestro de Responsabilidad Civil Profesional',
+  date:'Publicada: 25 oct 2026 · Plazo: Completado',
+  teacher:'José Luis Delgado Domínguez',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.',
+  source:'Plataforma CEPROC (MUAP)',
+  attachments:[
+   {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
+  ]
+ },
  mail_carolina_carlos_23oct:{
   kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
   title:'Resultados de las pruebas del 14, 15 y 16/10/2026 · Carolina Moreno y Carlos Sánchez (Nota: 10 / 10)',
@@ -6063,7 +6064,12 @@ grades:{
   body:'El módulo impartido por José Luis Delgado Domínguez contempla seis horas presenciales por grupo en el Colegio de Abogados. Grupo de mañana: lunes 19 oct (11:45–13:45), martes 20 oct (11:45–13:45) y lunes 26 oct (09:30–11:30). Grupo de tarde: lunes 19 oct (18:45–20:45), martes 20 oct (18:45–20:45) y lunes 26 oct (16:30–18:30). El correo incluye el enlace a la documentación de estudio del módulo.',
   source:'Correo de Administración del Máster · 16 oct 2026',
   attachments:[
-   {name:'Documentación del módulo de Responsabilidad civil y penal (enlace del correo)',url:driveSearchUrl('Responsabilidad civil'),kind:'Buscar en Drive'},
+   {name:'⏳ Ver práctica Parte A (Insostenibilidad y AJG)',detailKey:'entrega_delgado_parte_a',kind:'Práctica pendiente'},
+   {name:'⏳ Ver práctica Parte B (Parte de siniestro y Turno)',detailKey:'entrega_delgado_parte_b',kind:'Práctica pendiente'},
+   {name:'✉️ Enviar resolución a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez',kind:'Correo oficial ICACOR'},
+   {name:'Enunciado oficial Parte A: Insostenibilidad y AJG (SVG)',url:casoDelgadoParteAFotoUrl,kind:'Enunciado físico'},
+   {name:'Enunciado oficial Parte B: Siniestro RC y Turno (SVG)',url:casoDelgadoParteBFotoUrl,kind:'Enunciado físico'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',kind:'BOE oficial'},
    {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',kind:'BOE oficial'}
   ]
@@ -6136,28 +6142,42 @@ grades:{
   date:'Plazo: 10 días naturales desde la clase del 19 oct 2026 (límite: 29 de octubre de 2026)',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Enunciado entregado en clase por D. José Luis Delgado Domínguez compuesto por dos ejercicios prácticos:\n1) Elaborar un escrito de insostenibilidad de la pretensión fundamentado desde la posición de la parte actora/demandante.\n2) Dictamen jurídico sobre la aplicación de los artículos 5, 8, 20 y 21 de la Ley 1/1996 de Asistencia Jurídica Gratuita (LAJG):\n• Supuesto: Paciente operado en el SERGAS con secuelas que obtuvo condena de 100.000 € en el TSJ Galicia con gastos acreditados de 150.000 €; recurre en casación ante el Tribunal Supremo manteniendo la designación de profesionales privados y solicita el reintegro de honorarios e indemnización complementaria.\n• Vía de entrega: Presentación física en las oficinas colegiales del ICACOR o envío al correo electrónico oficial secretariatecnico@icacor.org.',
-  source:'Enunciado impreso facilitado en clase presencial por el docente · 19 oct 2026',
+  body:'Enunciado entregado en clase por D. José Luis Delgado Domínguez compuesto por dos ejercicios prácticos:\n1) Elaborar un escrito de insostenibilidad de la pretensión fundamentado desde la posición de la parte actora/demandante (arts. 32 a 35 de la LAJG).\n2) Dictamen jurídico sobre la aplicación de los artículos 5, 8, 20 y 21 de la Ley 1/1996 de Asistencia Jurídica Gratuita (LAJG):\n• Supuesto: Paciente operado en el SERGAS con secuelas que obtuvo condena de 100.000 € en el TSJ Galicia con gastos acreditados de 150.000 €; recurre en casación ante el Tribunal Supremo manteniendo la designación de profesionales privados y solicita el reintegro de honorarios e indemnización complementaria.\n• Vía de entrega: Presentación física en las oficinas colegiales del ICACOR o envío al correo electrónico oficial secretariatecnico@icacor.org (no se entrega por CEPROC, exclusivo de Procura).',
+  source:'Enunciado físico facilitado en mano en el Colegio de Abogados · 19 oct 2026',
+  photoUrl:casoDelgadoParteAFotoUrl,
+  photoRealUrl:casoDelgadoFotoRealUrl,
+  mailKey:'schedule',
   attachments:[
-   {name:'Correo oficial ICACOR: secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial'},
+   {name:'✉️ Ver correo oficial del módulo (Horarios y documentación)',detailKey:'schedule',kind:'Correo oficial'},
+   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20Parte%20A%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20de%20la%20pr%C3%A1ctica%20(Parte%20A%20-%20Insostenibilidad%20y%20AJG)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
+   {name:'📷 Ver foto / hoja del enunciado a tamaño completo',url:casoDelgadoParteAFotoUrl,kind:'Enunciado físico'},
+   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
   ],
-  extra:'⏳ Plazo oficial de 10 días naturales a contar desde la sesión del 19/10/2026 (vence el 29/10/2026).'
+  extra:'⏳ Plazo oficial de 10 días naturales a contar desde la sesión del 19/10/2026 (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
  },
  entrega_delgado_parte_b:{
   isDelivery:true,
   kicker:'Práctica pendiente · Abogacía · Responsabilidad profesional y Turno de Oficio',
   title:'Parte de siniestro y Turno de Oficio (Parte B)',
-  date:'Plazo: 10 días naturales tras la segunda sesión lectiva',
+  date:'Plazo: 10 días naturales tras la segunda sesión lectiva (límite: 30 de octubre de 2026)',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Segunda parte de la práctica del módulo de D. José Luis Delgado Domínguez:\n1) Cumplimentación de un parte de siniestro de responsabilidad civil profesional del abogado.\n2) Cuestiones prácticas y debate sobre los requisitos de acceso al Turno de Oficio e implicaciones de la incorporación colegial según el ámbito territorial.\n• Vía de entrega: Oficinas colegiales del ICACOR o mediante correo electrónico a secretariatecnico@icacor.org.',
-  source:'Enunciado impreso facilitado en clase presencial por el docente · 19 oct 2026',
+  body:'Segunda parte de la práctica del módulo de D. José Luis Delgado Domínguez:\n1) Cumplimentación de un parte de siniestro de responsabilidad civil profesional del abogado ante la aseguradora colegial.\n2) Cuestiones prácticas y debate sobre los requisitos de acceso al Turno de Oficio (3 años de ejercicio previo y cursos) e implicaciones de la incorporación colegial según el ámbito territorial.\n• Vía de entrega: Oficinas colegiales del ICACOR o mediante correo electrónico a secretariatecnico@icacor.org (no se entrega por CEPROC, exclusivo de Procura).',
+  source:'Enunciado físico facilitado en mano en el Colegio de Abogados · 20 oct 2026',
+  photoUrl:casoDelgadoParteBFotoUrl,
+  photoRealUrl:casoDelgadoFotoRealUrl,
+  mailKey:'schedule',
   attachments:[
-   {name:'Correo oficial ICACOR: secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial'},
+   {name:'✉️ Ver correo oficial del módulo (Horarios y documentación)',detailKey:'schedule',kind:'Correo oficial'},
+   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20Parte%20B%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20de%20la%20pr%C3%A1ctica%20(Parte%20B%20-%20Parte%20de%20Siniestro%20y%20Turno)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
+   {name:'📷 Ver foto / hoja del enunciado a tamaño completo',url:casoDelgadoParteBFotoUrl,kind:'Enunciado físico'},
+   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
   ],
-  extra:'⏳ Plazo de 10 días naturales a partir de la celebración de la segunda clase.'
+  extra:'⏳ Plazo de 10 días naturales a partir de la celebración de la segunda clase (vence el 30/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
  },
  entrega_apud_acta:{
   isDelivery:true,
@@ -6678,6 +6698,7 @@ const courses=[
     teachers:['José Luis Delgado Domínguez'],
     grade:{score:'En curso · 2 de 3 sesiones',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) programada para el lunes 26 oct (16:30–18:30 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
+     {name:'Práctica CPROC: Parte de siniestro de Responsabilidad Civil Profesional',detailKey:'entrega_parte_de_siniestro_de_res',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Normativa y CPROC ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
      {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE oficial ↗'}
@@ -7331,8 +7352,15 @@ const teacherDirectory=[
    {date:'2026-10-26',dayLabel:'Lunes 26 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Organización y funcionamiento del Turno de Oficio y Asistencia Jurídica Gratuita (Sesión 3 de 3)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Documentación para las clases del 19 y 20 de octubre (16 oct)',key:'schedule'}],
-  practices:[{title:'Caso de responsabilidad profesional del abogado y cobertura de póliza',status:'Programado en clase (20-26 oct)',key:'schedule'}],
-  driveFiles:[{name:'Documentación del módulo enlazada en el correo del 16 oct',url:outlookUrl,label:'Abrir correo ↗'}],
+  practices:[
+   {title:'Casos prácticos: Insostenibilidad y AJG (Parte A)',status:'⏳ Pendiente (Plazo: 29 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado_parte_a',url:'materiales/enunciado-delgado-parte-a.svg'},
+   {title:'Parte de siniestro y Turno de Oficio (Parte B)',status:'⏳ Pendiente (Plazo: 30 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado_parte_b',url:'materiales/enunciado-delgado-parte-b.svg'}
+  ],
+  driveFiles:[
+   {name:'Enunciado oficial del caso práctico (Parte A · SVG)',url:'materiales/enunciado-delgado-parte-a.svg',label:'Ver imagen ↗'},
+   {name:'Enunciado oficial del caso práctico (Parte B · SVG)',url:'materiales/enunciado-delgado-parte-b.svg',label:'Ver imagen ↗'},
+   {name:'Documentación del módulo enlazada en el correo del 16 oct',url:outlookUrl,label:'Abrir correo ↗'}
+  ],
   notes:[{title:'Ley 1/1996 de Asistencia Jurídica Gratuita (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',urlLabel:'BOE oficial ↗'}]
  },
  {
@@ -7970,13 +7998,22 @@ function updateHomeGradesBadge(){
       const k = localStorage.key(i);
       if(k && k.startsWith('muap_eval_')){
         const d = JSON.parse(localStorage.getItem(k));
-        if(d && (d.finalGrade || d.testGrade)) count++;
+        if(d && (d.finalGrade || d.testGrade || d.notes)) count++;
       }
     }
   } catch(e){}
   const el = document.getElementById('welcomeGradesSummary');
   if(el){
     el.textContent = count > 0 ? `${count} evaluadas por ti` : 'Mi Cuaderno de Notas';
+  }
+  const sideBadge = document.getElementById('sideNavGradesBadge') || document.querySelector('.nav-btn-notas .nav-badge-pill');
+  if(sideBadge){
+    sideBadge.textContent = count > 0 ? `★ ${count} eval.` : 'Mi Cuaderno';
+    sideBadge.className = 'nav-badge-pill ' + (count > 0 ? 'badge-honey highlight-pill' : 'badge-honey');
+  }
+  const tabBadge = document.getElementById('tabGradesBadge') || document.querySelector('[data-view="notas"] .tab-badge');
+  if(tabBadge){
+    tabBadge.textContent = count > 0 ? `${count}` : '0';
   }
 }
 
@@ -8304,7 +8341,10 @@ function renderTeacherDossiers(){
 
   return privacyNotice + dossiers.map(d => {
     const sData = getStudentGradeData(d.id);
-    const badgeText = sData.finalGrade ? `★ ${sData.finalGrade} · Mi Nota` : (sData.testGrade ? `Test: ${sData.testGrade}` : 'Sin calificar');
+    const safeFinal = typeof escapeHtml === 'function' ? escapeHtml(sData.finalGrade) : (sData.finalGrade || '');
+    const safeTest = typeof escapeHtml === 'function' ? escapeHtml(sData.testGrade) : (sData.testGrade || '');
+    const safeNotes = typeof escapeHtml === 'function' ? escapeHtml(sData.notes) : (sData.notes || '');
+    const badgeText = sData.finalGrade ? `★ ${safeFinal} · Mi Nota` : (sData.testGrade ? `Test: ${safeTest}` : 'Sin calificar');
     const badgeCls = sData.finalGrade ? 'gold' : (sData.testGrade ? 'blue' : 'terra');
 
     return `
@@ -8324,11 +8364,11 @@ function renderTeacherDossiers(){
           <div class="student-eval-bar">
             <div class="student-eval-field">
               <label for="input_final_${d.id}">★ Nota final del profesor:</label>
-              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${sData.finalGrade}" oninput="handleStudentGradeChange('${d.id}')">
+              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
             </div>
             <div class="student-eval-field">
               <label for="input_notes_${d.id}">✍️ Anotaciones personales / Criterios de corrección:</label>
-              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${sData.notes}</textarea>
+              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
             </div>
             <div style="grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center">
               <span class="student-save-status" id="status_${d.id}">✓ Guardado automáticamente</span>
@@ -8345,7 +8385,7 @@ function renderTeacherDossiers(){
         </div>
         <div class="student-test-input-wrap">
           <label for="input_test_${d.id}" style="font-size:12px;font-weight:700;color:var(--ink-soft)">Mi nota en el test:</label>
-          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${sData.testGrade}" oninput="handleStudentGradeChange('${d.id}')">
+          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
         </div>
       </div>
 
@@ -8388,7 +8428,7 @@ function handleStudentGradeChange(teacherId){
 
   const finalGrade = fInput ? fInput.value.trim() : '';
   const testGrade = tInput ? tInput.value.trim() : '';
-  const notes = nInput ? nInput.value.trim() : '';
+  const notes = nInput ? nInput.value : '';
 
   saveStudentGradeData(teacherId, { finalGrade, testGrade, notes });
 
@@ -8697,17 +8737,26 @@ function renderTeacherInsideSubject(tName, sub){
  `;
 
  // 3. Contenido de Prácticas
+ const isAbogaciaT = (t.branch === 'Abogacía') || (t.role||'').toLowerCase().includes('abogad') || t.name === 'José Luis Delgado Domínguez';
+ const practicesHeaderLink = isAbogaciaT
+  ? `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Colegio de Abogados (ICACOR) ↗</a>`
+  : `<a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>`;
+
  const practicesContent = `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
    <strong style="color:var(--ink);font-size:14px">✍️ Prácticas y casos prácticos (${practicesList.length}):</strong>
-   <a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+   ${practicesHeaderLink}
   </div>
   ${practicesList.length ? `
    <div style="display:grid;gap:8px">
-    ${practicesList.map(p=>`
-     <div class="visual-resource-card" style="border-left:4px solid var(--terracotta)">
+    ${practicesList.map(p=>{
+     const pAction = isAbogaciaT
+      ? (p.url ? `<a class="pill-link blue" href="${p.url}" target="_blank" rel="noopener noreferrer">Ver recurso / imagen ↗</a>` : `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">secretariatecnico@icacor.org ↗</a>`)
+      : `<a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>`;
+     return `
+     <div class="visual-resource-card" style="border-left:4px solid ${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)">✍️</div>
+       <div class="visual-resource-icon" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terra-dark)'}">✍️</div>
        <div>
         <div class="visual-resource-title">${p.title}</div>
         ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
@@ -8715,20 +8764,20 @@ function renderTeacherInsideSubject(tName, sub){
       </div>
       <div class="derive-action-links">
        ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha ↗</button>`:''}
-       <a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>
+       ${pAction}
       </div>
      </div>
-    `).join('')}
+    `;}).join('')}
    </div>
   ` : `
    <div class="empty-cozy" style="padding:22px 18px">
     <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
-     <div class="empty-cozy-icon-box" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terracotta)">🌿</div>
+     <div class="empty-cozy-icon-box" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">🌿</div>
     </div>
     <strong>Sin prácticas pendientes de entrega</strong>
-    <p style="margin-bottom:14px">Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.</p>
+    <p style="margin-bottom:14px">${isAbogaciaT ? 'Este docente no tiene casos prácticos activos registrados. Las prácticas de Abogacía se gestionan a través de secretariatecnico@icacor.org o en clase presencial.' : 'Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.'}</p>
     <div class="empty-cozy-actions">
-     <a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>
+     ${isAbogaciaT ? `<a class="cozy-btn cozy-btn-blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Contactar con ICACOR ↗</a>` : `<a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>`}
     </div>
    </div>
   `}
@@ -9012,12 +9061,13 @@ function renderSidebarTree(mode){
       </div>
      `;
 
+     const isAbogaciaT2 = (t.branch === 'Abogacía') || (t.role||'').toLowerCase().includes('abogad') || t.name === 'José Luis Delgado Domínguez';
      // 2. PRÁCTICAS (obligatorio, siempre presente)
      const practicasSection = `
       <div class="st-sec-block st-sec-practices">
        <div class="st-sec-header">
         <span class="st-sec-title">✍️ 2. Prácticas (${practicesList.length})</span>
-        <a class="st-sec-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>
+        ${isAbogaciaT2 ? `<a class="st-sec-link" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">ICACOR ↗</a>` : `<a class="st-sec-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>`}
        </div>
        <div class="st-sec-content">
         ${practicesList.length ? practicesList.map(p=>`
@@ -9256,18 +9306,27 @@ function renderMailsPanel(mailsList, t){
  `;
 }
 
-function renderPracticesPanel(practicesList){
+function renderPracticesPanel(practicesList, t){
+ const isAbogaciaT = t && ((t.branch === 'Abogacía') || (t.role||'').toLowerCase().includes('abogad') || t.name === 'José Luis Delgado Domínguez');
+ const practicesHeaderLink = isAbogaciaT
+  ? `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Colegio de Abogados (ICACOR) ↗</a>`
+  : `<a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>`;
+
  return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
    <strong style="color:var(--ink);font-size:14px">✍️ Prácticas y casos prácticos (${practicesList.length}):</strong>
-   <a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+   ${practicesHeaderLink}
   </div>
   ${practicesList.length ? `
    <div style="display:grid;gap:8px">
-    ${practicesList.map(p=>`
-     <div class="visual-resource-card" style="border-left:4px solid var(--terracotta)">
+    ${practicesList.map(p=>{
+     const pAction = isAbogaciaT
+      ? (p.url ? `<a class="pill-link blue" href="${p.url}" target="_blank" rel="noopener noreferrer">Ver recurso / imagen ↗</a>` : `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">secretariatecnico@icacor.org ↗</a>`)
+      : `<a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>`;
+     return `
+     <div class="visual-resource-card" style="border-left:4px solid ${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terra-dark)">✍️</div>
+       <div class="visual-resource-icon" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terra-dark)'}">✍️</div>
        <div>
         <div class="visual-resource-title">${p.title}</div>
         ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
@@ -9275,20 +9334,20 @@ function renderPracticesPanel(practicesList){
       </div>
       <div class="derive-action-links">
        ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha ↗</button>`:''}
-       <a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>
+       ${pAction}
       </div>
      </div>
-    `).join('')}
+    `;}).join('')}
    </div>
   ` : `
    <div class="empty-cozy" style="padding:22px 18px">
     <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
-     <div class="empty-cozy-icon-box" style="background:var(--terra-pale);border-color:var(--terra-border);color:var(--terracotta)">🌿</div>
+     <div class="empty-cozy-icon-box" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">🌿</div>
     </div>
     <strong>Sin prácticas pendientes de entrega</strong>
-    <p style="margin-bottom:14px">Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.</p>
+    <p style="margin-bottom:14px">${isAbogaciaT ? 'Este docente no tiene casos prácticos activos registrados. Las prácticas de Abogacía se gestionan a través de secretariatecnico@icacor.org o en clase presencial.' : 'Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.'}</p>
     <div class="empty-cozy-actions">
-     <a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>
+     ${isAbogaciaT ? `<a class="cozy-btn cozy-btn-blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Contactar con ICACOR ↗</a>` : `<a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>`}
     </div>
    </div>
   `}
@@ -9701,7 +9760,7 @@ function showScreen2(cKey, sIdx, optTeacherName){
 
  const sessionsContent = renderSessionsPanel(sessions);
  const apuntesContent = renderApuntesPanel(apuntesDocs, pureNotes, driveDocs);
- const practicesContent = renderPracticesPanel(practicesList);
+ const practicesContent = renderPracticesPanel(practicesList, t);
  const mailsContent = renderMailsPanel(mailsList, t);
  const testsContent = renderTestsPanel(testsList);
  const gradeContent = renderGradePanel(t);
@@ -9878,7 +9937,7 @@ function showScreen3(tName){
 
  const sessionsContent=renderSessionsPanel(sessions);
  const apuntesContent=renderApuntesPanel(apuntesDocs, pureNotes, driveDocs);
- const practicesContent=renderPracticesPanel(practicesList);
+ const practicesContent=renderPracticesPanel(practicesList, t);
  const mailsContent=renderMailsPanel(mailsList, t);
  const testsContent=renderTestsPanel(testsList);
  const gradeContent=renderGradePanel(t);
@@ -10579,7 +10638,7 @@ const viewNames={
  asignaturas:'Bloques y Asignaturas',
  profesores:'Profesorado',
  notas:'Notas y Tests',
- entregas:'Prácticas (CPROC)',
+ entregas:'Prácticas y Entregas',
  materiales:'Materiales y Normativa',
  correo:'Correo clasificado'
 };
@@ -11254,6 +11313,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
 
  const renderRow = (d) => {
   const isChk = d.submitted;
+  const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
   return `
   <div class="delivery-row" id="delivery-row-${d.detailKey}">
    <div style="flex:1;min-width:0">
@@ -11270,7 +11330,12 @@ function renderDeliveries(filter = currentDeliveryFilter){
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
      <div class="action-pills">
       <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-      <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+      ${isAbogacia ? `
+       <button class="pill-btn blue" data-detail="schedule">✉️ Correo del módulo (16 oct) ↗</button>
+       <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+      ` : `
+       <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+      `}
      </div>
      <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
       <span class="check-box">${isChk ? '✓' : ''}</span>
@@ -11496,6 +11561,11 @@ function renderMail(q='', filter=currentMailFilter){
 
 function setView(view,doScroll=true){
  activeView=view;
+ try {
+  if(window.location.hash !== '#' + view){
+   history.replaceState(null, '', '#' + view);
+  }
+ } catch(e){}
  document.querySelectorAll('.nav [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  document.querySelectorAll('.view-tabs [data-view]').forEach(b=>{
   const isAct=b.dataset.view===view;
@@ -11701,7 +11771,7 @@ function renderSearchResults(query){
     title: d.title,
     kicker: `${d.teacher} · ${d.status}`,
     desc: `${d.subject} · ${d.details}`,
-    badge: 'Práctica CPROC',
+    badge: (d.subjectRef||'').includes('Abogacía') ? 'Práctica Abogacía · ICACOR' : 'Práctica CPROC · Procura',
     badgeClass: 'badge-prac'
    });
   }
@@ -11841,7 +11911,7 @@ function renderSearchResults(query){
   </button>
  `);
 
- html += renderGroup('Prácticas y Entregas (CPROC)', matchedDeliveries, item => `
+ html += renderGroup('Prácticas y Entregas', matchedDeliveries, item => `
   <button type="button" class="search-result-item" data-search-action="detail" data-key="${item.detailKey}">
    <div class="search-result-top">
     <span class="search-result-title">${highlight(item.title)}</span>
@@ -12342,6 +12412,30 @@ renderSidebarTree();
 renderTeachers();
 renderMaterials();
 renderMail();
+// Sincronizar entregas y notas con localStorage en el portal de estudiantes
+deliveries.forEach(d => {
+  d.submitted = isDeliveryChecked(d.detailKey);
+  d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+});
+if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
+if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
+if(typeof renderDeliveries === 'function') renderDeliveries();
+if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+if(typeof renderMonth === 'function') renderMonth();
+
+
+const validViews = ['inicio','calendario','asignaturas','profesores','notas','entregas','materiales','correo'];
+const initialHash = (window.location.hash || '').replace(/^#/, '');
+if(initialHash && validViews.includes(initialHash)){
+ setView(initialHash, false);
+}
+window.addEventListener('hashchange', () => {
+ const h = (window.location.hash || '').replace(/^#/, '');
+ if(h && validViews.includes(h) && activeView !== h){
+  setView(h, false);
+ }
+});
 </script>
 <div id="toastNotification" role="alert" aria-live="polite">
   <span style="font-size:18px">📋</span>

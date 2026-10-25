@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+  <defs>
+    <style>
+      .bg { fill: #fdfbf7; }
+      .border { fill: none; stroke: #d1c7b7; stroke-width: 2; }
+      .header-line { stroke: #1e3a5f; stroke-width: 2.5; }
+      .sub-line { stroke: #c29b38; stroke-width: 1.5; }
+      .title { font-family: 'Georgia', serif; font-size: 22px; font-weight: bold; fill: #1e3a5f; }
+      .subtitle { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #5c4d3c; letter-spacing: 0.5px; }
+      .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; fill: #6b7280; }
+      .badge-bg { fill: #e8f0fe; stroke: #b6cff5; stroke-width: 1; }
+      .badge-txt { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: bold; fill: #1e3a5f; }
+      .sec-title { font-family: 'Georgia', serif; font-size: 15px; font-weight: bold; fill: #1e3a5f; }
+      .body-txt { font-family: 'Georgia', serif; font-size: 13.5px; fill: #2c2523; line-height: 1.5; }
+      .bullet { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; fill: #1f2937; }
+      .highlight-box { fill: #f4efe6; stroke: #dfd7ca; stroke-width: 1; rx: 6; }
+      .callout-box { fill: #fef9e7; stroke: #f1dfa5; stroke-width: 1; rx: 6; }
+      .footer-txt { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; fill: #8c7e6d; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1100" class="bg" />
+  <rect x="25" y="25" width="750" height="1050" class="border" rx="4" />
+
+  <!-- Official Header -->
+  <g transform="translate(50, 55)">
+    <text x="0" y="22" class="subtitle">ILUSTRE COLEGIO PROVINCIAL DE ABOGADOS DE A CORUÑA (ICACOR)</text>
+    <text x="0" y="38" class="meta">MÁSTER UNIVERSITARIO EN ABOGACÍA Y PROCURA (UDC · ICACOR) · CURSO 2026/27</text>
+    <line x1="0" y1="48" x2="700" y2="48" class="header-line" />
+    <line x1="0" y1="52" x2="700" y2="52" class="sub-line" />
+
+    <text x="0" y="82" class="title">MÓDULO: RESPONSABILIDAD CIVIL Y PENAL DEL ABOGADO</text>
+    <text x="0" y="102" class="title" style="font-size: 18px; fill: #5c4d3c;">ASEGURAMIENTO Y TURNO DE OFICIO · PARTE B</text>
+    
+    <g transform="translate(0, 115)">
+      <rect x="0" y="0" width="700" height="42" class="highlight-box" />
+      <text x="15" y="18" class="badge-txt">DOCENTE: D. JOSÉ LUIS DELGADO DOMÍNGUEZ (Abogado)</text>
+      <text x="15" y="33" class="meta">Sesión: Martes, 20 de octubre de 2026 · Plazo: 10 días tras 2.ª clase (Vence: 30 de octubre de 2026)</text>
+    </g>
+
+    <!-- Enunciado Caso 1 -->
+    <g transform="translate(0, 180)">
+      <text x="0" y="0" class="sec-title">EJERCICIO 1 · CUMPLIMENTACIÓN DEL PARTE DE SINIESTRO DE RC PROFESIONAL</text>
+      <line x1="0" y1="8" x2="700" y2="8" stroke="#d1c7b7" stroke-width="1" />
+      
+      <text x="0" y="30" class="body-txt">Completar y redactar el formulario oficial de <tspan font-weight="bold">Parte de Siniestro de Responsabilidad Civil Profesional</tspan></text>
+      <text x="0" y="50" class="body-txt">del abogado ante la compañía aseguradora colegial (MUPITI / Seguros ICACOR):</text>
+      
+      <text x="0" y="80" class="body-txt">• Identificación del letrado asegurado, póliza y circunstancias temporales del encargo profesional.</text>
+      <text x="0" y="105" class="body-txt">• Relación fáctica del siniestro: error procesal en cómputo de plazos o prescripción de la acción.</text>
+      <text x="0" y="130" class="body-txt">• Cuantificación preliminar del daño indemnizable y delimitación temporal de la cobertura (claims made).</text>
+      <text x="0" y="155" class="body-txt">• Obligaciones de notificación fehaciente y deber de no reconocimiento culpable sin autorización.</text>
+    </g>
+
+    <!-- Enunciado Caso 2 -->
+    <g transform="translate(0, 390)">
+      <text x="0" y="0" class="sec-title">EJERCICIO 2 · CUESTIONES PRÁCTICAS SOBRE ACCESO AL TURNO DE OFICIO</text>
+      <line x1="0" y1="8" x2="700" y2="8" stroke="#d1c7b7" stroke-width="1" />
+      
+      <rect x="0" y="20" width="700" height="150" class="callout-box" />
+      <text x="16" y="42" class="badge-txt" style="fill: #854d0e;">MARCO DE DEBATE Y APLICACIÓN PROFESIONAL:</text>
+      <text x="16" y="65" class="body-txt">Análisis de la Orden Ministerial de 3 de junio de 1997, Estatuto General de la Abogacía Española (EGAE)</text>
+      <text x="16" y="87" class="body-txt">y Normas Reguladoras del Servicio de Turno de Oficio y Asistencia al Detenido del ICACOR.</text>
+      <text x="16" y="109" class="body-txt">Debate sobre la incompatibilidad de despachos, demarcación territorial y requisitos de ejercicio efectivo.</text>
+      <text x="16" y="131" class="body-txt">Supuesto de designación urgente y deberes de continuidad hasta la designación de nuevo profesional.</text>
+      <text x="16" y="153" class="body-txt">Régimen retributivo, indemnización por baremo público e incidencias por falta de concesión del beneficio.</text>
+
+      <text x="0" y="200" class="sec-title" style="font-size: 13.5px;">Cuestiones a resolver:</text>
+      <text x="0" y="225" class="body-txt">1. Requisitos de ejercicio previo (3 años) y superación de cursos homologados para el acceso al Turno.</text>
+      <text x="0" y="250" class="body-txt">2. Implicaciones de la colegiación única vs. incorporación territorial para actuar en el partido judicial.</text>
+      <text x="0" y="275" class="body-txt">3. Consecuencias disciplinarias y deontológicas de la renuncia injustificada a la defensa de oficio.</text>
+      <text x="0" y="300" class="body-txt">4. Procedimiento a seguir cuando el justiciable pierde o no acredita el derecho a la justicia gratuita.</text>
+    </g>
+
+    <!-- Instrucciones de Entrega -->
+    <g transform="translate(0, 770)">
+      <rect x="0" y="0" width="700" height="95" class="highlight-box" style="stroke: #1e3a5f;" />
+      <text x="18" y="24" class="sec-title" style="font-size: 13px;">INSTRUCCIONES DE PRESENTACIÓN Y ENTREGA:</text>
+      <text x="18" y="46" class="bullet">• <tspan font-weight="bold">Vía oficial 1:</tspan> Envío al correo oficial del Colegio: <tspan font-weight="bold" fill="#1e3a5f">secretariatecnico@icacor.org</tspan></text>
+      <text x="18" y="66" class="bullet">• <tspan font-weight="bold">Vía oficial 2:</tspan> Presentación física en soporte impreso en la sede colegial del ICACOR.</text>
+      <text x="18" y="86" class="bullet">• <tspan font-weight="bold" fill="#b91c1c">AVISO:</tspan> No se entrega por plataforma CEPROC (exclusiva de la procura).</text>
+    </g>
+
+    <!-- Footer -->
+    <g transform="translate(0, 915)">
+      <line x1="0" y1="0" x2="700" y2="0" stroke="#e5e7eb" stroke-width="1" />
+      <text x="0" y="18" class="footer-txt">Máster Universitario en Abogacía y Procura · UDC / ICACOR · Ficha oficial del caso práctico de clase</text>
+      <text x="700" y="18" class="footer-txt" text-anchor="end">Octubre 2026</text>
+    </g>
+  </g>
+</svg>

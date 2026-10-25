@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Gradiente Oxford Navy / Toga judicial institucional -->
+    <linearGradient id="navyBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14263f"/>
+      <stop offset="100%" stop-color="#09121f"/>
+    </linearGradient>
+    <!-- Gradiente Dorado Académico -->
+    <linearGradient id="studentGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faecc8"/>
+      <stop offset="45%" stop-color="#dfba6c"/>
+      <stop offset="100%" stop-color="#9a752b"/>
+    </linearGradient>
+    <!-- Gradiente Plata / Marfil -->
+    <linearGradient id="ivoryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6dde6"/>
+    </linearGradient>
+    <filter id="navyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Fondo redondeado azul marino toga -->
+  <rect width="64" height="64" rx="14" fill="url(#navyBgGrad)"/>
+  <!-- Filete interior sutil azul estrado -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#8cb6dc" stroke-width="0.75" stroke-opacity="0.35"/>
+
+  <g filter="url(#navyShadow)">
+    <!-- Base del birrete (casquete inferior) -->
+    <path d="M22 26 C22 34 42 34 42 26 L42 29 C42 36 22 36 22 29 Z" fill="url(#studentGoldGrad)"/>
+
+    <!-- Tapa romboidal superior del birrete -->
+    <polygon points="32,13 52,21.5 32,30 12,21.5" fill="url(#studentGoldGrad)"/>
+    <!-- Relieve de luz superior en el rombo -->
+    <polygon points="32,14.5 50,21.5 32,28.5 14,21.5" fill="none" stroke="#fff" stroke-width="0.5" stroke-opacity="0.4"/>
+
+    <!-- Botón central de la borla -->
+    <ellipse cx="32" cy="21.5" rx="2" ry="1.4" fill="#ffffff"/>
+
+    <!-- Cordón y borla colgante de graduación -->
+    <path d="M32 21.5 Q45 23 47 28 L47 36" fill="none" stroke="url(#studentGoldGrad)" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- Flecos de la borla -->
+    <path d="M45.5 36 L48.5 36 L49 42 L45 42 Z" fill="url(#studentGoldGrad)"/>
+    <circle cx="47" cy="36" r="1.2" fill="#faecc8"/>
+
+    <!-- Libro académico abierto / Código de leyes en la base -->
+    <!-- Páginas del libro -->
+    <path d="M32 46 C27 43 20 44 16 45.5 L16 51 C20 49.5 27 48.5 32 51.5 C37 48.5 44 49.5 48 51 L48 45.5 C44 44 37 43 32 46 Z" fill="url(#ivoryGrad)"/>
+    <!-- Lomo y corte del libro dorado -->
+    <path d="M32 46 L32 51.5" stroke="url(#studentGoldGrad)" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M16 51 C20 49.5 27 48.5 32 51.5 C37 48.5 44 49.5 48 51" fill="none" stroke="url(#studentGoldGrad)" stroke-width="1.1"/>
+  </g>
+</svg>

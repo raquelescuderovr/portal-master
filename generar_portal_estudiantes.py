@@ -104,6 +104,16 @@ def generate_student_portal_html(html: str) -> str:
     if badge_mint_original in html:
         html = html.replace(badge_mint_original, badge_mint_replacement)
 
+    # Neutralizar badge de Notas en el menú lateral y en las pestañas horizontales
+    html = html.replace(
+        '<span class="nav-badge-pill badge-honey highlight-pill">10 / 10 ★</span>',
+        '<span class="nav-badge-pill badge-honey" id="sideNavGradesBadge">Mi Cuaderno</span>'
+    )
+    html = html.replace(
+        '<button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>',
+        '<button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>'
+    )
+
     # -------------------------------------------------------------
     # 2. FILTRAR EVENTOS PERSONALES EN events = { ... }
     # -------------------------------------------------------------
@@ -872,13 +882,22 @@ function updateHomeGradesBadge(){
       const k = localStorage.key(i);
       if(k && k.startsWith('muap_eval_')){
         const d = JSON.parse(localStorage.getItem(k));
-        if(d && (d.finalGrade || d.testGrade)) count++;
+        if(d && (d.finalGrade || d.testGrade || d.notes)) count++;
       }
     }
   } catch(e){}
   const el = document.getElementById('welcomeGradesSummary');
   if(el){
     el.textContent = count > 0 ? `${count} evaluadas por ti` : 'Mi Cuaderno de Notas';
+  }
+  const sideBadge = document.getElementById('sideNavGradesBadge') || document.querySelector('.nav-btn-notas .nav-badge-pill');
+  if(sideBadge){
+    sideBadge.textContent = count > 0 ? `★ ${count} eval.` : 'Mi Cuaderno';
+    sideBadge.className = 'nav-badge-pill ' + (count > 0 ? 'badge-honey highlight-pill' : 'badge-honey');
+  }
+  const tabBadge = document.getElementById('tabGradesBadge') || document.querySelector('[data-view="notas"] .tab-badge');
+  if(tabBadge){
+    tabBadge.textContent = count > 0 ? `${count}` : '0';
   }
 }
 
@@ -1206,7 +1225,10 @@ function renderTeacherDossiers(){
 
   return privacyNotice + dossiers.map(d => {
     const sData = getStudentGradeData(d.id);
-    const badgeText = sData.finalGrade ? `★ ${sData.finalGrade} · Mi Nota` : (sData.testGrade ? `Test: ${sData.testGrade}` : 'Sin calificar');
+    const safeFinal = typeof escapeHtml === 'function' ? escapeHtml(sData.finalGrade) : (sData.finalGrade || '');
+    const safeTest = typeof escapeHtml === 'function' ? escapeHtml(sData.testGrade) : (sData.testGrade || '');
+    const safeNotes = typeof escapeHtml === 'function' ? escapeHtml(sData.notes) : (sData.notes || '');
+    const badgeText = sData.finalGrade ? `★ ${safeFinal} · Mi Nota` : (sData.testGrade ? `Test: ${safeTest}` : 'Sin calificar');
     const badgeCls = sData.finalGrade ? 'gold' : (sData.testGrade ? 'blue' : 'terra');
 
     return `
@@ -1226,11 +1248,11 @@ function renderTeacherDossiers(){
           <div class="student-eval-bar">
             <div class="student-eval-field">
               <label for="input_final_${d.id}">★ Nota final del profesor:</label>
-              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${sData.finalGrade}" oninput="handleStudentGradeChange('${d.id}')">
+              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
             </div>
             <div class="student-eval-field">
               <label for="input_notes_${d.id}">✍️ Anotaciones personales / Criterios de corrección:</label>
-              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${sData.notes}</textarea>
+              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
             </div>
             <div style="grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center">
               <span class="student-save-status" id="status_${d.id}">✓ Guardado automáticamente</span>
@@ -1247,7 +1269,7 @@ function renderTeacherDossiers(){
         </div>
         <div class="student-test-input-wrap">
           <label for="input_test_${d.id}" style="font-size:12px;font-weight:700;color:var(--ink-soft)">Mi nota en el test:</label>
-          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${sData.testGrade}" oninput="handleStudentGradeChange('${d.id}')">
+          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
         </div>
       </div>
 
@@ -1290,7 +1312,7 @@ function handleStudentGradeChange(teacherId){
 
   const finalGrade = fInput ? fInput.value.trim() : '';
   const testGrade = tInput ? tInput.value.trim() : '';
-  const notes = nInput ? nInput.value.trim() : '';
+  const notes = nInput ? nInput.value : '';
 
   saveStudentGradeData(teacherId, { finalGrade, testGrade, notes });
 
@@ -1541,6 +1563,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
 
  const renderRow = (d) => {
   const isChk = d.submitted;
+  const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
   return `
   <div class="delivery-row" id="delivery-row-${d.detailKey}">
    <div style="flex:1;min-width:0">
@@ -1557,7 +1580,12 @@ function renderDeliveries(filter = currentDeliveryFilter){
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
      <div class="action-pills">
       <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-      <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+      ${isAbogacia ? `
+       <button class="pill-btn blue" data-detail="schedule">✉️ Correo del módulo (16 oct) ↗</button>
+       <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+      ` : `
+       <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+      `}
      </div>
      <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
       <span class="check-box">${isChk ? '✓' : ''}</span>
@@ -1624,25 +1652,27 @@ function renderDeliveries(filter = currentDeliveryFilter){
         print("✓ Función renderDeliveries y renderHomePendingTasks completamente adaptadas con persistencia en localStorage.")
 
     # -------------------------------------------------------------
-    # 11 & 12. INICIALIZAR CONTADORES Y RENDERIZADO AL ARRANCAR
+    # 11 & 12. INICIALIZAR CONTADORES Y RENDERIZADO AL ARRANCAR (AL FINAL DEL SCRIPT)
     # -------------------------------------------------------------
-    init_script = """
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    deliveries.forEach(d => {
-      d.submitted = isDeliveryChecked(d.detailKey);
-      d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
-    });
-    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
-    if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
-    if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
-    if(typeof renderDeliveries === 'function') renderDeliveries();
-    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
-    if(typeof renderMonth === 'function') renderMonth();
-  }, 50);
+    target_boot_call = 'renderMail();'
+    idx_mail_call = html.rfind(target_boot_call)
+    if idx_mail_call != -1:
+        student_boot = """
+// Sincronizar entregas y notas con localStorage en el portal de estudiantes
+deliveries.forEach(d => {
+  d.submitted = isDeliveryChecked(d.detailKey);
+  d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
 });
+if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
+if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
+if(typeof renderDeliveries === 'function') renderDeliveries();
+if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+if(typeof renderMonth === 'function') renderMonth();
 """
-    html = html.replace('</script>', init_script + '\n</script>', 1)
+        insert_pos = idx_mail_call + len(target_boot_call)
+        html = html[:insert_pos] + student_boot + html[insert_pos:]
+        print("✓ Secuencia de arranque del portal de estudiantes insertada limpiamente al final del script.")
 
     # -------------------------------------------------------------
     # 13. ASEGURAR HORARIO EXACTO DEL TURNO DE TARDE (16:30 — 20:45 h)

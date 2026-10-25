@@ -1,0 +1,18 @@
+{
+  "name": "Portal del Estudiante · Máster en Abogacía y Procura",
+  "short_name": "Portal Estudiantes",
+  "description": "Portal del Estudiante y seguimiento académico del Máster en Abogacía y Procura (MUAP)",
+  "start_url": "./portal-estudiantes.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0f13",
+  "theme_color": "#0c0f13",
+  "icons": [
+    {
+      "src": "favicon-estudiantes.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
