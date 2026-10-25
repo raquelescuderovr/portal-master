@@ -11530,6 +11530,67 @@ function renderCalendar(){
  }
 }
 
+function formatDeliveryStatementHtml(text, isAbogacia){
+ if(!text) return '';
+ let clean = String(text)
+  .replace(/Archivo entregado en la plataforma CPROC y guardado en la carpeta «Máster» de Google Drive\.?/gi, '')
+  .replace(/Subida a Google Drive y enviada en CPROC\.?/gi, '')
+  .replace(/Subida a Drive y enviada en CPROC\.?/gi, '')
+  .replace(/Subidos a Google Drive y enviados con éxito en CPROC\.?/gi, '')
+  .replace(/Práctica subida a Google Drive y enviada dentro de plazo en CPROC\.?/gi, '')
+  .replace(/Estudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC[^\n]*/gi, '')
+  .replace(/RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO[^\n]*/gi, '')
+  .replace(/\(No se gestiona por CEPROC, que es exclusivo de Procura\)\.?/gi, '')
+  .replace(/Sin derivación a CEPROC\.?/gi, '')
+  .trim();
+
+ const lines = clean.split('\n');
+ let sections = [];
+ let currentTitle = null;
+ let currentLines = [];
+
+ const pushCur = () => {
+  if(currentTitle || currentLines.length){
+   sections.push({ title: currentTitle, lines: currentLines });
+   currentTitle = null;
+   currentLines = [];
+  }
+ };
+
+ for(let line of lines){
+  const t = line.trim();
+  if(t.startsWith('• PARTE') || t.startsWith('PARTE ') || t.startsWith('ESCENARIO ') || t.startsWith('• ESCENARIO') || t.startsWith('PREGUNTAS DE REFLEXIÓN') || t.startsWith('• PREGUNTAS') || t.startsWith('CASO PRÁCTICO:')){
+   pushCur();
+   currentTitle = t.replace(/^[•\-\*]\s*/, '');
+  } else {
+   currentLines.push(line);
+  }
+ }
+ pushCur();
+
+ if(sections.length > 1 || (sections.length === 1 && sections[0].title)){
+  return sections.map(s => {
+   const body = s.lines.join('\n').trim();
+   if(s.title){
+    return `
+    <div class="statement-section-card">
+     <div class="statement-section-title ${isAbogacia?'abogacia':''}">${s.title}</div>
+     ${body ? `<div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${body}</div>` : ''}
+    </div>`;
+   }
+   return body ? `
+   <div class="statement-lead-card ${isAbogacia?'abogacia':''}">
+    <div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${body}</div>
+   </div>` : '';
+  }).join('');
+ }
+
+ return `
+ <div class="statement-lead-card ${isAbogacia?'abogacia':''}">
+  <div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${clean}</div>
+ </div>`;
+}
+
 let currentDeliveryFilter = 'all';
 
 function renderDeliveries(filter = currentDeliveryFilter){
@@ -11578,8 +11639,6 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const renderPendingRow = d => {
   const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
   const det = details[d.detailKey] || {};
-  const photoUrl = det.photoUrl || '';
-  const photoRealUrl = det.photoRealUrl || '';
   const mailKey = det.mailKey || 'schedule';
 
   return `
@@ -11587,55 +11646,35 @@ function renderDeliveries(filter = currentDeliveryFilter){
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div style="flex:1;min-width:0">
     <div class="delivery-name"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit;text-align:left;background:none;border:none;padding:0;cursor:pointer">${d.title} ↗</button></div>
-    <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · ${d.subject} · ${d.details}</div>
+    <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · Materia: <b>${d.subject}</b></div>
 
-    <!-- Desplegable con instrucciones completas del caso práctico -->
-    <details class="pending-delivery-details" style="margin-top:10px;background:var(--paper-card);border:1px solid var(--line);border-radius:10px;padding:12px 14px" open>
-     <summary style="font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
-      <span style="display:flex;align-items:center;gap:6px">
-       <span>📋</span> Enunciado, ejercicios y detalles del caso práctico
+    <!-- Desplegable con instrucciones completas: oculto por defecto -->
+    <details class="delivery-details-card">
+     <summary class="delivery-summary-toggle">
+      <span class="dst-label">
+       <span>📋</span> Enunciado, instrucciones y cuestiones a resolver
       </span>
-      <span class="work-arrow" style="font-size:11px;color:var(--muted)">Desplegar / Ocultar ▾</span>
+      <span class="dst-arrow">Ver enunciado y detalles ▾</span>
      </summary>
-     <div style="margin-top:10px;display:grid;gap:10px">
-      ${det.body ? `
-       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
-        ${det.body}
-       </div>
-      ` : ''}
+     <div class="delivery-statement-content">
+      ${formatDeliveryStatementHtml(det.body || d.details, isAbogacia)}
 
-      <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px">
-       <strong style="font-size:12px;color:var(--ink);display:flex;align-items:center;gap:6px">
-        <span>📄</span> Enunciado facilitado en clase presencial (ICACOR)
+      <div class="delivery-files-block">
+       <strong class="delivery-files-title">
+        <span>📄</span> Documentación y vías del módulo (ICACOR)
        </strong>
-       <div style="font-size:12px;color:var(--ink-soft);line-height:1.4">
-        Caso práctico entregado en mano por D. José Luis Delgado Domínguez compuesto por <b>Parte A</b> (Insostenibilidad y Turno de Oficio) y <b>Parte B</b> (Parte de siniestro de Responsabilidad Civil Profesional y Turno).
+       <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
+        Práctica oficial de Abogacía facilitada en clase presencial por D. José Luis Delgado Domínguez.
        </div>
        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
-        <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">Ver guía y cuestiones en Markdown (.md) ↗</a>
-        <a class="pill-link" href="mailto:secretariatecnico@icacor.org?subject=Consulta%20MUAP%20-%20Practica%20Delgado" target="_blank" rel="noopener noreferrer">Consultar secretariatecnico@icacor.org ↗</a>
+        <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">📄 Ver guía y cuestiones en Markdown (.md) ↗</a>
+        <button class="pill-btn blue" data-detail="${mailKey}">✉️ Correo del módulo (16 oct) ↗</button>
+        <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado%20(${encodeURIComponent(d.title)})" target="_blank" rel="noopener noreferrer">📩 Enviar a secretariatecnico@icacor.org ↗</a>
+        <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">📁 Borrador en Drive ↗</a>
        </div>
       </div>
-
-      ${isAbogacia ? `
-       <div style="background:var(--blue-badge);border:1px solid var(--blue-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
-        <span>⚖️</span>
-        <span><b>Vía de entrega de Abogacía:</b> Enviar por correo a <b>secretariatecnico@icacor.org</b> o entrega física en sede colegial. <i>Los abogados no utilizan ni derivan a CEPROC (exclusivo de procuradores).</i></span>
-       </div>
-      ` : ''}
      </div>
     </details>
-
-    <div class="action-pills" style="margin-top:10px">
-     ${isAbogacia ? `
-      <button class="pill-btn blue" data-detail="${mailKey}">✉️ Ver correo del módulo (Horarios y docs) ↗</button>
-      <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado%20(${encodeURIComponent(d.title)})" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-      <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Borrador en Drive ↗</a>
-     ` : `
-      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones ↗</button>
-      <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-     `}
-    </div>
    </div>
    <span class="due-state pending">${d.status}</span>
   </div>
@@ -11673,7 +11712,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
         <span style="font-size:16px">📚</span>
         <div>
          <div style="font-weight:700;color:var(--ink)">${subName}</div>
-         <div style="font-size:11.5px;color:var(--muted);font-weight:500">Docente: ${teacherName} · ${subItems.length} ${subItems.length === 1 ? 'práctica entregada' : 'prácticas entregadas'} con éxito en CPROC</div>
+         <div style="font-size:11.5px;color:var(--muted);font-weight:500">Docente: ${teacherName} · ${subItems.length} ${subItems.length === 1 ? 'práctica entregada' : 'prácticas entregadas'} con éxito</div>
         </div>
        </div>
        <div style="display:flex;align-items:center;gap:8px">
@@ -11684,64 +11723,69 @@ function renderDeliveries(filter = currentDeliveryFilter){
       <div class="subject-delivery-body">
        ${subItems.map(d => {
         const det = details[d.detailKey] || {};
+        const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
         return `
         <article class="delivery-detail-card" id="delivered-card-${d.detailKey}" data-delivery-key="${d.detailKey}">
          <div class="delivery-detail-card-head">
           <div>
            <h4 class="delivery-detail-card-title">${d.title}</h4>
            <div class="delivery-detail-card-meta">
-            <strong>Docente:</strong> <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · <strong>Estado:</strong> ${d.status}
+            <strong>Docente:</strong> <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · <strong>Materia:</strong> ${d.subject}
            </div>
           </div>
           <span class="due-state submitted">${d.status}</span>
          </div>
 
-         ${det.body ? `
-         <div>
-          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
-           📋 Toda la información y resolución de la entrega:
-          </div>
-          <div class="delivery-full-text-box">${det.body}</div>
-         </div>
-         ` : ''}
+         <!-- Desplegable con enunciado y resolución: oculto por defecto -->
+         <details class="delivery-details-card">
+          <summary class="delivery-summary-toggle">
+           <span class="dst-label">
+            <span>📋</span> Enunciado, instrucciones y cuestiones a resolver
+           </span>
+           <span class="dst-arrow">Ver enunciado y detalles ▾</span>
+          </summary>
+          <div class="delivery-statement-content">
+           ${formatDeliveryStatementHtml(det.body || d.details, isAbogacia)}
 
-         ${det.submissions && det.submissions.length ? `
-         <div>
-          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
-           📄 Archivos y comprobantes de la entrega (${det.submissions.length}):
-          </div>
-          <div class="delivery-detail-files-list">
-           ${det.submissions.map(s => `
-            <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-             <div>
-              <strong style="color:var(--ink)">${s.label}:</strong> <span style="font-weight:600">${s.file}</span> ${s.pages ? `<span style="color:var(--muted)">(${s.pages})</span>` : ''}
-              ${s.content ? `<div style="color:var(--ink-soft);font-size:11px;margin-top:2px">${s.content}</div>` : ''}
-              ${s.state ? `<div style="color:var(--green-dark);font-size:11px;font-weight:600;margin-top:2px">✓ ${s.state}</div>` : ''}
-             </div>
-             ${s.url ? `<a class="pill-link blue" href="${s.url}" target="_blank" rel="noopener noreferrer">Abrir archivo ↗</a>` : ''}
+           ${det.submissions && det.submissions.length ? `
+           <div class="delivery-files-block">
+            <strong class="delivery-files-title">
+             <span>📄</span> Archivos y comprobantes de la entrega (${det.submissions.length}):
+            </strong>
+            <div class="delivery-detail-files-list">
+             ${det.submissions.map(s => `
+              <div style="background:var(--paper);border:1px solid var(--line-subtle);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+               <div>
+                <strong style="color:var(--ink)">${s.label}:</strong> <span style="font-weight:600">${s.file}</span> ${s.pages ? `<span style="color:var(--muted)">(${s.pages})</span>` : ''}
+                ${s.content ? `<div style="color:var(--ink-soft);font-size:11px;margin-top:2px">${s.content}</div>` : ''}
+                ${s.state ? `<div style="color:var(--green-dark);font-size:11px;font-weight:600;margin-top:2px">✓ ${s.state}</div>` : ''}
+               </div>
+               ${s.url ? `<a class="pill-link blue" href="${s.url}" target="_blank" rel="noopener noreferrer">Abrir archivo ↗</a>` : ''}
+              </div>
+             `).join('')}
             </div>
-           `).join('')}
-          </div>
-         </div>
-         ` : ''}
+           </div>
+           ` : ''}
 
-         <div class="action-pills" style="margin-top:6px">
-          <button class="pill-btn" data-detail="${d.detailKey}">Ficha modal ↗</button>
-          ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
-           <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Google Docs (Entrega) ↗</a>
-           <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Resolución completa (.md) ↗</a>
-           <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Vídeo comprobante CPROC ↗</a>
-           <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF del caso ↗</a>
-           <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">Carpeta Prácticas Drive ↗</a>
-          ` : ''}
-          ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
-          ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
-          ${((d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado')) ? `
-           <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Entrega ICACOR / Correo ↗</a>
-          ` : `
-           <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-          `}
-         </div>
+           <div class="action-pills" style="margin-top:4px">
+            <button class="pill-btn" data-detail="${d.detailKey}">Ficha modal ↗</button>
+            ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
+             <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Google Docs (Entrega) ↗</a>
+             <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Resolución completa (.md) ↗</a>
+             <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Vídeo comprobante CPROC ↗</a>
+             <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF del caso ↗</a>
+             <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">Carpeta Prácticas Drive ↗</a>
+            ` : ''}
+            ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
+            ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
+            ${((d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado')) ? `
+             <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Entrega ICACOR / Correo ↗</a>
+            ` : `
+             <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+            `}
+           </div>
+          </div>
+         </details>
         </article>
         `;
        }).join('')}

@@ -3783,49 +3783,153 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .delivery-detail-card{
   background:var(--paper-card);
   border:1px solid var(--line);
-  border-left:4.5px solid var(--green);
-  border-radius:12px;
+  border-radius:14px;
   padding:16px 18px;
   display:grid;
-  gap:12px;
+  gap:10px;
+  transition:all .18s ease;
+}
+.delivery-detail-card:hover{
+  border-color:var(--green-border);
 }
 .delivery-detail-card-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
 }
 .delivery-detail-card-title{
-  font:700 16px/1.3 var(--serif);
+  font:700 16.5px/1.3 var(--serif);
   color:var(--ink);
   margin:0;
 }
 .delivery-detail-card-meta{
   font-size:12.5px;
-  color:var(--muted);
+  color:var(--ink-soft);
   line-height:1.5;
-  margin-top:2px;
+  margin-top:3px;
 }
-.delivery-full-text-box{
+
+/* Desplegable de enunciado de la entrega: limpio, interactivo y oculto por defecto */
+.delivery-details-card{
+  margin-top:8px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  transition:all .2s ease;
+}
+.delivery-details-card:hover{
+  border-color:var(--green-border);
+}
+.delivery-details-card[open]{
+  border-color:var(--green-border);
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+}
+.delivery-summary-toggle{
+  list-style:none;
+  cursor:pointer;
+  padding:11px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--paper-warm);
+  user-select:none;
+  transition:all .18s ease;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+}
+.delivery-summary-toggle::-webkit-details-marker{
+  display:none;
+}
+.delivery-summary-toggle:hover{
+  background:var(--green-pale);
+  color:var(--green-dark);
+}
+.delivery-summary-toggle .dst-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.delivery-summary-toggle .dst-arrow{
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--muted);
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:transform .2s ease;
+}
+.delivery-details-card[open] > .delivery-summary-toggle .dst-arrow{
+  color:var(--green-dark);
+  transform:rotate(180deg);
+}
+
+/* Enunciado estructurado visual y limpio */
+.delivery-statement-content{
+  padding:16px 18px;
+  display:grid;
+  gap:14px;
+  background:var(--paper);
+  border-top:1px dashed var(--line);
+}
+.statement-lead-card{
+  background:var(--paper-warm);
+  border-left:4px solid var(--green);
+  border-radius:10px;
+  padding:14px 18px;
   font-size:13px;
   line-height:1.65;
   color:var(--ink);
+}
+.statement-lead-card.abogacia{
+  border-left-color:var(--blue);
+}
+.statement-section-card{
   background:var(--paper-warm);
   border:1px solid var(--line-subtle);
   border-radius:10px;
-  padding:14px 16px;
-  white-space:pre-line;
-  max-height:300px;
-  overflow-y:auto;
+  padding:14px 18px;
+  display:grid;
+  gap:8px;
+}
+.statement-section-title{
+  font-size:12.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--green-dark);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.statement-section-title.abogacia{
+  color:var(--blue-dark);
+}
+.delivery-files-block{
+  background:var(--paper-warm);
+  border:1px solid var(--line-subtle);
+  border-radius:10px;
+  padding:12px 16px;
+  display:grid;
+  gap:8px;
+}
+.delivery-files-title{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 .delivery-detail-files-list{
   display:grid;
-  gap:6px;
-  margin-top:4px;
-}
-[data-theme="light"] .delivery-full-text-box{
-  background:#fbf9f4;
+  gap:8px;
 }
 
 /* Dossier de calificaciones por profesor y asignatura */
@@ -11474,6 +11578,67 @@ function renderCalendar(){
   });
   grid.appendChild(b);
  }
+}
+
+function formatDeliveryStatementHtml(text, isAbogacia){
+ if(!text) return '';
+ let clean = String(text)
+  .replace(/Archivo entregado en la plataforma CPROC y guardado en la plataforma CPROC\.?/gi, '')
+  .replace(/Subida a Google Drive y enviada en CPROC\.?/gi, '')
+  .replace(/Subida a Drive y enviada en CPROC\.?/gi, '')
+  .replace(/Subidos a Google Drive y enviados con éxito en CPROC\.?/gi, '')
+  .replace(/Práctica enviada dentro de plazo en CPROC\.?/gi, '')
+  .replace(/Estudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC[^\n]*/gi, '')
+  .replace(/RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO[^\n]*/gi, '')
+  .replace(/\(No se gestiona por CEPROC, que es exclusivo de Procura\)\.?/gi, '')
+  .replace(/Sin derivación a CEPROC\.?/gi, '')
+  .trim();
+
+ const lines = clean.split('\n');
+ let sections = [];
+ let currentTitle = null;
+ let currentLines = [];
+
+ const pushCur = () => {
+  if(currentTitle || currentLines.length){
+   sections.push({ title: currentTitle, lines: currentLines });
+   currentTitle = null;
+   currentLines = [];
+  }
+ };
+
+ for(let line of lines){
+  const t = line.trim();
+  if(t.startsWith('• PARTE') || t.startsWith('PARTE ') || t.startsWith('ESCENARIO ') || t.startsWith('• ESCENARIO') || t.startsWith('PREGUNTAS DE REFLEXIÓN') || t.startsWith('• PREGUNTAS') || t.startsWith('CASO PRÁCTICO:')){
+   pushCur();
+   currentTitle = t.replace(/^[•\-\*]\s*/, '');
+  } else {
+   currentLines.push(line);
+  }
+ }
+ pushCur();
+
+ if(sections.length > 1 || (sections.length === 1 && sections[0].title)){
+  return sections.map(s => {
+   const body = s.lines.join('\n').trim();
+   if(s.title){
+    return `
+    <div class="statement-section-card">
+     <div class="statement-section-title ${isAbogacia?'abogacia':''}">${s.title}</div>
+     ${body ? `<div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${body}</div>` : ''}
+    </div>`;
+   }
+   return body ? `
+   <div class="statement-lead-card ${isAbogacia?'abogacia':''}">
+    <div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${body}</div>
+   </div>` : '';
+  }).join('');
+ }
+
+ return `
+ <div class="statement-lead-card ${isAbogacia?'abogacia':''}">
+  <div style="font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line">${clean}</div>
+ </div>`;
 }
 
 let currentDeliveryFilter = 'all';
