@@ -1,18 +1,65 @@
 """Módulo para actualizar portal-master/index.html (tanto en local como vía GitHub API)."""
 import re
 import os
+import sys
 import json
 import base64
 import urllib.request
 import subprocess
 from datetime import datetime
-from config import INDEX_HTML, GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH, PORTAL_DIR
+from config import INDEX_HTML, GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH, PORTAL_DIR, get_ssl_context
+
+ALLOWED_HTML_TAGS = {"b", "strong", "i", "em", "code", "p", "br", "ul", "ol", "li", "span", "a"}
 
 def sanitize_js_string(s: str) -> str:
-    """Escapa comillas simples y saltos de línea para incrustar en JavaScript."""
+    """Escapa comillas simples, barras invertidas y saltos de línea, neutralizando cierres de script."""
     if not s:
         return ""
-    return str(s).replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n").replace("\r", "")
+    res = str(s).replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n").replace("\r", "")
+    # Neutralizar posible ruptura de bloques <script>
+    res = res.replace("</", "<\\/")
+    return res
+
+def sanitize_html_fragment(html_text: str) -> str:
+    """Sanitiza fragmentos HTML permitiendo solo un conjunto estricto de etiquetas seguras.
+    Elimina scripts, atributos de eventos (on*), iframes y esquemas no http/https en enlaces.
+    """
+    if not html_text:
+        return ""
+    
+    # 1. Eliminar bloques de script y estilo completos
+    clean = re.sub(r'<(script|style|iframe|object|embed|svg|math)[^>]*>.*?</\1>', '', str(html_text), flags=re.DOTALL | re.IGNORECASE)
+    clean = re.sub(r'<(script|style|iframe|object|embed|svg|math)[^>]*>', '', clean, flags=re.IGNORECASE)
+    
+    # 2. Filtrar etiquetas individuales permitiendo únicamente la lista blanca
+    def tag_filter(match):
+        full_tag = match.group(0)
+        is_closing = full_tag.startswith("</")
+        tag_match = re.match(r'</?([a-zA-Z0-9]+)', full_tag)
+        if not tag_match:
+            return ""
+        tag_name = tag_match.group(1).lower()
+        if tag_name not in ALLOWED_HTML_TAGS:
+            return ""
+        
+        if is_closing:
+            return f"</{tag_name}>"
+        
+        # En etiquetas <a> solo permitir enlaces HTTPS/HTTP con atributos seguros
+        if tag_name == "a":
+            href_m = re.search(r'href=[\'"]([^\'"]*)[\'"]', full_tag, re.IGNORECASE)
+            if href_m:
+                href = href_m.group(1).strip()
+                if href.startswith("https://") or href.startswith("http://"):
+                    safe_href = href.replace('"', '&quot;')
+                    return f'<a href="{safe_href}" target="_blank" rel="noopener noreferrer">'
+            return ""
+        
+        return f"<{tag_name}>"
+
+    clean = re.sub(r'<[^>]*>', tag_filter, clean)
+    clean = clean.replace("</script>", "")
+    return clean
 
 def update_teacher_directory(content: str, teacher_name: str, grade_score: str = None, 
                              grade_badge: str = None, grade_detail: str = None, 
@@ -282,17 +329,24 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
     if "const deliveries=[" in content:
         content = content.replace("const deliveries=[\n", "const deliveries=[\n" + delivery_entry, 1)
 
+    is_abogacia = 'abogac' in s_subject.lower() or 'abogac' in s_subref.lower() or 'delgado' in s_teacher.lower()
+    kicker_label = f"Práctica ICACOR · {s_subject}" if is_abogacia else f"Práctica CPROC · {s_subject}"
+    source_label = "Colegio de Abogados de A Coruña (ICACOR)" if is_abogacia else "Plataforma CEPROC (MUAP)"
+    att_name = "Enviar práctica a secretariatecnico@icacor.org" if is_abogacia else "Abrir plataforma CPROC (MUAP)"
+    att_url = "mailto:secretariatecnico@icacor.org" if is_abogacia else "cprocUrl"
+    att_kind = "Correo oficial ICACOR" if is_abogacia else "Plataforma CPROC"
+
     detail_entry = f""" {detail_key}:{{
   isDelivery:true,
-  kicker:'Práctica CEPROC · {s_subject}',
+  kicker:'{kicker_label}',
   title:'{s_title}',
   date:'Publicada: {sanitize_js_string(date_str)} · Plazo: {sanitize_js_string(deadline_str)}',
   teacher:'{s_teacher}',
   subjectRef:'{s_subref}',
   body:'{s_details}',
-  source:'Plataforma CEPROC (MUAP)',
+  source:'{source_label}',
   attachments:[
-   {{name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}}
+   {{name:'{att_name}',url:{att_url},kind:'{att_kind}'}}
   ]
  }},
 """
@@ -308,11 +362,12 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
         )
 
     # Propagación automática a la asignatura en courses
+    course_entry_name = f"Práctica: {s_title}" if is_abogacia else f"Práctica CPROC: {s_title}"
     content = update_course_subject(
         content,
         subject_name=s_subject,
         teacher_name=s_teacher,
-        practice_entry={"name": f"Práctica CPROC: {s_title}", "detailKey": detail_key}
+        practice_entry={"name": course_entry_name, "detailKey": detail_key}
     )
 
     return content
@@ -473,34 +528,56 @@ def save_and_commit(new_content: str, commit_msg: str) -> bool:
 
     return False
 
-def commit_via_github_api(new_content: str, commit_msg: str) -> bool:
-    """Realiza un commit en GitHub directamente mediante la API REST oficial."""
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/index.html"
+def put_github_file(repo: str, branch: str, path: str, content: str, commit_msg: str, token: str) -> bool:
+    """Crea o actualiza un archivo en GitHub mediante la API REST."""
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
     headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
+        "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json",
         "User-Agent": "Master-Telegram-Bot"
     }
-
+    ssl_ctx = get_ssl_context()
+    current_sha = None
     try:
-        # Obtener SHA actual del archivo
-        req = urllib.request.Request(url + f"?ref={GITHUB_BRANCH}", headers=headers)
-        with urllib.request.urlopen(req) as resp:
+        req = urllib.request.Request(f"{url}?ref={branch}", headers=headers)
+        with urllib.request.urlopen(req, timeout=15, context=ssl_ctx) as resp:
             data = json.loads(resp.read().decode())
-            current_sha = data["sha"]
+            current_sha = data.get("sha")
+    except Exception:
+        pass
 
-        # Crear el commit
-        b64_content = base64.b64encode(new_content.encode("utf-8")).decode("utf-8")
-        payload = {
-            "message": commit_msg,
-            "content": b64_content,
-            "sha": current_sha,
-            "branch": GITHUB_BRANCH
-        }
-        put_data = json.dumps(payload).encode("utf-8")
-        put_req = urllib.request.Request(url, data=put_data, headers=headers, method="PUT")
-        with urllib.request.urlopen(put_req) as resp:
+    b64_content = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+    payload = {
+        "message": commit_msg,
+        "content": b64_content,
+        "branch": branch
+    }
+    if current_sha:
+        payload["sha"] = current_sha
+
+    put_data = json.dumps(payload).encode("utf-8")
+    put_req = urllib.request.Request(url, data=put_data, headers=headers, method="PUT")
+    try:
+        with urllib.request.urlopen(put_req, timeout=30, context=ssl_ctx) as resp:
             return resp.status in (200, 201)
     except Exception as e:
-        print(f"[Updater] Error en GitHub API: {e}")
+        print(f"[Updater] Error en GitHub API para {path}: {e}")
         return False
+
+def commit_via_github_api(new_content: str, commit_msg: str) -> bool:
+    """Actualiza index.html, portal-estudiantes.html y estudiantes.html en GitHub vía API REST."""
+    ok_index = put_github_file(GITHUB_REPO, GITHUB_BRANCH, "index.html", new_content, commit_msg, GITHUB_TOKEN)
+
+    # Generar y subir versión sincronizada del portal de estudiantes
+    try:
+        if str(PORTAL_DIR) not in sys.path:
+            sys.path.insert(0, str(PORTAL_DIR))
+        import generar_portal_estudiantes
+        if hasattr(generar_portal_estudiantes, "generate_student_portal_html"):
+            student_html = generar_portal_estudiantes.generate_student_portal_html(new_content)
+            put_github_file(GITHUB_REPO, GITHUB_BRANCH, "portal-estudiantes.html", student_html, f"{commit_msg} [portal-estudiantes]", GITHUB_TOKEN)
+            put_github_file(GITHUB_REPO, GITHUB_BRANCH, "estudiantes.html", student_html, f"{commit_msg} [estudiantes]", GITHUB_TOKEN)
+    except Exception as e:
+        print(f"[Updater] Error sincronizando portal estudiantes en GitHub API: {e}")
+
+    return ok_index

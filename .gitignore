@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 *.mov
 telegram-bot/chat_history.json
+telegram-bot/pending_proposals.json

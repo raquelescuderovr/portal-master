@@ -11,9 +11,10 @@ from datetime import datetime
 from pathlib import Path
 
 from config import (
-    GEMINI_API_KEY, PORTAL_PUBLIC_URL, INDEX_HTML, BASE_DIR
+    GEMINI_API_KEY, PORTAL_PUBLIC_URL, INDEX_HTML, BASE_DIR, get_ssl_context
 )
 import updater
+import proposals
 
 HISTORY_FILE = Path(__file__).resolve().parent / "chat_history.json"
 
@@ -75,6 +76,15 @@ Contexto docente y académico:
   - Carolina Moreno Vázquez: Justicia digital, poder apud acta y subsanación (Procura).
   - Carlos M. Sánchez Muiño: Iniciación y marketing de la procura, proceso digital (Procura).
   - Ana Vázquez Corte: Deontología y responsabilidad profesional (Procura).
+
+REGLA FUNDAMENTAL CEPROC vs ICACOR (ABOGACÍA vs PROCURA):
+• La plataforma CEPROC / CPROC es ÚNICA Y EXCLUSIVAMENTE para la rama de Procura (procuradores).
+• Los abogados (como José Luis Delgado Domínguez o materias de Abogacía) NUNCA dan ni gestionan prácticas por el CEPROC; no tiene nada que ver con ellos.
+• Las prácticas de José Luis Delgado se entregan exclusivamente:
+  - Por correo electrónico a: secretariatecnico@icacor.org
+  - O en mano en formato físico en la sede del Colegio de Abogados de A Coruña (ICACOR).
+• NUNCA derives a CEPROC ni sugieras la plataforma CPROC para prácticas o materias de Abogacía.
+• Vincula siempre las consultas de Delgado a su correo del módulo ('schedule') o a la foto/enunciado facilitado en clase.
 • Web pública del portal: {PORTAL_PUBLIC_URL}
 """
 
@@ -143,11 +153,12 @@ def execute_action(action_type: str, args: dict) -> str:
             commit_msg = f"Registrar calificación: {titulo} ({docente}: {nota}) [vía Telegram]"
             updater.save_and_commit(new_html, commit_msg)
             return (
-                f"\n\n⭐ <b>¡Calificación registrada con éxito!</b>\n"
-                f"• <b>Nota:</b> {nota} ({tipo_nota})\n"
-                f"• <b>Profesor/a:</b> {docente} (actualizado en su ficha)\n"
-                f"• <b>Asignatura:</b> {materia} (actualizada)\n"
-                f"• <b>Correo clasificado:</b> {titulo}\n"
+                f"\n\n⭐ <b>¡Calificación registrada con éxito en ambos portales!</b>\n"
+                f"• <b>Tu portal personal:</b> Registrada tu nota de {nota} ({tipo_nota}) en expediente, ficha de {docente} y buzón.\n"
+                f"• <b>Portal del Estudiante:</b> Sincronizado automáticamente (habilitada la ficha y casilla interactiva en su Cuaderno de Notas para que registren su propia nota privadamente).\n"
+                f"• <b>Profesor/a:</b> {docente}\n"
+                f"• <b>Asignatura:</b> {materia}\n"
+                f"• <b>Correo clasificado:</b> {titulo} (privado en tu buzón)\n"
                 f"🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
             )
 
@@ -220,25 +231,29 @@ def execute_tool(func_name: str, args: dict) -> dict:
         }
     elif func_name == "consultar_entregas":
         return {
-            "balance": "6 prácticas registradas (2 pendientes de José Luis Delgado)",
+            "balance": "6 prácticas registradas (2 pendientes de Abogacía con José Luis Delgado)",
             "ultimas": [
-                "⏳ Casos prácticos: Insostenibilidad y AJG (Plazo: 29 oct 2026 · Delgado)",
-                "⏳ Parte de siniestro y Turno de Oficio (Plazo: 10 días tras 2.ª clase · Delgado)",
-                "✓ Poder apud acta (Carolina Moreno)",
-                "✓ Escrito de subsanación (Carolina Moreno)",
-                "✓ Auto declaración UP (Carolina Moreno)",
-                "✓ Deontología Procura (Ana Vázquez Corte)"
+                "⏳ Casos prácticos: Insostenibilidad y AJG (Plazo: 29 oct 2026 · Delgado · Entrega: secretariatecnico@icacor.org)",
+                "⏳ Parte de siniestro y Turno de Oficio (Plazo: 30 oct 2026 · Delgado · Entrega: secretariatecnico@icacor.org)",
+                "✓ Actos de comunicación judicial (Sandra Mosteiro · CPROC)",
+                "✓ Poder apud acta (Carolina Moreno · CPROC)",
+                "✓ Escrito de subsanación (Carolina Moreno · CPROC)",
+                "✓ Auto declaración UP (Carolina Moreno · CPROC)",
+                "✓ Deontología Procura (Ana Vázquez Corte · CPROC)"
             ]
         }
     return {}
 
-def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type: str = "image/jpeg", image_bytes: bytes = None) -> str:
-    """Envía un mensaje al LLM manteniendo el hilo conversacional y ejecutando acciones si se solicitan."""
+def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type: str = "image/jpeg", image_bytes: bytes = None, user_id: int = None) -> str:
+    """Envía un mensaje al LLM manteniendo el hilo conversacional y generando propuestas de cambio protegidas."""
     if not GEMINI_API_KEY:
         return (
             "⚠️ <b>Falta configurar la clave de IA (GEMINI_API_KEY)</b> en el archivo <code>.env</code>.\n\n"
             "Puedes obtener tu clave gratuita en: <a href='https://aistudio.google.com/app/apikey'>Google AI Studio</a>."
         )
+
+    if user_id is None:
+        user_id = chat_id
 
     if image_bytes and not media_bytes:
         media_bytes = image_bytes
@@ -294,11 +309,11 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
 
     resp_text = ""
     last_err = None
+    ssl_ctx = get_ssl_context()
     for m_name, extra_gen_cfg in models_to_try:
         clean_key = GEMINI_API_KEY.strip()
+        # Seguridad: la clave API NUNCA se pasa en la URL para evitar registros en servidores intermedios
         api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent"
-        if not clean_key.startswith("AQ."):
-            api_url += f"?key={clean_key}"
         
         gen_cfg = {"temperature": 0.3}
         gen_cfg.update(extra_gen_cfg)
@@ -323,7 +338,7 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
         )
 
         try:
-            with urllib.request.urlopen(req, timeout=18) as resp:
+            with urllib.request.urlopen(req, timeout=18, context=ssl_ctx) as resp:
                 resp_json = json.loads(resp.read().decode())
                 candidate = resp_json.get("candidates", [{}])[0]
                 parts = candidate.get("content", {}).get("parts", [])
@@ -333,25 +348,36 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
                     break
         except Exception as err:
             last_err = err
-            print(f"[Assistant] Error con {m_name}: {err}. Probando siguiente modelo...", flush=True)
+            # Loguear sin imprimir la clave
+            print(f"[Assistant] Error con {m_name}: {err.__class__.__name__}. Probando siguiente modelo...", flush=True)
 
     if not resp_text:
-        return f"⚠️ Ocurrió un error al procesar tu mensaje: <code>{str(last_err)}</code>"
+        return "⚠️ Ocurrió un error al procesar tu mensaje con el servicio de IA. Inténtalo de nuevo en unos instantes."
 
-    # Detectar y procesar posibles acciones automáticas (GUARDAR_NOTA, GUARDAR_PRACTICA, GUARDAR_CORREO, COMPLETAR_PRACTICA)
-    action_note = ""
+    # Seguridad: las acciones generadas por la IA NO son autorizaciones directas.
+    # Se genera una propuesta pendiente en dos fases que requiere confirmación explícita fuera de la IA.
+    proposal_note = ""
     action_pattern = r'\[ACCION:(GUARDAR_NOTA|GUARDAR_PRACTICA|GUARDAR_CORREO|COMPLETAR_PRACTICA):(\{.*?\})\]'
     match = re.search(action_pattern, resp_text, re.DOTALL)
     if match:
         act_type = match.group(1)
         try:
             act_args = json.loads(match.group(2))
-            action_note = execute_action(act_type, act_args)
+            ok_prop, msg_prop, prop = proposals.create_proposal(
+                action_type=act_type,
+                raw_payload=act_args,
+                user_id=str(user_id),
+                chat_id=str(chat_id)
+            )
+            if ok_prop and prop:
+                proposal_note = "\n\n" + proposals.format_proposal_preview(prop)
+            else:
+                proposal_note = f"\n\n⚠️ <i>No se pudo generar la propuesta de cambio: {msg_prop}</i>"
         except Exception as e:
             print(f"[Assistant] Error al parsear JSON de acción: {e}")
         resp_text = re.sub(action_pattern, '', resp_text).strip()
 
-    final_reply = resp_text + action_note
+    final_reply = resp_text + proposal_note
 
     chat_history.append({"role": "model", "parts": [{"text": resp_text}]})
     histories[cid_str] = chat_history

@@ -136,15 +136,19 @@ def parse_heuristic_text(text: str) -> dict:
         }
 
     if is_ceproc:
+        is_abogacia = "delgado" in sender.lower() or "abogad" in t.lower()
+        sub_default = "Abogacía · Responsabilidad profesional" if is_abogacia else "Procura · Actuación procesal"
+        subref_default = "Abogacía|Técnicas instrumentales|3" if is_abogacia else "Procura|Técnicas instrumentales|2"
+        meta_default = "Colegio de Abogados (ICACOR) · secretariatecnico@icacor.org" if is_abogacia else "Plataforma CEPROC (MUAP)"
         return {
             "type": "ceproc_task",
-            "title": title or "Nueva práctica publicada en CEPROC",
+            "title": title or ("Nueva práctica de Abogacía (ICACOR)" if is_abogacia else "Nueva práctica publicada en CEPROC"),
             "date": now_str,
             "sender_or_teacher": sender,
-            "subject": "Procura · Actuación procesal",
-            "subject_ref": "Procura|Técnicas instrumentales|2",
-            "meta": "Plataforma CEPROC (MUAP)",
-            "deadline": "Consultar en plataforma",
+            "subject": sub_default,
+            "subject_ref": subref_default,
+            "meta": meta_default,
+            "deadline": "Consultar instrucciones",
             "summary": title,
             "body": t
         }

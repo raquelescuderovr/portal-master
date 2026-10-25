@@ -3,11 +3,14 @@ import os
 import ssl
 from pathlib import Path
 
-# Configurar contexto HTTPS seguro para evitar errores de certificados en entornos locales macOS
-try:
-    ssl._create_default_https_context = ssl._create_unverified_context
-except Exception:
-    pass
+# Contexto SSL seguro que exige validación de certificados de servidor (sin eludir verificación)
+def get_ssl_context() -> ssl.SSLContext:
+    """Devuelve un contexto SSL con verificación estricta de certificados."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +31,10 @@ if ENV_PATH.exists():
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
-# Variables obligatorias y opcionales
+# Variables de entorno estrictas (sin fallbacks inseguros a permisos totales)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip().strip("'\"")
-TELEGRAM_ALLOWED_USER = (os.environ.get("TELEGRAM_ALLOWED_USER", "").strip().strip("'\"")) or "317669290"  # Chat ID de Raquel
+TELEGRAM_ALLOWED_USER = os.environ.get("TELEGRAM_ALLOWED_USER", "").strip().strip("'\"")
+TELEGRAM_ALLOWED_CHAT = os.environ.get("TELEGRAM_ALLOWED_CHAT", "").strip().strip("'\"") or TELEGRAM_ALLOWED_USER
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip().strip("'\"")  # Para commits en la nube
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "raquelescuderovr/portal-master").strip().strip("'\"")
 GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main").strip().strip("'\"")
