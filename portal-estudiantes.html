@@ -3637,6 +3637,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Dossier de calificaciones por profesor y asignatura */
 .teacher-grade-dossier{
+  grid-column: 1 / -1;
+  width: 100%;
   background:var(--paper);
   border:1.5px solid var(--line);
   border-left:5px solid var(--green);
@@ -4373,6 +4375,30 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 /* ESTILOS PERSONALIZADOS DEL PORTAL DEL ESTUDIANTE (NOTAS Y CHECKS LOCALSTORAGE) */
+.teacher-grade-dossier {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+.privacy-banner {
+  grid-column: 1 / -1;
+  width: 100%;
+  background: var(--green-pale);
+  border: 1px solid var(--green-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--green-dark);
+  font-weight: 500;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+.privacy-banner svg {
+  flex-shrink: 0;
+}
 .student-eval-bar {
   background: var(--paper-warm);
   border: 1.5px solid var(--line);
@@ -4380,20 +4406,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   padding: 14px 18px;
   margin: 12px 0 16px;
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: minmax(180px, 240px) 1fr;
   gap: 16px;
   align-items: start;
 }
 @media(max-width: 768px) {
   .student-eval-bar {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 }
 .student-eval-field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
+  min-width: 0;
 }
 .student-eval-field label {
   font-size: 11px;
@@ -4411,6 +4438,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   font-size: 13.5px;
   padding: 8px 12px;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .student-eval-field input:focus, .student-eval-field textarea:focus {
@@ -4439,14 +4468,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
+  box-sizing: border-box;
 }
 .student-test-input-wrap {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .student-test-input-wrap input {
-  width: 120px;
+  width: 130px;
+  max-width: 100%;
   font-weight: 700;
   color: var(--green-dark);
   text-align: center;
@@ -4455,11 +4487,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   border-radius: 6px;
   padding: 7px 10px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 .student-test-input-wrap input:focus {
   outline: none;
   border-color: var(--green-dark);
   box-shadow: 0 0 0 3px rgba(20, 42, 66, 0.2);
+}
+.tgd-blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+.tgd-block {
+  min-width: 0;
+  box-sizing: border-box;
 }
 .delivery-check-btn {
   display: inline-flex;
@@ -4499,23 +4541,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   justify-content: center;
   font-size: 12px;
   font-weight: 900;
-}
-.privacy-banner {
-  background: var(--green-pale);
-  border: 1px solid var(--green-border);
-  border-radius: 12px;
-  padding: 14px 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 13px;
-  color: var(--green-dark);
-  font-weight: 500;
-  line-height: 1.5;
-}
-.privacy-banner svg {
-  flex-shrink: 0;
 }
 
 /* Logo e icono distintivo del Portal del Estudiante (Oxford Navy y birrete) */
@@ -4882,7 +4907,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="ptb-grid" id="homePendingTasksGrid">
       </div>
     </div>
-    </div>
   </section>
 
   <!-- 2. NOTAS Y EVALUACIONES (En su pestaña propia) -->
@@ -4890,7 +4914,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Calificaciones, notas por correo y tests evaluados</h2>
-        <p>Notas oficiales por correo de profesores (10/10 con Javier Sánchez y 8.8 con Ana Vázquez) y tests online de clase (20/20 con Carolina Moreno y 9/10 con Sandra Mosteiro).</p>
+        <p>Cuaderno personal de evaluación continua: anota tus calificaciones de tests, notas de profesores y observaciones de cada módulo.</p>
       </div>
       <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
@@ -4906,11 +4930,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--green-dark);margin-bottom:4px">1. ✉️ Nota conjunta del profesor (por correo)</div>
-          <p style="color:var(--ink-soft);margin:0">Es la calificación global que envía el docente al finalizar su bloque (ej. <strong>Javier Sánchez 10/10</strong> y <strong>Ana Vázquez 8.8/10</strong>). Pondera la nota conjunta de tests (40 %) y la nota conjunta de trabajos/escritos prácticos (60 %).</p>
+          <p style="color:var(--ink-soft);margin:0">Es la calificación global que envía el docente al finalizar su bloque (ponderación oficial: 40% examen o test + 60% trabajos prácticos y escritos). Pondera la nota conjunta de tests (40 %) y la nota conjunta de trabajos/escritos prácticos (60 %).</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--blue);margin-bottom:4px">2. 📝 Tests online de clase (cuestionarios tipo test)</div>
-          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct y <strong>9/10 con Sandra Mosteiro</strong> el 20 oct). Tienen su propia nota independiente y no son casos prácticos.</p>
+          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (cuestionarios tipo test realizados en clase o mediante la plataforma CPROC). Tienen su propia nota independiente y no son casos prácticos.</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
@@ -4928,19 +4952,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <span class="stat-val-pill">6 docentes</span>
       </button>
-      <button class="stat-card" data-grade-filter="mail" title="Ver solo calificaciones globales remitidas por correo">
+      <button class="stat-card" data-grade-filter="mail" title="Ver calificaciones conjuntas de docentes">
         <div>
-          <span class="stat-kicker">Notas conjuntas por correo</span>
-          <span class="stat-title">Javier Sánchez (10) · Carlos Sánchez (10) · Ana Vázquez (8.8)</span>
+          <span class="stat-kicker">Notas conjuntas de profesores</span>
+          <span class="stat-title">Ponderación oficial por docente (test + casos prácticos)</span>
         </div>
-        <span class="stat-val-pill">3 oficiales</span>
+        <span class="stat-val-pill">Por rellenar</span>
       </button>
-      <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
+      <button class="stat-card highlight-test" data-grade-filter="test" title="Ver cuestionarios tipo test">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">2 realizados (16 oct: 20/20 · 20 oct: 9/10)</span>
+          <span class="stat-title">Cuestionarios tipo test del curso</span>
         </div>
-        <span class="stat-val-pill">10 y 9 ★</span>
+        <span class="stat-val-pill">40% de nota</span>
       </button>
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
@@ -5104,11 +5128,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (7)</button>
-      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (2)</button>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (6)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (1)</button>
       <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (5 en 3 asignaturas)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (5)</button>
-      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / ICACOR (2)</button>
+      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / ICACOR (1)</button>
       <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando el listado completo de entregas del máster.</span>
     </div>
     <div class="deliveries">
@@ -5227,9 +5251,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <div class="hub-card-text">
-          <span class="hub-card-kicker">Evaluación oficial</span>
-          <strong class="hub-card-title">Notas de profesores y tests</strong>
-          <span class="hub-card-meta">2 notas de docentes (10 y 8.8) + Tests</span>
+          <span class="hub-card-kicker">Evaluación continua</span>
+          <strong class="hub-card-title">Cuaderno de Notas</strong>
+          <span class="hub-card-meta">Anota tus calificaciones de tests y docentes</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -5281,8 +5305,6 @@ const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-tr
 const testmozSandraReviewUrl='https://testmozusercontent.com/q/15707582/student/review';
 const testHtmlSandraLocalUrl='historial-tests/originales/2026-10-20-testmoz-15707582.html';
 const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacion-sandra-mosteiro.md';
-const casoDelgadoParteAFotoUrl='materiales/enunciado-delgado-parte-a.svg';
-const casoDelgadoParteBFotoUrl='materiales/enunciado-delgado-parte-b.svg';
 const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
@@ -5293,8 +5315,8 @@ const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const cprocTareasUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 
 const events={ '2026-10-01':[
-   {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'},
-   {start:'18:45',end:'20:45',name:'Iniciación a la actividad profesional',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Pruebas (10/10)'}
+   {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+   {start:'18:45',end:'20:45',name:'Iniciación a la actividad profesional',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
   ],
  '2026-10-02':[
    {start:'16:30',end:'18:30',name:'Oratoria Forense',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
@@ -5307,11 +5329,11 @@ const events={ '2026-10-01':[
    {start:'16:30',end:'20:45',name:'Organización de despacho',subject:'Técnicas instrumentales · Máster',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-10-08':[
-   {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'mail_deontologia_ana_vazquez',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Nota (8.8/10)'},
+   {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
    {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-10-09':[
-   {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',mailKey:'mail_deontologia_ana_vazquez',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Nota (8.8/10)'},
+   {start:'16:30',end:'18:30',name:'Deontología / Procura',teacher:'Ana Vázquez Corte',subject:'Deontología y responsabilidad · Procura',subjectRef:'Procura|Deontología y responsabilidad|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
    {start:'18:45',end:'20:45',name:'Deontología profesional',subject:'Técnicas instrumentales / Deontología · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-10-13':[
@@ -5323,19 +5345,19 @@ const events={ '2026-10-01':[
    {start:'18:45',end:'20:45',name:'Proceso digital en la Procura (LexNET y firma electrónica)',teacher:'Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
   ],
  '2026-10-15':[
-   {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: simulación y recursos)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+   {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: simulación y recursos)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
    {start:'18:45',end:'20:45',name:'TIC, justicia digital y subsanación de defectos',teacher:'Carolina Moreno Vázquez y Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
   ],
  '2026-10-16':[
-   {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: conclusiones y estrados)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',mailKey:'grades',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-   {start:'18:45',end:'20:45',name:'Taller de subsanaciones procesales y auto concursal UP + Test',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',detailKey:'test_16oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (20/20)'}
+   {start:'16:30',end:'18:30',name:'Oratoria Forense (Taller práctico: conclusiones y estrados)',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+   {start:'18:45',end:'20:45',name:'Taller de subsanaciones procesales y auto concursal UP + Test',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'}
   ],
  '2026-10-19':[
    {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 1 de 2 · Marco general y notificaciones)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'materials',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
    {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal del abogado (Sesión 1 de 3)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
  '2026-10-20':[
-   {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'test_20oct_sandra',detailKey:'test_20oct_sandra',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (9/10)'},
+   {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'test_20oct_sandra',detailKey:'test_20oct_sandra',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
    {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2 de 3)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
  '2026-10-21':[
@@ -5375,7 +5397,7 @@ const events={ '2026-10-01':[
  '2026-10-29':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Práctica Delgado Parte A · Insostenibilidad y AJG',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado_parte_a',place:'secretariatecnico@icacor.org / Sede colegial',kind:'Entrega práctica (Límite)',isWarning:true}
+   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Caso práctico Delgado (Parte A y Parte B) · ICACOR',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega práctica (Límite)',isWarning:true}
   ],
  '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
@@ -5545,34 +5567,69 @@ const events={ '2026-10-01':[
 };
 
 const gradeRecords=[
- 
+ {
+  id:'grade_16oct_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 16 oct 2026 (19:17)',
+  title:'Deontología y técnicas transversales · Proceso digital y TIC',
+  score:'Cuestionario oficial',
+  scoreLabel:'Preguntas y soluciones',
+  breakdown:[
+   {label:'Respuestas correctas',val:'20 de 20 (100 %)'},
+   {label:'Calificación',val:'10 / 10 puntos'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Carolina Moreno Vázquez',
+  coTeacher:'Carlos M. Sánchez Muiño',
+  subjectRef:'Procura|Técnicas instrumentales|2',
+  mailKey:'test_16oct',
+  description:'Test oficial «CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el viernes 16 de octubre de 2026 a las 19:17. Superado con 20/20 aciertos (10 sobre 10).',
+  links:[
+   {label:'✓ Ver las 20 preguntas y opciones ↗',detailKey:'test_16oct',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozReviewUrl,cls:'blue'},
+   {label:'Plataforma CPROC ↗',url:cprocUrl}
+  ]
+ },
+ {
+  id:'grade_20oct_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 20 oct 2026 (17:44)',
+  title:'Actos de comunicación judicial · Sandra Mosteiro Costa',
+  score:'Cuestionario oficial',
+  scoreLabel:'Preguntas y soluciones',
+  breakdown:[
+   {label:'Respuestas correctas',val:'9 de 10 (90 %)'},
+   {label:'Calificación',val:'9 / 10 · Sobresaliente'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Sandra Mosteiro Costa',
+  subjectRef:'Procura|Técnicas instrumentales|3',
+  mailKey:'test_20oct_sandra',
+  description:'Test oficial «SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el martes 20 de octubre de 2026 a las 17:44. Superado con 9/10 aciertos (9 sobre 10 · Sobresaliente). Cuestiones relativas a actos de comunicación judicial, LexNET, Reglamento (UE) 2020/1784 y auxilio judicial.',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas ↗',detailKey:'test_20oct_sandra',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlSandraLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdSandraLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozSandraReviewUrl,cls:'blue'},
+   {label:'Ficha de Sandra Mosteiro ↗',teacher:'Sandra Mosteiro Costa'}
+  ]
+ }
 ];
 
 const deliveries=[
- {date:new Date(2026,9,25),title:'Parte de siniestro de Responsabilidad Civil Profesional',teacher:'José Luis Delgado Domínguez',subject:'Responsabilidad civil y penal, aseguramiento y turno de oficio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: Completado)',submitted:false,detailKey:'entrega_parte_de_siniestro_de_res',details:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.'},
  {
   date:new Date(2026,9,29),
-  title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',
+  title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',
   teacher:'José Luis Delgado Domínguez',
   subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
   subjectName:'Responsabilidad profesional, aseguramiento y turno de oficio (Abogacía)',
   status:'⏳ Pendiente (Plazo: 29 oct 2026 · 7 días)',
   submitted:false,
-  detailKey:'entrega_delgado_parte_a',
-  details:'Práctica de la clase del 19 oct: 1) Escrito de insostenibilidad de la pretensión como demandante. 2) Dictamen sobre arts. 5, 8, 20 y 21 LAJG (SERGAS y casación ante el TS manteniendo letrados privados). Plazo: 10 días naturales (hasta el 29 de octubre). Entrega: oficinas colegiales o secretariatecnico@icacor.org.'
- },
- {
-  date:new Date(2026,9,30),
-  title:'Parte de siniestro y Turno de Oficio (Parte B)',
-  teacher:'José Luis Delgado Domínguez',
-  subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  subjectName:'Responsabilidad profesional, aseguramiento y turno de oficio (Abogacía)',
-  status:'⏳ Pendiente (Plazo: 30 oct 2026 · 8 días)',
-  submitted:false,
-  detailKey:'entrega_delgado_parte_b',
-  details:'Práctica de la 2.ª sesión: 1) Parte de siniestro sobre responsabilidad profesional de la abogacía. 2) Cuestiones sobre requisitos de acceso al Turno de Oficio e incorporación colegial. Plazo: 10 días naturales tras la clase. Entrega: oficinas colegiales o secretariatecnico@icacor.org.'
+  detailKey:'entrega_delgado',
+  details:'Práctica oficial del módulo de D. José Luis Delgado Domínguez, estructurada en dos partes evaluables:\n• Parte A (Insostenibilidad y Asistencia Jurídica Gratuita): 1) Escrito de insostenibilidad de la pretensión desde la posición de la actora (arts. 32-35 LAJG). 2) Dictamen jurídico sobre aplicación de arts. 5, 8, 20 y 21 LAJG (reclamación SERGAS y recurso de casación ante el Tribunal Supremo con letrados particulares).\n• Parte B (Responsabilidad Civil Profesional y Turno de Oficio): 1) Cumplimentación de parte de siniestro de responsabilidad civil profesional del abogado ante la aseguradora (pérdida de oportunidad/plazo procesal). 2) Cuestiones sobre requisitos de acceso al Turno de Oficio e implicaciones de la demarcación territorial colegial.\n• Vía de entrega: Envío por correo a secretariatecnico@icacor.org o presentación física en la sede del ICACOR. Plazo oficial: hasta el 29 de octubre de 2026.'
  },
  {
   date:new Date(2026,9,22),
@@ -5662,23 +5719,17 @@ const messages=[
 ];
 
 const mailSummaries={
- mail_carolina_carlos_23oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente). Calificaciones otorgadas por Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño correspondientes a las sesiones del 14, 15 y 16 de octubre de Deontología y técnicas transversales (Proceso digital y TIC).',
  materials_susana_diaz_23oct:'Carta de presentación oficial y cuerpo normativo de Procura (Estatuto General RD 1281/2002 y Estatutos del ICP A Coruña con reformas de 2013, 2016 y 2021) para preparar las clases del 29 y 30 de octubre con D.ª María Susana Díaz Gallego.',
  materials_bevel_23oct:'Materiales de cierre de las 4 jornadas de comunicación de la Escuela de Práctica Jurídica impartidas por el equipo de Bével (Xaquín Domínguez, Thais Palla y Alejandra Sánchez): tips de oratoria en vídeo y presentación del termómetro asertivo.',
  mail_bolsas_santander_23oct:'Información de la Sección de Bolsas de la UDC: publicación en el TEO (21/10/2026) del listado provisional de admitidos, denegados y lista de espera de las Bolsas Santander Estudios 2026/27. Plazo de reclamaciones hasta el 28 de octubre a las 23:59 h.',
  mail_moure_ampliacion_22oct:'Ampliación de documentación para la clase de Gestión de la próxima semana con María Luisa Moure Sagasti. Se adjunta plantilla de HOJA ENCARGO AMPLIADA.docx (31 KB).',
- mail_carlos_sanchez_2oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente). Calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño correspondientes a la sesión del 2 de octubre de Técnicas instrumentales (Procura).',
  materials_sandra_22oct:'Remite la presentación en PowerPoint, el test y las soluciones al mismo correspondientes al módulo de Actos de comunicación judicial impartido por Sandra Mosteiro Costa.',
  materials_moure_22oct:'Remite la documentación de estudio para la clase de Gestión del despacho profesional de la próxima semana con María Luisa Moure Sagasti (17 documentos adjuntos).',
  materials_carnota_21oct:'Carta de presentación y notas sobre materia registral para preparar la sesión del 28 de octubre con María Pilar Carnota García.',
  presentation_goimil_21oct:'Carta de presentación oficial de la docente D.ª María Rita Goimil Martínez, Procuradora del MUAP.',
- test_20oct_sandra:'NOTA DE TEST: 9 / 10 (90 % · Sobresaliente). Test oficial en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE») realizado el 20 de octubre a las 17:44 h. Se conserva la copia original HTML y el cuestionario íntegro en Markdown.',
- mail_deontologia_ana_vazquez:'NOTA OFICIAL: 8.8 / 10 (Test 40%: 3.8 + Trabajos 60%: 5.0). Calificaciones otorgadas por Dña. Ana Vázquez Corte correspondientes a las sesiones del 8 y 9 de octubre en Deontología y técnicas transversales.',
  dataforum_instrucciones:'El Máster remite indicación de D. Javier Hernández (Subdir. Gral. de Justicia Digital): ponencias en PALEXCO (Auditorium en Planta 0 y Ágora / Auditorio Arao en Planta 2) con libre acceso a todas las sesiones para el alumnado del Máster (2 adjuntos, 11 MB).',
- procura_resultados:'Secretaría de Procura comunica los resultados y seguimiento de las pruebas de evaluación correspondientes al módulo.',
  dataforum_viernes:'Administración del Máster informa sobre justificante oficial de asistencia para la jornada del viernes 23 en DATAfórum (compatible con cita médica a las 09:30).',
  udc_avisos:'Comunicaciones de Decanato y UDC: difusión DATAfórum, II Feira de Emprego e Emprendemento (22 oct), charla decanal y pruebas de idiomas.',
- grades:'NOTA OFICIAL: 10 / 10 (4 puntos en test + 6 puntos en trabajos/escritos). Comunica las calificaciones de las pruebas del 1 de octubre de Técnicas instrumentales (Procura).',
  assignment:'Instrucciones y 3 documentos base (Código Deontológico, Estatuto General y Derechos y deberes). Práctica ya completada, subida a Google Drive y enviada en CPROC.',
  materials:'Remite 4 documentos de Sandra Mosteiro Costa: Carta de presentación, Presentación de clase sobre actos de comunicación, Guía legislativa y Jurisprudencia sobre plazos.',
  dataforum:'El Decanato suspende las clases en la Facultad del 21 al 23 de octubre por DATAfórum Justicia 2026 (PALEXCO) e indica inscribirse para justificar asistencia.',
@@ -5686,32 +5737,6 @@ const mailSummaries={
 };
 
 const details={
- entrega_parte_de_siniestro_de_res:{
-  isDelivery:true,
-  kicker:'Práctica CEPROC · Responsabilidad civil y penal, aseguramiento y turno de oficio',
-  title:'Parte de siniestro de Responsabilidad Civil Profesional',
-  date:'Publicada: 25 oct 2026 · Plazo: Completado',
-  teacher:'José Luis Delgado Domínguez',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Elaboración de parte de declaración de siniestro de RCP para abogado (supuesto ficticio de pérdida de plazo en apelación), incluyendo datos del asegurado, descripción de hechos, fundamentos jurídicos sobre pérdida de oportunidad (art. 1101 CC), documentación adjunta y solicitud formal de cobertura y defensa a la aseguradora.',
-  source:'Plataforma CEPROC (MUAP)',
-  attachments:[
-   {name:'Abrir plataforma CPROC (MUAP)',url:cprocUrl,kind:'Plataforma CPROC'}
-  ]
- },
- mail_carolina_carlos_23oct:{
-  kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
-  title:'Resultados de las pruebas del 14, 15 y 16/10/2026 · Carolina Moreno y Carlos Sánchez (Nota: 10 / 10)',
-  date:'Correo recibido: viernes, 23 de octubre de 2026 (13:21) · Clases celebradas: 14, 15 y 16/10/2026',
-  teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Comunicación oficial remitida por el Departamento de Secretaría del Ilustre Colegio de Procuradores de A Coruña (accesoabogaciaprocura@procuradores-coruna.com) trasladando las calificaciones otorgadas por Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño en la materia «DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» (El proceso digital, supuestos prácticos, gestión de las TIC por el procurador en la Admón. de Justicia, uso de las TIC en las administraciones públicas, justicia digital y herramientas tecnológicas):\n\n• I. TEST (40 %): 4 puntos (sobre 4).\n• II. TRABAJOS ESCRITOS (60 %): 6 puntos (sobre 6).\n• NOTA FINAL: 10 / 10 (Sobresaliente).\n\nObservación de los docentes: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño».',
-  source:'Correo de accesoabogaciaprocura@procuradores-coruna.com · «Resultados de las pruebas del 14, 15 y 16/10/2026 -Técnicas Instrumentales - Docente Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño» · 23 oct 2026, 13:21 h',
-  attachments:[
-   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
-   {name:'Ver test en el portal (20/20 aciertos)',detailKey:'test_16oct',kind:'Test Testmoz'}
-  ]
- },
  materials_susana_diaz_23oct:{
   kicker:'Documentación docente · Procura · Procesos civiles declarativos',
   title:'Carta de presentación y Estatutos colegiales · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',
@@ -5759,18 +5784,6 @@ const details={
   source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Ampliación de documentación sobre la clase de Gestión de la próxima semana» · 22 oct 2026, 16:56 h',
   attachments:[
    {name:'Ver adjunto en Outlook',url:outlookUrl,kind:'Correo Outlook'}
-  ]
- },
- mail_carlos_sanchez_2oct:{
-  kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
-  title:'Resultados de las pruebas del 2/10/2026 · Carlos Miguel Sánchez Muiño (Nota: 10 / 10)',
-  date:'Correo recibido: jueves, 22 de octubre de 2026 (13:24) · Clase celebrada: 02/10/2026',
-  teacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|1',
-  body:'Comunicación oficial remitida por el Departamento de Secretaría del Ilustre Colegio de Procuradores de A Coruña (accesoabogaciaprocura@procuradores-coruna.com) trasladando las calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño en la materia «TÉCNICAS INSTRUMENTALES» (Formas de ejercicio de la profesión, organización del despacho, marketing del despacho, técnicas de comunicación de Procura y previsión social de Procura):\n\n• I. TEST (40 %): 4 puntos (sobre 4).\n• II. TRABAJOS ESCRITOS (60 %): 6 puntos (sobre 6).\n• NOTA FINAL: 10 / 10 (Sobresaliente).\n\nObservación del docente: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: Carlos Miguel Sánchez Muiño».',
-  source:'Correo de accesoabogaciaprocura@procuradores-coruna.com · «Resultados de las pruebas del 2/10/2026 -Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño» · 22 oct 2026, 13:24 h',
-  attachments:[
-   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
  materials_sandra_22oct:{
@@ -5822,135 +5835,6 @@ const details={
    {name:'Ver correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
- test_20oct_sandra:{
-  kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Actos de comunicación judicial',
-  title:'Test online · Actos de comunicación judicial (Sandra Mosteiro Costa)',
-  date:'Realizado: martes, 20 de octubre de 2026 · 17:44 (Grupo de tarde) · Calificación: 9 / 10 (9/10 aciertos)',
-  teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Procura|Técnicas instrumentales|3',
-  body:'Prueba oficial realizada en Testmoz («SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida: 9 de 10 respuestas correctas (90 % · 9 sobre 10 · Sobresaliente). Cuestiones relativas a actos de comunicación judicial, LexNET, Reglamento (UE) 2020/1784 y estatuto del procurador. Debajo tienes las 10 preguntas íntegras con las respuestas seleccionadas y la solución oficial.',
-  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15707582/student/review) · 20 oct 2026',
-  attachments:[
-   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlSandraLocalUrl,kind:'HTML en portal'},
-   {name:'Abrir documento Markdown completo (.md)',url:testMdSandraLocalUrl,kind:'Markdown en portal'},
-   {name:'Abrir revisión online en Testmoz',url:testmozSandraReviewUrl,kind:'Web Testmoz'},
-   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC'},
-   {name:'Ley de Enjuiciamiento Civil (arts. 149 a 168 LEC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial'},
-   {name:'Reglamento (UE) 2020/1784 (Notificaciones UE · BOE/DOUE)',url:'https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX%3A32020R1784',kind:'DOUE oficial'}
-  ],
-  questions:[
-   {
-    q:'1. Stella presenta una demanda civil sin abogado ni procurador. ¿Cómo se relaciona con la Administración de Justicia?',
-    opts:[
-     'Solo puede comunicarse y recibir notificaciones por canales electrónicos.',
-     'Solo puede comunicarse y recibir notificaciones por canales no electrónicos.',
-     'Puede elegir en todo momento si se comunica y recibe notificaciones por canales electrónicos o no.',
-     'No puede relacionarse directamente con la Administración de Justicia.'
-    ],
-    correct:2,
-    userAnswer:2
-   },
-   {
-    q:'2. En todo escrito que inicie un procedimiento, si el solicitante no se manifiesta sobre si quiere que los actos de comunicación los haga su procurador, ¿qué hace el órgano judicial?',
-    opts:[
-     'El LAJ da curso a los autos y los actos los realizan funcionarios del Cuerpo de Auxilio Judicial.',
-     'El juez da curso a los autos y los actos los realizan funcionarios del Cuerpo de Auxilio Judicial.',
-     'El LAJ da curso a los autos y los actos los realizan funcionarios del Cuerpo de Gestión Procesal y Administrativa.',
-     'El juez da curso a los autos y los actos los realizan funcionarios del Cuerpo de Gestión Procesal y Administrativa.'
-    ],
-    correct:0,
-    userAnswer:0
-   },
-   {
-    q:'3. Marta, procuradora, presenta por LexNET un escrito con documentos. ¿Qué acredita el resguardo electrónico que devuelve el sistema?',
-    opts:[
-     'El sistema no devuelve ningún resguardo.',
-     'Acredita la remisión y puesta a disposición, pero no la recepción por el destinatario ni los demás datos.',
-     'Acredita remisión, recepción, documentos e identificación de remitente y destinatario, pero no el procedimiento ni la fecha y hora.',
-     'Acredita remisión y puesta a disposición, recepción, descripción de documentos, identificación de remitente y destinatario, tipo de procedimiento, número y año, y fecha y hora de realización.'
-    ],
-    correct:3,
-    userAnswer:3
-   },
-   {
-    q:'4. Maite, procuradora, notifica una resolución a Fernando, que quiere que recoja sus manifestaciones contrarias. ¿Puede hacerlo?',
-    opts:[
-     'Sí, los procuradores están obligados a recoger las manifestaciones de los notificados.',
-     'Sí, porque los procuradores no figuran en el art. 152 LEC como ejecutores de actos de comunicación.',
-     'No, las manifestaciones deben hacerse siempre electrónicamente por la sede judicial electrónica.',
-     'No, en las notificaciones, citaciones y emplazamientos no se admite ni consigna respuesta del interesado, salvo que se hubiera mandado.'
-    ],
-    correct:3,
-    userAnswer:3
-   },
-   {
-    q:'5. ¿Qué norma debe usar un Juzgado para emplazar en un procedimiento civil a un demandado que reside en Praga?',
-    opts:[
-     'El Convenio de La Haya de 15 de noviembre de 1965.',
-     'El Reglamento (UE) 2020/1784, relativo a la notificación y traslado de documentos judiciales y extrajudiciales.',
-     'La Convención Interamericana sobre Exhortos o Cartas Rogatorias de 1975.',
-     'La Ley 29/2015, de cooperación jurídica internacional en materia civil.'
-    ],
-    correct:1,
-    userAnswer:1
-   },
-   {
-    q:'6. ¿Dónde se realizan los actos de comunicación con los procuradores?',
-    opts:[
-     'En la sede del tribunal o en el servicio común de recepción organizado por el Colegio de Procuradores.',
-     'Además, en la sede habilitada del Colegio de Abogados.',
-     'Además, en la sede de los Tribunales Superiores de Justicia.',
-     'Además, en las Gerencias Territoriales.'
-    ],
-    correct:0,
-    userAnswer:0
-   },
-   {
-    q:'7. Noa, procuradora, sufre un accidente con hospitalización (fuerza mayor). ¿Por cuánto tiempo máximo pueden los Colegios suspender el reenvío del servicio de notificaciones?',
-    opts:[
-     'Tres días hábiles.',
-     'Cinco días hábiles.',
-     'Diez días hábiles.',
-     'Veinte días hábiles.'
-    ],
-    correct:0,
-    userAnswer:0
-   },
-   {
-    q:'8. Fidel comunica por teléfono a su cliente que cesa en la representación. ¿Basta con eso?',
-    opts:[
-     'No: debe acreditar en autos la renuncia o cesación y seguir hasta que el poderdante designe otro procurador en diez días.',
-     'No: debe seguir hasta que el poderdante designe otro procurador en veinte días.',
-     'Sí: puede abandonar la representación a los tres días de la comunicación.',
-     'Sí: puede abandonar la representación a los cinco días de la comunicación.'
-    ],
-    correct:0,
-    userAnswer:0
-   },
-   {
-    q:'9. ¿Con qué antelación mínima debe avisarse de una parada técnica programada de LexNET?',
-    opts:[
-     'Diez días.',
-     'Veinte días.',
-     'Treinta días.',
-     'Un mes.'
-    ],
-    correct:1,
-    userAnswer:1
-   },
-   {
-    q:'10. El Tribunal de Instancia de Puebla de Sanabria emplaza a un demandado en Colonia. Cumplidos los trámites, ¿qué formulario del anexo I del Reglamento (UE) 2020/1784 expide el organismo receptor como certificado de cumplimiento?',
-    opts:[
-     'Formulario A.',
-     'Formulario D.',
-     'Formulario G.',
-     'Formulario K.'
-    ],
-    correct:3,
-    userAnswer:0
-   }
-  ]
- },
  entrega_caso_pr_ctico_de_actos_de:{
   isDelivery:true,
   kicker:'Caso práctico evaluable · Procura · Actos de comunicación judicial',
@@ -5973,34 +5857,6 @@ const details={
    {name:'PDF oficial del enunciado (CASO PRÁCTICO 2026 - SANDRA.pdf)',url:casoSandraPdfLocalUrl,kind:'PDF en portal'},
    {name:'Enunciado en Markdown (.md)',url:casoSandraMdLocalUrl,kind:'Markdown en portal'},
    {name:'Plataforma CPROC (Entrega de tareas)',url:cprocTareasUrl,kind:'Web CPROC ↗'}
-  ]
- },
- mail_deontologia_ana_vazquez:{
-  kicker:'Calificaciones oficiales por correo · Procura',
-  title:'Calificaciones de Deontología y técnicas transversales (Nota: 8.8 / 10)',
-  date:'Recibido: lunes, 19 oct 2026 · Remitido por la docente',
-  teacher:'Ana Vázquez Corte',
-  subjectRef:'Procura|Deontología y responsabilidad|0',
-  body:'Estimada Estudiante:\n\nComo continuación de la clase impartida el pasado día celebrada el pasado día 8 y 9/10/2026 en la titulación "Máster Universitario en Abogacía y Procura" (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña), me complace remitirle las calificaciones que otorgué a las actividades evaluables que realizó en su momento, esperando le puedan ser de utilidad y ayuda.\n\nMATERIA: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\nCONTENIDOS: Deontología de la Procura, Derechos y deberes de la Procura, Código Deontológico de la Procura, Supuestos prácticos, Código Deontológico de la Procura, Protección de datos, blanqueo de capitales y secreto profesional, Responsabilidad civil, Responsabilidad penal y Otros supuestos de responsabilidad.\n\n• I. TEST (40%): 3.8 / 4 puntos\n• II. TRABAJO/S ESCRITO/S (60%): 5.0 / 6 puntos\n• NOTA FINAL OTORGADA POR LA DOCENTE: 8.8 / 10 (Notable alto)\n\nObservación: En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia.\n\nRecibe un cordial saludo\n\nFdo.: Ana Vázquez Corte',
-  source:'master.abogacia@icacor.org / secretaría de Procura · Dña. Ana Vázquez Corte',
-  attachments:[
-   {name:'Ver en pestaña de Notas (8.8 / 10)',detailKey:'grade_ana_vazquez',kind:'Calificaciones'},
-   {name:'Ficha de Dña. Ana Vázquez Corte',teacher:'Ana Vázquez Corte',kind:'Docente'},
-   {name:'Ver asignatura de Deontología',subjectRef:'Procura|Deontología y responsabilidad|0',kind:'Asignatura'},
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ]
- },
-grades:{
-  kicker:'Calificación por correo · Procura · Técnicas instrumentales',
-  title:'Resultados de las pruebas · Nota final: 10 / 10',
-  date:'Correo recibido: miércoles, 14 de octubre de 2026 · Pruebas del 1 de octubre de 2026',
-  teacher:'Javier Sánchez García',
-  subjectRef:'Procura|Técnicas instrumentales|0',
-  body:'El correo electrónico remitido por la Secretaría del Colegio de Procuradores (con referencia a Javier Sánchez García) comunica el resultado de las pruebas de evaluación realizadas el 1 de octubre de 2026 en la materia de Técnicas instrumentales (Procura). La tabla de calificaciones refleja la máxima puntuación en ambos apartados.',
-  gradeTable:{test:'4 / 4 puntos',trabajos:'6 / 6 puntos',final:'10 / 10 (Sobresaliente)'},
-  source:'Correo de Secretaría del Colegio de Procuradores / Javier Sánchez García · «Resultados de las pruebas · Técnicas instrumentales» · 14 oct 2026',
-  attachments:[
-   {name:'Tabla de resultados incluida en el correo (4 test + 6 escritos = 10)',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
  all_tests_summary:{
@@ -6111,18 +5967,6 @@ grades:{
    {name:'Confirmación por correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
- procura_resultados:{
-  kicker:'Calificaciones y seguimiento · Secretaría Colegio de Procuradores',
-  title:'Resultados y seguimiento de las pruebas · Secretaría Procura',
-  date:'Correo recibido: lunes, 19 de octubre de 2026 (13:22)',
-  teacher:'Javier Sánchez García',
-  subjectRef:'Procura|Técnicas instrumentales|0',
-  body:'Comunicación remitida por la Secretaría de Procura (accesoabogaciaprocura@procuradores...) relativa al seguimiento, registro y calificaciones de las pruebas de evaluación de la rama de Procura.',
-  source:'Correo de accesoabogaciaprocura@procuradores... · «Resultados de las pruebas de...» · 19 oct 2026, 13:22',
-  attachments:[
-   {name:'Detalle de la comunicación en Outlook',url:outlookUrl,kind:'Correo Outlook'}
-  ]
- },
  udc_avisos:{
   kicker:'Avisos Facultad de Derecho y Rectorado UDC',
   title:'Avisos Facultad de Derecho · Idiomas, Charla Decanato y II Feira de Emprego UDC',
@@ -6135,49 +5979,24 @@ grades:{
    {name:'Carteles y convocatorias en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
- entrega_delgado_parte_a:{
+ entrega_delgado:{
   isDelivery:true,
-  kicker:'Práctica pendiente · Abogacía · Turno de oficio y Asistencia Jurídica Gratuita',
-  title:'Casos prácticos: Insostenibilidad y AJG (Parte A)',
-  date:'Plazo: 10 días naturales desde la clase del 19 oct 2026 (límite: 29 de octubre de 2026)',
+  kicker:'Práctica pendiente · Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
+  title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',
+  date:'Plazo oficial: 10 días naturales (vence el 29 de octubre de 2026)',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Enunciado entregado en clase por D. José Luis Delgado Domínguez compuesto por dos ejercicios prácticos:\n1) Elaborar un escrito de insostenibilidad de la pretensión fundamentado desde la posición de la parte actora/demandante (arts. 32 a 35 de la LAJG).\n2) Dictamen jurídico sobre la aplicación de los artículos 5, 8, 20 y 21 de la Ley 1/1996 de Asistencia Jurídica Gratuita (LAJG):\n• Supuesto: Paciente operado en el SERGAS con secuelas que obtuvo condena de 100.000 € en el TSJ Galicia con gastos acreditados de 150.000 €; recurre en casación ante el Tribunal Supremo manteniendo la designación de profesionales privados y solicita el reintegro de honorarios e indemnización complementaria.\n• Vía de entrega: Presentación física en las oficinas colegiales del ICACOR o envío al correo electrónico oficial secretariatecnico@icacor.org (no se entrega por CEPROC, exclusivo de Procura).',
-  source:'Enunciado físico facilitado en mano en el Colegio de Abogados · 19 oct 2026',
-  photoUrl:casoDelgadoParteAFotoUrl,
-  photoRealUrl:casoDelgadoFotoRealUrl,
+  body:'Práctica oficial del módulo impartido por D. José Luis Delgado Domínguez en el Colegio de Abogados de A Coruña (ICACOR), estructurada en dos partes evaluables:\n\n• PARTE A — Insostenibilidad de la Pretensión y Asistencia Jurídica Gratuita:\n  1) Redacción de un escrito de insostenibilidad de la pretensión fundamentado desde la perspectiva procesal del letrado de oficio designado para la parte demandante (arts. 32 a 35 de la Ley 1/1996 de Asistencia Jurídica Gratuita).\n  2) Dictamen jurídico motivado sobre la aplicación de los artículos 5, 8, 20 y 21 de la LAJG en el supuesto de hecho del paciente intervenido en el SERGAS (indemnización de 100.000 € con gastos de 150.000 € que acude a casación ante el Tribunal Supremo con letrados privados y pide justicia gratuita).\n\n• PARTE B — Parte de Declaración de Siniestro de RCP y Régimen del Turno de Oficio:\n  1) Cumplimentación formal de un parte de declaración de siniestro de responsabilidad civil profesional del abogado ante la compañía aseguradora colegial (supuesto de negligencia profesional por pérdida de plazo / preclusión procesal).\n  2) Cuestiones prácticas relativas a los requisitos de acceso y ejercicio en el Turno de Oficio (experiencia previa de 3 años y cursos de formación homologados) e implicaciones territoriales de la colegiación.\n\n• Vía de entrega: Envío por correo electrónico a secretariatecnico@icacor.org o presentación física en la sede del ICACOR. (No se gestiona por CEPROC, que es exclusivo de Procura).',
+  source:'Enunciado físico facilitado en clase presencial (ICACOR)',
   mailKey:'schedule',
   attachments:[
    {name:'✉️ Ver correo oficial del módulo (Horarios y documentación)',detailKey:'schedule',kind:'Correo oficial'},
-   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20Parte%20A%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20de%20la%20pr%C3%A1ctica%20(Parte%20A%20-%20Insostenibilidad%20y%20AJG)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
-   {name:'📷 Ver foto / hoja del enunciado a tamaño completo',url:casoDelgadoParteAFotoUrl,kind:'Enunciado físico'},
+   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20del%20caso%20pr%C3%A1ctico%20(Parte%20A%20y%20Parte%20B)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
    {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
   ],
-  extra:'⏳ Plazo oficial de 10 días naturales a contar desde la sesión del 19/10/2026 (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
- },
- entrega_delgado_parte_b:{
-  isDelivery:true,
-  kicker:'Práctica pendiente · Abogacía · Responsabilidad profesional y Turno de Oficio',
-  title:'Parte de siniestro y Turno de Oficio (Parte B)',
-  date:'Plazo: 10 días naturales tras la segunda sesión lectiva (límite: 30 de octubre de 2026)',
-  teacher:'José Luis Delgado Domínguez',
-  subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Segunda parte de la práctica del módulo de D. José Luis Delgado Domínguez:\n1) Cumplimentación de un parte de siniestro de responsabilidad civil profesional del abogado ante la aseguradora colegial.\n2) Cuestiones prácticas y debate sobre los requisitos de acceso al Turno de Oficio (3 años de ejercicio previo y cursos) e implicaciones de la incorporación colegial según el ámbito territorial.\n• Vía de entrega: Oficinas colegiales del ICACOR o mediante correo electrónico a secretariatecnico@icacor.org (no se entrega por CEPROC, exclusivo de Procura).',
-  source:'Enunciado físico facilitado en mano en el Colegio de Abogados · 20 oct 2026',
-  photoUrl:casoDelgadoParteBFotoUrl,
-  photoRealUrl:casoDelgadoFotoRealUrl,
-  mailKey:'schedule',
-  attachments:[
-   {name:'✉️ Ver correo oficial del módulo (Horarios y documentación)',detailKey:'schedule',kind:'Correo oficial'},
-   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20Parte%20B%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20de%20la%20pr%C3%A1ctica%20(Parte%20B%20-%20Parte%20de%20Siniestro%20y%20Turno)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
-   {name:'📷 Ver foto / hoja del enunciado a tamaño completo',url:casoDelgadoParteBFotoUrl,kind:'Enunciado físico'},
-   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
-   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
-   {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
-  ],
-  extra:'⏳ Plazo de 10 días naturales a partir de la celebración de la segunda clase (vence el 30/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
+  extra:'⏳ Plazo oficial: 10 días naturales a contar desde la sesión presencial (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
  },
  entrega_apud_acta:{
   isDelivery:true,
@@ -6507,7 +6326,7 @@ const courses=[
     period:'8 y 9 oct 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-10-08',
     teachers:['Ana Vázquez Corte'],
-    grade:{score:'8.8 / 10 (Test 3.8 + Trabajos 5)',detail:'Calificación otorgada por Dña. Ana Vázquez Corte comunicada por correo el 19 oct: Test (40%): 3.8 + Trabajos escritos (60%): 5.0 = 8.8 / 10 (ponderable por coordinación MUAP)',detailKey:'mail_deontologia_ana_vazquez',actionLabel:'Ver nota oficial ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
      {name:'Caso práctico de Deontología (CPROC)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Deontología de la procura (8/10-9/10) (Doc Google en Drive)',detailKey:'assignment',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
@@ -6698,7 +6517,7 @@ const courses=[
     teachers:['José Luis Delgado Domínguez'],
     grade:{score:'En curso · 2 de 3 sesiones',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) programada para el lunes 26 oct (16:30–18:30 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
-     {name:'Práctica CPROC: Parte de siniestro de Responsabilidad Civil Profesional',detailKey:'entrega_parte_de_siniestro_de_res',url:cprocTareasUrl,label:'Ver práctica ↗'},
+     {name:'Caso práctico: Turno de Oficio y Responsabilidad Civil (Parte A y Parte B)',detailKey:'entrega_delgado',label:'Ver práctica ↗'},
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Normativa y CPROC ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
      {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE oficial ↗'}
@@ -7211,10 +7030,10 @@ const teacherDirectory=[
    {date:'2026-10-09',dayLabel:'Viernes 9 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Deontología y responsabilidad de la Procura (Régimen disciplinario)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[
-   {title:'Calificaciones oficiales de Deontología (19 oct · Nota: 8.8)',key:'mail_deontologia_ana_vazquez'},
+   
    {title:'Caso práctico de Deontología (enviado en CPROC)',key:'assignment'}
   ],
-  practices:[{title:'Caso práctico sobre deber de confidencialidad',status:'Calificación: 5.0 / 6 (Trabajos) ✓',key:'mail_deontologia_ana_vazquez'}],
+  practices:[{title:'Caso práctico sobre deber de confidencialidad',status:'Entrega en CPROC',key:'assignment'}],
   driveFiles:[{name:'Deontologia_Clase_Completa_Sesiones_1_y_2.pdf',url:driveSearchUrl('Deontologia_Clase_Completa'),label:'Documento oficial ↗'}],
   notes:[{title:'Código Deontológico de los Procuradores (Consejo General)',url:cprocUrl,urlLabel:'Ver normativa ↗'}]
  },
@@ -7353,12 +7172,10 @@ const teacherDirectory=[
   ],
   mails:[{title:'Documentación para las clases del 19 y 20 de octubre (16 oct)',key:'schedule'}],
   practices:[
-   {title:'Casos prácticos: Insostenibilidad y AJG (Parte A)',status:'⏳ Pendiente (Plazo: 29 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado_parte_a',url:'materiales/enunciado-delgado-parte-a.svg'},
-   {title:'Parte de siniestro y Turno de Oficio (Parte B)',status:'⏳ Pendiente (Plazo: 30 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado_parte_b',url:'materiales/enunciado-delgado-parte-b.svg'}
+   {title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',status:'⏳ Pendiente (Plazo: 29 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado'}
   ],
   driveFiles:[
-   {name:'Enunciado oficial del caso práctico (Parte A · SVG)',url:'materiales/enunciado-delgado-parte-a.svg',label:'Ver imagen ↗'},
-   {name:'Enunciado oficial del caso práctico (Parte B · SVG)',url:'materiales/enunciado-delgado-parte-b.svg',label:'Ver imagen ↗'},
+   {name:'Enunciado oficial del caso práctico (Markdown)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',label:'Ver guía ↗'},
    {name:'Documentación del módulo enlazada en el correo del 16 oct',url:outlookUrl,label:'Abrir correo ↗'}
   ],
   notes:[{title:'Ley 1/1996 de Asistencia Jurídica Gratuita (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',urlLabel:'BOE oficial ↗'}]
@@ -7744,20 +7561,7 @@ const courseMail={
  'Procura|Actuación procesal':['materials']
 };
 
-const teacherGradeMap={
- 'Carlos M. Sánchez Muiño':'10 / 10 ★',
- 'Javier C. Sánchez García':'10 / 10 ★',
- 'Javier Sánchez García':'10 / 10 ★',
- 'Carolina Moreno Vázquez':'10 / 10 ★',
- 'Alex Sánchez Barge':'10 / 10 (20/20)',
- 'Daniel Garrido Pazos':'10 / 10 ★',
- 'Sandra Mosteiro Costa':'9 / 10 (Testmoz) ★',
- 'Ana Vázquez Corte':'8.8 / 10 ★',
- 'Carmen Belo González':'Completado ✓',
- 'Vanessa Amarelle':'Completado ✓',
- 'Carlos Tomé':'Completado ✓',
- 'Alejandra Sánchez':'Completado ✓'
-};
+const teacherGradeMap = {};
 
 function getSubjectGradeBadgeHtml(sub, isPast=true){
  if(!sub || !isPast) return '';
@@ -8247,17 +8051,17 @@ function renderTeacherDossiers(){
     teacher: 'José Luis Delgado Domínguez',
     subject: 'Responsabilidad civil y penal, aseguramiento y turno de oficio · Abogacía',
     subjectRef: 'Abogacía|Técnicas instrumentales|3',
-    kicker: 'Módulo en desarrollo · 2 prácticas con plazo de entrega activo',
+    kicker: 'Módulo en desarrollo · Caso práctico (Parte A y Parte B) en plazo activo',
     testName: 'Evaluación continua presencial (ICACOR)',
     blocks: [
      {
       cls: 'highlight-practice',
       title: '📁 Prácticas con Plazo de Entrega Abierto',
-      score: '2 casos activos',
-      desc: 'Trabajos prácticos encargados en clase: Parte A (Insostenibilidad y AJG) y Parte B (Parte de siniestro y Turno de Oficio).',
+      score: '1 caso activo (Partes A y B)',
+      desc: 'Caso práctico oficial impartido en clase: Parte A (Insostenibilidad y Asistencia Jurídica Gratuita) y Parte B (Parte de siniestro de RCP y Turno de Oficio).',
       subitems: [
-       {label: 'Parte A (Insostenibilidad)', val: 'Plazo: 29 oct 2026'},
-       {label: 'Parte B (Parte siniestro)', val: 'Plazo: 30 oct 2026'}
+       {label: 'Plazo oficial', val: '29 oct 2026 (ICACOR)'},
+       {label: 'Estructura', val: 'Parte A y Parte B'}
       ]
      },
      {
@@ -8281,53 +8085,12 @@ function renderTeacherDossiers(){
      }
     ],
     actions: [
-     {label: '⏳ Ver entrega Parte A (plazo 29 oct) ↗', detailKey: 'entrega_delgado_parte_a', cls: 'solid-green'},
-     {label: '⏳ Ver entrega Parte B (plazo 30 oct) ↗', detailKey: 'entrega_delgado_parte_b'},
+     {label: '⏳ Ver caso práctico (Parte A y Parte B · plazo 29 oct) ↗', detailKey: 'entrega_delgado', cls: 'solid-green'},
      {label: 'Ver asignatura ↗', subjectRef: 'Abogacía|Técnicas instrumentales|3'},
      {label: 'Ficha de José Luis Delgado Domínguez ↗', teacher: 'José Luis Delgado Domínguez'}
     ]
    }
   ];
-
-  // Sincronización automática: si hay docentes evaluados en teacherGradeMap o teacherDirectory, integrarlos en el cuaderno del estudiante
-  if (typeof teacherGradeMap !== 'undefined' && teacherGradeMap) {
-    const knownTeachers = new Set(dossiers.map(d => (d.teacher || '').toLowerCase().trim()));
-    Object.keys(teacherGradeMap).forEach(tName => {
-      if (!tName) return;
-      const clean = tName.toLowerCase().trim();
-      const exists = Array.from(knownTeachers).some(kt => kt.includes(clean) || clean.includes(kt));
-      if (!exists) {
-        const idSafe = 'dossier-' + clean.replace(/[^a-z0-9]+/g, '-');
-        const tObj = (typeof teacherDirectory !== 'undefined' && Array.isArray(teacherDirectory))
-          ? teacherDirectory.find(t => (t.name || '').toLowerCase().trim().includes(clean) || clean.includes((t.name || '').toLowerCase().trim()))
-          : null;
-        dossiers.push({
-          id: idSafe,
-          teacher: tName,
-          subject: (tObj && tObj.subject) ? tObj.subject : 'Módulo con actividad evaluable',
-          subjectRef: (tObj && tObj.subjectRef) ? tObj.subjectRef : '',
-          kicker: 'Evaluación docente registrada · Cuaderno del estudiante',
-          testName: 'Test / Prueba de evaluación continua',
-          blocks: [
-            {
-              cls: 'highlight-mail',
-              title: '✉️ Calificación Docente',
-              score: 'Evaluación continua',
-              desc: 'Calificación oficial y ponderación de pruebas y trabajos.',
-              subitems: [
-                {label: 'Materia', val: (tObj && tObj.subject) ? tObj.subject : 'Evaluación oficial'},
-                {label: 'Docente', val: tName}
-              ]
-            }
-          ],
-          actions: [
-            {label: `Ficha de ${tName} ↗`, teacher: tName}
-          ]
-        });
-        knownTeachers.add(clean);
-      }
-    });
-  }
 
   const privacyNotice = `
     <div class="privacy-banner">
@@ -8521,11 +8284,11 @@ function renderGrades(filter){
   if(filterToApply === 'teachers'){
    sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (5 profesores con actividad evaluable).';
   } else if(filterToApply === 'mail'){
-   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Javier Sánchez 10/10 y Ana Vázquez 8.8/10).';
+   sumEl.textContent = 'Mostrando expedientes docentes para registrar la calificación oficial conjunta comunicada por correo.';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20 y 20 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando cuestionarios tipo test de evaluación continua.';
   } else if(filterToApply === 'practices'){
-   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables según los hayas marcado como entregados o pendientes.';
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
    sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
   }
@@ -8536,11 +8299,27 @@ function renderGrades(filter){
  } else if(filterToApply === 'practices'){
   grid.innerHTML = renderPracticesGradeView();
  } else if(filterToApply === 'mail'){
-  grid.innerHTML = gradeRecords.filter(g => g.type === 'mail').map(renderSingleGradeCard).join('');
+  const mailCards = gradeRecords.filter(g => g.type === 'mail').map(renderSingleGradeCard).join('');
+  grid.innerHTML = mailCards || `
+   <div style="grid-column:1 / -1;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center">
+    <div style="font-size:32px;margin-bottom:10px">✉️</div>
+    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0 0 6px">Calificaciones Oficiales por Correo</h3>
+    <p style="font-size:13.5px;color:var(--ink-soft);max-width:540px;margin:0 auto 16px;line-height:1.6">Las notas conjuntas oficiales que envíe el profesorado al finalizar cada bloque se reciben en tu bandeja de Outlook. Puedes anotar tus notas oficiales en el cuaderno por profesor.</p>
+    <button class="pill-btn solid-green" data-grade-filter="teachers" onclick="renderGrades('teachers')">Ir a mi Cuaderno por Profesor ➔</button>
+   </div>
+  `;
  } else if(filterToApply === 'test'){
-  grid.innerHTML = gradeRecords.filter(g => g.type === 'test').map(renderSingleGradeCard).join('');
+  const testCards = gradeRecords.filter(g => g.type === 'test').map(renderSingleGradeCard).join('');
+  grid.innerHTML = testCards || `
+   <div style="grid-column:1 / -1;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center">
+    <div style="font-size:32px;margin-bottom:10px">📝</div>
+    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0 0 6px">Tests de Evaluación Continua</h3>
+    <p style="font-size:13.5px;color:var(--ink-soft);max-width:540px;margin:0 auto 16px;line-height:1.6">No hay tests registrados para este filtro. Puedes revisar las notas de los tests en tu cuaderno de evaluación por profesor.</p>
+    <button class="pill-btn solid-green" data-grade-filter="teachers" onclick="renderGrades('teachers')">Ver Cuaderno de Notas ➔</button>
+   </div>
+  `;
  } else {
-  grid.innerHTML = gradeRecords.map(renderSingleGradeCard).join('');
+  grid.innerHTML = gradeRecords.map(renderSingleGradeCard).join('') || renderTeacherDossiers();
  }
 }
 
@@ -10925,7 +10704,7 @@ function renderDay(){
         📁 Explorar apuntes en Drive ↗
       </button>
       <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
-        ⭐ Ver notas y tests (10/10) →
+        ⭐ Ver cuaderno de notas y tests →
       </button>
       <button class="cozy-btn cozy-btn-blue" data-switch-view="asignaturas">
         📖 Ver asignaturas y bloques →
@@ -11316,16 +11095,17 @@ function renderDeliveries(filter = currentDeliveryFilter){
   const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
   return `
   <div class="delivery-row" id="delivery-row-${d.detailKey}">
+   <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div style="flex:1;min-width:0">
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-     <strong style="color:var(--ink);font-size:14.5px">${d.title}</strong>
+     <strong style="color:var(--ink);font-size:14.5px"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit;text-align:left;background:none;border:none;padding:0;cursor:pointer">${d.title} ↗</button></strong>
     </div>
     <div class="delivery-meta" style="margin-top:4px">
      <span>Docente: <b>${d.teacher}</b></span>
      <span>Materia: <b>${d.subject}</b></span>
      <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
     </div>
-    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45">${d.details}</div>` : ''}
+    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45;white-space:pre-line">${d.details}</div>` : ''}
 
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
      <div class="action-pills">
@@ -11584,6 +11364,12 @@ function setView(view,doScroll=true){
  }
  if(view==='asignaturas'){
   showScreen1();
+ }
+ if(view==='notas'){
+  renderGrades();
+ }
+ if(view==='entregas'){
+  renderDeliveries();
  }
  if(doScroll)window.scrollTo({top:0,behavior:'smooth'});
  closeMenu();
