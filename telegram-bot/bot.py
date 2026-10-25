@@ -145,8 +145,10 @@ Diálogo fluido, visión multimodal y <b>confirmación segura en dos fases</b>.
 • 🔒 <b>Confirmación en dos fases:</b> Si el asistente propone publicar una nota, práctica o correo, te mostrará la vista previa exacta y te pedirá confirmar con <code>/confirmar</code>.
 
 <b>Comandos útiles:</b>
-/hoy — Clases y horarios de la jornada
-/entregas — Estado de entregas y prácticas del Máster
+/hoy — Clases y horarios de hoy (o próximas clases si no hay docencia)
+/manana — Clases y profesores exactos de mañana (o /mañana)
+/semana — Agenda completa de los próximos 7 días
+/entregas — Estado y plazos de entregas del Máster
 /confirmar — Confirma y publica la propuesta pendiente actual
 /cancelar — Descarta la propuesta de cambio pendiente
 /limpiar — Reinicia el hilo de conversación actual
@@ -168,16 +170,29 @@ Diálogo fluido, visión multimodal y <b>confirmación segura en dos fases</b>.
     # Comando /hoy
     if text == "/hoy":
         send_chat_action(chat_id, "typing")
-        resp = assistant.execute_tool("consultar_hoy", {})
-        sesiones_txt = "\n".join([f"• <b>{s['hora']}:</b> {s.get('docente', s.get('actividad'))} ({s.get('materia', '')})" for s in resp.get("sesiones", [])])
-        send_message(chat_id, f"🗓️ <b>Docencia de hoy ({resp.get('fecha')}):</b>\n{sesiones_txt}\n📍 <i>Colegio de Abogados</i>")
+        reply = assistant.get_today_schedule_summary()
+        send_message(chat_id, reply)
+        return
+
+    # Comando /manana o /mañana
+    if text in ("/manana", "/mañana"):
+        send_chat_action(chat_id, "typing")
+        reply = assistant.get_tomorrow_schedule_summary()
+        send_message(chat_id, reply)
+        return
+
+    # Comando /semana
+    if text == "/semana":
+        send_chat_action(chat_id, "typing")
+        reply = assistant.get_upcoming_schedule_summary(days=7)
+        send_message(chat_id, reply)
         return
 
     # Comando /entregas
     if text == "/entregas":
         send_chat_action(chat_id, "typing")
-        resp = assistant.execute_tool("consultar_entregas", {})
-        send_message(chat_id, f"✍️ <b>Estado de entregas del Máster:</b>\n• <b>Balance:</b> {resp.get('balance')}\n• " + "\n• ".join(resp.get("ultimas", [])))
+        reply = assistant.get_deliveries_summary()
+        send_message(chat_id, reply)
         return
 
     # Comando de confirmación en dos fases (Two-Phase Commit)

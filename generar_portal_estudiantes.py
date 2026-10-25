@@ -656,31 +656,6 @@ def generate_student_portal_html(html: str) -> str:
         del_content = re.sub(r"status:'Entregada con éxito en CPROC ✓[^\']*'", "status:'⏳ Pendiente de marcar'", del_content)
         del_content = re.sub(r"status:'⏳ Pendiente \(Plazo:[^\']*'\)", "status:'⏳ Pendiente de marcar'", del_content)
         # 5) Limpieza rigurosa de textos de entregas (sin estados ni fechas de entrega personales)
-        del_content = re.sub(
-            r"details:'Caso práctico oficial evaluable entregado con éxito en CPROC[^']*'",
-            "details:'Caso práctico oficial evaluable sobre actos de comunicación judicial (citaciones, emplazamientos, LexNET y doctrina jurisprudencial de los 6 supuestos de la LEC). Enunciado en CASO_PRACTICO_2026_SANDRA.pdf para entrega en CPROC.'",
-            del_content
-        )
-        del_content = re.sub(
-            r"details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez[^']*'",
-            "details:'Certificado electrónico de apoderamiento apud acta en el REAJ a favor de la docente. Tarea evaluable de tramitación procesal telemática para entrega en plataforma CPROC.'",
-            del_content
-        )
-        del_content = re.sub(
-            r"details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN»[^']*'",
-            "details:'Redacción y firma de escrito procesal solicitando tener por subsanada la representación procesal mediante poder apud acta. Entrega en plataforma CPROC.'",
-            del_content
-        )
-        del_content = re.sub(
-            r"details:'1\.º envío: Documento_anonimizado\.pdf[^']*'",
-            "details:'Estudio del auto de concurso y elaboración de resumen procesal ejecutivo con oferta de venta de unidad productiva (UP). Entrega en plataforma CPROC.'",
-            del_content
-        )
-        del_content = re.sub(
-            r"details:'Plataforma oficial CPROC \(MUAP\)[^']*'",
-            "details:'Caso práctico evaluable sobre derechos, deberes y responsabilidad profesional del procurador, estatuto orgánico y código deontológico. Entrega en CPROC.'",
-            del_content
-        )
         del_content = del_content.replace(' en Google Drive y Markdown local.', '.')
         del_content = del_content.replace('Subida a Google Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
         del_content = del_content.replace('Subida a Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
@@ -1878,77 +1853,49 @@ function renderDeliveries(filter = currentDeliveryFilter){
   <div class="delivery-row" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div style="flex:1;min-width:0">
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-     <strong style="color:var(--ink);font-size:14.5px"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit;text-align:left;background:none;border:none;padding:0;cursor:pointer">${d.title} ↗</button></strong>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+     <strong style="color:var(--ink);font-size:15px"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit;text-align:left;background:none;border:none;padding:0;cursor:pointer">${d.title} ↗</button></strong>
     </div>
     <div class="delivery-meta" style="margin-top:4px">
-     <span>Docente: <b>${d.teacher}</b></span>
-     <span>Materia: <b>${d.subject}</b></span>
-     <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
+     <span>Docente: <b>${d.teacher}</b></span> · 
+     <span>Materia: <b>${d.subject}</b></span> · 
+     <span>Plazo: <b>${fmtShort(d.date)}</b></span>
     </div>
 
-    <!-- Desplegable con instrucciones completas y cuestiones del caso práctico -->
-    <details class="pending-delivery-details" style="margin-top:10px;background:var(--paper-card);border:1px solid var(--line);border-radius:10px;padding:12px 14px" open>
-     <summary style="font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
-      <span style="display:flex;align-items:center;gap:6px">
+    <!-- Desplegable con enunciado e instrucciones: cerrado y oculto por defecto -->
+    <details class="delivery-details-card">
+     <summary class="delivery-summary-toggle">
+      <span class="dst-label">
        <span>📋</span> Enunciado, instrucciones y cuestiones a resolver
       </span>
-      <span class="work-arrow" style="font-size:11px;color:var(--muted)">Desplegar / Ocultar ▾</span>
+      <span class="dst-arrow">Ver enunciado y detalles ▾</span>
      </summary>
-     <div style="margin-top:10px;display:grid;gap:10px">
-      ${det.body ? `
-       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
-        ${det.body}
-       </div>
-      ` : (d.details ? `
-       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
-        ${d.details}
-       </div>
-      ` : '')}
+     <div class="delivery-statement-content">
+      ${formatDeliveryStatementHtml(det.body || d.details, isAbogacia)}
 
-      ${isAbogacia ? `
-       <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px">
-        <strong style="font-size:12px;color:var(--ink);display:flex;align-items:center;gap:6px">
-         <span>📄</span> Enunciado oficial facilitado en clase presencial (ICACOR)
-        </strong>
-        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
-         El profesor facilitó el caso práctico en papel en la clase presencial. Puedes consultar la guía completa con todas las cuestiones jurídicas en formato Markdown:
-        </div>
-        <div style="margin-top:4px">
-         <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">📄 Abrir guía completa en Markdown (.md) ↗</a>
-        </div>
-       </div>
-       <div style="background:var(--blue-badge);border:1px solid var(--blue-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
-        <span>⚖️</span>
-        <span><b>Vía de entrega de Abogacía:</b> Enviar por correo a <b>secretariatecnico@icacor.org</b> o entrega física en sede colegial ICACOR. <i>Los abogados no utilizan ni derivan a CEPROC (exclusivo de procuradores).</i></span>
-       </div>
-      ` : `
-       <div style="background:var(--terra-pale);border:1px solid var(--terra-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
-        <span>🏛️</span>
-        <span><b>Plataforma oficial:</b> Entrega y gestión a través del Campus Virtual CPROC de Procura.</span>
-       </div>
-      `}
+      <div class="statement-actions-strip" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:10px;border-top:1px dashed var(--line);margin-top:4px">
+       <button class="pill-btn" data-detail="${d.detailKey}">Ficha de detalles ↗</button>
+       ${isAbogacia ? `
+        <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">📄 Guía completa en Markdown (.md) ↗</a>
+        <button class="pill-btn blue" data-detail="${mailKey}">✉️ Correo del módulo (16 oct) ↗</button>
+        <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">📩 Enviar a secretariatecnico@icacor.org ↗</a>
+       ` : `
+        ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
+         <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">📄 PDF oficial del caso (Sandra Mosteiro) ↗</a>
+        ` : ''}
+        <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma oficial CPROC ↗</a>
+       `}
+      </div>
      </div>
     </details>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
-     <div class="action-pills">
-      <button class="pill-btn" onclick="const detEl = this.closest('.delivery-row').querySelector('details'); if(detEl) detEl.open = !detEl.open;">Ver instrucciones ▾</button>
-      ${isAbogacia ? `
-       <button class="pill-btn blue" data-detail="${mailKey}">✉️ Correo del módulo (16 oct) ↗</button>
-       <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-       <a class="pill-link" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">Guía de cuestiones (.md) ↗</a>
-      ` : `
-       <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-      `}
-     </div>
-     <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
-      <span class="check-box">${isChk ? '✓' : ''}</span>
-      <span class="check-text">${isChk ? '✓ Entregada por mí' : 'Marcar como entregada'}</span>
-     </button>
-    </div>
    </div>
-   <span class="due-state ${isChk ? 'delivered' : 'pending'}">${d.status}</span>
+   <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+    <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
+     <span class="check-box">${isChk ? '✓' : ''}</span>
+     <span class="check-text">${isChk ? '✓ Entregada por mí' : 'Marcar como entregada'}</span>
+    </button>
+    <span class="due-state ${isChk ? 'submitted' : 'pending'}" style="font-size:11px">${isChk ? '✓ Entregada por mí' : '⏳ Pendiente de marcar'}</span>
+   </div>
   </div>
   `;
  };

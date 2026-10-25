@@ -212,6 +212,65 @@ class SecurityTestSuite(unittest.TestCase):
         self.assertIn("<\\/script>", safe_js)
         self.assertIn("\\'", safe_js)
 
+    def test_12_dynamic_calendar_parsing_and_tomorrow_schedule(self):
+        """Verifica que el bot extrae con total exactitud la agenda de index.html y las clases de mañana."""
+        import assistant
+        events = assistant.parse_portal_events()
+        self.assertGreater(len(events), 50, "Debe haber más de 50 fechas de clases en el calendario")
+
+        # Verificar el lunes 26 de octubre de 2026
+        oct_26 = events.get("2026-10-26", [])
+        self.assertEqual(len(oct_26), 2, "El lunes 26 oct debe tener exactamente 2 sesiones")
+
+        # Sesión 1: Delgado
+        ses_1 = oct_26[0]
+        self.assertEqual(ses_1.get("start"), "16:30")
+        self.assertEqual(ses_1.get("end"), "18:30")
+        self.assertIn("Delgado", ses_1.get("teacher"))
+
+        # Sesión 2: Moure
+        ses_2 = oct_26[1]
+        self.assertEqual(ses_2.get("start"), "18:45")
+        self.assertEqual(ses_2.get("end"), "20:45")
+        self.assertIn("Moure", ses_2.get("teacher"))
+
+        # Verificar el resumen de mañana
+        tomorrow_summary = assistant.get_tomorrow_schedule_summary()
+        self.assertIn("16:30 – 18:30", tomorrow_summary)
+        self.assertIn("José Luis Delgado", tomorrow_summary)
+        self.assertIn("18:45 – 20:45", tomorrow_summary)
+        self.assertIn("Mª Luisa Moure", tomorrow_summary)
+        self.assertNotIn("Sandra Mosteiro", tomorrow_summary)
+
+    def test_13_dynamic_delivery_parsing(self):
+        """Verifica que se extraen fielmente las entregas de index.html, distinguiendo pendientes de completadas."""
+        import assistant
+        delivs = assistant.parse_portal_deliveries()
+        self.assertEqual(len(delivs), 6)
+
+        pendientes = [d for d in delivs if not d.get("submitted", False)]
+        self.assertEqual(len(pendientes), 1)
+        self.assertIn("Delgado", pendientes[0].get("teacher"))
+        self.assertIn("29 oct 2026", pendientes[0].get("status"))
+
+        entregadas = [d for d in delivs if d.get("submitted", False)]
+        self.assertEqual(len(entregadas), 5)
+
+        summary = assistant.get_deliveries_summary()
+        self.assertIn("Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional", summary)
+        self.assertIn("José Luis Delgado", summary)
+
+    def test_14_system_instruction_temporal_fidelity(self):
+        """Comprueba que build_system_instruction inyecta la fecha actual en Europe/Madrid y el calendario."""
+        import assistant
+        sys_inst = assistant.build_system_instruction()
+        self.assertIn("Europe/Madrid", sys_inst)
+        self.assertIn("AGENDA OFICIAL DE CLASES Y DOCENTES", sys_inst)
+        self.assertIn("José Luis Delgado Domínguez", sys_inst)
+        self.assertIn("Mª Luisa Moure", sys_inst)
+        self.assertIn("REGLAS DE MÁXIMA FIDELIDAD TEMPORAL Y HORARIA", sys_inst)
+
 
 if __name__ == "__main__":
     unittest.main()
+
