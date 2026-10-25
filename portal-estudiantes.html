@@ -5401,8 +5401,7 @@ const events={ '2026-10-01':[
   ],
  '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Práctica Delgado Parte B · Siniestro RC y Turno',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado_parte_b',place:'secretariatecnico@icacor.org / Sede colegial',kind:'Entrega práctica (Límite)',isWarning:true}
+   {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-02':[
    {start:'16:30',end:'18:30',name:'Recursos, ejecución y costas / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
@@ -5859,24 +5858,6 @@ const details={
    {name:'Plataforma CPROC (Entrega de tareas)',url:cprocTareasUrl,kind:'Web CPROC ↗'}
   ]
  },
- all_tests_summary:{
-  kicker:'Balance global de evaluación · Procura',
-  title:'Todos los tests realizados (10 en todos salvo uno con ~8) y 4/4 prácticas enviadas',
-  date:'Actualizado: sábado, 17 de octubre de 2026',
-  teacher:'Carolina Moreno Vázquez',
-  coTeacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Estado general confirmado: 1) Todos los cuestionarios/tests de CPROC y Testmoz hasta la fecha están realizados y completados, con una calificación de 10 sobre 10 en todos ellos excepto en uno (calificado con un ~8). 2) Las 4 prácticas elaboradas y guardadas en Google Drive están todas completadas y enviadas en la plataforma CPROC (ninguna vencida). Nota: el formulario de entregas de CPROC muestra mensaje en pantalla al enviar pero no remite resguardo por correo electrónico.',
-  gradeTable:{test:'10 en todos (salvo uno con ~8)',trabajos:'4 / 4 prácticas enviadas en CPROC',final:'100 % al día (0 vencidas)'},
-  source:'Confirmación de la alumna + registros de Testmoz (16 oct 2026: 20/20 = 10), correo de Secretaría (14 oct 2026: 10/10) y carpeta «Máster» en Google Drive · 17 oct 2026',
-  attachments:[
-   {name:'Test 16 oct 2026 · Proceso digital y TIC (20/20 = 10) · HTML original',url:testHtmlLocalUrl,kind:'HTML Testmoz'},
-   {name:'Test 16 oct 2026 · Apuntes completos con las 20 preguntas (.md)',url:testMdLocalUrl,kind:'Markdown'},
-   {name:'Plataforma CPROC (MUAP · Tests y Tareas entregadas)',url:cprocUrl,kind:'Web CPROC'},
-   {name:'Carpeta «Máster» en Google Drive (Prácticas completadas)',url:driveFolderUrl,kind:'Carpeta Drive'},
-   {name:'Bandeja de Outlook (Correo de nota 10/10 del 14 oct)',url:outlookUrl,kind:'Correo Outlook'}
-  ]
- },
  assignment:{
   isDelivery:true,
   kicker:'Caso práctico evaluable · Procura · Deontología y responsabilidad',
@@ -5920,11 +5901,10 @@ const details={
   body:'El módulo impartido por José Luis Delgado Domínguez contempla seis horas presenciales por grupo en el Colegio de Abogados. Grupo de mañana: lunes 19 oct (11:45–13:45), martes 20 oct (11:45–13:45) y lunes 26 oct (09:30–11:30). Grupo de tarde: lunes 19 oct (18:45–20:45), martes 20 oct (18:45–20:45) y lunes 26 oct (16:30–18:30). El correo incluye el enlace a la documentación de estudio del módulo.',
   source:'Correo de Administración del Máster · 16 oct 2026',
   attachments:[
-   {name:'⏳ Ver práctica Parte A (Insostenibilidad y AJG)',detailKey:'entrega_delgado_parte_a',kind:'Práctica pendiente'},
-   {name:'⏳ Ver práctica Parte B (Parte de siniestro y Turno)',detailKey:'entrega_delgado_parte_b',kind:'Práctica pendiente'},
+   {name:'⏳ Ver caso práctico: Turno de Oficio y RCP (Parte A y Parte B)',detailKey:'entrega_delgado',kind:'Práctica oficial'},
    {name:'✉️ Enviar resolución a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez',kind:'Correo oficial ICACOR'},
-   {name:'Enunciado oficial Parte A: Insostenibilidad y AJG (SVG)',url:casoDelgadoParteAFotoUrl,kind:'Enunciado físico'},
-   {name:'Enunciado oficial Parte B: Siniestro RC y Turno (SVG)',url:casoDelgadoParteBFotoUrl,kind:'Enunciado físico'},
+   {name:'📷 Ver foto del enunciado físico entregado en clase',url:casoDelgadoFotoRealUrl,kind:'Enunciado físico'},
+   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',kind:'BOE oficial'},
    {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',kind:'BOE oficial'}
@@ -6051,13 +6031,13 @@ const details={
   extra:'Entrega telemática a través del aula virtual de tareas CPROC.'
  },
  test_16oct:{
-  kicker:'Nota de Test: 10 / 10 (20/20 · 100 %) · Procura · Deontología y técnicas transversales',
+  kicker:'Cuestionario didáctico tipo test · Proceso digital y TIC',
   title:'Test online · Proceso digital y TIC (16 oct 2026)',
-  date:'Realizado: viernes, 16 de octubre de 2026 · 19:17 (Grupo de tarde) · Calificación: 10 / 10 (20/20 aciertos)',
+  date:'Sesión: viernes, 16 de octubre de 2026',
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Carlos M. Sánchez Muiño',
   subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Prueba oficial realizada en Testmoz («CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida: 20 de 20 respuestas correctas (100 % · 10 sobre 10). Todos los tests del máster hasta la fecha están realizados (con un 10 en todos salvo en uno con ~8). Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta marcada.',
+  body:'Prueba oficial realizada en Testmoz («CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Cuestionario de evaluación y preguntas oficiales resueltas. Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta indicada.',
   source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15705122/student/review) · 16 oct 2026',
   attachments:[
    {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlLocalUrl,kind:'HTML en portal'},
@@ -6251,12 +6231,10 @@ const courses=[
     period:'1 y 2 oct 2026 · Horario: 18:45 – 20:45',
     startDate:'2026-10-01',
     teachers:['Javier C. Sánchez García','Carlos M. Sánchez Muiño'],
-    grade:{score:'10 / 10 (Sobresaliente)',detail:'4 ptos. Test + 6 ptos. Trabajos/escritos · Nota oficial comunicada por correo el 14 oct',detailKey:'grades',actionLabel:'Ver nota oficial ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
      {name:'Iniciación actividad profesional (Doc Google en Drive)',detailKey:'grades',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Organización de despacho (Doc Google en Drive)',detailKey:'grades',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
-     {name:'Tabla oficial de calificaciones (Javier Sánchez García · Test + Escritos = 10)',detailKey:'grades',url:outlookUrl,label:'Ver en Outlook ↗'},
-     {name:'Calificaciones oficiales Carlos Miguel Sánchez Muiño (Test + Escritos = 10)',detailKey:'mail_carlos_sanchez_2oct',url:outlookUrl,label:'Ver en Outlook ↗'}
     ],
     mails:['mail_carlos_sanchez_2oct','grades']
    },
@@ -6276,7 +6254,7 @@ const courses=[
     period:'14 al 16 oct 2026 · Colegio de Abogados y CPROC',
     startDate:'2026-10-14',
     teachers:['Carolina Moreno Vázquez','Carlos M. Sánchez Muiño','Alex Sánchez Barge'],
-    grade:{score:'Nota oficial: 10 / 10 ★ (Sobresaliente)',detail:'Calificaciones oficiales comunicadas por el Colegio de Procuradores el 23 oct (13:21 h): Test 4/4 (40 %) + Trabajos escritos 6/6 (60 %) = 10 / 10.',detailKey:'mail_carolina_carlos_23oct',actionLabel:'Ver nota oficial (10/10) ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
      {name:'TIC_ Resp. disciplinaria / proceso digital (Doc Google)',detailKey:'test_16oct',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Escrito de subsanación (Doc Google en Drive)',detailKey:'entrega_subsanacion',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
@@ -6293,7 +6271,7 @@ const courses=[
     period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada)',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
-    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado el martes 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
      notes:[
       {name:'Enunciado oficial: Caso práctico 2026 - Sandra (PDF)',url:casoSandraPdfLocalUrl,label:'Descargar PDF ↗'},
       {name:'Caso práctico completo: 6 escenarios y 3 preguntas (.md)',url:casoSandraMdLocalUrl,label:'Ver .md ↗'},
@@ -6491,7 +6469,7 @@ const courses=[
     period:'5 y 6 oct 2026 · Horario: 16:30 – 20:45 · Calificación: 10 / 10',
     startDate:'2026-10-05',
     teachers:['Daniel Garrido Pazos'],
-    grade:{score:'10 / 10 (Sobresaliente)',detail:'Módulo conjunto completado con calificación de 10/10.',detailKey:'grades',actionLabel:'Ver nota ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
      {name:'Organización de despacho (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'},
      {name:'Iniciación actividad profesional (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'CPROC ↗'}
@@ -6973,11 +6951,11 @@ const teacherDirectory=[
    {date:'2026-10-15',dayLabel:'Jueves 15 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'TIC y administración de justicia en la Procura',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Justicia digital y expediente judicial electrónico (con Carolina Moreno)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Calificación pruebas 14-16 oct con Carolina Moreno (10/10 · 23 oct)',key:'mail_carolina_carlos_23oct'},{title:'Calificación pruebas 2 oct (10/10 · 22 oct)',key:'mail_carlos_sanchez_2oct'},{title:'Calificaciones oficiales Procura (14 oct)',key:'grades'},{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}],
+  mails:[{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}],
   practices:[
-   {title:'Pruebas evaluables del 14-16 oct con Carolina Moreno (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carolina_carlos_23oct'},
-   {title:'Pruebas evaluables del 2 oct (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carlos_sanchez_2oct'},
-   {title:'Test online de justicia digital (20/20 aciertos)',status:'10 / 10 ✓',key:'test_16oct'},
+   
+   
+   {title:'Test online de justicia digital',status:'Test online',key:'test_16oct'},
    {title:'Escrito de subsanación procesal telemática',status:'Enviado en CPROC ✓',key:'entrega_subsanacion'}
   ],
   driveFiles:[
@@ -6997,8 +6975,8 @@ const teacherDirectory=[
   sessions:[
    {date:'2026-10-01',dayLabel:'Jueves 1 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Iniciación a la actividad de la Procura (Marco institucional y estatuto)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Calificaciones oficiales Procura',key:'grades'}],
-  practices:[{title:'Cuestionario y caso práctico de iniciación profesional',status:'Calificación: 10/10 ✓',key:'grades'}],
+  mails:[],
+  practices:[{title:'Cuestionario y caso práctico de iniciación profesional',status:'Evaluación continua',key:''}],
   driveFiles:[{name:'Iniciación actividad profesional (Doc Google)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'}],
   notes:[{title:'Estatuto General de los Procuradores de España (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-8929',urlLabel:'BOE oficial ↗'}]
  },
@@ -7095,10 +7073,10 @@ const teacherDirectory=[
    {date:'2026-10-14',dayLabel:'Miércoles 14 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Proceso digital en la Procura (LexNET, firma electrónica y presentación telemática)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Justicia digital y taller de casos prácticos (con Carlos M. Sánchez Muiño)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Calificaciones oficiales · Deontología y TIC (Nota: 10 / 10 · 23 oct)',key:'mail_carolina_carlos_23oct'},{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'},{title:'Enlace al examen testmoz (16 oct)',key:'test_16oct'}],
+  mails:[{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'},{title:'Enlace al examen testmoz (16 oct)',key:'test_16oct'}],
   practices:[
-   {title:'Pruebas evaluables del 14-16 oct (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carolina_carlos_23oct'},
-   {title:'Test online de justicia digital (20/20 aciertos)',status:'10 / 10 (100 %) ✓',key:'test_16oct'},
+   
+   {title:'Test online de justicia digital',status:'Test online',key:'test_16oct'},
    {title:'Subsanación de defecto procesal telemático',status:'Enviado en CPROC ✓',key:'entrega_subsanacion'},
    {title:'Caso práctico Auto Concursal UP',status:'Enviado en CPROC ✓',key:'entrega_auto_up'}
   ],
@@ -7777,9 +7755,19 @@ function renderSingleGradeCard(g){
  `;
 }
 
+// Limpieza estricta de cualquier nota previa residual o guardada en localStorage del navegador
+try {
+  for(let i = localStorage.length - 1; i >= 0; i--){
+    const k = localStorage.key(i);
+    if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_'))){
+      localStorage.removeItem(k);
+    }
+  }
+} catch(e){}
+
 function getStudentGradeData(teacherId){
   try {
-    const raw = localStorage.getItem('muap_eval_' + teacherId);
+    const raw = localStorage.getItem('muap_clean_v3_' + teacherId);
     return raw ? JSON.parse(raw) : { finalGrade:'', testGrade:'', notes:'' };
   } catch(e){
     return { finalGrade:'', testGrade:'', notes:'' };
@@ -7790,9 +7778,23 @@ function saveStudentGradeData(teacherId, data){
   try {
     const current = getStudentGradeData(teacherId);
     const updated = { ...current, ...data };
-    localStorage.setItem('muap_eval_' + teacherId, JSON.stringify(updated));
+    localStorage.setItem('muap_clean_v3_' + teacherId, JSON.stringify(updated));
     updateHomeGradesBadge();
   } catch(e){}
+}
+
+function clearAllStudentGrades(){
+  if(!confirm('¿Deseas vaciar todas las notas guardadas y dejar el cuaderno completamente limpio a cero?')) return;
+  try {
+    for(let i = localStorage.length - 1; i >= 0; i--){
+      const k = localStorage.key(i);
+      if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_') || k.startsWith('muap_clean_v3_'))){
+        localStorage.removeItem(k);
+      }
+    }
+  } catch(e){}
+  renderGrades();
+  updateHomeGradesBadge();
 }
 
 function updateHomeGradesBadge(){
@@ -7800,7 +7802,7 @@ function updateHomeGradesBadge(){
   try {
     for(let i = 0; i < localStorage.length; i++){
       const k = localStorage.key(i);
-      if(k && k.startsWith('muap_eval_')){
+      if(k && k.startsWith('muap_clean_v3_')){
         const d = JSON.parse(localStorage.getItem(k));
         if(d && (d.finalGrade || d.testGrade || d.notes)) count++;
       }
@@ -8093,12 +8095,15 @@ function renderTeacherDossiers(){
   ];
 
   const privacyNotice = `
-    <div class="privacy-banner">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
-      <div>
-        <strong>Tu Cuaderno Privado de Notas (Guardado local en tu dispositivo):</strong>
-        Las notas de los tests, las calificaciones del profesor y tus anotaciones personales se guardan únicamente en la memoria de tu navegador (localStorage). Nadie más puede verlas y no se suben a ningún servidor.
+    <div class="privacy-banner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+        <div>
+          <strong>Tu Cuaderno Privado de Notas (Guardado local en tu dispositivo):</strong>
+          Las notas de los tests, las calificaciones del profesor y tus anotaciones personales se guardan únicamente en la memoria de tu navegador (localStorage). El portal inicia 100% limpio y a cero para que cada estudiante lo rellene de forma privada.
+        </div>
       </div>
+      <button type="button" class="pill-btn" onclick="clearAllStudentGrades()" style="border:1.5px solid var(--green-border);background:var(--paper);color:var(--green-dark);cursor:pointer;white-space:nowrap;padding:7px 14px;font-weight:700">🗑️ Limpiar todas mis notas</button>
     </div>
   `;
 
@@ -8127,11 +8132,11 @@ function renderTeacherDossiers(){
           <div class="student-eval-bar">
             <div class="student-eval-field">
               <label for="input_final_${d.id}">★ Nota final del profesor:</label>
-              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
+              <input type="text" id="input_final_${d.id}" placeholder="Anota la calificación..." value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
             </div>
             <div class="student-eval-field">
               <label for="input_notes_${d.id}">✍️ Anotaciones personales / Criterios de corrección:</label>
-              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
+              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, dudas o criterios de corrección..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
             </div>
             <div style="grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center">
               <span class="student-save-status" id="status_${d.id}">✓ Guardado automáticamente</span>
@@ -8148,7 +8153,7 @@ function renderTeacherDossiers(){
         </div>
         <div class="student-test-input-wrap">
           <label for="input_test_${d.id}" style="font-size:12px;font-weight:700;color:var(--ink-soft)">Mi nota en el test:</label>
-          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
+          <input type="text" id="input_test_${d.id}" placeholder="Anota la nota del test..." value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
         </div>
       </div>
 
@@ -10518,6 +10523,9 @@ function openDetail(key){
 
  // 2. Entregas y prácticas CPROC
  if(key.startsWith('entrega_') || key === 'assignment'){
+  if(typeof currentDeliveryFilter !== 'undefined' && currentDeliveryFilter !== 'all'){
+   currentDeliveryFilter = 'all';
+  }
   setView('entregas', false);
   setTimeout(()=>{
    let row = document.getElementById('delivery-row-' + key) || document.getElementById('delivered-card-' + key) || document.querySelector(`[data-delivery-key="${key}"]`);
@@ -11093,8 +11101,10 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const renderRow = (d) => {
   const isChk = d.submitted;
   const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
+  const det = details[d.detailKey] || {};
+  const mailKey = det.mailKey || 'schedule';
   return `
-  <div class="delivery-row" id="delivery-row-${d.detailKey}">
+  <div class="delivery-row" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div style="flex:1;min-width:0">
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -11105,14 +11115,58 @@ function renderDeliveries(filter = currentDeliveryFilter){
      <span>Materia: <b>${d.subject}</b></span>
      <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
     </div>
-    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45;white-space:pre-line">${d.details}</div>` : ''}
+
+    <!-- Desplegable con instrucciones completas y cuestiones del caso práctico -->
+    <details class="pending-delivery-details" style="margin-top:10px;background:var(--paper-card);border:1px solid var(--line);border-radius:10px;padding:12px 14px" open>
+     <summary style="font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
+      <span style="display:flex;align-items:center;gap:6px">
+       <span>📋</span> Enunciado, instrucciones y cuestiones a resolver
+      </span>
+      <span class="work-arrow" style="font-size:11px;color:var(--muted)">Desplegar / Ocultar ▾</span>
+     </summary>
+     <div style="margin-top:10px;display:grid;gap:10px">
+      ${det.body ? `
+       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
+        ${det.body}
+       </div>
+      ` : (d.details ? `
+       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
+        ${d.details}
+       </div>
+      ` : '')}
+
+      ${isAbogacia ? `
+       <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px">
+        <strong style="font-size:12px;color:var(--ink);display:flex;align-items:center;gap:6px">
+         <span>📄</span> Enunciado oficial facilitado en clase presencial (ICACOR)
+        </strong>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
+         El profesor facilitó el caso práctico en papel en la clase presencial. Puedes consultar la guía completa con todas las cuestiones jurídicas en formato Markdown:
+        </div>
+        <div style="margin-top:4px">
+         <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">📄 Abrir guía completa en Markdown (.md) ↗</a>
+        </div>
+       </div>
+       <div style="background:var(--blue-badge);border:1px solid var(--blue-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
+        <span>⚖️</span>
+        <span><b>Vía de entrega de Abogacía:</b> Enviar por correo a <b>secretariatecnico@icacor.org</b> o entrega física en sede colegial ICACOR. <i>Los abogados no utilizan ni derivan a CEPROC (exclusivo de procuradores).</i></span>
+       </div>
+      ` : `
+       <div style="background:var(--terra-pale);border:1px solid var(--terra-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
+        <span>🏛️</span>
+        <span><b>Plataforma oficial:</b> Entrega y gestión a través del Campus Virtual CPROC de Procura.</span>
+       </div>
+      `}
+     </div>
+    </details>
 
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
      <div class="action-pills">
-      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+      <button class="pill-btn" onclick="const detEl = this.closest('.delivery-row').querySelector('details'); if(detEl) detEl.open = !detEl.open;">Ver instrucciones ▾</button>
       ${isAbogacia ? `
-       <button class="pill-btn blue" data-detail="schedule">✉️ Correo del módulo (16 oct) ↗</button>
+       <button class="pill-btn blue" data-detail="${mailKey}">✉️ Correo del módulo (16 oct) ↗</button>
        <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+       <a class="pill-link" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">Guía de cuestiones (.md) ↗</a>
       ` : `
        <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
       `}

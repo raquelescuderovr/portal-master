@@ -5141,8 +5141,7 @@ const events={
   ],
   '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Práctica Delgado Parte B · Siniestro RC y Turno',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado_parte_b',place:'secretariatecnico@icacor.org / Sede colegial',kind:'Entrega práctica (Límite)',isWarning:true}
+   {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-02':[
    {start:'16:30',end:'18:30',name:'Recursos, ejecución y costas / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
@@ -6003,11 +6002,10 @@ const details={
   body:'El módulo impartido por José Luis Delgado Domínguez contempla seis horas presenciales por grupo en el Colegio de Abogados. Grupo de mañana: lunes 19 oct (11:45–13:45), martes 20 oct (11:45–13:45) y lunes 26 oct (09:30–11:30). Grupo de tarde: lunes 19 oct (18:45–20:45), martes 20 oct (18:45–20:45) y lunes 26 oct (16:30–18:30). El correo incluye el enlace a la documentación de estudio del módulo.',
   source:'Correo de Administración del Máster · 16 oct 2026',
   attachments:[
-   {name:'⏳ Ver práctica Parte A (Insostenibilidad y AJG)',detailKey:'entrega_delgado_parte_a',kind:'Práctica pendiente'},
-   {name:'⏳ Ver práctica Parte B (Parte de siniestro y Turno)',detailKey:'entrega_delgado_parte_b',kind:'Práctica pendiente'},
+   {name:'⏳ Ver caso práctico: Turno de Oficio y RCP (Parte A y Parte B)',detailKey:'entrega_delgado',kind:'Práctica oficial'},
    {name:'✉️ Enviar resolución a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez',kind:'Correo oficial ICACOR'},
-   {name:'Enunciado oficial Parte A: Insostenibilidad y AJG (SVG)',url:casoDelgadoParteAFotoUrl,kind:'Enunciado físico'},
-   {name:'Enunciado oficial Parte B: Siniestro RC y Turno (SVG)',url:casoDelgadoParteBFotoUrl,kind:'Enunciado físico'},
+   {name:'📷 Ver foto del enunciado físico entregado en clase',url:casoDelgadoFotoRealUrl,kind:'Enunciado físico'},
+   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',kind:'BOE oficial'},
    {name:'Ley 1/1996 de Asistencia Jurídica Gratuita (Turno de oficio · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',kind:'BOE oficial'}
@@ -10479,6 +10477,9 @@ function openDetail(key){
 
  // 2. Entregas y prácticas CPROC
  if(key.startsWith('entrega_') || key === 'assignment'){
+  if(typeof currentDeliveryFilter !== 'undefined' && currentDeliveryFilter !== 'all'){
+   currentDeliveryFilter = 'all';
+  }
   setView('entregas', false);
   setTimeout(()=>{
    let row = document.getElementById('delivery-row-' + key) || document.getElementById('delivered-card-' + key) || document.querySelector(`[data-delivery-key="${key}"]`);

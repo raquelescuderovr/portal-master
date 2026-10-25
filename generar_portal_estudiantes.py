@@ -224,8 +224,21 @@ def generate_student_portal_html(html: str) -> str:
             pos += 1
         return content
 
-    for k in ['personal_calendar_sync', 'grades', 'mail_deontologia_ana_vazquez', 'mail_carlos_sanchez_2oct', 'mail_carolina_carlos_23oct', 'test_20oct_sandra', 'procura_resultados']:
+    for k in ['personal_calendar_sync', 'grades', 'mail_deontologia_ana_vazquez', 'mail_carlos_sanchez_2oct', 'mail_carolina_carlos_23oct', 'test_20oct_sandra', 'procura_resultados', 'all_tests_summary']:
         html = remove_details_key(html, k)
+
+    html = html.replace(
+        "kicker:'Nota de Test: 10 / 10 (20/20 · 100 %) · Procura · Deontología y técnicas transversales'",
+        "kicker:'Cuestionario didáctico tipo test · Proceso digital y TIC'"
+    )
+    html = html.replace(
+        "date:'Realizado: viernes, 16 de octubre de 2026 · 19:17 (Grupo de tarde) · Calificación: 10 / 10 (20/20 aciertos)'",
+        "date:'Sesión: viernes, 16 de octubre de 2026'"
+    )
+    html = html.replace(
+        "Puntuación obtenida: 20 de 20 respuestas correctas (100 % · 10 sobre 10). Todos los tests del máster hasta la fecha están realizados (con un 10 en todos salvo en uno con ~8). Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta marcada.",
+        "Cuestionario de evaluación y preguntas oficiales resueltas. Debajo tienes las 20 preguntas íntegras con sus cuatro opciones y la respuesta correcta indicada."
+    )
     print("✓ Claves de notas y eventos personales eliminados de details y mailSummaries.")
 
     html = html.replace('remitidas oficialmente a Raquel el 19 de octubre', 'remitidas oficialmente al estudiantado el 19 de octubre')
@@ -316,17 +329,59 @@ def generate_student_portal_html(html: str) -> str:
     # -------------------------------------------------------------
     # Reemplazar calificaciones fijas en asignaturas por evaluación continua
     html = re.sub(
-        r"grade:\{score:'[^']*(?:Sobresaliente|Notable|aciertos|★|Oficial|\d+\s*/\s*10)[^']*',scoreLabel:'[^']*',detail:'[^']*',detailKey:'[^']*'\}",
-        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
+        r"grade:\s*\{score:'[^']*(?:Sobresaliente|Notable|aciertos|★|Oficial|\d+\s*/\s*10)[^']*',[^}]*\},?",
+        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},",
         html
     )
     # Neutralizar insignias y notas individuales en teacherDirectory
     html = re.sub(r"gradeBadge:\s*'[^']*(?:★|Oficial|Sobresaliente|Notable|\d+\s*/\s*10)[^']*'", "gradeBadge:'⚖️ Evaluación continua'", html)
     html = re.sub(r"gradeScore:\s*'[^']*(?:Sobresaliente|Notable|\d+\s*/\s*10)[^']*'", "gradeScore:'Evaluación continua'", html)
     html = re.sub(r"gradeDetail:\s*'Calificación oficial registrada:[^']*'", "gradeDetail:'Ponderación oficial de evaluación continua (test + trabajos de CPROC).'", html)
-    html = re.sub(r" · Calificación oficial:\s*[^'\"<]+", "", html)
-    html = re.sub(r" · Test:\s*[^'\"<]+", "", html)
+    html = re.sub(r"\s*·\s*Calificación oficial:\s*[^'\"<\n]+", "", html)
+    html = re.sub(r"\s*·\s*Test:\s*[^'\"<\n]+", "", html)
     html = html.replace(' · Práctica entregada en CPROC', '')
+
+    # Limpiar notas específicas en materials / notes de courses
+    html = re.sub(r"\s*\{name:'Calificaciones oficiales Carlos Miguel Sánchez Muiño[^']*'[^}]*\},?", "", html)
+    html = re.sub(r"\s*\{name:'Tabla oficial de calificaciones[^']*'[^}]*\},?", "", html)
+    html = re.sub(r"\s*\{name:'Calificaciones oficiales[^']*'[^}]*\},?", "", html)
+
+    # Limpiar mails y practices en teacherDirectory de Carlos Miguel Sánchez Muiño
+    html = html.replace(
+        "mails:[{title:'Calificación pruebas 14-16 oct con Carolina Moreno (10/10 · 23 oct)',key:'mail_carolina_carlos_23oct'},{title:'Calificación pruebas 2 oct (10/10 · 22 oct)',key:'mail_carlos_sanchez_2oct'},{title:'Calificaciones oficiales Procura (14 oct)',key:'grades'},{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}]",
+        "mails:[{title:'Materiales TIC y justicia digital (15 oct)',key:'materials'}]"
+    )
+    html = html.replace(
+        "{title:'Pruebas evaluables del 14-16 oct con Carolina Moreno (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carolina_carlos_23oct'},",
+        ""
+    )
+    html = html.replace(
+        "{title:'Pruebas evaluables del 2 oct (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carlos_sanchez_2oct'},",
+        ""
+    )
+    html = html.replace(
+        "{title:'Test online de justicia digital (20/20 aciertos)',status:'10 / 10 ✓',key:'test_16oct'}",
+        "{title:'Test online de justicia digital',status:'Test online',key:'test_16oct'}"
+    )
+
+    # Limpiar Carolina Moreno
+    html = html.replace(
+        "{title:'Calificaciones oficiales · Deontología y TIC (Nota: 10 / 10 · 23 oct)',key:'mail_carolina_carlos_23oct'},",
+        ""
+    )
+    html = html.replace(
+        "{title:'Pruebas evaluables del 14-16 oct (Test 4 + Escritos 6)',status:'10 / 10 (Sobresaliente) ✓',key:'mail_carolina_carlos_23oct'},",
+        ""
+    )
+    html = html.replace(
+        "{title:'Test online de justicia digital (20/20 aciertos)',status:'10 / 10 (100 %) ✓',key:'test_16oct'},",
+        "{title:'Test online de justicia digital',status:'Test online',key:'test_16oct'},"
+    )
+
+    # Limpiar Javier Sánchez García
+    html = html.replace("{title:'Calificaciones oficiales Procura',key:'grades'},", "")
+    html = html.replace("{title:'Calificaciones oficiales Procura',key:'grades'}", "")
+    html = html.replace("{title:'Cuestionario y caso práctico de iniciación profesional',status:'Calificación: 10/10 ✓',key:'grades'}", "{title:'Cuestionario y caso práctico de iniciación profesional',status:'Evaluación continua',key:''}")
 
     # Neutralizar gradeRecords: excluir notas personales numéricas comunicadas por correo manteniendo cuestionarios didácticos
     m_gr = re.search(r'(const gradeRecords\s*=\s*\[)(.*?)(\];\s*const)', html, re.DOTALL)
@@ -1016,9 +1071,19 @@ def generate_student_portal_html(html: str) -> str:
     end_idx_dossiers = html.find('function renderPracticesGradeView()', idx_dossiers)
 
     if idx_dossiers != -1 and end_idx_dossiers != -1:
-        new_dossiers_code = """function getStudentGradeData(teacherId){
+        new_dossiers_code = """// Limpieza estricta de cualquier nota previa residual o guardada en localStorage del navegador
+try {
+  for(let i = localStorage.length - 1; i >= 0; i--){
+    const k = localStorage.key(i);
+    if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_'))){
+      localStorage.removeItem(k);
+    }
+  }
+} catch(e){}
+
+function getStudentGradeData(teacherId){
   try {
-    const raw = localStorage.getItem('muap_eval_' + teacherId);
+    const raw = localStorage.getItem('muap_clean_v3_' + teacherId);
     return raw ? JSON.parse(raw) : { finalGrade:'', testGrade:'', notes:'' };
   } catch(e){
     return { finalGrade:'', testGrade:'', notes:'' };
@@ -1029,9 +1094,23 @@ function saveStudentGradeData(teacherId, data){
   try {
     const current = getStudentGradeData(teacherId);
     const updated = { ...current, ...data };
-    localStorage.setItem('muap_eval_' + teacherId, JSON.stringify(updated));
+    localStorage.setItem('muap_clean_v3_' + teacherId, JSON.stringify(updated));
     updateHomeGradesBadge();
   } catch(e){}
+}
+
+function clearAllStudentGrades(){
+  if(!confirm('¿Deseas vaciar todas las notas guardadas y dejar el cuaderno completamente limpio a cero?')) return;
+  try {
+    for(let i = localStorage.length - 1; i >= 0; i--){
+      const k = localStorage.key(i);
+      if(k && (k.startsWith('muap_eval_') || k.startsWith('muap_student_v2_') || k.startsWith('muap_clean_v3_'))){
+        localStorage.removeItem(k);
+      }
+    }
+  } catch(e){}
+  renderGrades();
+  updateHomeGradesBadge();
 }
 
 function updateHomeGradesBadge(){
@@ -1039,7 +1118,7 @@ function updateHomeGradesBadge(){
   try {
     for(let i = 0; i < localStorage.length; i++){
       const k = localStorage.key(i);
-      if(k && k.startsWith('muap_eval_')){
+      if(k && k.startsWith('muap_clean_v3_')){
         const d = JSON.parse(localStorage.getItem(k));
         if(d && (d.finalGrade || d.testGrade || d.notes)) count++;
       }
@@ -1332,12 +1411,15 @@ function renderTeacherDossiers(){
   ];
 
   const privacyNotice = `
-    <div class="privacy-banner">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
-      <div>
-        <strong>Tu Cuaderno Privado de Notas (Guardado local en tu dispositivo):</strong>
-        Las notas de los tests, las calificaciones del profesor y tus anotaciones personales se guardan únicamente en la memoria de tu navegador (localStorage). Nadie más puede verlas y no se suben a ningún servidor.
+    <div class="privacy-banner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px">
+      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+        <div>
+          <strong>Tu Cuaderno Privado de Notas (Guardado local en tu dispositivo):</strong>
+          Las notas de los tests, las calificaciones del profesor y tus anotaciones personales se guardan únicamente en la memoria de tu navegador (localStorage). El portal inicia 100% limpio y a cero para que cada estudiante lo rellene de forma privada.
+        </div>
       </div>
+      <button type="button" class="pill-btn" onclick="clearAllStudentGrades()" style="border:1.5px solid var(--green-border);background:var(--paper);color:var(--green-dark);cursor:pointer;white-space:nowrap;padding:7px 14px;font-weight:700">🗑️ Limpiar todas mis notas</button>
     </div>
   `;
 
@@ -1366,11 +1448,11 @@ function renderTeacherDossiers(){
           <div class="student-eval-bar">
             <div class="student-eval-field">
               <label for="input_final_${d.id}">★ Nota final del profesor:</label>
-              <input type="text" id="input_final_${d.id}" placeholder="Ej: 10 / 10 o 8.8" value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
+              <input type="text" id="input_final_${d.id}" placeholder="Anota la calificación..." value="${safeFinal}" oninput="handleStudentGradeChange('${d.id}')">
             </div>
             <div class="student-eval-field">
               <label for="input_notes_${d.id}">✍️ Anotaciones personales / Criterios de corrección:</label>
-              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, qué dijo el profesor, dudas o fechas de revisión..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
+              <textarea id="input_notes_${d.id}" rows="2" placeholder="Escribe aquí tus comentarios, dudas o criterios de corrección..." oninput="handleStudentGradeChange('${d.id}')">${safeNotes}</textarea>
             </div>
             <div style="grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center">
               <span class="student-save-status" id="status_${d.id}">✓ Guardado automáticamente</span>
@@ -1387,7 +1469,7 @@ function renderTeacherDossiers(){
         </div>
         <div class="student-test-input-wrap">
           <label for="input_test_${d.id}" style="font-size:12px;font-weight:700;color:var(--ink-soft)">Mi nota en el test:</label>
-          <input type="text" id="input_test_${d.id}" placeholder="Ej: 9 / 10" value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
+          <input type="text" id="input_test_${d.id}" placeholder="Anota la nota del test..." value="${safeTest}" oninput="handleStudentGradeChange('${d.id}')">
         </div>
       </div>
 
@@ -1682,8 +1764,10 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const renderRow = (d) => {
   const isChk = d.submitted;
   const isAbogacia = (d.subjectRef||'').includes('Abogacía') || (d.teacher||'').includes('Delgado');
+  const det = details[d.detailKey] || {};
+  const mailKey = det.mailKey || 'schedule';
   return `
-  <div class="delivery-row" id="delivery-row-${d.detailKey}">
+  <div class="delivery-row" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
    <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
    <div style="flex:1;min-width:0">
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -1694,14 +1778,58 @@ function renderDeliveries(filter = currentDeliveryFilter){
      <span>Materia: <b>${d.subject}</b></span>
      <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
     </div>
-    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45;white-space:pre-line">${d.details}</div>` : ''}
+
+    <!-- Desplegable con instrucciones completas y cuestiones del caso práctico -->
+    <details class="pending-delivery-details" style="margin-top:10px;background:var(--paper-card);border:1px solid var(--line);border-radius:10px;padding:12px 14px" open>
+     <summary style="font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none">
+      <span style="display:flex;align-items:center;gap:6px">
+       <span>📋</span> Enunciado, instrucciones y cuestiones a resolver
+      </span>
+      <span class="work-arrow" style="font-size:11px;color:var(--muted)">Desplegar / Ocultar ▾</span>
+     </summary>
+     <div style="margin-top:10px;display:grid;gap:10px">
+      ${det.body ? `
+       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
+        ${det.body}
+       </div>
+      ` : (d.details ? `
+       <div style="font-size:12.5px;line-height:1.6;color:var(--ink);background:var(--paper-warm);border-left:4px solid ${isAbogacia?'var(--blue)':'var(--terracotta)'};padding:10px 14px;border-radius:6px;white-space:pre-line">
+        ${d.details}
+       </div>
+      ` : '')}
+
+      ${isAbogacia ? `
+       <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px">
+        <strong style="font-size:12px;color:var(--ink);display:flex;align-items:center;gap:6px">
+         <span>📄</span> Enunciado oficial facilitado en clase presencial (ICACOR)
+        </strong>
+        <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
+         El profesor facilitó el caso práctico en papel en la clase presencial. Puedes consultar la guía completa con todas las cuestiones jurídicas en formato Markdown:
+        </div>
+        <div style="margin-top:4px">
+         <a class="pill-link blue" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">📄 Abrir guía completa en Markdown (.md) ↗</a>
+        </div>
+       </div>
+       <div style="background:var(--blue-badge);border:1px solid var(--blue-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
+        <span>⚖️</span>
+        <span><b>Vía de entrega de Abogacía:</b> Enviar por correo a <b>secretariatecnico@icacor.org</b> o entrega física en sede colegial ICACOR. <i>Los abogados no utilizan ni derivan a CEPROC (exclusivo de procuradores).</i></span>
+       </div>
+      ` : `
+       <div style="background:var(--terra-pale);border:1px solid var(--terra-border);border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:8px">
+        <span>🏛️</span>
+        <span><b>Plataforma oficial:</b> Entrega y gestión a través del Campus Virtual CPROC de Procura.</span>
+       </div>
+      `}
+     </div>
+    </details>
 
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
      <div class="action-pills">
-      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+      <button class="pill-btn" onclick="const detEl = this.closest('.delivery-row').querySelector('details'); if(detEl) detEl.open = !detEl.open;">Ver instrucciones ▾</button>
       ${isAbogacia ? `
-       <button class="pill-btn blue" data-detail="schedule">✉️ Correo del módulo (16 oct) ↗</button>
+       <button class="pill-btn blue" data-detail="${mailKey}">✉️ Correo del módulo (16 oct) ↗</button>
        <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
+       <a class="pill-link" href="materiales/2026-10-19-caso-practico-delgado-dominguez.md" target="_blank" rel="noopener noreferrer">Guía de cuestiones (.md) ↗</a>
       ` : `
        <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
       `}
