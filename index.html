@@ -1670,12 +1670,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 /* Tarjetas Visuales de Items con Botones de Derivación */
-.visual-resource-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:var(--paper-card);border:1.5px solid var(--line);border-radius:12px;transition:all .18s ease;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.visual-resource-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;background:var(--paper-card);border:1.5px solid var(--line);border-radius:12px;transition:all .18s ease;box-shadow:0 1px 4px rgba(0,0,0,.25);min-width:0;box-sizing:border-box}
 .visual-resource-card:hover{border-color:var(--honey-border);box-shadow:0 4px 12px rgba(0,0,0,.4);transform:translateY(-1px)}
-.visual-resource-left{display:flex;align-items:center;gap:12px;min-width:0}
+.visual-resource-left{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto}
 .visual-resource-icon{font-size:20px;width:36px;height:36px;border-radius:10px;background:var(--paper-warm);border:1px solid #ded5c8;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.visual-resource-title{font:700 14px var(--sans);color:var(--ink);line-height:1.3}
+.visual-resource-title{font:700 14px var(--sans);color:var(--ink);line-height:1.3;overflow-wrap:anywhere;word-break:break-word}
 .visual-resource-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.derive-action-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;flex-shrink:0}
 
 .visual-derive-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:12px;margin-top:4px;border:1.5px dashed}
 .v-banner-mails{background:#2a1c13;border-color:#6d4428;color:var(--blue-dark)}
@@ -1687,7 +1688,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* Directorio de Profesorado */
 .teachers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.teacher-card{background:var(--paper);border:1.5px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;box-shadow:var(--shadow)}
+.teacher-card{background:var(--paper);border:1.5px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;box-shadow:var(--shadow);min-width:0;box-sizing:border-box}
 .teacher-card[data-branch="Abogacía"]{border-top:5px solid var(--blue)}
 .teacher-card[data-branch="Procura"]{border-top:5px solid var(--terracotta)}
 .teacher-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -1898,12 +1899,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .deliveries{background:var(--paper-card);border:1px solid var(--line);border-left:6px solid var(--green);padding:20px 26px;border-radius:20px;box-shadow:var(--shadow-sm)}
 .delivery-range{font-size:12.5px;font-weight:700;background:var(--green-pale);color:var(--green-dark);border-radius:20px;padding:6px 14px;border:1px solid var(--green-border)}
 .delivery-list{display:grid;gap:0}
-.delivery-row{display:grid;grid-template-columns:60px 1fr auto;gap:18px;align-items:center;padding:18px 2px;border-top:1px solid var(--line-subtle)}
+.delivery-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 2px;border-top:1px solid var(--line-subtle);min-width:0;box-sizing:border-box}
 .delivery-row:first-child{border-top:0}
-.delivery-date{font:700 30px/1 var(--serif);color:var(--green-dark);text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:7px 5px}
+.delivery-date{font:700 30px/1 var(--serif);color:var(--green-dark);text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:7px 5px;flex-shrink:0}
 .delivery-date small{display:block;font:700 11px var(--sans);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;color:var(--muted)}
-.delivery-name{font-size:16px;line-height:1.4;font-weight:800;color:var(--ink)}
-.delivery-meta{font-size:13px;line-height:1.6;color:var(--ink-soft);margin-top:3px}
+.delivery-name{font-size:16px;line-height:1.4;font-weight:800;color:var(--ink);overflow-wrap:anywhere;word-break:break-word}
+.delivery-meta{font-size:13px;line-height:1.6;color:var(--ink-soft);margin-top:3px;overflow-wrap:anywhere;word-break:break-word}
 .due-state{background:var(--green-dark);color:#fff;font-weight:800;font-size:11.5px;padding:6px 14px;border-radius:20px;white-space:nowrap}
 .due-state.submitted{background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border)}
 .source-foot{font-size:12.5px;line-height:1.7;color:var(--muted);margin:14px 2px 0}
@@ -1926,25 +1927,26 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .outlook-btn-secondary:hover{background:var(--blue-pale);border-color:var(--blue-border)}
 
 .materials-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.material-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;box-shadow:var(--shadow-sm)}
+.material-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;box-shadow:var(--shadow-sm);min-width:0;box-sizing:border-box;overflow:hidden}
+.material-card > div:first-child{min-width:0;width:100%}
 .material-card-kicker{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green)}
 .material-card[data-area="abogacia"] .material-card-kicker{color:var(--blue)}
 .material-card[data-area="procura"] .material-card-kicker{color:var(--terracotta)}
-.material-card h3{margin:5px 0 4px;font:700 19px/1.3 var(--serif);color:var(--ink)}
+.material-card h3{margin:5px 0 4px;font:700 19px/1.3 var(--serif);color:var(--ink);overflow-wrap:anywhere;word-break:break-word}
 .material-card-meta{font-size:12.5px;color:var(--muted);margin-bottom:8px}
-.material-doc-list{display:grid;gap:7px;margin:9px 0}
-.doc-direct-row{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--paper-card);border:1px solid var(--line-subtle);border-radius:11px;padding:8px 13px;font-size:12.5px}
-.doc-direct-row span{font-weight:600;color:var(--ink)}
-.doc-direct-row a,.doc-direct-row button{font-size:11.5px;font-weight:700;color:var(--green-dark);text-decoration:underline;border:0;background:transparent;cursor:pointer;padding:0;white-space:nowrap}
-.material-card-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px solid var(--line-subtle);font-size:12.5px}
+.material-doc-list{display:grid;gap:7px;margin:9px 0;min-width:0;width:100%}
+.doc-direct-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--paper-card);border:1px solid var(--line-subtle);border-radius:11px;padding:8px 12px;font-size:12.5px;min-width:0;width:100%;box-sizing:border-box}
+.doc-direct-row span{font-weight:600;color:var(--ink);flex:1 1 auto;min-width:0;overflow-wrap:anywhere;word-break:break-word;line-height:1.35}
+.doc-direct-row a,.doc-direct-row button{font-size:11.5px;font-weight:700;color:var(--green-dark);text-decoration:underline;border:0;background:transparent;cursor:pointer;padding:0;white-space:nowrap;flex-shrink:0}
+.material-card-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px solid var(--line-subtle);font-size:12.5px;min-width:0;width:100%}
 
 /* Correo */
-.mail-row{width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;padding:18px 20px;display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:15px;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s ease}
+.mail-row{width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;padding:18px 20px;display:grid;grid-template-columns:46px minmax(0,1fr) auto;align-items:center;gap:15px;cursor:pointer;box-shadow:var(--shadow-sm);transition:all .18s ease;box-sizing:border-box}
 .mail-row:hover{background:var(--paper-warm);border-color:var(--green-border);transform:translateY(-1px);box-shadow:var(--shadow)}
-.mail-mark{background:var(--blue-pale);color:var(--blue-dark);width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-weight:800;border:1px solid var(--blue-border);font-size:19px}
-.mail-subject{font-size:16px;font-weight:700;color:var(--ink)}
-.mail-meta{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:2px}
-.mail-summary{font-size:14px;font-weight:400;line-height:1.65;color:var(--ink-soft);margin:6px 0 0;max-width:780px}
+.mail-mark{background:var(--blue-pale);color:var(--blue-dark);width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-weight:800;border:1px solid var(--blue-border);font-size:19px;flex-shrink:0}
+.mail-subject{font-size:16px;font-weight:700;color:var(--ink);overflow-wrap:anywhere;word-break:break-word}
+.mail-meta{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:2px;overflow-wrap:anywhere;word-break:break-word}
+.mail-summary{font-size:14px;font-weight:400;line-height:1.65;color:var(--ink-soft);margin:6px 0 0;max-width:780px;overflow-wrap:anywhere;word-break:break-word}
 
 /* Sincronización y Búsqueda en Outlook */
 .mail-outlook-sync-box{
@@ -2163,6 +2165,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .quiz-opt.correct{background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark);font-weight:700}
 .course-note{margin-top:16px;padding:14px 18px;border-radius:14px;background:var(--sidebar-bg);color:var(--muted);font-size:12.5px;line-height:1.6;border:1px solid var(--line)}
 
+@media(max-width:1240px){
+  .materials-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media(max-width:1180px){
   .grades-grid,.subject-teacher-cols{grid-template-columns:1fr}
   .home-hub-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -3780,49 +3785,153 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .delivery-detail-card{
   background:var(--paper-card);
   border:1px solid var(--line);
-  border-left:4.5px solid var(--green);
-  border-radius:12px;
+  border-radius:14px;
   padding:16px 18px;
   display:grid;
-  gap:12px;
+  gap:10px;
+  transition:all .18s ease;
+}
+.delivery-detail-card:hover{
+  border-color:var(--green-border);
 }
 .delivery-detail-card-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
 }
 .delivery-detail-card-title{
-  font:700 16px/1.3 var(--serif);
+  font:700 16.5px/1.3 var(--serif);
   color:var(--ink);
   margin:0;
 }
 .delivery-detail-card-meta{
   font-size:12.5px;
-  color:var(--muted);
+  color:var(--ink-soft);
   line-height:1.5;
-  margin-top:2px;
+  margin-top:3px;
 }
-.delivery-full-text-box{
+
+/* Desplegable de enunciado de la entrega: limpio, interactivo y oculto por defecto */
+.delivery-details-card{
+  margin-top:8px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  transition:all .2s ease;
+}
+.delivery-details-card:hover{
+  border-color:var(--green-border);
+}
+.delivery-details-card[open]{
+  border-color:var(--green-border);
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+}
+.delivery-summary-toggle{
+  list-style:none;
+  cursor:pointer;
+  padding:11px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:var(--paper-warm);
+  user-select:none;
+  transition:all .18s ease;
+  font-size:13px;
+  font-weight:700;
+  color:var(--ink);
+}
+.delivery-summary-toggle::-webkit-details-marker{
+  display:none;
+}
+.delivery-summary-toggle:hover{
+  background:var(--green-pale);
+  color:var(--green-dark);
+}
+.delivery-summary-toggle .dst-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.delivery-summary-toggle .dst-arrow{
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--muted);
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:transform .2s ease;
+}
+.delivery-details-card[open] > .delivery-summary-toggle .dst-arrow{
+  color:var(--green-dark);
+  transform:rotate(180deg);
+}
+
+/* Enunciado estructurado visual y limpio */
+.delivery-statement-content{
+  padding:16px 18px;
+  display:grid;
+  gap:14px;
+  background:var(--paper);
+  border-top:1px dashed var(--line);
+}
+.statement-lead-card{
+  background:var(--paper-warm);
+  border-left:4px solid var(--green);
+  border-radius:10px;
+  padding:14px 18px;
   font-size:13px;
   line-height:1.65;
   color:var(--ink);
+}
+.statement-lead-card.abogacia{
+  border-left-color:var(--blue);
+}
+.statement-section-card{
   background:var(--paper-warm);
   border:1px solid var(--line-subtle);
   border-radius:10px;
-  padding:14px 16px;
-  white-space:pre-line;
-  max-height:300px;
-  overflow-y:auto;
+  padding:14px 18px;
+  display:grid;
+  gap:8px;
+}
+.statement-section-title{
+  font-size:12.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--green-dark);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.statement-section-title.abogacia{
+  color:var(--blue-dark);
+}
+.delivery-files-block{
+  background:var(--paper-warm);
+  border:1px solid var(--line-subtle);
+  border-radius:10px;
+  padding:12px 16px;
+  display:grid;
+  gap:8px;
+}
+.delivery-files-title{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 .delivery-detail-files-list{
   display:grid;
-  gap:6px;
-  margin-top:4px;
-}
-[data-theme="light"] .delivery-full-text-box{
-  background:#fbf9f4;
+  gap:8px;
 }
 
 /* Dossier de calificaciones por profesor y asignatura */
@@ -5685,7 +5794,7 @@ const deliveries=[
   status:'⏳ Pendiente (Plazo: 29 oct 2026 · 7 días)',
   submitted:false,
   detailKey:'entrega_delgado',
-  details:'Práctica oficial del módulo de D. José Luis Delgado Domínguez, estructurada en dos partes evaluables:\n• Parte A (Insostenibilidad y Asistencia Jurídica Gratuita): 1) Escrito de insostenibilidad de la pretensión desde la posición de la actora (arts. 32-35 LAJG). 2) Dictamen jurídico sobre aplicación de arts. 5, 8, 20 y 21 LAJG (reclamación SERGAS y recurso de casación ante el Tribunal Supremo con letrados particulares).\n• Parte B (Responsabilidad Civil Profesional y Turno de Oficio): 1) Cumplimentación de parte de siniestro de responsabilidad civil profesional del abogado ante la aseguradora (pérdida de oportunidad/plazo procesal). 2) Cuestiones sobre requisitos de acceso al Turno de Oficio e implicaciones de la demarcación territorial colegial.\n• Vía de entrega: Envío por correo a secretariatecnico@icacor.org o presentación física en la sede del ICACOR. Plazo oficial: hasta el 29 de octubre de 2026.'
+  details:'Caso práctico oficial de dos partes: Parte A (Insostenibilidad de la pretensión y Asistencia Jurídica Gratuita) y Parte B (Parte de siniestro de RCP y Turno de Oficio). Plazo oficial: hasta el 29 de octubre de 2026.'
  },
  {
   date:new Date(2026,9,22),
@@ -5699,7 +5808,7 @@ const deliveries=[
   detailKey:'entrega_caso_pr_ctico_de_actos_de',
   file:'CASO_PRACTICO_2026_SANDRA.pdf',
   file2:'2026-10-22-grabacion-entrega-caso-practico-sandra-mosteiro.mov',
-  details:'Caso práctico oficial evaluable entregado con éxito en CPROC el 22 de octubre de 2026 a las 12:51 h («✓ La Tarea se ha entregado con éxito»). Resolución completa de los 6 escenarios de la LEC, LexNET, doctrina del TS y 3 preguntas de reflexión en Google Drive y Markdown local.'
+  details:'Caso práctico oficial evaluable sobre actos de comunicación judicial, cómputo de plazos procesales (6 escenarios de la LEC, LexNET y doctrina jurisprudencial del TS) y cuestiones sobre traslados de copias.'
  },
  {
   date:new Date(2026,9,16),
@@ -5712,7 +5821,7 @@ const deliveries=[
   submitted:true,
   detailKey:'entrega_apud_acta',
   file:'CertificadoRegistro.pdf',
-  details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Subida a Google Drive y enviada en CPROC («La Tarea se ha entregado con éxito»).'
+  details:'Inscripción y obtención del certificado electrónico de apoderamiento apud acta formalizado en el REAJ a favor de la docente.'
  },
  {
   date:new Date(2026,9,16),
@@ -5725,7 +5834,7 @@ const deliveries=[
   submitted:true,
   detailKey:'entrega_subsanacion',
   file:'Escrito de subsanación_signed.pdf',
-  details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Subida a Drive y enviada en CPROC.'
+  details:'Redacción y firma digital de escrito procesal dirigido al juzgado solicitando tener por subsanada la representación procesal mediante poder apud acta.'
  },
  {
   date:new Date(2026,9,16),
@@ -5739,7 +5848,7 @@ const deliveries=[
   detailKey:'entrega_auto_up',
   file:'Documento_anonimizado.pdf',
   file2:'summary.docx',
-  details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Subidos a Google Drive y enviados con éxito en CPROC.'
+  details:'Estudio y dictamen del auto judicial de concurso voluntario con oferta de adquisición de unidad productiva (UP) y elaboración de resumen procesal ejecutivo.'
  },
  {
   date:new Date(2026,9,15),
@@ -5752,7 +5861,7 @@ const deliveries=[
   submitted:true,
   detailKey:'assignment',
   file:'Derechos, deberes y responsabilidad',
-  details:'Práctica subida a Google Drive y enviada dentro de plazo en CPROC (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador).'
+  details:'Supuestos prácticos sobre deberes, estatuto orgánico y régimen de responsabilidad profesional del procurador conforme al Código Deontológico.'
  }
 ];
 
@@ -6064,7 +6173,7 @@ const details={
   date:'Entregada: jueves, 22 de octubre de 2026 (12:51 h) · Estado: Completada y enviada en CPROC («✓ La Tarea se ha entregado con éxito»)',
   teacher:'Sandra Mosteiro Costa',
   subjectRef:'Procura|Técnicas instrumentales|3',
-  body:'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC el 22/10/2026 a las 12:51 h\\n\\nESCENARIO 1. DÍA INICIAL Y DÍA FINAL (Arts. 151.2, 133 y 135.5 LEC)\\n• Notificación tenida por realizada el viernes 13 de febrero de 2026 (remitida el jueves 12 feb a las 13:45 h, antes de las 15:00 h). La fecha de apertura efectiva por el procurador (16 feb) no altera el cómputo (art. 151.2 LEC).\\n• Cómputo de 20 días hábiles de apelación: Comienza el lunes 16 de febrero y concluye el viernes 13 de marzo de 2026 (desglose: 16-20 feb = 5 d; 23-27 feb = 10 d; 2-6 mar = 15 d; 9-13 mar = 20 d).\\n• Día de gracia (art. 135.5 LEC): El último momento para presentar válidamente el recurso es el lunes 16 de marzo de 2026 hasta las 15:00 h.\\n• Presentación a las 12:00 h del día de gracia: En plazo. Presentación a las 16:00 h: Extemporánea y precluida.\\n• Hipótesis remisión a las 15:30 h del 12 feb: Se recibe el 13 feb y se notifica el lunes 16 feb. Plazo: del 17 feb al 16 mar; día de gracia: martes 17 mar hasta las 15:00 h.\\n\\nESCENARIO 2. INTERRUPCIÓN POR ACLARACIÓN (Art. 215.5 LEC y doctrina TS)\\n• La solicitud de aclaración del 17 feb interrumpe el plazo de apelación.\\n• Doctrina legal del Pleno Sala 1.ª del TS (Auto de 4 de octubre de 2011, ROJ ATS 10217/2011): El plazo no se reanuda por los días restantes sino que SE REINICIA ÍNTEGRAMENTE por 20 días hábiles.\\n• Notificación del auto denegatorio (remitido 23 feb a las 12:00 h): Notificado el martes 24 feb. El nuevo plazo inicia el miércoles 25 feb y concluye el miércoles 25 de marzo de 2026. Día de gracia: jueves 26 de marzo hasta las 15:00 h.\\n• Solicitud sucesiva de complemento infundada: No reabre de nuevo el plazo según reiterada jurisprudencia del TS para evitar maniobras dilatorias o fraudulentas.\\n\\nESCENARIO 3. ERRORES MATERIALES (Art. 214.3 LEC y 267 LOPJ)\\n• Error aritmético manifiesto (214.3 LEC y 267.3 LOPJ): Puede solicitarse en cualquier momento, incluso tras expirar los 2 días hábiles de aclaración ordinaria.\\n• Corrección de oficio por el Juzgado: El tribunal está facultado para rectificar de oficio los errores materiales y aritméticos en cualquier momento.\\n\\nESCENARIO 4. SUSPENSIÓN POR COPIA DE LA GRABACIÓN (Art. 134.2 LEC y confianza legítima)\\n• Doctrina del TS (STS 27 de mayo de 2020 y 3 de marzo de 2021): La solicitud de copia de vista el último día no suspende ipso iure el cómputo si la parte pudo solicitarla con diligencia previa.\\n• Efecto del auto del LAJ acordando la suspensión: Por el principio constitucional de confianza legítima y tutela judicial efectiva (art. 24 CE, STC 158/2007), la parte no puede resultar perjudicada por un acto judicial erróneo. El recurso es admisible dentro del plazo concedido por el LAJ.\\n\\nESCENARIO 5. RENUNCIA DEL ABOGADO A MITAD DE PLAZO Y FUERZA MAYOR\\n• Renuncia de letrado: No suspende automáticamente el cómputo salvo justa causa conferida por el juzgado. Si el tribunal concede 10 días para designar abogado y éste apela en plazo, la inadmisión por la Audiencia vulnera el art. 24 CE.\\n• Intervención quirúrgica urgente del letrado: Constituye causa legal de fuerza mayor (art. 134.2 LEC). Acreditada la imposibilidad, procede la suspensión o rescisión del plazo precluido.\\n\\nESCENARIO 6. PLAZOS SUSTANTIVOS Y DÍA DE GRACIA (Art. 1967 CC vs Art. 135.5 LEC)\\n• Reclamación de honorarios (art. 1967 CC): Plazo sustantivo de prescripción de 3 años.\\n• Presentación a las 22:40 h por LexNET: Válida, hábil todo el día natural hasta las 23:59 h.\\n• Presentación en "día de gracia" (135.5 LEC): DOCTRINA DEL TS: El art. 135.5 LEC solo rige para plazos procesales. NO aplica a la prescripción o caducidad sustantiva del Código Civil. La acción habrá prescrito.\\n\\nPREGUNTAS DE REFLEXIÓN\\n1. Traslado previo de copias (arts. 276 y 277 LEC): Doctrina estricta del Pleno del TS (Sentencias 2017 y 2018). El procurador debe trasladar copia previamente vía LexNET y acreditarlo; la omisión determina la inadmisión del recurso sin posibilidad de subsanación tardía.\\n2. Sentido del día de gracia existiendo sede 24h: Mantiene su vigencia como garantía ante caídas de servidor, fallos en firma electrónica y aseguramiento del derecho de defensa.\\n3. Confianza legítima: El ciudadano no debe sufrir indefensión por actos inductores a error emanados del propio órgano judicial.',
+  body:'CASO PRÁCTICO: ACTOS DE COMUNICACIÓN Y CÓMPUTO DE PLAZOS PROCESALES\\n\\nESCENARIO 1. DÍA INICIAL Y DÍA FINAL (Arts. 151.2, 133 y 135.5 LEC)\\n• Notificación tenida por realizada el viernes 13 de febrero de 2026 (remitida el jueves 12 feb a las 13:45 h, antes de las 15:00 h). La fecha de apertura efectiva por el procurador (16 feb) no altera el cómputo (art. 151.2 LEC).\\n• Cómputo de 20 días hábiles de apelación: Comienza el lunes 16 de febrero y concluye el viernes 13 de marzo de 2026 (desglose: 16-20 feb = 5 d; 23-27 feb = 10 d; 2-6 mar = 15 d; 9-13 mar = 20 d).\\n• Día de gracia (art. 135.5 LEC): El último momento para presentar válidamente el recurso es el lunes 16 de marzo de 2026 hasta las 15:00 h.\\n• Presentación a las 12:00 h del día de gracia: En plazo. Presentación a las 16:00 h: Extemporánea y precluida.\\n• Hipótesis remisión a las 15:30 h del 12 feb: Se recibe el 13 feb y se notifica el lunes 16 feb. Plazo: del 17 feb al 16 mar; día de gracia: martes 17 mar hasta las 15:00 h.\\n\\nESCENARIO 2. INTERRUPCIÓN POR ACLARACIÓN (Art. 215.5 LEC y doctrina TS)\\n• La solicitud de aclaración del 17 feb interrumpe el plazo de apelación.\\n• Doctrina legal del Pleno Sala 1.ª del TS (Auto de 4 de octubre de 2011, ROJ ATS 10217/2011): El plazo no se reanuda por los días restantes sino que SE REINICIA ÍNTEGRAMENTE por 20 días hábiles.\\n• Notificación del auto denegatorio (remitido 23 feb a las 12:00 h): Notificado el martes 24 feb. El nuevo plazo inicia el miércoles 25 feb y concluye el miércoles 25 de marzo de 2026. Día de gracia: jueves 26 de marzo hasta las 15:00 h.\\n• Solicitud sucesiva de complemento infundada: No reabre de nuevo el plazo según reiterada jurisprudencia del TS para evitar maniobras dilatorias o fraudulentas.\\n\\nESCENARIO 3. ERRORES MATERIALES (Art. 214.3 LEC y 267 LOPJ)\\n• Error aritmético manifiesto (214.3 LEC y 267.3 LOPJ): Puede solicitarse en cualquier momento, incluso tras expirar los 2 días hábiles de aclaración ordinaria.\\n• Corrección de oficio por el Juzgado: El tribunal está facultado para rectificar de oficio los errores materiales y aritméticos en cualquier momento.\\n\\nESCENARIO 4. SUSPENSIÓN POR COPIA DE LA GRABACIÓN (Art. 134.2 LEC y confianza legítima)\\n• Doctrina del TS (STS 27 de mayo de 2020 y 3 de marzo de 2021): La solicitud de copia de vista el último día no suspende ipso iure el cómputo si la parte pudo solicitarla con diligencia previa.\\n• Efecto del auto del LAJ acordando la suspensión: Por el principio constitucional de confianza legítima y tutela judicial efectiva (art. 24 CE, STC 158/2007), la parte no puede resultar perjudicada por un acto judicial erróneo. El recurso es admisible dentro del plazo concedido por el LAJ.\\n\\nESCENARIO 5. RENUNCIA DEL ABOGADO A MITAD DE PLAZO Y FUERZA MAYOR\\n• Renuncia de letrado: No suspende automáticamente el cómputo salvo justa causa conferida por el juzgado. Si el tribunal concede 10 días para designar abogado y éste apela en plazo, la inadmisión por la Audiencia vulnera el art. 24 CE.\\n• Intervención quirúrgica urgente del letrado: Constituye causa legal de fuerza mayor (art. 134.2 LEC). Acreditada la imposibilidad, procede la suspensión o rescisión del plazo precluido.\\n\\nESCENARIO 6. PLAZOS SUSTANTIVOS Y DÍA DE GRACIA (Art. 1967 CC vs Art. 135.5 LEC)\\n• Reclamación de honorarios (art. 1967 CC): Plazo sustantivo de prescripción de 3 años.\\n• Presentación a las 22:40 h por LexNET: Válida, hábil todo el día natural hasta las 23:59 h.\\n• Presentación en "día de gracia" (135.5 LEC): DOCTRINA DEL TS: El art. 135.5 LEC solo rige para plazos procesales. NO aplica a la prescripción o caducidad sustantiva del Código Civil. La acción habrá prescrito.\\n\\nPREGUNTAS DE REFLEXIÓN\\n1. Traslado previo de copias (arts. 276 y 277 LEC): Doctrina estricta del Pleno del TS (Sentencias 2017 y 2018). El procurador debe trasladar copia previamente vía LexNET y acreditarlo; la omisión determina la inadmisión del recurso sin posibilidad de subsanación tardía.\\n2. Sentido del día de gracia existiendo sede 24h: Mantiene su vigencia como garantía ante caídas de servidor, fallos en firma electrónica y aseguramiento del derecho de defensa.\\n3. Confianza legítima: El ciudadano no debe sufrir indefensión por actos inductores a error emanados del propio órgano judicial.',
   source:'Plataforma CPROC (MUAP) → Tareas publicadas · Entrega realizada el 22/10/2026 (12:51 h) con resguardo en pantalla «✓ La Tarea se ha entregado con éxito»',
   submissions:[
    {label:'Documento entregado (Google Docs)',file:'Deontología y Técnicas Transversales_Raquel Escudero',pages:'Resolución íntegra (6 escenarios + 3 reflexiones)',url:casoSandraGDocUrl,content:'Resolución jurídica completa elaborada por Raquel Escudero Valcárcel-Ríos para la materia de Sandra Mosteiro Costa.',state:'Entregada en CPROC ✓ (22/10/2026, 12:51 h)'},
@@ -6154,8 +6263,8 @@ const details={
   date:'Estado: Completada en Google Drive y enviada en CPROC ✓ (Plazo del correo: 15 de octubre de 2026)',
   teacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Deontología y responsabilidad|0',
-  body:'Práctica completada, subida a la carpeta «Máster» de Google Drive y entregada en la plataforma CPROC siguiendo la ruta indicada por la profesora Ana Vázquez Corte (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador), aplicando la norma general explicada en clase y justificando las excepciones con el Código Deontológico y el Estatuto General.',
-  source:'Correo de instrucciones de Ana Vázquez Corte (13/15 oct 2026) · Práctica subida a Google Drive y enviada en CPROC (CPROC no envía correo de confirmación)',
+  body:'Resolución de supuestos prácticos sobre derechos, deberes y responsabilidad civil, penal y disciplinaria de los procuradores, con fundamento en el Estatuto General de los Procuradores y el Código Deontológico de la Procura.',
+  source:'Instrucciones de Ana Vázquez Corte · Supuestos de deontología y responsabilidad profesional',
   attachments:[
    {name:'Práctica resuelta en carpeta «Máster» de Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Código Deontológico de los Procuradores',url:driveSearchUrl('Código Deontológico'),kind:'Buscar en Drive'},
@@ -6267,7 +6376,7 @@ const details={
   date:'Plazo oficial: 10 días naturales (vence el 29 de octubre de 2026)',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Práctica oficial del módulo impartido por D. José Luis Delgado Domínguez en el Colegio de Abogados de A Coruña (ICACOR), estructurada en dos partes evaluables:\n\n• PARTE A — Insostenibilidad de la Pretensión y Asistencia Jurídica Gratuita:\n  1) Redacción de un escrito de insostenibilidad de la pretensión fundamentado desde la perspectiva procesal del letrado de oficio designado para la parte demandante (arts. 32 a 35 de la Ley 1/1996 de Asistencia Jurídica Gratuita).\n  2) Dictamen jurídico motivado sobre la aplicación de los artículos 5, 8, 20 y 21 de la LAJG en el supuesto de hecho del paciente intervenido en el SERGAS (indemnización de 100.000 € con gastos de 150.000 € que acude a casación ante el Tribunal Supremo con letrados privados y pide justicia gratuita).\n\n• PARTE B — Parte de Declaración de Siniestro de RCP y Régimen del Turno de Oficio:\n  1) Cumplimentación formal de un parte de declaración de siniestro de responsabilidad civil profesional del abogado ante la compañía aseguradora colegial (supuesto de negligencia profesional por pérdida de plazo / preclusión procesal).\n  2) Cuestiones prácticas relativas a los requisitos de acceso y ejercicio en el Turno de Oficio (experiencia previa de 3 años y cursos de formación homologados) e implicaciones territoriales de la colegiación.\n\n• Vía de entrega: Envío por correo electrónico a secretariatecnico@icacor.org o presentación física en la sede del ICACOR. (No se gestiona por CEPROC, que es exclusivo de Procura).',
+  body:'Práctica oficial del módulo impartido por D. José Luis Delgado Domínguez en el Colegio de Abogados de A Coruña (ICACOR), estructurada en dos partes evaluables:\n\n• PARTE A — Insostenibilidad de la Pretensión y Asistencia Jurídica Gratuita:\n  1) Redacción de un escrito de insostenibilidad de la pretensión fundamentado desde la perspectiva procesal del letrado de oficio designado para la parte demandante (arts. 32 a 35 de la Ley 1/1996 de Asistencia Jurídica Gratuita).\n  2) Dictamen jurídico motivado sobre la aplicación de los artículos 5, 8, 20 y 21 de la LAJG en el supuesto de hecho del paciente intervenido en el SERGAS (indemnización de 100.000 € con gastos de 150.000 € que acude a casación ante el Tribunal Supremo con letrados privados y pide justicia gratuita).\n\n• PARTE B — Parte de Declaración de Siniestro de RCP y Régimen del Turno de Oficio:\n  1) Cumplimentación formal de un parte de declaración de siniestro de responsabilidad civil profesional del abogado ante la compañía aseguradora colegial (supuesto de negligencia profesional por pérdida de plazo / preclusión procesal).\n  2) Cuestiones prácticas relativas a los requisitos de acceso y ejercicio en el Turno de Oficio (experiencia previa de 3 años y cursos de formación homologados) e implicaciones territoriales de la colegiación.\n\n• Modalidad de entrega: Envío por correo a secretariatecnico@icacor.org o presentación física en la secretaría técnica del ICACOR.',
   source:'Enunciado físico facilitado en clase presencial (ICACOR)',
   mailKey:'schedule',
   attachments:[
@@ -6277,7 +6386,7 @@ const details={
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
   ],
-  extra:'⏳ Plazo oficial: 10 días naturales a contar desde la sesión presencial (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org. Sin derivación a CEPROC.'
+  extra:'⏳ Plazo oficial: 10 días naturales a contar desde la sesión presencial (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org.'
  },
  entrega_apud_acta:{
   isDelivery:true,
@@ -6286,7 +6395,7 @@ const details={
   date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Certificado electrónico de inscripción de apoderamiento apud acta en el Registro Electrónico de Apoderamientos Judiciales (REAJ) a favor de la procuradora Carolina Moreno Vázquez. Archivo entregado en la plataforma CPROC y guardado en la carpeta «Máster» de Google Drive.',
+  body:'Obtención y acreditación del certificado electrónico de inscripción de apoderamiento apud acta formalizado a través del Registro Electrónico de Apoderamientos Judiciales (REAJ) a favor de la procuradora docente para su incorporación al expediente judicial.',
   source:'Plataforma CPROC y carpeta «Máster» en Google Drive · Confirmación: «La Tarea se ha entregado con éxito» · 16 oct 2026',
   attachments:[
    {name:'CertificadoRegistro.pdf (Abrir en Google Drive)',url:driveSearchUrl('CertificadoRegistro.pdf'),kind:'Archivo en Drive'},
@@ -6302,7 +6411,7 @@ const details={
   date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Escrito procesal firmado digitalmente que solicita al juzgado/tribunal tener por subsanado el defecto de acreditación de la representación procesal mediante la aportación de certificación de poder apud acta. Entregado dentro de la tarea «ESCRITO SUBSANACIÓN» en CPROC y conservado en Google Drive.',
+  body:'Redacción y firma digital de escrito procesal judicial solicitando tener por subsanado el defecto de acreditación de la representación procesal mediante aportación del certificado de apoderamiento apud acta.',
   source:'Plataforma CPROC (Tarea: «ESCRITO SUBSANACIÓN») y carpeta «Máster» en Google Drive · Confirmación: «La Tarea se ha entregado con éxito» · 16 oct 2026',
   attachments:[
    {name:'Escrito de subsanación_signed.pdf (Abrir en Google Drive)',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),kind:'Archivo en Drive'},
@@ -6318,7 +6427,7 @@ const details={
   date:'Entregado: viernes, 16 de octubre de 2026 · 2 envíos realizados · Estado: Completada en Drive y enviada en CPROC ✓',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
-  body:'Se registran dos envíos sucesivos para la tarea «AUTO DECLARACION CON OFERTA DE VENTA UP» el 16 de octubre de 2026 en la plataforma CPROC, ambos confirmados con éxito y almacenados en tu carpeta «Máster» de Google Drive.',
+  body:'Estudio y dictamen jurídico del auto judicial de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP), con elaboración de resumen estructurado de los intervinientes y antecedentes procesales.',
   submissions:[
    {label:'Primer envío',file:'Documento_anonimizado.pdf',pages:'11 páginas · Guardado en Google Drive',url:driveSearchUrl('Documento_anonimizado.pdf'),content:'Auto judicial anonimizado de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP).',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'},
    {label:'Segundo envío',file:'summary.docx',pages:'1 página · Guardado en Google Drive',url:driveSearchUrl('summary.docx'),content:'Resumen estructurado de los intervinientes, antecedentes y parte dispositiva relevante del auto concursal anterior.',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'}
@@ -12706,10 +12815,107 @@ window.addEventListener('hashchange', () => {
   setView(h, false);
  }
 });
+
+// Modal de calificación y tests de asignatura
+const sgmBackdrop = document.getElementById('subjectGradeModalBackdrop');
+if(sgmBackdrop){
+ sgmBackdrop.addEventListener('click', (e) => {
+  if(e.target === sgmBackdrop) closeSubjectGradeModal();
+ });
+}
+const sgmCloseBtn = document.getElementById('sgmCloseBtn');
+if(sgmCloseBtn){
+ sgmCloseBtn.addEventListener('click', closeSubjectGradeModal);
+}
+const sgmSaveBtn = document.getElementById('sgmSaveBtn');
+if(sgmSaveBtn){
+ sgmSaveBtn.addEventListener('click', saveSubjectGradeFromModal);
+}
+const sgmInput = document.getElementById('sgmInput');
+if(sgmInput){
+ sgmInput.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') saveSubjectGradeFromModal();
+ });
+}
+document.addEventListener('keydown', (e) => {
+ if(e.key === 'Escape'){
+  const mb = document.getElementById('subjectGradeModalBackdrop');
+  if(mb && mb.style.display !== 'none'){
+   closeSubjectGradeModal();
+  }
+ }
+});
+document.addEventListener('click', (e) => {
+ const chip = e.target.closest('.sgm-quick-chip');
+ if(chip && chip.dataset.chip !== undefined){
+  const inp = document.getElementById('sgmInput');
+  if(inp){
+   inp.value = chip.dataset.chip;
+   inp.focus();
+  }
+ }
+});
 </script>
 <div id="toastNotification" role="alert" aria-live="polite">
   <span style="font-size:18px">📋</span>
   <span id="toastNotificationText">Asunto copiado al portapapeles</span>
+</div>
+
+<!-- Modal interactivo de calificación, hueco y tests de asignatura -->
+<div id="subjectGradeModalBackdrop" class="delivery-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="sgmTitle" style="display:none">
+  <div class="delivery-modal-dialog" style="max-width:620px">
+    <div class="delivery-modal-header">
+      <div class="delivery-modal-kicker-wrap">
+        <span class="delivery-modal-kicker terra" id="sgmBranch">Rama</span>
+        <span class="status-pill status-upcoming" id="sgmBlock">Bloque</span>
+      </div>
+      <button type="button" class="delivery-modal-close" id="sgmCloseBtn" aria-label="Cerrar ventana">✕</button>
+    </div>
+    <div class="delivery-modal-body" style="padding:20px 22px">
+      <h2 id="sgmTitle" class="delivery-modal-title" style="font-size:20px;margin-bottom:6px">📖 Asignatura</h2>
+      <div class="delivery-modal-meta" id="sgmMeta" style="margin-bottom:16px;font-size:12.5px;color:var(--muted)"></div>
+      
+      <!-- Info oficial o de estado -->
+      <div id="sgmOfficialBox" style="background:var(--paper-warm);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:16px">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--honey-dark);margin-bottom:4px">⭐ Calificación y evaluación oficial:</div>
+        <div id="sgmOfficialScore" style="font:700 15px var(--sans);color:var(--ink)">—</div>
+        <div id="sgmOfficialDesc" style="font-size:12px;color:var(--muted);margin-top:2px"></div>
+      </div>
+
+      <!-- Cuaderno / hueco para poner la nota -->
+      <div style="background:var(--paper-card);border:1.5px solid var(--green-border);border-left:5px solid var(--green);border-radius:12px;padding:14px 16px;margin-bottom:16px">
+        <label for="sgmInput" style="display:block;font-size:12px;font-weight:800;text-transform:uppercase;color:var(--green-dark);margin-bottom:6px">
+          ✏️ Tu calificación / nota en la materia:
+        </label>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <input type="text" id="sgmInput" placeholder="Ej. 10 / 10, 9.5, Sobresaliente, Test 9/10..." style="flex:1;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);outline:none;font-family:inherit" />
+          <button type="button" id="sgmSaveBtn" class="pill-btn solid-green" style="padding:9px 16px;font-size:13px">💾 Guardar nota</button>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          <span style="font-size:11px;color:var(--muted);font-weight:700">Rápido:</span>
+          <button type="button" class="sgm-quick-chip" data-chip="10 / 10 ★">10 / 10 ★</button>
+          <button type="button" class="sgm-quick-chip" data-chip="9.5 / 10">9.5 / 10</button>
+          <button type="button" class="sgm-quick-chip" data-chip="9 / 10 (Test)">9 / 10 (Test)</button>
+          <button type="button" class="sgm-quick-chip" data-chip="8.8 / 10">8.8 / 10</button>
+          <button type="button" class="sgm-quick-chip" data-chip="8.0 / 10">8.0 / 10</button>
+          <button type="button" class="sgm-quick-chip" data-chip="Completada ✓">Completada ✓</button>
+          <button type="button" class="sgm-quick-chip chip-clear" data-chip="">🗑️ Quitar</button>
+        </div>
+        <p style="font-size:11.5px;color:var(--muted);margin:8px 0 0">
+          🔒 Se guarda con persistencia local en tu navegador (localStorage) y se refleja en los itinerarios de cada bloque y en Notas y Tests.
+        </p>
+      </div>
+
+      <!-- Enlaces directos a Notas y Tests -->
+      <div>
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted);margin-bottom:8px">
+          🔗 Vinculaciones directas con la materia:
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="sgmActionLinks">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
