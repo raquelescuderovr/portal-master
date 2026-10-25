@@ -7,15 +7,15 @@
 <meta http-equiv="Expires" content="0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Máster Abogacía">
-<meta name="application-name" content="Máster Abogacía">
+<meta name="apple-mobile-web-app-title" content="Mi Portal · Raquel">
+<meta name="application-name" content="Mi Portal · Raquel">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Cuaderno · Máster en Abogacía y Procura</title>
+<title>⚖️ Mi Portal · Raquel Escudero (MUAP)</title>
 <script>
 (function(){
   try{
@@ -1757,6 +1757,162 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .mail-subject{font-size:16px;font-weight:700;color:var(--ink)}
 .mail-meta{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:2px}
 .mail-summary{font-size:14px;font-weight:400;line-height:1.65;color:var(--ink-soft);margin:6px 0 0;max-width:780px}
+
+/* Sincronización y Búsqueda en Outlook */
+.mail-outlook-sync-box{
+  margin-top:12px;
+  background:var(--paper-warm);
+  border:1px solid var(--blue-border);
+  border-radius:13px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.mail-sync-info{
+  flex:1 1 280px;
+  min-width:0;
+}
+.mail-sync-label{
+  font-size:11px;
+  font-weight:700;
+  color:var(--blue-dark);
+  text-transform:uppercase;
+  letter-spacing:0.4px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:4px;
+}
+.mail-sync-sublabel{
+  font-size:10.5px;
+  font-weight:500;
+  color:var(--muted);
+  text-transform:none;
+}
+.mail-exact-subject{
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--ink);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  padding:5px 9px;
+  border-radius:7px;
+  word-break:break-word;
+  user-select:all;
+  line-height:1.45;
+}
+.mail-sync-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.btn-copy-subject{
+  background:var(--paper-card);
+  border:1.5px solid var(--blue-border);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  padding:7px 12px;
+  border-radius:9px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .18s ease;
+}
+.btn-copy-subject:hover{
+  background:var(--blue-pale);
+  border-color:var(--blue);
+  color:var(--blue-dark);
+  transform:translateY(-1px);
+}
+.btn-copy-subject.copied{
+  background:var(--green-pale);
+  border-color:var(--green);
+  color:var(--green-dark);
+}
+.btn-copy-and-open{
+  background:var(--blue);
+  border:1.5px solid var(--blue);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  padding:7px 13px;
+  border-radius:9px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .18s ease;
+  box-shadow:var(--shadow-sm);
+}
+.btn-copy-and-open:hover{
+  background:var(--blue-dark);
+  border-color:var(--blue-dark);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+}
+.btn-copy-and-open.copied{
+  background:var(--green);
+  border-color:var(--green);
+}
+.btn-desktop-outlook{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:11.5px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:all .15s ease;
+}
+.btn-desktop-outlook:hover{
+  background:var(--paper-warm);
+  color:var(--ink);
+  border-color:var(--ink-soft);
+}
+
+/* Toast flotante para confirmación de copia */
+#toastNotification{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  background:var(--paper-card);
+  border:1.5px solid var(--green);
+  color:var(--ink);
+  padding:12px 18px;
+  border-radius:12px;
+  box-shadow:var(--shadow-hover);
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:99999;
+  transform:translateY(100px);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity .25s ease;
+  max-width:440px;
+  line-height:1.45;
+}
+#toastNotification.show{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
 
 /* Calendario */
 #calendarSection{margin-top:48px;padding-top:30px;border-top:2px solid var(--line)}
@@ -4113,10 +4269,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 <aside class="sidebar" id="sidebar">
   <div class="brand">
     <div class="brand-icon-wrap">
-      <div class="brand-icon">⚖️</div>
+      <div class="brand-icon" title="Mi Portal">⚖️</div>
     </div>
     <div class="brand-info">
-      <div class="brand-name">Cuaderno</div>
+      <div class="brand-name">Mi Portal</div>
       <div class="brand-sub">Máster en Abogacía y Procura</div>
       <div class="brand-user-pill">Raquel Escudero · 2026/27</div>
     </div>
@@ -4310,8 +4466,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="side-drive-link" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">📁 Carpeta Máster en Drive ↗</a>
       <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
-      <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 Test 16 oct (20/20) ↗</a>
-      <a class="side-drive-link" href="historial-tests/originales/2026-10-20-testmoz-15707582.html" target="_blank" rel="noopener noreferrer">📝 Test 20 oct · S. Mosteiro (9/10) ↗</a>
     </div>
     <div class="sidebar-theme-wrap">
       <div class="sidebar-theme-title">Tema visual</div>
@@ -4459,70 +4613,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
 
     <!-- 2. MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
-    <div class="active-master-banner" id="activeMasterBanner">
-      <div class="amb-header">
-        <div class="amb-title-wrap">
-          <span class="amb-badge">🟢 DOCENCIA EN ACTIVO HOY</span>
-          <h3 class="amb-title">Bloques y Materias cursándose hoy en el Máster</h3>
-          <p class="amb-subtitle">Martes, 20 de octubre de 2026 · Colegio de Abogados de A Coruña (Turno de tarde: 16:30 — 20:45 h)</p>
-        </div>
-        <button class="amb-view-all-btn" data-select-view-mode="blocks">Ver los 8 bloques del plan ➔</button>
-      </div>
-
-      <div class="amb-grid">
-        <!-- Procura Bloque I -->
-        <article class="amb-card amb-card-procura" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">
-          <div class="amb-card-top">
-            <span class="course-badge terra">🏛️ Procura · Bloque I</span>
-            <span class="status-pill status-current">🟢 En curso hoy</span>
-          </div>
-          <h4 class="amb-card-subject" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">Actos de comunicación judicial</h4>
-          <div class="amb-card-meta">
-            <div>⏰ Horario: <b>16:30 — 18:30 h</b> (Sesión 2 de 2 · ¡Hoy segunda y última sesión!)</div>
-            <div>👤 Docente: <b data-open-teacher-screen="Sandra Mosteiro Costa" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">Sandra Mosteiro Costa</b></div>
-            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
-            <div>📄 Contenido: <b>Citaciones, emplazamientos y caso práctico jurisprudencial</b> (4 docs en Drive)</div>
-          </div>
-          <div class="amb-card-actions">
-            <button class="amb-action-btn" data-subject-card="Procura|Técnicas instrumentales|3">
-              <span>Ver asignatura y clase</span> ➔
-            </button>
-            <button class="amb-action-btn secondary" data-open-teacher-screen="Sandra Mosteiro Costa">
-              <span>Docente 👤</span>
-            </button>
-            <button class="amb-action-btn secondary" data-detail="materials">
-              <span>Materiales 📁</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- Abogacía Bloque I -->
-        <article class="amb-card amb-card-abogacia" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">
-          <div class="amb-card-top">
-            <span class="course-badge blue">⚖️ Abogacía · Bloque I</span>
-            <span class="status-pill status-current">🟢 En curso hoy</span>
-          </div>
-          <h4 class="amb-card-subject" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">Responsabilidad civil, penal y turno de oficio</h4>
-          <div class="amb-card-meta">
-            <div>⏰ Horario: <b>18:45 — 20:45 h</b> (Sesión 2 de 3 · Aseguramiento de la responsabilidad)</div>
-            <div>👤 Docente: <b data-open-teacher-screen="José Luis Delgado Domínguez" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">José Luis Delgado Domínguez</b></div>
-            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
-            <div>✉️ Coberturas: <b>Pólizas y aseguramiento profesional</b> (La 3.ª sesión será el lunes 26 oct)</div>
-          </div>
-          <div class="amb-card-actions">
-            <button class="amb-action-btn" data-subject-card="Abogacía|Técnicas instrumentales|3">
-              <span>Ver asignatura y clase</span> ➔
-            </button>
-            <button class="amb-action-btn secondary" data-open-teacher-screen="José Luis Delgado Domínguez">
-              <span>Docente 👤</span>
-            </button>
-            <button class="amb-action-btn secondary" data-detail="schedule">
-              <span>Horarios y aviso ✉️</span>
-            </button>
-          </div>
-        </article>
-      </div>
-    </div>
+    <div class="active-master-banner" id="activeMasterBanner" style="display:none"></div>
 
     <!-- 3. MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y ENTREGAS PENDIENTES -->
     <div class="pending-tasks-banner" id="pendingTasksBanner">
@@ -4667,21 +4758,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
       <!-- Resumen de estado de los 8 bloques formativos -->
       <div class="master-curriculum-summary" aria-label="Resumen de bloques formativos">
-        <div class="mcs-card mcs-current" data-select-view-mode="active" title="Ver materias en curso activo hoy">
+        <div class="mcs-card mcs-current" data-select-view-mode="active" title="Ver materias en curso">
           <div class="mcs-icon">🟢</div>
           <div>
-            <span class="mcs-label">En curso activo hoy</span>
-            <div class="mcs-title">2 Bloques activos</div>
-            <div class="mcs-sub">Bloque I Procura y Bloque I Abogacía · 2 clases hoy</div>
+            <span class="mcs-label">En curso</span>
+            <div class="mcs-title" id="mcsCurrentTitle">1 Bloque en curso</div>
+            <div class="mcs-sub" id="mcsCurrentSub">Bloque I Abogacía en desarrollo</div>
           </div>
         </div>
 
         <div class="mcs-card mcs-past" data-select-status-filter="past" title="Ver bloques y materias completadas">
           <div class="mcs-icon">✓</div>
           <div>
-            <span class="mcs-label">Bloque completado</span>
-            <div class="mcs-title">1 Bloque finalizado</div>
-            <div class="mcs-sub">Bloque II Procura (13 oct) · 10/10 oficial y prácticas al día</div>
+            <span class="mcs-label">Bloques finalizados</span>
+            <div class="mcs-title" id="mcsPastTitle">2 Bloques completados</div>
+            <div class="mcs-sub" id="mcsPastSub">Bloques I y II Procura finalizados</div>
           </div>
         </div>
 
@@ -4689,8 +4780,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <div class="mcs-icon">⏳</div>
           <div>
             <span class="mcs-label">Próximos en el calendario</span>
-            <div class="mcs-title">5 Bloques por venir</div>
-            <div class="mcs-sub">Bloque III Procura (27 oct) · Bloques II–V Abogacía (nov–ene)</div>
+            <div class="mcs-title" id="mcsUpcomingTitle">5 Bloques por venir</div>
+            <div class="mcs-sub" id="mcsUpcomingSub">Bloque III Procura (27 oct) · Bloques II–V Abogacía (nov–ene)</div>
           </div>
         </div>
       </div>
@@ -4698,7 +4789,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <!-- Barra de modos de visualización intuitiva -->
       <div class="block-view-mode-bar" role="tablist" aria-label="Modo de visualización">
         <button class="block-mode-btn active" data-subject-view-mode="active" role="tab" aria-selected="true">
-          <span>🟢 En curso activo hoy</span>
+          <span>🟢 Materias en curso</span>
         </button>
         <button class="block-mode-btn" data-subject-view-mode="blocks" role="tab" aria-selected="false">
           <span>📚 Vista por Bloques (8 Bloques Formativos)</span>
@@ -4712,7 +4803,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="status-filter-strip" id="subjectFilterStrip" role="group" aria-label="Filtro de estado de asignaturas">
         <b>Estado:</b>
         <button class="status-filter-btn active" data-subject-status-filter="all">Todas</button>
-        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose hoy</button>
+        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 En curso</button>
         <button class="status-filter-btn status-btn-upcoming" data-subject-status-filter="upcoming">⏳ Por venir</button>
         <button class="status-filter-btn status-btn-past" data-subject-status-filter="past">✓ Ya cursadas</button>
         <span style="border-left:1px solid var(--line);height:18px;margin:0 4px" aria-hidden="true"></span>
@@ -4850,10 +4941,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="outlook-banner">
       <div class="outlook-banner-info">
-        <strong>Bandeja institucional en Microsoft Outlook</strong>
-        <p>Pulsa en cualquier correo de la lista para ver su resumen completo, documentos adjuntos y calificación, o abre directamente Outlook para consultar el mensaje original.</p>
+        <strong>Bandeja institucional y búsqueda en Outlook</strong>
+        <p>Cada correo incluye su <b>asunto oficial exacto</b>. Pulsa <b>«Copiar y abrir Outlook»</b> en cualquier mensaje: el asunto se copiará a tu portapapeles y se abrirá tu bandeja; solo tienes que pulsar <code>Ctrl+V</code> (o <code>Cmd+V</code>) en el buscador superior de Outlook para ver tu correo al instante.</p>
       </div>
-      <a class="outlook-btn" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Abrir Outlook ↗</a>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="outlook-btn" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Abrir Outlook Web ↗</a>
+        <a class="outlook-btn-secondary" href="ms-outlook://" title="Abrir la aplicación Microsoft Outlook instalada en tu ordenador">App Escritorio 💻</a>
+      </div>
     </div>
     <div id="mailList"></div>
   </section>
@@ -4897,7 +4991,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="hub-card-text">
           <span class="hub-card-kicker">Plan de estudios</span>
           <strong class="hub-card-title">Bloques y Asignaturas</strong>
-          <span class="hub-card-meta">🟢 2 bloques activos hoy · 8 bloques en total</span>
+          <span class="hub-card-meta">8 bloques formativos · Plan oficial</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -5413,7 +5507,6 @@ const gradeRecords=[
 ];
 
 const deliveries=[
- {date:new Date(2026,9,23),title:'Resultados de pruebas y trabajos (Deontología y Técnicas Transversales)',teacher:'Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: Completado)',submitted:false,detailKey:'entrega_resultados_de_pruebas_y_t',details:'Calificación final: 10 (Test: 4 / Trabajos escritos: 6)'},
  {
   date:new Date(2026,9,29),
   title:'Casos prácticos: Insostenibilidad y Asistencia Jurídica Gratuita (Parte A)',
@@ -5508,27 +5601,27 @@ const deliveries=[
 ];
 
 const messages=[
- {date:'23 oct 2026 (13:21)',title:'Calificaciones oficiales · Deontología y TIC (Nota: 10 / 10 · Carolina Moreno y Carlos Sánchez)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Carolina Moreno Vázquez y Carlos M. Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carolina_carlos_23oct',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|2'},
- {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2'},
- {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1'},
- {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
- {date:'22 oct 2026 (13:24)',title:'Calificaciones oficiales · Técnicas instrumentales (Nota: 10 / 10 · Carlos Miguel Sánchez Muiño)',meta:'accesoabogaciaprocura@procuradores-coruna.com · D. Carlos Miguel Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carlos_sanchez_2oct',teacher:'Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|1'},
- {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
- {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:''},
- {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:''},
- {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
- {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
- {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'},
- {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:''},
- {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'},
- {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0'}
+ {date:'23 oct 2026 (13:21)',title:'Calificaciones oficiales · Deontología y TIC (Nota: 10 / 10 · Carolina Moreno y Carlos Sánchez)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Carolina Moreno Vázquez y Carlos M. Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carolina_carlos_23oct',teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|2',emailSubject:'Resultados de las pruebas del 14, 15 y 16/10/2026 - Técnicas Instrumentales - Docente Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño'},
+ {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Docente Dª. María Susana Díaz Gallego [Procuradora] carta presentación MUAP 2026-2027, clases 29 y 30 de octubre'},
+ {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1',emailSubject:'Materiales para alumnos Master Escuela de Práctica Jurídica 2026'},
+ {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Bolsas Santander Estudos Axuda Económica 2026/27'},
+ {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Ampliación de documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'22 oct 2026 (13:24)',title:'Calificaciones oficiales · Técnicas instrumentales (Nota: 10 / 10 · Carlos Miguel Sánchez Muiño)',meta:'accesoabogaciaprocura@procuradores-coruna.com · D. Carlos Miguel Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carlos_sanchez_2oct',teacher:'Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|1',emailSubject:'Resultados de las pruebas del 2/10/2026 -Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño'},
+ {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Docente- Sandra Mosteiro Costa, Procuradora- Remisión de documentación al estudiantado del MUAP'},
+ {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:'',emailSubject:'Docente Dª. María Pilar Carnota García [Procuradora] carta presentación MUAP 2026-2027, clase 28 de octubre'},
+ {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:'',emailSubject:'Presentación de la docente D.ª María Rita Goimil Martínez'},
+ {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE'},
+ {date:'19 oct 2026',title:'Calificaciones oficiales · Deontología y técnicas transversales (Nota: 8.8 / 10)',meta:'master.abogacia@icacor.org · Dña. Ana Vázquez Corte · Procura',key:'mail_deontologia_ana_vazquez',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0',emailSubject:'Calificaciones de Deontología y técnicas transversales - Ana Vázquez Corte'},
+ {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:'',emailSubject:'Información importante sobre el Dataforum'},
+ {date:'19 oct 2026 (13:22)',title:'Resultados y seguimiento de las pruebas · Secretaría Procura',meta:'accesoabogaciaprocura@procuradores... · Secretaría Colegio de Procuradores · Calificaciones',key:'procura_resultados',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0',emailSubject:'Resultados y seguimiento de las pruebas de evaluación'},
+ {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:'',emailSubject:'DATAFORUM Viernes 23'},
+ {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Avisos Facultad de Derecho · Idiomas, Charla Decanato y II Feira de Emprego UDC'},
+ {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3',emailSubject:'Responsabilidad civil y penal - José Luis Delgado Domínguez'},
+ {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Material de clase · Actos de comunicación judicial'},
+ {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Información Dataforum. Suspensión clases'},
+ {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · subido a Drive y enviado en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0',emailSubject:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador'},
+ {date:'14 oct 2026',title:'Resultados de las pruebas · Técnicas instrumentales (Nota: 10 / 10)',meta:'Javier Sánchez García · Secretaría Colegio de Procuradores · Procura',key:'grades',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0',emailSubject:'Resultados de las pruebas · Técnicas instrumentales'}
 ];
 
 const mailSummaries={
@@ -6280,7 +6373,7 @@ const courses=[
   name:'Técnicas instrumentales',
   blockNumber:'Bloque I (Procura)',
   blockTitle:'Bloque I: Técnicas instrumentales e iniciación profesional (Procura)',
-  state:'En curso',
+  state:'Completado',
   officialOrder:1,
   period:'1 al 20 de octubre de 2026 · Colegio de Abogados',
   startDate:'2026-10-01',
@@ -6332,7 +6425,7 @@ const courses=[
     period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada) · Test: 9 / 10',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
-    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado hoy 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
+    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado el martes 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
      notes:[
       {name:'Enunciado oficial: Caso práctico 2026 - Sandra (PDF)',url:casoSandraPdfLocalUrl,label:'Descargar PDF ↗'},
       {name:'Caso práctico completo: 6 escenarios y 3 preguntas (.md)',url:casoSandraMdLocalUrl,label:'Ver .md ↗'},
@@ -6554,7 +6647,7 @@ const courses=[
     period:'19, 20 y 26 oct 2026 · Horario: 18:45–20:45 (Sesión 2 de 3 · Aseguramiento) · 6 h presenciales',
     startDate:'2026-10-19',
     teachers:['José Luis Delgado Domínguez'],
-    grade:{score:'🟢 En curso hoy · Sesión 2 de 3',detail:'Sesión 2 de 3 presencial hoy martes 20 oct (18:45–20:45 h) · Aseguramiento de la responsabilidad civil y penal · 3ª sesión (Turno de Oficio) el lunes 26 oct.',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
+    grade:{score:'En curso · 2 de 3 sesiones',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) programada para el lunes 26 oct (16:30–18:30 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Buscar en Drive ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
@@ -7200,9 +7293,9 @@ const teacherDirectory=[
   name:'José Luis Delgado Domínguez',
   branch:'Abogacía',
   role:'Abogado · Responsabilidad civil y penal, aseguramiento y turno de oficio',
-  gradeBadge:'🟢 Sesión 2 de 3 hoy martes 20 oct (18:45 h)',
+  gradeBadge:'🟢 En curso · 3ª sesión el 26 oct',
   summary:'Responsabilidad civil y penal del abogado, cobertura de seguro de responsabilidad profesional y Turno de Oficio (19, 20 y 26 de octubre).',
-  grade:{score:'🟢 Sesión 2 de 3 · 18:45 h',scoreLabel:'Docencia en curso hoy',detail:'Segunda sesión presencial hoy martes 20 oct (18:45–20:45) sobre aseguramiento · 3ª sesión (Turno de Oficio) el lunes 26 oct.',detailKey:'schedule'},
+  grade:{score:'En curso · Sesión 3 el 26 oct',scoreLabel:'Docencia en curso',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) el lunes 26 oct (16:30–18:30).',detailKey:'schedule'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Responsabilidad civil y penal del abogado (Sesión 1 de 3)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Aseguramiento de la responsabilidad profesional (Sesión 2 de 3)',place:'Colegio de Abogados (A Coruña)'},
@@ -8924,18 +9017,21 @@ function renderMailsPanel(mailsList, t){
    <div style="display:grid;gap:8px">
     ${mailsList.map(m=>{
      const msg=messages.find(x=>x.key===m.key);
+     const exactSubj = msg?.emailSubject || m.title;
      return `
       <div class="visual-resource-card" style="border-left:4px solid var(--blue)">
        <div class="visual-resource-left">
         <div class="visual-resource-icon" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)">✉️</div>
-        <div>
+        <div style="min-width:0">
          <div class="visual-resource-title">${m.title}</div>
          ${msg?`<div class="visual-resource-sub">📅 ${msg.date} · 👤 De: ${msg.from||t.name}</div>`:''}
+         <div style="font-size:11px;color:var(--muted);margin-top:4px;word-break:break-word">Asunto Outlook: <code style="color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:2px 6px;border-radius:4px;user-select:all;font-size:11px">${escapeHtml(exactSubj)}</code></div>
         </div>
        </div>
-       <div class="derive-action-links">
-        <button class="pill-btn blue" data-detail="${m.key}">Ver correo ↗</button>
-        <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+       <div class="derive-action-links" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <button class="pill-btn blue" data-detail="${m.key}">Ver en portal ↗</button>
+        <button type="button" class="pill-btn" data-copy-subject="${escapeHtml(exactSubj)}" title="Copiar asunto para buscar en Outlook">📋 Copiar asunto</button>
+        <button type="button" class="pill-btn blue" data-copy-and-open="${escapeHtml(exactSubj)}" title="Copiar asunto y abrir Outlook">🚀 Copiar y abrir Outlook ↗</button>
        </div>
       </div>
      `;
@@ -9123,6 +9219,32 @@ function escapeRegExp(str){
  return String(str||'').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function getSubjectAllSessions(sub){
+ if(!sub || !sub.teachers || typeof teacherDirectory === 'undefined') return [];
+ const sessions = [];
+ sub.teachers.forEach(tName => {
+  const t = teacherDirectory.find(x => x.name === tName);
+  if(t){
+   sessions.push(...getSubSessions(sub, t));
+  }
+ });
+ return sessions;
+}
+
+function hasSubjectSessionOnDate(sub, dateKey){
+ if(!sub) return false;
+ const sessions = getSubjectAllSessions(sub);
+ if(sessions.some(s => s.date === dateKey)) return true;
+ if(typeof events !== 'undefined' && events[dateKey]){
+  const dayEvs = events[dateKey].filter(ev => !ev.isPersonal);
+  for(const ev of dayEvs){
+   if(sub.teachers && sub.teachers.includes(ev.teacher)) return true;
+   if(ev.name && sub.name && (ev.name.toLowerCase().includes(sub.name.toLowerCase()) || sub.name.toLowerCase().includes(ev.name.toLowerCase()))) return true;
+  }
+ }
+ return false;
+}
+
 function parseSubjectEndDate(sub){
  const sDate=sub.startDate||'';
  const period=sub.period||'';
@@ -9146,16 +9268,8 @@ function getSubjectStatusInfo(sub){
  const sDate=sub.startDate||'';
  const eDate=parseSubjectEndDate(sub);
  const todayKey=keyOf(todayDate);
+ const hasClassToday = hasSubjectSessionOnDate(sub, todayKey);
 
- if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
-  return {
-   status:'current',
-   label:'🟢 Cursándose hoy',
-   badgeClass:'status-current',
-   cardClass:'status-current',
-   desc:'Docencia activa hoy en el horario oficial'
-  };
- }
  if(eDate < todayKey && eDate!==''){
   return {
    status:'past',
@@ -9163,6 +9277,33 @@ function getSubjectStatusInfo(sub){
    badgeClass:'status-past',
    cardClass:'status-past',
    desc:'Materia ya impartida y completada'
+  };
+ }
+ if(todayKey < sDate && sDate!==''){
+  return {
+   status:'upcoming',
+   label:'⏳ Por venir',
+   badgeClass:'status-upcoming',
+   cardClass:'status-upcoming',
+   desc:'Programada según cronograma oficial'
+  };
+ }
+ if(hasClassToday){
+  return {
+   status:'current',
+   label:'🟢 Clase hoy',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia activa hoy en el horario oficial'
+  };
+ }
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
+  return {
+   status:'current',
+   label:'🟢 En curso',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Materia en curso en el calendario oficial'
   };
  }
  return {
@@ -9195,16 +9336,8 @@ function getBlockStatusInfo(course){
  const sDate=course.startDate||'';
  const eDate=parseBlockEndDate(course);
  const todayKey=keyOf(todayDate);
+ const blockHasClassToday = (course.subjects||[]).some(s => hasSubjectSessionOnDate(s, todayKey));
 
- if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
-  return {
-   status:'current',
-   label:'🟢 En curso activo hoy',
-   badgeClass:'status-current',
-   cardClass:'status-current',
-   desc:'Docencia activa hoy según el calendario oficial'
-  };
- }
  if(eDate < todayKey && eDate!==''){
   return {
    status:'past',
@@ -9212,6 +9345,33 @@ function getBlockStatusInfo(course){
    badgeClass:'status-past',
    cardClass:'status-past',
    desc:'Bloque formativo completado'
+  };
+ }
+ if(todayKey < sDate && sDate!==''){
+  return {
+   status:'upcoming',
+   label:'⏳ Por venir',
+   badgeClass:'status-upcoming',
+   cardClass:'status-upcoming',
+   desc:'Programado para fechas posteriores del cuatrimestre'
+  };
+ }
+ if(blockHasClassToday){
+  return {
+   status:'current',
+   label:'🟢 Docencia hoy',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia activa hoy según el calendario oficial'
+  };
+ }
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
+  return {
+   status:'current',
+   label:'🟢 En curso',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Bloque formativo en curso en el cuatrimestre'
   };
  }
  return {
@@ -9622,23 +9782,34 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
  const summaryEl = document.getElementById('subjectFilterSummary');
  if(summaryEl){
   if(mode === 'active'){
-   summaryEl.innerHTML = `Mostrando los <b>${countBlocksCurrent} bloques y materias en curso activo hoy</b> en el Colegio de Abogados.`;
+   summaryEl.innerHTML = `Mostrando los <b>${countBlocksCurrent} bloque${countBlocksCurrent===1?'':'s'} y materias en curso</b> en el plan de estudios.`;
   } else if(mode === 'blocks'){
-   summaryEl.innerHTML = `Estructura oficial del Máster: <b>8 bloques formativos</b> (${countBlocksCurrent} en curso activo hoy, ${countBlocksPast} completado y ${countBlocksUpcoming} por venir).`;
+   summaryEl.innerHTML = `Estructura oficial del Máster: <b>8 bloques formativos</b> (${countBlocksCurrent} en curso, ${countBlocksPast} completado${countBlocksPast===1?'':'s'} y ${countBlocksUpcoming} por venir).`;
   } else {
    if(statusMode === 'current'){
-    summaryEl.innerHTML = `Mostrando <b>${countSubCurrent} materia${countSubCurrent===1?'':'s'} cursándose hoy</b> (19 y 20 de octubre).`;
+    summaryEl.innerHTML = `Mostrando <b>${countSubCurrent} materia${countSubCurrent===1?'':'s'} en curso</b> en el calendario oficial.`;
    } else if(statusMode === 'upcoming'){
     summaryEl.innerHTML = `Mostrando <b>${countSubUpcoming} asignaturas por venir</b> en el calendario oficial.`;
    } else if(statusMode === 'past'){
     summaryEl.innerHTML = `Mostrando <b>${countSubPast} asignaturas ya cursadas y completadas</b>.`;
    } else {
-    summaryEl.innerHTML = `Mostrando <b>${totalSubCount} materias</b> (${countSubCurrent} en curso hoy, ${countSubUpcoming} por venir y ${countSubPast} ya cursadas).`;
+    summaryEl.innerHTML = `Mostrando <b>${totalSubCount} materias</b> (${countSubCurrent} en curso, ${countSubUpcoming} por venir y ${countSubPast} ya cursadas).`;
    }
   }
  }
 
- // 1. MODO: 'active' (EN CURSO ACTIVO HOY)
+ const mcsCurTitle = document.getElementById('mcsCurrentTitle');
+ const mcsCurSub = document.getElementById('mcsCurrentSub');
+ const mcsPstTitle = document.getElementById('mcsPastTitle');
+ const mcsPstSub = document.getElementById('mcsPastSub');
+ const mcsUpcTitle = document.getElementById('mcsUpcomingTitle');
+ if(mcsCurTitle) mcsCurTitle.textContent = `${countBlocksCurrent} Bloque${countBlocksCurrent===1?'':'s'} en curso`;
+ if(mcsCurSub) mcsCurSub.textContent = countBlocksCurrent ? 'Bloque I Abogacía en desarrollo' : 'Sin bloques en curso';
+ if(mcsPstTitle) mcsPstTitle.textContent = `${countBlocksPast} Bloque${countBlocksPast===1?'':'s'} completado${countBlocksPast===1?'':'s'}`;
+ if(mcsPstSub) mcsPstSub.textContent = 'Bloques I y II Procura finalizados';
+ if(mcsUpcTitle) mcsUpcTitle.textContent = `${countBlocksUpcoming} Bloque${countBlocksUpcoming===1?'':'s'} por venir`;
+
+ // 1. MODO: 'active' (EN CURSO)
  if(mode === 'active'){
   const activeCourses = courses.filter(c => {
    if(branch && c.branch !== branch) return false;
@@ -9646,17 +9817,21 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
   });
 
   if(!activeCourses.length){
-   grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted)">No hay bloques en curso activo para la rama seleccionada.</div>';
+   grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted)">No hay bloques en curso para la rama seleccionada.</div>';
    return;
   }
+
+  const anyClassToday = activeCourses.some(c => (c.subjects || []).some(sub => hasSubjectSessionOnDate(sub, keyOf(todayDate))));
+  const bannerHeading = anyClassToday ? `🟢 Bloques y Materias con clase hoy (${fmtFull(todayDate)})` : `🟢 Materias y Bloques actualmente en curso`;
+  const bannerSub = anyClassToday ? `Turno de tarde · Clases presenciales en el Colegio de Abogados de A Coruña (16:30 — 20:45 h)` : `No hay clases presenciales hoy (${fmtFull(todayDate)}). Mostrando las materias activas en el calendario oficial.`;
 
   grid.innerHTML = `
    <div style="grid-column:1/-1;margin-bottom:8px">
     <div style="background:var(--paper-warm);border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
      <div>
       <span style="font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--green-dark);text-transform:uppercase">Plan de estudios en tiempo real</span>
-      <h3 style="margin:2px 0 0;font:700 18px var(--serif);color:var(--ink)">🟢 Bloques y Materias cursándose hoy (${fmtFull(todayDate)})</h3>
-      <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">Turno de tarde · Clases presenciales en el Colegio de Abogados de A Coruña (16:30 — 20:45 h)</p>
+      <h3 style="margin:2px 0 0;font:700 18px var(--serif);color:var(--ink)">${bannerHeading}</h3>
+      <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">${bannerSub}</p>
      </div>
      <button class="pill-btn solid-green" data-subject-view-mode="blocks" style="padding:8px 14px;font-size:12px">Ver los 8 bloques del plan ➔</button>
     </div>
@@ -9667,6 +9842,10 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
     const activeSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'current');
     const pastSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'past');
     const upcomingSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'upcoming');
+
+    const subsBoxHeader = activeSubs.some(x => hasSubjectSessionOnDate(x.sub, keyOf(todayDate))) 
+      ? `🟢 Materia impartiéndose hoy en clase (${fmtShort(todayDate)}):` 
+      : `🟢 Materia actualmente en curso:`;
 
     return `
      <article class="master-block-card status-current" style="grid-column:1/-1">
@@ -9681,13 +9860,17 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
 
        <h3 class="mbc-title" style="font-size:20px;margin-bottom:8px">🏛️ ${c.blockTitle}</h3>
 
-       <!-- MATERIA ACTIVA HOY -->
+       <!-- MATERIA ACTIVA -->
+       ${activeSubs.length ? `
        <div style="background:var(--paper-card);border:2px solid var(--green);border-radius:14px;padding:16px 18px;margin:12px 0;box-shadow:0 3px 10px rgba(46,125,50,0.12)">
-        <div style="font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">🟢 Materia impartiéndose hoy en clase:</div>
+        <div style="font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">${subsBoxHeader}</div>
         ${activeSubs.map(item => `
          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
           <div>
-           <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0 0 4px">📖 ${item.sub.name}</h4>
+           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px">
+            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0">📖 ${item.sub.name}</h4>
+            <span class="status-pill ${item.st.badgeClass}" style="font-size:11px;padding:2px 8px">${item.st.label}</span>
+           </div>
            <div style="font-size:13px;color:var(--ink-soft)">
             🗓️ Fechas: <b>${item.sub.period}</b> · 👤 Docente(s): <b>${item.sub.teachers.join(', ')}</b>
            </div>
@@ -9706,6 +9889,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
          </div>
         `).join('')}
        </div>
+       ` : ''}
 
        <!-- OTRAS MATERIAS DEL BLOQUE -->
        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;margin-top:12px">
@@ -10501,6 +10685,7 @@ function renderActiveMasterBanner(){
 
  if(!dayEvents.length){
   if(k>='2026-10-21' && k<='2026-10-23'){
+   bannerEl.style.display='';
    bannerEl.innerHTML=`
     <div class="amb-header">
       <div class="amb-title-wrap">
@@ -10511,10 +10696,14 @@ function renderActiveMasterBanner(){
       <button class="amb-view-all-btn" data-detail="dataforum_instrucciones">Ver programa DATAfórum ➔</button>
     </div>
    `;
+  } else {
+   bannerEl.innerHTML='';
+   bannerEl.style.display='none';
   }
   return;
  }
 
+ bannerEl.style.display='';
  const cardsHtml=dayEvents.map(ev=>{
   const isProcura=(ev.subject||'').includes('Procura');
   const cardClass=isProcura?'amb-card amb-card-procura':'amb-card amb-card-abogacia';
@@ -10565,7 +10754,7 @@ function renderActiveMasterBanner(){
     <article class="${cardClass}" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">
       <div class="amb-card-top">
         <span class="${badgeClass}">${branchLabel}</span>
-        <span class="status-pill status-current">🟢 En curso hoy</span>
+        <span class="status-pill status-current">🟢 Clase hoy</span>
       </div>
       <h4 class="amb-card-subject" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">${escapeHtml(subjectName)}</h4>
       <div class="amb-card-meta">
@@ -10836,6 +11025,60 @@ function renderDeliveries(filter = currentDeliveryFilter){
  }
 }
 
+let toastNotificationTimer = null;
+function showToastNotification(msg){
+ const toast = document.getElementById('toastNotification');
+ const textEl = document.getElementById('toastNotificationText');
+ if(!toast || !textEl) return;
+ textEl.textContent = msg;
+ toast.classList.add('show');
+ if(toastNotificationTimer) clearTimeout(toastNotificationTimer);
+ toastNotificationTimer = setTimeout(()=>{
+  toast.classList.remove('show');
+ }, 3600);
+}
+
+function copyOutlookSubject(subjectText, btnEl, openOutlook=false){
+ if(!subjectText) return;
+ const fallbackCopy = () => {
+  const ta = document.createElement('textarea');
+  ta.value = subjectText;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'absolute';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+ };
+
+ const onCopied = () => {
+  if(btnEl){
+   const origHtml = btnEl.innerHTML;
+   btnEl.classList.add('copied');
+   btnEl.innerHTML = openOutlook ? '<span>✓ ¡Copiado y abriendo!</span>' : '<span>✓ ¡Asunto copiado!</span>';
+   setTimeout(()=>{
+    btnEl.classList.remove('copied');
+    btnEl.innerHTML = origHtml;
+   }, 2200);
+  }
+  showToastNotification(`Asunto copiado: «${subjectText}». Pégalo con Ctrl+V (o Cmd+V) en el buscador de Outlook.`);
+  if(openOutlook){
+   window.open('https://outlook.office.com/mail/', '_blank', 'noopener,noreferrer');
+  }
+ };
+
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(subjectText).then(onCopied).catch(()=>{
+   fallbackCopy();
+   onCopied();
+  });
+ } else {
+  fallbackCopy();
+  onCopied();
+ }
+}
+
 function renderMail(q='', filter=currentMailFilter){
  if(filter !== undefined) currentMailFilter = filter;
  const listContainer = document.getElementById('mailList');
@@ -10857,7 +11100,7 @@ function renderMail(q='', filter=currentMailFilter){
 
  if(q){
   const lq = q.toLowerCase();
-  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
+  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (m.emailSubject||'') + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
  }
 
  const summaryEl = document.getElementById('mailFilterSummary');
@@ -10875,13 +11118,33 @@ function renderMail(q='', filter=currentMailFilter){
 
  listContainer.innerHTML=list.map(m=>{
   const d = details[m.key];
+  const exactSubj = m.emailSubject || m.title;
   return `
   <div class="mail-row" id="mail-card-${m.key}" data-mail-key="${m.key}" role="region" aria-label="Correo: ${m.title}">
    <div class="mail-mark">✉️</div>
-   <div>
+   <div style="min-width:0">
     <div class="mail-subject"><button class="teacher-link" data-detail="${m.key}" style="font-weight:700;color:inherit;text-decoration:none">${m.title} ↗</button></div>
     <div class="mail-meta">${m.date} · ${m.meta}</div>
     <p class="mail-summary">${mailSummaries[m.key]}</p>
+
+    <!-- Sincronización y búsqueda exacta en Outlook -->
+    <div class="mail-outlook-sync-box">
+      <div class="mail-sync-info">
+        <div class="mail-sync-label">
+          <span>✉️ Asunto en Outlook</span>
+          <span class="mail-sync-sublabel">(Para buscar en tu bandeja)</span>
+        </div>
+        <div class="mail-exact-subject" title="Haz clic para seleccionar el asunto">${escapeHtml(exactSubj)}</div>
+      </div>
+      <div class="mail-sync-actions">
+        <button type="button" class="btn-copy-subject" data-copy-subject="${escapeHtml(exactSubj)}" title="Copiar asunto exacto para pegar en la barra de búsqueda de Outlook">
+          <span>📋 Copiar asunto</span>
+        </button>
+        <button type="button" class="btn-copy-and-open" data-copy-and-open="${escapeHtml(exactSubj)}" title="Copia el asunto y abre Outlook Web en nueva pestaña para que solo tengas que pulsar Ctrl+V">
+          <span>🚀 Copiar y abrir Outlook ↗</span>
+        </button>
+      </div>
+    </div>
 
     ${d ? `
      <details class="mail-content-details" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:12.5px">
@@ -10909,11 +11172,12 @@ function renderMail(q='', filter=currentMailFilter){
      </details>
     ` : ''}
 
-    <div class="action-pills" style="margin-top:8px">
+    <div class="action-pills" style="margin-top:10px">
      <button class="pill-btn" data-detail="${m.key}">Desplegar contenido ↗</button>
      ${m.teacher ? `<button class="pill-btn" data-teacher="${m.teacher}">Docente: ${m.teacher} ↗</button>` : ''}
      ${m.subjectRef ? `<button class="pill-btn" data-subject="${m.subjectRef}">Ir a la asignatura ↗</button>` : ''}
-     <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir en Outlook ↗</a>
+     <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Bandeja Outlook ↗</a>
+     <a class="pill-link" href="ms-outlook://" title="Abrir la app de escritorio de Outlook instalada en este ordenador" style="font-size:11px">App escritorio 💻</a>
     </div>
    </div>
    <button class="pill-btn" data-detail="${m.key}" aria-label="Abrir detalle">↗</button>
@@ -11635,6 +11899,22 @@ document.addEventListener('click',e=>{
   applyTheme(val, true);
   return;
  }
+ const copyBtn=e.target.closest('[data-copy-subject]');
+ if(copyBtn){
+  e.preventDefault();
+  e.stopPropagation();
+  const subj=copyBtn.getAttribute('data-copy-subject');
+  copyOutlookSubject(subj, copyBtn, false);
+  return;
+ }
+ const copyOpenBtn=e.target.closest('[data-copy-and-open]');
+ if(copyOpenBtn){
+  e.preventDefault();
+  e.stopPropagation();
+  const subj=copyOpenBtn.getAttribute('data-copy-and-open');
+  copyOutlookSubject(subj, copyOpenBtn, true);
+  return;
+ }
  const d=e.target.closest('[data-detail]');
  if(d){openDetail(d.dataset.detail);return}
  if(e.target.closest('#detailFullpageBack')||e.target.closest('#detailCloseBtn')||e.target.closest('.detail-close')||e.target.id==='detailBackdrop'){
@@ -11755,5 +12035,9 @@ renderTeachers();
 renderMaterials();
 renderMail();
 </script>
+<div id="toastNotification" role="alert" aria-live="polite">
+  <span style="font-size:18px">📋</span>
+  <span id="toastNotificationText">Asunto copiado al portapapeles</span>
+</div>
 </body>
 </html>

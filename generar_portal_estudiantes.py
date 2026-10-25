@@ -16,30 +16,45 @@ import re
 import os
 import sys
 
-def build_student_portal():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    src_path = os.path.join(base_dir, 'index.html')
-    out_path = os.path.join(base_dir, 'portal-estudiantes.html')
-    alias_path = os.path.join(base_dir, 'estudiantes.html')
-
-    if not os.path.exists(src_path):
-        print(f"Error: {src_path} no encontrado.")
-        sys.exit(1)
-
-    with open(src_path, 'r', encoding='utf-8') as f:
-        html = f.read()
-
+def generate_student_portal_html(html: str) -> str:
+    """Transforma el HTML del portal personal de Raquel en el Portal del Estudiante neutral y colaborativo."""
     # -------------------------------------------------------------
-    # 1. TÍTULO, USUARIO Y CABECERA DE BIENVENIDA
+    # 1. TÍTULO, METADATOS, FAVICON Y CABECERA DE MARCA
     # -------------------------------------------------------------
     html = re.sub(
         r'<title>.*?</title>',
-        '<title>Portal del Estudiante · Máster en Abogacía y Procura (MUAP)</title>',
+        '<title>🎓 Portal del Estudiante · MUAP</title>',
         html,
         count=1
     )
-    html = html.replace('<div class="brand-user-pill">Raquel Escudero · 2026/27</div>', '<div class="brand-user-pill">Estudiante · MUAP 2026/27</div>')
-    html = html.replace('<div class="avatar" title="Raquel Escudero">RE</div>', '<div class="avatar" title="Máster en Abogacía y Procura">⚖️</div>')
+    html = html.replace('<meta name="apple-mobile-web-app-title" content="Mi Portal · Raquel">', '<meta name="apple-mobile-web-app-title" content="Portal Estudiantes">')
+    html = html.replace('<meta name="apple-mobile-web-app-title" content="Máster Abogacía">', '<meta name="apple-mobile-web-app-title" content="Portal Estudiantes">')
+    html = html.replace('<meta name="application-name" content="Mi Portal · Raquel">', '<meta name="application-name" content="Portal Estudiantes">')
+    html = html.replace('<meta name="application-name" content="Máster Abogacía">', '<meta name="application-name" content="Portal Estudiantes">')
+
+    # Desvinculación de favicon / icono para que sea 100% propio del estudiante (Birrete en Oxford Navy)
+    favicon_original = """<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">"""
+
+    favicon_replacement = """<link rel="apple-touch-icon" href="favicon-estudiantes.svg">
+<link rel="icon" type="image/svg+xml" href="favicon-estudiantes.svg">
+<link rel="alternate icon" href="favicon-estudiantes.svg">
+<link rel="manifest" href="manifest-estudiantes.webmanifest">"""
+
+    html = html.replace(favicon_original, favicon_replacement)
+
+    # Identidad del portal (Logo e icono del menú lateral)
+    html = html.replace('<div class="brand-icon" title="Mi Portal">⚖️</div>', '<div class="brand-icon" title="Portal del Estudiante">🎓</div>')
+    html = html.replace('<div class="brand-icon">⚖️</div>', '<div class="brand-icon" title="Portal del Estudiante">🎓</div>')
+    html = html.replace('<div class="brand-name">Mi Portal</div>', '<div class="brand-name">Portal Estudiantes</div>')
+    html = html.replace('<div class="brand-name">Cuaderno</div>', '<div class="brand-name">Portal Estudiantes</div>')
+    html = html.replace('<div class="brand-user-pill">Raquel Escudero · 2026/27</div>', '<div class="brand-user-pill">🎓 Estudiante · MUAP 2026/27</div>')
+    html = html.replace('<div class="avatar" title="Raquel Escudero">RE</div>', '<div class="avatar" title="Portal del Estudiante">🎓</div>')
+    html = html.replace('<div class="avatar" title="Máster en Abogacía y Procura">⚖️</div>', '<div class="avatar" title="Portal del Estudiante">🎓</div>')
     html = html.replace('<h1 id="welcomeTitle">Hola, Raquel</h1>', '<h1 id="welcomeTitle">Portal del Estudiante · MUAP</h1>')
     html = html.replace(
         '<p id="welcomeSubtitle">Cuaderno personal de estudio, agenda y seguimiento académico del Máster en Abogacía y Procura.</p>',
@@ -136,7 +151,9 @@ def build_student_portal():
                 if f"key:'{k}'" in item_str or f'key:"{k}"' in item_str:
                     skip = True
                     break
-            if any(term in item_str for term in ['Nota:', 'Calificaciones oficiales', 'Resultados de las pruebas', 'Test online realizado']):
+            if "key:'mail_nota_" in item_str or 'key:"mail_nota_' in item_str:
+                skip = True
+            if any(term in item_str for term in ['Nota:', 'Calificaciones oficiales', 'Resultados de las pruebas', 'Test online realizado', 'Calificación oficial']):
                 skip = True
             if not skip:
                 # Limpiar referencias a Drive en el meta
@@ -175,6 +192,18 @@ def build_student_portal():
     # -------------------------------------------------------------
     # 5. DESVINCULACIÓN TOTAL DE GOOGLE DRIVE Y GOOGLE DOCS
     # -------------------------------------------------------------
+    # Menú lateral inferior (Primer cuatrimestre): solo Bandeja de Outlook y Plataforma CPROC para estudiantes
+    html = re.sub(
+        r'\s*<a class="side-drive-link"[^>]*>📁 Carpeta Máster en Drive ↗</a>',
+        '',
+        html
+    )
+    html = re.sub(
+        r'\s*<a class="side-drive-link" href="historial-tests/[^"]*"[^>]*>.*?</a>',
+        '',
+        html
+    )
+
     # Reemplazo de variables de URL
     html = re.sub(
         r"const driveFolderUrl='[^']*';",
@@ -235,38 +264,36 @@ def build_student_portal():
     print("✓ Enlaces privados a Google Drive y Docs desvinculados por completo.")
 
     # -------------------------------------------------------------
-    # 6. LIMPIAR NOTAS FIJAS EN courses = [...]
+    # 6. LIMPIAR NOTAS FIJAS EN courses = [...], teacherDirectory Y gradeRecords
     # -------------------------------------------------------------
     # Reemplazar calificaciones fijas en asignaturas por evaluación continua
     html = re.sub(
-        r"grade:\{score:'10 / 10 \(Sobresaliente\)',scoreLabel:'Calificación oficial',detail:'[^']*',detailKey:'[^']*'\}",
+        r"grade:\{score:'[^']*(?:Sobresaliente|Notable|aciertos|★|Oficial|\d+\s*/\s*10)[^']*',scoreLabel:'[^']*',detail:'[^']*',detailKey:'[^']*'\}",
         "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
         html
     )
-    html = re.sub(
-        r"grade:\{score:'8\.8 / 10 \(Notable\)',scoreLabel:'Calificación otorgada',detail:'[^']*',detailKey:'[^']*'\}",
-        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
-        html
-    )
-    html = re.sub(
-        r"grade:\{score:'Nota oficial: 10 / 10 \(Sobresaliente\)',scoreLabel:'Calificación oficial',detail:'[^']*',detailKey:'[^']*'\}",
-        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'}",
-        html
-    )
-    html = re.sub(
-        r"grade:\{score:'10 / 10 · 20/20 aciertos',scoreLabel:'Evaluación',detail:'[^']*',detailKey:'[^']*'\}",
-        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Cuestionario oficial en Testmoz y casos prácticos en CPROC.',detailKey:'dossiers'}",
-        html
-    )
-    html = re.sub(
-        r"grade:\{score:'9 / 10 · Testmoz \(90 %\)',scoreLabel:'Evaluación',detail:'[^']*',detailKey:'[^']*'\}",
-        "grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Test oficial en Testmoz y caso evaluable en CPROC.',detailKey:'dossiers'}",
-        html
-    )
-    html = html.replace(' · Calificación oficial: 10 / 10', '')
-    html = html.replace(' · Test: 9 / 10', '')
+    # Neutralizar insignias y notas individuales en teacherDirectory
+    html = re.sub(r"gradeBadge:\s*'[^']*(?:★|Oficial|Sobresaliente|Notable|\d+\s*/\s*10)[^']*'", "gradeBadge:'⚖️ Evaluación continua'", html)
+    html = re.sub(r"gradeScore:\s*'[^']*(?:Sobresaliente|Notable|\d+\s*/\s*10)[^']*'", "gradeScore:'Evaluación continua'", html)
+    html = re.sub(r"gradeDetail:\s*'Calificación oficial registrada:[^']*'", "gradeDetail:'Ponderación oficial de evaluación continua (test + trabajos de CPROC).'", html)
+    html = re.sub(r" · Calificación oficial:\s*[^'\"<]+", "", html)
+    html = re.sub(r" · Test:\s*[^'\"<]+", "", html)
     html = html.replace(' · Práctica entregada en CPROC', '')
-    print("✓ Notas fijas de asignaturas convertidas en evaluación continua neutral.")
+
+    # Neutralizar gradeRecords: excluir notas personales numéricas comunicadas por correo manteniendo cuestionarios didácticos
+    m_gr = re.search(r'(const gradeRecords\s*=\s*\[)(.*?)(\];\s*const)', html, re.DOTALL)
+    if m_gr:
+        raw_gr = m_gr.group(2)
+        clean_gr = []
+        for item in re.finditer(r'\{[^{}]*?\}', raw_gr):
+            item_str = item.group(0)
+            if 'grade_16oct_test' in item_str or 'grade_20oct_test' in item_str:
+                item_str = re.sub(r"score:'[^']*'", "score:'Cuestionario oficial'", item_str)
+                item_str = re.sub(r"scoreLabel:'[^']*'", "scoreLabel:'Preguntas y soluciones'", item_str)
+                clean_gr.append(item_str)
+        html = html[:m_gr.start(2)] + "\n " + ",\n ".join(clean_gr) + "\n" + html[m_gr.end(2):]
+
+    print("✓ Notas fijas de asignaturas y expedientes convertidas en evaluación continua neutral.")
 
     # -------------------------------------------------------------
     # 7. ENTREGAS: INICIO A CERO Y CHECKBOXES INTERACTIVOS
@@ -289,7 +316,32 @@ def build_student_portal():
         # 4) Limpiar estados de Raquel
         del_content = re.sub(r"status:'Entregada con éxito en CPROC ✓[^\']*'", "status:'⏳ Pendiente de marcar'", del_content)
         del_content = re.sub(r"status:'⏳ Pendiente \(Plazo:[^\']*'\)", "status:'⏳ Pendiente de marcar'", del_content)
-        # 5) Limpiar textos de details
+        # 5) Limpieza rigurosa de textos de entregas (sin estados ni fechas de entrega personales)
+        del_content = re.sub(
+            r"details:'Caso práctico oficial evaluable entregado con éxito en CPROC[^']*'",
+            "details:'Caso práctico oficial evaluable sobre actos de comunicación judicial (citaciones, emplazamientos, LexNET y doctrina jurisprudencial de los 6 supuestos de la LEC). Enunciado en CASO_PRACTICO_2026_SANDRA.pdf para entrega en CPROC.'",
+            del_content
+        )
+        del_content = re.sub(
+            r"details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez[^']*'",
+            "details:'Certificado electrónico de apoderamiento apud acta en el REAJ a favor de la docente. Tarea evaluable de tramitación procesal telemática para entrega en plataforma CPROC.'",
+            del_content
+        )
+        del_content = re.sub(
+            r"details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN»[^']*'",
+            "details:'Redacción y firma de escrito procesal solicitando tener por subsanada la representación procesal mediante poder apud acta. Entrega en plataforma CPROC.'",
+            del_content
+        )
+        del_content = re.sub(
+            r"details:'1\.º envío: Documento_anonimizado\.pdf[^']*'",
+            "details:'Estudio del auto de concurso y elaboración de resumen procesal ejecutivo con oferta de venta de unidad productiva (UP). Entrega en plataforma CPROC.'",
+            del_content
+        )
+        del_content = re.sub(
+            r"details:'Plataforma oficial CPROC \(MUAP\)[^']*'",
+            "details:'Caso práctico evaluable sobre derechos, deberes y responsabilidad profesional del procurador, estatuto orgánico y código deontológico. Entrega en CPROC.'",
+            del_content
+        )
         del_content = del_content.replace(' en Google Drive y Markdown local.', '.')
         del_content = del_content.replace('Subida a Google Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
         del_content = del_content.replace('Subida a Drive y enviada en CPROC', 'Plataforma oficial CPROC (MUAP)')
@@ -297,7 +349,219 @@ def build_student_portal():
         del_content = del_content.replace('Práctica subida a Google Drive y enviada dentro de plazo en CPROC', 'Plataforma oficial CPROC (MUAP)')
 
         html = html[:m_del.start(2)] + del_content + html[m_del.end(2):]
-        print("✓ Colección de entregas reajustada con inicio limpio a cero.")
+        print("✓ Colección de entregas reajustada con inicio limpio a cero y descripciones neutrales.")
+
+    # -------------------------------------------------------------
+    # 7b. LIMPIAR DETAILS DE ENTREGAS Y DESACOPLAR INTERFAZ
+    # -------------------------------------------------------------
+    html = re.sub(
+        r"kicker:'Práctica entregada con éxito en CPROC ✓ · 22 de octubre de 2026',",
+        "kicker:'Caso práctico evaluable · Procura · Actos de comunicación judicial',",
+        html
+    )
+    html = re.sub(
+        r"date:'Entregada: jueves, 22 de octubre de 2026 \(12:51 h\) · Estado: Completada y enviada en CPROC \(«✓ La Tarea se ha entregado con éxito»\)',",
+        "date:'Sesiones: 19 y 20 de octubre de 2026 · Entrega a través de plataforma CPROC',",
+        html
+    )
+    html = re.sub(
+        r"date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',",
+        "date:'Sesión: 16 de octubre de 2026 · Entrega a través de plataforma CPROC',",
+        html
+    )
+    html = re.sub(
+        r"date:'Entregado: viernes, 16 de octubre de 2026 · 2 envíos realizados · Estado: Completada en Drive y enviada en CPROC ✓',",
+        "date:'Sesión: 16 de octubre de 2026 · Entrega a través de plataforma CPROC',",
+        html
+    )
+    html = re.sub(
+        r"kicker:'Práctica entregada · Procura · Técnicas instrumentales / Actuación procesal',",
+        "kicker:'Práctica procesal de aula · Procura · Técnicas instrumentales',",
+        html
+    )
+    html = re.sub(
+        r"kicker:'Práctica entregada \(2 envíos\) · Procura · Técnicas instrumentales / Actuación procesal',",
+        "kicker:'Práctica procesal de aula · Procura · Técnicas instrumentales',",
+        html
+    )
+    html = re.sub(
+        r"kicker:'Práctica entregada y apuntes · Procura · Deontología y responsabilidad',",
+        "kicker:'Caso práctico evaluable · Procura · Deontología y responsabilidad',",
+        html
+    )
+    html = re.sub(
+        r"date:'Estado: Completada en Google Drive y enviada en CPROC ✓ \(Plazo del correo: 15 de octubre de 2026\)',",
+        "date:'Sesiones: 8 y 9 de octubre de 2026 · Entrega a través de plataforma CPROC',",
+        html
+    )
+    html = re.sub(
+        r"extra:'✓ Entrega confirmada en CPROC[^\']*'",
+        "extra:'Entrega telemática a través del aula virtual de tareas CPROC.'",
+        html
+    )
+    html = re.sub(
+        r"extra:'✓ Entregada con justificante de éxito en CPROC[^\']*'",
+        "extra:'Entrega telemática a través del aula virtual de tareas CPROC.'",
+        html
+    )
+    html = re.sub(
+        r"extra:'✓ Ambos archivos están entregados en CPROC[^\']*'",
+        "extra:'Entrega telemática a través del aula virtual de tareas CPROC.'",
+        html
+    )
+    html = html.replace('Estudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC el 22/10/2026 a las 12:51 h', 'Caso práctico oficial evaluable (6 escenarios de la LEC + 3 reflexiones)')
+    html = html.replace('Plataforma CPROC (MUAP) → Tareas publicadas · Entrega realizada el 22/10/2026 (12:51 h) con resguardo en pantalla «✓ La Tarea se ha entregado con éxito»', 'Plataforma CPROC (MUAP) → Tareas publicadas · Entrega oficial a través de la plataforma CPROC')
+    html = html.replace('Resolución jurídica completa elaborada por Raquel Escudero Valcárcel-Ríos para la materia de Sandra Mosteiro Costa.', 'Resolución de supuestos prácticos procesales para la materia de Sandra Mosteiro Costa.')
+    html = html.replace("state:'Entregada en CPROC ✓ (22/10/2026, 12:51 h)'", "state:'Entrega telemática en CPROC'")
+    html = html.replace("Confirmación: «La Tarea se ha entregado con éxito» · 16 oct 2026", "Entrega telemática a través de la plataforma CPROC")
+    html = html.replace("state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'", "state:'Entrega telemática en CPROC'")
+    html = html.replace('Repositorio privado con tus apuntes, guías, casos prácticos y entregas', 'Repositorio académico con guías, casos prácticos y materiales de estudio')
+
+    # Sidebar: botón de entregas con ID dinámico
+    html = html.replace(
+        '<span class="nav-label-text">Próximas entregas</span>\\n      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 2 pend.</span>',
+        '<span class="nav-label-text">Próximas entregas</span>\\n      <span class="nav-badge-pill badge-terra highlight-pill" id="sideNavDeliveriesBadge" style="font-weight:800;padding:2px 7px">⏳ Entregas</span>'
+    )
+    html = html.replace(
+        '<span class="nav-label-text">Próximas entregas</span>\n      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 2 pend.</span>',
+        '<span class="nav-label-text">Próximas entregas</span>\n      <span class="nav-badge-pill badge-terra highlight-pill" id="sideNavDeliveriesBadge" style="font-weight:800;padding:2px 7px">⏳ Entregas</span>'
+    )
+
+    # Sidebar: acordeón de prácticas pendientes con ID dinámico
+    old_side_pending_accordion = """  <details class="sidebar-pending-details" id="sidebarPendingAccordion" open>
+    <summary class="side-pending-summary">
+      <div style="display:flex;align-items:center;gap:7px">
+        <span class="spa-icon">⏳</span>
+        <span class="spa-text">Prácticas pendientes</span>
+      </div>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">2 pendientes</span>
+      <span class="sta-arrow">▾</span>
+    </summary>
+    <div class="sidebar-pending-breakdown">
+      <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
+      <div class="side-pending-items">
+        <button class="side-pending-item" data-detail="entrega_delgado_parte_a" title="Plazo: 29 de octubre de 2026 · ICACOR">
+          <div class="spi-head">
+            <span class="spi-dot amber">●</span>
+            <strong class="spi-date">29 oct · En 7 días</strong>
+            <span class="spi-platform blue">ICACOR</span>
+          </div>
+          <div class="spi-title">Parte A: Insostenibilidad y AJG</div>
+          <div class="spi-teacher">D. José Luis Delgado Domínguez</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="entrega_delgado_parte_b" title="Plazo: 30 de octubre de 2026 · ICACOR">
+          <div class="spi-head">
+            <span class="spi-dot amber">●</span>
+            <strong class="spi-date">30 oct · En 8 días</strong>
+            <span class="spi-platform blue">ICACOR</span>
+          </div>
+          <div class="spi-title">Parte B: Siniestro RC y Turno Oficio</div>
+          <div class="spi-teacher">D. José Luis Delgado Domínguez</div>
+        </button>
+      </div>
+    </div>
+  </details>"""
+
+    new_side_pending_accordion = """  <details class="sidebar-pending-details" id="sidebarPendingAccordion" open>
+    <summary class="side-pending-summary">
+      <div style="display:flex;align-items:center;gap:7px">
+        <span class="spa-icon">⏳</span>
+        <span class="spa-text">Prácticas pendientes</span>
+      </div>
+      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarPendingAccordionBadge" style="font-size:10px;padding:2px 7px">Pendientes</span>
+      <span class="sta-arrow">▾</span>
+    </summary>
+    <div class="sidebar-pending-breakdown">
+      <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Entregas pendientes según tu marcado personal:</div>
+      <div class="side-pending-items" id="sidebarPendingItemsList">
+      </div>
+    </div>
+  </details>"""
+    if old_side_pending_accordion in html:
+        html = html.replace(old_side_pending_accordion, new_side_pending_accordion)
+
+    # Welcome badge de entregas
+    html = html.replace(
+        '<strong class="badge-value">2 por entregar · Próx: 29 oct</strong>',
+        '<strong class="badge-value" id="welcomeDeliveriesSummary">Control de entregas</strong>'
+    )
+
+    # View tab badge de entregas
+    html = html.replace(
+        '<button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">2 pend.</span></button>',
+        '<button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">Entregas</span></button>'
+    )
+
+    # Portada: Banner dinámico de prácticas pendientes
+    m_ptb = re.search(r'(<!-- 3\. MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y ENTREGAS PENDIENTES -->\s*<div class="pending-tasks-banner" id="pendingTasksBanner">)(.*?)(</div>\s*</div>\s*</section>)', html, re.DOTALL)
+    if m_ptb:
+        new_ptb_body = """
+      <div class="ptb-header">
+        <div class="ptb-title-wrap">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="ptb-badge alert" id="ptbBadgeEl">⚠️ PRÁCTICAS PENDIENTES</span>
+            <span class="ptb-urgent-chip" id="ptbUrgentChipEl">📅 Seguimiento individual</span>
+          </div>
+          <h3 class="ptb-title">Titulares de Prácticas y Entregas</h3>
+          <p class="ptb-subtitle">Marca las prácticas que vayas entregando para llevar tu control personal de plazos al día.</p>
+        </div>
+        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas ➔</button>
+      </div>
+
+      <div class="ptb-grid" id="homePendingTasksGrid">
+      </div>
+    """
+        html = html[:m_ptb.start(2)] + new_ptb_body + html[m_ptb.end(2):]
+
+    # Encabezado de la pestaña de Entregas
+    html = html.replace(
+        '<h2>Próximas entregas y prácticas (2 pendientes · 5 completadas en 3 asignaturas)</h2>\\n        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR) y 5 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>',
+        '<h2 id="deliveriesSectionMainHeading">Próximas entregas y prácticas del estudiante</h2>\\n        <p id="deliveriesSectionMainSub">Seguimiento individual de prácticas y trabajos del Máster. Marca cada tarea según la hayas entregado para gestionar tus plazos de forma personalizada.</p>'
+    )
+    html = html.replace(
+        '<h2>Próximas entregas y prácticas (2 pendientes · 5 completadas en 3 asignaturas)</h2>\n        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR) y 5 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>',
+        '<h2 id="deliveriesSectionMainHeading">Próximas entregas y prácticas del estudiante</h2>\n        <p id="deliveriesSectionMainSub">Seguimiento individual de prácticas y trabajos del Máster. Marca cada tarea según la hayas entregado para gestionar tus plazos de forma personalizada.</p>'
+    )
+
+    # Resumen y filtros en Entregas
+    html = html.replace(
+        '<span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 7 prácticas (2 pendientes y 5 completadas en 3 asignaturas).</span>',
+        '<span class="status-filter-summary" id="deliveryFilterSummary">Mostrando el listado completo de entregas del máster.</span>'
+    )
+    html = html.replace(
+        '<div class="delivery-range" id="deliveryRange">2 pendientes · 5 entregadas</div>',
+        '<div class="delivery-range" id="deliveryRange">Control de entregas</div>'
+    )
+
+    # Notas y Tests: neutralizar referencias fijas a entregas de Raquel
+    html = html.replace(
+        '<span class="due-state submitted" style="font-size:11px">2 notas por correo · 2 tests superados · 5 prácticas entregadas</span>',
+        '<span class="due-state submitted" style="font-size:11px">Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos</span>'
+    )
+    html = html.replace(
+        '<p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (5 entregadas con éxito y 2 pendientes con Delgado).</p>',
+        '<p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes evaluables en CPROC o ICACOR (60% de la evaluación continua).</p>'
+    )
+    html = html.replace(
+        '<span class="stat-title">5 entregadas en 3 asignaturas</span>\\n        </div>\\n        <span class="stat-val-pill">5 / 5 ✓</span>',
+        '<span class="stat-title">Casos prácticos CPROC e ICACOR</span>\\n        </div>\\n        <span class="stat-val-pill">60% de nota</span>'
+    )
+    html = html.replace(
+        '<span class="stat-title">5 entregadas en 3 asignaturas</span>\n        </div>\n        <span class="stat-val-pill">5 / 5 ✓</span>',
+        '<span class="stat-title">Casos prácticos CPROC e ICACOR</span>\n        </div>\n        <span class="stat-val-pill">60% de nota</span>'
+    )
+    html = html.replace(
+        "sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 2 pendientes con Delgado).';",
+        "sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables según los hayas marcado como entregados o pendientes.';"
+    )
+
+    # Calendario mensual: reflejar si el estudiante actual tiene la entrega pendiente
+    html = html.replace(
+        'hasDue=deliveries.some(x=>keyOf(x.date)===k && !x.submitted);',
+        'hasDue=deliveries.some(x=>keyOf(x.date)===k && !isDeliveryChecked(x.detailKey));'
+    )
+    print("✓ Interfaz de entregas (portada, sidebar, pestaña y calendario) desacoplada con estados dinámicos.")
 
     # -------------------------------------------------------------
     # 8. CSS: PALETA SOLEMNE INSTITUCIONAL ("MODO DERECHO / TOGA Y ESTRADO")
@@ -559,6 +823,20 @@ def build_student_portal():
 .privacy-banner svg {
   flex-shrink: 0;
 }
+
+/* Logo e icono distintivo del Portal del Estudiante (Oxford Navy y birrete) */
+.brand-icon {
+  background: linear-gradient(135deg, #101c27 0%, #1a2f45 60%, #294d73 100%) !important;
+  color: #fffef9 !important;
+  box-shadow: 0 4px 14px rgba(41, 77, 115, 0.45) !important;
+  border: 1.5px solid rgba(140, 182, 220, 0.3) !important;
+}
+[data-theme="light"] .brand-icon {
+  background: linear-gradient(135deg, #dbe6f3 0%, #bdd2ea 60%, #9cbde0 100%) !important;
+  color: #172b42 !important;
+  box-shadow: 0 4px 12px rgba(41, 77, 115, 0.2) !important;
+  border: 1.5px solid rgba(41, 77, 115, 0.35) !important;
+}
 """
     html = html.replace('</style>', student_custom_css + '\n</style>', 1)
 
@@ -588,12 +866,16 @@ function saveStudentGradeData(teacherId, data){
 }
 
 function updateHomeGradesBadge(){
-  const teachers = ['dossier-carlos-sanchez', 'dossier-javier-sanchez', 'dossier-ana-vazquez', 'dossier-sandra-mosteiro', 'dossier-carolina-moreno', 'dossier-jose-luis-delgado'];
   let count = 0;
-  teachers.forEach(t => {
-    const d = getStudentGradeData(t);
-    if(d.finalGrade || d.testGrade) count++;
-  });
+  try {
+    for(let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if(k && k.startsWith('muap_eval_')){
+        const d = JSON.parse(localStorage.getItem(k));
+        if(d && (d.finalGrade || d.testGrade)) count++;
+      }
+    }
+  } catch(e){}
   const el = document.getElementById('welcomeGradesSummary');
   if(el){
     el.textContent = count > 0 ? `${count} evaluadas por ti` : 'Mi Cuaderno de Notas';
@@ -872,6 +1154,46 @@ function renderTeacherDossiers(){
    }
   ];
 
+  // Sincronización automática: si hay docentes evaluados en teacherGradeMap o teacherDirectory, integrarlos en el cuaderno del estudiante
+  if (typeof teacherGradeMap !== 'undefined' && teacherGradeMap) {
+    const knownTeachers = new Set(dossiers.map(d => (d.teacher || '').toLowerCase().trim()));
+    Object.keys(teacherGradeMap).forEach(tName => {
+      if (!tName) return;
+      const clean = tName.toLowerCase().trim();
+      const exists = Array.from(knownTeachers).some(kt => kt.includes(clean) || clean.includes(kt));
+      if (!exists) {
+        const idSafe = 'dossier-' + clean.replace(/[^a-z0-9]+/g, '-');
+        const tObj = (typeof teacherDirectory !== 'undefined' && Array.isArray(teacherDirectory))
+          ? teacherDirectory.find(t => (t.name || '').toLowerCase().trim().includes(clean) || clean.includes((t.name || '').toLowerCase().trim()))
+          : null;
+        dossiers.push({
+          id: idSafe,
+          teacher: tName,
+          subject: (tObj && tObj.subject) ? tObj.subject : 'Módulo con actividad evaluable',
+          subjectRef: (tObj && tObj.subjectRef) ? tObj.subjectRef : '',
+          kicker: 'Evaluación docente registrada · Cuaderno del estudiante',
+          testName: 'Test / Prueba de evaluación continua',
+          blocks: [
+            {
+              cls: 'highlight-mail',
+              title: '✉️ Calificación Docente',
+              score: 'Evaluación continua',
+              desc: 'Calificación oficial y ponderación de pruebas y trabajos.',
+              subitems: [
+                {label: 'Materia', val: (tObj && tObj.subject) ? tObj.subject : 'Evaluación oficial'},
+                {label: 'Docente', val: tName}
+              ]
+            }
+          ],
+          actions: [
+            {label: `Ficha de ${tName} ↗`, teacher: tName}
+          ]
+        });
+        knownTeachers.add(clean);
+      }
+    });
+  }
+
   const privacyNotice = `
     <div class="privacy-banner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
@@ -988,10 +1310,12 @@ function handleStudentGradeChange(teacherId){
         print("✓ renderTeacherDossiers adaptada con inputs interactivos de test, nota final y redacción.")
 
     # -------------------------------------------------------------
-    # 10. REEMPLAZAR renderDeliveries PARA SINCRONIZAR CHECKBOXES CON LOCALSTORAGE
+    # 10. REEMPLAZAR renderDeliveries CON CONTROL TOTAL DINÁMICO EN LOCALSTORAGE
     # -------------------------------------------------------------
     idx_render_del = html.find('function renderDeliveries(filter = currentDeliveryFilter){')
-    idx_end_render_del = html.find('\nfunction renderSessionTimeline(', idx_render_del)
+    idx_end_render_del = html.find('\nlet toastNotificationTimer', idx_render_del)
+    if idx_end_render_del == -1:
+        idx_end_render_del = html.find('\nfunction renderMail(', idx_render_del)
     if idx_render_del != -1 and idx_end_render_del != -1:
         custom_render_deliveries_code = """function isDeliveryChecked(detailKey){
   try {
@@ -1007,37 +1331,164 @@ function toggleDeliveryCheck(detailKey, btnEl){
     const newVal = !current;
     localStorage.setItem('muap_deliv_check_' + detailKey, newVal ? 'true' : 'false');
     
-    // Re-renderizar entregas y actualizar contadores
+    // Sincronizar en el array deliveries en memoria
+    deliveries.forEach(d => {
+      if(d.detailKey === detailKey){
+        d.submitted = newVal;
+        d.status = newVal ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+      }
+    });
+
+    // Re-renderizar entregas, portada, menú lateral, contadores y calendario
     renderDeliveries(currentDeliveryFilter);
+    renderHomePendingTasks();
+    renderSidebarPendingItems();
     updateDeliveryCounts();
+    if(typeof renderMonth === 'function') renderMonth();
   } catch(e){}
 }
 
 function updateDeliveryCounts(){
-  let pendingCount = 0;
   deliveries.forEach(d => {
-    if(!isDeliveryChecked(d.detailKey)) pendingCount++;
+    d.submitted = isDeliveryChecked(d.detailKey);
+    d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
   });
 
-  // Badge en pestaña superior
-  const tabBadge = document.querySelector('[data-view="entregas"] .tab-badge');
+  const pending = deliveries.filter(d => !d.submitted);
+  const pendingCount = pending.length;
+  const completedCount = deliveries.length - pendingCount;
+
+  // 1. Sidebar badge
+  const sideBadge = document.getElementById('sideNavDeliveriesBadge') || document.querySelector('.nav-btn-entregas .nav-badge-pill');
+  if(sideBadge){
+    sideBadge.textContent = pendingCount > 0 ? `⏳ ${pendingCount} pend.` : '✓ Al día';
+    sideBadge.className = 'nav-badge-pill ' + (pendingCount > 0 ? 'badge-terra highlight-pill' : 'badge-green');
+  }
+
+  // 2. Tab badge
+  const tabBadge = document.getElementById('tabDeliveriesBadge') || document.querySelector('[data-view="entregas"] .tab-badge');
   if(tabBadge){
     tabBadge.textContent = pendingCount > 0 ? `${pendingCount} pend.` : '¡Al día! ✓';
     tabBadge.style.background = pendingCount > 0 ? 'var(--terracotta)' : 'var(--green)';
   }
 
-  // Banner en portada
-  const ptbBadge = document.querySelector('.ptb-badge');
+  // 3. Welcome badge
+  const welcomeDeliveriesBadge = document.getElementById('welcomeDeliveriesSummary') || document.querySelector('.welcome-badge.badge-terra .badge-value');
+  if(welcomeDeliveriesBadge){
+    welcomeDeliveriesBadge.textContent = pendingCount > 0 ? `${pendingCount} por entregar` : '¡Todas entregadas! 🎉';
+  }
+
+  // 4. Banner en portada
+  const ptbBadge = document.getElementById('ptbBadgeEl') || document.querySelector('.ptb-badge');
   if(ptbBadge){
     ptbBadge.textContent = pendingCount > 0 ? `⚠️ ${pendingCount} PRÁCTICAS PENDIENTES` : '🎉 ¡TODAS LAS PRÁCTICAS ENTREGADAS!';
     ptbBadge.className = 'ptb-badge ' + (pendingCount > 0 ? 'alert' : 'success');
   }
 
-  // Badge en bienvenida
-  const welcomeDeliveriesBadge = document.querySelector('.welcome-badge.badge-terra .badge-value');
-  if(welcomeDeliveriesBadge){
-    welcomeDeliveriesBadge.textContent = pendingCount > 0 ? `${pendingCount} por entregar · Próx: 29 oct` : '¡Todas entregadas! 🎉';
+  const ptbUrgent = document.getElementById('ptbUrgentChipEl');
+  if(ptbUrgent){
+    ptbUrgent.textContent = pendingCount > 0 ? '📅 Próxima entrega: 29 oct' : '✓ Al día';
   }
+
+  // 5. Encabezado de sección
+  const mainHeading = document.getElementById('deliveriesSectionMainHeading');
+  if(mainHeading){
+    mainHeading.textContent = `Próximas entregas y prácticas (${pendingCount} pendientes · ${completedCount} entregadas por ti)`;
+  }
+
+  const rangeEl = document.getElementById('deliveryRange');
+  if(rangeEl){
+    rangeEl.textContent = `${pendingCount} pendientes · ${completedCount} marcadas como entregadas`;
+  }
+}
+
+function renderHomePendingTasks(){
+  const grid = document.getElementById('homePendingTasksGrid');
+  if(!grid) return;
+
+  const pending = deliveries.filter(d => !isDeliveryChecked(d.detailKey));
+  
+  if(!pending.length){
+    grid.innerHTML = `
+      <div style="grid-column:1 / -1;background:var(--paper-warm);border:1.5px dashed var(--green-border);border-radius:12px;padding:26px 20px;text-align:center">
+        <span style="font-size:28px">🎉</span>
+        <h4 style="color:var(--green-dark);font-size:16px;margin:8px 0 4px;font-family:var(--serif)">¡Todas las prácticas marcadas como entregadas!</h4>
+        <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">Has marcado como entregadas todas las tareas del Máster en tu dispositivo.</p>
+        <button class="pill-btn solid-green" onclick="setView('entregas', false)">Ver entregas completadas en el portal ➔</button>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = pending.map(d => {
+    const isChk = false;
+    const isAbogacia = (d.subjectRef||'').includes('Abogacía');
+    const tagLabel = isAbogacia ? '⚖️ Práctica ICACOR · Abogacía' : '🏛️ Práctica CPROC · Procura';
+    const tagCls = isAbogacia ? 'blue' : 'terra';
+    const dueTxt = fmtShort(d.date);
+
+    return `
+      <article class="ptb-card" id="homePendingCard_${d.detailKey}" data-detail="${d.detailKey}" style="cursor:pointer" onclick="openDetail('${d.detailKey}')" title="Pincha para ver las instrucciones">
+        <div class="ptb-card-top">
+          <span class="ptb-tag ${tagCls}">${tagLabel}</span>
+          <span class="ptb-due-badge amber">⏳ Plazo: ${dueTxt}</span>
+        </div>
+        <h4 class="ptb-card-title">${d.title}</h4>
+        <div class="ptb-card-meta">
+          <div>👤 Docente: <b>${d.teacher}</b></div>
+          <div>📚 Materia: <b>${d.subject}</b></div>
+          ${d.details ? `<div style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);line-height:1.4">${d.details}</div>` : ''}
+        </div>
+        <div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <button class="pill-btn" data-detail="${d.detailKey}" onclick="event.stopPropagation(); openDetail('${d.detailKey}')">Instrucciones ↗</button>
+          <button class="delivery-check-btn" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
+            <span class="check-box"></span>
+            <span class="check-text">Marcar como entregada</span>
+          </button>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function renderSidebarPendingItems(){
+  const container = document.getElementById('sidebarPendingItemsList');
+  const badgeEl = document.getElementById('sidebarPendingAccordionBadge');
+  if(!container) return;
+
+  const pending = deliveries.filter(d => !isDeliveryChecked(d.detailKey));
+  if(badgeEl){
+    badgeEl.textContent = pending.length > 0 ? `${pending.length} pendientes` : '✓ Al día';
+    badgeEl.className = 'nav-badge-pill ' + (pending.length > 0 ? 'badge-terra highlight-pill' : 'badge-green');
+  }
+
+  if(!pending.length){
+    container.innerHTML = `
+      <div style="font-size:11px;color:var(--green-dark);padding:8px;background:var(--paper-warm);border-radius:8px;text-align:center;font-weight:700">
+        🎉 ¡Al día! 0 entregas pendientes
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = pending.map(d => {
+    const isAbogacia = (d.subjectRef||'').includes('Abogacía');
+    const platform = isAbogacia ? 'ICACOR' : 'CPROC';
+    const platCls = isAbogacia ? 'blue' : 'terra';
+    const dueTxt = fmtShort(d.date);
+
+    return `
+      <button class="side-pending-item" data-detail="${d.detailKey}" onclick="openDetail('${d.detailKey}')" title="Ver entrega: ${d.title}">
+        <div class="spi-head">
+          <span class="spi-dot amber">●</span>
+          <strong class="spi-date">${dueTxt}</strong>
+          <span class="spi-platform ${platCls}">${platform}</span>
+        </div>
+        <div class="spi-title">${d.title}</div>
+        <div class="spi-teacher">${d.teacher}</div>
+      </button>
+    `;
+  }).join('');
 }
 
 function renderDeliveries(filter = currentDeliveryFilter){
@@ -1049,7 +1500,6 @@ function renderDeliveries(filter = currentDeliveryFilter){
   b.classList.toggle('active', b.getAttribute('data-delivery-filter') === currentDeliveryFilter);
  });
 
- // Aplicar el estado interactivo del estudiante desde localStorage
  deliveries.forEach(d => {
   d.submitted = isDeliveryChecked(d.detailKey);
   d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
@@ -1100,6 +1550,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
     <div class="delivery-meta" style="margin-top:4px">
      <span>Docente: <b>${d.teacher}</b></span>
      <span>Materia: <b>${d.subject}</b></span>
+     <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
     </div>
     ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45">${d.details}</div>` : ''}
 
@@ -1170,68 +1621,25 @@ function renderDeliveries(filter = currentDeliveryFilter){
 }
 """
         html = html[:idx_render_del] + custom_render_deliveries_code + html[idx_end_render_del:]
-        print("✓ Función renderDeliveries completamente adaptada con persistencia interactiva en localStorage.")
+        print("✓ Función renderDeliveries y renderHomePendingTasks completamente adaptadas con persistencia en localStorage.")
 
     # -------------------------------------------------------------
-    # 11. INYECTAR BOTONES CHECK EN BANNER DE PORTADA
-    # -------------------------------------------------------------
-    old_card_delgado_a = """          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b></div>
-          </div>
-        </article>"""
-    new_card_delgado_a = """          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b></div>
-          </div>
-          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:flex-end">
-            <button class="delivery-check-btn" data-delivery-check-key="entrega_delgado_parte_a" onclick="event.stopPropagation(); toggleDeliveryCheck('entrega_delgado_parte_a', this)">
-              <span class="check-box"></span>
-              <span class="check-text">Marcar como entregada</span>
-            </button>
-          </div>
-        </article>"""
-    html = html.replace(old_card_delgado_a, new_card_delgado_a)
-
-    old_card_delgado_b = """          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Viernes, 30 de octubre de 2026</b></div>
-          </div>
-        </article>"""
-    new_card_delgado_b = """          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Viernes, 30 de octubre de 2026</b></div>
-          </div>
-          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:flex-end">
-            <button class="delivery-check-btn" data-delivery-check-key="entrega_delgado_parte_b" onclick="event.stopPropagation(); toggleDeliveryCheck('entrega_delgado_parte_b', this)">
-              <span class="check-box"></span>
-              <span class="check-text">Marcar como entregada</span>
-            </button>
-          </div>
-        </article>"""
-    html = html.replace(old_card_delgado_b, new_card_delgado_b)
-
-    # -------------------------------------------------------------
-    # 12. INICIALIZAR CONTADORES AL ARRANCAR
+    # 11 & 12. INICIALIZAR CONTADORES Y RENDERIZADO AL ARRANCAR
     # -------------------------------------------------------------
     init_script = """
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
-    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
-    
-    // Sincronizar botones de la portada con localStorage
-    ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'].forEach(k => {
-      const isChk = typeof isDeliveryChecked === 'function' && isDeliveryChecked(k);
-      document.querySelectorAll(`[data-delivery-check-key="${k}"]`).forEach(btn => {
-        btn.classList.toggle('checked', isChk);
-        const textSpan = btn.querySelector('.check-text');
-        const boxSpan = btn.querySelector('.check-box');
-        if(textSpan) textSpan.textContent = isChk ? '✓ Entregada por mí' : 'Marcar como entregada';
-        if(boxSpan) boxSpan.textContent = isChk ? '✓' : '';
-      });
+    deliveries.forEach(d => {
+      d.submitted = isDeliveryChecked(d.detailKey);
+      d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
     });
-  }, 100);
+    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+    if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
+    if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
+    if(typeof renderDeliveries === 'function') renderDeliveries();
+    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+    if(typeof renderMonth === 'function') renderMonth();
+  }, 50);
 });
 """
     html = html.replace('</script>', init_script + '\n</script>', 1)
@@ -1242,16 +1650,30 @@ window.addEventListener('DOMContentLoaded', () => {
     html = re.sub(r'16:30\s*[—–-]\s*20:30\s*h', '16:30 — 20:45 h', html)
     html = re.sub(r'4:30\s*[—–-]\s*8:30', '4:30 a 20:45 h', html)
 
-    # -------------------------------------------------------------
-    # 14. GUARDAR ARCHIVOS GENERADOS
-    # -------------------------------------------------------------
+    return html
+
+def build_student_portal():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    src_path = os.path.join(base_dir, 'index.html')
+    out_path = os.path.join(base_dir, 'portal-estudiantes.html')
+    alias_path = os.path.join(base_dir, 'estudiantes.html')
+
+    if not os.path.exists(src_path):
+        print(f"Error: {src_path} no encontrado.")
+        sys.exit(1)
+
+    with open(src_path, 'r', encoding='utf-8') as f:
+        html = f.read()
+
+    student_html = generate_student_portal_html(html)
+
     with open(out_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+        f.write(student_html)
 
     with open(alias_path, 'w', encoding='utf-8') as f:
-        f.write(html)
+        f.write(student_html)
 
-    print(f"✅ ¡Portal de estudiantes generado con éxito en:\n   - {out_path}\n   - {alias_path}\n   ({len(html)} bytes)!")
+    print(f"✅ ¡Portal de estudiantes generado con éxito en:\n   - {out_path}\n   - {alias_path}\n   ({len(student_html)} bytes)!")
 
 if __name__ == '__main__':
     build_student_portal()

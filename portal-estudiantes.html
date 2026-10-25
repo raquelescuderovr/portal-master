@@ -7,15 +7,13 @@
 <meta http-equiv="Expires" content="0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Máster Abogacía">
-<meta name="application-name" content="Máster Abogacía">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="manifest" href="manifest.webmanifest">
-<title>Portal del Estudiante · Máster en Abogacía y Procura (MUAP)</title>
+<meta name="apple-mobile-web-app-title" content="Portal Estudiantes">
+<meta name="application-name" content="Portal Estudiantes">
+<link rel="apple-touch-icon" href="favicon-estudiantes.svg">
+<link rel="icon" type="image/svg+xml" href="favicon-estudiantes.svg">
+<link rel="alternate icon" href="favicon-estudiantes.svg">
+<link rel="manifest" href="manifest-estudiantes.webmanifest">
+<title>🎓 Portal del Estudiante · MUAP</title>
 <script>
 (function(){
   try{
@@ -29,21 +27,17 @@
 
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
-    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
-    
-    // Sincronizar botones de la portada con localStorage
-    ['entrega_delgado_parte_a', 'entrega_delgado_parte_b'].forEach(k => {
-      const isChk = typeof isDeliveryChecked === 'function' && isDeliveryChecked(k);
-      document.querySelectorAll(`[data-delivery-check-key="${k}"]`).forEach(btn => {
-        btn.classList.toggle('checked', isChk);
-        const textSpan = btn.querySelector('.check-text');
-        const boxSpan = btn.querySelector('.check-box');
-        if(textSpan) textSpan.textContent = isChk ? '✓ Entregada por mí' : 'Marcar como entregada';
-        if(boxSpan) boxSpan.textContent = isChk ? '✓' : '';
-      });
+    deliveries.forEach(d => {
+      d.submitted = isDeliveryChecked(d.detailKey);
+      d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
     });
-  }, 100);
+    if(typeof updateDeliveryCounts === 'function') updateDeliveryCounts();
+    if(typeof renderHomePendingTasks === 'function') renderHomePendingTasks();
+    if(typeof renderSidebarPendingItems === 'function') renderSidebarPendingItems();
+    if(typeof renderDeliveries === 'function') renderDeliveries();
+    if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+    if(typeof renderMonth === 'function') renderMonth();
+  }, 50);
 });
 
 </script>
@@ -1777,6 +1771,162 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .mail-subject{font-size:16px;font-weight:700;color:var(--ink)}
 .mail-meta{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:2px}
 .mail-summary{font-size:14px;font-weight:400;line-height:1.65;color:var(--ink-soft);margin:6px 0 0;max-width:780px}
+
+/* Sincronización y Búsqueda en Outlook */
+.mail-outlook-sync-box{
+  margin-top:12px;
+  background:var(--paper-warm);
+  border:1px solid var(--blue-border);
+  border-radius:13px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.mail-sync-info{
+  flex:1 1 280px;
+  min-width:0;
+}
+.mail-sync-label{
+  font-size:11px;
+  font-weight:700;
+  color:var(--blue-dark);
+  text-transform:uppercase;
+  letter-spacing:0.4px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:4px;
+}
+.mail-sync-sublabel{
+  font-size:10.5px;
+  font-weight:500;
+  color:var(--muted);
+  text-transform:none;
+}
+.mail-exact-subject{
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--ink);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  padding:5px 9px;
+  border-radius:7px;
+  word-break:break-word;
+  user-select:all;
+  line-height:1.45;
+}
+.mail-sync-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.btn-copy-subject{
+  background:var(--paper-card);
+  border:1.5px solid var(--blue-border);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  padding:7px 12px;
+  border-radius:9px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .18s ease;
+}
+.btn-copy-subject:hover{
+  background:var(--blue-pale);
+  border-color:var(--blue);
+  color:var(--blue-dark);
+  transform:translateY(-1px);
+}
+.btn-copy-subject.copied{
+  background:var(--green-pale);
+  border-color:var(--green);
+  color:var(--green-dark);
+}
+.btn-copy-and-open{
+  background:var(--blue);
+  border:1.5px solid var(--blue);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  padding:7px 13px;
+  border-radius:9px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .18s ease;
+  box-shadow:var(--shadow-sm);
+}
+.btn-copy-and-open:hover{
+  background:var(--blue-dark);
+  border-color:var(--blue-dark);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow);
+}
+.btn-copy-and-open.copied{
+  background:var(--green);
+  border-color:var(--green);
+}
+.btn-desktop-outlook{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:11.5px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition:all .15s ease;
+}
+.btn-desktop-outlook:hover{
+  background:var(--paper-warm);
+  color:var(--ink);
+  border-color:var(--ink-soft);
+}
+
+/* Toast flotante para confirmación de copia */
+#toastNotification{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  background:var(--paper-card);
+  border:1.5px solid var(--green);
+  color:var(--ink);
+  padding:12px 18px;
+  border-radius:12px;
+  box-shadow:var(--shadow-hover);
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:99999;
+  transform:translateY(100px);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity .25s ease;
+  max-width:440px;
+  line-height:1.45;
+}
+#toastNotification.show{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
 
 /* Calendario */
 #calendarSection{margin-top:48px;padding-top:30px;border-top:2px solid var(--line)}
@@ -4384,6 +4534,20 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   flex-shrink: 0;
 }
 
+/* Logo e icono distintivo del Portal del Estudiante (Oxford Navy y birrete) */
+.brand-icon {
+  background: linear-gradient(135deg, #101c27 0%, #1a2f45 60%, #294d73 100%) !important;
+  color: #fffef9 !important;
+  box-shadow: 0 4px 14px rgba(41, 77, 115, 0.45) !important;
+  border: 1.5px solid rgba(140, 182, 220, 0.3) !important;
+}
+[data-theme="light"] .brand-icon {
+  background: linear-gradient(135deg, #dbe6f3 0%, #bdd2ea 60%, #9cbde0 100%) !important;
+  color: #172b42 !important;
+  box-shadow: 0 4px 12px rgba(41, 77, 115, 0.2) !important;
+  border: 1.5px solid rgba(41, 77, 115, 0.35) !important;
+}
+
 </style>
 </head>
 <body>
@@ -4391,12 +4555,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 <aside class="sidebar" id="sidebar">
   <div class="brand">
     <div class="brand-icon-wrap">
-      <div class="brand-icon">⚖️</div>
+      <div class="brand-icon" title="Portal del Estudiante">🎓</div>
     </div>
     <div class="brand-info">
-      <div class="brand-name">Cuaderno</div>
+      <div class="brand-name">Portal Estudiantes</div>
       <div class="brand-sub">Máster en Abogacía y Procura</div>
-      <div class="brand-user-pill">Estudiante · MUAP 2026/27</div>
+      <div class="brand-user-pill">🎓 Estudiante · MUAP 2026/27</div>
     </div>
   </div>
 
@@ -4452,7 +4616,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 2 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" id="sideNavDeliveriesBadge" style="font-weight:800;padding:2px 7px">⏳ Entregas</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4483,31 +4647,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">2 pendientes</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarPendingAccordionBadge" style="font-size:10px;padding:2px 7px">Pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
-      <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
-      <div class="side-pending-items">
-        <button class="side-pending-item" data-detail="entrega_delgado_parte_a" title="Plazo: 29 de octubre de 2026 · ICACOR">
-          <div class="spi-head">
-            <span class="spi-dot amber">●</span>
-            <strong class="spi-date">29 oct · En 7 días</strong>
-            <span class="spi-platform blue">ICACOR</span>
-          </div>
-          <div class="spi-title">Parte A: Insostenibilidad y AJG</div>
-          <div class="spi-teacher">D. José Luis Delgado Domínguez</div>
-        </button>
-
-        <button class="side-pending-item" data-detail="entrega_delgado_parte_b" title="Plazo: 30 de octubre de 2026 · ICACOR">
-          <div class="spi-head">
-            <span class="spi-dot amber">●</span>
-            <strong class="spi-date">30 oct · En 8 días</strong>
-            <span class="spi-platform blue">ICACOR</span>
-          </div>
-          <div class="spi-title">Parte B: Siniestro RC y Turno Oficio</div>
-          <div class="spi-teacher">D. José Luis Delgado Domínguez</div>
-        </button>
+      <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Entregas pendientes según tu marcado personal:</div>
+      <div class="side-pending-items" id="sidebarPendingItemsList">
       </div>
     </div>
   </details>
@@ -4585,11 +4730,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <div class="side-note">
     <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 19 oct 2026
     <div class="side-links">
-      <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">📁 Carpeta Máster en Drive ↗</a>
       <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
-      <a class="side-drive-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">📝 Test 16 oct (20/20) ↗</a>
-      <a class="side-drive-link" href="historial-tests/originales/2026-10-20-testmoz-15707582.html" target="_blank" rel="noopener noreferrer">📝 Test 20 oct · S. Mosteiro (9/10) ↗</a>
     </div>
     <div class="sidebar-theme-wrap">
       <div class="sidebar-theme-title">Tema visual</div>
@@ -4648,7 +4790,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <span class="theme-label">Auto</span>
         </button>
       </div>
-      <div class="avatar" title="Máster en Abogacía y Procura">⚖️</div>
+      <div class="avatar" title="Portal del Estudiante">🎓</div>
     </div>
   </header>
 
@@ -4665,7 +4807,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value">2 por entregar · Próx: 29 oct</strong>
+            <strong class="badge-value" id="welcomeDeliveriesSummary">Control de entregas</strong>
           </div>
         </button>
 
@@ -4698,7 +4840,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">2 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">Entregas</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">15</span></button>
   </div>
@@ -4737,124 +4879,25 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
 
     <!-- 2. MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
-    <div class="active-master-banner" id="activeMasterBanner">
-      <div class="amb-header">
-        <div class="amb-title-wrap">
-          <span class="amb-badge">🟢 DOCENCIA EN ACTIVO HOY</span>
-          <h3 class="amb-title">Bloques y Materias cursándose hoy en el Máster</h3>
-          <p class="amb-subtitle">Martes, 20 de octubre de 2026 · Colegio de Abogados de A Coruña (Turno de tarde: 16:30 — 20:45 h)</p>
-        </div>
-        <button class="amb-view-all-btn" data-select-view-mode="blocks">Ver los 8 bloques del plan ➔</button>
-      </div>
-
-      <div class="amb-grid">
-        <!-- Procura Bloque I -->
-        <article class="amb-card amb-card-procura" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">
-          <div class="amb-card-top">
-            <span class="course-badge terra">🏛️ Procura · Bloque I</span>
-            <span class="status-pill status-current">🟢 En curso hoy</span>
-          </div>
-          <h4 class="amb-card-subject" data-subject-card="Procura|Técnicas instrumentales|3" style="cursor:pointer">Actos de comunicación judicial</h4>
-          <div class="amb-card-meta">
-            <div>⏰ Horario: <b>16:30 — 18:30 h</b> (Sesión 2 de 2 · ¡Hoy segunda y última sesión!)</div>
-            <div>👤 Docente: <b data-open-teacher-screen="Sandra Mosteiro Costa" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">Sandra Mosteiro Costa</b></div>
-            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
-            <div>📄 Contenido: <b>Citaciones, emplazamientos y caso práctico jurisprudencial</b> (4 docs en Drive)</div>
-          </div>
-          <div class="amb-card-actions">
-            <button class="amb-action-btn" data-subject-card="Procura|Técnicas instrumentales|3">
-              <span>Ver asignatura y clase</span> ➔
-            </button>
-            <button class="amb-action-btn secondary" data-open-teacher-screen="Sandra Mosteiro Costa">
-              <span>Docente 👤</span>
-            </button>
-            <button class="amb-action-btn secondary" data-detail="materials">
-              <span>Materiales 📁</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- Abogacía Bloque I -->
-        <article class="amb-card amb-card-abogacia" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">
-          <div class="amb-card-top">
-            <span class="course-badge blue">⚖️ Abogacía · Bloque I</span>
-            <span class="status-pill status-current">🟢 En curso hoy</span>
-          </div>
-          <h4 class="amb-card-subject" data-subject-card="Abogacía|Técnicas instrumentales|3" style="cursor:pointer">Responsabilidad civil, penal y turno de oficio</h4>
-          <div class="amb-card-meta">
-            <div>⏰ Horario: <b>18:45 — 20:45 h</b> (Sesión 2 de 3 · Aseguramiento de la responsabilidad)</div>
-            <div>👤 Docente: <b data-open-teacher-screen="José Luis Delgado Domínguez" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">José Luis Delgado Domínguez</b></div>
-            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
-            <div>✉️ Coberturas: <b>Pólizas y aseguramiento profesional</b> (La 3.ª sesión será el lunes 26 oct)</div>
-          </div>
-          <div class="amb-card-actions">
-            <button class="amb-action-btn" data-subject-card="Abogacía|Técnicas instrumentales|3">
-              <span>Ver asignatura y clase</span> ➔
-            </button>
-            <button class="amb-action-btn secondary" data-open-teacher-screen="José Luis Delgado Domínguez">
-              <span>Docente 👤</span>
-            </button>
-            <button class="amb-action-btn secondary" data-detail="schedule">
-              <span>Horarios y aviso ✉️</span>
-            </button>
-          </div>
-        </article>
-      </div>
-    </div>
+    <div class="active-master-banner" id="activeMasterBanner" style="display:none"></div>
 
     <!-- 3. MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y ENTREGAS PENDIENTES -->
     <div class="pending-tasks-banner" id="pendingTasksBanner">
       <div class="ptb-header">
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px">
-            <span class="ptb-badge alert">⚠️ 2 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip">📅 Próxima entrega: Jueves 29 oct</span>
+            <span class="ptb-badge alert" id="ptbBadgeEl">⚠️ PRÁCTICAS PENDIENTES</span>
+            <span class="ptb-urgent-chip" id="ptbUrgentChipEl">📅 Seguimiento individual</span>
           </div>
-          <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Casos prácticos y escritos pendientes de entrega en Colegio de Abogados con profesor y fecha límite.</p>
+          <h3 class="ptb-title">Titulares de Prácticas y Entregas</h3>
+          <p class="ptb-subtitle">Marca las prácticas que vayas entregando para llevar tu control personal de plazos al día.</p>
         </div>
-        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (7) ➔</button>
+        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas ➔</button>
       </div>
 
-      <div class="ptb-grid">
-        <!-- Tarjeta 1: Delgado Parte A -->
-        <article class="ptb-card" id="homePendingDelgadoA" data-detail="entrega_delgado_parte_a" style="cursor:pointer" title="Pincha para ver las instrucciones">
-          <div class="ptb-card-top">
-            <span class="ptb-tag blue">⚖️ Práctica ICACOR · Abogacía</span>
-            <span class="ptb-due-badge amber">⏳ Plazo: Jueves 29 oct (9 días)</span>
-          </div>
-          <h4 class="ptb-card-title">Insostenibilidad de la pretensión y Asistencia Jurídica Gratuita (Parte A)</h4>
-          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b></div>
-          </div>
-          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:flex-end">
-            <button class="delivery-check-btn" data-delivery-check-key="entrega_delgado_parte_a" onclick="event.stopPropagation(); toggleDeliveryCheck('entrega_delgado_parte_a', this)">
-              <span class="check-box"></span>
-              <span class="check-text">Marcar como entregada</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- Tarjeta 3: Delgado Parte B -->
-        <article class="ptb-card" id="homePendingDelgadoB" data-detail="entrega_delgado_parte_b" style="cursor:pointer" title="Pincha para ver las instrucciones">
-          <div class="ptb-card-top">
-            <span class="ptb-tag blue">⚖️ Práctica ICACOR · Abogacía</span>
-            <span class="ptb-due-badge amber">⏳ Plazo: Viernes 30 oct (10 días)</span>
-          </div>
-          <h4 class="ptb-card-title">Parte de siniestro de RC y acceso al Turno de Oficio (Parte B)</h4>
-          <div class="ptb-card-meta">
-            <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
-            <div>⏳ Fecha límite: <b>Viernes, 30 de octubre de 2026</b></div>
-          </div>
-          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:flex-end">
-            <button class="delivery-check-btn" data-delivery-check-key="entrega_delgado_parte_b" onclick="event.stopPropagation(); toggleDeliveryCheck('entrega_delgado_parte_b', this)">
-              <span class="check-box"></span>
-              <span class="check-text">Marcar como entregada</span>
-            </button>
-          </div>
-        </article>
+      <div class="ptb-grid" id="homePendingTasksGrid">
       </div>
+    </div>
     </div>
   </section>
 
@@ -4874,7 +4917,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">2 notas por correo · 2 tests superados · 5 prácticas entregadas</span>
+        <span class="due-state submitted" style="font-size:11px">Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -4887,7 +4930,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
-          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (5 entregadas con éxito y 2 pendientes con Delgado).</p>
+          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes evaluables en CPROC o ICACOR (60% de la evaluación continua).</p>
         </div>
       </div>
     </div>
@@ -4918,9 +4961,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
           <span class="stat-kicker">Casos prácticos y trabajos</span>
-          <span class="stat-title">5 entregadas en 3 asignaturas</span>
+          <span class="stat-title">Casos prácticos CPROC e ICACOR</span>
         </div>
-        <span class="stat-val-pill">5 / 5 ✓</span>
+        <span class="stat-val-pill">60% de nota</span>
       </button>
     </div>
 
@@ -4957,21 +5000,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
       <!-- Resumen de estado de los 8 bloques formativos -->
       <div class="master-curriculum-summary" aria-label="Resumen de bloques formativos">
-        <div class="mcs-card mcs-current" data-select-view-mode="active" title="Ver materias en curso activo hoy">
+        <div class="mcs-card mcs-current" data-select-view-mode="active" title="Ver materias en curso">
           <div class="mcs-icon">🟢</div>
           <div>
-            <span class="mcs-label">En curso activo hoy</span>
-            <div class="mcs-title">2 Bloques activos</div>
-            <div class="mcs-sub">Bloque I Procura y Bloque I Abogacía · 2 clases hoy</div>
+            <span class="mcs-label">En curso</span>
+            <div class="mcs-title" id="mcsCurrentTitle">1 Bloque en curso</div>
+            <div class="mcs-sub" id="mcsCurrentSub">Bloque I Abogacía en desarrollo</div>
           </div>
         </div>
 
         <div class="mcs-card mcs-past" data-select-status-filter="past" title="Ver bloques y materias completadas">
           <div class="mcs-icon">✓</div>
           <div>
-            <span class="mcs-label">Bloque completado</span>
-            <div class="mcs-title">1 Bloque finalizado</div>
-            <div class="mcs-sub">Bloque II Procura (13 oct) · 10/10 oficial y prácticas al día</div>
+            <span class="mcs-label">Bloques finalizados</span>
+            <div class="mcs-title" id="mcsPastTitle">2 Bloques completados</div>
+            <div class="mcs-sub" id="mcsPastSub">Bloques I y II Procura finalizados</div>
           </div>
         </div>
 
@@ -4979,8 +5022,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <div class="mcs-icon">⏳</div>
           <div>
             <span class="mcs-label">Próximos en el calendario</span>
-            <div class="mcs-title">5 Bloques por venir</div>
-            <div class="mcs-sub">Bloque III Procura (27 oct) · Bloques II–V Abogacía (nov–ene)</div>
+            <div class="mcs-title" id="mcsUpcomingTitle">5 Bloques por venir</div>
+            <div class="mcs-sub" id="mcsUpcomingSub">Bloque III Procura (27 oct) · Bloques II–V Abogacía (nov–ene)</div>
           </div>
         </div>
       </div>
@@ -4988,7 +5031,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <!-- Barra de modos de visualización intuitiva -->
       <div class="block-view-mode-bar" role="tablist" aria-label="Modo de visualización">
         <button class="block-mode-btn active" data-subject-view-mode="active" role="tab" aria-selected="true">
-          <span>🟢 En curso activo hoy</span>
+          <span>🟢 Materias en curso</span>
         </button>
         <button class="block-mode-btn" data-subject-view-mode="blocks" role="tab" aria-selected="false">
           <span>📚 Vista por Bloques (8 Bloques Formativos)</span>
@@ -5002,7 +5045,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="status-filter-strip" id="subjectFilterStrip" role="group" aria-label="Filtro de estado de asignaturas">
         <b>Estado:</b>
         <button class="status-filter-btn active" data-subject-status-filter="all">Todas</button>
-        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 Cursándose hoy</button>
+        <button class="status-filter-btn status-btn-current" data-subject-status-filter="current">🟢 En curso</button>
         <button class="status-filter-btn status-btn-upcoming" data-subject-status-filter="upcoming">⏳ Por venir</button>
         <button class="status-filter-btn status-btn-past" data-subject-status-filter="past">✓ Ya cursadas</button>
         <span style="border-left:1px solid var(--line);height:18px;margin:0 4px" aria-hidden="true"></span>
@@ -5067,11 +5110,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (2 pendientes · 5 completadas en 3 asignaturas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR) y 5 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>
+        <h2 id="deliveriesSectionMainHeading">Próximas entregas y prácticas del estudiante</h2>
+        <p id="deliveriesSectionMainSub">Seguimiento individual de prácticas y trabajos del Máster. Marca cada tarea según la hayas entregado para gestionar tus plazos de forma personalizada.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">2 pendientes · 5 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">Control de entregas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
@@ -5082,7 +5125,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (5 en 3 asignaturas)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (5)</button>
       <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / ICACOR (2)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 7 prácticas (2 pendientes y 5 completadas en 3 asignaturas).</span>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando el listado completo de entregas del máster.</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -5111,7 +5154,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="drive-banner">
       <div class="drive-banner-info">
         <strong>Carpeta «Máster» en Google Drive</strong>
-        <p>Repositorio privado con tus apuntes, guías, casos prácticos y entregas (`CertificadoRegistro.pdf`, `Escrito de subsanación_signed.pdf`, `Documento_anonimizado.pdf`, `summary.docx`). Cada documento inferior tiene botón directo para localizarlo en Drive.</p>
+        <p>Repositorio académico con guías, casos prácticos y materiales de estudio (`CertificadoRegistro.pdf`, `Escrito de subsanación_signed.pdf`, `Documento_anonimizado.pdf`, `summary.docx`). Cada documento inferior tiene botón directo para localizarlo en Drive.</p>
       </div>
       <a class="drive-btn" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">Abrir carpeta Máster en Drive ↗</a>
     </div>
@@ -5140,10 +5183,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="outlook-banner">
       <div class="outlook-banner-info">
-        <strong>Bandeja institucional en Microsoft Outlook</strong>
-        <p>Pulsa en cualquier correo de la lista para ver su resumen completo, documentos adjuntos y calificación, o abre directamente Outlook para consultar el mensaje original.</p>
+        <strong>Bandeja institucional y búsqueda en Outlook</strong>
+        <p>Cada correo incluye su <b>asunto oficial exacto</b>. Pulsa <b>«Copiar y abrir Outlook»</b> en cualquier mensaje: el asunto se copiará a tu portapapeles y se abrirá tu bandeja; solo tienes que pulsar <code>Ctrl+V</code> (o <code>Cmd+V</code>) en el buscador superior de Outlook para ver tu correo al instante.</p>
       </div>
-      <a class="outlook-btn" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Abrir Outlook ↗</a>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="outlook-btn" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">Abrir Outlook Web ↗</a>
+        <a class="outlook-btn-secondary" href="ms-outlook://" title="Abrir la aplicación Microsoft Outlook instalada en tu ordenador">App Escritorio 💻</a>
+      </div>
     </div>
     <div id="mailList"></div>
   </section>
@@ -5187,7 +5233,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="hub-card-text">
           <span class="hub-card-kicker">Plan de estudios</span>
           <strong class="hub-card-title">Bloques y Asignaturas</strong>
-          <span class="hub-card-meta">🟢 2 bloques activos hoy · 8 bloques en total</span>
+          <span class="hub-card-meta">8 bloques formativos · Plan oficial</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -5302,7 +5348,7 @@ const events={ '2026-10-01':[
    {start:'18:45',end:'20:45',name:'Responsabilidad civil y penal del abogado (Sesión 1 de 3)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
  '2026-10-20':[
-   {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2 · Test: 9/10)',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'test_20oct_sandra',detailKey:'test_20oct_sandra',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (9/10)'},
+   {start:'16:30',end:'18:30',name:'Actos de comunicación judicial (Sesión 2 de 2',teacher:'Sandra Mosteiro Costa',subject:'Técnicas instrumentales · Procura',subjectRef:'Procura|Técnicas instrumentales|3',mailKey:'test_20oct_sandra',detailKey:'test_20oct_sandra',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (9/10)'},
    {start:'18:45',end:'20:45',name:'Aseguramiento de la responsabilidad profesional (Sesión 2 de 3)',teacher:'José Luis Delgado Domínguez',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',mailKey:'schedule',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
  '2026-10-21':[
@@ -5512,171 +5558,7 @@ const events={ '2026-10-01':[
 };
 
 const gradeRecords=[
- {
-  id:'grade_carolina_carlos_16oct',
-  type:'mail',
-  kicker:'Evaluación oficial por correo · 23 oct 2026 (13:21)',
-  title:'Deontología y técnicas transversales · Proceso digital y TIC (Sesiones 14, 15 y 16 oct)',
-  score:'10 / 10',
-  scoreLabel:'Nota oficial',
-  breakdown:[
-   {label:'I. Test (40 %)',val:'4 / 4 puntos'},
-   {label:'II. Traballos escritos (60 %)',val:'6 / 6 puntos'},
-   {label:'Calificación otorgada',val:'10 / 10 · Sobresaliente'}
-  ],
-  teacher:'Carolina Moreno Vázquez y Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|2',
-  mailKey:'mail_carolina_carlos_23oct',
-  description:'Calificaciones comunicadas oficialmente por la Secretaría del Colegio de Procuradores de A Coruña el 23 de octubre de 2026 a las 13:21 h («Resultados de las pruebas del 14, 15 y 16/10/2026 - Técnicas Instrumentales - Docente Carolina Moreno Vázquez y Carlos Miguel Sánchez Muiño»), correspondientes a las clases del 14, 15 y 16 de octubre (El proceso digital, supuestos prácticos, gestión y uso de las TIC por el procurador y herramientas tecnológicas).',
-  links:[
-   {label:'✉ Abrir correo de la nota (23 oct) ↗',detailKey:'mail_carolina_carlos_23oct',cls:'solid-green'},
-   {label:'📝 Ver test resuelto (20/20) ↗',detailKey:'test_16oct',cls:'solid-blue'},
-   {label:'Ver asignatura ↗',subjectRef:'Procura|Técnicas instrumentales|2'},
-   {label:'Ficha de Carolina Moreno Vázquez ↗',teacher:'Carolina Moreno Vázquez'},
-   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
-  ]
- },
- {
-  id:'grade_carlos_sanchez_2oct',
-  type:'mail',
-  kicker:'Evaluación oficial por correo · 22 oct 2026 (13:24)',
-  title:'Técnicas instrumentales · Procura (Pruebas del 2 de octubre)',
-  score:'10 / 10',
-  scoreLabel:'Nota docente',
-  breakdown:[
-   {label:'I. Test (40 %)',val:'4 / 4 puntos'},
-   {label:'II. Traballos escritos (60 %)',val:'6 / 6 puntos'},
-   {label:'Calificación otorgada',val:'10 / 10 · Sobresaliente'}
-  ],
-  teacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|1',
-  mailKey:'mail_carlos_sanchez_2oct',
-  description:'Calificaciones comunicadas oficialmente por la Secretaría del Colegio de Procuradores de A Coruña el 22 de octubre de 2026 a las 13:24 h («Resultados de las pruebas del 2/10/2026 - Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño»), correspondientes a la clase del 2 de octubre (formas de ejercicio, organización y marketing del despacho, técnicas de comunicación y previsión social).',
-  links:[
-   {label:'✉ Abrir correo de la nota (22 oct) ↗',detailKey:'mail_carlos_sanchez_2oct',cls:'solid-green'},
-   {label:'Ver asignatura ↗',subjectRef:'Procura|Técnicas instrumentales|1'},
-   {label:'Ficha de Carlos M. Sánchez Muiño ↗',teacher:'Carlos M. Sánchez Muiño'},
-   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
-  ]
- },
- {
-  id:'grade_1oct',
-  type:'mail',
-  kicker:'Evaluación oficial por correo · 14 oct 2026',
-  title:'Técnicas instrumentales · Procura (Pruebas del 1 de octubre)',
-  score:'10 / 10',
-  scoreLabel:'Nota final',
-  breakdown:[
-   {label:'Test (1 oct)',val:'4 / 4 puntos'},
-   {label:'Trabajos / escritos',val:'6 / 6 puntos'},
-   {label:'Calificación final',val:'10 / 10 · Sobresaliente'}
-  ],
-  teacher:'Javier Sánchez García',
-  subjectRef:'Procura|Técnicas instrumentales|0',
-  mailKey:'grades',
-  description:'Nota comunicada oficialmente por la Secretaría del Colegio de Procuradores / Javier Sánchez García en el correo del 14 de octubre de 2026 («Resultados de las pruebas · Técnicas instrumentales»), correspondiente a las pruebas realizadas el 1 de octubre de 2026.',
-  links:[
-   {label:'✉ Abrir correo de la nota (14 oct) ↗',detailKey:'grades',cls:'solid-green'},
-   {label:'Ver asignatura ↗',subjectRef:'Procura|Técnicas instrumentales|0'},
-   {label:'Ficha de Javier Sánchez García ↗',teacher:'Javier Sánchez García'},
-   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
-  ]
- },
- {
-  id:'grade_ana_vazquez',
-  type:'mail',
-  kicker:'Evaluación oficial por correo · 19 oct 2026',
-  title:'Deontología y técnicas transversales · Procura (Clases 8 y 9 de octubre)',
-  score:'8.8 / 10',
-  scoreLabel:'Nota docente',
-  breakdown:[
-   {label:'I. Test (40 %)',val:'3.8 / 4 puntos'},
-   {label:'II. Trabajos escritos (60 %)',val:'5.0 / 6 puntos'},
-   {label:'Calificación otorgada',val:'8.8 / 10 · Notable alto'}
-  ],
-  teacher:'Ana Vázquez Corte',
-  subjectRef:'Procura|Deontología y responsabilidad|0',
-  mailKey:'mail_deontologia_ana_vazquez',
-  description:'Calificaciones otorgadas por Dña. Ana Vázquez Corte y remitidas oficialmente al estudiantado el 19 de octubre de 2026 («Materia: Deontología y técnicas transversales»), correspondientes a las actividades evaluables de las sesiones del 8 y 9 de octubre. Ponderables por la coordinación del MUAP con las de los demás docentes.',
-  links:[
-   {label:'✉ Abrir correo de la nota (19 oct) ↗',detailKey:'mail_deontologia_ana_vazquez',cls:'solid-green'},
-   {label:'Ver asignatura ↗',subjectRef:'Procura|Deontología y responsabilidad|0'},
-   {label:'Ficha de Ana Vázquez Corte ↗',teacher:'Ana Vázquez Corte'},
-   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
-  ]
- },
- {
-  id:'grade_16oct_test',
-  type:'test',
-  kicker:'Prueba online evaluada en Testmoz / CPROC · 16 oct 2026 (19:17)',
-  title:'Deontología y técnicas transversales · Proceso digital y TIC',
-  score:'10 / 10',
-  scoreLabel:'20/20 (100 %)',
-  breakdown:[
-   {label:'Respuestas correctas',val:'20 de 20 (100 %)'},
-   {label:'Calificación',val:'10 / 10 puntos'},
-   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
-  ],
-  teacher:'Carolina Moreno Vázquez',
-  coTeacher:'Carlos M. Sánchez Muiño',
-  subjectRef:'Procura|Técnicas instrumentales|2',
-  mailKey:'test_16oct',
-  description:'Test oficial «CAROLINA MORENO - CARLOS SÁNCHEZ- 16-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el viernes 16 de octubre de 2026 a las 19:17. Superado con 20/20 aciertos (10 sobre 10).',
-  links:[
-   {label:'✓ Ver las 20 preguntas y opciones ↗',detailKey:'test_16oct',cls:'solid-blue'},
-   {label:'Abrir HTML original Testmoz ↗',url:testHtmlLocalUrl,cls:'blue'},
-   {label:'Abrir apuntes del test (.md) ↗',url:testMdLocalUrl},
-   {label:'Revisión en Testmoz ↗',url:testmozReviewUrl,cls:'blue'},
-   {label:'Plataforma CPROC ↗',url:cprocUrl}
-  ]
- },
- {
-  id:'grade_20oct_test',
-  type:'test',
-  kicker:'Prueba online evaluada en Testmoz / CPROC · 20 oct 2026 (17:44)',
-  title:'Actos de comunicación judicial · Sandra Mosteiro Costa',
-  score:'9 / 10',
-  scoreLabel:'9/10 (90 %)',
-  breakdown:[
-   {label:'Respuestas correctas',val:'9 de 10 (90 %)'},
-   {label:'Calificación',val:'9 / 10 · Sobresaliente'},
-   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
-  ],
-  teacher:'Sandra Mosteiro Costa',
-  subjectRef:'Procura|Técnicas instrumentales|3',
-  mailKey:'test_20oct_sandra',
-  description:'Test oficial «SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el martes 20 de octubre de 2026 a las 17:44. Superado con 9/10 aciertos (9 sobre 10 · Sobresaliente). Cuestiones relativas a actos de comunicación judicial, LexNET, Reglamento (UE) 2020/1784 y auxilio judicial.',
-  links:[
-   {label:'✓ Ver las 10 preguntas y respuestas ↗',detailKey:'test_20oct_sandra',cls:'solid-blue'},
-   {label:'Abrir HTML original Testmoz ↗',url:testHtmlSandraLocalUrl,cls:'blue'},
-   {label:'Abrir apuntes del test (.md) ↗',url:testMdSandraLocalUrl},
-   {label:'Revisión en Testmoz ↗',url:testmozSandraReviewUrl,cls:'blue'},
-   {label:'Ficha de Sandra Mosteiro ↗',teacher:'Sandra Mosteiro Costa'}
-  ]
- },
- {
-  id:'grades_all_tests',
-  type:'global',
-  kicker:'Balance global en CPROC / Testmoz · Todos realizados',
-  title:'Historial general de tests y prácticas en CPROC',
-  score:'10 (y un 8)',
-  scoreLabel:'Todos hechos',
-  breakdown:[
-   {label:'Tests realizados',val:'100 % completados'},
-   {label:'Notas en tests',val:'10 en todos salvo uno (~8)'},
-   {label:'Prácticas CPROC',val:'4 / 4 enviadas (0 vencidas)'}
-  ],
-  teacher:'Carolina Moreno Vázquez',
-  coTeacher:'Ana Vázquez Corte',
-  subjectRef:'Procura|Técnicas instrumentales|2',
-  mailKey:'all_tests_summary',
-  description:'Todos los tests publicados hasta la fecha en CPROC / Testmoz están hechos, con calificación de 10 en todos salvo en uno (~8). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
-  links:[
-   {label:'★ Ver resumen completo de tests y entregas ↗',detailKey:'all_tests_summary',cls:'solid-green'},
-   {label:'Abrir plataforma CPROC ↗',url:cprocUrl,cls:'blue'},
-   {label:'Abrir carpeta Drive ↗',url:driveFolderUrl}
-  ]
- }
+ 
 ];
 
 const deliveries=[
@@ -5717,7 +5599,7 @@ const deliveries=[
   detailKey:'entrega_caso_pr_ctico_de_actos_de',
   file:'CASO_PRACTICO_2026_SANDRA.pdf',
   file2:'',
-  details:'Caso práctico oficial evaluable entregado con éxito en CPROC el 22 de octubre de 2026 a las 12:51 h («✓ La Tarea se ha entregado con éxito»). Resolución completa de los 6 escenarios de la LEC, LexNET, doctrina del TS y 3 preguntas de reflexión.'
+  details:'Caso práctico oficial evaluable sobre actos de comunicación judicial (citaciones, emplazamientos, LexNET y doctrina jurisprudencial de los 6 supuestos de la LEC). Enunciado en CASO_PRACTICO_2026_SANDRA.pdf para entrega en CPROC.'
  },
  {
   date:new Date(2026,9,16),
@@ -5730,7 +5612,7 @@ const deliveries=[
   submitted:false,
   detailKey:'entrega_apud_acta',
   file:'CertificadoRegistro.pdf',
-  details:'Certificado de inscripción de apoderamiento apud acta a favor de Carolina Moreno Vázquez. Plataforma oficial CPROC (MUAP) («La Tarea se ha entregado con éxito»).'
+  details:'Certificado electrónico de apoderamiento apud acta en el REAJ a favor de la docente. Tarea evaluable de tramitación procesal telemática para entrega en plataforma CPROC.'
  },
  {
   date:new Date(2026,9,16),
@@ -5743,7 +5625,7 @@ const deliveries=[
   submitted:false,
   detailKey:'entrega_subsanacion',
   file:'Escrito de subsanación_signed.pdf',
-  details:'Tarea en CPROC: «ESCRITO SUBSANACIÓN». Solicita tener por subsanada la acreditación de la representación mediante poder apud acta. Plataforma oficial CPROC (MUAP).'
+  details:'Redacción y firma de escrito procesal solicitando tener por subsanada la representación procesal mediante poder apud acta. Entrega en plataforma CPROC.'
  },
  {
   date:new Date(2026,9,16),
@@ -5757,7 +5639,7 @@ const deliveries=[
   detailKey:'entrega_auto_up',
   file:'Documento_anonimizado.pdf',
   
-  details:'1.º envío: Documento_anonimizado.pdf (11 págs.) · 2.º envío: summary.docx (1 pág.). Plataforma oficial CPROC (MUAP).'
+  details:'Estudio del auto de concurso y elaboración de resumen procesal ejecutivo con oferta de venta de unidad productiva (UP). Entrega en plataforma CPROC.'
  },
  {
   date:new Date(2026,9,15),
@@ -5775,21 +5657,21 @@ const deliveries=[
 ];
 
 const messages=[
- {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2'},
- {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1'},
- {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
- {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:''},
- {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:''},
- {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:''},
- {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:''},
- {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:''},
- {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3'},
- {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3'},
- {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:''},
- {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · Caso práctico en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0'}
+ {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Docente Dª. María Susana Díaz Gallego [Procuradora] carta presentación MUAP 2026-2027, clases 29 y 30 de octubre'},
+ {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1',emailSubject:'Materiales para alumnos Master Escuela de Práctica Jurídica 2026'},
+ {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Bolsas Santander Estudos Axuda Económica 2026/27'},
+ {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Ampliación de documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Docente- Sandra Mosteiro Costa, Procuradora- Remisión de documentación al estudiantado del MUAP'},
+ {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:'',emailSubject:'Docente Dª. María Pilar Carnota García [Procuradora] carta presentación MUAP 2026-2027, clase 28 de octubre'},
+ {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:'',emailSubject:'Presentación de la docente D.ª María Rita Goimil Martínez'},
+ {date:'19 oct 2026 (16:52)',title:'DATAfórum Justicia 2026 · Ubicación de salas y libre acceso a ponencias (PALEXCO)',meta:'master.abogacia@icacor.org · D. Javier Hernández (Justicia Digital) · Auditorios Planta 0 y 2',key:'dataforum_instrucciones',teacher:'Decanato Facultad de Derecho / D. Javier Hernández',subjectRef:'',emailSubject:'Información importante sobre el Dataforum'},
+ {date:'19 oct 2026 (10:32)',title:'DATAfórum Viernes 23 · Confirmación de justificante oficial de asistencia',meta:'master.abogacia@icacor.org · Administración del Máster · Respuesta a consulta',key:'dataforum_viernes',teacher:'Administración del Máster',subjectRef:'',emailSubject:'DATAFORUM Viernes 23'},
+ {date:'19 oct 2026',title:'Avisos Facultad e idiomas · II Feira de Emprego UDC (Jueves 22 oct)',meta:'Decanato Facultade de Dereito y Vicerreitoría de Estudantes UDC · Difusión y actividades',key:'udc_avisos',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Avisos Facultad de Derecho · Idiomas, Charla Decanato y II Feira de Emprego UDC'},
+ {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3',emailSubject:'Responsabilidad civil y penal - José Luis Delgado Domínguez'},
+ {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Material de clase · Actos de comunicación judicial'},
+ {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Información Dataforum. Suspensión clases'},
+ {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · Caso práctico en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0',emailSubject:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador'}
 ];
 
 const mailSummaries={
@@ -6071,15 +5953,15 @@ const details={
  },
  entrega_caso_pr_ctico_de_actos_de:{
   isDelivery:true,
-  kicker:'Práctica entregada con éxito en CPROC ✓ · 22 de octubre de 2026',
+  kicker:'Caso práctico evaluable · Procura · Actos de comunicación judicial',
   title:'Caso práctico 2026: Actos de comunicación judicial (Sandra Mosteiro Costa)',
-  date:'Entregada: jueves, 22 de octubre de 2026 (12:51 h) · Estado: Completada y enviada en CPROC («✓ La Tarea se ha entregado con éxito»)',
+  date:'Sesiones: 19 y 20 de octubre de 2026 · Entrega a través de plataforma CPROC',
   teacher:'Sandra Mosteiro Costa',
   subjectRef:'Procura|Técnicas instrumentales|3',
-  body:'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos · Entregada en CPROC el 22/10/2026 a las 12:51 h\\n\\nESCENARIO 1. DÍA INICIAL Y DÍA FINAL (Arts. 151.2, 133 y 135.5 LEC)\\n• Notificación tenida por realizada el viernes 13 de febrero de 2026 (remitida el jueves 12 feb a las 13:45 h, antes de las 15:00 h). La fecha de apertura efectiva por el procurador (16 feb) no altera el cómputo (art. 151.2 LEC).\\n• Cómputo de 20 días hábiles de apelación: Comienza el lunes 16 de febrero y concluye el viernes 13 de marzo de 2026 (desglose: 16-20 feb = 5 d; 23-27 feb = 10 d; 2-6 mar = 15 d; 9-13 mar = 20 d).\\n• Día de gracia (art. 135.5 LEC): El último momento para presentar válidamente el recurso es el lunes 16 de marzo de 2026 hasta las 15:00 h.\\n• Presentación a las 12:00 h del día de gracia: En plazo. Presentación a las 16:00 h: Extemporánea y precluida.\\n• Hipótesis remisión a las 15:30 h del 12 feb: Se recibe el 13 feb y se notifica el lunes 16 feb. Plazo: del 17 feb al 16 mar; día de gracia: martes 17 mar hasta las 15:00 h.\\n\\nESCENARIO 2. INTERRUPCIÓN POR ACLARACIÓN (Art. 215.5 LEC y doctrina TS)\\n• La solicitud de aclaración del 17 feb interrumpe el plazo de apelación.\\n• Doctrina legal del Pleno Sala 1.ª del TS (Auto de 4 de octubre de 2011, ROJ ATS 10217/2011): El plazo no se reanuda por los días restantes sino que SE REINICIA ÍNTEGRAMENTE por 20 días hábiles.\\n• Notificación del auto denegatorio (remitido 23 feb a las 12:00 h): Notificado el martes 24 feb. El nuevo plazo inicia el miércoles 25 feb y concluye el miércoles 25 de marzo de 2026. Día de gracia: jueves 26 de marzo hasta las 15:00 h.\\n• Solicitud sucesiva de complemento infundada: No reabre de nuevo el plazo según reiterada jurisprudencia del TS para evitar maniobras dilatorias o fraudulentas.\\n\\nESCENARIO 3. ERRORES MATERIALES (Art. 214.3 LEC y 267 LOPJ)\\n• Error aritmético manifiesto (214.3 LEC y 267.3 LOPJ): Puede solicitarse en cualquier momento, incluso tras expirar los 2 días hábiles de aclaración ordinaria.\\n• Corrección de oficio por el Juzgado: El tribunal está facultado para rectificar de oficio los errores materiales y aritméticos en cualquier momento.\\n\\nESCENARIO 4. SUSPENSIÓN POR COPIA DE LA GRABACIÓN (Art. 134.2 LEC y confianza legítima)\\n• Doctrina del TS (STS 27 de mayo de 2020 y 3 de marzo de 2021): La solicitud de copia de vista el último día no suspende ipso iure el cómputo si la parte pudo solicitarla con diligencia previa.\\n• Efecto del auto del LAJ acordando la suspensión: Por el principio constitucional de confianza legítima y tutela judicial efectiva (art. 24 CE, STC 158/2007), la parte no puede resultar perjudicada por un acto judicial erróneo. El recurso es admisible dentro del plazo concedido por el LAJ.\\n\\nESCENARIO 5. RENUNCIA DEL ABOGADO A MITAD DE PLAZO Y FUERZA MAYOR\\n• Renuncia de letrado: No suspende automáticamente el cómputo salvo justa causa conferida por el juzgado. Si el tribunal concede 10 días para designar abogado y éste apela en plazo, la inadmisión por la Audiencia vulnera el art. 24 CE.\\n• Intervención quirúrgica urgente del letrado: Constituye causa legal de fuerza mayor (art. 134.2 LEC). Acreditada la imposibilidad, procede la suspensión o rescisión del plazo precluido.\\n\\nESCENARIO 6. PLAZOS SUSTANTIVOS Y DÍA DE GRACIA (Art. 1967 CC vs Art. 135.5 LEC)\\n• Reclamación de honorarios (art. 1967 CC): Plazo sustantivo de prescripción de 3 años.\\n• Presentación a las 22:40 h por LexNET: Válida, hábil todo el día natural hasta las 23:59 h.\\n• Presentación en "día de gracia" (135.5 LEC): DOCTRINA DEL TS: El art. 135.5 LEC solo rige para plazos procesales. NO aplica a la prescripción o caducidad sustantiva del Código Civil. La acción habrá prescrito.\\n\\nPREGUNTAS DE REFLEXIÓN\\n1. Traslado previo de copias (arts. 276 y 277 LEC): Doctrina estricta del Pleno del TS (Sentencias 2017 y 2018). El procurador debe trasladar copia previamente vía LexNET y acreditarlo; la omisión determina la inadmisión del recurso sin posibilidad de subsanación tardía.\\n2. Sentido del día de gracia existiendo sede 24h: Mantiene su vigencia como garantía ante caídas de servidor, fallos en firma electrónica y aseguramiento del derecho de defensa.\\n3. Confianza legítima: El ciudadano no debe sufrir indefensión por actos inductores a error emanados del propio órgano judicial.',
-  source:'Plataforma CPROC (MUAP) → Tareas publicadas · Entrega realizada el 22/10/2026 (12:51 h) con resguardo en pantalla «✓ La Tarea se ha entregado con éxito»',
+  body:'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nCaso práctico oficial evaluable (6 escenarios de la LEC + 3 reflexiones)\\n\\nESCENARIO 1. DÍA INICIAL Y DÍA FINAL (Arts. 151.2, 133 y 135.5 LEC)\\n• Notificación tenida por realizada el viernes 13 de febrero de 2026 (remitida el jueves 12 feb a las 13:45 h, antes de las 15:00 h). La fecha de apertura efectiva por el procurador (16 feb) no altera el cómputo (art. 151.2 LEC).\\n• Cómputo de 20 días hábiles de apelación: Comienza el lunes 16 de febrero y concluye el viernes 13 de marzo de 2026 (desglose: 16-20 feb = 5 d; 23-27 feb = 10 d; 2-6 mar = 15 d; 9-13 mar = 20 d).\\n• Día de gracia (art. 135.5 LEC): El último momento para presentar válidamente el recurso es el lunes 16 de marzo de 2026 hasta las 15:00 h.\\n• Presentación a las 12:00 h del día de gracia: En plazo. Presentación a las 16:00 h: Extemporánea y precluida.\\n• Hipótesis remisión a las 15:30 h del 12 feb: Se recibe el 13 feb y se notifica el lunes 16 feb. Plazo: del 17 feb al 16 mar; día de gracia: martes 17 mar hasta las 15:00 h.\\n\\nESCENARIO 2. INTERRUPCIÓN POR ACLARACIÓN (Art. 215.5 LEC y doctrina TS)\\n• La solicitud de aclaración del 17 feb interrumpe el plazo de apelación.\\n• Doctrina legal del Pleno Sala 1.ª del TS (Auto de 4 de octubre de 2011, ROJ ATS 10217/2011): El plazo no se reanuda por los días restantes sino que SE REINICIA ÍNTEGRAMENTE por 20 días hábiles.\\n• Notificación del auto denegatorio (remitido 23 feb a las 12:00 h): Notificado el martes 24 feb. El nuevo plazo inicia el miércoles 25 feb y concluye el miércoles 25 de marzo de 2026. Día de gracia: jueves 26 de marzo hasta las 15:00 h.\\n• Solicitud sucesiva de complemento infundada: No reabre de nuevo el plazo según reiterada jurisprudencia del TS para evitar maniobras dilatorias o fraudulentas.\\n\\nESCENARIO 3. ERRORES MATERIALES (Art. 214.3 LEC y 267 LOPJ)\\n• Error aritmético manifiesto (214.3 LEC y 267.3 LOPJ): Puede solicitarse en cualquier momento, incluso tras expirar los 2 días hábiles de aclaración ordinaria.\\n• Corrección de oficio por el Juzgado: El tribunal está facultado para rectificar de oficio los errores materiales y aritméticos en cualquier momento.\\n\\nESCENARIO 4. SUSPENSIÓN POR COPIA DE LA GRABACIÓN (Art. 134.2 LEC y confianza legítima)\\n• Doctrina del TS (STS 27 de mayo de 2020 y 3 de marzo de 2021): La solicitud de copia de vista el último día no suspende ipso iure el cómputo si la parte pudo solicitarla con diligencia previa.\\n• Efecto del auto del LAJ acordando la suspensión: Por el principio constitucional de confianza legítima y tutela judicial efectiva (art. 24 CE, STC 158/2007), la parte no puede resultar perjudicada por un acto judicial erróneo. El recurso es admisible dentro del plazo concedido por el LAJ.\\n\\nESCENARIO 5. RENUNCIA DEL ABOGADO A MITAD DE PLAZO Y FUERZA MAYOR\\n• Renuncia de letrado: No suspende automáticamente el cómputo salvo justa causa conferida por el juzgado. Si el tribunal concede 10 días para designar abogado y éste apela en plazo, la inadmisión por la Audiencia vulnera el art. 24 CE.\\n• Intervención quirúrgica urgente del letrado: Constituye causa legal de fuerza mayor (art. 134.2 LEC). Acreditada la imposibilidad, procede la suspensión o rescisión del plazo precluido.\\n\\nESCENARIO 6. PLAZOS SUSTANTIVOS Y DÍA DE GRACIA (Art. 1967 CC vs Art. 135.5 LEC)\\n• Reclamación de honorarios (art. 1967 CC): Plazo sustantivo de prescripción de 3 años.\\n• Presentación a las 22:40 h por LexNET: Válida, hábil todo el día natural hasta las 23:59 h.\\n• Presentación en "día de gracia" (135.5 LEC): DOCTRINA DEL TS: El art. 135.5 LEC solo rige para plazos procesales. NO aplica a la prescripción o caducidad sustantiva del Código Civil. La acción habrá prescrito.\\n\\nPREGUNTAS DE REFLEXIÓN\\n1. Traslado previo de copias (arts. 276 y 277 LEC): Doctrina estricta del Pleno del TS (Sentencias 2017 y 2018). El procurador debe trasladar copia previamente vía LexNET y acreditarlo; la omisión determina la inadmisión del recurso sin posibilidad de subsanación tardía.\\n2. Sentido del día de gracia existiendo sede 24h: Mantiene su vigencia como garantía ante caídas de servidor, fallos en firma electrónica y aseguramiento del derecho de defensa.\\n3. Confianza legítima: El ciudadano no debe sufrir indefensión por actos inductores a error emanados del propio órgano judicial.',
+  source:'Plataforma CPROC (MUAP) → Tareas publicadas · Entrega oficial a través de la plataforma CPROC',
   submissions:[
-   {label:'Documento entregado (Google Docs)',file:'Deontología y Técnicas Transversales_Raquel Escudero',pages:'Resolución íntegra (6 escenarios + 3 reflexiones)',url:casoSandraGDocUrl,content:'Resolución jurídica completa elaborada por Raquel Escudero Valcárcel-Ríos para la materia de Sandra Mosteiro Costa.',state:'Entregada en CPROC ✓ (22/10/2026, 12:51 h)'},
+   {label:'Documento entregado (Google Docs)',file:'Deontología y Técnicas Transversales_Raquel Escudero',pages:'Resolución íntegra (6 escenarios + 3 reflexiones)',url:casoSandraGDocUrl,content:'Resolución de supuestos prácticos procesales para la materia de Sandra Mosteiro Costa.',state:'Entrega telemática en CPROC'},
    {label:'Grabación de pantalla de la entrega',file:'',pages:'Vídeo comprobante local',url:casoSandraVideoLocalUrl,content:'Grabación del proceso completo de entrega en la plataforma CPROC hasta la pantalla de confirmación exitosa.',state:'Comprobante oficial registrado'},
    {label:'Resolución completa en Markdown',file:'',pages:'19.500 caracteres · 188 líneas',url:casoSandraResolucionLocalUrl,content:'Copia local íntegra en Markdown con el desglose de artículos LEC, sentencias del TS y reflexiones jurídicas.',state:'Guardado en el portal'}
   ],
@@ -6141,9 +6023,9 @@ grades:{
  },
  assignment:{
   isDelivery:true,
-  kicker:'Práctica entregada y apuntes · Procura · Deontología y responsabilidad',
+  kicker:'Caso práctico evaluable · Procura · Deontología y responsabilidad',
   title:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador',
-  date:'Estado: Completada en Google Drive y enviada en CPROC ✓ (Plazo del correo: 15 de octubre de 2026)',
+  date:'Sesiones: 8 y 9 de octubre de 2026 · Entrega a través de plataforma CPROC',
   teacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Deontología y responsabilidad|0',
   body:'Práctica completada, subida a la carpeta «Máster» de Google Drive y entregada en la plataforma CPROC siguiendo la ruta indicada por la profesora Ana Vázquez Corte (MUAP 26/28 → Tareas publicadas → Derechos, deberes y responsabilidad profesional del procurador), aplicando la norma general explicada en clase y justificando las excepciones con el Código Deontológico y el Estatuto General.',
@@ -6280,47 +6162,47 @@ grades:{
  },
  entrega_apud_acta:{
   isDelivery:true,
-  kicker:'Práctica entregada · Procura · Técnicas instrumentales / Actuación procesal',
+  kicker:'Práctica procesal de aula · Procura · Técnicas instrumentales',
   title:'Poder apud acta (CertificadoRegistro.pdf)',
-  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
+  date:'Sesión: 16 de octubre de 2026 · Entrega a través de plataforma CPROC',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
   body:'Certificado electrónico de inscripción de apoderamiento apud acta en el Registro Electrónico de Apoderamientos Judiciales (REAJ) a favor de la procuradora Carolina Moreno Vázquez. Archivo entregado en la plataforma CPROC y guardado en la carpeta «Máster» de Google Drive.',
-  source:'Plataforma CPROC y carpeta «Máster» en Google Drive · Confirmación: «La Tarea se ha entregado con éxito» · 16 oct 2026',
+  source:'Plataforma CPROC y carpeta «Máster» en Google Drive · Entrega telemática a través de la plataforma CPROC',
   attachments:[
    {name:'CertificadoRegistro.pdf (Abrir en Google Drive)',url:driveSearchUrl('CertificadoRegistro.pdf'),kind:'Archivo en Drive'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'✓ Entrega confirmada en CPROC («La Tarea se ha entregado con éxito») y guardada en Drive.'
+  extra:'Entrega telemática a través del aula virtual de tareas CPROC.'
  },
  entrega_subsanacion:{
   isDelivery:true,
-  kicker:'Práctica entregada · Procura · Técnicas instrumentales / Actuación procesal',
+  kicker:'Práctica procesal de aula · Procura · Técnicas instrumentales',
   title:'Escrito de subsanación (Escrito de subsanación_signed.pdf)',
-  date:'Entregado: viernes, 16 de octubre de 2026 · Estado: Completada en Drive y enviada en CPROC ✓',
+  date:'Sesión: 16 de octubre de 2026 · Entrega a través de plataforma CPROC',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
   body:'Escrito procesal firmado digitalmente que solicita al juzgado/tribunal tener por subsanado el defecto de acreditación de la representación procesal mediante la aportación de certificación de poder apud acta. Entregado dentro de la tarea «ESCRITO SUBSANACIÓN» en CPROC y conservado en Google Drive.',
-  source:'Plataforma CPROC (Tarea: «ESCRITO SUBSANACIÓN») y carpeta «Máster» en Google Drive · Confirmación: «La Tarea se ha entregado con éxito» · 16 oct 2026',
+  source:'Plataforma CPROC (Tarea: «ESCRITO SUBSANACIÓN») y carpeta «Máster» en Google Drive · Entrega telemática a través de la plataforma CPROC',
   attachments:[
    {name:'Escrito de subsanación_signed.pdf (Abrir en Google Drive)',url:driveSearchUrl('Escrito de subsanación_signed.pdf'),kind:'Archivo en Drive'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'✓ Entregada con justificante de éxito en CPROC y guardada en Drive.'
+  extra:'Entrega telemática a través del aula virtual de tareas CPROC.'
  },
  entrega_auto_up:{
   isDelivery:true,
-  kicker:'Práctica entregada (2 envíos) · Procura · Técnicas instrumentales / Actuación procesal',
+  kicker:'Práctica procesal de aula · Procura · Técnicas instrumentales',
   title:'Tarea: AUTO DECLARACION CON OFERTA DE VENTA UP',
-  date:'Entregado: viernes, 16 de octubre de 2026 · 2 envíos realizados · Estado: Completada en Drive y enviada en CPROC ✓',
+  date:'Sesión: 16 de octubre de 2026 · Entrega a través de plataforma CPROC',
   teacher:'Carolina Moreno Vázquez',
   subjectRef:'Procura|Técnicas instrumentales|2',
   body:'Se registran dos envíos sucesivos para la tarea «AUTO DECLARACION CON OFERTA DE VENTA UP» el 16 de octubre de 2026 en la plataforma CPROC, ambos confirmados con éxito y almacenados en tu carpeta «Máster» de Google Drive.',
   submissions:[
-   {label:'Primer envío',file:'Documento_anonimizado.pdf',pages:'11 páginas · Guardado en Google Drive',url:driveSearchUrl('Documento_anonimizado.pdf'),content:'Auto judicial anonimizado de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP).',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'},
-   {label:'Segundo envío',file:'summary.docx',pages:'1 página · Guardado en Google Drive',url:driveSearchUrl('summary.docx'),content:'Resumen estructurado de los intervinientes, antecedentes y parte dispositiva relevante del auto concursal anterior.',state:'Entregado en CPROC ✓ · «La Tarea se ha entregado con éxito»'}
+   {label:'Primer envío',file:'Documento_anonimizado.pdf',pages:'11 páginas · Guardado en Google Drive',url:driveSearchUrl('Documento_anonimizado.pdf'),content:'Auto judicial anonimizado de declaración de concurso voluntario con oferta de adquisición de unidad productiva (UP).',state:'Entrega telemática en CPROC'},
+   {label:'Segundo envío',file:'summary.docx',pages:'1 página · Guardado en Google Drive',url:driveSearchUrl('summary.docx'),content:'Resumen estructurado de los intervinientes, antecedentes y parte dispositiva relevante del auto concursal anterior.',state:'Entrega telemática en CPROC'}
   ],
   source:'Plataforma CPROC (Tarea: «AUTO DECLARACION CON OFERTA DE VENTA UP») y carpeta «Máster» en Google Drive · 16 oct 2026',
   attachments:[
@@ -6328,7 +6210,7 @@ grades:{
    {name:'summary.docx (1 pág. · Abrir en Drive)',url:driveSearchUrl('summary.docx'),kind:'Archivo en Drive'},
    {name:'Plataforma de entregas CPROC',url:cprocUrl,kind:'CPROC'}
   ],
-  extra:'✓ Ambos archivos están entregados en CPROC y guardados en Google Drive.'
+  extra:'Entrega telemática a través del aula virtual de tareas CPROC.'
  },
  test_16oct:{
   kicker:'Nota de Test: 10 / 10 (20/20 · 100 %) · Procura · Deontología y técnicas transversales',
@@ -6521,7 +6403,7 @@ const courses=[
   name:'Técnicas instrumentales',
   blockNumber:'Bloque I (Procura)',
   blockTitle:'Bloque I: Técnicas instrumentales e iniciación profesional (Procura)',
-  state:'En curso',
+  state:'Completado',
   officialOrder:1,
   period:'1 al 20 de octubre de 2026 · Colegio de Abogados',
   startDate:'2026-10-01',
@@ -6573,7 +6455,7 @@ const courses=[
     period:'19 y 20 oct 2026 · Horario: 16:30 – 18:30 (Sesión 2 de 2 completada)',
     startDate:'2026-10-19',
     teachers:['Sandra Mosteiro Costa'],
-    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado hoy 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
+    grade:{score:'Test: 9 / 10 (90 %) · Completado ✓',detail:'Test oficial Testmoz realizado el martes 20 oct (17:44 h) con 9/10 aciertos (Sobresaliente). Sesión 2 de 2 y módulo superados con éxito.',detailKey:'test_20oct_sandra',actionLabel:'Ver test resuelto (9/10) ↗'},
      notes:[
       {name:'Enunciado oficial: Caso práctico 2026 - Sandra (PDF)',url:casoSandraPdfLocalUrl,label:'Descargar PDF ↗'},
       {name:'Caso práctico completo: 6 escenarios y 3 preguntas (.md)',url:casoSandraMdLocalUrl,label:'Ver .md ↗'},
@@ -6795,7 +6677,7 @@ const courses=[
     period:'19, 20 y 26 oct 2026 · Horario: 18:45–20:45 (Sesión 2 de 3 · Aseguramiento) · 6 h presenciales',
     startDate:'2026-10-19',
     teachers:['José Luis Delgado Domínguez'],
-    grade:{score:'🟢 En curso hoy · Sesión 2 de 3',detail:'Sesión 2 de 3 presencial hoy martes 20 oct (18:45–20:45 h) · Aseguramiento de la responsabilidad civil y penal · 3ª sesión (Turno de Oficio) el lunes 26 oct.',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
+    grade:{score:'En curso · 2 de 3 sesiones',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) programada para el lunes 26 oct (16:30–18:30 h).',detailKey:'schedule',actionLabel:'Ver horarios y correo ↗'},
     notes:[
      {name:'Documentación del módulo enlazada en correo del 16 oct',url:driveSearchUrl('Responsabilidad civil'),label:'Normativa y CPROC ↗'},
      {name:'Estatuto General de la Abogacía Española (RD 135/2021 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'},
@@ -7244,7 +7126,7 @@ const teacherDirectory=[
   name:'Carlos M. Sánchez Muiño',
   branch:'Procura',
   role:'Procurador · Formas de ejercicio, organización y justicia digital',
-  gradeBadge:'10 / 10 (Doble 10 oficial) ★',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Formas de ejercicio, organización del despacho de procuradores, TIC y justicia digital en la Procura.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
@@ -7270,7 +7152,7 @@ const teacherDirectory=[
   name:'Javier C. Sánchez García',
   branch:'Procura',
   role:'Procurador · Marco institucional de la Procura y estatuto',
-  gradeBadge:'10 / 10 (Sobresaliente)',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Iniciación a la actividad de la Procura, funciones procesales, marco estatutario y colegial.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
@@ -7285,7 +7167,7 @@ const teacherDirectory=[
   name:'Daniel Garrido Pazos',
   branch:'Abogacía',
   role:'Abogado · Técnicas instrumentales e iniciación profesional',
-  gradeBadge:'10 / 10 (Sobresaliente)',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Iniciación al ejercicio de la abogacía, deberes deontológicos y organización interna del despacho profesional.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
@@ -7301,7 +7183,7 @@ const teacherDirectory=[
   name:'Ana Vázquez Corte',
   branch:'Procura',
   role:'Procuradora · Deontología y responsabilidad profesional',
-  gradeBadge:'8.8 / 10 ★',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Deontología de la Procura, principios rectores, secreto profesional y relaciones con los órganos judiciales.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
@@ -7367,7 +7249,7 @@ const teacherDirectory=[
   name:'Carolina Moreno Vázquez',
   branch:'Procura',
   role:'Procuradora · Proceso digital, justicia digital y actuación procesal',
-  gradeBadge:'10 / 10 (Oficial) ★',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Proceso digital, plataforma LexNET, resoluciones judiciales telemáticas y taller práctico de expedientes.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
@@ -7396,9 +7278,9 @@ const teacherDirectory=[
   name:'Alex Sánchez Barge',
   branch:'Procura',
   role:'Procurador · Justicia digital, subsanaciones telemáticas y TIC',
-  gradeBadge:'20/20 (10/10) · Prácticas al día ✓',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Justicia digital, taller de subsanaciones procesales y presentación telemática de escritos en CPROC.',
-  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Cuestionario oficial en Testmoz y casos prácticos en CPROC.',detailKey:'dossiers'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-15',dayLabel:'Jueves 15 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'TIC, justicia digital y subsanación de defectos en la presentación telemática',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-16',dayLabel:'Viernes 16 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Taller de subsanaciones procesales y auto concursal UP',place:'Colegio de Abogados (A Coruña)'}
@@ -7412,9 +7294,9 @@ const teacherDirectory=[
   name:'Sandra Mosteiro Costa',
   branch:'Procura',
   role:'Procuradora · Técnicas instrumentales (Actos de comunicación judicial)',
-  gradeBadge:'⭐ Testmoz: 9 / 10 (90 % · Sobresaliente) ✓',
+  gradeBadge:'⚖️ Evaluación continua',
   summary:'Actos de comunicación judicial: notificaciones, citaciones, emplazamientos, requerimientos y cómputo de plazos procesales (19 y 20 de octubre). Módulo finalizado con test oficial superado (9/10).',
-  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Test oficial en Testmoz y caso evaluable en CPROC.',detailKey:'dossiers'},
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 1 de 2 · Marco general, notificaciones y requerimientos)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Actos de comunicación judicial (Sesión 2 de 2 · Citaciones, emplazamientos y test oficial)',place:'Colegio de Abogados (A Coruña)'}
@@ -7441,9 +7323,9 @@ const teacherDirectory=[
   name:'José Luis Delgado Domínguez',
   branch:'Abogacía',
   role:'Abogado · Responsabilidad civil y penal, aseguramiento y turno de oficio',
-  gradeBadge:'🟢 Sesión 2 de 3 hoy martes 20 oct (18:45 h)',
+  gradeBadge:'🟢 En curso · 3ª sesión el 26 oct',
   summary:'Responsabilidad civil y penal del abogado, cobertura de seguro de responsabilidad profesional y Turno de Oficio (19, 20 y 26 de octubre).',
-  grade:{score:'🟢 Sesión 2 de 3 · 18:45 h',scoreLabel:'Docencia en curso hoy',detail:'Segunda sesión presencial hoy martes 20 oct (18:45–20:45) sobre aseguramiento · 3ª sesión (Turno de Oficio) el lunes 26 oct.',detailKey:'schedule'},
+  grade:{score:'En curso · Sesión 3 el 26 oct',scoreLabel:'Docencia en curso',detail:'Sesiones 1 y 2 presenciales completadas (19 y 20 oct) · 3ª sesión (Turno de Oficio) el lunes 26 oct (16:30–18:30).',detailKey:'schedule'},
   sessions:[
    {date:'2026-10-19',dayLabel:'Lunes 19 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Responsabilidad civil y penal del abogado (Sesión 1 de 3)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-20',dayLabel:'Martes 20 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Aseguramiento de la responsabilidad profesional (Sesión 2 de 3)',place:'Colegio de Abogados (A Coruña)'},
@@ -8083,12 +7965,16 @@ function saveStudentGradeData(teacherId, data){
 }
 
 function updateHomeGradesBadge(){
-  const teachers = ['dossier-carlos-sanchez', 'dossier-javier-sanchez', 'dossier-ana-vazquez', 'dossier-sandra-mosteiro', 'dossier-carolina-moreno', 'dossier-jose-luis-delgado'];
   let count = 0;
-  teachers.forEach(t => {
-    const d = getStudentGradeData(t);
-    if(d.finalGrade || d.testGrade) count++;
-  });
+  try {
+    for(let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if(k && k.startsWith('muap_eval_')){
+        const d = JSON.parse(localStorage.getItem(k));
+        if(d && (d.finalGrade || d.testGrade)) count++;
+      }
+    }
+  } catch(e){}
   const el = document.getElementById('welcomeGradesSummary');
   if(el){
     el.textContent = count > 0 ? `${count} evaluadas por ti` : 'Mi Cuaderno de Notas';
@@ -8367,6 +8253,46 @@ function renderTeacherDossiers(){
    }
   ];
 
+  // Sincronización automática: si hay docentes evaluados en teacherGradeMap o teacherDirectory, integrarlos en el cuaderno del estudiante
+  if (typeof teacherGradeMap !== 'undefined' && teacherGradeMap) {
+    const knownTeachers = new Set(dossiers.map(d => (d.teacher || '').toLowerCase().trim()));
+    Object.keys(teacherGradeMap).forEach(tName => {
+      if (!tName) return;
+      const clean = tName.toLowerCase().trim();
+      const exists = Array.from(knownTeachers).some(kt => kt.includes(clean) || clean.includes(kt));
+      if (!exists) {
+        const idSafe = 'dossier-' + clean.replace(/[^a-z0-9]+/g, '-');
+        const tObj = (typeof teacherDirectory !== 'undefined' && Array.isArray(teacherDirectory))
+          ? teacherDirectory.find(t => (t.name || '').toLowerCase().trim().includes(clean) || clean.includes((t.name || '').toLowerCase().trim()))
+          : null;
+        dossiers.push({
+          id: idSafe,
+          teacher: tName,
+          subject: (tObj && tObj.subject) ? tObj.subject : 'Módulo con actividad evaluable',
+          subjectRef: (tObj && tObj.subjectRef) ? tObj.subjectRef : '',
+          kicker: 'Evaluación docente registrada · Cuaderno del estudiante',
+          testName: 'Test / Prueba de evaluación continua',
+          blocks: [
+            {
+              cls: 'highlight-mail',
+              title: '✉️ Calificación Docente',
+              score: 'Evaluación continua',
+              desc: 'Calificación oficial y ponderación de pruebas y trabajos.',
+              subitems: [
+                {label: 'Materia', val: (tObj && tObj.subject) ? tObj.subject : 'Evaluación oficial'},
+                {label: 'Docente', val: tName}
+              ]
+            }
+          ],
+          actions: [
+            {label: `Ficha de ${tName} ↗`, teacher: tName}
+          ]
+        });
+        knownTeachers.add(clean);
+      }
+    });
+  }
+
   const privacyNotice = `
     <div class="privacy-banner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
@@ -8560,7 +8486,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'test'){
    sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20 y 20 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
-   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 2 pendientes con Delgado).';
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables según los hayas marcado como entregados o pendientes.';
   } else {
    sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
   }
@@ -9296,18 +9222,21 @@ function renderMailsPanel(mailsList, t){
    <div style="display:grid;gap:8px">
     ${mailsList.map(m=>{
      const msg=messages.find(x=>x.key===m.key);
+     const exactSubj = msg?.emailSubject || m.title;
      return `
       <div class="visual-resource-card" style="border-left:4px solid var(--blue)">
        <div class="visual-resource-left">
         <div class="visual-resource-icon" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark)">✉️</div>
-        <div>
+        <div style="min-width:0">
          <div class="visual-resource-title">${m.title}</div>
          ${msg?`<div class="visual-resource-sub">📅 ${msg.date} · 👤 De: ${msg.from||t.name}</div>`:''}
+         <div style="font-size:11px;color:var(--muted);margin-top:4px;word-break:break-word">Asunto Outlook: <code style="color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:2px 6px;border-radius:4px;user-select:all;font-size:11px">${escapeHtml(exactSubj)}</code></div>
         </div>
        </div>
-       <div class="derive-action-links">
-        <button class="pill-btn blue" data-detail="${m.key}">Ver correo ↗</button>
-        <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Outlook ↗</a>
+       <div class="derive-action-links" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+        <button class="pill-btn blue" data-detail="${m.key}">Ver en portal ↗</button>
+        <button type="button" class="pill-btn" data-copy-subject="${escapeHtml(exactSubj)}" title="Copiar asunto para buscar en Outlook">📋 Copiar asunto</button>
+        <button type="button" class="pill-btn blue" data-copy-and-open="${escapeHtml(exactSubj)}" title="Copiar asunto y abrir Outlook">🚀 Copiar y abrir Outlook ↗</button>
        </div>
       </div>
      `;
@@ -9495,6 +9424,32 @@ function escapeRegExp(str){
  return String(str||'').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function getSubjectAllSessions(sub){
+ if(!sub || !sub.teachers || typeof teacherDirectory === 'undefined') return [];
+ const sessions = [];
+ sub.teachers.forEach(tName => {
+  const t = teacherDirectory.find(x => x.name === tName);
+  if(t){
+   sessions.push(...getSubSessions(sub, t));
+  }
+ });
+ return sessions;
+}
+
+function hasSubjectSessionOnDate(sub, dateKey){
+ if(!sub) return false;
+ const sessions = getSubjectAllSessions(sub);
+ if(sessions.some(s => s.date === dateKey)) return true;
+ if(typeof events !== 'undefined' && events[dateKey]){
+  const dayEvs = events[dateKey].filter(ev => !ev.isPersonal);
+  for(const ev of dayEvs){
+   if(sub.teachers && sub.teachers.includes(ev.teacher)) return true;
+   if(ev.name && sub.name && (ev.name.toLowerCase().includes(sub.name.toLowerCase()) || sub.name.toLowerCase().includes(ev.name.toLowerCase()))) return true;
+  }
+ }
+ return false;
+}
+
 function parseSubjectEndDate(sub){
  const sDate=sub.startDate||'';
  const period=sub.period||'';
@@ -9518,16 +9473,8 @@ function getSubjectStatusInfo(sub){
  const sDate=sub.startDate||'';
  const eDate=parseSubjectEndDate(sub);
  const todayKey=keyOf(todayDate);
+ const hasClassToday = hasSubjectSessionOnDate(sub, todayKey);
 
- if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
-  return {
-   status:'current',
-   label:'🟢 Cursándose hoy',
-   badgeClass:'status-current',
-   cardClass:'status-current',
-   desc:'Docencia activa hoy en el horario oficial'
-  };
- }
  if(eDate < todayKey && eDate!==''){
   return {
    status:'past',
@@ -9535,6 +9482,33 @@ function getSubjectStatusInfo(sub){
    badgeClass:'status-past',
    cardClass:'status-past',
    desc:'Materia ya impartida y completada'
+  };
+ }
+ if(todayKey < sDate && sDate!==''){
+  return {
+   status:'upcoming',
+   label:'⏳ Por venir',
+   badgeClass:'status-upcoming',
+   cardClass:'status-upcoming',
+   desc:'Programada según cronograma oficial'
+  };
+ }
+ if(hasClassToday){
+  return {
+   status:'current',
+   label:'🟢 Clase hoy',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia activa hoy en el horario oficial'
+  };
+ }
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
+  return {
+   status:'current',
+   label:'🟢 En curso',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Materia en curso en el calendario oficial'
   };
  }
  return {
@@ -9567,16 +9541,8 @@ function getBlockStatusInfo(course){
  const sDate=course.startDate||'';
  const eDate=parseBlockEndDate(course);
  const todayKey=keyOf(todayDate);
+ const blockHasClassToday = (course.subjects||[]).some(s => hasSubjectSessionOnDate(s, todayKey));
 
- if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
-  return {
-   status:'current',
-   label:'🟢 En curso activo hoy',
-   badgeClass:'status-current',
-   cardClass:'status-current',
-   desc:'Docencia activa hoy según el calendario oficial'
-  };
- }
  if(eDate < todayKey && eDate!==''){
   return {
    status:'past',
@@ -9584,6 +9550,33 @@ function getBlockStatusInfo(course){
    badgeClass:'status-past',
    cardClass:'status-past',
    desc:'Bloque formativo completado'
+  };
+ }
+ if(todayKey < sDate && sDate!==''){
+  return {
+   status:'upcoming',
+   label:'⏳ Por venir',
+   badgeClass:'status-upcoming',
+   cardClass:'status-upcoming',
+   desc:'Programado para fechas posteriores del cuatrimestre'
+  };
+ }
+ if(blockHasClassToday){
+  return {
+   status:'current',
+   label:'🟢 Docencia hoy',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Docencia activa hoy según el calendario oficial'
+  };
+ }
+ if(todayKey>=sDate && todayKey<=eDate && sDate!==''){
+  return {
+   status:'current',
+   label:'🟢 En curso',
+   badgeClass:'status-current',
+   cardClass:'status-current',
+   desc:'Bloque formativo en curso en el cuatrimestre'
   };
  }
  return {
@@ -9994,23 +9987,34 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
  const summaryEl = document.getElementById('subjectFilterSummary');
  if(summaryEl){
   if(mode === 'active'){
-   summaryEl.innerHTML = `Mostrando los <b>${countBlocksCurrent} bloques y materias en curso activo hoy</b> en el Colegio de Abogados.`;
+   summaryEl.innerHTML = `Mostrando los <b>${countBlocksCurrent} bloque${countBlocksCurrent===1?'':'s'} y materias en curso</b> en el plan de estudios.`;
   } else if(mode === 'blocks'){
-   summaryEl.innerHTML = `Estructura oficial del Máster: <b>8 bloques formativos</b> (${countBlocksCurrent} en curso activo hoy, ${countBlocksPast} completado y ${countBlocksUpcoming} por venir).`;
+   summaryEl.innerHTML = `Estructura oficial del Máster: <b>8 bloques formativos</b> (${countBlocksCurrent} en curso, ${countBlocksPast} completado${countBlocksPast===1?'':'s'} y ${countBlocksUpcoming} por venir).`;
   } else {
    if(statusMode === 'current'){
-    summaryEl.innerHTML = `Mostrando <b>${countSubCurrent} materia${countSubCurrent===1?'':'s'} cursándose hoy</b> (19 y 20 de octubre).`;
+    summaryEl.innerHTML = `Mostrando <b>${countSubCurrent} materia${countSubCurrent===1?'':'s'} en curso</b> en el calendario oficial.`;
    } else if(statusMode === 'upcoming'){
     summaryEl.innerHTML = `Mostrando <b>${countSubUpcoming} asignaturas por venir</b> en el calendario oficial.`;
    } else if(statusMode === 'past'){
     summaryEl.innerHTML = `Mostrando <b>${countSubPast} asignaturas ya cursadas y completadas</b>.`;
    } else {
-    summaryEl.innerHTML = `Mostrando <b>${totalSubCount} materias</b> (${countSubCurrent} en curso hoy, ${countSubUpcoming} por venir y ${countSubPast} ya cursadas).`;
+    summaryEl.innerHTML = `Mostrando <b>${totalSubCount} materias</b> (${countSubCurrent} en curso, ${countSubUpcoming} por venir y ${countSubPast} ya cursadas).`;
    }
   }
  }
 
- // 1. MODO: 'active' (EN CURSO ACTIVO HOY)
+ const mcsCurTitle = document.getElementById('mcsCurrentTitle');
+ const mcsCurSub = document.getElementById('mcsCurrentSub');
+ const mcsPstTitle = document.getElementById('mcsPastTitle');
+ const mcsPstSub = document.getElementById('mcsPastSub');
+ const mcsUpcTitle = document.getElementById('mcsUpcomingTitle');
+ if(mcsCurTitle) mcsCurTitle.textContent = `${countBlocksCurrent} Bloque${countBlocksCurrent===1?'':'s'} en curso`;
+ if(mcsCurSub) mcsCurSub.textContent = countBlocksCurrent ? 'Bloque I Abogacía en desarrollo' : 'Sin bloques en curso';
+ if(mcsPstTitle) mcsPstTitle.textContent = `${countBlocksPast} Bloque${countBlocksPast===1?'':'s'} completado${countBlocksPast===1?'':'s'}`;
+ if(mcsPstSub) mcsPstSub.textContent = 'Bloques I y II Procura finalizados';
+ if(mcsUpcTitle) mcsUpcTitle.textContent = `${countBlocksUpcoming} Bloque${countBlocksUpcoming===1?'':'s'} por venir`;
+
+ // 1. MODO: 'active' (EN CURSO)
  if(mode === 'active'){
   const activeCourses = courses.filter(c => {
    if(branch && c.branch !== branch) return false;
@@ -10018,17 +10022,21 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
   });
 
   if(!activeCourses.length){
-   grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted)">No hay bloques en curso activo para la rama seleccionada.</div>';
+   grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted)">No hay bloques en curso para la rama seleccionada.</div>';
    return;
   }
+
+  const anyClassToday = activeCourses.some(c => (c.subjects || []).some(sub => hasSubjectSessionOnDate(sub, keyOf(todayDate))));
+  const bannerHeading = anyClassToday ? `🟢 Bloques y Materias con clase hoy (${fmtFull(todayDate)})` : `🟢 Materias y Bloques actualmente en curso`;
+  const bannerSub = anyClassToday ? `Turno de tarde · Clases presenciales en el Colegio de Abogados de A Coruña (16:30 — 20:45 h)` : `No hay clases presenciales hoy (${fmtFull(todayDate)}). Mostrando las materias activas en el calendario oficial.`;
 
   grid.innerHTML = `
    <div style="grid-column:1/-1;margin-bottom:8px">
     <div style="background:var(--paper-warm);border:1.5px solid var(--line);border-left:5px solid var(--green);border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
      <div>
       <span style="font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--green-dark);text-transform:uppercase">Plan de estudios en tiempo real</span>
-      <h3 style="margin:2px 0 0;font:700 18px var(--serif);color:var(--ink)">🟢 Bloques y Materias cursándose hoy (${fmtFull(todayDate)})</h3>
-      <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">Turno de tarde · Clases presenciales en el Colegio de Abogados de A Coruña (16:30 — 20:45 h)</p>
+      <h3 style="margin:2px 0 0;font:700 18px var(--serif);color:var(--ink)">${bannerHeading}</h3>
+      <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">${bannerSub}</p>
      </div>
      <button class="pill-btn solid-green" data-subject-view-mode="blocks" style="padding:8px 14px;font-size:12px">Ver los 8 bloques del plan ➔</button>
     </div>
@@ -10039,6 +10047,10 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
     const activeSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'current');
     const pastSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'past');
     const upcomingSubs = c.subjects.map((sub, sIdx) => ({sub, sIdx, st: getSubjectStatusInfo(sub)})).filter(x => x.st.status === 'upcoming');
+
+    const subsBoxHeader = activeSubs.some(x => hasSubjectSessionOnDate(x.sub, keyOf(todayDate))) 
+      ? `🟢 Materia impartiéndose hoy en clase (${fmtShort(todayDate)}):` 
+      : `🟢 Materia actualmente en curso:`;
 
     return `
      <article class="master-block-card status-current" style="grid-column:1/-1">
@@ -10053,13 +10065,17 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
 
        <h3 class="mbc-title" style="font-size:20px;margin-bottom:8px">🏛️ ${c.blockTitle}</h3>
 
-       <!-- MATERIA ACTIVA HOY -->
+       <!-- MATERIA ACTIVA -->
+       ${activeSubs.length ? `
        <div style="background:var(--paper-card);border:2px solid var(--green);border-radius:14px;padding:16px 18px;margin:12px 0;box-shadow:0 3px 10px rgba(46,125,50,0.12)">
-        <div style="font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">🟢 Materia impartiéndose hoy en clase:</div>
+        <div style="font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">${subsBoxHeader}</div>
         ${activeSubs.map(item => `
          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
           <div>
-           <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0 0 4px">📖 ${item.sub.name}</h4>
+           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px">
+            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0">📖 ${item.sub.name}</h4>
+            <span class="status-pill ${item.st.badgeClass}" style="font-size:11px;padding:2px 8px">${item.st.label}</span>
+           </div>
            <div style="font-size:13px;color:var(--ink-soft)">
             🗓️ Fechas: <b>${item.sub.period}</b> · 👤 Docente(s): <b>${item.sub.teachers.join(', ')}</b>
            </div>
@@ -10078,6 +10094,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
          </div>
         `).join('')}
        </div>
+       ` : ''}
 
        <!-- OTRAS MATERIAS DEL BLOQUE -->
        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;margin-top:12px">
@@ -10873,6 +10890,7 @@ function renderActiveMasterBanner(){
 
  if(!dayEvents.length){
   if(k>='2026-10-21' && k<='2026-10-23'){
+   bannerEl.style.display='';
    bannerEl.innerHTML=`
     <div class="amb-header">
       <div class="amb-title-wrap">
@@ -10883,10 +10901,14 @@ function renderActiveMasterBanner(){
       <button class="amb-view-all-btn" data-detail="dataforum_instrucciones">Ver programa DATAfórum ➔</button>
     </div>
    `;
+  } else {
+   bannerEl.innerHTML='';
+   bannerEl.style.display='none';
   }
   return;
  }
 
+ bannerEl.style.display='';
  const cardsHtml=dayEvents.map(ev=>{
   const isProcura=(ev.subject||'').includes('Procura');
   const cardClass=isProcura?'amb-card amb-card-procura':'amb-card amb-card-abogacia';
@@ -10937,7 +10959,7 @@ function renderActiveMasterBanner(){
     <article class="${cardClass}" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">
       <div class="amb-card-top">
         <span class="${badgeClass}">${branchLabel}</span>
-        <span class="status-pill status-current">🟢 En curso hoy</span>
+        <span class="status-pill status-current">🟢 Clase hoy</span>
       </div>
       <h4 class="amb-card-subject" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">${escapeHtml(subjectName)}</h4>
       <div class="amb-card-meta">
@@ -10991,7 +11013,7 @@ function renderCalendar(){
   if(i<start){d=new Date(y,m-1,prevTotal-start+i+1);muted=true}
   else if(i>=start+total){d=new Date(y,m+1,i-(start+total)+1);muted=true}
   else d=new Date(y,m,i-start+1);
-  const k=keyOf(d),dayEvs=events[k]||[],hasMaster=dayEvs.some(x=>!x.isPersonal),hasPersonal=dayEvs.some(x=>x.isPersonal),hasDue=deliveries.some(x=>keyOf(x.date)===k && !x.submitted);
+  const k=keyOf(d),dayEvs=events[k]||[],hasMaster=dayEvs.some(x=>!x.isPersonal),hasPersonal=dayEvs.some(x=>x.isPersonal),hasDue=deliveries.some(x=>keyOf(x.date)===k && !isDeliveryChecked(x.detailKey));
   const b=document.createElement('button');
   b.className='cal-day'+(muted?' muted':'')+(sameDay(d,selectedDate)?' selected':'')+(sameDay(d,todayDate)?' today':'');
   b.setAttribute('aria-label',fmtFull(d)+(hasMaster?' · clase máster':'')+(hasPersonal?' · evento personal':'')+(hasDue?' · entrega pendiente':''));
@@ -11009,6 +11031,180 @@ function renderCalendar(){
 
 let currentDeliveryFilter = 'all';
 
+function isDeliveryChecked(detailKey){
+  try {
+    return localStorage.getItem('muap_deliv_check_' + detailKey) === 'true';
+  } catch(e){
+    return false;
+  }
+}
+
+function toggleDeliveryCheck(detailKey, btnEl){
+  try {
+    const current = isDeliveryChecked(detailKey);
+    const newVal = !current;
+    localStorage.setItem('muap_deliv_check_' + detailKey, newVal ? 'true' : 'false');
+    
+    // Sincronizar en el array deliveries en memoria
+    deliveries.forEach(d => {
+      if(d.detailKey === detailKey){
+        d.submitted = newVal;
+        d.status = newVal ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+      }
+    });
+
+    // Re-renderizar entregas, portada, menú lateral, contadores y calendario
+    renderDeliveries(currentDeliveryFilter);
+    renderHomePendingTasks();
+    renderSidebarPendingItems();
+    updateDeliveryCounts();
+    if(typeof renderMonth === 'function') renderMonth();
+  } catch(e){}
+}
+
+function updateDeliveryCounts(){
+  deliveries.forEach(d => {
+    d.submitted = isDeliveryChecked(d.detailKey);
+    d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+  });
+
+  const pending = deliveries.filter(d => !d.submitted);
+  const pendingCount = pending.length;
+  const completedCount = deliveries.length - pendingCount;
+
+  // 1. Sidebar badge
+  const sideBadge = document.getElementById('sideNavDeliveriesBadge') || document.querySelector('.nav-btn-entregas .nav-badge-pill');
+  if(sideBadge){
+    sideBadge.textContent = pendingCount > 0 ? `⏳ ${pendingCount} pend.` : '✓ Al día';
+    sideBadge.className = 'nav-badge-pill ' + (pendingCount > 0 ? 'badge-terra highlight-pill' : 'badge-green');
+  }
+
+  // 2. Tab badge
+  const tabBadge = document.getElementById('tabDeliveriesBadge') || document.querySelector('[data-view="entregas"] .tab-badge');
+  if(tabBadge){
+    tabBadge.textContent = pendingCount > 0 ? `${pendingCount} pend.` : '¡Al día! ✓';
+    tabBadge.style.background = pendingCount > 0 ? 'var(--terracotta)' : 'var(--green)';
+  }
+
+  // 3. Welcome badge
+  const welcomeDeliveriesBadge = document.getElementById('welcomeDeliveriesSummary') || document.querySelector('.welcome-badge.badge-terra .badge-value');
+  if(welcomeDeliveriesBadge){
+    welcomeDeliveriesBadge.textContent = pendingCount > 0 ? `${pendingCount} por entregar` : '¡Todas entregadas! 🎉';
+  }
+
+  // 4. Banner en portada
+  const ptbBadge = document.getElementById('ptbBadgeEl') || document.querySelector('.ptb-badge');
+  if(ptbBadge){
+    ptbBadge.textContent = pendingCount > 0 ? `⚠️ ${pendingCount} PRÁCTICAS PENDIENTES` : '🎉 ¡TODAS LAS PRÁCTICAS ENTREGADAS!';
+    ptbBadge.className = 'ptb-badge ' + (pendingCount > 0 ? 'alert' : 'success');
+  }
+
+  const ptbUrgent = document.getElementById('ptbUrgentChipEl');
+  if(ptbUrgent){
+    ptbUrgent.textContent = pendingCount > 0 ? '📅 Próxima entrega: 29 oct' : '✓ Al día';
+  }
+
+  // 5. Encabezado de sección
+  const mainHeading = document.getElementById('deliveriesSectionMainHeading');
+  if(mainHeading){
+    mainHeading.textContent = `Próximas entregas y prácticas (${pendingCount} pendientes · ${completedCount} entregadas por ti)`;
+  }
+
+  const rangeEl = document.getElementById('deliveryRange');
+  if(rangeEl){
+    rangeEl.textContent = `${pendingCount} pendientes · ${completedCount} marcadas como entregadas`;
+  }
+}
+
+function renderHomePendingTasks(){
+  const grid = document.getElementById('homePendingTasksGrid');
+  if(!grid) return;
+
+  const pending = deliveries.filter(d => !isDeliveryChecked(d.detailKey));
+  
+  if(!pending.length){
+    grid.innerHTML = `
+      <div style="grid-column:1 / -1;background:var(--paper-warm);border:1.5px dashed var(--green-border);border-radius:12px;padding:26px 20px;text-align:center">
+        <span style="font-size:28px">🎉</span>
+        <h4 style="color:var(--green-dark);font-size:16px;margin:8px 0 4px;font-family:var(--serif)">¡Todas las prácticas marcadas como entregadas!</h4>
+        <p style="color:var(--ink-soft);font-size:13px;margin:0 0 14px">Has marcado como entregadas todas las tareas del Máster en tu dispositivo.</p>
+        <button class="pill-btn solid-green" onclick="setView('entregas', false)">Ver entregas completadas en el portal ➔</button>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = pending.map(d => {
+    const isChk = false;
+    const isAbogacia = (d.subjectRef||'').includes('Abogacía');
+    const tagLabel = isAbogacia ? '⚖️ Práctica ICACOR · Abogacía' : '🏛️ Práctica CPROC · Procura';
+    const tagCls = isAbogacia ? 'blue' : 'terra';
+    const dueTxt = fmtShort(d.date);
+
+    return `
+      <article class="ptb-card" id="homePendingCard_${d.detailKey}" data-detail="${d.detailKey}" style="cursor:pointer" onclick="openDetail('${d.detailKey}')" title="Pincha para ver las instrucciones">
+        <div class="ptb-card-top">
+          <span class="ptb-tag ${tagCls}">${tagLabel}</span>
+          <span class="ptb-due-badge amber">⏳ Plazo: ${dueTxt}</span>
+        </div>
+        <h4 class="ptb-card-title">${d.title}</h4>
+        <div class="ptb-card-meta">
+          <div>👤 Docente: <b>${d.teacher}</b></div>
+          <div>📚 Materia: <b>${d.subject}</b></div>
+          ${d.details ? `<div style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);line-height:1.4">${d.details}</div>` : ''}
+        </div>
+        <div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <button class="pill-btn" data-detail="${d.detailKey}" onclick="event.stopPropagation(); openDetail('${d.detailKey}')">Instrucciones ↗</button>
+          <button class="delivery-check-btn" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
+            <span class="check-box"></span>
+            <span class="check-text">Marcar como entregada</span>
+          </button>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function renderSidebarPendingItems(){
+  const container = document.getElementById('sidebarPendingItemsList');
+  const badgeEl = document.getElementById('sidebarPendingAccordionBadge');
+  if(!container) return;
+
+  const pending = deliveries.filter(d => !isDeliveryChecked(d.detailKey));
+  if(badgeEl){
+    badgeEl.textContent = pending.length > 0 ? `${pending.length} pendientes` : '✓ Al día';
+    badgeEl.className = 'nav-badge-pill ' + (pending.length > 0 ? 'badge-terra highlight-pill' : 'badge-green');
+  }
+
+  if(!pending.length){
+    container.innerHTML = `
+      <div style="font-size:11px;color:var(--green-dark);padding:8px;background:var(--paper-warm);border-radius:8px;text-align:center;font-weight:700">
+        🎉 ¡Al día! 0 entregas pendientes
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = pending.map(d => {
+    const isAbogacia = (d.subjectRef||'').includes('Abogacía');
+    const platform = isAbogacia ? 'ICACOR' : 'CPROC';
+    const platCls = isAbogacia ? 'blue' : 'terra';
+    const dueTxt = fmtShort(d.date);
+
+    return `
+      <button class="side-pending-item" data-detail="${d.detailKey}" onclick="openDetail('${d.detailKey}')" title="Ver entrega: ${d.title}">
+        <div class="spi-head">
+          <span class="spi-dot amber">●</span>
+          <strong class="spi-date">${dueTxt}</strong>
+          <span class="spi-platform ${platCls}">${platform}</span>
+        </div>
+        <div class="spi-title">${d.title}</div>
+        <div class="spi-teacher">${d.teacher}</div>
+      </button>
+    `;
+  }).join('');
+}
+
 function renderDeliveries(filter = currentDeliveryFilter){
  if(filter !== undefined) currentDeliveryFilter = filter;
  const listContainer = document.getElementById('deliveryList');
@@ -11018,12 +11214,17 @@ function renderDeliveries(filter = currentDeliveryFilter){
   b.classList.toggle('active', b.getAttribute('data-delivery-filter') === currentDeliveryFilter);
  });
 
+ deliveries.forEach(d => {
+  d.submitted = isDeliveryChecked(d.detailKey);
+  d.status = d.submitted ? 'Entregada por mí ✓' : '⏳ Pendiente de marcar';
+ });
+
  const pendingCount = deliveries.filter(d => !d.submitted).length;
  const completedCount = deliveries.filter(d => d.submitted).length;
 
  const rangeEl = document.getElementById('deliveryRange');
  if(rangeEl){
-  rangeEl.textContent = `${pendingCount} pendientes · ${completedCount} entregadas`;
+  rangeEl.textContent = `${pendingCount} pendientes · ${completedCount} marcadas como entregadas`;
  }
 
  let filtered = deliveries;
@@ -11040,140 +11241,65 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega (plazos: 29 y 30 de octubre · ICACOR).`;
+   summaryEl.textContent = `Mostrando tus prácticas pendientes (${filtered.length}).`;
   } else if(currentDeliveryFilter === 'completed'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
+   summaryEl.textContent = `Mostrando tus prácticas marcadas como entregadas (${filtered.length}).`;
   } else if(currentDeliveryFilter === 'cproc'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas de la rama de Procura (plataforma CPROC).`;
+   summaryEl.textContent = `Mostrando prácticas de la plataforma CPROC (${filtered.length}).`;
   } else if(currentDeliveryFilter === 'icacor'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas de la rama de Abogacía (secretaría técnica ICACOR).`;
+   summaryEl.textContent = `Mostrando prácticas del Colegio de Abogados (${filtered.length}).`;
   } else {
-   summaryEl.textContent = `Mostrando ${deliveries.length} prácticas (${pendingCount} pendientes de entrega y ${completedCount} superadas en 3 asignaturas).`;
+   summaryEl.textContent = `Mostrando el listado completo de entregas del máster (${filtered.length}).`;
   }
  }
 
- const renderPendingRow = d => {
+ const renderRow = (d) => {
+  const isChk = d.submitted;
   return `
-  <div class="delivery-row" id="delivery-row-${d.detailKey}" data-delivery-key="${d.detailKey}">
-   <div class="delivery-date">${d.date.getDate()}<small>${new Intl.DateTimeFormat('es-ES',{month:'short'}).format(d.date).replace('.','')}</small></div>
-   <div>
-    <div class="delivery-name"><button class="teacher-link" data-detail="${d.detailKey}" style="font-weight:800;color:inherit">${d.title} ↗</button></div>
-    <div class="delivery-meta">Docente: <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · ${d.subject} · ${d.details}</div>
+  <div class="delivery-row" id="delivery-row-${d.detailKey}">
+   <div style="flex:1;min-width:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+     <strong style="color:var(--ink);font-size:14.5px">${d.title}</strong>
+    </div>
+    <div class="delivery-meta" style="margin-top:4px">
+     <span>Docente: <b>${d.teacher}</b></span>
+     <span>Materia: <b>${d.subject}</b></span>
+     <span>Fecha / Plazo: <b>${fmtShort(d.date)}</b></span>
+    </div>
+    ${d.details ? `<div style="font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45">${d.details}</div>` : ''}
 
-    <div class="action-pills" style="margin-top:8px">
-     <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
-     <a class="pill-link blue" href="mailto:secretariatecnico@icacor.org?subject=Entrega%20pr%C3%A1ctica%20MUAP%20-%20Jose%20Luis%20Delgado" target="_blank" rel="noopener noreferrer">Enviar a secretariatecnico@icacor.org ↗</a>
-     <a class="pill-link" href="${driveSearchUrl('Delgado')}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)">
+     <div class="action-pills">
+      <button class="pill-btn" data-detail="${d.detailKey}">Ver instrucciones completas ↗</button>
+      <a class="pill-link blue" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
+     </div>
+     <button class="delivery-check-btn ${isChk ? 'checked' : ''}" data-delivery-check-key="${d.detailKey}" onclick="event.stopPropagation(); toggleDeliveryCheck('${d.detailKey}', this)">
+      <span class="check-box">${isChk ? '✓' : ''}</span>
+      <span class="check-text">${isChk ? '✓ Entregada por mí' : 'Marcar como entregada'}</span>
+     </button>
     </div>
    </div>
-   <span class="due-state pending">${d.status}</span>
+   <span class="due-state ${isChk ? 'delivered' : 'pending'}">${d.status}</span>
   </div>
   `;
  };
 
- const renderCompletedAccordions = (items) => {
+ const renderCompletedGroup = (items) => {
   if(!items.length) return '';
-  const bySubject = {};
-  items.forEach(d => {
-   const sName = d.subjectName || d.subject;
-   if(!bySubject[sName]) bySubject[sName] = [];
-   bySubject[sName].push(d);
-  });
-
   return `
-  <details class="delivered-group-accordion" open>
+  <details class="delivered-group-accordion" open style="margin-top:18px">
    <summary class="delivered-main-summary">
     <div style="display:flex;align-items:center;gap:10px">
      <span style="font-size:18px">📦</span>
-     <span>Prácticas ya entregadas (${items.length} entregas en ${Object.keys(bySubject).length} asignaturas)</span>
+     <span>Prácticas marcadas como entregadas por ti (${items.length})</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-     <span class="due-state submitted" style="font-size:11px">100 % al día · 0 vencidas ✓</span>
+     <span class="due-state submitted" style="font-size:11px">Completadas ✓</span>
      <span class="sta-arrow">▾</span>
     </div>
    </summary>
-   <div class="delivered-subjects-tree">
-    ${Object.entries(bySubject).map(([subName, subItems]) => {
-     const teacherName = subItems[0].teacher;
-     return `
-     <details class="subject-delivery-accordion" open>
-      <summary class="subject-delivery-summary">
-       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <span style="font-size:16px">📚</span>
-        <div>
-         <div style="font-weight:700;color:var(--ink)">${subName}</div>
-         <div style="font-size:11.5px;color:var(--muted);font-weight:500">Docente: ${teacherName} · ${subItems.length} ${subItems.length === 1 ? 'práctica entregada' : 'prácticas entregadas'} con éxito en CPROC</div>
-        </div>
-       </div>
-       <div style="display:flex;align-items:center;gap:8px">
-        <span class="due-state submitted" style="font-size:11px">✓ ${subItems.length} ${subItems.length === 1 ? 'entrega' : 'entregas'}</span>
-        <span class="sub-arrow">▾</span>
-       </div>
-      </summary>
-      <div class="subject-delivery-body">
-       ${subItems.map(d => {
-        const det = details[d.detailKey] || {};
-        return `
-        <article class="delivery-detail-card" id="delivered-card-${d.detailKey}" data-delivery-key="${d.detailKey}">
-         <div class="delivery-detail-card-head">
-          <div>
-           <h4 class="delivery-detail-card-title">${d.title}</h4>
-           <div class="delivery-detail-card-meta">
-            <strong>Docente:</strong> <button class="teacher-link" data-teacher="${d.teacher}">${d.teacher}${getTeacherGradeBadgeHtml(d.teacher, true)}</button> · <strong>Estado:</strong> ${d.status}
-           </div>
-          </div>
-          <span class="due-state submitted">${d.status}</span>
-         </div>
-
-         ${det.body ? `
-         <div>
-          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
-           📋 Toda la información y resolución de la entrega:
-          </div>
-          <div class="delivery-full-text-box">${det.body}</div>
-         </div>
-         ` : ''}
-
-         ${det.submissions && det.submissions.length ? `
-         <div>
-          <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">
-           📄 Archivos y comprobantes de la entrega (${det.submissions.length}):
-          </div>
-          <div class="delivery-detail-files-list">
-           ${det.submissions.map(s => `
-            <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-             <div>
-              <strong style="color:var(--ink)">${s.label}:</strong> <span style="font-weight:600">${s.file}</span> ${s.pages ? `<span style="color:var(--muted)">(${s.pages})</span>` : ''}
-              ${s.content ? `<div style="color:var(--ink-soft);font-size:11px;margin-top:2px">${s.content}</div>` : ''}
-              ${s.state ? `<div style="color:var(--green-dark);font-size:11px;font-weight:600;margin-top:2px">✓ ${s.state}</div>` : ''}
-             </div>
-             ${s.url ? `<a class="pill-link blue" href="${s.url}" target="_blank" rel="noopener noreferrer">Abrir archivo ↗</a>` : ''}
-            </div>
-           `).join('')}
-          </div>
-         </div>
-         ` : ''}
-
-         <div class="action-pills" style="margin-top:6px">
-          <button class="pill-btn" data-detail="${d.detailKey}">Ficha modal ↗</button>
-          ${d.detailKey === 'entrega_caso_pr_ctico_de_actos_de' ? `
-           <a class="pill-link blue" href="${casoSandraGDocUrl}" target="_blank" rel="noopener noreferrer">Enunciado oficial ↗</a>
-           <a class="pill-link" href="${casoSandraResolucionLocalUrl}" target="_blank" rel="noopener noreferrer">Instrucciones del caso ↗</a>
-           <a class="pill-link blue" href="${casoSandraVideoLocalUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-           <a class="pill-link" href="${casoSandraPdfLocalUrl}" target="_blank" rel="noopener noreferrer">PDF del caso ↗</a>
-           <a class="pill-link" href="${practicasGdriveUrl}" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>
-          ` : ''}
-          ${d.file ? `<a class="pill-link" href="${driveSearchUrl(d.file)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file} en Drive ↗</a>` : ''}
-          ${d.file2 ? `<a class="pill-link" href="${driveSearchUrl(d.file2)}" target="_blank" rel="noopener noreferrer">Abrir ${d.file2} en Drive ↗</a>` : ''}
-          <a class="pill-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>
-         </div>
-        </article>
-        `;
-       }).join('')}
-      </div>
-     </details>
-     `;
-    }).join('')}
+   <div class="delivered-subjects-tree" style="padding:10px 14px">
+    ${items.map(renderRow).join('')}
    </div>
   </details>
   `;
@@ -11188,23 +11314,77 @@ function renderDeliveries(filter = currentDeliveryFilter){
  }
 
  if(currentDeliveryFilter === 'pending'){
-  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${filtered.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
-  html += filtered.map(renderPendingRow).join('');
+  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${filtered.length})</span><span style="font-size:11px;color:var(--honey-dark);font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+  html += filtered.map(renderRow).join('');
   listContainer.innerHTML = html;
  } else if(currentDeliveryFilter === 'completed'){
-  listContainer.innerHTML = renderCompletedAccordions(filtered);
+  listContainer.innerHTML = renderCompletedGroup(filtered);
  } else {
   const pendingItems = filtered.filter(d => !d.submitted);
   const completedItems = filtered.filter(d => d.submitted);
   let html = '';
   if(pendingItems.length){
-   html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
-   html += pendingItems.map(renderPendingRow).join('');
+   html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:var(--honey-dark);font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+   html += pendingItems.map(renderRow).join('');
   }
   if(completedItems.length){
-   html += renderCompletedAccordions(completedItems);
+   html += renderCompletedGroup(completedItems);
   }
   listContainer.innerHTML = html;
+ }
+}
+
+let toastNotificationTimer = null;
+function showToastNotification(msg){
+ const toast = document.getElementById('toastNotification');
+ const textEl = document.getElementById('toastNotificationText');
+ if(!toast || !textEl) return;
+ textEl.textContent = msg;
+ toast.classList.add('show');
+ if(toastNotificationTimer) clearTimeout(toastNotificationTimer);
+ toastNotificationTimer = setTimeout(()=>{
+  toast.classList.remove('show');
+ }, 3600);
+}
+
+function copyOutlookSubject(subjectText, btnEl, openOutlook=false){
+ if(!subjectText) return;
+ const fallbackCopy = () => {
+  const ta = document.createElement('textarea');
+  ta.value = subjectText;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'absolute';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+ };
+
+ const onCopied = () => {
+  if(btnEl){
+   const origHtml = btnEl.innerHTML;
+   btnEl.classList.add('copied');
+   btnEl.innerHTML = openOutlook ? '<span>✓ ¡Copiado y abriendo!</span>' : '<span>✓ ¡Asunto copiado!</span>';
+   setTimeout(()=>{
+    btnEl.classList.remove('copied');
+    btnEl.innerHTML = origHtml;
+   }, 2200);
+  }
+  showToastNotification(`Asunto copiado: «${subjectText}». Pégalo con Ctrl+V (o Cmd+V) en el buscador de Outlook.`);
+  if(openOutlook){
+   window.open('https://outlook.office.com/mail/', '_blank', 'noopener,noreferrer');
+  }
+ };
+
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(subjectText).then(onCopied).catch(()=>{
+   fallbackCopy();
+   onCopied();
+  });
+ } else {
+  fallbackCopy();
+  onCopied();
  }
 }
 
@@ -11229,7 +11409,7 @@ function renderMail(q='', filter=currentMailFilter){
 
  if(q){
   const lq = q.toLowerCase();
-  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
+  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (m.emailSubject||'') + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
  }
 
  const summaryEl = document.getElementById('mailFilterSummary');
@@ -11247,13 +11427,33 @@ function renderMail(q='', filter=currentMailFilter){
 
  listContainer.innerHTML=list.map(m=>{
   const d = details[m.key];
+  const exactSubj = m.emailSubject || m.title;
   return `
   <div class="mail-row" id="mail-card-${m.key}" data-mail-key="${m.key}" role="region" aria-label="Correo: ${m.title}">
    <div class="mail-mark">✉️</div>
-   <div>
+   <div style="min-width:0">
     <div class="mail-subject"><button class="teacher-link" data-detail="${m.key}" style="font-weight:700;color:inherit;text-decoration:none">${m.title} ↗</button></div>
     <div class="mail-meta">${m.date} · ${m.meta}</div>
     <p class="mail-summary">${mailSummaries[m.key]}</p>
+
+    <!-- Sincronización y búsqueda exacta en Outlook -->
+    <div class="mail-outlook-sync-box">
+      <div class="mail-sync-info">
+        <div class="mail-sync-label">
+          <span>✉️ Asunto en Outlook</span>
+          <span class="mail-sync-sublabel">(Para buscar en tu bandeja)</span>
+        </div>
+        <div class="mail-exact-subject" title="Haz clic para seleccionar el asunto">${escapeHtml(exactSubj)}</div>
+      </div>
+      <div class="mail-sync-actions">
+        <button type="button" class="btn-copy-subject" data-copy-subject="${escapeHtml(exactSubj)}" title="Copiar asunto exacto para pegar en la barra de búsqueda de Outlook">
+          <span>📋 Copiar asunto</span>
+        </button>
+        <button type="button" class="btn-copy-and-open" data-copy-and-open="${escapeHtml(exactSubj)}" title="Copia el asunto y abre Outlook Web en nueva pestaña para que solo tengas que pulsar Ctrl+V">
+          <span>🚀 Copiar y abrir Outlook ↗</span>
+        </button>
+      </div>
+    </div>
 
     ${d ? `
      <details class="mail-content-details" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:12.5px">
@@ -11281,11 +11481,12 @@ function renderMail(q='', filter=currentMailFilter){
      </details>
     ` : ''}
 
-    <div class="action-pills" style="margin-top:8px">
+    <div class="action-pills" style="margin-top:10px">
      <button class="pill-btn" data-detail="${m.key}">Desplegar contenido ↗</button>
      ${m.teacher ? `<button class="pill-btn" data-teacher="${m.teacher}">Docente: ${m.teacher} ↗</button>` : ''}
      ${m.subjectRef ? `<button class="pill-btn" data-subject="${m.subjectRef}">Ir a la asignatura ↗</button>` : ''}
-     <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Abrir en Outlook ↗</a>
+     <a class="pill-link blue" href="${outlookUrl}" target="_blank" rel="noopener noreferrer">Bandeja Outlook ↗</a>
+     <a class="pill-link" href="ms-outlook://" title="Abrir la app de escritorio de Outlook instalada en este ordenador" style="font-size:11px">App escritorio 💻</a>
     </div>
    </div>
    <button class="pill-btn" data-detail="${m.key}" aria-label="Abrir detalle">↗</button>
@@ -12007,6 +12208,22 @@ document.addEventListener('click',e=>{
   applyTheme(val, true);
   return;
  }
+ const copyBtn=e.target.closest('[data-copy-subject]');
+ if(copyBtn){
+  e.preventDefault();
+  e.stopPropagation();
+  const subj=copyBtn.getAttribute('data-copy-subject');
+  copyOutlookSubject(subj, copyBtn, false);
+  return;
+ }
+ const copyOpenBtn=e.target.closest('[data-copy-and-open]');
+ if(copyOpenBtn){
+  e.preventDefault();
+  e.stopPropagation();
+  const subj=copyOpenBtn.getAttribute('data-copy-and-open');
+  copyOutlookSubject(subj, copyOpenBtn, true);
+  return;
+ }
  const d=e.target.closest('[data-detail]');
  if(d){openDetail(d.dataset.detail);return}
  if(e.target.closest('#detailFullpageBack')||e.target.closest('#detailCloseBtn')||e.target.closest('.detail-close')||e.target.id==='detailBackdrop'){
@@ -12127,5 +12344,9 @@ renderTeachers();
 renderMaterials();
 renderMail();
 </script>
+<div id="toastNotification" role="alert" aria-live="polite">
+  <span style="font-size:18px">📋</span>
+  <span id="toastNotificationText">Asunto copiado al portapapeles</span>
+</div>
 </body>
 </html>
