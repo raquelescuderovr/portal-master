@@ -1,3 +1,2 @@
-# El bot funciona con la biblioteca estándar de Python (sin dependencias obligatorias).
-# Opcional si se desea usar la librería de Google AI directamente:
-# google-generativeai>=0.5.0
+# Dependencias del Bot de Telegram del Máster
+certifi>=2024.2.2

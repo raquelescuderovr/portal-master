@@ -31,10 +31,10 @@ if ENV_PATH.exists():
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
-# Variables de entorno estrictas (sin fallbacks inseguros a permisos totales)
+# Variables de entorno estrictas (con ID de Raquel por defecto si no se sobreescribe en Secrets)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip().strip("'\"")
-TELEGRAM_ALLOWED_USER = os.environ.get("TELEGRAM_ALLOWED_USER", "").strip().strip("'\"")
-TELEGRAM_ALLOWED_CHAT = os.environ.get("TELEGRAM_ALLOWED_CHAT", "").strip().strip("'\"") or TELEGRAM_ALLOWED_USER
+TELEGRAM_ALLOWED_USER = (os.environ.get("TELEGRAM_ALLOWED_USER", "").strip().strip("'\"")) or "317669290"
+TELEGRAM_ALLOWED_CHAT = (os.environ.get("TELEGRAM_ALLOWED_CHAT", "").strip().strip("'\"")) or TELEGRAM_ALLOWED_USER
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip().strip("'\"")  # Para commits en la nube
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "raquelescuderovr/portal-master").strip().strip("'\"")
 GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main").strip().strip("'\"")

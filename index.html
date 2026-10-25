@@ -1700,6 +1700,194 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .inline-grade-pill.pill-subtle{background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)}
 [data-theme="dark"] .inline-grade-pill{background:#2b1f0f;border-color:#8c6020;color:#ffd875}
 [data-theme="dark"] .inline-grade-pill.pill-subtle{background:#172820;border-color:#2a4d3b;color:#a3e4c1}
+
+/* Insignias de calificación y huecos interactivos en itinerarios de bloques */
+.subject-grade-wrap{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  vertical-align:middle;
+  margin-left:6px;
+  font-family:var(--sans);
+  font-weight:normal;
+  flex-wrap:nowrap;
+}
+.subject-grade-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  background:var(--paper-card);
+  border:1.5px solid var(--honey);
+  color:var(--honey-dark);
+  border-radius:20px;
+  padding:2px 8px 2px 7px;
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .15s ease;
+  box-shadow:0 1px 3px rgba(180,83,9,0.08);
+  white-space:nowrap;
+}
+.subject-grade-badge:hover{
+  background:var(--honey-pale);
+  border-color:var(--honey-dark);
+  transform:translateY(-1px);
+}
+.subject-grade-badge.grade-user{
+  border-color:var(--green);
+  color:var(--green-dark);
+  background:var(--green-pale);
+}
+.subject-grade-badge.grade-user:hover{
+  background:var(--green-badge);
+  border-color:var(--green-dark);
+}
+.sgb-score{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+}
+.sgb-test-btn{
+  background:rgba(27,77,46,0.1);
+  border:1px solid rgba(27,77,46,0.25);
+  color:var(--green-dark);
+  border-radius:10px;
+  padding:1px 6px;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .12s ease;
+  line-height:1.3;
+}
+.sgb-test-btn:hover{
+  background:var(--green);
+  color:#ffffff;
+  border-color:var(--green);
+}
+.sgb-edit-btn{
+  background:none;
+  border:none;
+  padding:0 2px;
+  cursor:pointer;
+  font-size:11px;
+  opacity:0.75;
+  transition:opacity .12s ease;
+  line-height:1;
+}
+.sgb-edit-btn:hover{
+  opacity:1;
+}
+
+/* Hueco para poner nota cuando no está rellenada */
+.subject-grade-slot{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.sgb-slot-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  background:rgba(180,83,9,0.05);
+  border:1.5px dashed #d4a373;
+  color:#9a6b32;
+  border-radius:20px;
+  padding:2px 8px;
+  font-size:10.5px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .15s ease;
+  line-height:1.3;
+  font-family:inherit;
+}
+.sgb-slot-btn:hover{
+  background:var(--honey-pale);
+  border-color:var(--honey-dark);
+  color:var(--honey-dark);
+  transform:translateY(-1px);
+}
+.subject-grade-slot.slot-upcoming .sgb-slot-btn{
+  border-color:var(--line);
+  color:var(--muted);
+  background:rgba(0,0,0,0.02);
+}
+.subject-grade-slot.slot-upcoming .sgb-slot-btn:hover{
+  border-color:var(--honey);
+  color:var(--honey-dark);
+}
+.slot-icon{
+  font-weight:800;
+  font-size:11px;
+}
+.sgm-quick-chip{
+  background:var(--paper-warm);
+  border:1px solid var(--line);
+  color:var(--ink);
+  border-radius:12px;
+  padding:3px 9px;
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .12s;
+  font-family:inherit;
+}
+.sgm-quick-chip:hover{
+  background:var(--honey-pale);
+  border-color:var(--honey);
+  color:var(--honey-dark);
+}
+.sgm-quick-chip.chip-clear{
+  color:#b91c1c;
+  background:#fef2f2;
+  border-color:#fecaca;
+}
+[data-theme="dark"] .subject-grade-badge{
+  background:#262017;
+  border-color:#a8823f;
+  color:#fad990;
+}
+[data-theme="dark"] .subject-grade-badge:hover{
+  background:#352c1e;
+}
+[data-theme="dark"] .subject-grade-badge.grade-user{
+  background:#172820;
+  border-color:#386c50;
+  color:#a3e4c1;
+}
+[data-theme="dark"] .sgb-slot-btn{
+  background:rgba(255,255,255,0.04);
+  border-color:#735735;
+  color:#dfbf8f;
+}
+[data-theme="dark"] .sgb-slot-btn:hover{
+  background:#262017;
+  border-color:#c49a52;
+  color:#ffe8b0;
+}
+[data-theme="dark"] .sgb-test-btn{
+  background:rgba(78,117,95,0.25);
+  border-color:#36473d;
+  color:#8fb19e;
+}
+[data-theme="dark"] .sgb-test-btn:hover{
+  background:var(--green);
+  color:#ffffff;
+}
+[data-theme="dark"] .sgm-quick-chip{
+  background:var(--paper-card);
+  border-color:var(--line);
+  color:var(--ink);
+}
+[data-theme="dark"] .sgm-quick-chip:hover{
+  background:var(--honey-pale);
+  border-color:var(--honey);
+  color:var(--honey-dark);
+}
+[data-theme="dark"] .sgm-quick-chip.chip-clear{
+  background:#2b1616;
+  border-color:#5c2424;
+  color:#fca5a5;
+}
 .teacher-name-item{display:inline-flex;align-items:center;flex-wrap:nowrap}
 .teacher-summary{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin:0}
 .teacher-sections{display:grid;gap:12px;border-top:1px solid var(--line-subtle);padding-top:14px}
@@ -7669,32 +7857,437 @@ const teacherGradeMap={
  'Alejandra Sánchez':'Completado ✓'
 };
 
-function getSubjectGradeBadgeHtml(sub, isPast=true){
- if(!sub || !isPast) return '';
- const score = (sub.grade && sub.grade.score) ? sub.grade.score : '';
- if(!score) return '';
- const s = String(score).trim();
- if(s.includes('10 / 10') || s.includes('10/10')){
-  let label = '10 / 10 ★';
-  if(s.includes('20/20')) label = '10 / 10 (20/20)';
-  return `<span class="inline-grade-pill" title="Calificación oficial en la materia: ${escapeHtml(s)}">⭐ ${label}</span>`;
+function escapeAttr(str){
+ return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function findSubjectLocation(sub){
+ if(!sub) return null;
+ for(const c of courses){
+  const cKey = courseKey(c);
+  for(let i=0; i<(c.subjects||[]).length; i++){
+   if(c.subjects[i] === sub || (sub.name && c.subjects[i].name === sub.name)){
+    return { course: c, cKey, sIdx: i };
+   }
+  }
  }
- if(s.includes('9 / 10') || s.includes('9/10')){
-  return `<span class="inline-grade-pill" title="Calificación en test: 9 / 10">⭐ 9 / 10 (Test)</span>`;
- }
- if(s.includes('8.8') || s.includes('8,8')){
-  return `<span class="inline-grade-pill" title="Calificación obtenida: ${escapeHtml(s)}">⭐ 8.8 / 10 ★</span>`;
- }
- if(s.toLowerCase().includes('test: 10') || s.toLowerCase().includes('test 10')){
-  return `<span class="inline-grade-pill" title="Calificación en test: 10 / 10">⭐ Test 10/10</span>`;
- }
- if(s.includes('~8') || s.includes(' 8 / 10')){
-  return `<span class="inline-grade-pill" title="Calificación obtenida: ${escapeHtml(s)}">⭐ ~8 / 10</span>`;
- }
- if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
-  return `<span class="inline-grade-pill pill-subtle" title="Materia completada y superada">✓ Completada</span>`;
- }
+ return null;
+}
+
+function getDossierIdForTeacher(tName){
+ if(!tName) return '';
+ const n = tName.toLowerCase();
+ if(n.includes('carolina moreno') || n.includes('sánchez muiño') || n.includes('sánchez barge')) return 'dossier-carolina-moreno';
+ if(n.includes('sandra mosteiro')) return 'dossier-sandra-mosteiro';
+ if(n.includes('ana vázquez')) return 'dossier-ana-vazquez';
+ if(n.includes('javier') && n.includes('sánchez')) return 'dossier-javier-sanchez';
+ if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
  return '';
+}
+
+function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
+ if(!sub) return null;
+ const loc = (optCKey && optSIdx !== null && optSIdx !== undefined) 
+   ? { cKey: optCKey, sIdx: optSIdx, course: courses.find(c => courseKey(c) === optCKey) }
+   : findSubjectLocation(sub);
+ 
+ const cKey = loc ? loc.cKey : '';
+ const sIdx = loc ? loc.sIdx : 0;
+ const course = loc ? loc.course : null;
+ const subKey = cKey ? `${cKey}|${sIdx}` : encodeURIComponent(sub.name||'');
+ const cleanSubName = (sub.name || '').trim();
+ const subSt = getSubjectStatusInfo(sub);
+ const isPast = (subSt.status === 'past');
+
+ // 1. Direct localStorage for this subject
+ let directCustom = '';
+ try {
+  directCustom = localStorage.getItem('muap_sub_grade_' + encodeURIComponent(cleanSubName)) ||
+                 localStorage.getItem('muap_sub_grade_' + subKey) || '';
+ } catch(e){}
+
+ // 2. Student evaluation in localStorage from dossiers if available
+ let studentEvalGrade = '';
+ if(!directCustom && sub.teachers && sub.teachers.length){
+  for(const tName of sub.teachers){
+   const dId = getDossierIdForTeacher(tName);
+   if(dId && typeof getStudentGradeData === 'function'){
+    try {
+     const sData = getStudentGradeData(dId);
+     if(sData && (sData.finalGrade || sData.testGrade)){
+      studentEvalGrade = sData.finalGrade || sData.testGrade;
+      break;
+     }
+    } catch(e){}
+   }
+   if(!studentEvalGrade && dId){
+    try {
+     const raw = localStorage.getItem('muap_clean_v3_' + dId) || localStorage.getItem('muap_eval_' + dId);
+     if(raw){
+      const parsed = JSON.parse(raw);
+      if(parsed && (parsed.finalGrade || parsed.testGrade)){
+       studentEvalGrade = parsed.finalGrade || parsed.testGrade;
+       break;
+      }
+     }
+    } catch(e){}
+   }
+  }
+ }
+
+ const customGrade = directCustom || studentEvalGrade;
+
+ // 3. Official score
+ let officialScore = '';
+ let officialDetail = '';
+ let detailKey = (sub.grade && sub.grade.detailKey) || '';
+ let testKey = '';
+
+ if(sub.grade && sub.grade.score){
+  const s = String(sub.grade.score).trim();
+  const lowerS = s.toLowerCase();
+  if(!lowerS.includes('evaluación continua') && !lowerS.includes('ponderación oficial') && !lowerS.includes('por venir') && !lowerS.includes('en curso') && !lowerS.includes('materiales recibidos')){
+   officialScore = s;
+   officialDetail = sub.grade.detail || '';
+  }
+ }
+
+ if(!officialScore && sub.teachers){
+  for(const tName of sub.teachers){
+   if(typeof teacherGradeMap !== 'undefined' && teacherGradeMap[tName]){
+    officialScore = teacherGradeMap[tName];
+    break;
+   }
+  }
+ }
+
+ // Match tests & details
+ const lowerName = cleanSubName.toLowerCase();
+ if(lowerName.includes('proceso digital') || (sub.teachers||[]).includes('Carolina Moreno Vázquez')){
+  testKey = 'test_16oct';
+  if(!detailKey) detailKey = 'mail_carolina_carlos_23oct';
+  if(!officialScore) officialScore = '10 / 10 ★';
+  if(!officialDetail) officialDetail = 'Test 4/4 (40 %) + Trabajos 6/6 (60 %) = 10 / 10';
+ } else if(lowerName.includes('actos de comunicación') || (sub.teachers||[]).includes('Sandra Mosteiro Costa')){
+  testKey = 'test_20oct_sandra';
+  if(!detailKey) detailKey = 'test_20oct_sandra';
+  if(!officialScore) officialScore = '9 / 10 (Test)';
+  if(!officialDetail) officialDetail = 'Test oficial en Testmoz con 9/10 aciertos (90 %)';
+ } else if(lowerName.includes('iniciación a la actividad') || (sub.teachers||[]).includes('Javier Sánchez García') || (sub.teachers||[]).includes('Javier C. Sánchez García')){
+  if(!detailKey) detailKey = 'grades';
+  if(!officialScore) officialScore = '10 / 10 ★';
+  if(!officialDetail) officialDetail = 'Nota oficial comunicada por correo (10/10 Sobresaliente)';
+ } else if(lowerName.includes('estatuto y responsabilidad') || (sub.teachers||[]).includes('Ana Vázquez Corte')){
+  if(!detailKey) detailKey = 'mail_deontologia_ana_vazquez';
+  if(!officialScore) officialScore = '8.8 / 10 ★';
+  if(!officialDetail) officialDetail = 'Test 3.8/4 + Trabajos 5/6 = 8.8 / 10';
+ } else if(lowerName.includes('oratoria forense') || (sub.teachers||[]).includes('Alejandra Sánchez')){
+  if(!detailKey) detailKey = 'grades';
+  if(!officialScore) officialScore = 'Completado ✓';
+  if(!officialDetail) officialDetail = 'Taller práctico de oratoria forense superado';
+ } else if(lowerName.includes('disciplinario') || (sub.teachers||[]).includes('Carmen Belo González')){
+  if(!detailKey) detailKey = 'assignment';
+  if(!officialScore) officialScore = 'Completado ✓';
+  if(!officialDetail) officialDetail = 'Módulo completado · Tests y asistencia al día';
+ } else if((sub.teachers||[]).includes('José Luis Delgado Domínguez')){
+  if(!detailKey) detailKey = 'entrega_delgado';
+ }
+
+ if(!detailKey) detailKey = 'grades';
+
+ let dossierId = '';
+ if(sub.teachers && sub.teachers.length){
+  for(const tName of sub.teachers){
+   const d = getDossierIdForTeacher(tName);
+   if(d){ dossierId = d; break; }
+  }
+ }
+
+ return {
+  sub,
+  cKey,
+  sIdx,
+  course,
+  subKey,
+  cleanSubName,
+  isPast,
+  status: subSt.status,
+  customGrade,
+  officialScore,
+  officialDetail,
+  effectiveScore: customGrade || officialScore,
+  hasGrade: Boolean(customGrade || officialScore),
+  isCustom: Boolean(customGrade),
+  isOfficial: Boolean(!customGrade && officialScore),
+  detailKey,
+  testKey,
+  dossierId
+ };
+}
+
+function getSubjectGradeBadgeHtml(sub, isPast=true, cKey='', sIdx=null){
+ if(!sub) return '';
+ const info = getSubjectFullGradeInfo(sub, cKey, sIdx);
+ if(!info) return '';
+
+ const safeSubKey = escapeAttr(info.subKey);
+ const safeTestKey = escapeAttr(info.testKey || '');
+ const safeDetailKey = escapeAttr(info.detailKey || 'grades');
+ const safeDossierId = escapeAttr(info.dossierId || '');
+
+ if(info.hasGrade){
+  const s = String(info.effectiveScore).trim();
+  let icon = '⭐';
+  let label = s;
+  if(s.includes('10 / 10') || s.includes('10/10')){
+   label = '10 / 10 ★';
+   if(s.includes('20/20')) label = '10 / 10 (20/20)';
+  } else if(s.includes('9 / 10') || s.includes('9/10')){
+   label = '9 / 10';
+  } else if(s.includes('8.8') || s.includes('8,8')){
+   label = '8.8 / 10 ★';
+  } else if(s.toLowerCase().includes('completad') || s.toLowerCase().includes('superad')){
+   icon = '✓';
+   label = 'Completada';
+  } else if(label.length > 18){
+   label = label.substring(0, 16) + '…';
+  }
+
+  const badgeCls = info.isCustom ? 'grade-user' : (label.includes('Completad') ? 'pill-subtle' : '');
+  const tooltip = info.isCustom ? `Calificación anotada por ti: ${s} (clic para editar o ver tests)` : `Calificación oficial: ${s} (clic para ver expediente o editar)`;
+
+  return `
+   <span class="subject-grade-wrap" onclick="event.stopPropagation()">
+    <span class="subject-grade-badge ${badgeCls}" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="${escapeAttr(tooltip)}">
+     <span class="sgb-score">${icon} ${escapeHtml(label)}</span>
+     <button type="button" class="sgb-test-btn" onclick="navigateToSubjectGradeTest('${safeDetailKey}', '${safeDossierId}', '${safeSubKey}', event)" title="Ver tests y evaluación en Notas">📝 Tests ↗</button>
+     <button type="button" class="sgb-edit-btn" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="Editar nota" aria-label="Editar nota">✏️</button>
+    </span>
+   </span>
+  `;
+ }
+
+ // No grade filled yet -> Show slot to enter grade + link to tests
+ const slotLabel = info.isPast ? 'Poner nota' : 'Añadir nota';
+ const slotTooltip = info.isPast ? 'Calificación pendiente · Clic para anotar tu nota o consultar los tests' : 'Materia programada · Clic para anotar calificación o ver evaluación';
+
+ return `
+  <span class="subject-grade-wrap" onclick="event.stopPropagation()">
+   <span class="subject-grade-slot ${info.isPast ? 'slot-past' : 'slot-upcoming'}">
+    <button type="button" class="sgb-slot-btn" onclick="openSubjectGradeModal('${safeSubKey}', event)" title="${escapeAttr(slotTooltip)}">
+     <span class="slot-icon">＋</span>
+     <span>${slotLabel}</span>
+    </button>
+    <button type="button" class="sgb-test-btn" onclick="navigateToSubjectGradeTest('${safeDetailKey}', '${safeDossierId}', '${safeSubKey}', event)" title="Ver notas y tests de la materia">📝 Tests ↗</button>
+   </span>
+  </span>
+ `;
+}
+
+let currentModalSubKey = '';
+
+function openSubjectGradeModal(subKey, evt){
+ if(evt) evt.stopPropagation();
+ currentModalSubKey = subKey;
+
+ let course = null, sIdx = 0, sub = null;
+ if(subKey.includes('|')){
+  const parts = subKey.split('|');
+  sIdx = Number(parts.pop());
+  const cKey = parts.join('|');
+  course = courses.find(c => courseKey(c) === cKey);
+  if(course && course.subjects) sub = course.subjects[sIdx];
+ }
+ if(!sub){
+  const clean = decodeURIComponent(subKey);
+  for(const c of courses){
+   const found = (c.subjects||[]).find(s => s.name === clean);
+   if(found){ sub = found; course = c; break; }
+  }
+ }
+ if(!sub) return;
+
+ const info = getSubjectFullGradeInfo(sub, course ? courseKey(course) : '', sIdx);
+ const modalBackdrop = document.getElementById('subjectGradeModalBackdrop');
+ if(!modalBackdrop) return;
+
+ const branchEl = document.getElementById('sgmBranch');
+ if(branchEl){
+  branchEl.textContent = course ? course.branch : 'Máster';
+  branchEl.className = 'delivery-modal-kicker ' + (course && course.branch==='Procura' ? 'terra' : 'blue');
+ }
+ const blockEl = document.getElementById('sgmBlock');
+ if(blockEl){
+  blockEl.textContent = course ? course.blockNumber : 'Plan de estudios';
+ }
+ const titleEl = document.getElementById('sgmTitle');
+ if(titleEl){
+  titleEl.textContent = '📖 ' + sub.name;
+ }
+ 
+ const teachersStr = (sub.teachers && sub.teachers.length) ? sub.teachers.join(', ') : 'Docente asignado';
+ const metaEl = document.getElementById('sgmMeta');
+ if(metaEl){
+  metaEl.innerHTML = `👤 Docente(s): <b>${escapeHtml(teachersStr)}</b> · 🗓️ Periodo: <b>${escapeHtml(sub.period||'')}</b>`;
+ }
+
+ // Official info box
+ const offScore = document.getElementById('sgmOfficialScore');
+ const offDesc = document.getElementById('sgmOfficialDesc');
+ if(offScore && offDesc){
+  if(info.officialScore){
+   offScore.innerHTML = `⭐ <b>${escapeHtml(info.officialScore)}</b>`;
+   offDesc.textContent = info.officialDetail || 'Calificación oficial del Máster en Abogacía y Procura.';
+  } else {
+   offScore.innerHTML = `<span style="color:var(--muted)">⏳ Pendiente de remitir / publicar</span>`;
+   offDesc.textContent = 'Aún no se ha remitido la calificación formal por correo o no está registrada de forma fija. Puedes anotar la nota que hayas obtenido en clase o en el test.';
+  }
+ }
+
+ // Input field prefill
+ const inputEl = document.getElementById('sgmInput');
+ if(inputEl){
+  inputEl.value = info.customGrade || (info.isOfficial ? info.officialScore : '');
+ }
+
+ // Action links
+ const linksBox = document.getElementById('sgmActionLinks');
+ if(linksBox){
+  const actionsHtml = [];
+
+  actionsHtml.push(`
+   <button type="button" class="pill-btn solid-honey" onclick="closeSubjectGradeModal(); navigateToSubjectGradeTest('${escapeAttr(info.testKey||info.detailKey||'grades')}', '${escapeAttr(info.dossierId)}', '${escapeAttr(subKey)}')">
+    📝 Abrir en Notas y Tests ↗
+   </button>
+  `);
+
+  if(info.testKey){
+   actionsHtml.push(`
+    <button type="button" class="pill-btn solid-blue" onclick="closeSubjectGradeModal(); openDetail('${escapeAttr(info.testKey)}')">
+     🎯 Ver cuestionario del test resuelto (Testmoz) ↗
+    </button>
+   `);
+  }
+
+  if(info.detailKey && info.detailKey.startsWith('mail_')){
+   actionsHtml.push(`
+    <button type="button" class="pill-btn solid-green" onclick="closeSubjectGradeModal(); openDetail('${escapeAttr(info.detailKey)}')">
+     ✉️ Ver correo oficial de la nota ↗
+    </button>
+   `);
+  }
+
+  if(course){
+   actionsHtml.push(`
+    <button type="button" class="pill-btn" onclick="closeSubjectGradeModal(); showScreen2('${escapeAttr(courseKey(course))}', ${sIdx})">
+     📖 Ver ficha y clases de la asignatura ➔
+    </button>
+   `);
+  }
+
+  linksBox.innerHTML = actionsHtml.join('');
+ }
+
+ modalBackdrop.style.display = 'flex';
+ setTimeout(() => {
+  if(inputEl){
+   inputEl.focus();
+   inputEl.select();
+  }
+ }, 50);
+}
+
+function closeSubjectGradeModal(){
+ const modalBackdrop = document.getElementById('subjectGradeModalBackdrop');
+ if(modalBackdrop) modalBackdrop.style.display = 'none';
+ currentModalSubKey = '';
+}
+
+function saveSubjectGradeFromModal(){
+ const inputEl = document.getElementById('sgmInput');
+ if(!inputEl || !currentModalSubKey) return;
+ const val = inputEl.value.trim();
+
+ let course = null, sIdx = 0, sub = null;
+ if(currentModalSubKey.includes('|')){
+  const parts = currentModalSubKey.split('|');
+  sIdx = Number(parts.pop());
+  const cKey = parts.join('|');
+  course = courses.find(c => courseKey(c) === cKey);
+  if(course && course.subjects) sub = course.subjects[sIdx];
+ }
+ if(!sub){
+  const clean = decodeURIComponent(currentModalSubKey);
+  for(const c of courses){
+   const found = (c.subjects||[]).find(s => s.name === clean);
+   if(found){ sub = found; course = c; break; }
+  }
+ }
+
+ const cleanSubName = sub ? sub.name.trim() : decodeURIComponent(currentModalSubKey);
+
+ try {
+  if(val){
+   localStorage.setItem('muap_sub_grade_' + encodeURIComponent(cleanSubName), val);
+   localStorage.setItem('muap_sub_grade_' + currentModalSubKey, val);
+  } else {
+   localStorage.removeItem('muap_sub_grade_' + encodeURIComponent(cleanSubName));
+   localStorage.removeItem('muap_sub_grade_' + currentModalSubKey);
+  }
+
+  // Also sync with student dossier if exists
+  if(sub && sub.teachers && sub.teachers.length){
+   for(const tName of sub.teachers){
+    const dId = getDossierIdForTeacher(tName);
+    if(dId && typeof saveStudentGradeData === 'function'){
+     saveStudentGradeData(dId, { finalGrade: val });
+    }
+   }
+  }
+ } catch(e){}
+
+ closeSubjectGradeModal();
+
+ // Re-render affected views
+ if(typeof renderSubjectsList === 'function') renderSubjectsList();
+ if(typeof renderSidebarTree === 'function') renderSidebarTree();
+ if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+
+ if(typeof showToastNotification === 'function'){
+  if(val){
+   showToastNotification(`✓ Calificación guardada: ${val}`);
+  } else {
+   showToastNotification('✓ Calificación vaciada (hueco disponible)');
+  }
+ }
+}
+
+function navigateToSubjectGradeTest(detailKey, dossierId, subKey, evt){
+ if(evt) evt.stopPropagation();
+ if(detailKey === 'test_16oct' || detailKey === 'test_20oct_sandra'){
+  openDetail(detailKey);
+  return;
+ }
+ if(dossierId){
+  renderGrades('teachers');
+  setView('notas', false);
+  setTimeout(()=>{
+   const card = document.getElementById(dossierId);
+   if(card){
+    const d = card.querySelector('details');
+    if(d) d.open = true;
+    document.querySelectorAll('.teacher-grade-dossier, .grade-card').forEach(c=>c.classList.remove('highlight-focused'));
+    card.classList.add('highlight-focused');
+    card.scrollIntoView({behavior:'smooth', block:'start'});
+   }
+  }, 60);
+  return;
+ }
+ if(detailKey && detailKey !== 'grades'){
+  openDetail(detailKey);
+  return;
+ }
+ setView('notas', false);
 }
 
 function getTeacherGradeBadgeHtml(tInput, requirePast=true){
@@ -9518,7 +10111,7 @@ function showScreen2(cKey, sIdx, optTeacherName){
     `:''}
    </div>
 
-   <h3 class="sh-title">📖 ${sub.name}${stInfo.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</h3>
+   <h3 class="sh-title" style="display:flex;align-items:center;flex-wrap:wrap;gap:6px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, stInfo.status === 'past', cKey, sIdx)}</h3>
    <div style="color:var(--muted);font-size:13px;margin-top:6px">${course.name} · Calendario oficial</div>
 
    <div class="sh-grid">
@@ -9869,7 +10462,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
           <div>
            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px">
-            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0">📖 ${item.sub.name}</h4>
+            <h4 style="font:700 17px var(--serif);color:var(--ink);margin:0;display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, false, cKey, item.sIdx)}</h4>
             <span class="status-pill ${item.st.badgeClass}" style="font-size:11px;padding:2px 8px">${item.st.label}</span>
            </div>
            <div style="font-size:13px;color:var(--ink-soft)">
@@ -9900,7 +10493,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           <div style="display:grid;gap:4px">
            ${pastSubs.map(item => `
             <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 6px;background:var(--paper);border-radius:6px;border:1px solid var(--line);cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
-             <span style="font-weight:600;color:var(--ink)">📖 ${item.sub.name}${getSubjectGradeBadgeHtml(item.sub, true)}</span>
+             <span style="font-weight:600;color:var(--ink);display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, true, cKey, item.sIdx)}</span>
              <span class="status-pill status-past" style="font-size:10px;padding:1px 6px">✓ Impartida</span>
             </div>
            `).join('')}
@@ -9914,7 +10507,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           <div style="display:grid;gap:4px">
            ${upcomingSubs.map(item => `
             <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 6px;background:var(--paper);border-radius:6px;border:1px solid var(--line);cursor:pointer" data-subject-card="${cKey}|${item.sIdx}">
-             <span style="font-weight:600;color:var(--ink)">${item.sub.name}</span>
+             <span style="font-weight:600;color:var(--ink);display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${item.sub.name}</span>${getSubjectGradeBadgeHtml(item.sub, false, cKey, item.sIdx)}</span>
              <span class="status-pill status-upcoming" style="font-size:10px;padding:1px 6px">⏳ Por venir</span>
             </div>
            `).join('')}
@@ -9979,7 +10572,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
            return `
             <div class="mbc-sub-item" data-subject-card="${cKey}|${sIdx}" title="Ver ficha de ${sub.name}">
              <div>
-              <div class="mbc-sub-name">📖 ${sub.name}${subSt.status === 'past' ? getSubjectGradeBadgeHtml(sub, true) : ''}</div>
+              <div class="mbc-sub-name" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, subSt.status === 'past', cKey, sIdx)}</div>
               <div class="mbc-sub-teachers">👤 ${formatTeachersWithGrades(sub.teachers, subSt.status === 'past')}</div>
              </div>
              <span class="status-pill ${subSt.badgeClass}" style="font-size:10px;padding:2px 7px">${subSt.label}</span>
@@ -10091,7 +10684,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
       ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
      </div>
 
-     <h3 class="sc-title">📖 ${sub.name}${getSubjectGradeBadgeHtml(sub, false)}</h3>
+     <h3 class="sc-title" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, false, cKey, sIdx)}</h3>
 
      <div class="sc-meta">
       <div>🗓️ Fechas: <b style="color:var(--ink-soft)">${sub.period}</b></div>

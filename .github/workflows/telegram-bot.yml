@@ -43,16 +43,14 @@ jobs:
       - name: Comprobar credenciales
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_ALLOWED_USER: ${{ secrets.TELEGRAM_ALLOWED_USER }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python -c "
           import os, sys
           t = os.environ.get('TELEGRAM_BOT_TOKEN', '').strip()
-          u = os.environ.get('TELEGRAM_ALLOWED_USER', '').strip()
           g = os.environ.get('GEMINI_API_KEY', '').strip()
-          if not t or not u or not g:
-              print('❌ Faltan secretos requeridos (TELEGRAM_BOT_TOKEN, TELEGRAM_ALLOWED_USER o GEMINI_API_KEY) en GitHub Secrets.', flush=True)
+          if not t or not g:
+              print('❌ Faltan secretos requeridos (TELEGRAM_BOT_TOKEN o GEMINI_API_KEY) en GitHub Secrets.', flush=True)
               sys.exit(1)
           print('✅ Credenciales de entorno verificadas con éxito.', flush=True)
           "
@@ -61,8 +59,8 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_ALLOWED_USER: ${{ secrets.TELEGRAM_ALLOWED_USER }}
-          TELEGRAM_ALLOWED_CHAT: ${{ secrets.TELEGRAM_ALLOWED_CHAT || secrets.TELEGRAM_ALLOWED_USER }}
+          TELEGRAM_ALLOWED_USER: ${{ secrets.TELEGRAM_ALLOWED_USER || '317669290' }}
+          TELEGRAM_ALLOWED_CHAT: ${{ secrets.TELEGRAM_ALLOWED_CHAT || secrets.TELEGRAM_ALLOWED_USER || '317669290' }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}

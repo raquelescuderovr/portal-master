@@ -40,6 +40,13 @@ def api_request(method: str, params: dict = None, data: bytes = None, content_ty
     try:
         with urllib.request.urlopen(req, timeout=15, context=ssl_ctx) as resp:
             return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        try:
+            err_body = e.read().decode()
+            print(f"[Telegram API] HTTPError en {method}: {e.code} - {err_body}", flush=True)
+            return json.loads(err_body)
+        except Exception:
+            return {"ok": False, "description": f"HTTPError {e.code}"}
     except Exception as e:
         print(f"[Telegram API] Error en {method}: {e.__class__.__name__}", flush=True)
         return {"ok": False, "description": str(e.__class__.__name__)}

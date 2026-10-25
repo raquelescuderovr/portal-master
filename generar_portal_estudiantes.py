@@ -265,63 +265,167 @@ def generate_student_portal_html(html: str) -> str:
         html
     )
 
-    # Reemplazo de variables de URL
+    # Reemplazo de variables de URL: desvincular Google Drive y redirigir a CPROC oficial
     html = re.sub(
-        r"const driveFolderUrl='[^']*';",
+        r"const driveFolderUrl\s*=\s*'[^']*';",
         "const driveFolderUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';",
         html
     )
     html = re.sub(
-        r"const practicasGdriveUrl='[^']*';",
+        r"const practicasGdriveUrl\s*=\s*'[^']*';",
         "const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';",
         html
     )
     html = re.sub(
-        r"function driveSearchUrl\(q\)\{return 'https://drive\.google\.com/[^']*';\}",
-        "function driveSearchUrl(q){return 'https://www.icpcoruna.com/copia-de-entrega-de-tareas';}",
+        r"const driveSearchUrl\s*=\s*[^;]+;",
+        "const driveSearchUrl=()=>'https://www.icpcoruna.com/copia-de-entrega-de-tareas';",
         html
     )
-    
-    # Reemplazar enlaces específicos a Google Docs y Google Drive por CPROC o BOE
-    html = re.sub(r"https://drive\.google\.com/file/d/[a-zA-Z0-9_\-]+/view", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
-    html = re.sub(r"https://drive\.google\.com/drive/u/0/folders/[a-zA-Z0-9_\-]+", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+
+    # Eliminar enlaces web específicos a Google Docs y Google Drive
+    html = re.sub(r"https://drive\.google\.com/file/d/[a-zA-Z0-9_\-]+/view(?:\?[^\s\'\"]*)?", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
+    html = re.sub(r"https://drive\.google\.com/drive/u/\d+/(?:folders|search)[^\s\'\"]*", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
     html = re.sub(r"https://docs\.google\.com/document/d/[a-zA-Z0-9_\-]+/edit(?:\?[^\s\'\"]*)?", "https://www.icpcoruna.com/copia-de-entrega-de-tareas", html)
 
-    # Textos de botones y títulos
-    html = html.replace('Raquel Escudero_Derechos y deberes procuradores y responsabilidad profesional (Doc Google)', 'Caso práctico: Derechos, deberes y responsabilidad profesional (CPROC)')
-    html = html.replace('2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)', 'Práctica 2 de octubre (CPROC)')
-    html = html.replace('2/10_Práctica_Raquel Escudero .pdf', 'Práctica 2 de octubre')
-    html = html.replace('Raquel Escudero_Derechos y deberes procuradores (Doc Google)', 'Caso práctico de Deontología (CPROC)')
-    html = html.replace('RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos', 'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nCaso práctico oficial evaluable')
-    html = html.replace('Abrir en Drive ↗', 'Plataforma CPROC ↗')
-    html = html.replace('PDF Drive ↗', 'Documento oficial ↗')
-    html = html.replace('Carpeta Drive ↗', 'CPROC Tareas ↗')
-    html = html.replace('Buscar en Drive ↗', 'Normativa y CPROC ↗')
-    html = html.replace('Google Docs ↗', 'CPROC ↗')
-    html = html.replace('Borrador en Drive ↗', 'Plataforma CPROC ↗')
-    html = html.replace('Google Docs (Entrega) ↗', 'Enunciado oficial ↗')
-    html = html.replace('Vídeo comprobante CPROC ↗', 'Plataforma CPROC ↗')
-    html = html.replace('Resolución completa (.md) ↗', 'Instrucciones del caso ↗')
-    html = html.replace('Carpeta Prácticas Drive ↗', 'CPROC Tareas ↗')
-    html = html.replace('Apuntes y Drive', 'Materiales y Normativa')
+    # Quitar el botón de carpeta de Drive de las tarjetas de profesorado
+    html = re.sub(
+        r'\$\{\(t\.driveFiles\|\|\[\]\)\[0\]\?`<a class="pill-link terra" href="\$\{t\.driveFiles\[0\]\.url\}" target="_blank" rel="noopener noreferrer">📁 Drive ↗</a>`:?\'\'\}',
+        '',
+        html
+    )
+    html = html.replace("${(t.driveFiles||[])[0]?`<a class=\"pill-link terra\" href=\"${t.driveFiles[0].url}\" target=\"_blank\" rel=\"noopener noreferrer\">📁 Drive ↗</a>`:''}", "")
 
-    # Reemplazo en barra superior y accesos directos
-    html = html.replace(
-        '<a href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Drive ↗</a>',
-        '<a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>'
+    # Eliminar enlaces y textos a Drive en modales de profesorado y paneles de apuntes
+    html = html.replace('<a class="pill-link solid-green" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Carpeta Drive del Máster ↗</a>', '<a class="pill-link solid-green" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Campus CPROC ↗</a>')
+    html = html.replace('<div class="visual-resource-sub">Google Drive · Documento de estudio</div>', '<div class="visual-resource-sub">Material de estudio · CPROC</div>')
+    html = html.replace('<a class="pill-link solid-green" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir archivo en Drive ↗</a>', '<a class="pill-link solid-green" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir documento ↗</a>')
+    html = html.replace('<p style="margin-bottom:14px">Puedes consultar la carpeta compartida en Google Drive donde se alojan los materiales de todas las asignaturas.</p>', '<p style="margin-bottom:14px">Puedes consultar las guías didácticas y materiales docentes oficiales en la plataforma CPROC.</p>')
+    html = html.replace('<a class="cozy-btn cozy-btn-mint" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Abrir Carpeta Google Drive ↗</a>', '<a class="cozy-btn cozy-btn-mint" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a Campus CPROC ↗</a>')
+    html = html.replace('<a class="st-sec-link" href="${driveFolderUrl}" target="_blank" rel="noopener noreferrer">Drive ↗</a>', '<a class="st-sec-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>')
+    html = html.replace('Clases, apuntes en Drive, prácticas, correos y notas del docente:', 'Clases, materiales de estudio, prácticas, correos y notas del docente:')
+
+    # Tarjeta de Portada (Home Hub Card) para sustituir el bloque de Google Drive por CPROC oficial
+    html = html.replace('<span class="hub-card-kicker">Google Drive</span>', '<span class="hub-card-kicker">Plataforma CPROC</span>')
+    html = html.replace('<strong class="hub-card-title">Carpeta «Máster»</strong>', '<strong class="hub-card-title">Tareas y Entregas</strong>')
+    html = html.replace('<span class="hub-card-meta">Apuntes, guías y casos en PDF</span>', '<span class="hub-card-meta">Campus oficial de Procura</span>')
+
+    # Banner de Materiales (sección 6) para reemplazar la caja de Google Drive
+    html = html.replace('<!-- 6. APUNTES, DOCUMENTOS Y GOOGLE DRIVE -->', '<!-- 6. APUNTES, DOCUMENTOS Y RECURSOS ACADÉMICOS -->')
+    html = html.replace('<h2>Apuntes, documentos por asignatura y Google Drive</h2>', '<h2>Apuntes, documentos por asignatura y materiales oficiales</h2>')
+    html = html.replace('<strong>Carpeta «Máster» en Google Drive</strong>', '<strong>Materiales docentes y plataforma CPROC</strong>')
+    html = re.sub(
+        r'Repositorio[^<]*localizarlo en Drive\.',
+        'Repositorio de guías didácticas, resoluciones y recursos de estudio oficiales del Máster Universitario en Abogacía y Procura.',
+        html,
+        flags=re.IGNORECASE
     )
-    html = html.replace(
-        '<a href="portal-estudiantes.html" target="_blank" rel="noopener noreferrer" style="background:var(--blue-pale);border-color:var(--blue-border);color:var(--blue-dark);font-weight:700">🎓 Portal Estudiantes ↗</a>',
-        '<span class="portal-mode-pill">🎓 Portal del Estudiante · Versión Oficial</span>'
+    html = html.replace('Abrir carpeta Máster en Drive ↗', 'Acceder a Tareas y Materiales CPROC ↗')
+
+    # Enlaces de la barra superior y accesos
+    html = html.replace('>Drive ↗</a>', '>CPROC Tareas ↗</a>')
+    html = re.sub(
+        r'<a href="[^"]*" target="_blank" rel="noopener noreferrer">Drive ↗</a>',
+        '<a href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">CPROC Tareas ↗</a>',
+        html
     )
-    html = html.replace(
-        '<a class="home-hub-card hub-blue" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">',
-        '<a class="home-hub-card hub-blue" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">'
-    )
-    html = html.replace(
-        '<a class="drive-btn" href="https://drive.google.com/drive/u/0/folders/1CWnIhmWiTwz061yWbBatcx7Fd2PEwVcQ" target="_blank" rel="noopener noreferrer">Abrir Carpeta Google Drive ↗</a>',
-        '<a class="drive-btn" href="https://www.icpcoruna.com/copia-de-entrega-de-tareas" target="_blank" rel="noopener noreferrer">Acceder a CPROC Tareas ↗</a>'
-    )
+
+    # Lista exhaustiva de reemplazos de textos y etiquetas relacionados con Google Drive
+    drive_replacements = [
+        # Enlaces, botones y modales
+        ('Abrir en Drive ↗', 'Plataforma CPROC ↗'),
+        ('PDF Drive ↗', 'Documento oficial ↗'),
+        ('Carpeta Drive ↗', 'CPROC Tareas ↗'),
+        ('Buscar en Drive ↗', 'Normativa y CPROC ↗'),
+        ('y conservado en Google Drive.', '.'),
+        ('y conservado en Google Drive', ''),
+        ('en Google Drive', ''),
+        ('// Collect Drive docs & notes:', '// Collect official docs & notes:'),
+        ('Google Docs ↗', 'CPROC ↗'),
+        ('Borrador en Drive ↗', 'Plataforma CPROC ↗'),
+        ('Google Docs (Entrega) ↗', 'Enunciado oficial ↗'),
+        ('Vídeo comprobante CPROC ↗', 'Plataforma CPROC ↗'),
+        ('Resolución completa (.md) ↗', 'Instrucciones del caso ↗'),
+        ('Carpeta Prácticas Drive ↗', 'CPROC Tareas ↗'),
+        ('Apuntes y Drive', 'Materiales y Normativa'),
+        ('Ver en Drive ↗', 'Consultar en CPROC ↗'),
+        ('En Drive ↗', 'Campus CPROC ↗'),
+        ('Ver apuntes en Drive', 'Ver apuntes de clase'),
+        ('Ver apuntes y prácticas en Drive', 'Ver materiales y prácticas'),
+        ('Proceso digital, TIC y Prácticas procesales en Drive', 'Proceso digital, TIC y Prácticas procesales'),
+        ('📁 Explorar apuntes en Drive ↗', '📚 Explorar materiales y apuntes ↗'),
+        ('Puedes consultar los apuntes en Drive, revisar las notas o explorar las próximas asignaturas.', 'Puedes consultar los materiales en CPROC, revisar tus notas o explorar las próximas asignaturas.'),
+        ('(4 docs en Drive)', '(4 documentos de estudio)'),
+        ('(Acceso directo a Drive / Documento)', '(Acceso a documento CPROC)'),
+        ("badge: 'Apunte / Drive'", "badge: 'Apunte / Material'"),
+        ("badge:'Apunte / Drive'", "badge:'Apunte / Material'"),
+        ("materiales:'Apuntes y Drive'", "materiales:'Materiales y Normativa'"),
+        ("renderGroup('Apuntes y Drive'", "renderGroup('Materiales y Normativa'"),
+        ("label: n.label || 'Abrir en Drive ↗'", "label: n.label || 'Consultar documento ↗'"),
+        ("${d.label || 'Abrir en Drive ↗'}", "${d.label || 'Consultar documento ↗'}"),
+        ("Abrir ${d.file} en Drive ↗", "Abrir ${d.file} en CPROC ↗"),
+        ("Abrir ${d.file2} en Drive ↗", "Abrir ${d.file2} en CPROC ↗"),
+
+        # Calificadores en nombres de archivos
+        ('(Doc Google en Drive)', '(Doc Google)'),
+        ('(PDF en Drive)', '(Documento oficial)'),
+        ('(Documento en Drive)', '(Documento oficial)'),
+        ('(Doc Google editable en Drive)', '(Plantilla editable CPROC)'),
+        ('(Resumen procesal en Drive)', '(Resumen procesal)'),
+        ('(Poder apud acta en Drive)', '(Poder apud acta oficial)'),
+        ('(Práctica en Drive)', '(Práctica CPROC)'),
+        ('2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)', 'Práctica 2 de octubre (CPROC)'),
+        ('2/10_Práctica_Raquel Escudero .pdf', 'Práctica 2 de octubre'),
+        ('Raquel Escudero_Derechos y deberes procuradores y responsabilidad profesional (Doc Google)', 'Caso práctico: Derechos, deberes y responsabilidad profesional (CPROC)'),
+        ('Raquel Escudero_Derechos y deberes procuradores (Doc Google)', 'Caso práctico de Deontología (CPROC)'),
+        ('RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nEstudiante: Raquel Escudero Valcárcel-Ríos', 'RESOLUCIÓN ÍNTEGRA DEL CASO PRÁCTICO — SANDRA MOSTEIRO COSTA\\nCaso práctico oficial evaluable'),
+        ('(Drive)', '(CPROC)'),
+        ('Carpeta «Máster apuntes» en Google Drive', 'Materiales y apuntes en CPROC'),
+        ('Carpeta «Máster apuntes» en Drive', 'Materiales y apuntes en CPROC'),
+        ('Carpeta general Máster en Google Drive', 'Campus Virtual CPROC (MUAP)'),
+        ('Guardado en Google Drive', 'Documento oficial CPROC'),
+        ('y carpeta «Máster» en Google Drive', ''),
+        (', subida a la carpeta «Máster» de Google Drive', ''),
+        (', subida a la carpeta «Máster» en Google Drive', ''),
+        (', subida a Google Drive', ''),
+        ('subida a Google Drive y ', ''),
+        ('subida a la carpeta «Máster» de Google Drive y ', ''),
+        ('subida a Google Drive', ''),
+        ('carpeta «Máster» de Google Drive', 'plataforma CPROC'),
+        ('carpeta «Máster» en Google Drive', 'plataforma CPROC'),
+        ('Práctica resuelta en carpeta «Máster» de Google Drive', 'Práctica oficial en plataforma CPROC'),
+        ('Abrir carpeta Prácticas en Google Drive', 'Campus Virtual CPROC (MUAP)'),
+        ("kind:'Carpeta Drive'", "kind:'Plataforma CPROC'"),
+        ("kind:'Google Drive ↗'", "kind:'CPROC ↗'"),
+        ("kind:'Buscar en Drive'", "kind:'Consultar normativa'"),
+        ("kind:'Archivo en Drive'", "kind:'Documento CPROC'"),
+        ('CertificadoRegistro.pdf (Abrir en Google Drive)', 'CertificadoRegistro.pdf (Poder apud acta oficial)'),
+        ('Escrito de subsanación_signed.pdf (Abrir en Google Drive)', 'Escrito de subsanación (Plantilla procesal)'),
+        ('Documento_anonimizado.pdf (11 págs. · Abrir en Drive)', 'Documento_anonimizado.pdf (Auto concursal UP · 11 págs.)'),
+        ('summary.docx (1 pág. · Abrir en Drive)', 'summary.docx (Resumen concursal)'),
+        ('Word Drive ↗', 'Word CPROC ↗'),
+        ("urlLabel:'Drive ↗'", "urlLabel:'CPROC ↗'"),
+        ("label:'Drive ↗'", "label:'CPROC ↗'"),
+        ('Documento sin título (Apuntes complementarios en Drive)', 'Apuntes complementarios de deontología'),
+        ('Deontología abogacía (Google Docs en Drive)', 'Deontología de la abogacía (Apuntes)'),
+        ('Jurisprudencia sobre responsabilidad civil del abogado (CPROC)', 'Jurisprudencia sobre responsabilidad civil del abogado'),
+        ('Jurisprudencia sobre responsabilidad civil del abogado (Drive)', 'Jurisprudencia sobre responsabilidad civil del abogado'),
+        ('Archivo en Drive', 'Archivo CPROC'),
+        ("{name:'Grabación de pantalla de la entrega (vídeo .mov)',url:casoSandraVideoLocalUrl,label:'Vídeo ↗'},", ""),
+
+        # Comentarios CSS
+        ("/* 4. Google Drive */", "/* 4. Plataforma CPROC */"),
+        ("/* 3. Google Drive: Menta / Laurel Suave */", "/* 3. Recursos y Materiales */"),
+        ("Google Drive y Apuntes", "Recursos y Apuntes"),
+        ("Correos, Drive, Tests", "Correos y Tests"),
+        ("Correos, Drive", "Correos"),
+    ]
+    for old_val, new_val in drive_replacements:
+        html = html.replace(old_val, new_val)
+
+    # Limpiar entradas residuales en teacherDirectory de Alex Sánchez y Daniel Garrido
+    html = html.replace("driveFiles:[{name:'Carpeta «Máster apuntes» en Google Drive',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',label:'Carpeta Drive ↗'}]", "driveFiles:[]")
+    html = html.replace("driveFiles:[{name:'2/10_Práctica_Raquel Escudero .pdf (Práctica en Drive)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas'}]", "driveFiles:[]")
+
     print("✓ Enlaces privados a Google Drive y Docs desvinculados por completo.")
 
     # -------------------------------------------------------------
