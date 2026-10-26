@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">33</span>
+      <span class="nav-badge-pill badge-peach">35</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5157,12 +5157,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="scc-hint">Redactar en Outlook ↗</span>
       </a>
 
-      <a class="side-contact-card" href="https://outlook.office.com/mail/deeplink/compose?to=accesoabogaciaprocura%40procuradorescoruna.com" target="_blank" rel="noopener noreferrer" title="Redactar correo a accesoabogaciaprocura@procuradorescoruna.com en Outlook Web">
+      <a class="side-contact-card" href="https://outlook.office.com/mail/deeplink/compose?to=accesoabogaciaprocura%40procuradores-coruna.com" target="_blank" rel="noopener noreferrer" title="Redactar correo a accesoabogaciaprocura@procuradores-coruna.com en Outlook Web">
         <div class="scc-top">
           <span class="scc-role">🏛️ Secretaría Procura</span>
           <span class="scc-chip terra">CPROC</span>
         </div>
-        <span class="scc-email">accesoabogaciaprocura@procuradorescoruna.com</span>
+        <span class="scc-email">accesoabogaciaprocura@procuradores-coruna.com</span>
+        <span class="scc-hint">Redactar en Outlook ↗</span>
+      </a>
+
+      <a class="side-contact-card" href="https://outlook.office.com/mail/deeplink/compose?to=decanato.dereito%40udc.gal" target="_blank" rel="noopener noreferrer" title="Redactar correo al Decanato de la Facultad de Derecho en Outlook Web">
+        <div class="scc-top">
+          <span class="scc-role">🏛️ Decanato Dereito</span>
+          <span class="scc-chip blue">UDC</span>
+        </div>
+        <span class="scc-email">decanato.dereito@udc.gal</span>
         <span class="scc-hint">Redactar en Outlook ↗</span>
       </a>
     </div>
@@ -5283,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">26</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">28</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5615,7 +5624,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (33)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (35)</button>
+      <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
+      <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
+      <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
       <button class="status-filter-btn" data-mail-filter="notas">⭐ Calificaciones y notas</button>
       <button class="status-filter-btn" data-mail-filter="practicas">✍️ Prácticas y CPROC</button>
       <button class="status-filter-btn" data-mail-filter="avisos">📅 Avisos y convocatorias</button>
@@ -6236,7 +6248,9 @@ const messages=[
  {date:'26 oct 2026 (09:35)',title:'Casos prácticos e instrucciones · Procesal Civil (D. Fernando Lousada · 16 adjuntos)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Fernando Lousada Arochena · 16 archivos para noviembre (2 MB)',key:'mail_lousada_26oct',teacher:'Fernando Lousada',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Mensaje del profesor D. Fernando Lousada'},
  {date:'26 oct 2026 (09:31)',title:'Nueva entrega: Resúmenes y ponencias DATAfórum (Plazo: 2 nov · D.ª Digna Braña)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Digna Braña Iglesias · Tarea obligatoria (Plazo: 2 de noviembre)',key:'mail_dataforum_resumenes_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'Resúmenes Dataforum'},
  {date:'26 oct 2026 (09:16)',title:'Aclaración oficial: Suspensión de hoy es para 2.º curso (1.º curso SÍ tiene clase)',meta:'MASTER ABOGACIA - ICA CORUÑA · Aclaración de clases de hoy 26 oct · 1.º curso mantiene horario normal',key:'mail_suspension_26oct',teacher:'Administración del Máster',subjectRef:'',emailSubject:'Suspensión de las clases de hoy'},
+ {date:'23 oct 2026 (14:26)',title:'Difusión X edición Xuventude Mentoring · Emprego UDC',meta:'Vicerreitoría de Estudantes e Empregabilidade · emprego.vee@udc.gal · Programa de mentoría profesional',key:'mail_xuventude_mentoring_23oct',teacher:'Vicerreitoría de Estudantes e Empregabilidade',subjectRef:'',emailSubject:'Difusión X edición Xuventude Mentoring'},
  {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Docente Dª. María Susana Díaz Gallego [Procuradora] carta presentación MUAP 2026-2027, clases 29 y 30 de octubre'},
+ {date:'23 oct 2026 (10:46)',title:'Comunicado do equipo reitoral (Reitor da UDC)',meta:'Reitor da UDC · reitor@udc.gal · Posicionamento institucional do Equipo de Goberno',key:'mail_comunicado_reitoral_23oct',teacher:'Rectorado UDC',subjectRef:'',emailSubject:'Comunicado do equipo reitoral'},
  {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1',emailSubject:'Materiales para alumnos Master Escuela de Práctica Jurídica 2026'},
  {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Bolsas Santander Estudos Axuda Económica 2026/27'},
  {date:'23 oct 2026 (09:28)',title:'Premio de Excelencia UDC 2026/27 · Listaxe provisoria de admisión (Decanato)',meta:'Decanato Facultade de Dereito · Taboleiro Electrónico Oficial (TEO) · Publicación listaxe',key:'mail_premio_excelencia_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Listaxe provisoria do alumnado proposto para o Premio de Excelencia da UDC á mellor nota de admisión aos graos curso 2026/27'},
@@ -6266,6 +6280,8 @@ const mailSummaries={
  mail_lousada_26oct:'La Administración del Máster remite la programación oficial y 16 archivos de casos prácticos preparados por el Magistrado D. Fernando Lousada para las sesiones de Práctica Procesal Civil de noviembre (del 12 al 19 de noviembre): medidas cautelares, diligencias preliminares, divorcio, reconvención, monitorio, okupas, apelación y jurisprudencia constitucional.',
  mail_dataforum_resumenes_26oct:'CONVOCATORIA DE ENTREGA OBLIGATORIA: En compensación por las clases suspendidas durante el DATAfórum, antes del lunes 2 de noviembre de 2026 debe remitirse a D.ª Digna Braña (branaabogada@icacor.es) el listado de ponencias asistidas y el resumen de una de ellas. Archivo identificado como: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.',
  mail_suspension_26oct:'ACLARACIÓN OFICIAL: La Administración rectifica y aclara que el aviso matinal de suspensión por problema personal de la profesora Dª Raquel Grela aplica únicamente al alumnado de segundo curso. El alumnado de primer curso (MUAP 2026-2028) tiene clase hoy con normalidad (16:30 h Delgado y 18:45 h Moure).',
+  mail_xuventude_mentoring_23oct:'ORIENTACIÓN PROFESIONAL: La Vicerreitoría de Estudantes e Empregabilidade de la UDC remite convocatoria para participar en la 10.ª edición del programa «Xuventude Mentoring», dirigido a conectar a estudiantes y graduados con mentores profesionales en activo.',
+ mail_comunicado_reitoral_23oct:'DECLARACIÓN INSTITUCIONAL: El Rector y el Equipo de Gobierno de la Universidade da Coruña remiten comunicado institucional trasladando la condena firme de los actos violentos registrados en el ámbito universitario y reiterando el compromiso con la convivencia pacífica.',
  materials_susana_diaz_23oct:'Carta de presentación oficial y cuerpo normativo de Procura (Estatuto General RD 1281/2002 y Estatutos del ICP A Coruña con reformas de 2013, 2016 y 2021) para preparar las clases del 29 y 30 de octubre con D.ª María Susana Díaz Gallego.',
  materials_bevel_23oct:'Materiales de cierre de las 4 jornadas de comunicación de la Escuela de Práctica Jurídica impartidas por el equipo de Bével (Xaquín Domínguez, Thais Palla y Alejandra Sánchez): tips de oratoria en vídeo y presentación del termómetro asertivo.',
  mail_bolsas_santander_23oct:'Información de la Sección de Bolsas de la UDC: publicación en el TEO (21/10/2026) del listado provisional de admitidos, denegados y lista de espera de las Bolsas Santander Estudios 2026/27. Plazo de reclamaciones hasta el 28 de octubre a las 23:59 h.',
@@ -6402,6 +6418,31 @@ const details={
   source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Docente Dª. María Susana Díaz Gallego [Procuradora] carta presentación MUAP 2026-2027, clases 29 y 30 de octubre» · 23 oct 2026, 10:48 h',
   attachments:[
    {name:'Ver adjuntos en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+  mail_xuventude_mentoring_23oct:{
+  kicker:'Empleabilidad y orientación · Vicerreitoría UDC',
+  title:'Difusión X edición Xuventude Mentoring (Vicerreitoría de Estudantes e Empregabilidade)',
+  date:'Correo recibido: viernes, 23 de octubre de 2026 (14:26)',
+  teacher:'Vicerreitoría de Estudantes e Empregabilidade',
+  subjectRef:'',
+  body:'Convocatoria remitida por el Área de Emprego de la UDC a través de las listas de distribución del alumnado de máster:\n\n«Bo día,\nEnviámosche esta mensaxe como difusión da X edición do programa Xuventude Mentoring impulsado pola Dirección Xeral de Xuventude en colaboración coas universidades galegas.\nO programa ofrece titorización personalizada e acompañamento profesional para mellorar a inserción laboral de persoas graduadas e estudantes de máster.\nInscricións abertas a través da plataforma oficial.»',
+  source:'Correo de emprego.vee@udc.gal / alumnado.mestrado-request@listas.udc.es · «Difusión X edición Xuventude Mentoring» · 23 oct 2026, 14:26 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Portal Emprego UDC',url:'https://www.udc.gal/es/emprego/',kind:'Web UDC'}
+  ]
+ },
+ mail_comunicado_reitoral_23oct:{
+  kicker:'Declaración institucional · Rectorado UDC',
+  title:'Comunicado do equipo reitoral (Equipo de Goberno da UDC)',
+  date:'Correo recibido: viernes, 23 de octubre de 2026 (10:46)',
+  teacher:'Rectorado UDC',
+  subjectRef:'',
+  body:'Declaración oficial remitida por el Rector a toda la comunidad universitaria:\n\n«Desde o Equipo de Goberno queremos trasladar a máis firme condena dos actos violentos rexistrados durante as últimas xornadas e reiterar o noso compromiso coa defensa dos valores democráticos, o diálogo e a convivencia pacífica na Universidade da Coruña.»',
+  source:'Correo de reitor@udc.gal · «Comunicado do equipo reitoral» · 23 oct 2026, 10:46 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
  materials_bevel_23oct:{
@@ -13036,7 +13077,13 @@ function renderMail(q='', filter=currentMailFilter){
 
  let list = messages;
 
- if(currentMailFilter === 'notas'){
+ if(currentMailFilter === 'icacor'){
+  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.title||'').toLowerCase().includes('abogacía'));
+ } else if(currentMailFilter === 'procura'){
+  list = list.filter(m => (m.meta||'').includes('procuradores') || (m.meta||'').includes('Procura') || (m.teacher||'').includes('Belo') || (m.teacher||'').includes('Moreno') || (m.teacher||'').includes('Sánchez Muiño') || (m.teacher||'').includes('Mosteiro') || (m.teacher||'').includes('Goimil') || (m.teacher||'').includes('Carnota') || (m.teacher||'').includes('Díaz Gallego') || (m.teacher||'').includes('Vázquez Corte') || (m.teacher||'').includes('Javier Sánchez'));
+ } else if(currentMailFilter === 'udc'){
+  list = list.filter(m => (m.meta||'').includes('Dereito') || (m.meta||'').includes('Decanato') || (m.meta||'').includes('UDC') || (m.teacher||'').includes('Decanato') || (m.teacher||'').includes('Vicerreitoría') || (m.teacher||'').includes('Consello') || (m.teacher||'').includes('Rectorado'));
+ } else if(currentMailFilter === 'notas'){
   list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci') || (m.title||'').toLowerCase().includes('test'));
  } else if(currentMailFilter === 'practicas'){
   list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse'));
