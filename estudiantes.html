@@ -12274,11 +12274,13 @@ function renderDay(){
  const delgadoDue=makeLocalDate(2026,9,29);
  const diffDays=Math.round((delgadoDue.getTime()-todayDate.getTime())/86400000);
  const sideDelgadoDueEl=document.getElementById('sideDelgadoDueText');
- if(sideDelgadoDueEl && !isTaskSubmitted('entrega_delgado')){
+ const delgadoDelivery=deliveries.find(d=>d.detailKey==='entrega_delgado');
+ const isDelgadoSubmitted=delgadoDelivery?!!delgadoDelivery.submitted:false;
+ if(sideDelgadoDueEl && !isDelgadoSubmitted){
   sideDelgadoDueEl.textContent=diffDays>1?`Jue 29 oct · Quedan ${diffDays} días`:(diffDays===1?'Jue 29 oct · Mañana vence':(diffDays===0?'Jue 29 oct · Vence hoy':'Jue 29 oct'));
  }
- const cardDelgadoBadge=document.querySelector('#cardTaskDelgado .ptb-due-badge');
- if(cardDelgadoBadge && !isTaskSubmitted('entrega_delgado')){
+ const cardDelgadoBadge=document.querySelector('#homePendingDelgado .ptb-due-badge') || document.querySelector('#cardTaskDelgado .ptb-due-badge');
+ if(cardDelgadoBadge && !isDelgadoSubmitted){
   cardDelgadoBadge.textContent=diffDays>1?`⏳ Plazo: Jue 29 oct (${diffDays} días)`:(diffDays===1?'⏳ Plazo: Jue 29 oct (mañana)':(diffDays===0?'⏳ Plazo: Hoy Jue 29 oct':'⏳ Plazo: Jue 29 oct'));
  }
  document.getElementById('todayList').innerHTML=list.length?list.map(({e,idx})=>`
