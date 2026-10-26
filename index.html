@@ -4778,7 +4778,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">14</span>
+      <span class="nav-badge-pill badge-peach">33</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5050,7 +5050,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">14</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">33</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5409,7 +5409,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (12)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (33)</button>
       <button class="status-filter-btn" data-mail-filter="notas">⭐ Calificaciones y notas</button>
       <button class="status-filter-btn" data-mail-filter="practicas">✍️ Prácticas y CPROC</button>
       <button class="status-filter-btn" data-mail-filter="avisos">📅 Avisos y convocatorias</button>
@@ -6188,6 +6188,9 @@ const deliveries=[
 const messages=[
  {date:'26 oct 2026 (13:18)',title:'Acuse de recibo de entrega: Ponencias DATAFORUM (D.ª Digna Braña)',meta:'MARÍA DIGNA BRAÑA IGLESIA · Coordinadora ICACOR · Confirmación de entrega recibida formalmente ✓',key:'mail_digna_dataforum_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM'},
  {date:'26 oct 2026 (13:11)',title:'Calificaciones oficiales · Responsabilidad disciplinaria Procura (Nota: 7.6 / 10 · Carmen Belo)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Carmen Belo González · Procura (7.6/10 · Notable)',key:'mail_carmen_belo_13oct',teacher:'Carmen Belo González',subjectRef:'Procura|Deontología y responsabilidad|1',emailSubject:'Resultados de las pruebas del 13/10/2026 -Técnicas Instrumentales - Docente Carmen Belo González'},
+ {date:'26 oct 2026 (12:43)',title:'Boletín do estudantado · 26 de outubro (Vicerreitoría Divulgación, Cultura e Deporte)',meta:'Vicerreitoría de Divulgación, Cultura e Deporte · vdcd@udc.gal · Agenda semanal y actividades UDC',key:'mail_boletin_26oct',teacher:'Vicerreitoría de Divulgación, Cultura e Deporte',subjectRef:'',emailSubject:'Boletín do estudantado, 26 de outubro'},
+ {date:'26 oct 2026 (11:23)',title:'Premios Olimpíadas Científicas 26/27 · Difusión institucional (Decanato)',meta:'Decanato Facultade de Dereito · Secretaría de Decanato (Mª Teresa Seoane Sande) · Información institucional',key:'mail_olimpiadas_26oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Solicitude difusión Premios Olimpíadas Científicas 26/27'},
+ {date:'26 oct 2026 (11:21)',title:'Movilidad internacional 2027/2028 · Charla informativa presencial (11 nov · Decanato)',meta:'Decanato Facultade de Dereito · D.ª María-Ángeles Fuentes-Loureiro · Salón de Actos Economía y Empresa (12:00 h)',key:'mail_mobilidade_26oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Charla informativa sobre mobilidade internacional 2027/2028'},
  {date:'26 oct 2026 (09:35)',title:'Casos prácticos e instrucciones · Procesal Civil (D. Fernando Lousada · 16 adjuntos)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Fernando Lousada Arochena · 16 archivos para noviembre (2 MB)',key:'mail_lousada_26oct',teacher:'Fernando Lousada',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Mensaje del profesor D. Fernando Lousada'},
  {date:'26 oct 2026 (09:31)',title:'Nueva entrega: Resúmenes y ponencias DATAfórum (Plazo: 2 nov · D.ª Digna Braña)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Digna Braña Iglesias · Tarea obligatoria (Plazo: 2 de noviembre)',key:'mail_dataforum_resumenes_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'Resúmenes Dataforum'},
  {date:'26 oct 2026 (09:16)',title:'Aclaración oficial: Suspensión de hoy es para 2.º curso (1.º curso SÍ tiene clase)',meta:'MASTER ABOGACIA - ICA CORUÑA · Aclaración de clases de hoy 26 oct · 1.º curso mantiene horario normal',key:'mail_suspension_26oct',teacher:'Administración del Máster',subjectRef:'',emailSubject:'Suspensión de las clases de hoy'},
@@ -6195,10 +6198,14 @@ const messages=[
  {date:'23 oct 2026 (10:48)',title:'Carta de presentación y Estatutos · Clases 29 y 30 oct (D.ª María Susana Díaz Gallego)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Susana Díaz Gallego · Procura (5 adjuntos, 3 MB)',key:'materials_susana_diaz_23oct',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Docente Dª. María Susana Díaz Gallego [Procuradora] carta presentación MUAP 2026-2027, clases 29 y 30 de octubre'},
  {date:'23 oct 2026 (10:09)',title:'Materiales comunicación y oratoria · Equipo Bével (Alejandra Sánchez, Thais Palla y Xaquín Domínguez)',meta:'MASTER ABOGACIA - ICA CORUÑA · Equipo Bével · Escuela de Práctica Jurídica (Tips oratoria y Termómetro asertivo)',key:'materials_bevel_23oct',teacher:'Alejandra Sánchez',subjectRef:'Abogacía|Técnicas instrumentales|1',emailSubject:'Materiales para alumnos Master Escuela de Práctica Jurídica 2026'},
  {date:'23 oct 2026 (10:02)',title:'Bolsas Santander Estudos UDC 2026/27 · Listaxe provisional e prazo reclamacións',meta:'Decanato Facultade de Dereito / Sección de Bolsas · Reclamacións ata 28/10/2026 ás 23:59 h',key:'mail_bolsas_santander_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Bolsas Santander Estudos Axuda Económica 2026/27'},
+ {date:'23 oct 2026 (09:28)',title:'Premio de Excelencia UDC 2026/27 · Listaxe provisoria de admisión (Decanato)',meta:'Decanato Facultade de Dereito · Taboleiro Electrónico Oficial (TEO) · Publicación listaxe',key:'mail_premio_excelencia_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Listaxe provisoria do alumnado proposto para o Premio de Excelencia da UDC á mellor nota de admisión aos graos curso 2026/27'},
+ {date:'23 oct 2026 (08:42)',title:'DATAfórum 2026 · Última xornada e ponencias máis importantes (Decanato)',meta:'Decanato Facultade de Dereito · Secretaría de Decanato (Mª Teresa Seoane Sande) · Recordatorio Palexco',key:'mail_dataforum_cierre_23oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Hoxe é a última xornada do DATAforum: Ponencias máis importantes'},
  {date:'22 oct 2026 (16:56)',title:'Ampliación documentación · Clase de Gestión (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía · Hoja de encargo ampliada',key:'mail_moure_ampliacion_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Ampliación de documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'22 oct 2026 (13:48)',title:'Paro académico e folga xeral o 11 de novembro · Consulta ao estudantado (Consello do Estudantado UDC)',meta:'Consello do Estudantado da UDC · udc.alumnado · Enquisa e posicionamento sobre o 11 nov',key:'mail_paro_estudantado_11nov',teacher:'Consello do Estudantado UDC',subjectRef:'',emailSubject:'[udc.alumnado] Paro académico o 11 de novembro'},
  {date:'22 oct 2026 (13:24)',title:'Calificaciones oficiales · Técnicas instrumentales (Nota: 10 / 10 · Carlos Miguel Sánchez Muiño)',meta:'accesoabogaciaprocura@procuradores-coruna.com · D. Carlos Miguel Sánchez Muiño · Procura (10/10 · Sobresaliente)',key:'mail_carlos_sanchez_2oct',teacher:'Carlos M. Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|1',emailSubject:'Resultados de las pruebas del 2/10/2026 -Técnicas Instrumentales - Docente Carlos Miguel Sánchez Muiño'},
  {date:'22 oct 2026 (13:09)',title:'Material de clase · Actos de comunicación judicial (PowerPoint, test y soluciones)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Sandra Mosteiro Costa · Procura',key:'materials_sandra_22oct',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Docente- Sandra Mosteiro Costa, Procuradora- Remisión de documentación al estudiantado del MUAP'},
  {date:'22 oct 2026 (13:06)',title:'Documentación clase de Gestión próxima semana (D.ª María Luisa Moure Sagasti)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª María Luisa Moure Sagasti · Abogacía',key:'materials_moure_22oct',teacher:'María Luisa Moure Sagasti',subjectRef:'',emailSubject:'Documentación sobre la clase de Gestión de la próxima semana'},
+ {date:'22 oct 2026 (12:42)',title:'Interrupción de servizo de Campus virtual UDCOnline / UDCAberta (Vicerreitoría Estratexia Dixital e IA)',meta:'Vicerreitoría de Estratexia Dixital e Intelixencia Artificial · Incidencia técnica resolta',key:'mail_interrupcion_campus_22oct',teacher:'Vicerreitoría de Estratexia Dixital e IA',subjectRef:'',emailSubject:'Interrupción de servizo do Campus virtual'},
  {date:'21 oct 2026 (17:09)',title:'Documentación clase 28 oct · Materia registral (D.ª María Pilar Carnota García)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta presentación y notas materia registral · Procura',key:'materials_carnota_21oct',teacher:'María Pilar Carnota García',subjectRef:'',emailSubject:'Docente Dª. María Pilar Carnota García [Procuradora] carta presentación MUAP 2026-2027, clase 28 de octubre'},
  {date:'21 oct 2026 (17:08)',title:'Presentación docente · D.ª María Rita Goimil Martínez (Procuradora)',meta:'MASTER ABOGACIA - ICA CORUÑA · Carta de presentación · Procura',key:'presentation_goimil_21oct',teacher:'María Rita Goimil Martínez',subjectRef:'',emailSubject:'Presentación de la docente D.ª María Rita Goimil Martínez'},
  {date:'20 oct 2026 (17:44)',title:'Test online realizado · Actos de comunicación judicial (Nota: 9 / 10)',meta:'Testmoz CPROC · Dña. Sandra Mosteiro Costa · Procura (9/10 · 90 %)',key:'test_20oct_sandra',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'SANDRA MOSTEIRO- 20-10-26 - GRUPO DE TARDE'},
@@ -6217,6 +6224,9 @@ const messages=[
 const mailSummaries={
  mail_digna_dataforum_26oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: D.ª Digna Braña, Coordinadora ICACOR del Máster, acusa recibo formal («Recibido, ¡muchas gracias!») de la memoria y resumen de ponencias «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» remitida por correo por Raquel Escudero.',
  mail_carmen_belo_13oct:'NOTA OFICIAL: 7.6 / 10 (Test 40%: 3.4 + Trabajos 60%: 4.2 · Notable). Calificaciones otorgadas por Carmen Belo González correspondientes a la sesión del 13 de octubre sobre responsabilidad disciplinaria de los procuradores.',
+ mail_boletin_26oct:'BOLETÍN SEMANAL UDC: La Vicerreitoría de Divulgación, Cultura e Deporte traslada el boletín informativo semanal del estudiantado del 26 de octubre con la programación cultural, deportiva, formativa, convocatorias activas y canales oficiales de seguimiento (@UDC_oficial en Instagram y TikTok).',
+ mail_olimpiadas_26oct:'DIFUSIÓN INSTITUCIONAL: El Decanato de la Facultad de Derecho (Secretaría de Decanato · Mª Teresa Seoane Sande) reenvía la convocatoria de los Premios de las Olimpiadas Científicas 2026/2027 promovidos en el ámbito de la Universidade da Coruña para general conocimiento del alumnado.',
+ mail_mobilidade_26oct:'CONVOCATORIA Y ORIENTACIÓN INTERNACIONAL: La Oficina de Relaciones Internacionales de la UDC y el Vicedecanato de Internacionalización (D.ª María-Ángeles Fuentes-Loureiro) convocan a una sesión informativa el miércoles 11 de noviembre a las 12:00 h en el Salón de Actos de la Facultad de Economía y Empresa para explicar los requisitos, plazos y trámites de la próxima convocatoria de movilidad internacional 2027/2028.',
  mail_lousada_26oct:'La Administración del Máster remite la programación oficial y 16 archivos de casos prácticos preparados por el Magistrado D. Fernando Lousada para las sesiones de Práctica Procesal Civil de noviembre (del 12 al 19 de noviembre): medidas cautelares, diligencias preliminares, divorcio, reconvención, monitorio, okupas, apelación y jurisprudencia constitucional.',
  mail_dataforum_resumenes_26oct:'CONVOCATORIA DE ENTREGA OBLIGATORIA: En compensación por las clases suspendidas durante el DATAfórum, antes del lunes 2 de noviembre de 2026 debe remitirse a D.ª Digna Braña (branaabogada@icacor.es) el listado de ponencias asistidas y el resumen de una de ellas. Archivo identificado como: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.',
  mail_suspension_26oct:'ACLARACIÓN OFICIAL: La Administración rectifica y aclara que el aviso matinal de suspensión por problema personal de la profesora Dª Raquel Grela aplica únicamente al alumnado de segundo curso. El alumnado de primer curso (MUAP 2026-2028) tiene clase hoy con normalidad (16:30 h Delgado y 18:45 h Moure).',
@@ -6224,7 +6234,11 @@ const mailSummaries={
  materials_susana_diaz_23oct:'Carta de presentación oficial y cuerpo normativo de Procura (Estatuto General RD 1281/2002 y Estatutos del ICP A Coruña con reformas de 2013, 2016 y 2021) para preparar las clases del 29 y 30 de octubre con D.ª María Susana Díaz Gallego.',
  materials_bevel_23oct:'Materiales de cierre de las 4 jornadas de comunicación de la Escuela de Práctica Jurídica impartidas por el equipo de Bével (Xaquín Domínguez, Thais Palla y Alejandra Sánchez): tips de oratoria en vídeo y presentación del termómetro asertivo.',
  mail_bolsas_santander_23oct:'Información de la Sección de Bolsas de la UDC: publicación en el TEO (21/10/2026) del listado provisional de admitidos, denegados y lista de espera de las Bolsas Santander Estudios 2026/27. Plazo de reclamaciones hasta el 28 de octubre a las 23:59 h.',
+ mail_dataforum_cierre_23oct:'RECORDATORIO PALEXCO: El Decanato de la Facultad de Derecho remite la agenda de la última jornada del DATAfórum Justicia 2026 destacando las ponencias principales y recordando la asistencia del alumnado del centro.',
+ mail_premio_excelencia_23oct:'PUBLICACIÓN TEO: El Decanato traslada la publicación oficial en el Taboleiro Electrónico de la resolución provisional del alumnado propuesto para el Premio de Excelencia de la UDC a la mejor nota de admisión a grados universitarios del curso 2026/27.',
  mail_moure_ampliacion_22oct:'Ampliación de documentación para la clase de Gestión de la próxima semana con María Luisa Moure Sagasti. Se adjunta plantilla de HOJA ENCARGO AMPLIADA.docx (31 KB).',
+ mail_paro_estudantado_11nov:'CONSULTA ESTUDIANTIL: El Consello do Estudantado de la UDC remite consulta telemática al estudiantado respecto a la convocatoria de huelga general y paro académico el próximo 11 de noviembre.',
+ mail_interrupcion_campus_22oct:'AVISO TÉCNICO: La Vicerreitoría de Estrategia Digital e Inteligencia Artificial informa de la resolución de la parada de servicio sobrevenida en la plataforma Campus Virtual (UDCOnline y UDCAberta).',
  mail_carlos_sanchez_2oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente). Calificaciones otorgadas por D. Carlos Miguel Sánchez Muiño correspondientes a la sesión del 2 de octubre de Técnicas instrumentales (Procura).',
  materials_sandra_22oct:'Remite la presentación en PowerPoint, el test y las soluciones al mismo correspondientes al módulo de Actos de comunicación judicial impartido por Sandra Mosteiro Costa.',
  materials_moure_22oct:'Remite la documentación de estudio para la clase de Gestión del despacho profesional de la próxima semana con María Luisa Moure Sagasti (17 documentos adjuntos).',
@@ -6269,6 +6283,44 @@ const details={
   attachments:[
    {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Apuntes de la sesión en Google Docs',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',kind:'Google Docs ↗'}
+  ]
+ },
+  mail_boletin_26oct:{
+  kicker:'Información universitaria · Vicerreitoría UDC',
+  title:'Boletín do estudantado, 26 de outubro (Vicerreitoría Divulgación, Cultura e Deporte)',
+  date:'Correo recibido: lunes, 26 de octubre de 2026 (12:43)',
+  teacher:'Vicerreitoría de Divulgación, Cultura e Deporte',
+  subjectRef:'',
+  body:'Boletín informativo semanal dirigido a todo el estudiantado de la Universidade da Coruña:\n\n«Bo día!\nIniciamos a semana achegándovos o boletín recibido nas listas de correo. Lembra que non é unha axenda exhaustiva do que acontece na UDC. Se queres estar ao día do que pasa na Universidade, síguenos en Instagram e Tiktok - @UDC_oficial - e participa nas actividades formativas, culturais, deportivas e de divulgación organizadas pola Vicerreitoría de Divulgación, Cultura e Deporte da UDC.»\n\n• Contenido: Difusión de actividades socioculturales, deportivas, iniciativas universitarias y agenda institucional.',
+  source:'Correo de vdcd@udc.gal / udc.alumnado-request@listas.udc.es · «Boletín do estudantado, 26 de outubro» · 26 oct 2026, 12:43 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Cultura e Deporte UDC (Portal oficial)',url:'https://www.udc.gal/gl/cultura/',kind:'Web UDC'}
+  ]
+ },
+ mail_olimpiadas_26oct:{
+  kicker:'Difusión académica · UDC · Decanato de Dereito',
+  title:'Solicitude difusión Premios Olimpíadas Científicas 26/27',
+  date:'Correo recibido: lunes, 26 de octubre de 2026 (11:23)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Comunicado remitido por la Secretaría del Decanato de la Facultad de Derecho:\n\n«Bo dia,\nReenviamos esta información por se fose do voso interese.\nUn saúdo.\n\nMª Teresa Seoane Sande\nSecretaría decanato · Facultade de Dereito\nCampus de Elviña, s/n · 15071 A Coruña\nTelf.: 881 011 516 · decanato.dereito@udc.gal»\n\n• Objeto: Difusión de la convocatoria oficial de Premios de las Olimpiadas Científicas 2026/2027 entre la comunidad universitaria y estudiantil.',
+  source:'Correo de decanato.dereito@udc.gal · «Solicitude difusión Premios Olimpíadas Científicas 26/27» · 26 oct 2026, 11:23 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_mobilidade_26oct:{
+  kicker:'Aviso institucional · UDC · Relacións Internacionais',
+  title:'Charla informativa sobre mobilidade internacional 2027/2028 (Decanato Dereito)',
+  date:'Correo recibido: lunes, 26 de octubre de 2026 (11:21) · Charla: miércoles, 11 de noviembre de 2026 (12:00 h)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Comunicación del Decanato de la Facultad de Derecho (Secretaría de Decanato · Mª Teresa Seoane Sande) y el Vicedecanato de Internacionalización e Mobilidade (D.ª María-Ángeles Fuentes-Loureiro) dirigida a todo el estudiantado:\n\n«Estimado alumnado:\nInformámosvos de que a Oficina de Relacións Internacionais da UDC organizará unha charla informativa sobre mobilidade internacional, dirixida a todo o estudantado interesado en participar na próxima convocatoria de mobilidade internacional.\n\n📅 Data: mércores, 11 de novembro de 2026\n🕛 Hora: 12:00 h\n📍 Lugar: Salón de Actos da Facultade de Economía e Empresa\n\nAconsellamos a asistencia a esta sesión, xa que nela se explicarán todos os aspectos fundamentais da próxima convocatoria de mobilidade internacional. Participar nesta charla permitiravos coñecer de primeira man toda a información necesaria para preparar correctamente a vosa candidatura e resolver as dúbidas que poidades ter sobre a convocatoria, requisitos, procedemento de solicitude e posterior tramitación da vosa mobilidade.\n\nUn saúdo,\nMaría-Ángeles Fuentes-Loureiro (Vicedecana de Internacionalización e Mobilidade · Coordinadora de Prácticas)\nMª Teresa Seoane Sande (Secretaría decanato · Facultade de Dereito · Campus de Elviña · decanato.dereito@udc.gal · 881 011 516)»',
+  source:'Correo de decanato.dereito@udc.gal · «Charla informativa sobre mobilidade internacional 2027/2028» · 26 oct 2026, 11:21 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Portal de Relaciones Internacionales UDC (ORI)',url:'https://www.udc.gal/es/ori/',kind:'Web UDC'}
   ]
  },
  mail_lousada_26oct:{
@@ -6360,6 +6412,32 @@ const details={
    {name:'Sede Electrónica UDC (Trámites)',url:'https://sede.udc.gal/services/telematic_register',kind:'Enlace web'}
   ]
  },
+  mail_premio_excelencia_23oct:{
+  kicker:'Convocatoria oficial · UDC · Premios de Excelencia',
+  title:'Premio de Excelencia da UDC á mellor nota de admisión aos graos 2026/27 (Decanato Dereito)',
+  date:'Correo recibido: viernes, 23 de octubre de 2026 (09:28)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Comunicación remitida por la Secretaría del Decanato de la Facultad de Derecho informando de la publicación oficial en el Taboleiro Electrónico Oficial (TEO):\n\n«Bo día,\nPara o voso coñecemento e información.\nPublicación desta listaxe no Taboleiro Electrónico Oficial.\n* Título: Listaxe provisoria do alumnado proposto para o Premio de Excelencia da UDC á mellor nota de admisión aos graos curso 2026/27.\nUn saúdo.\nSecretaría Decanato · Facultade de Dereito»',
+  source:'Correo de decanato.dereito@udc.gal · «Listaxe provisoria do alumnado proposto para o Premio de Excelencia...» · 23 oct 2026, 09:28 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Taboleiro Electrónico Oficial (TEO)',url:'https://sede.udc.gal/services/board',kind:'Web UDC'}
+  ]
+ },
+ mail_dataforum_cierre_23oct:{
+  kicker:'Información académica · Decanato Facultad de Derecho',
+  title:'DATAfórum Justicia 2026 · Última xornada e ponencias principais (Decanato Dereito)',
+  date:'Correo recibido: viernes, 23 de octubre de 2026 (08:42)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Aviso remitido por la Secretaría del Decanato de la Facultad de Derecho a todo el alumnado durante la última jornada del congreso en PALEXCO:\n\n«Bo dia,\nHoxe, venres 23 de outubro é a última xornada do Datafórum Justicia 2026. Achegamos as ponencias máis importantes do día para que non as esquezades. Contamos coa vosa presenza e esperamos que sexan do voso interese.\n\nUn saúdo.\nMª Teresa Seoane Sande · Secretaría decanato · Facultade de Dereito · decanato.dereito@udc.gal»',
+  source:'Correo de decanato.dereito@udc.gal · «Hoxe é a última xornada do DATAforum: Ponencias máis importantes» · 23 oct 2026, 08:42 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Programa oficial DATAfórum Justicia 2026',url:'https://www.justicia2030.es/dataforum',kind:'Web oficial'}
+  ]
+ },
  mail_moure_ampliacion_22oct:{
   kicker:'Ampliación de documentación · Abogacía · Gestión de despachos',
   title:'Ampliación documentación clase de Gestión · Hoja de encargo (D.ª María Luisa Moure Sagasti)',
@@ -6407,6 +6485,32 @@ const details={
   source:'Correo de MASTER ABOGACIA - ICA CORUÑA · «Documentación sobre la clase de Gestión de la próxima semana» · 22 oct 2026, 13:06 h',
   attachments:[
    {name:'Ver documentación en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+  mail_paro_estudantado_11nov:{
+  kicker:'Participación estudiantil · Consello do Estudantado UDC',
+  title:'Consulta sobre o paro académico e folga xeral do 11 de novembro (Consello do Estudantado)',
+  date:'Correo recibido: jueves, 22 de octubre de 2026 (13:48)',
+  teacher:'Consello do Estudantado UDC',
+  subjectRef:'',
+  body:'Comunicación oficial remitida por el Consello do Estudantado de la Universidade da Coruña a través de las listas de distribución del alumnado (udc.alumnado):\n\n«Boas,\nDende o Consello do Estudantado gustaríanos saber a túa opinión sobre a folga xeral convocada para o 11 de novembro a través da seguinte enquisa:\nhttps://forms.cloud.microsoft/e/kyw7MaLysG\n\nConsello do Estudantado da UDC»',
+  source:'Correo de alumnado-request@listas.udc.es · «[udc.alumnado] Paro académico o 11 de novembro» · 22 oct 2026, 13:48 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Enquisa oficial Consello do Estudantado (Forms)',url:'https://forms.cloud.microsoft/e/kyw7MaLysG',kind:'Formulario Web'}
+  ]
+ },
+ mail_interrupcion_campus_22oct:{
+  kicker:'Aviso técnico institucional · Vicerreitoría UDC',
+  title:'Interrupción de servizo do Campus Virtual UDCOnline e UDCAberta (Vicerreitoría Estratexia Dixital e IA)',
+  date:'Correo recibido: jueves, 22 de octubre de 2026 (12:42)',
+  teacher:'Vicerreitoría de Estratexia Dixital e IA',
+  subjectRef:'',
+  body:'Comunicación de la Vicerreitoría de Estratexia Dixital e Intelixencia Artificial a toda la comunidad universitaria:\n\n«Estimada comunidade universitaria,\nÉ posible que detectarades que onte, desde a media tarde até arredor das 23h, estivo fóra de servizo o noso campus virtual, a UDCOnline (tamén a UDC Aberta). A causa estivo nunha avaría nun dos equipos principais do servizo de almacenamento central da Universidade.\nO servizo quedou restablecido e operativo tras a intervención dos servizos técnicos.\nDisculpade as molestias ocasionadas.»',
+  source:'Correo de Vicerreitoría de Estratexia Dixital e IA · «Interrupción de servizo do Campus virtual» · 22 oct 2026, 12:42 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Campus Virtual UDCOnline',url:'https://udconline.udc.gal',kind:'Web UDC'}
   ]
  },
  materials_carnota_21oct:{
@@ -12932,11 +13036,11 @@ function renderMail(q='', filter=currentMailFilter){
  let list = messages;
 
  if(currentMailFilter === 'notas'){
-  list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci'));
+  list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci') || (m.title||'').toLowerCase().includes('test'));
  } else if(currentMailFilter === 'practicas'){
-  list = list.filter(m => m.key === 'assignment' || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica'));
+  list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse'));
  } else if(currentMailFilter === 'avisos'){
-  list = list.filter(m => m.key.startsWith('dataforum') || m.key === 'schedule' || m.key === 'materials' || m.key.startsWith('udc'));
+  list = list.filter(m => m.key.startsWith('dataforum') || m.key === 'schedule' || m.key === 'materials' || m.key.startsWith('udc') || m.key.startsWith('mail_suspension') || m.key.startsWith('mail_bolsas') || m.key.startsWith('mail_boletin') || m.key.startsWith('mail_olimpiadas') || m.key.startsWith('mail_mobilidade') || m.key.startsWith('mail_dataforum_cierre') || m.key.startsWith('mail_premio') || m.key.startsWith('mail_paro') || m.key.startsWith('mail_interrupcion') || (m.title||'').toLowerCase().includes('aviso') || (m.title||'').toLowerCase().includes('boletín') || (m.title||'').toLowerCase().includes('charla') || (m.title||'').toLowerCase().includes('difusión'));
  }
 
  if(q){
