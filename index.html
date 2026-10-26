@@ -4764,7 +4764,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 2 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 1 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4778,7 +4778,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">12</span>
+      <span class="nav-badge-pill badge-peach">14</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -4998,9 +4998,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">2 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">1 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">12</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">14</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5044,11 +5044,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="ptb-header">
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px">
-            <span class="ptb-badge alert">⚠️ 2 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip">📅 Próximas entregas: 29 oct y 2 nov</span>
+            <span class="ptb-badge alert">⚠️ 1 PRÁCTICA PENDIENTE</span>
+            <span class="ptb-urgent-chip">📅 Próximo vencimiento: Jueves 29 oct (José Luis Delgado)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Tareas oficiales con plazo activo de entrega en el Colegio de Abogados (ICACOR) y Coordinación del Máster.</p>
+          <p class="ptb-subtitle">Tareas oficiales con plazo activo de entrega. Solo queda 1 práctica en curso con el profesorado.</p>
         </div>
         <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (7) ➔</button>
       </div>
@@ -5068,17 +5068,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
         </article>
 
-        <!-- Tarjeta DATAfórum: Listado y Resumen -->
-        <article class="ptb-card" id="homePendingDataforum" data-detail="entrega_dataforum_resumenes" style="cursor:pointer" title="Pincha para ver las instrucciones">
+        <!-- Tarjeta DATAfórum: Entregada y confirmada -->
+        <article class="ptb-card" id="homePendingDataforum" data-detail="entrega_dataforum_resumenes" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega confirmada">
           <div class="ptb-card-top">
-            <span class="ptb-tag purple">🏛️ Entrega DATAfórum · Coordinación</span>
-            <span class="ptb-due-badge amber">⏳ Plazo: Lunes 2 nov (7 días)</span>
+            <span class="ptb-tag green">✓ Entregada por correo</span>
+            <span class="ptb-due-badge green">✓ Confirmada hoy 13:18 h</span>
           </div>
           <h4 class="ptb-card-title">Memoria y Resumen de ponencias DATAfórum Justicia 2026</h4>
           <div class="ptb-card-meta">
             <div>👤 Coordinadora: <b>D.ª Digna Braña Iglesias</b></div>
-            <div>📚 Tarea: <b>Listado de ponencias asistidas + resumen de una de ellas</b></div>
-            <div>⏳ Fecha límite: <b>Lunes, 2 de noviembre de 2026</b> · Remisión a branaabogada@icacor.es</div>
+            <div>📩 Remitida por correo · Acuse de recibo de D.ª Digna Braña confirmado («Recibido, ¡muchas gracias!»)</div>
+            <div>📄 Documento: <b>ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM</b></div>
           </div>
         </article>
       </div>
@@ -5767,6 +5767,30 @@ const events={
 
 const gradeRecords=[
  {
+  id:'grade_carmen_belo_13oct',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 26 oct 2026 (13:11)',
+  title:'Técnicas instrumentales · Responsabilidad disciplinaria Procura (Carmen Belo)',
+  score:'7.6 / 10',
+  scoreLabel:'Nota docente',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'3,4 / 4 puntos (8,5 / 10)'},
+   {label:'II. Traballo/s escrito/s (60 %)',val:'4,2 / 6 puntos (7,0 / 10)'},
+   {label:'Calificación otorgada',val:'7,6 / 10 · Notable'}
+  ],
+  teacher:'Carmen Belo González',
+  subjectRef:'Procura|Deontología y responsabilidad|1',
+  mailKey:'mail_carmen_belo_13oct',
+  description:'Calificaciones comunicadas oficialmente por la Secretaría del Colegio de Procuradores de A Coruña el 26 de octubre de 2026 a las 13:11 h («Resultados de las pruebas del 13/10/2026 - Técnicas Instrumentales - Docente Carmen Belo González»), correspondientes a la sesión del 13 de octubre sobre responsabilidad disciplinaria de los procuradores (Test 40%: 3,4 ptos. + Trabajos escritos 60%: 4,2 ptos. -> Nota final de la docente: 7,6 / 10 · Notable).',
+  links:[
+   {label:'✉ Abrir correo de la nota (26 oct) ↗',detailKey:'mail_carmen_belo_13oct',cls:'solid-green'},
+   {label:'Apuntes de clase en Google Docs ↗',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',cls:'solid-blue'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Deontología y responsabilidad|1'},
+   {label:'Ficha de Carmen Belo González ↗',teacher:'Carmen Belo González'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
   id:'grade_carolina_carlos_16oct',
   type:'mail',
   kicker:'Evaluación oficial por correo · 23 oct 2026 (13:21)',
@@ -5941,10 +5965,11 @@ const deliveries=[
   subject:'Abogacía y Procura · DATAfórum Justicia 2026',
   subjectRef:'',
   subjectName:'Actividades formativas complementarias (DATAfórum 2026)',
-  status:'⏳ Pendiente (Plazo: 2 nov 2026 · 7 días)',
-  submitted:false,
+  status:'Entregada por correo a D.ª Digna Braña ✓ (26 oct 2026, 13:18 h)',
+  submitted:true,
   detailKey:'entrega_dataforum_resumenes',
-  details:'Entrega obligatoria de compensación formativa por la suspensión de clases del Datafórum: 1) Listado de ponencias a las que se ha asistido. 2) Resumen de una de ellas. Remitir por correo electrónico antes del lunes 2 de noviembre de 2026 a D.ª Digna Braña (branaabogada@icacor.es), Coordinadora del Máster. Nombre de archivo obligatorio: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.'
+  file:'ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM',
+  details:'Entrega completada el 26 de octubre de 2026 (13:18 h) mediante correo remitido a D.ª Digna Braña (branaabogada@icacor.es), Coordinadora del Máster, con acuse de recibo oficial («Recibido, ¡muchas gracias!»). Documento entregado: memoria de 6 ponencias y mesas redondas de Palexco + resumen desarrollado.'
  },
  {
   date:new Date(2026,9,29),
@@ -6028,6 +6053,8 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'26 oct 2026 (13:18)',title:'Acuse de recibo de entrega: Ponencias DATAFORUM (D.ª Digna Braña)',meta:'MARÍA DIGNA BRAÑA IGLESIA · Coordinadora ICACOR · Confirmación de entrega recibida formalmente ✓',key:'mail_digna_dataforum_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM'},
+ {date:'26 oct 2026 (13:11)',title:'Calificaciones oficiales · Responsabilidad disciplinaria Procura (Nota: 7.6 / 10 · Carmen Belo)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Carmen Belo González · Procura (7.6/10 · Notable)',key:'mail_carmen_belo_13oct',teacher:'Carmen Belo González',subjectRef:'Procura|Deontología y responsabilidad|1',emailSubject:'Resultados de las pruebas del 13/10/2026 -Técnicas Instrumentales - Docente Carmen Belo González'},
  {date:'26 oct 2026 (09:35)',title:'Casos prácticos e instrucciones · Procesal Civil (D. Fernando Lousada · 16 adjuntos)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Fernando Lousada Arochena · 16 archivos para noviembre (2 MB)',key:'mail_lousada_26oct',teacher:'Fernando Lousada',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Mensaje del profesor D. Fernando Lousada'},
  {date:'26 oct 2026 (09:31)',title:'Nueva entrega: Resúmenes y ponencias DATAfórum (Plazo: 2 nov · D.ª Digna Braña)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Digna Braña Iglesias · Tarea obligatoria (Plazo: 2 de noviembre)',key:'mail_dataforum_resumenes_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'Resúmenes Dataforum'},
  {date:'26 oct 2026 (09:16)',title:'Aclaración oficial: Suspensión de hoy es para 2.º curso (1.º curso SÍ tiene clase)',meta:'MASTER ABOGACIA - ICA CORUÑA · Aclaración de clases de hoy 26 oct · 1.º curso mantiene horario normal',key:'mail_suspension_26oct',teacher:'Administración del Máster',subjectRef:'',emailSubject:'Suspensión de las clases de hoy'},
@@ -6055,6 +6082,8 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_digna_dataforum_26oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: D.ª Digna Braña, Coordinadora ICACOR del Máster, acusa recibo formal («Recibido, ¡muchas gracias!») de la memoria y resumen de ponencias «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» remitida por correo por Raquel Escudero.',
+ mail_carmen_belo_13oct:'NOTA OFICIAL: 7.6 / 10 (Test 40%: 3.4 + Trabajos 60%: 4.2 · Notable). Calificaciones otorgadas por Carmen Belo González correspondientes a la sesión del 13 de octubre sobre responsabilidad disciplinaria de los procuradores.',
  mail_lousada_26oct:'La Administración del Máster remite la programación oficial y 16 archivos de casos prácticos preparados por el Magistrado D. Fernando Lousada para las sesiones de Práctica Procesal Civil de noviembre (del 12 al 19 de noviembre): medidas cautelares, diligencias preliminares, divorcio, reconvención, monitorio, okupas, apelación y jurisprudencia constitucional.',
  mail_dataforum_resumenes_26oct:'CONVOCATORIA DE ENTREGA OBLIGATORIA: En compensación por las clases suspendidas durante el DATAfórum, antes del lunes 2 de noviembre de 2026 debe remitirse a D.ª Digna Braña (branaabogada@icacor.es) el listado de ponencias asistidas y el resumen de una de ellas. Archivo identificado como: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.',
  mail_suspension_26oct:'ACLARACIÓN OFICIAL: La Administración rectifica y aclara que el aviso matinal de suspensión por problema personal de la profesora Dª Raquel Grela aplica únicamente al alumnado de segundo curso. El alumnado de primer curso (MUAP 2026-2028) tiene clase hoy con normalidad (16:30 h Delgado y 18:45 h Moure).',
@@ -6082,6 +6111,33 @@ const mailSummaries={
 };
 
 const details={
+ mail_digna_dataforum_26oct:{
+  kicker:'Acuse de recibo de entrega · Coordinación ICACOR',
+  title:'Confirmación de recepción de Ponencias DATAFORUM (D.ª Digna Braña)',
+  date:'Correo recibido: lunes, 26 de octubre de 2026 (13:18)',
+  teacher:'Digna Braña Iglesias',
+  subjectRef:'',
+  body:'Respuesta oficial de D.ª Digna Braña Iglesias (branaabogada@icacor.es), Coordinadora ICACOR del Máster en Abogacía, acusando recibo formal de la entrega de resúmenes de DATAFORUM remitida por Raquel Escudero Valcárcel-Ríos:\n\n«Recibido, ¡muchas gracias!\n\nSaludos,\nMª Digna Braña Iglesia\nAbogada Coordinadora ICACOR MÁSTER ABOGACÍA\nC/Monforte, 15, 3º dcha. 15007 A Coruña · branaabogada@icacor.es»\n\n• Documento entregado: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM (Memoria con 6 ponencias y mesas redondas de Palexco + resumen desarrollado de ponencia).\n• Estado: Entregada y confirmada formalmente ✓ con acuse de recibo.',
+  source:'Correo de branaabogada@icacor.es · «RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» · 26 oct 2026, 13:18 h',
+  attachments:[
+   {name:'📄 Ver documento entregado (Google Docs)',url:'https://docs.google.com/document/d/1qdf6KWqF0ihUpYz_JXZtVuKOowvm3G_efV52PMwGpPs/edit?tab=t.0',kind:'Google Docs ↗'},
+   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Ver ficha de la entrega en el portal',detailKey:'entrega_dataforum_resumenes',kind:'Ficha de entrega'}
+  ]
+ },
+ mail_carmen_belo_13oct:{
+  kicker:'Calificaciones oficiales de Procura · Colegio de Procuradores de A Coruña',
+  title:'Resultados de las pruebas del 13/10/2026 · Carmen Belo González (Nota: 7.6 / 10)',
+  date:'Correo recibido: lunes, 26 de octubre de 2026 (13:11) · Clase celebrada: 13/10/2026',
+  teacher:'Carmen Belo González',
+  subjectRef:'Procura|Deontología y responsabilidad|1',
+  body:'Comunicación oficial remitida por el Departamento de Secretaría del Ilustre Colegio de Procuradores de A Coruña (accesoabogaciaprocura@procuradores-coruna.com) trasladando las calificaciones otorgadas por Dña. Carmen Belo González en la materia «TÉCNICAS INSTRUMENTALES» (Responsabilidad disciplinaria de los procuradores):\n\n• I. TEST (40 %): 3,4 puntos (sobre 4 · equivalente a 8,5 / 10).\n• II. TRABALLO/S ESCRITO/S (60 %): 4,2 puntos (sobre 6 · equivalente a 7,0 / 10).\n• NOTA FINAL: 7,6 / 10 (Notable).\n\nObservación de la docente: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Recibe un cordial saludo. Fdo.: Carmen Belo González».',
+  source:'Correo de accesoabogaciaprocura@procuradores-coruna.com · «Resultados de las pruebas del 13/10/2026 -Técnicas Instrumentales - Docente Carmen Belo González» · 26 oct 2026, 13:11 h',
+  attachments:[
+   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Apuntes de la sesión en Google Docs',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',kind:'Google Docs ↗'}
+  ]
+ },
  mail_lousada_26oct:{
   kicker:'Materiales y casos prácticos · Abogacía · Práctica Procesal Civil',
   title:'Casos prácticos e instrucciones · Práctica Procesal Civil (D. Fernando Lousada Arochena)',
@@ -6578,21 +6634,21 @@ const details={
  },
  entrega_dataforum_resumenes:{
   isDelivery:true,
-  kicker:'Entrega obligatoria · DATAfórum Justicia 2026 · Coordinación del Máster',
+  kicker:'Entrega completada ✓ · DATAfórum Justicia 2026 · Coordinación del Máster',
   title:'Memoria y Resumen de ponencias DATAfórum Justicia 2026',
-  date:'Plazo oficial: antes del lunes 2 de noviembre de 2026 · Remisión a D.ª Digna Braña',
+  date:'Entregada el lunes 26 de octubre de 2026 (13:18 h) · Acuse de recibo de D.ª Digna Braña confirmado',
   teacher:'Digna Braña Iglesias (Coordinación MUAP)',
   subjectRef:'',
-  body:'Actividad formativa de compensación lectiva por la suspensión de clases presenciales de los días 21 a 23 de octubre de 2026 para acudir al DATAfórum Justicia 2026 en Palexco (A Coruña):\n\n• Documentación obligatoria a remitir:\n  1) Listado de ponencias a las que has asistido durante las jornadas del congreso.\n  2) Resumen detallado del contenido y conclusiones de una de ellas.\n\n• Reglas formales de presentación:\n  - Identificación obligatoria del archivo: APELLIDOS NOMBRE PONENCIAS DATAFORUM (ej.: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.pdf o .docx).\n  - Destinataria oficial: D.ª Digna Braña Iglesias, Coordinadora del Máster.\n  - Dirección de correo electrónico de entrega: branaabogada@icacor.es\n  - Plazo improrrogable: Antes del lunes 2 de noviembre de 2026.',
-  source:'Correo oficial de MASTER ABOGACIA - ICA CORUÑA · «Resúmenes Dataforum» · Lunes, 26 de octubre de 2026, 09:31 h',
-  mailKey:'mail_dataforum_resumenes_26oct',
+  body:'Actividad formativa de compensación lectiva por la suspensión de clases presenciales de los días 21 a 23 de octubre de 2026 para acudir al DATAfórum Justicia 2026 en Palexco (A Coruña):\n\n• Documentación entregada:\n  1) Listado de 6 ponencias y mesas redondas presenciales a las que se ha asistido durante las jornadas del congreso en Palexco.\n  2) Memoria y resumen estructurado de ponencia con análisis de impacto procesal.\n\n• Estado del trámite:\n  - Archivo remitido por correo: «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM».\n  - Destinataria: D.ª Digna Braña Iglesias, Coordinadora del Máster (branaabogada@icacor.es).\n  - Fecha de entrega: Lunes, 26 de octubre de 2026 antes de las 13:18 h.\n  - Confirmación oficial: Correo de respuesta de D.ª Digna Braña a las 13:18 h («Recibido, ¡muchas gracias!»).\n  - Plazo límite original: Lunes, 2 de noviembre de 2026.',
+  source:'Correo de confirmación de D.ª Digna Braña · 26 oct 2026, 13:18 h',
+  mailKey:'mail_digna_dataforum_26oct',
   attachments:[
-   {name:'✉️ Ver correo oficial de la convocatoria',detailKey:'mail_dataforum_resumenes_26oct',kind:'Correo oficial'},
-   {name:'📩 Redactar envío a branaabogada@icacor.es',url:'mailto:branaabogada@icacor.es?subject=ESCUDERO%20VALCARCEL-RIOS%20RAQUEL%20PONENCIAS%20DATAFORUM&body=Estimada%20D%C2%AA%20Digna%20Bra%C3%B1a%3A%0A%0AAdjunto%20remito%20el%20listado%20de%20ponencias%20a%20las%20que%20he%20asistido%20en%20el%20DATAf%C3%B3rum%20Justicia%202026%20y%20el%20resumen%20solicitado%2C%20debidamente%20identificado.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo Digna Braña'},
-   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
-   {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
+   {name:'📄 Ver documento entregado (Google Docs)',url:'https://docs.google.com/document/d/1qdf6KWqF0ihUpYz_JXZtVuKOowvm3G_efV52PMwGpPs/edit?tab=t.0',kind:'Google Docs ↗'},
+   {name:'✉️ Ver acuse de recibo de D.ª Digna Braña (13:18 h)',detailKey:'mail_digna_dataforum_26oct',kind:'Correo Digna Braña'},
+   {name:'✉️ Ver correo oficial de convocatoria (09:31 h)',detailKey:'mail_dataforum_resumenes_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
   ],
-  extra:'⏳ Plazo oficial: Antes del lunes 2 de noviembre de 2026. Remitir exclusivamente por correo electrónico a branaabogada@icacor.es con el nombre de archivo exacto: ESCUDERO VALCARCEL-RIOS RAQUEL PONENCIAS DATAFORUM.'
+  extra:'✓ Entrega completada y confirmada con acuse de recibo formal por la Coordinadora del Máster (D.ª Digna Braña) el 26/10/2026 a las 13:18 h.'
  },
  entrega_delgado:{
   isDelivery:true,
@@ -6957,12 +7013,12 @@ const courses=[
     period:'13 oct 2026 · Horario: 16:30 – 18:30 · Colegio de Abogados',
     startDate:'2026-10-13',
     teachers:['Carmen Belo González'],
-    grade:{score:'Módulo completado ✓ · Tests al día',detail:'Sesión presencial de régimen disciplinario y deontología colegial.',detailKey:'assignment',actionLabel:'Ver apuntes ↗'},
+    grade:{score:'7.6 / 10 (Notable)',detail:'Test 40% (3,4 ptos.) + Trabajos escritos 60% (4,2 ptos.) · Comunicada oficialmente por correo el 26 oct',detailKey:'mail_carmen_belo_13oct',actionLabel:'Ver nota oficial ↗'},
     notes:[
      {name:'13/10 Responsabilidad disciplinaria de la Procura (Doc Google)',detailKey:'assignment',url:'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit',label:'Google Docs ↗'},
      {name:'Estatuto de la Procura y régimen sancionador',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'}
     ],
-    mails:['assignment']
+    mails:['mail_carmen_belo_13oct','assignment']
    }
   ]
  },
@@ -7672,16 +7728,21 @@ const teacherDirectory=[
   name:'Carmen Belo González',
   branch:'Procura',
   role:'Procuradora · Responsabilidad disciplinaria de la Procura',
-  gradeBadge:'Completado ✓',
+  gradeBadge:'7.6 / 10 ★',
   summary:'Responsabilidad disciplinaria de los procuradores, tipificación de infracciones y procedimiento sancionador colegial.',
-  grade:{score:'Completado ✓',scoreLabel:'Evaluación',detail:'Sesión presencial del 13 de octubre finalizada.',detailKey:'grades'},
+  grade:{score:'7.6 / 10 ★',scoreLabel:'Nota oficial',detail:'Test 40% (3,4 ptos.) + Trabajos escritos 60% (4,2 ptos.) · Notificada formalmente por correo el 26 oct',detailKey:'mail_carmen_belo_13oct',actionLabel:'Ver nota oficial ↗'},
+  breakdown:[
+   {label:'I. Test (40 %)',val:'3,4 / 4 puntos (8,5 / 10)'},
+   {label:'II. Traballos escritos (60 %)',val:'4,2 / 6 puntos (7,0 / 10)'},
+   {label:'Calificación oficial otorgada',val:'7,6 / 10 · Notable'}
+  ],
   sessions:[
    {date:'2026-10-13',dayLabel:'Martes 13 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Responsabilidad disciplinaria de la Procura (Procedimiento sancionador y recursos)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Régimen disciplinario de la Procura',key:'grades'}],
-  practices:[{title:'Caso de apertura de expediente disciplinario colegial',status:'Completado ✓',key:'grades'}],
+  mails:[{title:'Resultados pruebas 13/10/2026 (Nota: 7.6 / 10)',key:'mail_carmen_belo_13oct'}],
+  practices:[{title:'Actividades evaluables (Test + Trabajos: 7.6 / 10)',status:'Superado ✓',key:'mail_carmen_belo_13oct'}],
   driveFiles:[{name:'13/10 Responsabilidad disciplinaria de la Procura',url:driveSearchUrl('Responsabilidad disciplinaria'),label:'Google Docs ↗'}],
-  notes:[{title:'Reglamento de Procedimiento Disciplinario de la Procura',url:cprocUrl,urlLabel:'CPROC ↗'}]
+  notes:[{title:'Estatuto General de los Procuradores de España (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}]
  },
  {
   name:'Carlos Tomé',
@@ -8185,7 +8246,7 @@ const teacherGradeMap={
  'Alex Sánchez Barge': { kind:'test', score:'Test: 20 / 20', label:'Test: 20 / 20', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 20 / 20 aciertos (Final conjunta de módulo 10/10 con Carolina y Carlos)' },
  'Sandra Mosteiro Costa': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 %) · Calificación final de módulo pendiente' },
  'Alejandra Sánchez': { kind:'completed', score:'Taller superado', label:'Taller superado', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Taller práctico de Oratoria Forense superado' },
- 'Carmen Belo González': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Régimen disciplinario de la Procura completado' },
+ 'Carmen Belo González': { kind:'final', score:'7.6 / 10 ★', label:'Final: 7.6 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 7.6 / 10 (Notable · Test 3.4/4 + Trabajos 4.2/6)' },
  'Vanessa Amarelle': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
  'Carlos Tomé': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
  'Daniel Garrido Pazos': { kind:'completed', score:'Prácticas al día', label:'Prácticas al día', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Iniciación profesional y despacho al día' }
@@ -8220,6 +8281,7 @@ function getDossierIdForTeacher(tName){
  if(n.includes('sandra mosteiro')) return 'dossier-sandra-mosteiro';
  if(n.includes('ana vázquez')) return 'dossier-ana-vazquez';
  if(n.includes('javier') && n.includes('sánchez')) return 'dossier-javier-sanchez';
+ if(n.includes('carmen belo') || n.includes('belo')) return 'dossier-carmen-belo';
  if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
  return '';
 }
@@ -9417,6 +9479,54 @@ function renderTeacherDossiers(){
     {label: '📁 Ver entregas de Carolina Moreno en el portal ↗', detailKey: 'entrega_apud_acta'},
     {label: 'Ver asignatura ↗', subjectRef: 'Procura|Técnicas instrumentales|2'},
     {label: 'Ficha de Carolina Moreno Vázquez ↗', teacher: 'Carolina Moreno Vázquez'}
+   ]
+  },
+  {
+   id: 'dossier-carmen-belo',
+   teacher: 'Carmen Belo González',
+   subject: 'Técnicas instrumentales · Responsabilidad disciplinaria de la Procura (Sesión 13 oct 2026)',
+   subjectRef: 'Procura|Deontología y responsabilidad|1',
+   kicker: 'Calificación oficial: 7.6 / 10 (Notable) · Notificada por correo el 26 oct',
+   badgeClass: 'green',
+   badgeText: '7.6 / 10 · Nota Oficial',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Oficial',
+     score: '7.6 / 10',
+     desc: 'Calificaciones remitidas formalmente por la Secretaría de Procura (accesoabogaciaprocura@procuradores-coruna.com) el 26 oct a las 13:11 h. Ponderables por coordinación.',
+     subitems: [
+      {label: 'Calificación otorgada', val: '7,6 / 10 · Notable'},
+      {label: 'Fecha comunicación', val: '26 oct 2026 (13:11 h)'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Test de Régimen Disciplinario (40 %)',
+     score: '3,4 / 4 puntos',
+     desc: 'Cuestionario evaluable sobre procedimiento sancionador colegial, tipificación de infracciones y estatuto orgánico.',
+     subitems: [
+      {label: 'Puntuación test', val: '3,4 de 4,0 ptos (85 %)'},
+      {label: 'Equivalente decimal', val: '8,5 / 10'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Trabajos y Casos Escritos (60 %)',
+     score: '4,2 / 6 puntos',
+     desc: 'Trabajo escrito sobre supuestos prácticos de responsabilidad disciplinaria, recursos corporativos y potestad sancionadora.',
+     subitems: [
+      {label: 'Puntuación trabajos', val: '4,2 de 6,0 ptos (70 %)'},
+      {label: 'Equivalente decimal', val: '7,0 / 10'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Ver correo oficial de la nota (26 oct) ↗', detailKey: 'mail_carmen_belo_13oct', cls: 'solid-green'},
+    {label: 'Apuntes de clase en Google Docs ↗', url: 'https://docs.google.com/document/d/1alLLqnx2zl3ICsDlE85fvzKNkp9ld5bXiiwfHwXxs2I/edit', cls: 'solid-blue'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Deontología y responsabilidad|1'},
+    {label: 'Ficha de Carmen Belo González ↗', teacher: 'Carmen Belo González'}
    ]
   },
   {
@@ -12265,7 +12375,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega (plazos: 29 de octubre y 2 de noviembre).`;
+   summaryEl.textContent = `Mostrando ${filtered.length} práctica pendiente de entrega (plazo: 29 de octubre con D. José Luis Delgado).`;
   } else if(currentDeliveryFilter === 'completed'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
   } else if(currentDeliveryFilter === 'cproc'){
