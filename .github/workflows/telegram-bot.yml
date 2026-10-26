@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # Se ejecuta cada 5 horas automáticamente para mantenerlo siempre despierto
-    - cron: '0 */5 * * *'
+    # Se ejecuta cada 4 horas automáticamente para garantizar solapamiento y mantenerlo siempre despierto sin huecos
+    - cron: '0 */4 * * *'
   workflow_dispatch: # Permite arrancarlo manualmente con un clic en GitHub
 
 concurrency:
@@ -20,7 +20,7 @@ permissions:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 340 # Cada ejecución dura hasta ~5.5 horas antes de que el siguiente ciclo tome el relevo
+    timeout-minutes: 350 # Cada ejecución dura hasta ~5h 50m hasta que el siguiente ciclo tome el relevo
 
     steps:
       - name: Descargar repositorio

@@ -13,7 +13,7 @@ from datetime import datetime
 from config import (
     TELEGRAM_BOT_TOKEN, TELEGRAM_ALLOWED_USER, TELEGRAM_ALLOWED_CHAT,
     GITHUB_TOKEN, GITHUB_REPO, PORTAL_PUBLIC_URL, INDEX_HTML, ENV_PATH,
-    get_ssl_context
+    BASE_DIR, get_ssl_context
 )
 import updater
 import assistant
@@ -257,19 +257,15 @@ Diálogo fluido, visión multimodal y <b>confirmación segura en dos fases</b>.
         largest_photo = photos[-1]
         img_bytes = download_telegram_file(largest_photo["file_id"])
 
-        # Persistir la foto en la carpeta de materiales para que se visualice directamente en el portal
+        # Persistir la foto en la carpeta de materiales
         try:
             from datetime import datetime
             p_mat = BASE_DIR / "portal-master" / "materiales"
             r_mat = BASE_DIR / "materiales"
-            if img_bytes:
-                with open(p_mat / "foto-caso-delgado.jpg", "wb") as f_out:
-                    f_out.write(img_bytes)
-                if r_mat.exists():
-                    with open(r_mat / "foto-caso-delgado.jpg", "wb") as f_out2:
-                        f_out2.write(img_bytes)
+            target_mat = p_mat if p_mat.exists() else r_mat
+            if img_bytes and target_mat.exists():
                 ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-                with open(p_mat / f"foto_recibida_{ts}.jpg", "wb") as f_ts:
+                with open(target_mat / f"foto_recibida_{ts}.jpg", "wb") as f_ts:
                     f_ts.write(img_bytes)
                 print(f"[Bot] Foto guardada correctamente en materiales/ ({len(img_bytes)} bytes)", flush=True)
         except Exception as err:

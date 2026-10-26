@@ -236,11 +236,96 @@ def get_deliveries_summary() -> str:
     return "\n".join(lines)
 
 
+def parse_portal_teachers(html_path: Path = INDEX_HTML) -> list:
+    """Extrae y parsea el directorio completo del profesorado (const teacherDirectory = [...]) de index.html."""
+    if not html_path.exists():
+        return []
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        m = re.search(r'const teacherDirectory\s*=\s*\[(.*?)\];\s*(?:const|let|var|function)', content, re.DOTALL)
+        if not m:
+            return []
+
+        raw = m.group(1)
+        blocks = re.split(r'\n\s*\},\s*\n\s*\{', raw)
+        teachers = []
+        for b in blocks:
+            n = re.search(r"name:'([^']*)'", b)
+            br = re.search(r"branch:'([^']*)'", b)
+            ro = re.search(r"role:'([^']*)'", b)
+            gb = re.search(r"gradeBadge:'([^']*)'", b)
+            su = re.search(r"summary:'([^']*)'", b)
+            gd = re.search(r"grade:\{.*?detail:'([^']*)'", b, re.DOTALL)
+            sessions = re.findall(r"\{date:'([^']*)',dayLabel:'([^']*)',time:'([^']*)'[^}]*topic:'([^']*)'", b)
+            practices = re.findall(r"\{title:'([^']*)',status:'([^']*)'", b)
+            mails = re.findall(r"\{title:'([^']*)',key:'([^']*)'\}", b)
+
+            if n:
+                teachers.append({
+                    "name": n.group(1),
+                    "branch": br.group(1) if br else "",
+                    "role": ro.group(1) if ro else "",
+                    "gradeBadge": gb.group(1) if gb else "",
+                    "summary": su.group(1) if su else "",
+                    "gradeDetail": gd.group(1) if gd else "",
+                    "sessions": [{"date": s[0], "dayLabel": s[1], "time": s[2], "topic": s[3]} for s in sessions],
+                    "practices": [{"title": p[0], "status": p[1]} for p in practices],
+                    "mails": [{"title": ml[0], "key": ml[1]} for ml in mails]
+                })
+        return teachers
+    except Exception as e:
+        print(f"[Assistant] Error al parsear profesores de {html_path}: {e}")
+        return []
+
+
+def parse_portal_messages(html_path: Path = INDEX_HTML, limit: int = 12) -> list:
+    """Extrae los últimos avisos y correos registrados en el portal (const messages y const mailSummaries)."""
+    if not html_path.exists():
+        return []
+    try:
+        with open(html_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        ms = re.search(r'const mailSummaries\s*=\s*\{(.*?)\};', content, re.DOTALL)
+        summaries = {}
+        if ms:
+            for sm in re.finditer(r"([a-zA-Z0-9_]+)\s*:\s*'((?:\\'|[^'])*)'", ms.group(1)):
+                summaries[sm.group(1)] = sm.group(2).replace("\\'", "'")
+
+        m = re.search(r'const messages\s*=\s*\[(.*?)\];', content, re.DOTALL)
+        if not m:
+            return []
+
+        items = re.findall(r'\{(.*?)\}', m.group(1), re.DOTALL)
+        msgs = []
+        for it in items[:limit]:
+            dt = re.search(r"date:'([^']*)'", it)
+            ti = re.search(r"title:'([^']*)'", it)
+            te = re.search(r"teacher:'([^']*)'", it)
+            ky = re.search(r"key:'([^']*)'", it)
+            k_val = ky.group(1) if ky else ""
+            if ti:
+                msgs.append({
+                    "date": dt.group(1) if dt else "",
+                    "title": ti.group(1),
+                    "teacher": te.group(1) if te else "",
+                    "summary": summaries.get(k_val, "")
+                })
+        return msgs
+    except Exception as e:
+        print(f"[Assistant] Error al parsear correos de {html_path}: {e}")
+        return []
+
+
 def get_portal_summary() -> str:
-    """Extrae un resumen factual completo del portal desde index.html."""
+    """Extrae un resumen factual completo del portal desde index.html (agenda, entregas, profesorado y correos)."""
     try:
         events = parse_portal_events()
         deliveries = parse_portal_deliveries()
+        teachers = parse_portal_teachers()
+        messages = parse_portal_messages(limit=12)
         now = get_madrid_now()
         today = now.date()
         tomorrow = today + timedelta(days=1)
@@ -249,13 +334,14 @@ def get_portal_summary() -> str:
         summary_lines.append(f"Fecha actual del sistema: {format_date_es(today, capitalize=True)} (Europe/Madrid).")
         summary_lines.append(f"Mañana: {format_date_es(tomorrow, capitalize=True)}.")
 
-        # Próximas clases de la semana
-        summary_lines.append("\nAGENDA OFICIAL DE CLASES Y DOCENTES (PRÓXIMOS 10 DÍAS):")
-        for i in range(10):
+        # Próximas clases de los próximos 14 días
+        summary_lines.append("\nAGENDA OFICIAL DE CLASES Y DOCENTES (PRÓXIMOS 14 DÍAS):")
+        for i in range(14):
             d = today + timedelta(days=i)
             evs = events.get(d.isoformat(), [])
             if evs:
-                summary_lines.append(f"  • {format_date_es(d, short_month=True)}:")
+                prefix = " [HOY]" if i == 0 else (" [MAÑANA]" if i == 1 else "")
+                summary_lines.append(f"  • {format_date_es(d, short_month=True)}{prefix}:")
                 for e in evs:
                     h = f"{e.get('start', '')}–{e.get('end', '')}".strip('–')
                     t = e.get('teacher', '')
@@ -268,7 +354,7 @@ def get_portal_summary() -> str:
         summary_lines.append("\nENTREGAS Y PLAZOS EN EL PORTAL:")
         if pendientes:
             for p in pendientes:
-                summary_lines.append(f"  • ⏳ PENDIENTE: {p.get('title')} | Docente: {p.get('teacher')} | Plazo: {p.get('status')}")
+                summary_lines.append(f"  • ⏳ PENDIENTE: {p.get('title')} | Docente: {p.get('teacher')} | Materia: {p.get('subject', '')} | Plazo: {p.get('status')}")
         else:
             summary_lines.append("  • Ninguna entrega pendiente.")
 
@@ -277,6 +363,32 @@ def get_portal_summary() -> str:
             summary_lines.append("  • COMPLETADAS:")
             for e in entregadas:
                 summary_lines.append(f"     - ✓ {e.get('title')} ({e.get('teacher', '')})")
+
+        # Últimos avisos y correos oficiales
+        if messages:
+            summary_lines.append("\nÚLTIMOS CORREOS Y AVISOS OFICIALES RECIBIDOS:")
+            for msg in messages:
+                summary_lines.append(f"  • [{msg['date']}] {msg['title']} (Docente/Remitente: {msg['teacher']}): {msg['summary']}")
+
+        # Directorio completo de profesores (fichas, resúmenes, sesiones, notas y prácticas)
+        if teachers:
+            summary_lines.append("\nDIRECTORIO COMPLETO DEL PROFESORADO DEL MÁSTER (FICHAS, MATERIAS, SESIONES, NOTAS Y PRÁCTICAS):")
+            for t in teachers:
+                t_line = f"  • {t['name']} [{t['branch']}] — {t['role']} | Estado/Calificación: {t['gradeBadge']}"
+                if t['summary']:
+                    t_line += f"\n     - Resumen docente: {t['summary']}"
+                if t['gradeDetail']:
+                    t_line += f"\n     - Detalle de evaluación/estado: {t['gradeDetail']}"
+                if t['sessions']:
+                    s_list = "; ".join([f"{s['dayLabel']} ({s['time']}): {s['topic']}" for s in t['sessions']])
+                    t_line += f"\n     - Sesiones impartidas/programadas: {s_list}"
+                if t['practices']:
+                    p_list = "; ".join([f"{p['title']} [{p['status']}]" for p in t['practices']])
+                    t_line += f"\n     - Prácticas/evaluaciones asociadas: {p_list}"
+                if t['mails']:
+                    m_list = "; ".join([ml['title'] for ml in t['mails']])
+                    t_line += f"\n     - Comunicaciones/correos asociados: {m_list}"
+                summary_lines.append(t_line)
 
         return "\n".join(summary_lines)
     except Exception as e:
@@ -299,18 +411,15 @@ TEMPORALIDAD Y EXACTITUD CRÍTICA:
 • Hoy es: {today_str}, son las {now_hour_str} h en España peninsular (Europe/Madrid).
 • Mañana es: {tomorrow_str}.
 
-ESTADO Y AGENDA OFICIAL DEL PORTAL DE RAQUEL:
+ESTADO, AGENDA, ENTREGAS, CORREOS Y PROFESORADO OFICIAL DEL PORTAL DE RAQUEL:
 {portal_info}
 
-REGLAS DE MÁXIMA FIDELIDAD TEMPORAL Y HORARIA (SUPER EXACTO):
-• Tu ÚNICA fuente de verdad para horarios, clases, docentes de cada día y plazos de entrega es la AGENDA OFICIAL de arriba, extraída directamente del portal de Raquel.
-• Cuando Raquel te pregunte qué clases tiene hoy, qué clases tiene mañana o en cualquier día, responde con MÁXIMA EXACTITUD horaria y de profesores según la agenda.
-• Si hoy no hay clases (p. ej. es fin de semana o día sin docencia), indícalo claramente y dile de inmediato qué clases tiene mañana ({tomorrow_str}).
+REGLAS DE MÁXIMA FIDELIDAD TEMPORAL, HORARIA Y DOCENTE (SUPER EXACTO):
+• Tu ÚNICA fuente de verdad para horarios, clases, fichas de docentes, sesiones, calificaciones, avisos y plazos de entrega es la información oficial de arriba, extraída directamente del portal de Raquel.
+• Cuando Raquel te pida un resumen sobre un profesor o profesora en concreto, utiliza todos los datos de su ficha en el DIRECTORIO COMPLETO DEL PROFESORADO (rama Abogacía/Procura, materia/rol, resumen de lo que imparte, fechas y horas exactas de sus sesiones pasadas o futuras, prácticas o casos prácticos asociados, correos/materiales enviados y nota o estado de evaluación).
+• Cuando Raquel te pregunte qué clases tiene hoy ({today_str}), qué clases tiene mañana ({tomorrow_str}) o en cualquier día, responde con MÁXIMA EXACTITUD horaria y de profesores según la AGENDA OFICIAL.
+• Si hoy no hay clases (p. ej. es fin de semana o día sin docencia), indícalo claramente y dile de inmediato qué clases tiene el próximo día lectivo.
 • NUNCA inventes horarios ni menciones docentes de fechas pasadas como si fueran futuros.
-  - Ejemplo: Sandra Mosteiro, Carolina Moreno y Ana Vázquez impartieron sus sesiones de Procura en semanas anteriores y sus tareas ya están completadas; NO imparten docencia mañana.
-  - Para mañana {tomorrow_str}, los profesores oficiales del turno de tarde en el Colegio de Abogados son:
-    1) 16:30 – 18:30: Responsabilidad civil y penal · Turno de oficio (Sesión 3 de 3) — Docente: José Luis Delgado Domínguez.
-    2) 18:45 – 20:45: Gestiones profesionales — Docente: Mª Luisa Moure.
 • Sé riguroso, resolutivo, claro y conciso.
 
 Tu personalidad y estilo de conversación:
@@ -325,7 +434,7 @@ Cuando corresponda guardar información en el portal tras una petición o envío
 1) Para calificaciones oficiales o notas de tests/evaluaciones:
   [ACCION:GUARDAR_NOTA:{{"titulo": "Título de la prueba o evaluación", "docente": "Nombre del profesor/a", "materia": "Nombre de la asignatura", "nota": "10 / 10", "tipo_nota": "Nota oficial", "remitente": "accesoabogaciaprocura@... o ICA Coruña", "resumen": "Resumen ejecutivo", "cuerpo": "Detalle del correo o acta", "desglose": [{{"label": "Test", "val": "4 / 4"}}, {{"label": "Escritos", "val": "6 / 6"}}]}}]
 
-2) Para nuevas prácticas, casos prácticos o tareas de CEPROC:
+2) Para nuevas prácticas, casos prácticos o tareas:
   [ACCION:GUARDAR_PRACTICA:{{"titulo": "...", "docente": "...", "materia": "...", "plazo": "...", "detalles": "..."}}]
 
 3) Para correos informativos o avisos generales:
