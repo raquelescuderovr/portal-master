@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">35</span>
+      <span class="nav-badge-pill badge-peach">65</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5292,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">28</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">58</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5624,7 +5624,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (35)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (65)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -6268,7 +6268,37 @@ const messages=[
  {date:'16 oct 2026',title:'Responsabilidad civil y penal · horarios y documentación del módulo',meta:'Administración del Máster · José Luis Delgado Domínguez · Abogacía · 19, 20 y 26 oct',key:'schedule',teacher:'José Luis Delgado Domínguez',subjectRef:'Abogacía|Técnicas instrumentales|3',emailSubject:'Responsabilidad civil y penal - José Luis Delgado Domínguez'},
  {date:'15 oct 2026',title:'Material de clase · Actos de comunicación judicial (4 documentos)',meta:'Sandra Mosteiro Costa · Administración del Máster · Procura · clases 19–20 oct',key:'materials',teacher:'Sandra Mosteiro Costa',subjectRef:'Procura|Técnicas instrumentales|3',emailSubject:'Material de clase · Actos de comunicación judicial'},
  {date:'15 oct 2026',title:'DATAfórum Justicia 2026 · suspensión de clases en la Facultad',meta:'Decanato Facultad de Derecho · aviso general · 21–23 oct',key:'dataforum',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Información Dataforum. Suspensión clases'},
- {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · Caso práctico en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0',emailSubject:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador'}
+ {date:'15 oct 2026',title:'Caso práctico: Derechos, deberes y responsabilidad profesional (Entregado en CPROC ✓)',meta:'Ana Vázquez Corte · Procura · Deontología · Caso práctico en CPROC',key:'assignment',teacher:'Ana Vázquez Corte',subjectRef:'Procura|Deontología y responsabilidad|0',emailSubject:'Caso práctico · Derechos, deberes y responsabilidad profesional del procurador'},
+ {date:'14 oct 2026 (12:28)',title:'Presentación completa, modelos turno oficio y tests corregidos (D.ª Vanessa Amarelle)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Vanessa Amarelle Guillín · Deontología Profesional',key:'mail_vanessa_amarelle_tests_14oct',teacher:'Vanessa Amarelle Guillín',subjectRef:'Abogacía|Deontología y responsabilidad|1',emailSubject:'Documentación y corrección de tests - Vanessa Amarelle Guillín'},
+ {date:'13 oct 2026 (11:22)',title:'Carta presentación docente MUAP 2026-2027 (D. Carlos Miguel Sánchez Muiño)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Carlos Miguel Sánchez Muiño (Procurador) · Metodología',key:'mail_carlos_sanchez_muino_carta_13oct',teacher:'Carlos Miguel Sánchez Muiño',subjectRef:'Procura|Técnicas instrumentales|2',emailSubject:'Docente Carlos Miguel Sánchez Muiño [Procurador] carta presentación MUAP 2026-2027'},
+ {date:'09 oct 2026 (13:23)',title:'Primeira reunión do Comité Ambiental da Facultade de Dereito (Decanato)',meta:'Decanato Facultade de Dereito · Green Campus · Martes 13 oct Sala Profesorado',key:'mail_comite_ambiental_09oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Aviso: Primeira reunión do curso do Comité Ambiental da Facultade de Dereito'},
+ {date:'09 oct 2026 (11:18)',title:'Documentación y presentaciones Sesiones 1 y 2 (D.ª Vanessa Amarelle Guillín)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Vanessa Amarelle Guillín · Acta Titularidad Real',key:'mail_vanessa_amarelle_doc_09oct',teacher:'Vanessa Amarelle Guillín',subjectRef:'Abogacía|Deontología y responsabilidad|1',emailSubject:'Documentación de la profesora Dª Vanessa Amarelle Guillín'},
+ {date:'08 oct 2026 (18:12)',title:'Fuentes y base de trabajo clases 5 y 6 oct · Secreto profesional (D. Daniel Garrido)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Daniel Roberto Garrido Pazos · Código Deontológico',key:'mail_garrido_secreto_08oct',teacher:'Daniel Roberto Garrido Pazos',subjectRef:'Abogacía|Deontología y responsabilidad|0',emailSubject:'Fuentes o base de trabajo módulos Máster Abogacía 5 y 6 de octubre de 2026'},
+ {date:'08 oct 2026 (13:45)',title:'Carta presentación y materiales sesión 14 oct · Proceso digital (D.ª Carolina Moreno)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Carolina Moreno Vázquez (Procuradora) · Diapositivas PPTX',key:'mail_carolina_moreno_doc_08oct',teacher:'Carolina Moreno Vázquez',subjectRef:'Procura|Técnicas instrumentales|2',emailSubject:'Docente Dª. Carolina Moreno Vázquez [Procuradora] carta presentación y doc. clase 14 de octubre'},
+ {date:'08 oct 2026 (13:42)',title:'Bolsas Cátedra Fundación Mutualidad · Alumnado Máster Abogacía y Procura (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Difusión institucional UDC',key:'mail_decanato_becas_mutualidad_08oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Bolsas Cátedra - Fundación Mutualidad, estudiantes Máster Abogacía y Procura 2026/2027'},
+ {date:'08 oct 2026 (11:31)',title:'Carta de presentación docente MUAP 2026-2027 (D.ª Carmen Belo González)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Carmen Belo González (Procuradora) · Metodología',key:'mail_carmen_belo_carta_08oct',teacher:'Carmen Belo González',subjectRef:'Procura|Deontología y responsabilidad|1',emailSubject:'Docente Dª. Carmen Belo González [Procuradora] carta presentación MUAP 2026-2027'},
+ {date:'08 oct 2026 (10:52)',title:'Campaña de doazón de sangue Campus de Elviña 19 a 22 de outubro (Decanato)',meta:'Decanato Facultade de Dereito · ADOS Sergas · Autobús de doazón Facultade',key:'mail_doazon_sangue_08oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'CAMPAÑA DE DOAZÓN DE SANGUE DÍA 19, 20, 21 E 22 DE OUTUBRO'},
+ {date:'05 oct 2026 (13:13)',title:'Conferencia maxistral do xuíz Ronald Kaye (Los Angeles Superior Court · Decanato)',meta:'Xulio Ferreiro Baamonde · Decano da Facultade de Dereito · Venres 9 oct Salón de Graos',key:'mail_xuiz_ronald_kaye_05oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Visita do xuíz Ronald Kaye (9 de outubro)'},
+ {date:'02 oct 2026 (12:20)',title:'Convocatoria Becas Cátedra Mutualidad · 150 becas de 2.000 € (D.ª Digna Braña)',meta:'MASTER ABOGACIA - ICA CORUÑA · D.ª Mª Digna Braña Iglesia · Fundación Mutualidad',key:'mail_becas_mutualidad_icacor_02oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'INFORMACIÓN PARA SOLICITUD DE LAS BECAS CÁTEDRA DE LA MUTUALIDAD'},
+ {date:'01 oct 2026 (09:08)',title:'Últimos días de inscrición no Encontro con Empresas ata o 5 oct (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Emprego e prácticas UDC',key:'mail_recordatorio_empresas_01oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Últimos días para inscribirse no Encontro con Empresas (ata o 5 de outubro)'},
+ {date:'29 sep 2026 (13:44)',title:'Credenciales oficiales de acceso al Portal CEPROC (Colegio de Procuradores)',meta:'accesoabogaciaprocura@procuradores-coruna.com · Secretaría ICP Coruña · Usuario y contraseña',key:'mail_ceproc_credenciales_29sep',teacher:'Secretaría Colegio de Procuradores',subjectRef:'Procura|Técnicas instrumentales|0',emailSubject:'MUAP 2026/2028 usuario y contraseña'},
+ {date:'29 sep 2026 (13:29)',title:'Recordatorio urgente: Remisión de la Ficha de Alumno/a firmada (ICACOR)',meta:'MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org · FichaMaster_2026-2028.pdf',key:'mail_recordatorio_ficha_29sep',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'',emailSubject:'Ficha de alumno/a'},
+ {date:'29 sep 2026 (08:53)',title:'European Central Bank: Traineeship in HR data and outreach (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Prácticas BCE Frankfurt',key:'mail_ecb_hr_29sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'European Central Bank: Traineeship in HR data and outreach (15109)'},
+ {date:'28 sep 2026 (09:08)',title:'Pautas de Procura: Portal CEPROC, Certificado Digital y Autofirma (Decano ICP)',meta:'MASTER ABOGACIA - ICA CORUÑA · Fdo. D. Javier Carlos Sánchez García · Normas del módulo',key:'mail_inicio_procura_decano_28sep',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0',emailSubject:'Inicio Máster universitario en Abogacía y Procura 2026/2028'},
+ {date:'28 sep 2026 (09:05)',title:'Carta presentación y Estatutos Procura · Clases 1 oct (D. Javier Sánchez García)',meta:'MASTER ABOGACIA - ICA CORUÑA · D. Javier Carlos Sánchez García (Decano ICP) · 4 adjuntos',key:'mail_javier_sanchez_carta_28sep',teacher:'Javier Sánchez García',subjectRef:'Procura|Técnicas instrumentales|0',emailSubject:'Docente Javier Carlos Sánchez García [Procurador] carta presentación MUAP 2026-2027'},
+ {date:'24 sep 2026 (10:06)',title:'Acuse de recibo: Ficha de alumna Máster recibida formalmente (ICACOR)',meta:'MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org · Matrícula y ficha oficial',key:'mail_acuse_ficha_raquel_24sep',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'',emailSubject:'Ficha máster_Raquel Escudero'},
+ {date:'23 sep 2026 (14:46)',title:'Información de interese para o alumnado do Mestrado MUDDIA (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Saúda Dirección Máster',key:'mail_muddia_sauda_23sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Información de interese para o alumnado do Mestrado MUDDIA'},
+ {date:'23 sep 2026 (13:22)',title:'V Xornadas Tributarias do Atlántico · Programa e inscrición (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · 2 MB dossier adjunto',key:'mail_jornadas_tributarias_23sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'INFORMACION JORNADAS TRIBUTARIAS DEL ATLANTICO'},
+ {date:'21 sep 2026 (11:46)',title:'Eleccións de delegados/as de curso · Luns 28 de setembro (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Votacións quendas mañá e tarde',key:'mail_eleccions_delegados_21sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Eleccións delegados/as curso'},
+ {date:'18 sep 2026 (13:47)',title:'Encontro con Empresas na Facultade de Dereito (14 de outubro) · Inscrición',meta:'Decanato Facultade de Dereito · D.ª María-Ángeles Fuentes-Loureiro · Saídas profesionais',key:'mail_encontro_empresas_18sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Encontro con Empresas na Facultade de Dereito (14 de outubro) | Inscríbete!'},
+ {date:'15 sep 2026 (13:10)',title:'Bienvenida oficial al Máster de Abogacía y Procura · Grupos, cronograma y actos',meta:'MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org · Coordinación ICACOR / UDC',key:'mail_bienvenida_master_15sep',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'',emailSubject:'Bienvenida al Máster de Acceso a la Abogacía y la Procura'},
+ {date:'14 sep 2026 (15:24)',title:'Xornada de Benvida ao curso 2026-27 · Elviña (Vicerreitoría de Estudantes)',meta:'Decanato Facultade de Dereito · Vicerreitoría de Estudantes · Estadio Mariña Dourada',key:'mail_xornada_benvida_14sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Xornada de Benvida ao curso 2026 - 27'},
+ {date:'11 sep 2026 (11:05)',title:'Datathon Dataforum Justicia 2026 · Retos xurídicos e tecnolóxicos (Decano)',meta:'Xulio Ferreiro Baamonde · Decano da Facultade de Dereito · Suspensión clases 21–23 oct',key:'mail_datathon_11sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Datathon'},
+ {date:'10 sep 2026 (10:20)',title:'Conferencia: Incorporación dos MASC en procedementos civís (Dra. Rosalía Bello)',meta:'Decanato Facultade de Dereito · Dra. Dª Rosalía Bello Hidalgo (ICACOR) · Salón de Graos',key:'mail_conferencia_masc_10sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Información sobre Conferencia el próximo lunes 14 de septiembre'},
+ {date:'10 sep 2026 (08:22)',title:'Benvida ao curso e Cumprimento da normativa de Campus sen Fume (Decano)',meta:'Xulio Ferreiro Baamonde · Decano da Facultade de Dereito · decanato.dereito@udc.gal',key:'mail_benvida_sen_fume_10sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Benvida e Cumprimento da normativa de Campus sen Fume'},
+ {date:'07 sep 2026 (15:00)',title:'Publicación convocatoria axudas máster para titulados en desemprego (Decanato)',meta:'Decanato Facultade de Dereito · Vicerreitoría de Titulacións · Orde DOG 23 xullo 2026',key:'mail_axudas_desemprego_07sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Publicación convocatoria axudas máster para titulados en desemprego'},
+ {date:'03 sep 2026 (14:48)',title:'[alumnado.dereito] Novo cambio no horario de 2º (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Horarios de curso',key:'mail_horario_2_03sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'[alumnado.dereito] Novo cambio no horario de 2º'},
+ {date:'03 sep 2026 (14:36)',title:'European Central Bank: Traineeship in Legal Services (Decanato)',meta:'Decanato Facultade de Dereito · decanato.dereito@udc.gal · Prácticas en Frankfurt',key:'mail_ecb_legal_03sep',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'European Central Bank: Traineeship in Legal Services (14995)'}
 ];
 
 const mailSummaries={
@@ -6300,7 +6330,37 @@ const mailSummaries={
  assignment:'Instrucciones y 3 documentos base (Código Deontológico, Estatuto General y Derechos y deberes). Práctica ya completada y enviada en CPROC.',
  materials:'Remite 4 documentos de Sandra Mosteiro Costa: Carta de presentación, Presentación de clase sobre actos de comunicación, Guía legislativa y Jurisprudencia sobre plazos.',
  dataforum:'El Decanato suspende las clases en la Facultad del 21 al 23 de octubre por DATAfórum Justicia 2026 (PALEXCO) e indica inscribirse para justificar asistencia.',
- schedule:'Horarios oficiales y enlace a la documentación del módulo de Responsabilidad civil y penal y turno de oficio con José Luis Delgado Domínguez (19, 20 y 26 de octubre).'
+ schedule:'Horarios oficiales y enlace a la documentación del módulo de Responsabilidad civil y penal y turno de oficio con José Luis Delgado Domínguez (19, 20 y 26 de octubre).',
+ mail_vanessa_amarelle_tests_14oct:'MATERIAL Y RESOLUCIÓN DE TESTS: D.ª Vanessa Amarelle Guillín remite la presentación íntegra de Deontología Profesional, modelos de justicia gratuita y turno de oficio, junto con las preguntas y respuestas corregidas de los tests de mañana y tarde.',
+ mail_carlos_sanchez_muino_carta_13oct:'PRESENTACIÓN DOCENTE: D. Carlos Miguel Sánchez Muiño, procurador de los tribunales, remite su carta de presentación y objetivos docentes para las sesiones de Técnicas Instrumentales (Proceso Digital y TIC).',
+ mail_comite_ambiental_09oct:'PARTICIPACIÓN UNIVERSITARIA: Convocatoria abierta a todo el estudiantado de la Facultad para la primera reunión del Comité Ambiental (Green Campus) el 13 de octubre a las 12:00 h en la Sala de Profesorado.',
+ mail_vanessa_amarelle_doc_09oct:'MATERIAL DOCENTE: Documentación de Deontología Profesional (Sesiones 1 y 2) impartidas por D.ª Vanessa Amarelle Guillín, incluyendo diapositivas y modelo censurado de Acta de Titularidad Real (prevención de blanqueo).',
+ mail_garrido_secreto_08oct:'MATERIAL DOCENTE: Remisión de la base de trabajo de las sesiones del 5 y 6 de octubre con D. Daniel Roberto Garrido Pazos sobre secreto profesional (art. 5 Código Deontológico) y enlace de descarga de jurisprudencia y casos.',
+ mail_carolina_moreno_doc_08oct:'PRESENTACIÓN Y MATERIAL: D.ª Carolina Moreno Vázquez, procuradora, traslada su carta de presentación y la presentación PowerPoint preparatoria para la clase del miércoles 14 de octubre sobre proceso digital y TIC.',
+ mail_decanato_becas_mutualidad_08oct:'AYUDAS AL ESTUDIO: El Decanato de la Facultad de Derecho traslada formalmente la convocatoria de las Becas Cátedra de la Fundación Mutualidad (150 becas de 2.000 €) dirigidas específicamente a los alumnos del MUAP.',
+ mail_carmen_belo_carta_08oct:'PRESENTACIÓN DOCENTE: D.ª Carmen Belo González, procuradora de los tribunales, remite su carta de presentación y directrices de evaluación para el módulo de Responsabilidad disciplinaria de los procuradores.',
+ mail_doazon_sangue_08oct:'CAMPAÑA SOLIDARIA: La Facultad de Derecho difunde la campaña de la Axencia de Doazón de Órganos e Sangue (ADOS) de la Xunta de Galicia con unidad móvil en el Campus de Elviña del 19 al 22 de octubre.',
+ mail_xuiz_ronald_kaye_05oct:'ACTIVIDAD ACADÉMICA: Sesión magistral abierta al alumnado el viernes 9 de octubre a las 12:00 h en el Salón de Grados a cargo del juez Ronald Kaye (Superior Court of Los Angeles County) sobre el sistema judicial estadounidense.',
+ mail_becas_mutualidad_icacor_02oct:'AYUDAS DE FORMACIÓN: D.ª Digna Braña traslada las bases de las 150 becas de 2.000 € de la Fundación Mutualidad para alumnos del Máster. Solicitudes a través del Portal Amigos de la Fundación hasta el 21 de octubre a las 13:00 h.',
+ mail_recordatorio_empresas_01oct:'EMPLEO Y PRÁCTICAS: Recordatorio del Decanato sobre el cierre del plazo (5 de octubre) para inscribirse y subir el currículum al Encuentro con Empresas de la Facultad de Derecho previsto para el 14 de octubre.',
+ mail_ceproc_credenciales_29sep:'CREDENCIALES Y PLATAFORMA: Envío de claves privadas de acceso para Raquel Escudero al área privada del Centro de Estudios de Procuradores (CEPROC) en icpcoruna.com para entrega de tareas, materiales y videoteca.',
+ mail_recordatorio_ficha_29sep:'EXPEDIENTE Y MATRÍCULA: La Administración del Máster en el ICACOR reitera con carácter de urgencia el envío de la ficha de alumno/a debidamente cumplimentada y firmada para la apertura de expedientes.',
+ mail_ecb_hr_29sep:'OPORTUNIDAD PROFESIONAL: El Decanato traslada la convocatoria de prácticas remuneradas (1.170 €/mes) en el Banco Central Europeo (Frankfurt) en el área de gestión de recursos humanos y datos.',
+ mail_inicio_procura_decano_28sep:'DIRECTRICES OFICIALES DE PROCURA: D. Javier Sánchez García, Decano de Procuradores, fija el protocolo del curso: avisos con 1 semana de antelación, notas publicadas entre 3 y 10 días tras clase, uso de CEPROC y obligatoriedad de Certificado Digital y Autofirma instalados.',
+ mail_javier_sanchez_carta_28sep:'CONVOCATORIA PRIMERA CLASE: D. Javier Sánchez García convoca a la primera clase del jueves 1 de octubre (Tarde: 18:45-20:45 h). Envía Estatuto General y estatutos del Colegio de A Coruña. Sistema de evaluación: test 40% + casos y escritos 60%.',
+ mail_acuse_ficha_raquel_24sep:'CONFIRMACIÓN ADMINISTRATIVA: La Administración del Máster en el ICACOR confirma por escrito la recepción correcta de la ficha oficial de alumna y datos de contacto de Raquel Escudero.',
+ mail_muddia_sauda_23sep:'INFORMACIÓN DE MÁSTER: El Decanato de la Facultad de Derecho difunde la carta de saludo e información académica de inicio de curso remitida por la dirección del Máster MUDDIA.',
+ mail_jornadas_tributarias_23sep:'JORNADAS PROFESIONALES: Difusión del programa de la 5.ª edición de las Jornadas Tributarias del Atlántico organizadas en la Facultad de Derecho con participación de juristas e inspectores tributarios.',
+ mail_eleccions_delegados_21sep:'REPRESENTACIÓN ESTUDIANTIL: El Decanato convoca las elecciones para elegir delegados y delegadas de curso para el lunes 28 de septiembre (Mañana: 9:15 h; Tarde: 15:15 h).',
+ mail_encontro_empresas_18sep:'ORIENTACIÓN Y SALIDAS PROFESIONALES: La Vicedecana de Internacionalización e Mobilidade convoca a los estudiantes al Encuentro con Empresas del 14 de octubre (despachos, notarías, empresas y consultoras) con carga de CV hasta el 5 de octubre.',
+ mail_bienvenida_master_15sep:'APERTURA DEL MÁSTER: Comunicación oficial de inicio de curso 26/28: reparto de grupos (Mañana/Tarde), cronograma cuatrimestral, 80% asistencia mínima, suspensión por DATAFORUM (21-23 oct), inauguración el 25 sept y reunión el 29 sept.',
+ mail_xornada_benvida_14sep:'VIDA UNIVERSITARIA: Convocatoria de la Jornada festiva de bienvenida al curso de la Universidade da Coruña el jueves 17 de septiembre en el Estadio Universitario Mariña Dourada (Campus de Elviña).',
+ mail_datathon_11sep:'INNOVACIÓN JURÍDICA: El Decano Xulio Ferreiro presenta el Datathon del Dataforum Justicia 2026 (concurso interfacultades de Derecho e Informática) y ratifica la suspensión de clases del 21 al 23 de octubre para asistir al congreso.',
+ mail_conferencia_masc_10sep:'DERECHO PROCESAL: Conferencia en el Salón de Grados de la Facultad a cargo de la Dra. Rosalía Bello Hidalgo (ICACOR) sobre la incorporación de los Medios Adecuados de Solución de Controversias (MASC) en vía civil.',
+ mail_benvida_sen_fume_10sep:'CONVIVENCIA Y SALUD: Saludo oficial de apertura de curso del Decano Xulio Ferreiro y recordatorio del protocolo de Campus sin Humo en las inmediaciones y accesos de la Facultad de Derecho.',
+ mail_axudas_desemprego_07sep:'BECAS DE MATRÍCULA: Publicación de la orden de la Xunta de Galicia en el DOG de ayudas para financiar el coste de matrícula de másteres universitarios oficiales a personas en situación de desempleo.',
+ mail_horario_2_03sep:'ORGANIZACIÓN DOCENTE: Aviso de actualización y ajuste de aulas y horarios académicos publicado en la web de la Facultad de Derecho para el nuevo curso.',
+ mail_ecb_legal_03sep:'PRÁCTICAS INTERNACIONALES: Convocatoria de prácticas de 3 a 12 meses en los Servicios Jurídicos del Banco Central Europeo en Frankfurt para graduados en Derecho (1.170 €/mes más ayuda de alojamiento).',
 };
 
 const details={
@@ -7064,7 +7124,387 @@ const details={
    source:'Programa Oficial DATAfórum Justicia 2026 · Auditorio',
    attachments:[
     {name:'Programa oficial DATAfórum Justicia 2026',url:'https://www.justicia2030.es/dataforum',kind:'Documento PDF local'}
-   ]
+   ],
+ mail_vanessa_amarelle_tests_14oct:{
+  kicker:'Material docente y evaluación · Abogacía (ICACOR)',
+  title:'Presentación completa y resolución de tests (D.ª Vanessa Amarelle Guillín)',
+  date:'Correo recibido: miércoles, 14 de octubre de 2026 (12:28)',
+  teacher:'Vanessa Amarelle Guillín',
+  subjectRef:'Abogacía|Deontología y responsabilidad|1',
+  body:'La docente D.ª Vanessa Amarelle Guillín traslada a los estudiantes del Máster la documentación final de las sesiones de Deontología Profesional:\n\n• Presentación completa de diapositivas.\n• Modelos oficiales de designación de turno de oficio y solicitud de justicia gratuita.\n• Batería de preguntas de test planteadas en las sesiones de turno de mañana y turno de tarde con sus respuestas razonadas y corregidas.',
+  source:'Correo de master.abogacia@icacor.org · «Documentación y corrección de tests - Vanessa Amarelle Guillín» · 14 oct 2026, 12:28 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_carlos_sanchez_muino_carta_13oct:{
+  kicker:'Carta de presentación docente · Procura',
+  title:'Carta de presentación MUAP 2026-2027 (D. Carlos Miguel Sánchez Muiño)',
+  date:'Correo recibido: martes, 13 de octubre de 2026 (11:22)',
+  teacher:'Carlos Miguel Sánchez Muiño',
+  subjectRef:'Procura|Técnicas instrumentales|2',
+  body:'El procurador D. Carlos Miguel Sánchez Muiño remite su carta de presentación institucional y guía metodológica para las clases de Técnicas Instrumentales correspondientes al proceso telemático, LexNet y gestión digital de los procuradores.',
+  source:'Correo de master.abogacia@icacor.org · «Docente Carlos Miguel Sánchez Muiño [Procurador] carta presentación MUAP 2026-2027» · 13 oct 2026, 11:22 h',
+  attachments:[
+   {name:'Carta presentación docente_Carlos M. Sánchez Muiño.pdf (185 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_comite_ambiental_09oct:{
+  kicker:'Sostenibilidad y participación · Decanato UDC',
+  title:'Primeira reunión do curso do Comité Ambiental (Facultade de Dereito)',
+  date:'Correo recibido: viernes, 9 de octubre de 2026 (13:23)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Convocatoria de la Facultad de Derecho:\n\n«Estimado alumnado: convocámosvos á primeira reunión do curso do Comité Ambiental da Facultade de Dereito (programa Green Campus) que terá lugar o vindeiro martes 13 de outubro ás 12:00 h na Sala de Profesorado. Persoa de contacto: david.sdiaz@udc.gal».',
+  source:'Correo de decanato.dereito@udc.gal · «Aviso: Primeira reunión do curso do Comité Ambiental da Facultade de Dereito» · 9 oct 2026, 13:23 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_vanessa_amarelle_doc_09oct:{
+  kicker:'Material docente · Abogacía (ICACOR)',
+  title:'Documentación de Deontología Profesional (D.ª Vanessa Amarelle Guillín)',
+  date:'Correo recibido: viernes, 9 de octubre de 2026 (11:18)',
+  teacher:'Vanessa Amarelle Guillín',
+  subjectRef:'Abogacía|Deontología y responsabilidad|1',
+  body:'Envío del material de trabajo de Deontología Profesional para las sesiones iniciales del módulo:\n\n1. Presentación PowerPoint «Master Abogacía Deontología Profesional Vanessa Amarelle Guillín - Sesiones 1 y 2.pptx» (502 KB).\n2. Documento modelo de prevención y compliance: «MODELO Acta Titularidad Real_Censurado.pdf» (1 MB).',
+  source:'Correo de master.abogacia@icacor.org · «Documentación de la profesora Dª Vanessa Amarelle Guillín» · 9 oct 2026, 11:18 h',
+  attachments:[
+   {name:'Master Abogacía Deontología Profesional (502 KB)',url:outlookUrl,kind:'PPTX Adjunto'},
+   {name:'MODELO Acta Titularidad Real_Censurado.pdf (1 MB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_garrido_secreto_08oct:{
+  kicker:'Material docente · Abogacía (ICACOR)',
+  title:'Fuentes y base de trabajo: Secreto Profesional (D. Daniel Roberto Garrido Pazos)',
+  date:'Correo recibido: jueves, 8 de octubre de 2026 (18:12)',
+  teacher:'Daniel Roberto Garrido Pazos',
+  subjectRef:'Abogacía|Deontología y responsabilidad|0',
+  body:'El profesor D. Daniel Roberto Garrido Pazos remite el material doctrinal y normativo relativo a las clases impartidas los días 5 y 6 de octubre sobre secreto profesional de la abogacía (artículo 5 del Código Deontológico).\n\nIncluye archivo PDF adjunto y enlace de descarga WeTransfer con documentación complementaria y casos prácticos.',
+  source:'Correo de master.abogacia@icacor.org · «Fuentes o base de trabajo módulos Máster Abogacía 5 y 6 de octubre de 2026» · 8 oct 2026, 18:12 h',
+  attachments:[
+   {name:'secreto profesional artículo 5 Código Deontológico.pdf (211 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_carolina_moreno_doc_08oct:{
+  kicker:'Carta de presentación y material · Procura',
+  title:'Carta presentación y diapositivas clase 14 oct (D.ª Carolina Moreno Vázquez)',
+  date:'Correo recibido: jueves, 8 de octubre de 2026 (13:45)',
+  teacher:'Carolina Moreno Vázquez',
+  subjectRef:'Procura|Técnicas instrumentales|2',
+  body:'Remisión oficial de la documentación de la procuradora D.ª Carolina Moreno Vázquez para la sesión del 14 de octubre:\n\n• Carta presentación docente_ Carolina Moreno Vázquez.pdf (192 KB).\n• Presentación PowePoint de Carolina Moreno.pptx (52 KB) relativa al proceso telemático, presentación de escritos y traslados.',
+  source:'Correo de master.abogacia@icacor.org · «Docente Dª. Carolina Moreno Vázquez [Procuradora] carta presentación y doc. clase 14 de octubre» · 8 oct 2026, 13:45 h',
+  attachments:[
+   {name:'Carta presentación docente Carolina Moreno (192 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Presentación PowerPoint Carolina Moreno (52 KB)',url:outlookUrl,kind:'PPTX Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_decanato_becas_mutualidad_08oct:{
+  kicker:'Becas y ayudas al estudio · Decanato UDC',
+  title:'Bolsas Cátedra Fundación Mutualidad (Decanato Facultade de Dereito)',
+  date:'Correo recibido: jueves, 8 de octubre de 2026 (13:42)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decanato de la Facultad de Derecho remite la convocatoria de la Fundación Mutualidad para el estudiantado matriculado en el Máster Universitario en Abogacía y Procura 2026/2027.\n\nSe convocan 150 ayudas de 2.000 € brutos para colaborar en los gastos de matrícula y formación profesional. Plazo abierto hasta el 21 de octubre.',
+  source:'Correo de decanato.dereito@udc.gal · «Bolsas Cátedra - Fundación Mutualidad, estudiantes Máster Abogacía y Procura 2026/2027» · 8 oct 2026, 13:42 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_carmen_belo_carta_08oct:{
+  kicker:'Carta de presentación docente · Procura',
+  title:'Carta de presentación MUAP 2026-2027 (D.ª Carmen Belo González)',
+  date:'Correo recibido: jueves, 8 de octubre de 2026 (11:31)',
+  teacher:'Carmen Belo González',
+  subjectRef:'Procura|Deontología y responsabilidad|1',
+  body:'La procuradora D.ª Carmen Belo González remite su carta de presentación oficial para el alumnado del MUAP detallando las líneas maestras de su docencia sobre régimen disciplinario, quejas, recursos y colegiación.',
+  source:'Correo de master.abogacia@icacor.org · «Docente Dª. Carmen Belo González [Procuradora] carta presentación MUAP 2026-2027» · 8 oct 2026, 11:31 h',
+  attachments:[
+   {name:'Carta presentación docente_Carmen Belo González.pdf (184 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_doazon_sangue_08oct:{
+  kicker:'Campaña solidaria · Decanato UDC',
+  title:'Campaña de doazón de sangue no Campus de Elviña (Decanato)',
+  date:'Correo recibido: jueves, 8 de octubre de 2026 (10:52)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Difusión remitida por el Decanato para la comunidad universitaria de la Facultad de Derecho:\n\nCampaña de donación de sangre coordinada por la Axencia de Doazón de Órganos e Sangue (ADOS - Sergas), con presencia de unidad móvil frente al edificio de la Facultad del 19 al 22 de octubre de 2026.',
+  source:'Correo de decanato.dereito@udc.gal · «CAMPAÑA DE DOAZÓN DE SANGUE DÍA 19, 20, 21 E 22 DE OUTUBRO» · 8 oct 2026, 10:52 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_xuiz_ronald_kaye_05oct:{
+  kicker:'Conferencia internacional · Decanato UDC',
+  title:'Conferencia maxistral: Xuíz Ronald Kaye (Los Angeles County)',
+  date:'Correo recibido: lunes, 5 de octubre de 2026 (13:13)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decano Xulio Ferreiro invita al alumnado a la conferencia del magistrado Ronald Kaye (Tribunal Superior del Condado de Los Ángeles):\n\n«United States Justice System: The Tension Between Individual Liberties and Protecting Society».\nViernes 9 de octubre de 2026 a las 12:00 h en el Salón de Grados de la Facultad de Derecho.',
+  source:'Correo de decanato.dereito@udc.gal · «Visita do xuíz Ronald Kaye (9 de outubro)» · 5 oct 2026, 13:13 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_becas_mutualidad_icacor_02oct:{
+  kicker:'Becas de posgrado · Coordinación ICACOR',
+  title:'Convocatoria Becas Cátedra Mutualidad 2026/2027 (D.ª Digna Braña)',
+  date:'Correo recibido: viernes, 2 de octubre de 2026 (12:20)',
+  teacher:'Digna Braña Iglesias',
+  subjectRef:'',
+  body:'Comunicación oficial de D.ª Mª Digna Braña Iglesia, Coordinadora del Máster en el ICACOR:\n\nSe abre la convocatoria de las Becas Cátedra de la Mutualidad correspondientes al curso 2026/2027.\n• Cuantía: 150 becas de 2.000 € brutos.\n• Destinatarios: Estudiantes de primer curso del Máster Universitario en Abogacía y Procura.\n• Plazo: Del 22 de septiembre al 21 de octubre de 2026 a las 13:00 h.\n• Tramitación: A través del Portal Amigos de la Fundación Mutualidad.',
+  source:'Correo de master.abogacia@icacor.org · «INFORMACIÓN PARA SOLICITUD DE LAS BECAS CÁTEDRA DE LA MUTUALIDAD» · 2 oct 2026, 12:20 h',
+  attachments:[
+   {name:'Portal Amigos de la Fundación Mutualidad',url:'https://www.fundacionmutualidad.es/',kind:'Web Oficial'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_recordatorio_empresas_01oct:{
+  kicker:'Empleabilidad · Decanato UDC',
+  title:'Recordatorio: Inscrición Encontro con Empresas (Decanato Facultade de Dereito)',
+  date:'Correo recibido: jueves, 1 de octubre de 2026 (09:08)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Aviso de la Secretaría de Decanato:\n\n«Lembramos que o vindeiro luns 5 de outubro remata o prazo para inscribirse e subir o currículo na plataforma do Encontro con Empresas da Facultade de Dereito, que terá lugar o 14 de outubro. Actividade altamente recomendada para saídas profesionais e prácticas».',
+  source:'Correo de decanato.dereito@udc.gal · «Últimos días para inscribirse no Encontro con Empresas (ata o 5 de outubro)» · 1 oct 2026, 09:08 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_ceproc_credenciales_29sep:{
+  kicker:'Credenciales de acceso · Procura (Colegio)',
+  title:'Credenciales de acceso al área privada CEPROC (Colegio de Procuradores)',
+  date:'Correo recibido: martes, 29 de septiembre de 2026 (13:44)',
+  teacher:'Secretaría Colegio de Procuradores',
+  subjectRef:'Procura|Técnicas instrumentales|0',
+  body:'El Ilustre Colegio de Procuradores de A Coruña (Secretaría del Máster) remite las claves de acceso a la plataforma formativa CEPROC:\n\n• Portal web: https://www.icpcoruna.com/\n• Usuario: raquel.escudero@udc.es\n• Uso: Acceso a la sección MUAP 26-28, descarga de documentación, seguimiento de tareas publicadas, entregas telemáticas y videoteca.',
+  source:'Correo de accesoabogaciaprocura@procuradores-coruna.com · «MUAP 2026/2028 usuario y contraseña» · 29 sep 2026, 13:44 h',
+  attachments:[
+   {name:'Portal CEPROC (icpcoruna.com)',url:'https://www.icpcoruna.com/copia-de-entrega-de-tareas',kind:'Web Externa'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_recordatorio_ficha_29sep:{
+  kicker:'Administración y expediente · Abogacía (ICACOR)',
+  title:'Recordatorio: Envío de la Ficha de Alumno/a (Administración ICACOR)',
+  date:'Correo recibido: martes, 29 de septiembre de 2026 (13:29)',
+  teacher:'Coordinación Máster (ICACOR - UDC)',
+  subjectRef:'',
+  body:'Aviso urgente remitido por la Administración del ICACOR a todo el estudiantado matriculado:\n\n«Estimados/as alumnos/as: Os recordamos a aquellos que todavía no lo hayáis hecho, la necesidad urgente de cumplimentar y remitir firmada la Ficha de Alumno adjunta a esta dirección de correo (master.abogacia@icacor.org) para poder formalizar la documentación y asignaciones del curso».',
+  source:'Correo de master.abogacia@icacor.org · «Ficha de alumno/a» · 29 sep 2026, 13:29 h',
+  attachments:[
+   {name:'FichaMaster_2026-2028.pdf (402 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_ecb_hr_29sep:{
+  kicker:'Convocatoria internacional · Decanato UDC',
+  title:'Traineeship in HR Data and Outreach · Banco Central Europeo (Decanato)',
+  date:'Correo recibido: martes, 29 de septiembre de 2026 (08:53)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Difusión institucional remitida por el Decanato de la Facultad de Derecho sobre el programa de prácticas del Banco Central Europeo en Frankfurt para titulados en Derecho y ciencias sociales con perfil de gestión y análisis de datos.',
+  source:'Correo de decanato.dereito@udc.gal · «European Central Bank: Traineeship in HR data and outreach (15109)» · 29 sep 2026, 08:53 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_inicio_procura_decano_28sep:{
+  kicker:'Pautas institucionales y técnicas · Procura',
+  title:'Inicio de curso y directrices de Procura (D. Javier Carlos Sánchez García, Decano ICP)',
+  date:'Correo recibido: lunes, 28 de septiembre de 2026 (09:08)',
+  teacher:'Javier Sánchez García',
+  subjectRef:'Procura|Técnicas instrumentales|0',
+  body:'Directrices fundamentales comunicadas por el Decano del Colegio de Procuradores para todo el alumnado del MUAP:\n\n1. Calendario y materiales: La información previa y documentación de cada clase se remitirá con una semana de antelación.\n2. Calificaciones: Se publicarán entre los 3 y 10 días posteriores a la celebración de cada sesión.\n3. Plataforma CEPROC: Gestión a través de https://www.icpcoruna.com/ (MUAP 26-28).\n4. REQUISITO TÉCNICO INDISPENSABLE: Disponer de Certificado Digital de la FNMT y software Autofirma correctamente instalados y operativos en el ordenador personal (se presta soporte presencial en la sede colegial de C/ Bolivia 6, 2º).',
+  source:'Correo de master.abogacia@icacor.org · «Inicio Máster universitario en Abogacía y Procura 2026/2028» · 28 sep 2026, 09:08 h',
+  attachments:[
+   {name:'Portal CEPROC',url:'https://www.icpcoruna.com/',kind:'Web Externa'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_javier_sanchez_carta_28sep:{
+  kicker:'Convocatoria de clase y estatutos · Procura',
+  title:'Carta de presentación y normativa de Procura · Clase 1 oct (D. Javier Sánchez García)',
+  date:'Correo recibido: lunes, 28 de septiembre de 2026 (09:05)',
+  teacher:'Javier Sánchez García',
+  subjectRef:'Procura|Técnicas instrumentales|0',
+  body:'El Decano del Colegio de Procuradores remite la convocatoria y documentación de la primera clase del curso (jueves 1 de octubre):\n\n• Horarios: Mañana de 11:45 a 13:45 h; Tarde de 18:45 a 20:45 h.\n• Materia: Técnicas Instrumentales (Iniciación a la Procura, organización colegial, turno de oficio, representación procesal, L.O. 1/2025 y mandato CC).\n• Criterios de evaluación: Examen tipo test (40%) y resolución de casos prácticos y escritos profesionales (60%).\n• Adjunta Estatuto General de los Procuradores (RD 1281/2002) y Órdenes de aprobación y reforma de estatutos del ICP A Coruña de 2013, 2016 y 2021.',
+  source:'Correo de master.abogacia@icacor.org · «Docente Javier Carlos Sánchez García [Procurador] carta presentación MUAP 2026-2027» · 28 sep 2026, 09:05 h',
+  attachments:[
+   {name:'RD 1281_2002 Estatuto General Procuradores (275 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Estatutos ICP A Coruña y reformas (PDFs)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_acuse_ficha_raquel_24sep:{
+  kicker:'Acuse de recibo · Abogacía (ICACOR)',
+  title:'Confirmación de recepción de Ficha de Alumna (Administración ICACOR)',
+  date:'Correo recibido: jueves, 24 de septiembre de 2026 (10:06)',
+  teacher:'Coordinación Máster (ICACOR - UDC)',
+  subjectRef:'',
+  body:'Acuse de recibo oficial remitido por el ICACOR confirmando la entrega en plazo y correcta tramitación de la Ficha de Alumno de Raquel Escudero Valcárcel-Ríos para el curso 2026/2028.',
+  source:'Correo de master.abogacia@icacor.org · «Ficha máster_Raquel Escudero» · 24 sep 2026, 10:06 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_muddia_sauda_23sep:{
+  kicker:'Información académica · Decanato UDC',
+  title:'Información de interese para o alumnado de Máster (Decanato Facultade de Dereito)',
+  date:'Correo recibido: miércoles, 23 de septiembre de 2026 (14:46)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Difusión remitida por el Decanato de la Facultad de Derecho adjuntando la salutación oficial de inicio de actividades formativas para el alumnado de posgrado.',
+  source:'Correo de decanato.dereito@udc.gal · «Información de interese para o alumnado do Mestrado MUDDIA» · 23 sep 2026, 14:46 h',
+  attachments:[
+   {name:'SAUDA MASTER MUDDIA asinado.pdf (108 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_jornadas_tributarias_23sep:{
+  kicker:'Congresos y jornadas · Decanato UDC',
+  title:'V Xornadas Tributarias do Atlántico (Decanato Facultade de Dereito)',
+  date:'Correo recibido: miércoles, 23 de septiembre de 2026 (13:22)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decanato de la Facultad de Derecho traslada al estudiantado de posgrado el programa completo de la 5ª edición de las Jornadas Tributarias del Atlántico, foro de análisis de fiscalidad y litigación tributaria.',
+  source:'Correo de decanato.dereito@udc.gal · «INFORMACION JORNADAS TRIBUTARIAS DEL ATLANTICO» · 23 sep 2026, 13:22 h',
+  attachments:[
+   {name:'Jornada_Atlantico_5a_edicion_2026.pdf (2 MB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_eleccions_delegados_21sep:{
+  kicker:'Elecciones y representación · Decanato UDC',
+  title:'Eleccións de delegados/as de curso (Decanato Facultade de Dereito)',
+  date:'Correo recibido: lunes, 21 de septiembre de 2026 (11:46)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Convocatoria formal de la Facultad de Derecho para la elección de representantes y delegados de grupo en los turnos de mañana y tarde para el curso académico 2026/2027.',
+  source:'Correo de decanato.dereito@udc.gal · «Eleccións delegados/as curso» · 21 sep 2026, 11:46 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_encontro_empresas_18sep:{
+  kicker:'Empleabilidad y despachos · Decanato UDC',
+  title:'Encontro con Empresas na Facultade de Dereito (D.ª María-Ángeles Fuentes-Loureiro)',
+  date:'Correo recibido: viernes, 18 de septiembre de 2026 (13:47)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'La Vicedecana D.ª María-Ángeles Fuentes-Loureiro invita al alumnado a participar en la jornada de salidas profesionales del 14 de octubre en el edificio de la Facultad:\n\n• Participación de bufetes jurídicos, entidades financieras, empresas y colegios profesionales.\n• Registro obligatorio y subida de CV en https://encuentrosconempresas.com/derechoudc antes del 5 de octubre.',
+  source:'Correo de decanato.dereito@udc.gal · «Encontro con Empresas na Facultade de Dereito (14 de outubro) | Inscríbete!» · 18 sep 2026, 13:47 h',
+  attachments:[
+   {name:'Web Inscripción Encuentro con Empresas',url:'https://encuentrosconempresas.com/derechoudc',kind:'Web Externa'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_bienvenida_master_15sep:{
+  kicker:'Apertura oficial del curso · Abogacía e ICACOR',
+  title:'Bienvenida al Máster de Acceso a la Abogacía y la Procura (Coordinación ICACOR / UDC)',
+  date:'Correo recibido: martes, 15 de septiembre de 2026 (13:10)',
+  teacher:'Coordinación Máster (ICACOR - UDC)',
+  subjectRef:'',
+  body:'Comunicado fundacional del curso académico 2026/2028 remitido por la Coordinación del Máster:\n\n1. Distribución de grupos:\n   - Mañana: desde Mena Cruz, María de las Mercedes hasta Vilas Villaverde, Carmen.\n   - Tarde: desde Agra Sambade, Manel hasta Mella Álvarez, Alejandro.\n2. Permutas y cambios: Permuta directa comunicada a branaabogada@icacor.es. Solicitudes justificadas a branaabogada@icacor.es y maria.rovira@udc.es para resolución de la Comisión Académica.\n3. Régimen de asistencia: Asistencia presencial obligatoria con un mínimo del 80% por módulo.\n4. DATAfórum Justicia 2026: Del 21 al 23 de octubre no habrá clases para asistir al congreso nacional en Palexco (inscripción obligatoria en dataforumjusticia.es).\n5. Calendario de actos de inicio:\n   - Acto de Inauguración: Viernes 25 de septiembre a las 12:30 h en el Salón de Actos del ICACOR (C/ Federico Tapia 11).\n   - Reunión informativa y de coordinación: Martes 29 de septiembre en el Salón de Actos del ICACOR (Mañana: 13:00 h; Tarde: 16:30 h).\n6. Ficha de Alumno: Obligatorio enviarla firmada a master.abogacia@icacor.org.\n7. Correo UDC: Obligatoriedad de utilizar exclusivamente el correo institucional @udc.es a partir del 1 de octubre.',
+  source:'Correo de master.abogacia@icacor.org · «Bienvenida al Máster de Acceso a la Abogacía y la Procura» · 15 sep 2026, 13:10 h',
+  attachments:[
+   {name:'CRONOGRAMA-PRIMER-CUATRIMESTRE-2026-2027.doc (156 KB)',url:outlookUrl,kind:'DOC Adjunto'},
+   {name:'CartaActoAperturaMaster_26-27.pdf (100 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'FichaMaster_2026-2028.pdf (402 KB)',url:outlookUrl,kind:'PDF Adjunto'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_xornada_benvida_14sep:{
+  kicker:'Bienvenida universitaria · UDC',
+  title:'Xornada de Benvida ao curso 2026-27 (Vicerreitoría de Estudantes)',
+  date:'Correo recibido: lunes, 14 de septiembre de 2026 (15:24)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'La Vicerreitoría de Estudantes e Empregabilidade y el Decanato invitan al alumnado de la Facultad a la jornada de bienvenida de la UDC el jueves 17 de septiembre de 11:00 a 15:00 h en el Estadio Universitario Mariña Dourada.',
+  source:'Correo de decanato.dereito@udc.gal · «Xornada de Benvida ao curso 2026 - 27» · 14 sep 2026, 15:24 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_datathon_11sep:{
+  kicker:'Innovación y congresos · Decanato UDC',
+  title:'Presentación do Datathon · DATAfórum Xustiza 2026 (Decano Xulio Ferreiro)',
+  date:'Correo recibido: viernes, 11 de septiembre de 2026 (11:05)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decano de la Facultad de Derecho comunica la celebración del concurso universitario Datathon en el marco del DATAfórum Justicia 2026:\n\n• Participación de equipos conjuntos de Derecho e Informática resolviendo retos de justicia digital y legaltech.\n• Recordatorio oficial de que del 21 al 23 de octubre se suspenden las clases lectivas en la Facultad para acudir a Palexco.\n• Reuniones informativas convocadas para el 16 de septiembre.',
+  source:'Correo de decanato.dereito@udc.gal · «Datathon» · 11 sep 2026, 11:05 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_conferencia_masc_10sep:{
+  kicker:'Conferencias formativas · Decanato UDC',
+  title:'Conferencia MASC en procedementos civís (Dra. Dª Rosalía Bello Hidalgo)',
+  date:'Correo recibido: jueves, 10 de septiembre de 2026 (10:20)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decanato convoca al estudiantado de posgrado a la conferencia formativa impartida por la abogada del ICACOR y doctora en Derecho D.ª Rosalía Bello Hidalgo sobre el impacto procesal de los MASC en los litigios civiles (Salón de Grados, lunes 14 de septiembre a las 12:15 h).',
+  source:'Correo de decanato.dereito@udc.gal · «Información sobre Conferencia el próximo lunes 14 de septiembre» · 10 sep 2026, 10:20 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_benvida_sen_fume_10sep:{
+  kicker:'Saludo de inicio de curso · Decanato UDC',
+  title:'Benvida de curso e protocolo Campus sen Fume (Decano Xulio Ferreiro Baamonde)',
+  date:'Correo recibido: jueves, 10 de septiembre de 2026 (08:22)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decano de la Facultad traslada su bienvenida a toda la comunidad universitaria en el inicio del curso 2026/2027 y reitera la obligatoriedad de cumplir la normativa de espacios libres de humo en todo el recinto de la Facultad y sus puertas de acceso.',
+  source:'Correo de decanato.dereito@udc.gal · «Benvida e Cumprimento da normativa de Campus sen Fume» · 10 sep 2026, 08:22 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_axudas_desemprego_07sep:{
+  kicker:'Becas de matrícula · Decanato UDC',
+  title:'Axudas para matrícula de máster a persoas en situación de desemprego (Decanato)',
+  date:'Correo recibido: lunes, 7 de septiembre de 2026 (15:00)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'El Decanato de la Facultad de Derecho traslada la publicación oficial en el Diario Oficial de Galicia de la convocatoria de ayudas económicas destinadas a financiar la matrícula de titulados universitarios en situación de desempleo matriculados en másteres universitarios oficiales en el SUG durante el curso 2026/2027 (plazo hasta el 6 de octubre).',
+  source:'Correo de decanato.dereito@udc.gal · «Publicación convocatoria axudas máster para titulados en desemprego» · 7 sep 2026, 15:00 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_horario_2_03sep:{
+  kicker:'Horarios y organización · Decanato UDC',
+  title:'Actualización de horarios de curso na Facultade de Dereito (Decanato)',
+  date:'Correo recibido: jueves, 3 de septiembre de 2026 (14:48)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Aviso remitido por la Secretaría de la Facultad de Derecho informando de la publicación en el portal web oficial de los horarios definitivos y distribución de espacios docentes de cara al inicio de las clases.',
+  source:'Correo de decanato.dereito@udc.gal · «[alumnado.dereito] Novo cambio no horario de 2º» · 3 sep 2026, 14:48 h',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ },
+ mail_ecb_legal_03sep:{
+  kicker:'Prácticas jurídicas internacionales · Decanato UDC',
+  title:'Traineeship in Legal Services · Banco Central Europeo (Decanato)',
+  date:'Correo recibido: jueves, 3 de septiembre de 2026 (14:36)',
+  teacher:'Decanato Facultad de Derecho',
+  subjectRef:'',
+  body:'Convocatoria de excelencia internacional remitida por el Decanato de la Facultad de Derecho (Mª Teresa Seoane Sande):\n\nPrograma de prácticas profesionales en los Servicios Jurídicos del Banco Central Europeo (ECB Traineeship in Legal Services - Ref. 14995) en Frankfurt am Main.\n• Duración: De 3 a 12 meses.\n• Retribución: 1.170 € mensuales más complemento de vivienda.\n• Destinatarios: Graduados en Derecho con buen nivel de inglés.\n• Plazo de candidatura: Hasta el 22 de septiembre de 2026.',
+  source:'Correo de decanato.dereito@udc.gal · «European Central Bank: Traineeship in Legal Services (14995)» · 3 sep 2026, 14:36 h',
+  attachments:[
+   {name:'Portal Empleo BCE (ecb.europa.eu)',url:'https://www.ecb.europa.eu/careers/',kind:'Web Oficial'},
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
+ }
   }};
 
 const courses=[
@@ -13078,11 +13518,11 @@ function renderMail(q='', filter=currentMailFilter){
  let list = messages;
 
  if(currentMailFilter === 'icacor'){
-  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.title||'').toLowerCase().includes('abogacía'));
+  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.teacher||'').includes('Amarelle') || (m.teacher||'').includes('Garrido') || (m.teacher||'').includes('Coordinación') || (m.title||'').toLowerCase().includes('abogacía'));
  } else if(currentMailFilter === 'procura'){
-  list = list.filter(m => (m.meta||'').includes('procuradores') || (m.meta||'').includes('Procura') || (m.teacher||'').includes('Belo') || (m.teacher||'').includes('Moreno') || (m.teacher||'').includes('Sánchez Muiño') || (m.teacher||'').includes('Mosteiro') || (m.teacher||'').includes('Goimil') || (m.teacher||'').includes('Carnota') || (m.teacher||'').includes('Díaz Gallego') || (m.teacher||'').includes('Vázquez Corte') || (m.teacher||'').includes('Javier Sánchez'));
+  list = list.filter(m => (m.meta||'').includes('procuradores') || (m.meta||'').includes('Procura') || (m.meta||'').includes('CEPROC') || (m.teacher||'').includes('Belo') || (m.teacher||'').includes('Moreno') || (m.teacher||'').includes('Sánchez Muiño') || (m.teacher||'').includes('Mosteiro') || (m.teacher||'').includes('Goimil') || (m.teacher||'').includes('Carnota') || (m.teacher||'').includes('Díaz Gallego') || (m.teacher||'').includes('Vázquez Corte') || (m.teacher||'').includes('Javier Sánchez') || (m.teacher||'').includes('Procurador'));
  } else if(currentMailFilter === 'udc'){
-  list = list.filter(m => (m.meta||'').includes('Dereito') || (m.meta||'').includes('Decanato') || (m.meta||'').includes('UDC') || (m.teacher||'').includes('Decanato') || (m.teacher||'').includes('Vicerreitoría') || (m.teacher||'').includes('Consello') || (m.teacher||'').includes('Rectorado'));
+  list = list.filter(m => (m.meta||'').includes('Dereito') || (m.meta||'').includes('Decanato') || (m.meta||'').includes('UDC') || (m.meta||'').includes('udc.gal') || (m.teacher||'').includes('Decanato') || (m.teacher||'').includes('Vicerreitoría') || (m.teacher||'').includes('Consello') || (m.teacher||'').includes('Rectorado'));
  } else if(currentMailFilter === 'notas'){
   list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci') || (m.title||'').toLowerCase().includes('test'));
  } else if(currentMailFilter === 'practicas'){
