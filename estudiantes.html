@@ -5057,7 +5057,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" id="sideNavDeliveriesBadge" style="font-weight:800;padding:2px 7px">⏳ Entregas</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -5169,7 +5169,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   </div>
 
   <div class="side-note">
-    <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 19 oct 2026
+    <b>Primer cuatrimestre</b><br>1 oct 2026 — 31 ene 2027<br>Revisión registrada: 26 oct 2026
     <div class="side-links">
       <a class="side-drive-link" href="https://outlook.office.com/mail/" target="_blank" rel="noopener noreferrer">✉️ Bandeja de Outlook ↗</a>
       <a class="side-drive-link" href="https://www.icpcoruna.com/copia-de-tfm-24-26-1" target="_blank" rel="noopener noreferrer">🏛️ Plataforma CPROC (MUAP) ↗</a>
@@ -5248,7 +5248,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value">2 por entregar · Próx: 29 oct y 2 nov</strong>
+            <strong class="badge-value" id="welcomeDeliveriesSummary">Control de entregas</strong>
           </div>
         </button>
 
@@ -5291,13 +5291,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <!-- 1. INFORMACIÓN DEL DÍA + NAVEGACIÓN + PRÓXIMOS 3 DÍAS -->
     <div class="section-title">
       <div>
-        <h2 id="dayHeading">Información del día</h2>
-        <p id="daySubtitle">Martes, 20 de octubre de 2026</p>
+        <h2 id="dayHeading">Información de hoy</h2>
+        <p id="daySubtitle">Lunes, 26 de octubre de 2026</p>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <div class="day-control-nav">
           <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
-          <span id="dayPosition">HOY · 20 OCT</span>
+          <span id="dayPosition">HOY · 26 OCT</span>
           <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
         </div>
         <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
@@ -5312,7 +5312,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="minimal-box-head">
         <div>
           <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
-          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Martes 20, miércoles 21 y jueves 22 de octubre de 2026</p>
+          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Martes 27, miércoles 28 y jueves 29 de octubre de 2026</p>
         </div>
         <span>Pincha en el titular para ver los datos</span>
       </div>
@@ -5550,22 +5550,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (2 pendientes · 5 completadas en 3 asignaturas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: 2 tareas abiertas con plazo activo (ICACOR y DATAfórum) y 5 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>
+        <h2>Próximas entregas y prácticas (1 pendiente · 6 completadas en 4 asignaturas)</h2>
+        <p>Seguimiento de prácticas y trabajos del Máster: 1 tarea abierta con plazo activo (ICACOR · Parte A y Parte B) y 6 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">2 pendientes · 5 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">1 pendiente · 6 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
       <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (7)</button>
-      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (2)</button>
-      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (5 en 3 asignaturas)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (1)</button>
+      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (6 en 4 asignaturas)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (5)</button>
       <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (2)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 7 prácticas (2 pendientes y 5 completadas en 3 asignaturas).</span>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 7 prácticas (1 pendiente y 6 completadas en 4 asignaturas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -5606,7 +5606,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Correo clasificado por asignatura y profesor</h2>
-        <p>Mensajes revisados hasta el 23 de octubre de 2026 (14:10 h) con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
+        <p>Mensajes revisados hasta el 26 de octubre de 2026 (13:18 h) con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button class="pill-btn" id="btnToggleAllMails" style="font-size:11px;padding:6px 12px">Expandir todos ▾</button>
@@ -5696,8 +5696,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div class="hub-card-text">
           <span class="hub-card-kicker">Tareas y Prácticas</span>
-          <strong class="hub-card-title">Cosas pendientes (2)</strong>
-          <span class="hub-card-meta">⏳ 29 oct (Delgado) y 2 nov (DATAfórum)</span>
+          <strong class="hub-card-title">Cosas pendientes (1)</strong>
+          <span class="hub-card-meta">⏳ 29 oct (Delgado) · DATAfórum entregado ✓</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -5719,10 +5719,28 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 </div>
 
 <script>
-const _now=new Date();
-const todayDate=new Date(_now.getFullYear(),_now.getMonth(),_now.getDate());
-let selectedDate=new Date(todayDate);
-let monthDate=new Date(todayDate);
+function makeLocalDate(y,mIndex,d){
+ return new Date(y,mIndex,d,12,0,0,0);
+}
+function getMadridTodayDate(){
+ try{
+  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  let y=Number(parts.find(p=>p.type==='year').value);
+  const m=Number(parts.find(p=>p.type==='month').value);
+  const d=Number(parts.find(p=>p.type==='day').value);
+  if(y===2025&&m>=9)y=2026;
+  return makeLocalDate(y,m-1,d);
+ }catch(e){
+  const n=new Date();
+  let y=n.getFullYear();
+  if(y===2025&&n.getMonth()>=8)y=2026;
+  return makeLocalDate(y,n.getMonth(),n.getDate());
+ }
+}
+const _now=getMadridTodayDate();
+let todayDate=makeLocalDate(_now.getFullYear(),_now.getMonth(),_now.getDate());
+let selectedDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),todayDate.getDate());
+let monthDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),1);
 let group='tarde';
 let activeView='inicio';
 
@@ -5861,26 +5879,31 @@ const events={ '2026-10-01':[
   ],
  '2026-11-11':[
    {start:'16:30',end:'17:30',name:'Propiedad horizontal (1.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'17:45',end:'20:45',name:'Propiedad horizontal (2.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'17:45',end:'20:45',name:'Propiedad horizontal (2.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 1 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion1',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
  '2026-11-12':[
-   {start:'16:30',end:'20:45',name:'Cuestiones procesales / diligencias preliminares / cautelares / monitorio',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'Cuestiones procesales / diligencias preliminares / cautelares / monitorio',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 2 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion2',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
  '2026-11-13':[
    {start:'16:30',end:'20:45',name:'Demanda, contestación, reconvención y juicio ordinario',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-16':[
-   {start:'16:30',end:'20:45',name:'La prueba en el proceso civil',teacher:'José Luis Seoane',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'La prueba en el proceso civil',teacher:'José Luis Seoane',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 3 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion3',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
  '2026-11-17':[
    {start:'16:30',end:'18:30',name:'Fase oral del proceso civil',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'18:45',end:'20:45',name:'Juicio verbal',teacher:'Digna Braña',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'18:45',end:'20:45',name:'Juicio verbal',teacher:'Digna Braña',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 4 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion4',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
  '2026-11-18':[
    {start:'16:30',end:'18:30',name:'Terminación del proceso',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|4',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-19':[
-   {start:'16:30',end:'20:45',name:'Recursos civiles',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|5',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'Recursos civiles',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|5',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 5 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion5',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
  '2026-11-20':[
    {start:'16:30',end:'19:00',name:'Ejecución procesal / Procura',teacher:'Juan Lage Fdez-Cervera',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|5',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
@@ -6075,6 +6098,66 @@ const deliveries=[
   submitted:false,
   detailKey:'entrega_delgado',
   details:'Caso práctico oficial de dos partes: Parte A (Insostenibilidad de la pretensión y Asistencia Jurídica Gratuita) y Parte B (Parte de siniestro de RCP y Turno de Oficio). Plazo oficial: hasta el 29 de octubre de 2026.'
+ },
+ {
+  date:new Date(2026,10,11),
+  title:'Casos Procesal Civil (Sesión 1): Competencia, conciliación, diligencias preliminares y cautelares',
+  teacher:'Fernando Lousada',
+  subject:'Abogacía · Práctica Procesal Civil',
+  subjectRef:'Abogacía|Procesal civil|0',
+  subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
+  status:'⏳ Pendiente (Plazo: 11 nov 2026 · antes 20:00 h)',
+  submitted:false,
+  detailKey:'entrega_lousada_sesion1',
+  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del miércoles 11 de noviembre. 4 casos prácticos previstos: Competencia y conciliación, Diligencias Preliminares, Medidas cautelares (Alcoa) y Cuestiones Generales. Tus preguntas asignadas (Grupo Tarde · Escudero): Preguntas 2 (en casos de 4), Preguntas 2 y 6 (en casos de 8), Preguntas 2, 6 y 10 (en casos de 12) y todas las comunes.'
+ },
+ {
+  date:new Date(2026,10,12),
+  title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
+  teacher:'Fernando Lousada',
+  subject:'Abogacía · Práctica Procesal Civil',
+  subjectRef:'Abogacía|Procesal civil|1',
+  subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
+  status:'⏳ Pendiente (Plazo: 12 nov 2026 · antes 20:00 h)',
+  submitted:false,
+  detailKey:'entrega_lousada_sesion2',
+  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del jueves 12 de noviembre. Casos: Divorcio internacional (1), Wally Procesal (sin envío por email, exposición en clase), Reconvención y Divorcio internacional (2). Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
+ },
+ {
+  date:new Date(2026,10,16),
+  title:'Casos Procesal Civil (Sesión 3): Romeo contra Julieta y Tutela de derechos fundamentales',
+  teacher:'Fernando Lousada',
+  subject:'Abogacía · Práctica Procesal Civil',
+  subjectRef:'Abogacía|Procesal civil|3',
+  subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
+  status:'⏳ Pendiente (Plazo: 16 nov 2026 · antes 20:00 h)',
+  submitted:false,
+  detailKey:'entrega_lousada_sesion3',
+  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del lunes 16 de noviembre. 4 casos previstos: Romeo contra Julieta (1 y 2) y Tutela de derechos fundamentales. Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
+ },
+ {
+  date:new Date(2026,10,17),
+  title:'Casos Procesal Civil (Sesión 4): Desalojo de okupas y Monitorio Comercial',
+  teacher:'Fernando Lousada',
+  subject:'Abogacía · Práctica Procesal Civil',
+  subjectRef:'Abogacía|Procesal civil|4',
+  subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
+  status:'⏳ Pendiente (Plazo: 17 nov 2026 · antes 20:00 h)',
+  submitted:false,
+  detailKey:'entrega_lousada_sesion4',
+  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del martes 17 de noviembre. Casos: Desalojo de okupas y Proceso Monitorio Comercial. Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
+ },
+ {
+  date:new Date(2026,10,19),
+  title:'Casos Procesal Civil (Sesión 5): Recurso de apelación y Jurisprudencia constitucional',
+  teacher:'Fernando Lousada',
+  subject:'Abogacía · Práctica Procesal Civil',
+  subjectRef:'Abogacía|Procesal civil|5',
+  subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
+  status:'⏳ Pendiente (Plazo: 19 nov 2026 · antes 20:00 h)',
+  submitted:false,
+  detailKey:'entrega_lousada_sesion5',
+  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del jueves 19 de noviembre. Casos: Recurso de apelación y Análisis clínico de jurisprudencia constitucional (análisis sin envío, exposición oral en clase). Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
  },
  {
   date:new Date(2026,9,22),
@@ -6400,7 +6483,7 @@ const details={
  materials:{
   kicker:'Apuntes y correo · Procura · Técnicas instrumentales',
   title:'Material de clase · Actos de comunicación judicial',
-  date:'Correo recibido: miércoles, 15 de octubre de 2026 · Clases: 19 y 20 de octubre de 2026',
+  date:'Correo recibido: jueves, 15 de octubre de 2026 · Clases: 19 y 20 de octubre de 2026',
   teacher:'Sandra Mosteiro Costa',
   subjectRef:'Procura|Técnicas instrumentales|3',
   body:'El correo remite los cuatro documentos de estudio de la profesora Sandra Mosteiro Costa para preparar las sesiones sobre actos de comunicación judicial y el caso práctico sobre plazos procesales. El cronograma sitúa sus clases el lunes 19 y martes 20 de octubre (09:30–11:30 grupo de mañana; 16:30–18:30 grupo de tarde).',
@@ -6416,7 +6499,7 @@ const details={
  schedule:{
   kicker:'Correo y apuntes · Abogacía · Técnicas instrumentales',
   title:'Responsabilidad civil y penal · turno de oficio',
-  date:'Correo recibido: jueves, 16 de octubre de 2026 · Sesiones: 19, 20 y 26 de octubre de 2026',
+  date:'Correo recibido: viernes, 16 de octubre de 2026 · Sesiones: 19, 20 y 26 de octubre de 2026',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
   body:'El módulo impartido por José Luis Delgado Domínguez contempla seis horas presenciales por grupo en el Colegio de Abogados. Grupo de mañana: lunes 19 oct (11:45–13:45), martes 20 oct (11:45–13:45) y lunes 26 oct (09:30–11:30). Grupo de tarde: lunes 19 oct (18:45–20:45), martes 20 oct (18:45–20:45) y lunes 26 oct (16:30–18:30). El correo incluye el enlace a la documentación de estudio del módulo.',
@@ -6516,6 +6599,91 @@ const details={
    {name:'Carpeta general Máster ',url:driveFolderUrl,kind:'Plataforma CPROC'}
   ],
   extra:'⏳ Plazo oficial: 10 días naturales a contar desde la sesión presencial (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org.'
+ },
+ entrega_lousada_sesion1:{
+  isDelivery:true,
+  kicker:'Práctica Procesal Civil · Sesión 1 (Jueves 12 nov · 4 horas)',
+  title:'Casos Procesal Civil (Sesión 1): Competencia, conciliación, diligencias preliminares y cautelares',
+  date:'Plazo de entrega por correo: Miércoles, 11 de noviembre de 2026 antes de las 20:00 h',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|0',
+  body:'Programación oficial de casos prácticos de la Sesión 1 (12 de noviembre, 4 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 12 (1) Competencia y conciliación.doc (MASC, mediación y competencia judicial).\n  2) Nov. 12 (2) Diligencias Preliminares.doc (preparación del juicio ordinario ex arts. 256 y ss. LEC).\n  3) Nov. 12 (3) Medidas cautelares - Alcoa.doc (presupuestos cautelares: fumus boni iuris, periculum in mora y caución).\n  4) Nov. 12 (4) Cuestiones Generales.doc (capacidad, legitimación y postulación).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior (11 de noviembre).\n  - Se corregirán en clase y la entrega en tiempo junto con la exposición oral son básicas para la puntuación final.',
+  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
+  mailKey:'mail_lousada_26oct',
+  attachments:[
+   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%2012%20nov%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n%20de%20ma%C3%B1ana%2012%20de%20noviembre.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
+   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+  ],
+  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del miércoles 11 de noviembre a fernando.lousada@udc.es.'
+ },
+ entrega_lousada_sesion2:{
+  isDelivery:true,
+  kicker:'Práctica Procesal Civil · Sesión 2 (Viernes 13 nov · 4 horas)',
+  title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
+  date:'Plazo de entrega por correo: Jueves, 12 de noviembre de 2026 antes de las 20:00 h',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|1',
+  body:'Programación oficial de casos prácticos de la Sesión 2 (13 de noviembre, 4 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 13 (1) Divorcio internacional (1).doc.\n  2) Nov. 13 (2) Wally Procesal.docx (¡ATENCIÓN! No requiere envío por email; basta la exposición en clase conforme a las instrucciones del docente).\n  3) Nov. 13 (3) Reconvención.doc (art. 406 LEC, conexidad y contestación a la reconvención).\n  4) Nov. 13 (4) Divorcio internacional (2).doc.\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior (12 de noviembre).\n  - Se finalizará la corrección de los casos del día 12 y se iniciará la de los casos del día 13.',
+  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
+  mailKey:'mail_lousada_26oct',
+  attachments:[
+   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%2013%20nov%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n%20de%20ma%C3%B1ana%2013%20de%20noviembre.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
+   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+  ],
+  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del jueves 12 de noviembre a fernando.lousada@udc.es. En Wally Procesal no se envía nada (exposición oral).'
+ },
+ entrega_lousada_sesion3:{
+  isDelivery:true,
+  kicker:'Práctica Procesal Civil · Sesión 3 (Martes 17 nov · 2 horas)',
+  title:'Casos Procesal Civil (Sesión 3): Romeo contra Julieta y Tutela de derechos fundamentales',
+  date:'Plazo de entrega por correo: Lunes, 16 de noviembre de 2026 antes de las 20:00 h',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|3',
+  body:'Programación oficial de casos prácticos de la Sesión 3 (17 de noviembre, 2 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 17 (1) Romeo contra Julieta (1).doc.\n  2) Nov. 17 (2) Romeo contra Julieta (2).doc.\n  3) Nov. 17 (3) Tutela de derechos fundamentales.doc (procedimiento especial art. 249.1.2º LEC y vía sumaria).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior (16 de noviembre).\n  - Si quedare algún caso pendiente de las sesiones anteriores se concluirá y se corregirán los de la sesión.',
+  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
+  mailKey:'mail_lousada_26oct',
+  attachments:[
+   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%2017%20nov%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n%20de%20ma%C3%B1ana%2017%20de%20noviembre.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
+   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+  ],
+  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del lunes 16 de noviembre a fernando.lousada@udc.es.'
+ },
+ entrega_lousada_sesion4:{
+  isDelivery:true,
+  kicker:'Práctica Procesal Civil · Sesión 4 (Miércoles 18 nov · 2 horas)',
+  title:'Casos Procesal Civil (Sesión 4): Desalojo de okupas y Monitorio Comercial',
+  date:'Plazo de entrega por correo: Martes, 17 de noviembre de 2026 antes de las 20:00 h',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|4',
+  body:'Programación oficial de casos prácticos de la Sesión 4 (18 de noviembre, 2 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 18 (1) Desalojo de okupas.doc (tutela sumaria de la posesión ex art. 250.1.4º LEC y desalojo inmediato).\n  2) Nov. 18 (2) Monitorio Comercial.doc (reclamación dineraria líquida, vencida y exigible ex arts. 812 y ss. LEC).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior (17 de noviembre).\n  - Se concluirán posibles casos pendientes del día anterior y se corregirán los asignados.',
+  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
+  mailKey:'mail_lousada_26oct',
+  attachments:[
+   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%2018%20nov%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n%20de%20ma%C3%B1ana%2018%20de%20noviembre.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
+   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+  ],
+  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del martes 17 de noviembre a fernando.lousada@udc.es.'
+ },
+ entrega_lousada_sesion5:{
+  isDelivery:true,
+  kicker:'Práctica Procesal Civil · Sesión 5 (Jueves 19 / Viernes 20 nov · 4 horas)',
+  title:'Casos Procesal Civil (Sesión 5): Recurso de apelación y Jurisprudencia constitucional',
+  date:'Plazo de entrega por correo: Jueves, 19 de noviembre de 2026 antes de las 20:00 h',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|5',
+  body:'Programación oficial de casos prácticos de la Sesión final de Procesal Civil (4 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 19 (1) Análisis clínico Jurisprudencia constitucional.doc (¡ATENCIÓN! No requiere envío por email; basta el análisis y la exposición oral en clase).\n  2) Nov. 19 (2) Recurso de apelación.doc (interposición de recurso ordinario ex arts. 458 y ss. LEC).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior a la sesión.\n  - Remate final de la corrección de todos los casos presentados durante las clases.',
+  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
+  mailKey:'mail_lousada_26oct',
+  attachments:[
+   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%20Final%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20para%20la%20sesi%C3%B3n%20final%20de%20Pr%C3%A1ctica%20Procesal%20Civil.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
+   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+  ],
+  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del día anterior a fernando.lousada@udc.es. En análisis de jurisprudencia constitucional no se envía nada (exposición oral).'
  },
  entrega_apud_acta:{
   isDelivery:true,
@@ -11963,12 +12131,12 @@ function openDetail(key){
 const pad=n=>String(n).padStart(2,'0');
 const keyOf=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const sameDay=(a,b)=>keyOf(a)===keyOf(b);
-const fmtFull=d=>new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d);
-const fmtShort=d=>new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short'}).format(d).replace('.','');
+const fmtFull=d=>new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(makeLocalDate(d.getFullYear(),d.getMonth(),d.getDate()));
+const fmtShort=d=>new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short'}).format(makeLocalDate(d.getFullYear(),d.getMonth(),d.getDate())).replace('.','');
 
 function openEventDetail(dateStr,idx){
  const dParts=dateStr.split('-').map(Number);
- const evDate=new Date(dParts[0],dParts[1]-1,dParts[2]);
+ const evDate=makeLocalDate(dParts[0],dParts[1]-1,dParts[2]);
  const e=(events[dateStr]||[])[idx];
  if(!e)return;
  closeMenu();
@@ -11994,7 +12162,7 @@ function openEventDetail(dateStr,idx){
   return;
  }
 
- selectedDate = new Date(dParts[0], dParts[1]-1, dParts[2]);
+ selectedDate = makeLocalDate(dParts[0], dParts[1]-1, dParts[2]);
  renderDay();
  setView('inicio', false);
  const todaySec = document.getElementById('todaySection');
@@ -12007,14 +12175,14 @@ function renderHomeHeadlines(){
 
  // Siempre los próximos 3 días a partir de hoy (la fecha real actual)
  const upcoming=[];
- const cursor=new Date(todayDate);
+ const cursor=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),todayDate.getDate());
  for(let step=1;step<=20&&upcoming.length<3;step++){
   cursor.setDate(cursor.getDate()+1);
   const ck=keyOf(cursor);
   const raw=events[ck]||[];
-  const filtered=raw.map((ev,idx)=>({ev,idx,ck,date:new Date(cursor)}));
+  const filtered=raw.map((ev,idx)=>({ev,idx,ck,date:makeLocalDate(cursor.getFullYear(),cursor.getMonth(),cursor.getDate())}));
   if(filtered.length){
-   upcoming.push({date:new Date(cursor),ck,items:filtered});
+   upcoming.push({date:makeLocalDate(cursor.getFullYear(),cursor.getMonth(),cursor.getDate()),ck,items:filtered});
   }
  }
 
@@ -12053,10 +12221,36 @@ function renderHomeHeadlines(){
 
 function getLiveClockStr(){
  const n=new Date();
- return n.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+ try{
+  return n.toLocaleTimeString('es-ES',{timeZone:'Europe/Madrid',hour:'2-digit',minute:'2-digit'});
+ }catch(_e){
+  return n.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+ }
+}
+
+function refreshTodayDate(forceSelectToday=false){
+ const freshToday=getMadridTodayDate();
+ const dayChanged=!sameDay(freshToday,todayDate);
+ const wasViewingToday=sameDay(selectedDate,todayDate);
+ if(dayChanged || forceSelectToday){
+  todayDate=freshToday;
+  if(forceSelectToday || wasViewingToday){
+   selectedDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),todayDate.getDate());
+   monthDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),1);
+  }
+  renderDay();
+  if(dayChanged){
+   if(typeof renderCourses==='function') renderCourses();
+   if(typeof renderSidebarTree==='function') renderSidebarTree();
+   if(typeof renderTeachers==='function') renderTeachers();
+  }
+  return true;
+ }
+ return false;
 }
 
 function updateClockDisplay(){
+ if(refreshTodayDate(false)) return;
  if(sameDay(selectedDate,todayDate)){
   const timeStr=getLiveClockStr();
   const welEl=document.getElementById('welcomeDate');
@@ -12077,6 +12271,16 @@ function renderDay(){
  document.getElementById('daySubtitle').textContent=isToday?`${fmtFull(selectedDate)} · Hora actual: ${timeStr}`:`${fmtFull(selectedDate)} · Pincha en cualquier titular para ver todos sus datos`;
  document.getElementById('dayHeading').textContent=isToday?'Información de hoy':'Información del día';
  document.getElementById('dayPosition').textContent=isToday?`HOY · ${fmtShort(selectedDate).toUpperCase()}`:fmtShort(selectedDate).toUpperCase();
+ const delgadoDue=makeLocalDate(2026,9,29);
+ const diffDays=Math.round((delgadoDue.getTime()-todayDate.getTime())/86400000);
+ const sideDelgadoDueEl=document.getElementById('sideDelgadoDueText');
+ if(sideDelgadoDueEl && !isTaskSubmitted('entrega_delgado')){
+  sideDelgadoDueEl.textContent=diffDays>1?`Jue 29 oct · Quedan ${diffDays} días`:(diffDays===1?'Jue 29 oct · Mañana vence':(diffDays===0?'Jue 29 oct · Vence hoy':'Jue 29 oct'));
+ }
+ const cardDelgadoBadge=document.querySelector('#cardTaskDelgado .ptb-due-badge');
+ if(cardDelgadoBadge && !isTaskSubmitted('entrega_delgado')){
+  cardDelgadoBadge.textContent=diffDays>1?`⏳ Plazo: Jue 29 oct (${diffDays} días)`:(diffDays===1?'⏳ Plazo: Jue 29 oct (mañana)':(diffDays===0?'⏳ Plazo: Hoy Jue 29 oct':'⏳ Plazo: Jue 29 oct'));
+ }
  document.getElementById('todayList').innerHTML=list.length?list.map(({e,idx})=>`
   <button class="headline-item" data-event-ref="${k}|${idx}">
    <span class="headline-time">${e.start}${e.end?`<small>a ${e.end}</small>`:''}</span>
@@ -12084,8 +12288,9 @@ function renderDay(){
    <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
   </button>
  `).join(''):(() => {
-    const isWeekend = selectedDate.getDay()===0 || selectedDate.getDay()===6;
-    const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(selectedDate);
+    const safeSel = makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
+    const isWeekend = safeSel.getDay()===0 || safeSel.getDay()===6;
+    const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(safeSel);
     return `<div class="empty-cozy">
     <div class="empty-cozy-top">
       <div class="empty-cozy-icon-box">
@@ -12234,9 +12439,12 @@ function renderActiveMasterBanner(){
 }
 
 setInterval(updateClockDisplay,10000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')updateClockDisplay();});
+window.addEventListener('focus',updateClockDisplay);
+window.addEventListener('pageshow',updateClockDisplay);
 
 function renderCalendar(){
- const y=monthDate.getFullYear(),m=monthDate.getMonth(),first=new Date(y,m,1),start=(first.getDay()+6)%7,total=new Date(y,m+1,0).getDate(),prevTotal=new Date(y,m,0).getDate();
+ const y=monthDate.getFullYear(),m=monthDate.getMonth(),first=makeLocalDate(y,m,1),start=(first.getDay()+6)%7,total=new Date(y,m+1,0).getDate(),prevTotal=new Date(y,m,0).getDate();
  document.getElementById('monthLabel').textContent=new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric'}).format(first);
  const grid=document.getElementById('calendarGrid');
  grid.style.display='grid';
@@ -12247,17 +12455,17 @@ function renderCalendar(){
  const count=Math.ceil((start+total)/7)*7;
  for(let i=0;i<count;i++){
   let d,muted=false;
-  if(i<start){d=new Date(y,m-1,prevTotal-start+i+1);muted=true}
-  else if(i>=start+total){d=new Date(y,m+1,i-(start+total)+1);muted=true}
-  else d=new Date(y,m,i-start+1);
+  if(i<start){d=makeLocalDate(y,m-1,prevTotal-start+i+1);muted=true}
+  else if(i>=start+total){d=makeLocalDate(y,m+1,i-(start+total)+1);muted=true}
+  else d=makeLocalDate(y,m,i-start+1);
   const k=keyOf(d),dayEvs=events[k]||[],hasMaster=dayEvs.some(x=>!x.isPersonal),hasPersonal=dayEvs.some(x=>x.isPersonal),hasDue=deliveries.some(x=>keyOf(x.date)===k && !isDeliveryChecked(x.detailKey));
   const b=document.createElement('button');
   b.className='cal-day'+(muted?' muted':'')+(sameDay(d,selectedDate)?' selected':'')+(sameDay(d,todayDate)?' today':'');
   b.setAttribute('aria-label',fmtFull(d)+(hasMaster?' · clase máster':'')+(hasPersonal?' · evento personal':'')+(hasDue?' · entrega pendiente':''));
   b.innerHTML=`<span class="num">${d.getDate()}</span>${hasMaster||hasPersonal||hasDue?`<span class="dots">${hasMaster?'<i></i>':''}${hasDue?'<i class="deadline-dot"></i>':''}${hasPersonal?'<i class="personal-dot"></i>':''}</span>`:''}`;
   b.addEventListener('click',()=>{
-   selectedDate=new Date(d);
-   if(d.getMonth()!==monthDate.getMonth())monthDate=new Date(d.getFullYear(),d.getMonth(),1);
+   selectedDate=makeLocalDate(d.getFullYear(),d.getMonth(),d.getDate());
+   if(d.getMonth()!==monthDate.getMonth())monthDate=makeLocalDate(d.getFullYear(),d.getMonth(),1);
    renderDay();
    setView('inicio',false);
    document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
@@ -12889,34 +13097,28 @@ document.querySelectorAll('.branch-link').forEach(b=>b.addEventListener('click',
 }));
 document.querySelectorAll('.nav [data-view], .view-tabs [data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
 document.getElementById('previousDay').addEventListener('click',()=>{
- selectedDate.setDate(selectedDate.getDate()-1);
- monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
+ selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()-1);
+ monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
  renderDay();
 });
 document.getElementById('nextDay').addEventListener('click',()=>{
- selectedDate.setDate(selectedDate.getDate()+1);
- monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
+ selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()+1);
+ monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
  renderDay();
 });
 document.getElementById('resetTodayTop').addEventListener('click',()=>{
- const cur=new Date();
- selectedDate=new Date(cur.getFullYear(),cur.getMonth(),cur.getDate());
- monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
- renderDay();
+ refreshTodayDate(true);
 });
 document.getElementById('previousMonth').addEventListener('click',()=>{
- monthDate.setMonth(monthDate.getMonth()-1);
+ monthDate=makeLocalDate(monthDate.getFullYear(),monthDate.getMonth()-1,1);
  renderCalendar();
 });
 document.getElementById('nextMonth').addEventListener('click',()=>{
- monthDate.setMonth(monthDate.getMonth()+1);
+ monthDate=makeLocalDate(monthDate.getFullYear(),monthDate.getMonth()+1,1);
  renderCalendar();
 });
 document.getElementById('goTodayBtn').addEventListener('click',()=>{
- const cur=new Date();
- selectedDate=new Date(cur.getFullYear(),cur.getMonth(),cur.getDate());
- monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
- renderDay();
+ refreshTodayDate(true);
  setView('inicio',false);
  document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
 });
@@ -13456,8 +13658,8 @@ document.addEventListener('click',e=>{
  }
  const btnTom=e.target.closest('#btnSeeTomorrow');
  if(btnTom){
-  selectedDate.setDate(selectedDate.getDate()+1);
-  monthDate=new Date(selectedDate.getFullYear(),selectedDate.getMonth(),1);
+  selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()+1);
+  monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
   renderDay();
   return;
  }
@@ -13466,8 +13668,8 @@ document.addEventListener('click',e=>{
  if(jumpDay){
   e.stopPropagation();
   const [y,m,d]=jumpDay.dataset.jumpDay.split('-').map(Number);
-  selectedDate=new Date(y,m-1,d);
-  monthDate=new Date(y,m-1,1);
+  selectedDate=makeLocalDate(y,m-1,d);
+  monthDate=makeLocalDate(y,m-1,1);
   renderDay();
   setView('inicio',false);
   const todaySec=document.getElementById('todaySection');
