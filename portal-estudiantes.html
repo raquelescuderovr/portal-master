@@ -5292,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">58</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">59</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -6241,6 +6241,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'27 oct 2026 (12:46)',title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',meta:'Administración del Máster',key:'mail_105194',teacher:'María P. Carnota García',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'26 oct 2026 (13:18)',title:'Acuse de recibo de entrega: Ponencias DATAFORUM (D.ª Digna Braña)',meta:'MARÍA DIGNA BRAÑA IGLESIA · Coordinadora ICACOR · Confirmación de entrega recibida formalmente ✓',key:'mail_digna_dataforum_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM'},
  {date:'26 oct 2026 (12:43)',title:'Boletín do estudantado · 26 de outubro (Vicerreitoría Divulgación, Cultura e Deporte)',meta:'Vicerreitoría de Divulgación, Cultura e Deporte · vdcd@udc.gal · Agenda semanal y actividades UDC',key:'mail_boletin_26oct',teacher:'Vicerreitoría de Divulgación, Cultura e Deporte',subjectRef:'',emailSubject:'Boletín do estudantado, 26 de outubro'},
  {date:'26 oct 2026 (11:23)',title:'Premios Olimpíadas Científicas 26/27 · Difusión institucional (Decanato)',meta:'Decanato Facultade de Dereito · Secretaría de Decanato (Mª Teresa Seoane Sande) · Información institucional',key:'mail_olimpiadas_26oct',teacher:'Decanato Facultad de Derecho',subjectRef:'',emailSubject:'Solicitude difusión Premios Olimpíadas Científicas 26/27'},
@@ -6302,6 +6303,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_105194:'Envío de carta de presentación de la docente para las sesiones de noviembre.',
  mail_digna_dataforum_26oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: D.ª Digna Braña, Coordinadora ICACOR del Máster, acusa recibo formal («Recibido, ¡muchas gracias!») de la memoria y resumen de ponencias «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» remitida por correo por Raquel Escudero.',
  mail_carmen_belo_13oct:'NOTA OFICIAL: 7.6 / 10 (Test 40%: 3.4 + Trabajos 60%: 4.2 · Notable). Calificaciones otorgadas por Carmen Belo González correspondientes a la sesión del 13 de octubre sobre responsabilidad disciplinaria de los procuradores.',
  mail_boletin_26oct:'BOLETÍN SEMANAL UDC: La Vicerreitoría de Divulgación, Cultura e Deporte traslada el boletín informativo semanal del estudiantado del 26 de octubre con la programación cultural, deportiva, formativa, convocatorias activas y canales oficiales de seguimiento (@UDC_oficial en Instagram y TikTok).',
@@ -6364,6 +6366,18 @@ const mailSummaries={
 };
 
 const details={
+ mail_105194:{
+  kicker:'Comunicación académica · Máster',
+  title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',
+  date:'Recibido: 27 oct 2026 (12:46)',
+  teacher:'María P. Carnota García',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'La docente solicita que se remita la documentación adjunta (carta de presentación) para preparar las clases de gestión profesional, recursos y ejecuciones.',
+  source:'Administración del Máster',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
  mail_digna_dataforum_26oct:{
   kicker:'Acuse de recibo de entrega · Coordinación ICACOR',
   title:'Confirmación de recepción de Ponencias DATAFORUM (D.ª Digna Braña)',
@@ -7651,7 +7665,7 @@ const courses=[
     notes:[
      {name:'Guía de trámites registrales y notariales del procurador',url:driveFolderUrl,label:'CPROC Tareas ↗'}
     ],
-    mails:['materials']
+    mails:['mail_105194','materials']
    },
    {
     name:'Procesos civiles declarativos de la Procura',
@@ -8513,7 +8527,7 @@ const teacherDirectory=[
    {date:'2026-11-02',dayLabel:'Lunes 2 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Recursos procesales, ejecución y tasación de costas en la Procura',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Ejecución hipotecaria y subastas judiciales en la Procura',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
+  mails:[{title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',key:'mail_105194'},],
   practices:[],
   driveFiles:[],
   notes:[]
