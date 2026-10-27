@@ -4764,7 +4764,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 5 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4795,7 +4795,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">6 pendientes</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">5 pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
@@ -5057,7 +5057,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">65</span></button>
   </div>
@@ -5103,27 +5103,41 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="ptb-header">
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px">
-            <span class="ptb-badge alert">⚠️ 6 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip">📅 Próximos vencimientos: 29 oct (Delgado) y 11–19 nov (Lousada)</span>
+            <span class="ptb-badge alert" style="background:var(--terracotta);color:#ffffff">⏳ 5 PRÁCTICAS PENDIENTES</span>
+            <span class="ptb-urgent-chip">📅 Próximos vencimientos: del 11 al 19 de noviembre (D. Fernando Lousada)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Tareas oficiales con plazo activo de entrega: 1 caso con D. José Luis Delgado y 5 sesiones con D. Fernando Lousada.</p>
+          <p class="ptb-subtitle">Tareas oficiales con plazo activo de entrega: 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre). ¡Entregadas hoy las prácticas de D. José Luis Delgado (mañana) y D.ª María Luisa Moure (tarde)!</p>
         </div>
-        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (12) ➔</button>
+        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (13) ➔</button>
       </div>
 
       <div class="ptb-grid">
-        <!-- Tarjeta Delgado: Parte A y Parte B -->
-        <article class="ptb-card" id="homePendingDelgado" data-detail="entrega_delgado" style="cursor:pointer" title="Pincha para ver las instrucciones">
+        <!-- Tarjeta Delgado: Entregada esta mañana -->
+        <article class="ptb-card" id="homePendingDelgado" data-detail="entrega_delgado" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega">
           <div class="ptb-card-top">
-            <span class="ptb-tag blue">⚖️ Práctica ICACOR · Abogacía</span>
-            <span class="ptb-due-badge amber">⏳ Plazo: Jueves 29 oct (3 días)</span>
+            <span class="ptb-tag green">✓ Entregada por correo</span>
+            <span class="ptb-due-badge green">✓ Enviada hoy martes 27 oct (mañana)</span>
           </div>
           <h4 class="ptb-card-title">Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)</h4>
           <div class="ptb-card-meta">
             <div>👤 Profesor: <b>D. José Luis Delgado Domínguez</b></div>
             <div>📚 Materia: <b>Responsabilidad civil y penal, aseguramiento y turno de oficio</b></div>
-            <div>⏳ Fecha límite: <b>Jueves, 29 de octubre de 2026</b> · Entrega en ICACOR o por correo</div>
+            <div>📩 Enviada por correo a primera hora con antelación al plazo límite del 29 oct</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta Moure: MASC de Divorcio entregada esta tarde -->
+        <article class="ptb-card" id="homePendingMoure" data-detail="entrega_moure_masc_divorcio" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega">
+          <div class="ptb-card-top">
+            <span class="ptb-tag green">✓ Entregada por correo</span>
+            <span class="ptb-due-badge green">✓ Enviada hoy martes 27 oct (tarde)</span>
+          </div>
+          <h4 class="ptb-card-title">Caso práctico MASC: Demanda de divorcio y negociación previa</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Profesora: <b>D.ª María Luisa Moure Sagasti</b></div>
+            <div>📚 Materia: <b>Gestiones profesionales del despacho ante registros y administraciones (MASC)</b></div>
+            <div>📩 Enviada por correo electrónico tras la clase impartida el 26 de octubre</div>
           </div>
         </article>
 
@@ -5353,22 +5367,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (6 pendientes en 2 asignaturas · 6 completadas)</h2>
+        <h2>Próximas entregas y prácticas (5 pendientes en 1 asignatura · 8 completadas)</h2>
         <p>Seguimiento de prácticas y trabajos del Máster: 6 tareas abiertas en 2 asignaturas con 2 docentes (D. José Luis Delgado y D. Fernando Lousada) y 6 prácticas ya entregadas con éxito agrupadas en desplegables por asignatura.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">6 pendientes · 6 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">5 pendientes · 8 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (12)</button>
-      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (6 en 2 asignaturas)</button>
-      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (6)</button>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (13)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (5 en 1 asignatura)</button>
+      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (8)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (5)</button>
-      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (7)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 12 prácticas (6 pendientes en 2 asignaturas con 2 docentes y 6 completadas).</span>
+      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (8)</button>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 13 prácticas (5 pendientes en 1 asignatura con 1 docente y 8 completadas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -5652,7 +5666,9 @@ const events={
   '2026-10-27':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'10:00',end:'11:00',name:'Peluquería Stitch',subject:'Calendario Familia (¡Ojo si asistes a grupo de mañana!)',place:'Peluquería',kind:'Personal · Familia',isPersonal:true,detailKey:'personal_calendar_sync'},
+   {start:'12:00',end:'',name:'✓ Entrega enviada: Caso práctico Turno de Oficio y RCP (José Luis Delgado)',teacher:'José Luis Delgado Domínguez',detailKey:'entrega_delgado',kind:'Entrega enviada ✓'},
    {start:'16:30',end:'18:30',name:'Intervención de procuradores: MASC / mediación',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'17:00',end:'',name:'✓ Entrega enviada: Caso práctico MASC Demanda de divorcio (Mª Luisa Moure)',teacher:'María Luisa Moure Sagasti',detailKey:'entrega_moure_masc_divorcio',kind:'Entrega enviada ✓'},
    {start:'18:45',end:'20:45',name:'Mediación en la abogacía',teacher:'Rosa González',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|5',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-10-28':[
@@ -5663,7 +5679,7 @@ const events={
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Caso práctico Delgado (Parte A y Parte B) · ICACOR',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega práctica (Límite)',isWarning:true}
+   {start:'23:59',end:'',name:'✓ ENTREGADO: Caso práctico Delgado (Parte A y Parte B) · Enviado 27 oct',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega completada ✓',isWarning:false}
   ],
   '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
@@ -6063,10 +6079,23 @@ const deliveries=[
   subject:'Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
   subjectName:'Responsabilidad profesional, aseguramiento y turno de oficio (Abogacía)',
-  status:'⏳ Pendiente (Plazo: 29 oct 2026 · 3 días)',
-  submitted:false,
+  status:'Entregada por correo electrónico ✓ (27 oct 2026, mañana)',
+  submitted:true,
   detailKey:'entrega_delgado',
-  details:'Caso práctico oficial de dos partes: Parte A (Insostenibilidad de la pretensión y Asistencia Jurídica Gratuita) y Parte B (Parte de siniestro de RCP y Turno de Oficio). Plazo oficial: hasta el 29 de octubre de 2026.'
+  details:'Caso práctico completado y enviado por correo electrónico en la mañana del martes 27 de octubre de 2026 (antes del vencimiento fijado para el 29 de octubre). Comprende la Parte A (escrito motivado de insostenibilidad de la pretensión ante la Comisión de Asistencia Jurídica Gratuita) y la Parte B (parte de siniestro de responsabilidad civil profesional y reclamación frente a aseguradora de RC colegial).'
+ },
+ {
+  date:new Date(2026,9,27),
+  title:'Caso práctico MASC: Demanda de divorcio y negociación previa',
+  teacher:'María Luisa Moure Sagasti',
+  subject:'Abogacía · Gestiones profesionales ante registros y administraciones',
+  subjectRef:'Abogacía|Técnicas instrumentales|7',
+  subjectName:'Gestiones profesionales ante registros y administraciones (Abogacía)',
+  status:'Entregada por correo electrónico ✓ (27 oct 2026, tarde)',
+  submitted:true,
+  detailKey:'entrega_moure_masc_divorcio',
+  file:'MASC Demanda de divorcio - Raquel Escudero',
+  details:'Práctica de gestión y litigación civil de familia impartida por D.ª María Luisa Moure Sagasti (sesión del 26 de octubre). Consiste en la instrumentación de un Medio Adecuado de Solución de Controversias (MASC) previo a la vía contenciosa para un proceso de divorcio, articulando la propuesta de convenio regulador extrajudicial, medidas paternofiliales y liquidación económica. Enviada por correo electrónico en la tarde del martes 27 de octubre de 2026.'
  },
  {
   date:new Date(2026,10,11),
@@ -7004,22 +7033,33 @@ const details={
  },
  entrega_delgado:{
   isDelivery:true,
-  kicker:'Práctica pendiente · Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
+  kicker:'Práctica entregada · Abogacía · Responsabilidad civil y penal, aseguramiento y turno de oficio',
   title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',
-  date:'Plazo oficial: 10 días naturales (vence el 29 de octubre de 2026)',
+  date:'Entregada por correo: martes, 27 de octubre de 2026 (mañana) · Plazo vencía: 29 oct 2026',
   teacher:'José Luis Delgado Domínguez',
   subjectRef:'Abogacía|Técnicas instrumentales|3',
-  body:'Práctica oficial del módulo impartido por D. José Luis Delgado Domínguez en el Colegio de Abogados de A Coruña (ICACOR), estructurada en dos partes evaluables:\n\n• PARTE A — Insostenibilidad de la Pretensión y Asistencia Jurídica Gratuita:\n  1) Redacción de un escrito de insostenibilidad de la pretensión fundamentado desde la perspectiva procesal del letrado de oficio designado para la parte demandante (arts. 32 a 35 de la Ley 1/1996 de Asistencia Jurídica Gratuita).\n  2) Dictamen jurídico motivado sobre la aplicación de los artículos 5, 8, 20 y 21 de la LAJG en el supuesto de hecho del paciente intervenido en el SERGAS (indemnización de 100.000 € con gastos de 150.000 € que acude a casación ante el Tribunal Supremo con letrados privados y pide justicia gratuita).\n\n• PARTE B — Parte de Declaración de Siniestro de RCP y Régimen del Turno de Oficio:\n  1) Cumplimentación formal de un parte de declaración de siniestro de responsabilidad civil profesional del abogado ante la compañía aseguradora colegial (supuesto de negligencia profesional por pérdida de plazo / preclusión procesal).\n  2) Cuestiones prácticas relativas a los requisitos de acceso y ejercicio en el Turno de Oficio (experiencia previa de 3 años y cursos de formación homologados) e implicaciones territoriales de la colegiación.\n\n• Modalidad de entrega: Envío por correo a secretariatecnico@icacor.org o presentación física en la secretaría técnica del ICACOR.',
-  source:'Enunciado físico facilitado en clase presencial (ICACOR)',
+  body:'Práctica oficial del módulo impartido por D. José Luis Delgado Domínguez en el Colegio de Abogados de A Coruña (ICACOR), estructurada en dos partes evaluables:\n\n• PARTE A — Insostenibilidad de la Pretensión y Asistencia Jurídica Gratuita:\n  1) Redacción de un escrito de insostenibilidad de la pretensión fundamentado desde la perspectiva procesal del letrado de oficio designado para la parte demandante (arts. 32 a 35 de la Ley 1/1996 de Asistencia Jurídica Gratuita).\n  2) Dictamen jurídico motivado sobre la aplicación de los artículos 5, 8, 20 y 21 de la LAJG en el supuesto de hecho del paciente intervenido en el SERGAS (indemnización de 100.000 € con gastos de 150.000 € que acude a casación ante el Tribunal Supremo con letrados privados y pide justicia gratuita).\n\n• PARTE B — Parte de Declaración de Siniestro de RCP y Régimen del Turno de Oficio:\n  1) Cumplimentación formal de un parte de declaración de siniestro de responsabilidad civil profesional del abogado ante la compañía aseguradora colegial (supuesto de negligencia profesional por pérdida de plazo / preclusión procesal).\n  2) Cuestiones prácticas relativas a los requisitos de acceso y ejercicio en el Turno de Oficio (experiencia previa de 3 años y cursos de formación homologados) e implicaciones territoriales de la colegiación.\n\n✓ ESTADO DE LA ENTREGA: Práctica finalizada y remitida por correo electrónico por Raquel Escudero en la mañana del martes 27 de octubre de 2026, con antelación al vencimiento del plazo oficial (29 de octubre).',
+  source:'Módulo de Responsabilidad Profesional y Turno de Oficio (ICACOR · 19, 20 y 26 de octubre de 2026) · Entrega enviada 27 oct',
   mailKey:'schedule',
   attachments:[
    {name:'✉️ Ver correo oficial del módulo (Horarios y documentación)',detailKey:'schedule',kind:'Correo oficial'},
-   {name:'📩 Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez&body=Estimados%20Sres.%20del%20ICACOR%3A%0A%0AAdjunto%20remito%20la%20resoluci%C3%B3n%20del%20caso%20pr%C3%A1ctico%20(Parte%20A%20y%20Parte%20B)%20del%20m%C3%B3dulo%20de%20D.%20Jos%C3%A9%20Luis%20Delgado%20Dom%C3%ADnguez.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Correo ICACOR'},
-   {name:'📄 Guía y cuestiones completas en Markdown (.md)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',kind:'Documento Markdown'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Carpeta general Máster en Google Drive',url:driveFolderUrl,kind:'Carpeta Drive'}
   ],
-  extra:'⏳ Plazo oficial: 10 días naturales a contar desde la sesión presencial (vence el 29/10/2026). Entrega en mano en ICACOR o por correo a secretariatecnico@icacor.org.'
+  extra:'✓ Práctica entregada por correo el martes 27 de octubre de 2026 (turno de mañana).'
+ },
+ entrega_moure_masc_divorcio:{
+  isDelivery:true,
+  kicker:'Práctica entregada · Abogacía · Gestiones profesionales del despacho',
+  title:'Caso práctico MASC: Demanda de divorcio y negociación previa (D.ª María Luisa Moure Sagasti)',
+  date:'Entregada por correo electrónico: martes, 27 de octubre de 2026 (tarde)',
+  teacher:'María Luisa Moure Sagasti',
+  subjectRef:'Abogacía|Técnicas instrumentales|7',
+  body:'Práctica correspondiente a las sesiones de gestión profesional del despacho de abogacía impartidas por la letrada D.ª María Luisa Moure Sagasti (26 de octubre de 2026):\n\n• Objeto y contenido de la práctica:\n  1) Instrumentación preceptiva de un Medio Adecuado de Solución de Controversias (MASC) como requisito de procedibilidad previo a la interposición de demanda de divorcio contencioso.\n  2) Redacción de propuesta extrajudicial y bases de mediación / negociación con la parte contraria en materia de medidas paterno-filiales, pensión y liquidación del régimen económico matrimonial.\n  3) Planteamiento procesal para acreditar el intento fehaciente de solución extrajudicial ante el juzgado.\n\n• Estado del envío:\n  - Enviada por correo electrónico por Raquel Escudero en la tarde del martes 27 de octubre de 2026 cumplimentando la entrega requerida.',
+  source:'Docencia D.ª María Luisa Moure Sagasti (sesión 26 oct) y entrega por correo electrónico el 27 oct 2026',
+  attachments:[
+   {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
+  ]
  },
  entrega_lousada_sesion1:{
   isDelivery:true,
@@ -8665,7 +8705,7 @@ const teacherDirectory=[
   ],
   mails:[{title:'Documentación para las clases del 19 y 20 de octubre (16 oct)',key:'schedule'}],
   practices:[
-   {title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',status:'⏳ Pendiente (Plazo: 29 oct 2026 · Entrega: secretariatecnico@icacor.org)',key:'entrega_delgado'}
+   {title:'Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)',status:'Entregada por correo electrónico ✓ (27 oct 2026, mañana)',key:'entrega_delgado'}
   ],
   driveFiles:[
    {name:'Enunciado oficial del caso práctico (Markdown)',url:'materiales/2026-10-19-caso-practico-delgado-dominguez.md',label:'Ver guía ↗'},
@@ -8677,14 +8717,14 @@ const teacherDirectory=[
   name:'Mª Luisa Moure',
   branch:'Abogacía / Procura',
   role:'Letrada · Gestiones profesionales',
-  gradeBadge:'⏳ Por venir · 26 oct',
-  summary:'Gestiones profesionales ante administraciones públicas, registros de la propiedad, mercantiles y notarías.',
-  grade:{score:'⏳ Por venir · 26 oct',scoreLabel:'Docencia por venir',detail:'Sesión presencial programada para el lunes 26 de octubre (18:45–20:45).',detailKey:'schedule'},
+  gradeBadge:'🟢 Sesión celebrada · 26 oct',
+  summary:'Gestiones profesionales ante administraciones públicas, registros de la propiedad, mercantiles y notarías. Práctica de MASC de demanda de divorcio entregada.',
+  grade:{score:'🟢 Práctica entregada ✓',scoreLabel:'Práctica enviada 27 oct',detail:'Sesión presencial completada el 26 de octubre. Práctica de MASC entregada por correo el 27 de octubre.',detailKey:'entrega_moure_masc_divorcio'},
   sessions:[
    {date:'2026-10-26',dayLabel:'Lunes 26 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Gestiones profesionales ante registros y administraciones públicas',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
-  practices:[],
+  mails:['mail_moure_ampliacion_22oct','materials_moure_22oct'],
+  practices:['entrega_moure_masc_divorcio'],
   driveFiles:[],
   notes:[]
  },
@@ -13234,7 +13274,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega en 2 asignaturas (plazos: 29 de octubre con D. José Luis Delgado y del 11 al 19 de noviembre con D. Fernando Lousada).`;
+   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega en 1 asignatura (Práctica Procesal Civil con D. Fernando Lousada, del 11 al 19 de noviembre).`;
   } else if(currentDeliveryFilter === 'completed'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
   } else if(currentDeliveryFilter === 'cproc'){
