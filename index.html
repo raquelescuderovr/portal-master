@@ -4778,7 +4778,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">65</span>
+      <span class="nav-badge-pill badge-peach">69</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5059,7 +5059,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">65</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">69</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5174,7 +5174,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">2 notas por correo · 2 tests superados · 5 prácticas entregadas</span>
+        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 3 tests superados (10, 9 y 10) · 8 prácticas entregadas</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5211,9 +5211,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">2 realizados (16 oct: 20/20 · 20 oct: 9/10)</span>
+          <span class="stat-title">3 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10)</span>
         </div>
-        <span class="stat-val-pill">10 y 9 ★</span>
+        <span class="stat-val-pill">3 plenos ★</span>
       </button>
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
@@ -5432,7 +5432,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (65)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (69)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -5575,6 +5575,9 @@ const testMdLocalUrl='historial-tests/2026-10-16-procura-deontologia-tecnicas-tr
 const testmozSandraReviewUrl='https://testmozusercontent.com/q/15707582/student/review';
 const testHtmlSandraLocalUrl='historial-tests/originales/2026-10-20-testmoz-15707582.html';
 const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacion-sandra-mosteiro.md';
+const testmozCarnotaReviewUrl='https://testmozusercontent.com/q/15713256/student/review';
+const testHtmlCarnotaLocalUrl='historial-tests/originales/2026-10-28-testmoz-15713256.html';
+const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notarias-maria-carnota.md';
 const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
@@ -5673,6 +5676,7 @@ const events={
   ],
   '2026-10-28':[
    {start:'16:30',end:'18:30',name:'Gestiones profesionales de los procuradores',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'17:51',end:'',name:'📝 Test online realizado: Testmoz María Carnota (10/10 aciertos · 100%)',teacher:'María P. Carnota García',detailKey:'test_28oct_carnota',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Marketing de la abogacía',teacher:'Jaime Martul',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-10-29':[
@@ -5867,6 +5871,30 @@ const events={
 };
 
 const gradeRecords=[
+ {
+  id:'grade_28oct_carnota_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 28 oct 2026 (17:51)',
+  title:'Registros, notarías y administraciones públicas · María Carnota',
+  score:'10 / 10 ★',
+  scoreLabel:'10/10 (100 %)',
+  breakdown:[
+   {label:'Respuestas correctas',val:'10 de 10 (100 %)'},
+   {label:'Calificación',val:'10 / 10 · Sobresaliente ★'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'María Pilar Carnota García',
+  subjectRef:'Procura|Actuación procesal|1',
+  mailKey:'test_28oct_carnota',
+  description:'Test oficial «MARÍA CARNOTA- 28-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» realizado el miércoles 28 de octubre de 2026 a las 17:51 h por Raquel Escudero. Superado con 10/10 aciertos (10 sobre 10 · 100 % · Sobresaliente con mención). Cuestiones relativas a diligencias preliminares ex art. 256 LEC, medidas cautelares y caución, prueba anticipada, y acreditación y representación procesal ante notarías, registros de la propiedad/mercantil y administraciones públicas (Ley 39/2015).',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas ↗',detailKey:'test_28oct_carnota',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlCarnotaLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdCarnotaLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozCarnotaReviewUrl,cls:'blue'},
+   {label:'Ficha de María P. Carnota ↗',teacher:'María P. Carnota García'}
+  ]
+ },
  {
   id:'grade_carmen_belo_13oct',
   type:'mail',
@@ -6227,6 +6255,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'28 oct 2026 (17:51)',title:'Test online realizado · Registros, notarías y administraciones (Nota: 10 / 10 ★)',meta:'Testmoz CPROC · D.ª María Pilar Carnota García · Procura (10/10 aciertos · 100% · Sobresaliente)',key:'test_28oct_carnota',teacher:'María Pilar Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Test online realizado · Registros, notarías y administraciones públicas'},
  {date:'28 oct 2026 (12:18)',title:'Remisión de material de la Docente Dª Susana Díaz Gallego',meta:'Administración del Máster (ICA Coruña)',key:'mail_189904',teacher:'Susana Díaz Gallego',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'28 oct 2026 (10:49)',title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_184540',teacher:'Patricia González Figueroa',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'27 oct 2026 (12:46)',title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',meta:'Administración del Máster',key:'mail_105194',teacher:'María P. Carnota García',subjectRef:'Abogacía|Técnicas instrumentales|3'},
@@ -6298,6 +6327,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_28oct_carnota:'TEST ONLINE SOBRESALIENTE: Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el miércoles 28 de octubre a las 17:51 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★). Diligencias preliminares art. 256 LEC, medidas cautelares y caución, prueba anticipada y representación ante notarías, registros y administraciones (Ley 39/2015).',
  mail_189904:'Envío de dos presentaciones en PowerPoint con los materiales docentes para las sesiones del jueves 29 y viernes 30 de octubre.',
  mail_184540:'Envío de la carta de presentación y de la presentación en PowerPoint por parte de la docente Patricia González Figueroa para la preparación de sus clases de Escritura Forense.',
  mail_105194:'Envío de carta de presentación de la docente para las sesiones de noviembre.',
@@ -6369,6 +6399,135 @@ const mailSummaries={
 };
 
 const details={
+ test_28oct_carnota:{
+  kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente) · Procura · Registros y Notarías',
+  title:'Test online · Actuación ante registros, notarías y administraciones (María Carnota)',
+  date:'Realizado: miércoles, 28 de octubre de 2026 · 17:51 (Grupo de tarde) · Calificación: 10 / 10 (10/10 aciertos)',
+  teacher:'María Pilar Carnota García',
+  subjectRef:'Procura|Actuación procesal|1',
+  body:'Prueba oficial realizada en la plataforma Testmoz («MARÍA CARNOTA- 28-10-26 - GRUPO DE TARDE - DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida por Raquel Escudero: 10 de 10 respuestas correctas (100 % · 10 sobre 10 · Sobresaliente con mención). Temario evaluado: gestión del procurador ante administraciones públicas, diligencias preliminares ex art. 256 LEC, tribunal competente, prueba anticipada (art. 293 LEC), medidas cautelares y recurso de apelación, caución, representación administrativa (Ley 39/2015), legitimación ante notaría y mandamientos judiciales en el Registro Mercantil. A continuación tienes las 10 preguntas con sus respuestas y fundamentos jurídicos.',
+  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15713256/student/review) · 28 oct 2026',
+  attachments:[
+   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlCarnotaLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir documento Markdown completo (.md)',url:testMdCarnotaLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozCarnotaReviewUrl,kind:'Web Testmoz'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC'},
+   {name:'Ley de Enjuiciamiento Civil (arts. 256 y ss. LEC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial'},
+   {name:'Ley 39/2015 del Procedimiento Administrativo Común (art. 5 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565',kind:'BOE oficial'}
+  ],
+  questions:[
+   {
+    q:'1. ¿Qué gestión presencial puede realizar un procurador ante las administraciones públicas?',
+    opts:[
+     'Cualquier tipo de gestión siempre que tenga poder',
+     'Diligenciar oficios y mandamientos',
+     'Liquidar el modelo 600',
+     'Excepciones por fuerza mayor aunque no hayan sido acreditadas'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'2. ¿Cuál de los siguientes NO es un supuesto de diligencia preliminar en el art. 256 LEC?',
+    opts:[
+     'Pedir al futuro demandado que declare sobre su legitimación pasiva.',
+     'Solicitar a una sociedad la exhibición de documentos sociales.',
+     'Pedir directamente al juez el embargo de los bienes del demandado.',
+     'Requerir la identificación de responsables en caso de accidente.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'3. ¿Qué órgano judicial acuerda la práctica de una diligencia preliminar?',
+    opts:[
+     'El Tribunal Supremo.',
+     'El procurador de la parte solicitante.',
+     'El juez o tribunal que sería competente para conocer del asunto principal.',
+     'El notario de la demarcación.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'4. La finalidad de la prueba anticipada en la LEC es:',
+    opts:[
+     'Ahorrar costes a las partes.',
+     'Evitar la pérdida o alteración de un medio de prueba antes del juicio.',
+     'Sustituir las diligencias preliminares.',
+     'Garantizar la ejecución provisional de la sentencia.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'5. ¿Qué recurso procede contra el auto que resuelve sobre una medida cautelar?',
+    opts:[
+     'Ninguno, es irrecurrible.',
+     'Recurso de reposición.',
+     'Recurso de apelación.',
+     'Recurso de casación.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'6. Según la LEC, ¿qué tipo de caución puede exigirse al solicitante de medidas cautelares?',
+    opts:[
+     'Únicamente fianza bancaria.',
+     'La que el tribunal considere suficiente para responder de los daños que pueda causar la medida.',
+     'Ninguna, no es necesaria.',
+     'Exclusivamente aval personal.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. En el ámbito de las Administraciones Públicas, el procurador puede:',
+    opts:[
+     'Ejercer funciones de asesor jurídico interno de la Administración.',
+     'Representar a su cliente en procedimientos administrativos y presentar recursos en su nombre.',
+     'Dictar resoluciones en vía administrativa.',
+     'Sustituir a los funcionarios en labores de gestión interna.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'8. ¿Qué documento debe acreditar el procurador para poder actuar en notaría en nombre de su cliente?',
+    opts:[
+     'Certificado registral.',
+     'Poder notarial suficiente o apud acta.',
+     'Testimonio judicial.',
+     'Copia simple de una escritura.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'9. ¿Qué tipo de actuaciones puede realizar un procurador en el Registro Mercantil?',
+    opts:[
+     'Calificar estatutos sociales.',
+     'Autorizar escrituras de constitución.',
+     'Presentar mandamientos judiciales para inscribir o anotar actos ordenados por un tribunal.',
+     'Firmar certificaciones de administradores.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'10. Según la Ley 39/2015, ¿cómo puede el procurador acreditar la representación ante una Administración Pública?',
+    opts:[
+     'Únicamente con la presencia física del cliente.',
+     'Mediante poder notarial, apud acta electrónico o cualquier medio válido en derecho.',
+     'Solo con la colegiación profesional.',
+     'Con la firma del letrado de su cliente.'
+    ],
+    correct:1,
+    userAnswer:1
+   }
+  ]
+ },
  mail_189904:{
   kicker:'Comunicación académica · Máster',
   title:'Remisión de material de la Docente Dª Susana Díaz Gallego',
@@ -7933,7 +8092,7 @@ const courses=[
     period:'28 oct 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-10-28',
     teachers:['María P. Carnota García'],
-    grade:{score:'⏳ Por venir · 28 oct',detail:'Tramitaciones ante registros, órganos administrativos y colegiales.',detailKey:'materials'},
+    grade:{score:'Test: 10 / 10 ★ (100 %)',detail:'Test oficial Testmoz completado el 28 oct a las 17:51 h con 10/10 aciertos (Sobresaliente).',detailKey:'test_28oct_carnota'},
     notes:[
      {name:'Guía de trámites registrales y notariales del procurador',url:driveFolderUrl,label:'Carpeta Drive ↗'}
     ],
@@ -8791,18 +8950,23 @@ const teacherDirectory=[
   name:'María P. Carnota García',
   branch:'Procura',
   role:'Procuradora · Gestiones de procuradores, recursos y ejecuciones',
-  gradeBadge:'⏳ Por venir · 28 oct, 2 nov y 23 nov',
-  summary:'Gestiones de procuradores ante juzgados, recursos y tasación de costas, y ejecución hipotecaria.',
-  grade:{score:'⏳ Por venir · 3 sesiones',scoreLabel:'Docencia por venir',detail:'28 oct (16:30–18:30), 2 nov (16:30–18:30) y 23 nov (16:30–18:30). Total: 6 horas.',detailKey:'schedule'},
+  gradeBadge:'📝 Test online: 10 / 10 ★ (Testmoz) · 100%',
+  summary:'Gestiones de procuradores ante juzgados, recursos y tasación de costas, y ejecución hipotecaria. Sesión 1 superada con 10/10 en el test de clase.',
+  grade:{score:'Test: 10 / 10 ★ (100 %)',scoreLabel:'Test online en Testmoz',detail:'Test oficial de clase completado el miércoles 28 oct (17:51 h) con 10/10 aciertos (Sobresaliente). Sesión 1 completada con éxito. Próximas sesiones el 2 y 23 de noviembre.',detailKey:'test_28oct_carnota',actionLabel:'Ver test resuelto (10/10) ↗'},
   sessions:[
    {date:'2026-10-28',dayLabel:'Miércoles 28 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Gestiones profesionales de los procuradores (Práctica judicial cotidiana)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-02',dayLabel:'Lunes 2 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Recursos procesales, ejecución y tasación de costas en la Procura',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Ejecución hipotecaria y subastas judiciales en la Procura',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',key:'mail_105194'},],
-  practices:[],
+  practices:[
+   {title:'Test online Testmoz: Registros, notarías y administraciones (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente)',key:'test_28oct_carnota'}
+  ],
   driveFiles:[],
-  notes:[]
+  notes:[
+   {name:'Test online Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,label:'Ver test HTML ↗'},
+   {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdCarnotaLocalUrl,label:'Ver .md ↗'}
+  ]
  },
  {
   name:'Jaime Martul',
@@ -9130,6 +9294,8 @@ const teacherGradeMap={
  'Ana Vázquez Corte': { kind:'final', score:'8.8 / 10 ★', label:'Final: 8.8 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 8.8 / 10 (Notable alto · Deontología)' },
  'Alex Sánchez Barge': { kind:'test', score:'Test: 20 / 20', label:'Test: 20 / 20', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 20 / 20 aciertos (Final conjunta de módulo 10/10 con Carolina y Carlos)' },
  'Sandra Mosteiro Costa': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 %) · Calificación final de módulo pendiente' },
+ 'María Pilar Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
+ 'María P. Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
  'Alejandra Sánchez': { kind:'completed', score:'Taller superado', label:'Taller superado', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Taller práctico de Oratoria Forense superado' },
  'Carmen Belo González': { kind:'final', score:'7.6 / 10 ★', label:'Final: 7.6 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 7.6 / 10 (Notable · Test 3.4/4 + Trabajos 4.2/6)' },
  'Vanessa Amarelle': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
@@ -10580,7 +10746,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'mail'){
    sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Javier Sánchez 10/10 y Ana Vázquez 8.8/10).';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20 y 20 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10 y 28 oct: 10/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
    sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
@@ -14646,6 +14812,7 @@ document.addEventListener('click', (e) => {
           <button type="button" class="sgm-quick-chip chip-final" data-chip="10 / 10 ★">🏆 Final 10 / 10 ★</button>
           <button type="button" class="sgm-quick-chip chip-final" data-chip="8.8 / 10 ★">🏆 Final 8.8 / 10 ★</button>
           <button type="button" class="sgm-quick-chip chip-test" data-chip="Test: 20 / 20">📝 Test 20 / 20</button>
+          <button type="button" class="sgm-quick-chip chip-test" data-chip="Test: 10 / 10 ★">📝 Test 10 / 10 ★</button>
           <button type="button" class="sgm-quick-chip chip-test" data-chip="Test: 9 / 10">📝 Test 9 / 10</button>
           <button type="button" class="sgm-quick-chip chip-completed" data-chip="Taller superado">✓ Taller superado</button>
           <button type="button" class="sgm-quick-chip chip-completed" data-chip="Completada ✓">✓ Completada</button>
