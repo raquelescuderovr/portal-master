@@ -8964,8 +8964,8 @@ const teacherDirectory=[
   ],
   driveFiles:[],
   notes:[
-   {name:'Test online Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,label:'Ver test HTML ↗'},
-   {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdCarnotaLocalUrl,label:'Ver .md ↗'}
+   {title:'Test online Testmoz (10/10 aciertos · HTML original)',name:'Test online Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,urlLabel:'Ver test HTML ↗',label:'Ver test HTML ↗'},
+   {title:'Test resuelto con 10 preguntas y fundamentos (.md)',name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdCarnotaLocalUrl,urlLabel:'Ver .md ↗',label:'Ver .md ↗'}
   ]
  },
  {
@@ -11720,6 +11720,18 @@ function escapeHtml(str){
 function escapeRegExp(str){
  return String(str||'').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
+function normSearch(str){
+ return String(str||'').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+function accentInsensitivePattern(str){
+ return escapeRegExp(normSearch(str))
+  .replace(/a/g, '[aáàäâ]')
+  .replace(/e/g, '[eéèëê]')
+  .replace(/i/g, '[iíìïî]')
+  .replace(/o/g, '[oóòöô]')
+  .replace(/u/g, '[uúùüû]')
+  .replace(/n/g, '[nñ]');
+}
 
 function getSubjectAllSessions(sub){
  if(!sub || !sub.teachers || typeof teacherDirectory === 'undefined') return [];
@@ -12639,14 +12651,14 @@ function renderTeachers(q='', filter=currentTeacherFilter){
  }
 
  if(q){
-  const lq = q.toLowerCase();
+  const lq = normSearch(q);
   list = list.filter(t => {
-   const text = (t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' +
+   const text = normSearch(t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' +
      (t.sessions||[]).map(s=>s.topic+' '+s.place+' '+s.date).join(' ') + ' ' +
      (t.driveFiles||[]).map(d=>d.name).join(' ') + ' ' +
-     (t.notes||[]).map(n=>n.title).join(' ') + ' ' +
+     (t.notes||[]).map(n=>n.title||n.name||'').join(' ') + ' ' +
      (t.practices||[]).map(p=>p.title).join(' ')
-   ).toLowerCase();
+   );
    return text.includes(lq);
   });
  }
@@ -12776,8 +12788,8 @@ function renderTeachers(q='', filter=currentTeacherFilter){
          `).join('')}
          ${notesList.map(n=>`
           <div class="doc-direct-row">
-           <span>📖 ${n.title}</span>
-           <a href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel || 'Abrir ↗'}</a>
+           <span>📖 ${n.title || n.name}</span>
+           <a href="${n.url}" target="_blank" rel="noopener noreferrer">${n.urlLabel || n.label || 'Abrir ↗'}</a>
           </div>
          `).join('')}
         </div>
@@ -12821,9 +12833,9 @@ function renderMaterials(q='', filter=currentMaterialFilter){
  }
 
  if(q){
-  const lq = q.toLowerCase();
+  const lq = normSearch(q);
   list = list.filter(item => {
-   const text = (item.title + ' ' + item.teacher + ' ' + item.kicker + ' ' + (item.docs||[]).map(d=>d.name).join(' ')).toLowerCase();
+   const text = normSearch(item.title + ' ' + item.teacher + ' ' + item.kicker + ' ' + (item.docs||[]).map(d=>d.name).join(' '));
    return text.includes(lq);
   });
  }
@@ -13779,8 +13791,8 @@ function renderMail(q='', filter=currentMailFilter){
  }
 
  if(q){
-  const lq = q.toLowerCase();
-  list = list.filter(m => (m.title + ' ' + m.meta + ' ' + (m.emailSubject||'') + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).toLowerCase().includes(lq));
+  const lq = normSearch(q);
+  list = list.filter(m => normSearch(m.title + ' ' + m.meta + ' ' + (m.emailSubject||'') + ' ' + (mailSummaries[m.key]||'') + ' ' + (details[m.key]?.body||'')).includes(lq));
  }
 
  const summaryEl = document.getElementById('mailFilterSummary');
@@ -13976,13 +13988,13 @@ function renderSearchResults(query){
  }
 
  searchBox?.classList.add('has-text');
- const lq = q.toLowerCase();
+ const lq = normSearch(q);
 
  // 0. Bloques Formativos (8 bloques)
  const matchedBlocks = [];
  courses.forEach(c => {
   const bSt = getBlockStatusInfo(c);
-  const txt = (c.name + ' ' + c.blockTitle + ' ' + c.blockNumber + ' ' + c.branch + ' ' + c.period).toLowerCase();
+  const txt = normSearch(c.name + ' ' + c.blockTitle + ' ' + c.blockNumber + ' ' + c.branch + ' ' + c.period);
   if(txt.includes(lq)){
    matchedBlocks.push({
     type: 'block',
@@ -14003,10 +14015,11 @@ function renderSearchResults(query){
   const cKey = courseKey(c);
   c.subjects.forEach((sub, sIdx) => {
    const tNames = (sub.teachers || []).join(' ');
-   const txt = (sub.name + ' ' + c.name + ' ' + c.blockTitle + ' ' + c.branch + ' ' + (sub.period||'') + ' ' + tNames).toLowerCase();
+   const txt = normSearch(sub.name + ' ' + c.name + ' ' + c.blockTitle + ' ' + c.branch + ' ' + (sub.period||'') + ' ' + tNames);
    if(txt.includes(lq)){
     const subSt = getSubjectStatusInfo(sub);
-    const gradeTag = (subSt.status === 'past' && sub.grade) ? ((sub.grade.score.includes('10 / 10') || sub.grade.score.includes('10/10')) ? ' ⭐ 10 / 10 ★' : (sub.grade.score.includes('Test: 10') ? ' ⭐ Test 10/10' : ' ✓')) : '';
+    const scoreStr = (sub.grade && typeof sub.grade.score === 'string') ? sub.grade.score : '';
+    const gradeTag = (subSt.status === 'past' && sub.grade) ? ((scoreStr.includes('10 / 10') || scoreStr.includes('10/10')) ? ' ⭐ 10 / 10 ★' : (scoreStr.includes('Test: 10') ? ' ⭐ Test 10/10' : ' ✓')) : '';
     matchedSubjects.push({
      type: 'subject',
      ref: `${cKey}|${sIdx}`,
@@ -14025,14 +14038,17 @@ function renderSearchResults(query){
  teacherDirectory.forEach(t => {
   const sessTxt = (t.sessions || []).map(s => s.topic + ' ' + s.place + ' ' + s.date).join(' ');
   const docsTxt = (t.driveFiles || []).map(d => d.name).join(' ');
-  const txt = (t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' + sessTxt + ' ' + docsTxt).toLowerCase();
+  const notesTxt = (t.notes || []).map(n => n.title || n.name || '').join(' ');
+  const pracTxt = (t.practices || []).map(p => p.title || '').join(' ');
+  const txt = normSearch(t.name + ' ' + t.role + ' ' + t.branch + ' ' + t.summary + ' ' + sessTxt + ' ' + docsTxt + ' ' + notesTxt + ' ' + pracTxt);
   if(txt.includes(lq)){
    const st = getTeacherUpcomingStatus(t);
-   const hasPast = (t.sessions || []).some(s => s.date < '2026-10-19') || st.state === 'past';
+   const hasPast = (t.sessions || []).some(s => s.date <= keyOf(todayDate)) || st.state === 'past';
    const mapGrade = teacherGradeMap[t.name];
    let tGradeTag = '';
    if(hasPast && mapGrade){
-    tGradeTag = ' ' + (mapGrade.includes('10') ? '⭐ ' + mapGrade : '✓');
+    const scoreStr = typeof mapGrade === 'string' ? mapGrade : (mapGrade.label || mapGrade.score || '');
+    tGradeTag = ' ' + (scoreStr ? (scoreStr.includes('10') || scoreStr.includes('★') ? '⭐ ' + scoreStr : '✓ ' + scoreStr) : '✓');
    }
    matchedTeachers.push({
     type: 'teacher',
@@ -14050,7 +14066,7 @@ function renderSearchResults(query){
  const matchedMaterials = [];
  catalogMaterials.forEach(m => {
   (m.docs || []).forEach(d => {
-   const txt = (d.name + ' ' + m.title + ' ' + m.teacher + ' ' + m.kicker).toLowerCase();
+   const txt = normSearch(d.name + ' ' + m.title + ' ' + m.teacher + ' ' + m.kicker);
    if(txt.includes(lq)){
     matchedMaterials.push({
      type: 'material',
@@ -14070,7 +14086,7 @@ function renderSearchResults(query){
  // 4. Prácticas y Entregas
  const matchedDeliveries = [];
  deliveries.forEach(d => {
-  const txt = (d.title + ' ' + d.teacher + ' ' + d.subject + ' ' + d.status + ' ' + d.details + ' ' + (d.file || '')).toLowerCase();
+  const txt = normSearch(d.title + ' ' + d.teacher + ' ' + d.subject + ' ' + d.status + ' ' + d.details + ' ' + (d.file || ''));
   if(txt.includes(lq)){
    matchedDeliveries.push({
     type: 'delivery',
@@ -14089,7 +14105,7 @@ function renderSearchResults(query){
  messages.forEach(m => {
   const sum = mailSummaries[m.key] || '';
   const body = (details[m.key] && details[m.key].body) || '';
-  const txt = (m.title + ' ' + m.meta + ' ' + m.teacher + ' ' + sum + ' ' + body).toLowerCase();
+  const txt = normSearch(m.title + ' ' + m.meta + ' ' + (m.teacher||'') + ' ' + (m.emailSubject||'') + ' ' + sum + ' ' + body);
   if(txt.includes(lq)){
    matchedMails.push({
     type: 'mail',
@@ -14107,7 +14123,7 @@ function renderSearchResults(query){
  const matchedEvents = [];
  Object.entries(events).forEach(([k, evList]) => {
   evList.forEach((ev, idx) => {
-   const txt = (ev.name + ' ' + (ev.teacher||'') + ' ' + (ev.subject||'') + ' ' + (ev.place||'') + ' ' + (ev.kind||'') + ' ' + k).toLowerCase();
+   const txt = normSearch(ev.name + ' ' + (ev.teacher||'') + ' ' + (ev.subject||'') + ' ' + (ev.place||'') + ' ' + (ev.kind||'') + ' ' + k);
    if(txt.includes(lq)){
     matchedEvents.push({
      type: 'event',
@@ -14126,7 +14142,7 @@ function renderSearchResults(query){
  // 7. Calificaciones y Tests
  const matchedGrades = [];
  gradeRecords.forEach(g => {
-  const txt = (g.title + ' ' + g.kicker + ' ' + g.score + ' ' + g.scoreLabel + ' ' + g.description).toLowerCase();
+  const txt = normSearch(g.title + ' ' + g.kicker + ' ' + g.score + ' ' + g.scoreLabel + ' ' + g.description);
   if(txt.includes(lq)){
    matchedGrades.push({
     type: 'grade',
@@ -14158,9 +14174,19 @@ function renderSearchResults(query){
 
  const highlight = text => {
   if(!text) return '';
-  const escaped = escapeHtml(text);
-  const regex = new RegExp(`(${escapeRegExp(q)})`, 'gi');
-  return escaped.replace(regex, '<mark>$1</mark>');
+  const raw = String(text);
+  const regex = new RegExp(`(${accentInsensitivePattern(q)})`, 'gi');
+  let result = '';
+  let lastIndex = 0;
+  let match;
+  while((match = regex.exec(raw)) !== null){
+   if(match[0].length === 0){ regex.lastIndex++; continue; }
+   result += escapeHtml(raw.slice(lastIndex, match.index));
+   result += '<mark>' + escapeHtml(match[0]) + '</mark>';
+   lastIndex = regex.lastIndex;
+  }
+  result += escapeHtml(raw.slice(lastIndex));
+  return result;
  };
 
  let html = `
