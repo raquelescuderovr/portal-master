@@ -6227,6 +6227,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'28 oct 2026 (12:18)',title:'Remisión de material de la Docente Dª Susana Díaz Gallego',meta:'Administración del Máster (ICA Coruña)',key:'mail_189904',teacher:'Susana Díaz Gallego',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'28 oct 2026 (10:49)',title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_184540',teacher:'Patricia González Figueroa',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'27 oct 2026 (12:46)',title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',meta:'Administración del Máster',key:'mail_105194',teacher:'María P. Carnota García',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'26 oct 2026 (13:18)',title:'Acuse de recibo de entrega: Ponencias DATAFORUM (D.ª Digna Braña)',meta:'MARÍA DIGNA BRAÑA IGLESIA · Coordinadora ICACOR · Confirmación de entrega recibida formalmente ✓',key:'mail_digna_dataforum_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM'},
@@ -6297,6 +6298,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_189904:'Envío de dos presentaciones en PowerPoint con los materiales docentes para las sesiones del jueves 29 y viernes 30 de octubre.',
  mail_184540:'Envío de la carta de presentación y de la presentación en PowerPoint por parte de la docente Patricia González Figueroa para la preparación de sus clases de Escritura Forense.',
  mail_105194:'Envío de carta de presentación de la docente para las sesiones de noviembre.',
  mail_digna_dataforum_26oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: D.ª Digna Braña, Coordinadora ICACOR del Máster, acusa recibo formal («Recibido, ¡muchas gracias!») de la memoria y resumen de ponencias «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» remitida por correo por Raquel Escudero.',
@@ -6367,6 +6369,18 @@ const mailSummaries={
 };
 
 const details={
+ mail_189904:{
+  kicker:'Comunicación académica · Máster',
+  title:'Remisión de material de la Docente Dª Susana Díaz Gallego',
+  date:'Recibido: 28 oct 2026 (12:18)',
+  teacher:'Susana Díaz Gallego',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Remitimos información de la docente Dª Susana Díaz Gallego, Procuradora, consistente en una presentación y PowerPoint para las clases que tendrán lugar los días jueves 29 y viernes 30.',
+  source:'Administración del Máster (ICA Coruña)',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
  mail_184540:{
   kicker:'Comunicación académica · Máster',
   title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',
@@ -7936,7 +7950,7 @@ const courses=[
      {name:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'},
      {name:'LEC: Postulación procesal y representación técnica (arts. 23 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:['materials_susana_diaz_23oct']
+    mails:['mail_189904','materials_susana_diaz_23oct']
    },
    {
     name:'Recursos, ejecución y costas de la Procura',
@@ -8816,7 +8830,7 @@ const teacherDirectory=[
    {date:'2026-10-29',dayLabel:'Jueves 29 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Procesos civiles declarativos: intervención del procurador (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-30',dayLabel:'Viernes 30 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Procesos civiles declarativos: intervención del procurador (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Carta presentación y Estatutos Procura (23 oct)',key:'materials_susana_diaz_23oct'}],
+  mails:[{title:'Remisión de material de la Docente Dª Susana Díaz Gallego',key:'mail_189904'},{title:'Carta presentación y Estatutos Procura (23 oct)',key:'materials_susana_diaz_23oct'}],
   practices:[],
   driveFiles:[],
   notes:[{title:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}]
