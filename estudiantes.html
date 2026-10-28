@@ -5292,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">59</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">60</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -6256,6 +6256,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'28 oct 2026 (10:49)',title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_184540',teacher:'Patricia González Figueroa',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'27 oct 2026 (12:46)',title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',meta:'Administración del Máster',key:'mail_105194',teacher:'María P. Carnota García',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'26 oct 2026 (13:18)',title:'Acuse de recibo de entrega: Ponencias DATAFORUM (D.ª Digna Braña)',meta:'MARÍA DIGNA BRAÑA IGLESIA · Coordinadora ICACOR · Confirmación de entrega recibida formalmente ✓',key:'mail_digna_dataforum_26oct',teacher:'Digna Braña Iglesias',subjectRef:'',emailSubject:'RE: ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM'},
  {date:'26 oct 2026 (12:43)',title:'Boletín do estudantado · 26 de outubro (Vicerreitoría Divulgación, Cultura e Deporte)',meta:'Vicerreitoría de Divulgación, Cultura e Deporte · vdcd@udc.gal · Agenda semanal y actividades UDC',key:'mail_boletin_26oct',teacher:'Vicerreitoría de Divulgación, Cultura e Deporte',subjectRef:'',emailSubject:'Boletín do estudantado, 26 de outubro'},
@@ -6318,6 +6319,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_184540:'Envío de la carta de presentación y de la presentación en PowerPoint por parte de la docente Patricia González Figueroa para la preparación de sus clases de Escritura Forense.',
  mail_105194:'Envío de carta de presentación de la docente para las sesiones de noviembre.',
  mail_digna_dataforum_26oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: D.ª Digna Braña, Coordinadora ICACOR del Máster, acusa recibo formal («Recibido, ¡muchas gracias!») de la memoria y resumen de ponencias «ESCUDERO VALCÁRCEL-RÍOS RAQUEL PONENCIAS DATAFORUM» remitida por correo por Raquel Escudero.',
  mail_carmen_belo_13oct:'NOTA OFICIAL: 7.6 / 10 (Test 40%: 3.4 + Trabajos 60%: 4.2 · Notable). Calificaciones otorgadas por Carmen Belo González correspondientes a la sesión del 13 de octubre sobre responsabilidad disciplinaria de los procuradores.',
@@ -6381,6 +6383,18 @@ const mailSummaries={
 };
 
 const details={
+ mail_184540:{
+  kicker:'Comunicación académica · Máster',
+  title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',
+  date:'Recibido: 28 oct 2026 (10:49)',
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Buenos días: La docente D.ª Patricia González Figueroa, Procuradora, solicita que se os remita la documentación que se adjunta al presente correo, consistente en su carta de presentación, y la presentación en PowerPoint. Un saludo. Administración.',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
  mail_105194:{
   kicker:'Comunicación académica · Máster',
   title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',
@@ -7726,7 +7740,7 @@ const courses=[
     notes:[
      {name:'Formularios prácticos de la procura en CPROC',url:cprocUrl,label:'CPROC ↗'}
     ],
-    mails:['materials']
+    mails:['mail_184540','materials']
    },
    {
     name:'Ejecución procesal de la Procura',
@@ -8616,7 +8630,7 @@ const teacherDirectory=[
   sessions:[
    {date:'2026-11-03',dayLabel:'Martes 3 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Escritura forense de la Procura: personaciones y escritos de trámite',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
+  mails:[{title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',key:'mail_184540'},],
   practices:[],
   driveFiles:[],
   notes:[]
