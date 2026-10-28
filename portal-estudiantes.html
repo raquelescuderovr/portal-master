@@ -558,8 +558,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .search-dropdown{
   position:absolute;
   top:calc(100% + 8px);
-  right:0;
-  width:min(540px,94vw);
+  left:0;
+  width:min(540px,92vw);
   max-height:480px;
   overflow-y:auto;
   background:var(--paper-card);
@@ -12864,15 +12864,21 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'grades' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo'){
   let targetFilter = 'teachers';
-  if(key === 'test_16oct' || key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetFilter = 'test';
-  else if(key === 'grades' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') targetFilter = 'mail';
+  if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetFilter = 'test';
+  else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetFilter = 'mail';
   else if(key === 'all_tests_summary') targetFilter = 'all';
   renderGrades(targetFilter);
   setView('notas', false);
   setTimeout(()=>{
-   let targetId = (key === 'grades') ? 'grade_1oct' : ((key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') ? 'grade_ana_vazquez' : ((key === 'test_16oct') ? 'grade_16oct_test' : ((key === 'test_20oct_sandra' || key === 'grade_20oct_test') ? 'grade_20oct_test' : 'grades_all_tests')));
+   let targetId = 'grades_all_tests';
+   if(key === 'grades' || key === 'grade_1oct') targetId = 'grade_1oct';
+   else if(key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') targetId = 'grade_ana_vazquez';
+   else if(key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetId = 'grade_carmen_belo';
+   else if(key === 'test_16oct' || key === 'grade_16oct_test') targetId = 'grade_16oct_test';
+   else if(key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetId = 'grade_20oct_test';
+   else if(key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetId = 'grade_28oct_carnota_test';
    let card = document.getElementById(targetId);
    if(card){
     const d = card.querySelector('details');
@@ -12916,7 +12922,7 @@ function openDetail(key){
  }
 
  // 4. Correo clasificado
- if(currentMailFilter !== 'all'){
+ if(currentMailFilter !== 'all' || !document.getElementById('mail-card-' + key)){
   renderMail('', 'all');
  }
  setView('correo', false);
@@ -14248,17 +14254,25 @@ function renderSearchResults(query){
  dropdown.classList.add('open');
 }
 
-const searchEl = document.getElementById('search');
+ const searchEl = document.getElementById('search');
 if(searchEl){
- searchEl.addEventListener('input', e => {
+ const handleSearchInput = e => {
   const q = e.target.value;
   renderSearchResults(q);
   renderMail(q);
   renderTeachers(q);
   renderMaterials(q);
- });
+ };
+ searchEl.addEventListener('input', handleSearchInput);
+ searchEl.addEventListener('search', handleSearchInput);
 
  searchEl.addEventListener('focus', e => {
+  if(e.target.value.trim()){
+   renderSearchResults(e.target.value);
+  }
+ });
+
+ searchEl.addEventListener('click', e => {
   if(e.target.value.trim()){
    renderSearchResults(e.target.value);
   }
