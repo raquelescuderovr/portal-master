@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">69</span>
+      <span class="nav-badge-pill badge-peach">70</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5366,7 +5366,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 3 tests superados (10, 9 y 10) · 8 prácticas entregadas</span>
+        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 4 tests superados (10, 9, 10 y 9) · 8 prácticas entregadas</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5624,7 +5624,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (69)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (70)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -5770,6 +5770,9 @@ const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacio
 const testmozCarnotaReviewUrl='https://testmozusercontent.com/q/15713256/student/review';
 const testHtmlCarnotaLocalUrl='historial-tests/originales/2026-10-28-testmoz-15713256.html';
 const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notarias-maria-carnota.md';
+const testmozSusanaReviewUrl='https://testmozusercontent.com/q/15727280/student/review';
+const testHtmlSusanaLocalUrl='historial-tests/originales/2026-10-29-testmoz-15727280.html';
+const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susana-diaz.md';
 const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
@@ -5864,11 +5867,13 @@ const events={ '2026-10-01':[
   ],
  '2026-10-29':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'18:17',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz (9/10 aciertos · 90%)',teacher:'Susana Díaz Gallego',detailKey:'test_29oct_susana',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'23:59',end:'',name:'✓ ENTREGADO: Caso práctico Delgado (Parte A y Parte B) · Enviado 27 oct',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega completada ✓',isWarning:false}
   ],
  '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'18:17',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz (9/10 aciertos · 90%)',teacher:'Susana Díaz Gallego',detailKey:'test_29oct_susana',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-02':[
@@ -6324,6 +6329,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_29oct_susana:'TEST ONLINE REALIZADO (9/10): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el jueves 29 de octubre a las 18:17 h con 9 de 10 aciertos (90 % de puntuación · 9/10 · Sobresaliente). Poder especial para transigir en audiencia previa (art. 25.2 LEC), intervención en juicio oral penal (art. 768 LECrim), agosto hábil en despido laboral (art. 43.4 LRJS), preclusión y caducidad en lo contencioso (art. 128.1 LJCA), reforma de cuantía del juicio verbal (15.000 €), auto-representación funcionarial (art. 23.3 LJCA), firma al solo efecto de representación (art. 26.2 LEC), monitorio sin límite de cuantía (art. 812 LEC), competencia penal objetiva (art. 14.3 LECrim) y denuncia en delitos semipúblicos.',
  test_28oct_carnota:'TEST ONLINE SOBRESALIENTE: Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el miércoles 28 de octubre a las 17:51 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★). Diligencias preliminares art. 256 LEC, medidas cautelares y caución, prueba anticipada y representación ante notarías, registros y administraciones (Ley 39/2015).',
  mail_189904:'Envío de dos presentaciones en PowerPoint con los materiales docentes para las sesiones del jueves 29 y viernes 30 de octubre.',
  mail_184540:'Envío de la carta de presentación y de la presentación en PowerPoint por parte de la docente Patricia González Figueroa para la preparación de sus clases de Escritura Forense.',
@@ -6390,6 +6396,136 @@ const mailSummaries={
 };
 
 const details={
+ test_29oct_susana:{
+  kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Procesos Declarativos',
+  title:'Test online · Procesos civiles declarativos de la Procura (Susana Díaz)',
+  date:'Realizado: jueves, 29 de octubre de 2026 · 18:17 (Grupo de tarde) · Calificación: 9 / 10 (9/10 aciertos · 1 fallo)',
+  teacher:'Susana Díaz Gallego',
+  subjectRef:'Procura|Actuación procesal|2',
+  body:'Prueba oficial realizada en la plataforma Testmoz («SUSANA DIAZ- 29-10-26 - GRUPO DE TARDE - TÉCNICAS INSTRUMENTALES»). Puntuación obtenida por Raquel Escudero: 9 de 10 respuestas correctas (90 % · 9 sobre 10 · Sobresaliente, con 1 único fallo en la pregunta 4 sobre plazos y caducidad en el orden contencioso-administrativo ex art. 128.1 LJCA). Temario evaluado: facultades para transigir en la audiencia previa (art. 25.2 LEC), habilitación letrada y momento preceptivo de procurador en juicio oral penal (art. 768 LECrim), días hábiles en agosto para despido laboral (art. 43.4 LRJS), preclusión y admisibilidad de escrito en el día de notificación de la caducidad (art. 128.1 LJCA), elevación de la cuantía máxima del juicio verbal tras el RD-ley 6/2023 (15.000 €), auto-representación de funcionarios públicos en materia estatutaria de personal (art. 23.3 LJCA), firma de escritos procesales al solo efecto de la representación técnica (art. 26.2 LEC), procedimiento monitorio sin límite de cuantía (art. 812 LEC), competencia penal objetiva del Tribunal de Instancia en abreviado (art. 14.3 LECrim) y exigencia de previa denuncia en delitos semipúblicos. A continuación tienes las 10 preguntas con sus respuestas, opciones oficiales y el análisis del fallo.',
+  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15727280/student/review) · 29 oct 2026',
+  attachments:[
+   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlSusanaLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir documento Markdown completo (.md)',url:testMdSusanaLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozSusanaReviewUrl,kind:'Web Testmoz'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC'},
+   {name:'Ley de Enjuiciamiento Civil (arts. 25, 250, 414 y 812 LEC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial'},
+   {name:'Ley 29/1998 de la Jurisdicción Contencioso-Administrativa (arts. 23 y 128 LJCA · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1998-16758',kind:'BOE oficial'},
+   {name:'Ley de Enjuiciamiento Criminal (arts. 14, 104 y 768 LECrim · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1882-6036',kind:'BOE oficial'}
+  ],
+  questions:[
+   {
+    q:'1. Javier, procurador de los tribunales, comparece junto a la dirección letrada a la “audiencia previa” de juicio ordinario civil en representación de su cliente. En el transcurso de la audiencia las partes deciden llegar a un acuerdo, ¿tiene Javier facultades para transigir?',
+    opts:[
+     'No, es la parte asistida por su letrado la única que tiene esta facultad.',
+     'Sí, cuando así lo determina el juez en la audiencia previa.',
+     'Sí, cuando expresamente se solicite en el escrito de demanda.',
+     'Sí, siempre que se le haya otorgado poder especial.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'2. Ana ha recibido una notificación por la que se le tiene como parte investigada en unas Diligencias Previas. Dado que es la primera vez que se ve en esta situación, acude al despacho de Pilar, procuradora de los tribunales, para consultarle si ¿además de letrado/a, necesitará un/a procurador/a que le represente en el procedimiento.?',
+    opts:[
+     'Sí, desde el inicio del procedimiento será preceptiva su intervención.',
+     'Sí, desde el trámite de apertura del juicio oral.',
+     'Sí pero solo en la fase de instrucción, pudiendo ejercer la representación el abogado en la fase del juicio oral.',
+     'No, la intervención del procurador/a no es preceptiva en el orden penal.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'3. A María la han despedido el 31 de julio. Quiere resolver el asunto con urgencia y pide a su procurador, Andrés, que lo acelere lo posible. Andrés le informa que en el procedimiento por despido los días del mes de agosto:',
+    opts:[
+     'Serán inhábiles a todos los efectos.',
+     'Serán hábiles hasta sentencia, pero no en ejecución y recursos.',
+     'Serán hábiles a todos los efectos.',
+     'Los plazos se contarán como días naturales.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'4. En la jurisdicción Contenciosa Administrativa, los plazos son:',
+    opts:[
+     'Improrrogables, siempre',
+     'El plazo 2 meses se inicia el mismo día de su notificación o publicación y termina al siguiente, de acuerdo al art. 5 CC.',
+     'Agosto siempre es hábil para interponer el recurso.',
+     'El art. 128.1 LJCA permite presentar el escrito dentro del día en que se notifica la caducidad del derecho.'
+    ],
+    correct:3,
+    userAnswer:1
+   },
+   {
+    q:'5. Según el art. 250.2 de la LEC “se decidirán también en el juicio verbal las demandas cuya cuantía no exceda:',
+    opts:[
+     'Demandas de cuantías inferiores a 9000€',
+     'Los juicios verbales se tramitan según la materia reclamada y no por cuantía.',
+     'Tras la última reforma las demandas cuya cuantía no exceda de 15000€',
+     'Demandas de cuantías comprendidas entre 2000€ y 10000€.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'6. Pedro, funcionario público, quiere entablar un proceso contencioso-administrativo, y se pregunta si es preciso designar procurador, ¿Cuál de las siguientes respuestas es la correcta?',
+    opts:[
+     'Sólo es necesario procurador si el proceso es ante órganos jurisdiccionales individuales.',
+     'Solo es necesario procurador si el proceso es ante órganos jurisdiccionales colegiados.',
+     'Pedro puede representarse a sí mismo.',
+     'Por su trabajo, es necesario siempre procurador.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'7. María, procuradora de los tribunales, recibe un escrito de alegaciones del abogado compañero en un procedimiento. En dicho escrito el letrado vierte manifestaciones ofensivas contra el Juez que conoce del asunto. No estando María de acuerdo con dichas manifestaciones ¿está María obligada a presentar dicho escrito?',
+    opts:[
+     'Debe presentarlo firmándolo al sólo efecto de la representación.',
+     'Sí, ha de presentarlo y si no está de acuerdo ha de presentar su renuncia a seguir con la representación.',
+     'Debe consultarlo con el órgano judicial.',
+     'No, al no tratarse de un recurso.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'8. El procedimiento monitorio',
+    opts:[
+     'Depende de la materia reclamada.',
+     'Es un proceso civil para reclamaciones de todo tipo de cuantías.',
+     'Solo para reclamaciones superiores a 3000€.',
+     'Sin límite de cuantía, siempre que sea liquida, vencida y exigible'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'9. En el procedimiento abreviado el enjuiciamiento corresponde a la Sección de lo Penal del Tribunal de Instancia:',
+    opts:[
+     'Siempre por ser abreviado',
+     'Siempre que la pena sea superior a cinco años',
+     'Corresponde a la Audiencia Provincial por ser superior jerárquico',
+     'Cuando la pena no supere los cinco años de prisión o diez de otro tipo'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'10. Los delitos semipúblicos comienzan siempre',
+    opts:[
+     'A través de una querella',
+     'De oficio',
+     'Por denuncia',
+     'Siempre a instancia del Ministerio Fiscal'
+    ],
+    correct:2,
+    userAnswer:2
+   }
+  ]
+ },
  test_28oct_carnota:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente) · Procura · Registros y Notarías',
   title:'Test online · Actuación ante registros, notarías y administraciones (María Carnota)',
@@ -7860,7 +7996,7 @@ const courses=[
     period:'29 y 30 oct 2026 · Horario: 16:30 – 18:30 (2 sesiones)',
     startDate:'2026-10-29',
     teachers:['Susana Díaz Gallego'],
-    grade:{score:'Materiales recibidos · 29–30 oct',detail:'Carta de presentación y Estatutos de Procura remitidos el 23 oct (5 adjuntos, 3 MB). Postulación, actos preparatorios y trámite de juicio ordinario y verbal.',detailKey:'materials_susana_diaz_23oct',actionLabel:'Ver materiales ↗'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
      {name:'Carta presentación docente y Estatutos Procura (5 PDFs)',detailKey:'materials_susana_diaz_23oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'},
@@ -8744,17 +8880,23 @@ const teacherDirectory=[
   name:'Susana Díaz Gallego',
   branch:'Procura',
   role:'Procuradora · Procesos civiles declarativos',
-  gradeBadge:'Materiales recibidos · 29 y 30 oct',
-  summary:'Intervención de la Procura en procesos declarativos: juicio ordinario, verbal y cómputos de plazos.',
-  grade:{score:'Materiales recibidos · 2 sesiones',scoreLabel:'Documentación remitida',detail:'Carta de presentación oficial, Estatuto General (RD 1281/2002) y Estatutos del ICP A Coruña (5 adjuntos, 3 MB). Clases el 29 y 30 de octubre.',detailKey:'materials_susana_diaz_23oct'},
+  gradeBadge:'⚖️ Evaluación continua',
+  summary:'Intervención de la Procura en procesos declarativos: juicio ordinario, verbal y cómputos de plazos. Sesión 1 superada con 9/10 en el test de clase.',
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-29',dayLabel:'Jueves 29 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Procesos civiles declarativos: intervención del procurador (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-30',dayLabel:'Viernes 30 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Procesos civiles declarativos: intervención del procurador (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Remisión de material de la Docente Dª Susana Díaz Gallego',key:'mail_189904'},{title:'Carta presentación y Estatutos Procura (23 oct)',key:'materials_susana_diaz_23oct'}],
-  practices:[],
+  practices:[
+   {title:'Test online Testmoz: Procesos declarativos de la Procura (9/10 aciertos)',status:'9 / 10 (Sobresaliente)',key:'test_29oct_susana'}
+  ],
   driveFiles:[],
-  notes:[{title:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}]
+  notes:[
+   {name:'Test online Testmoz (9/10 aciertos · HTML original)',url:testHtmlSusanaLocalUrl,label:'Ver test HTML ↗'},
+   {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdSusanaLocalUrl,label:'Ver .md ↗'},
+   {title:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
+  ]
  },
  {
   name:'Javier García y Santiago Varela',
@@ -10640,7 +10782,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'mail'){
    sumEl.textContent = 'Mostrando expedientes docentes para registrar la calificación oficial conjunta comunicada por correo.';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10 y 28 oct: 10/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10 y 29 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
    sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
