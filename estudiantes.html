@@ -5057,7 +5057,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 7 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">70</span>
+      <span class="nav-badge-pill badge-peach">75</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5288,11 +5288,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab active" data-view="inicio" role="tab" aria-selected="true">Portada</button>
     <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">Calendario mensual 🗓️</button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
-    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">29</span></button>
+    <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">7 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">61</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">66</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5624,7 +5624,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (70)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (75)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -5781,6 +5781,9 @@ const casoSandraResolucionLocalUrl='materiales/';
 const casoSandraGDocUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const cprocTareasUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
+const susanaSubsanacionPdfLocalUrl='materiales/REDACCION_ESCRITOS_SUBSANACION_29_10_2026_SUSANA_DIAZ.pdf';
+const susanaSubsanacionVideoLocalUrl='materiales/2026-10-30-grabacion-entrega-practica-ceproc.mp4';
+const susanaCasos30OctPdfLocalUrl='materiales/CASOS_PRACTICOS_30_10_2026_SUSANA_DIAZ.pdf';
 
 const events={ '2026-10-01':[
    {start:'16:30',end:'18:30',name:'Oratoria Forense',teacher:'Javier Sánchez García',subject:'Técnicas instrumentales · Abogacía / Procura',subjectRef:'Procura|Técnicas instrumentales|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
@@ -5873,13 +5876,15 @@ const events={ '2026-10-01':[
   ],
  '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'17:20',end:'',name:'✓ ENTREGADO EN CPROC: Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Entrega de Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'18:17',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz (9/10 aciertos · 90%)',teacher:'Susana Díaz Gallego',detailKey:'test_29oct_susana',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-02':[
    {start:'16:30',end:'18:30',name:'Recursos, ejecución y costas / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Redacción escritos de subsanación (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
+   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Casos prácticos día 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
+   {start:'23:59',end:'',name:'✓ ENTREGADO (30 oct): Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Resúmenes y Ponencias DATAfórum 2026 (D.ª Digna Braña)',teacher:'Digna Braña Iglesias',subject:'Actividades complementarias · DATAfórum',detailKey:'entrega_dataforum_resumenes',place:'branaabogada@icacor.es',kind:'Entrega práctica (Límite)',isWarning:true}
   ],
  '2026-11-03':[
@@ -5887,7 +5892,7 @@ const events={ '2026-10-01':[
    {start:'18:45',end:'20:45',name:'Previsión social de la abogacía',teacher:'Pilar Cortizo',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|8',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-04':[
-   {start:'16:30',end:'20:45',name:'Propiedad intelectual y protección de datos',subject:'Sustantivo civil / Mercantil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'Propiedad intelectual y protección de datos',teacher:'Lucía Silvoso',subject:'Sustantivo civil / Mercantil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-05':[
    {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
@@ -6099,6 +6104,19 @@ const gradeRecords=[
 
 const deliveries=[
  {
+  date:new Date(2026,10,3),
+  title:'Caso práctico: Escritura Forense y Técnicas Documentales',
+  teacher:'Javier García y Santiago Varela',
+  subject:'Abogacía · Técnicas instrumentales / Escritura forense',
+  subjectRef:'Abogacía|Técnicas instrumentales|7',
+  subjectName:'Escritura Forense y Técnicas Documentales (Abogacía)',
+  status:'⏳ Pendiente (Enunciado recibido por correo el 30 oct 2026)',
+  submitted:false,
+  detailKey:'mail_caso_escritura_30oct',
+  file:'CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx',
+  details:'Planteamiento de caso práctico oficial remitido por la Administración del Máster de la Abogacía (master.abogacia@icacor.org) el viernes 30 de octubre de 2026 a las 12:39 h para trabajar en la materia de Escritura Forense y Técnicas Documentales. Archivo de trabajo adjunto: CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx.'
+ },
+ {
   date:new Date(2026,10,2),
   title:'Memoria y Resumen de ponencias DATAfórum Justicia 2026',
   teacher:'Digna Braña Iglesias (Coordinación MUAP)',
@@ -6130,11 +6148,23 @@ const deliveries=[
   subject:'Abogacía · Gestiones profesionales ante registros y administraciones',
   subjectRef:'Abogacía|Técnicas instrumentales|7',
   subjectName:'Gestiones profesionales ante registros y administraciones (Abogacía)',
-  status:'Entregada por correo electrónico ✓ (27 oct 2026, tarde)',
+  status:'Entregada con acuse de recibo oficial ✓ (29 oct 2026, 17:15 h)',
   submitted:false,
   detailKey:'entrega_moure_masc_divorcio',
   file:'MASC Demanda de divorcio - Raquel Escudero',
   details:'Práctica de gestión y litigación civil de familia impartida por D.ª María Luisa Moure Sagasti (sesión del 26 de octubre). Consiste en la instrumentación de un Medio Adecuado de Solución de Controversias (MASC) previo a la vía contenciosa para un proceso de divorcio, articulando la propuesta de convenio regulador extrajudicial, medidas paternofiliales y liquidación económica. Enviada por correo electrónico en la tarde del martes 27 de octubre de 2026.'
+ },
+ {
+  date:new Date(2026,10,2),
+  title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 (Proceso Cautelar)',
+  teacher:'Susana Díaz Gallego',
+  subject:'Procura · Técnicas Instrumentales / Actuación procesal',
+  subjectRef:'Procura|Actuación procesal|2',
+  subjectName:'Técnicas Instrumentales (D.ª Susana Díaz Gallego)',
+  status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',
+  submitted:false,
+  detailKey:'entrega_susana_diaz_casos_30oct',
+  details:'Tarea oficial publicada en la plataforma CPROC: «CASOS PRÁCTICOS DIA 30_10_2026». Docente: D.ª Susana Díaz Gallego (Procuradora ICP). Materia: Técnicas Instrumentales (La intervención del Profesional de la Procura en el Proceso Cautelar). Curso: 26-28. Fecha límite de entrega: 2 de noviembre de 2026. Supuesto práctico sobre desvío de fondos societarios y venta de inmueble (300.000 €) por el socio D. Marcos frente a D. Andrés, con 3 cuestiones sobre requisitos de las medidas cautelares (arts. 728 LEC), medidas concretas aplicables (art. 727 LEC) y momento procesal de solicitud (art. 730 LEC).'
  },
  {
   date:new Date(2026,10,2),
@@ -6143,10 +6173,11 @@ const deliveries=[
   subject:'Procura · Técnicas Instrumentales / Actuación procesal',
   subjectRef:'Procura|Actuación procesal|2',
   subjectName:'Técnicas Instrumentales (D.ª Susana Díaz Gallego)',
-  status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',
+  status:'Entregada en CPROC ✓ (30 oct 2026, 17:20 h)',
   submitted:false,
   detailKey:'entrega_susana_diaz_subsanacion',
-  details:'Tarea oficial de la plataforma CPROC: «REDACCION ESCRITOS DE SUBSANACION 29/10/2026». Docente: D.ª Susana Díaz Gallego (Procuradora ICP). Materia: Técnicas Instrumentales. Curso: 26-28. Fecha límite de entrega: 2 de noviembre de 2026. Documentación relacionada: PDF oficial disponible en CPROC.'
+  file:'Escrito de subsanación',
+  details:'Tarea oficial de la plataforma CPROC: «REDACCION ESCRITOS DE SUBSANACION 29/10/2026». Entregada telemáticamente en el portal CEPROC el viernes 30 de octubre de 2026 a las 17:20 h («La Tarea se ha entregado con éxito.»), con vídeo de grabación de pantalla guardado en el repositorio. Supuesto sobre requerimiento de tasa judicial y copias de demanda (art. 231 LEC) ante Diligencia de Ordenación.'
  },
  {
   date:new Date(2026,10,11),
@@ -6278,6 +6309,11 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'30 oct 2026 (12:51)',title:'Materiales y seminario de Protección de Datos · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_rgpd_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
+ {date:'30 oct 2026 (12:49)',title:'Materiales y seminario de Propiedad Intelectual · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_pi_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROPIEDAD INTELECTUAL Y PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
+ {date:'30 oct 2026 (12:39)',title:'Caso práctico: Escritura Forense y Técnicas Documentales',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_caso_escritura_30oct',teacher:'Javier García y Santiago Varela',subjectRef:'Abogacía|Técnicas instrumentales|7',emailSubject:'CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES- Máster Acceso Abogacía y Procura'},
+ {date:'30 oct 2026 (11:21)',title:'Xornadas Feminismo e perspectiva de xénero na investigación (PechaKucha CEXEF · 4 nov)',meta:'Vicerreitoría do Campus de Ferrol, Igualdade e Responsabilidade · UDC',key:'mail_pechakucha_udc_30oct',teacher:'Vicerreitoría Campus de Ferrol, Igualdade e Responsabilidade',subjectRef:'',emailSubject:'PechaKucha_ CEXEF 2026_ 4 de novembro'},
+ {date:'29 oct 2026 (17:15)',title:'Acuse de recibo de entrega: Caso práctico mediación (D.ª M.ª Luisa Moure)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Confirmación de entrega recibida formalmente ✓',key:'mail_acuse_mediacion_29oct',teacher:'María Luisa Moure Sagasti',subjectRef:'Abogacía|Técnicas instrumentales|7',emailSubject:'RE: Entrega caso práctico mediación'},
  {date:'28 oct 2026 (12:18)',title:'Remisión de material de la Docente Dª Susana Díaz Gallego',meta:'Administración del Máster (ICA Coruña)',key:'mail_189904',teacher:'Susana Díaz Gallego',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'28 oct 2026 (10:49)',title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_184540',teacher:'Patricia González Figueroa',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'27 oct 2026 (12:46)',title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',meta:'Administración del Máster',key:'mail_105194',teacher:'María P. Carnota García',subjectRef:'Abogacía|Técnicas instrumentales|3'},
@@ -6342,6 +6378,11 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_seminario_rgpd_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: modelo y guía jurídica «aviso-legal.pdf» sobre Protección de Datos, RGPD y LOPDGDD.',
+ mail_seminario_pi_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: documento «EJEMPLOSRESERVASDERECHOSLIBROS.pdf» sobre reservas de derechos de autor y propiedad intelectual.',
+ mail_caso_escritura_30oct:'Envío del planteamiento del caso práctico oficial «CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx» para la materia de Escritura Forense y Técnicas Documentales.',
+ mail_pechakucha_udc_30oct:'Convocatoria de las jornadas PechaKucha CEXEF «Feminismo e perspectiva de xénero na investigación» el 4 de noviembre a las 09:30 h en el pabellón del Campus de Elviña.',
+ mail_acuse_mediacion_29oct:'CONFIRMACIÓN OFICIAL DE ENTREGA: La Administración del Máster (ICA Coruña) acusa recibo formal («Buenos días, Recibido») de la entrega «Raquel Escudero_ Finalización de la mediación.pdf» enviada el 29 de octubre.',
  test_29oct_susana:'TEST ONLINE REALIZADO (9/10): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el jueves 29 de octubre a las 18:17 h con 9 de 10 aciertos (90 % de puntuación · 9/10 · Sobresaliente). Poder especial para transigir en audiencia previa (art. 25.2 LEC), intervención en juicio oral penal (art. 768 LECrim), agosto hábil en despido laboral (art. 43.4 LRJS), preclusión y caducidad en lo contencioso (art. 128.1 LJCA), reforma de cuantía del juicio verbal (15.000 €), auto-representación funcionarial (art. 23.3 LJCA), firma al solo efecto de representación (art. 26.2 LEC), monitorio sin límite de cuantía (art. 812 LEC), competencia penal objetiva (art. 14.3 LECrim) y denuncia en delitos semipúblicos.',
  test_28oct_carnota:'TEST ONLINE SOBRESALIENTE: Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el miércoles 28 de octubre a las 17:51 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★). Diligencias preliminares art. 256 LEC, medidas cautelares y caución, prueba anticipada y representación ante notarías, registros y administraciones (Ley 39/2015).',
  mail_189904:'Envío de dos presentaciones en PowerPoint con los materiales docentes para las sesiones del jueves 29 y viernes 30 de octubre.',
@@ -6409,6 +6450,70 @@ const mailSummaries={
 };
 
 const details={
+ mail_seminario_rgpd_30oct:{
+  kicker:'Comunicación académica · Materiales docentes previos',
+  title:'Materiales del seminario: Protección de Datos (D.ª Lucía Silvoso)',
+  date:'Recibido: viernes, 30 oct 2026 (12:51) · Documentación adjunta',
+  teacher:'Lucía Silvoso',
+  subjectRef:'Abogacía|Sustantivo civil|3',
+  body:'Envío de documentación preparatoria para la clase del próximo miércoles 4 de noviembre de 2026 por parte de la docente D.ª Lucía Silvoso:\n\n«Estimados/as alumnos/as: Remitimos la documentación de la profesora Dª Lucía Silvoso, que impartirá clase el próximo 4 de noviembre. Se trata de documentación relativa a la Protección de Datos. Saludos. Patricia, Administración Máster de la Abogacía – ICA Coruña.»\n\nArchivo adjunto: «aviso-legal.pdf» con modelos y análisis jurídico de cláusulas de aviso legal, privacidad, política de cookies y adecuación al RGPD y LOPDGDD para páginas web profesionales y despachos.',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 30 oct 2026',
+  attachments:[
+   {name:'aviso-legal.pdf',kind:'Material docente (PDF)'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ mail_seminario_pi_30oct:{
+  kicker:'Comunicación académica · Materiales docentes previos',
+  title:'Materiales del seminario: Propiedad Intelectual (D.ª Lucía Silvoso)',
+  date:'Recibido: viernes, 30 oct 2026 (12:49) · Documentación adjunta',
+  teacher:'Lucía Silvoso',
+  subjectRef:'Abogacía|Sustantivo civil|3',
+  body:'Envío de documentación preparatoria para la clase del próximo miércoles 4 de noviembre de 2026 por parte de la docente D.ª Lucía Silvoso:\n\n«Estimados/as alumnos/as: Remitimos la documentación de la profesora Dª Lucía Silvoso, que impartirá clase el próximo 4 de noviembre. Se trata de documentación relativa a la propiedad intelectual. Saludos. Patricia, Administración Máster de la Abogacía – ICA Coruña.»\n\nArchivo adjunto: «EJEMPLOSRESERVASDERECHOSLIBROS.pdf» con supuestos prácticos de cláusulas de reserva de derechos, copyright y licencias editoriales.',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 30 oct 2026',
+  attachments:[
+   {name:'EJEMPLOSRESERVASDERECHOSLIBROS.pdf',kind:'Material docente (PDF)'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ mail_caso_escritura_30oct:{
+  kicker:'Comunicación académica · Enunciado de caso práctico',
+  title:'Caso práctico: Escritura Forense y Técnicas Documentales',
+  date:'Recibido: viernes, 30 oct 2026 (12:39) · Documento oficial adjunto',
+  teacher:'Javier García y Santiago Varela',
+  subjectRef:'Abogacía|Técnicas instrumentales|7',
+  body:'Remisión oficial por parte de la Administración del Máster de la Abogacía (ICA Coruña) del planteamiento de caso práctico para la asignatura de Escritura Forense y Técnicas Documentales impartida por D. Javier García, D. Santiago Varela y D.ª Patricia González Figueroa:\n\n«Estimados/as alumnos/as: Os remitimos el planteamiento de caso práctico sobre el que debéis trabajar en la materia de Escritura Forense y Técnicas Documentales. Saludos. Patricia, Administración Máster de la Abogacía – ICA Coruña Ilustre Colegio de Abogados de A Coruña.»',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 30 oct 2026',
+  attachments:[
+   {name:'CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx',kind:'Documento de trabajo (.docx)'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ mail_pechakucha_udc_30oct:{
+  kicker:'Información universitaria · UDC Campus Ferrol / Elviña',
+  title:'Xornadas Feminismo e perspectiva de xénero na investigación (PechaKucha CEXEF)',
+  date:'Recibido: viernes, 30 oct 2026 (11:21) · Convocatoria UDC',
+  teacher:'Vicerreitoría Campus de Ferrol, Igualdade e Responsabilidade',
+  subjectRef:'',
+  body:'Convocatoria de la Vicerreitoría do Campus de Ferrol, Igualdade e Responsabilidade Social de la UDC para la edición 2026 de las jornadas «Feminismo e perspectiva de xénero na investigación: da formación académica ao impacto social», en formato dinámico PechaKucha. Celebración el miércoles 4 de noviembre de 2026 a partir de las 09:30 h en el pabellón de estudiantes del Campus de Elviña.',
+  source:'Vicerreitoría do Campus de Ferrol, Igualdade e Responsabilidade Social · UDC · 30 oct 2026',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ mail_acuse_mediacion_29oct:{
+  kicker:'Confirmación oficial de entrega · ICA Coruña',
+  title:'Acuse de recibo de entrega: Caso práctico mediación',
+  date:'Recibido: jueves, 29 oct 2026 (17:15) · Confirmación oficial',
+  teacher:'María Luisa Moure Sagasti',
+  subjectRef:'Abogacía|Técnicas instrumentales|7',
+  body:'La Administración del Máster de la Abogacía (ICA Coruña) confirma formalmente la recepción del caso práctico de mediación («Buenos días, Recibido. Saludos, Administración»), en contestación a la entrega remitida por Raquel Escudero el jueves 29 de octubre a las 12:00 h con el archivo «Raquel Escudero_ Finalización de la mediación.pdf». Queda formal y documentalmente acreditada la entrega ante la coordinación académica.',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 29 oct 2026',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'},
+   {name:'Entrega: Raquel Escudero_ Finalización de la mediación.pdf',kind:'Documento entregado'}
+  ]
+ },
  test_29oct_susana:{
   kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Procesos Declarativos',
   title:'Test online · Procesos civiles declarativos de la Procura (Susana Díaz)',
@@ -7156,22 +7261,40 @@ const details={
    {name:'Abrir correo en Outlook',url:outlookUrl,kind:'Correo Outlook'}
   ]
  },
- entrega_susana_diaz_subsanacion:{
+ entrega_susana_diaz_casos_30oct:{
   isDelivery:true,
-  kicker:'Práctica pendiente · Procura · Técnicas Instrumentales / Actuación procesal',
-  title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026 (D.ª Susana Díaz Gallego)',
+  kicker:'Práctica pendiente · Procura · Técnicas Instrumentales / Proceso Cautelar',
+  title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz Gallego)',
   date:'Fecha límite de entrega: Lunes, 2 de noviembre de 2026 · Plataforma CPROC',
   teacher:'Susana Díaz Gallego',
   subjectRef:'Procura|Actuación procesal|2',
-  body:'Tarea oficial publicada en la plataforma CPROC por la docente D.ª Susana Díaz Gallego (Procuradora ICP):\n\n• Datos oficiales de la convocatoria:\n  - Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026\n  - Docente y cargo: D.ª SUSANA DÍAZ GALLEGO (Procuradora ICP)\n  - Materia: Técnicas Instrumentales\n  - Curso: 26-28\n  - Fecha límite de entrega: 2 de noviembre de 2026\n  - Descripción de la tarea: REDACCION ESCRITOS DE SUBSANACION\n\n• Documentación relacionada:\n  - Documento PDF oficial de supuestos prácticos de subsanación procesal disponible en la plataforma CPROC.\n\n• Instrucciones de entrega:\n  - Elaboración y redacción de los escritos procesales de subsanación conforme a las pautas de las clases presenciales de los días 29 y 30 de octubre.\n  - Envío telemático a través de la plataforma colegial CPROC (MUAP → Tareas publicadas) antes del vencimiento del plazo.',
-  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Convocatoria del 29 oct 2026',
+  body:'Tarea oficial publicada en la plataforma CPROC por la docente D.ª María Susana Díaz Gallego (Procuradora ICP) correspondiente a la sesión del viernes 30 de octubre de 2026:\n\n• Datos oficiales de la convocatoria:\n  - Tarea: CASOS PRÁCTICOS DIA 30_10_2026\n  - Docente y cargo: D.ª SUSANA DÍAZ GALLEGO (Procuradora ICP)\n  - Materia: Deontología y Técnicas Transversales – Técnicas Instrumentales (La intervención del procurador en los procesos civiles declarativos y en el Proceso Cautelar)\n  - Curso: 26-28\n  - Fecha límite de entrega: 2 de noviembre de 2026\n  - Descripción de la tarea: CASOS PRÁCTICOS DIA 30_10_2026\n\n• Enunciado íntegro del Caso Práctico (Día 30-10-26):\n  «Don Andrés descubre que su socio, Don Marcos, está desviando fondos de la empresa común a cuentas personales fuera de España y planea vender el único inmueble de la sociedad (valorado en 300.000 €) a un tercero para quedarse con el dinero y marcharse del país.\n  Don Andrés va a interponer una demanda, solicitando la disolución de la sociedad y una indemnización de daños y perjuicios. Sin embargo, sabe que el juicio puede tardar más de un año, y si Don Marcos vende el inmueble y vacía las cuentas antes de la sentencia, D. Andrés jamás podrá recuperar su dinero.»\n\n• Cuestiones a resolver:\n  1. ¿Qué tres requisitos obligatorios debe justificar D. Andrés ante el Juez para que le concedan una medida cautelar?\n  2. ¿Qué medidas cautelares concretas se adecúan mejor a este caso?\n  3. ¿En qué momento procesal debe solicitarlas?',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Convocatoria del 30 oct 2026',
   attachments:[
-   {name:'Plataforma de entregas CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
-   {name:'Carpeta general Máster ',url:driveFolderUrl,kind:'CPROC Tareas ↗'},
+   {name:'PDF oficial del enunciado (CASOS PRÁCTICOS DIA 30_10_2026.pdf)',url:susanaCasos30OctPdfLocalUrl,kind:'PDF en portal 📄'},
+   {name:'Plataforma de entregas CPROC (MUAP → Tareas)',url:cprocTareasUrl,kind:'CPROC ↗'},
    {name:'Carta de presentación y Estatutos Procura (23 oct)',detailKey:'materials_susana_diaz_23oct',kind:'Correo oficial ↗'},
    {name:'Ficha docente de D.ª Susana Díaz Gallego',teacher:'Susana Díaz Gallego',kind:'Docente 👤'}
   ],
-  extra:'⏳ Fecha límite improrrogable: Lunes, 2 de noviembre de 2026 a través de la plataforma CPROC.'
+  extra:'⏳ Fecha límite de entrega: Lunes, 2 de noviembre de 2026 a través de la plataforma CPROC.'
+ },
+ entrega_susana_diaz_subsanacion:{
+  isDelivery:true,
+  kicker:'Práctica entregada en CPROC ✓ · Procura · Técnicas Instrumentales / Actuación procesal',
+  title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026 (D.ª Susana Díaz Gallego)',
+  date:'Entregada en CPROC: Viernes, 30 de octubre de 2026 (17:20 h) · Plazo oficial: 2 nov 2026',
+  teacher:'Susana Díaz Gallego',
+  subjectRef:'Procura|Actuación procesal|2',
+  body:'Tarea oficial publicada en la plataforma CPROC por la docente D.ª María Susana Díaz Gallego (Procuradora ICP) y entregada telemáticamente el viernes 30 de octubre de 2026 a las 17:20 h:\n\n• Datos oficiales de la convocatoria y entrega:\n  - Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026\n  - Docente y cargo: D.ª SUSANA DÍAZ GALLEGO (Procuradora ICP)\n  - Materia: Técnicas Instrumentales (La intervención del procurador en los procesos civiles declarativos)\n  - Curso: 26-28\n  - Estado de la entrega: Entregada con éxito en CEPROC el 30/10/2026 a las 17:20 h («La Tarea se ha entregado con éxito.»)\n\n• Enunciado del supuesto práctico (Día 29-10-26):\n  - 1. Requerimiento de tasa judicial. Desarrollando el por qué sí o no de su presentación (tipo de procedimiento, cuantía, partes...).\n  - Diligencia de Ordenación del/de la LAJ acordando incoar procedimiento y requerir en el término de cinco días (ex art. 231 LEC) para aportar justificante de pago de la tasa por el ejercicio de la potestad jurisdiccional y subsanar la falta de presentación de copia de la demanda y documentos presentados (tratándose la parte demandada de persona física no obligada a relacionarse telemáticamente), con apercibimiento de no dar trámite a la demanda.',
+  source:'Plataforma CPROC (MUAP → Entrega de Tareas) · Entregada el 30 oct 2026 (17:20 h)',
+  attachments:[
+   {name:'🎥 Grabación de pantalla de la entrega en CEPROC (.mp4)',url:susanaSubsanacionVideoLocalUrl,kind:'Vídeo entrega 🎥'},
+   {name:'PDF oficial del enunciado (REDACCION ESCRITOS DE SUBSANACION.pdf)',url:susanaSubsanacionPdfLocalUrl,kind:'PDF en portal 📄'},
+   {name:'Plataforma de entregas CPROC (MUAP → Tareas)',url:cprocTareasUrl,kind:'CPROC ↗'},
+   {name:'Carta de presentación y Estatutos Procura (23 oct)',detailKey:'materials_susana_diaz_23oct',kind:'Correo oficial ↗'},
+   {name:'Ficha docente de D.ª Susana Díaz Gallego',teacher:'Susana Díaz Gallego',kind:'Docente 👤'}
+  ],
+  extra:'✓ Entregada telemáticamente en CEPROC el viernes 30 de octubre de 2026 (17:20 h), con grabación en vídeo de respaldo.'
  },
  entrega_lousada_sesion1:{
   isDelivery:true,
@@ -8028,6 +8151,8 @@ const courses=[
     teachers:['Susana Díaz Gallego'],
     grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
+     {name:'PDF oficial: Casos prácticos día 30_10_2026 (Proceso Cautelar)',url:susanaCasos30OctPdfLocalUrl,label:'Ver PDF ↗'},
+     {name:'PDF oficial: Redacción escritos de subsanación 29/10/2026',url:susanaSubsanacionPdfLocalUrl,label:'Ver PDF ↗'},
      {name:'Carta presentación docente y Estatutos Procura (5 PDFs)',detailKey:'materials_susana_diaz_23oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',label:'BOE oficial ↗'},
      {name:'LEC: Postulación procesal y representación técnica (arts. 23 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
@@ -8233,13 +8358,15 @@ const courses=[
     name:'Propiedad intelectual y protección de datos',
     period:'4 nov 2026 · Horario: 16:30 – 20:45 (4 h 15 min)',
     startDate:'2026-11-04',
-    teachers:['Docente pendiente de asignar'],
-    grade:{score:'⏳ Por venir · 4 nov',detail:'Propiedad intelectual, derechos de autor, RGPD y LOPDGDD aplicados al ejercicio profesional.',detailKey:'materials'},
+    teachers:['Lucía Silvoso'],
+    grade:{score:'Materiales recibidos · 4 nov',detail:'Documentación de clase remitida el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf».',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
+     {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
+     {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',label:'BOE oficial ↗'},
      {name:'Ley Orgánica 3/2018 de Protección de Datos Personales (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673',label:'BOE oficial ↗'}
     ],
-    mails:[]
+    mails:['mail_seminario_rgpd_30oct','mail_seminario_pi_30oct']
    },
    {
     name:'Arrendamientos urbanos y precario',
@@ -8920,10 +9047,14 @@ const teacherDirectory=[
   mails:[{title:'Remisión de material de la Docente Dª Susana Díaz Gallego',key:'mail_189904'},{title:'Carta presentación y Estatutos Procura (23 oct)',key:'materials_susana_diaz_23oct'}],
   practices:[
    {title:'Test online Testmoz: Procesos declarativos de la Procura (9/10 aciertos)',status:'9 / 10 (Sobresaliente)',key:'test_29oct_susana'},
-   {title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026',status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',key:'entrega_susana_diaz_subsanacion'}
+   {title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 (Proceso Cautelar)',status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',key:'entrega_susana_diaz_casos_30oct'},
+   {title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026',status:'Entregada en CPROC ✓ (30 oct)',key:'entrega_susana_diaz_subsanacion'}
   ],
   driveFiles:[],
   notes:[
+   {name:'PDF oficial: Casos prácticos día 30_10_2026 (Proceso Cautelar)',url:susanaCasos30OctPdfLocalUrl,label:'Ver PDF ↗'},
+   {name:'PDF oficial: Redacción escritos de subsanación 29/10/2026',url:susanaSubsanacionPdfLocalUrl,label:'Ver PDF ↗'},
+   {name:'Grabación entrega en CEPROC: Escrito de subsanación (.mp4)',url:susanaSubsanacionVideoLocalUrl,label:'Ver vídeo 🎥'},
    {name:'Test online Testmoz (9/10 aciertos · HTML original)',url:testHtmlSusanaLocalUrl,label:'Ver test HTML ↗'},
    {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdSusanaLocalUrl,label:'Ver .md ↗'},
    {title:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
@@ -8933,16 +9064,18 @@ const teacherDirectory=[
   name:'Javier García y Santiago Varela',
   branch:'Abogacía',
   role:'Letrados · Escritura y técnicas documentales',
-  gradeBadge:'⏳ Por venir · 29, 30 oct y 2 nov',
+  gradeBadge:'Práctica recibida · En curso (30 oct)',
   summary:'Técnicas de redacción forense, estructura de demandas, contestaciones y estilo persuasivo en los escritos procesales.',
-  grade:{score:'⏳ Por venir · 3 sesiones',scoreLabel:'Docencia por venir',detail:'29 oct (18:45–20:45), 30 oct (18:45–20:45) y 2 nov (18:45–20:45). Total: 6 horas.',detailKey:'schedule'},
+  grade:{score:'En curso · Caso práctico remitido',scoreLabel:'Práctica en curso',detail:'Caso práctico oficial remitido por el Máster el 30 oct («CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx»). Clases el 29, 30 oct y 2 nov.',detailKey:'mail_caso_escritura_30oct',actionLabel:'Ver enunciado ↗'},
   sessions:[
    {date:'2026-10-29',dayLabel:'Jueves 29 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Escritura y técnicas documentales: fundamentos de redacción forense',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-10-30',dayLabel:'Viernes 30 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Escritura y técnicas documentales: hechos, fundamentos y suplico',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-02',dayLabel:'Lunes 2 nov 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Escritura y técnicas documentales: precisión jurídica y argumentación',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
-  practices:[],
+  mails:[{title:'Caso práctico: Escritura Forense y Técnicas Documentales (30 oct)',key:'mail_caso_escritura_30oct'}],
+  practices:[
+   {title:'Caso práctico: Escritura Forense y Técnicas Documentales (.docx)',status:'⏳ En curso / Por entregar',key:'mail_caso_escritura_30oct'}
+  ],
   driveFiles:[],
   notes:[]
  },
@@ -9088,6 +9221,29 @@ const teacherDirectory=[
   notes:[]
  },
  {
+  name:'Lucía Silvoso',
+  branch:'Abogacía',
+  role:'Abogada · Propiedad Intelectual y Protección de Datos',
+  gradeBadge:'Materiales recibidos · 4 nov',
+  summary:'Seminario práctico sobre propiedad intelectual (reservas de derechos y licencias) y protección de datos (RGPD, LOPDGDD y cláusulas de aviso legal).',
+  grade:{score:'Materiales recibidos · 4 nov',scoreLabel:'Documentación remitida',detail:'Materiales remitidos por el ICA Coruña el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf». Sesión lectiva el miércoles 4 de noviembre (16:30 – 20:45).',detailKey:'mail_seminario_rgpd_30oct'},
+  sessions:[
+   {date:'2026-11-04',dayLabel:'Miércoles 4 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad intelectual y protección de datos',place:'Colegio de Abogados (A Coruña)'}
+  ],
+  mails:[
+   {title:'Materiales de Protección de Datos (aviso legal) - 30 oct',key:'mail_seminario_rgpd_30oct'},
+   {title:'Materiales de Propiedad Intelectual (reservas de derechos) - 30 oct',key:'mail_seminario_pi_30oct'}
+  ],
+  practices:[],
+  driveFiles:[],
+  notes:[
+   {title:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',urlLabel:'BOE oficial ↗'},
+   {title:'Ley Orgánica 3/2018 de Protección de Datos Personales (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
   name:'Docente pendiente de asignar',
   branch:'Abogacía',
   role:'Profesorado facultativo · Sustantivo civil, Laboral y Contencioso-Administrativo',
@@ -9095,7 +9251,6 @@ const teacherDirectory=[
   summary:'Sesiones lectivas programadas en el calendario oficial combinadas sin docente individualizado especificado en calendario fuente.',
   grade:{score:'⏳ Por venir · Programado',scoreLabel:'Docencia por venir',detail:'Programación oficial completa en noviembre, diciembre 2026 (Facultad de Derecho) y enero 2027.',detailKey:'schedule'},
   sessions:[
-   {date:'2026-11-04',dayLabel:'Miércoles 4 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad intelectual y protección de datos',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-05',dayLabel:'Jueves 5 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
