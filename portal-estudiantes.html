@@ -5057,7 +5057,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 7 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -5290,7 +5290,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">7 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">66</span></button>
   </div>
@@ -5366,7 +5366,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 5 tests superados (10, 9, 10, 9 y 10) · 8 prácticas entregadas</span>
+        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 5 tests superados (10, 9, 10, 9 y 10) · 9 prácticas entregadas con éxito ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5874,6 +5874,7 @@ const events={ '2026-10-01':[
  '2026-10-29':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'18:29',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz - Sesión 2 (10/10 aciertos · 100% ★)',teacher:'Susana Díaz Gallego',detailKey:'test_30oct_susana',kind:'Test online ✓'},
+   {start:'20:08',end:'',name:'✓ ENTREGADO EN CPROC: Casos prácticos día 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC (MUAP → Entrega de Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'23:59',end:'',name:'✓ ENTREGADO: Caso práctico Delgado (Parte A y Parte B) · Enviado 27 oct',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega completada ✓',isWarning:false}
   ],
@@ -5881,12 +5882,13 @@ const events={ '2026-10-01':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'17:20',end:'',name:'✓ ENTREGADO EN CPROC: Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Entrega de Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'18:29',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz - Sesión 2 (10/10 aciertos · 100% ★)',teacher:'Susana Díaz Gallego',detailKey:'test_30oct_susana',kind:'Test online ✓'},
+   {start:'20:08',end:'',name:'✓ ENTREGADO EN CPROC: Casos prácticos día 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC (MUAP → Entrega de Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-02':[
    {start:'16:30',end:'18:30',name:'Recursos, ejecución y costas / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Casos prácticos día 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
+   {start:'23:59',end:'',name:'✓ ENTREGADO CON ANTELACIÓN: Casos prácticos día 30_10_2026 (entregada el 30 oct a las 20:08 h en CPROC)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC',kind:'Entrega completada ✓',isWarning:false},
    {start:'23:59',end:'',name:'✓ ENTREGADO (30 oct): Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega completada ✓',isWarning:false},
    {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Resúmenes y Ponencias DATAfórum 2026 (D.ª Digna Braña)',teacher:'Digna Braña Iglesias',subject:'Actividades complementarias · DATAfórum',detailKey:'entrega_dataforum_resumenes',place:'branaabogada@icacor.es',kind:'Entrega práctica (Límite)',isWarning:true}
   ],
@@ -6165,10 +6167,12 @@ const deliveries=[
   subject:'Procura · Técnicas Instrumentales / Actuación procesal',
   subjectRef:'Procura|Actuación procesal|2',
   subjectName:'Técnicas Instrumentales (D.ª Susana Díaz Gallego)',
-  status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',
+  status:'Entregada en CPROC ✓ (30 oct 2026, 20:08 h)',
   submitted:false,
   detailKey:'entrega_susana_diaz_casos_30oct',
-  details:'Tarea oficial publicada en la plataforma CPROC: «CASOS PRÁCTICOS DIA 30_10_2026». Docente: D.ª Susana Díaz Gallego (Procuradora ICP). Materia: Técnicas Instrumentales (La intervención del Profesional de la Procura en el Proceso Cautelar). Curso: 26-28. Fecha límite de entrega: 2 de noviembre de 2026. Supuesto práctico sobre desvío de fondos societarios y venta de inmueble (300.000 €) por el socio D. Marcos frente a D. Andrés, con 3 cuestiones sobre requisitos de las medidas cautelares (arts. 728 LEC), medidas concretas aplicables (art. 727 LEC) y momento procesal de solicitud (art. 730 LEC).'
+  file:'CASOS_PRACTICOS_30_10_2026_SUSANA_DIAZ.pdf',
+  file2:'2026-10-30-grabacion-entrega-casos-practicos-susana-diaz.mp4',
+  details:'Tarea oficial publicada en la plataforma CPROC: «CASOS PRÁCTICOS DIA 30_10_2026». Entregada telemáticamente con éxito el viernes 30 de octubre de 2026 a las 20:08 h («La Tarea se ha entregado con éxito.»), antes del plazo fijado para el 2 de noviembre. Comprobante de entrega registrado en vídeo de pantalla (2026-10-30-grabacion-entrega-casos-practicos-susana-diaz.mp4). Supuesto sobre medidas cautelares ante desvío de fondos societarios y venta de inmueble: solicitud inaudita parte, caución, medidas adecuadas (anotación preventiva de demanda y embargo preventivo) y tramitación procesal.'
  },
  {
   date:new Date(2026,10,2),
@@ -7397,20 +7401,21 @@ const details={
  },
  entrega_susana_diaz_casos_30oct:{
   isDelivery:true,
-  kicker:'Práctica pendiente · Procura · Técnicas Instrumentales / Proceso Cautelar',
+  kicker:'Práctica entregada en CPROC ✓ · Procura · Técnicas Instrumentales / Proceso Cautelar',
   title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 · Proceso Cautelar (D.ª Susana Díaz Gallego)',
-  date:'Fecha límite de entrega: Lunes, 2 de noviembre de 2026 · Plataforma CPROC',
+  date:'Entregada: viernes, 30 de octubre de 2026 a las 20:08 h · Plataforma CPROC (Plazo oficial: 2 nov)',
   teacher:'Susana Díaz Gallego',
   subjectRef:'Procura|Actuación procesal|2',
-  body:'Tarea oficial publicada en la plataforma CPROC por la docente D.ª María Susana Díaz Gallego (Procuradora ICP) correspondiente a la sesión del viernes 30 de octubre de 2026:\n\n• Datos oficiales de la convocatoria:\n  - Tarea: CASOS PRÁCTICOS DIA 30_10_2026\n  - Docente y cargo: D.ª SUSANA DÍAZ GALLEGO (Procuradora ICP)\n  - Materia: Deontología y Técnicas Transversales – Técnicas Instrumentales (La intervención del procurador en los procesos civiles declarativos y en el Proceso Cautelar)\n  - Curso: 26-28\n  - Fecha límite de entrega: 2 de noviembre de 2026\n  - Descripción de la tarea: CASOS PRÁCTICOS DIA 30_10_2026\n\n• Enunciado íntegro del Caso Práctico (Día 30-10-26):\n  «Don Andrés descubre que su socio, Don Marcos, está desviando fondos de la empresa común a cuentas personales fuera de España y planea vender el único inmueble de la sociedad (valorado en 300.000 €) a un tercero para quedarse con el dinero y marcharse del país.\n  Don Andrés va a interponer una demanda, solicitando la disolución de la sociedad y una indemnización de daños y perjuicios. Sin embargo, sabe que el juicio puede tardar más de un año, y si Don Marcos vende el inmueble y vacía las cuentas antes de la sentencia, D. Andrés jamás podrá recuperar su dinero.»\n\n• Cuestiones a resolver:\n  1. ¿Qué tres requisitos obligatorios debe justificar D. Andrés ante el Juez para que le concedan una medida cautelar?\n  2. ¿Qué medidas cautelares concretas se adecúan mejor a este caso?\n  3. ¿En qué momento procesal debe solicitarlas?',
-  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Convocatoria del 30 oct 2026',
+  body:'Tarea oficial de la plataforma CPROC entregada telemáticamente con éxito el viernes 30 de octubre de 2026 a las 20:08 h («La Tarea se ha entregado con éxito.») antes del plazo límite del 2 de noviembre, con comprobante de entrega en vídeo de pantalla (2026-10-30-grabacion-entrega-casos-practicos-susana-diaz.mp4).\n\n• Datos oficiales de la entrega:\n  - Tarea: CASOS PRÁCTICOS DIA 30_10_2026\n  - Docente y cargo: D.ª SUSANA DÍAZ GALLEGO (Procuradora ICP)\n  - Materia: Deontología y Técnicas Transversales – Técnicas Instrumentales (Proceso Cautelar)\n  - Estado: Entregada y confirmada con éxito en la plataforma oficial CPROC\n\n• Enunciado y cuestiones resueltas:\n  - Supuesto de desvío de fondos societarios y venta inminente de inmueble (300.000 €) por socio D. Marcos frente a D. Andrés.\n  1. Requisitos obligatorios justificados: Fumus boni iuris (art. 728.2 LEC), Periculum in mora (art. 728.1 LEC) y ofrecimiento de caución bastante (art. 728.3 LEC).\n  2. Medidas cautelares solicitadas: Anotación preventiva de demanda sobre el inmueble social (art. 727.5.ª LEC y art. 42 LH) y embargo preventivo de cuentas y bienes (art. 727.1.ª LEC).\n  3. Momento procesal: Solicitud con la demanda o previa inaudita parte ex art. 730.2 y 733.2 LEC por razones de urgencia y efectividad.',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Entrega completada con éxito',
   attachments:[
    {name:'PDF oficial del enunciado (CASOS PRÁCTICOS DIA 30_10_2026.pdf)',url:susanaCasos30OctPdfLocalUrl,kind:'PDF en portal 📄'},
+   {name:'Vídeo comprobante de entrega en CEPROC (.mp4)',url:'materiales/2026-10-30-grabacion-entrega-casos-practicos-susana-diaz.mp4',kind:'Vídeo MP4 🎥'},
    {name:'Plataforma de entregas CPROC (MUAP → Tareas)',url:cprocTareasUrl,kind:'CPROC ↗'},
    {name:'Carta de presentación y Estatutos Procura (23 oct)',detailKey:'materials_susana_diaz_23oct',kind:'Correo oficial ↗'},
    {name:'Ficha docente de D.ª Susana Díaz Gallego',teacher:'Susana Díaz Gallego',kind:'Docente 👤'}
   ],
-  extra:'⏳ Fecha límite de entrega: Lunes, 2 de noviembre de 2026 a través de la plataforma CPROC.'
+  extra:'✓ Tarea entregada formalmente en CPROC el viernes 30 de octubre de 2026 a las 20:08 h con comprobante de vídeo registrado.'
  },
  entrega_susana_diaz_subsanacion:{
   isDelivery:true,
@@ -9182,7 +9187,7 @@ const teacherDirectory=[
   practices:[
    {title:'Test online Testmoz (Sesión 2): Medidas cautelares y tutela judicial (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_30oct_susana'},
    {title:'Test online Testmoz (Sesión 1): Procesos declarativos de la Procura (9/10 aciertos)',status:'9 / 10 (Sobresaliente)',key:'test_29oct_susana'},
-   {title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 (Proceso Cautelar)',status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',key:'entrega_susana_diaz_casos_30oct'},
+   {title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 (Proceso Cautelar)',status:'Entregada en CPROC ✓ (30 oct 20:08 h)',key:'entrega_susana_diaz_casos_30oct'},
    {title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026',status:'Entregada en CPROC ✓ (30 oct)',key:'entrega_susana_diaz_subsanacion'}
   ],
   driveFiles:[],
