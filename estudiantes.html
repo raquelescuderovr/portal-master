@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">75</span>
+      <span class="nav-badge-pill badge-peach">76</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5366,7 +5366,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 4 tests superados (10, 9, 10 y 9) · 8 prácticas entregadas</span>
+        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 5 tests superados (10, 9, 10, 9 y 10) · 8 prácticas entregadas</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5624,7 +5624,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (75)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (76)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -5773,6 +5773,9 @@ const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notari
 const testmozSusanaReviewUrl='https://testmozusercontent.com/q/15727280/student/review';
 const testHtmlSusanaLocalUrl='historial-tests/originales/2026-10-29-testmoz-15727280.html';
 const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susana-diaz.md';
+const testmozSusana2ReviewUrl='https://testmozusercontent.com/q/15727296/student/review';
+const testHtmlSusana2LocalUrl='historial-tests/originales/2026-10-30-testmoz-15727296.html';
+const testMdSusana2LocalUrl='historial-tests/2026-10-30-procura-medidas-cautelares-susana-diaz.md';
 const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
@@ -5870,14 +5873,14 @@ const events={ '2026-10-01':[
   ],
  '2026-10-29':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'18:17',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz (9/10 aciertos · 90%)',teacher:'Susana Díaz Gallego',detailKey:'test_29oct_susana',kind:'Test online ✓'},
+   {start:'18:29',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz - Sesión 2 (10/10 aciertos · 100% ★)',teacher:'Susana Díaz Gallego',detailKey:'test_30oct_susana',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'23:59',end:'',name:'✓ ENTREGADO: Caso práctico Delgado (Parte A y Parte B) · Enviado 27 oct',teacher:'José Luis Delgado Domínguez',subject:'Abogacía · Responsabilidad profesional',detailKey:'entrega_delgado',place:'secretariatecnico@icacor.org / Sede colegial ICACOR',kind:'Entrega completada ✓',isWarning:false}
   ],
  '2026-10-30':[
    {start:'16:30',end:'18:30',name:'Procesos civiles declarativos / Procura',teacher:'Susana Díaz Gallego',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'17:20',end:'',name:'✓ ENTREGADO EN CPROC: Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Entrega de Tareas)',kind:'Entrega completada ✓',isWarning:false},
-   {start:'18:17',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz (9/10 aciertos · 90%)',teacher:'Susana Díaz Gallego',detailKey:'test_29oct_susana',kind:'Test online ✓'},
+   {start:'18:29',end:'',name:'📝 Test online realizado: Testmoz Susana Díaz - Sesión 2 (10/10 aciertos · 100% ★)',teacher:'Susana Díaz Gallego',detailKey:'test_30oct_susana',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-02':[
@@ -6379,6 +6382,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_30oct_susana:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el viernes 30 de octubre a las 18:29 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno). Anotación preventiva de demanda (art. 727 LEC y art. 42 LH), recurso de amparo constitucional (arts. 53.2 CE y 41 LOTC), principio de instrumentalidad y variabilidad de medidas cautelares (arts. 721, 726 y 743 LEC), medidas inaudita parte (art. 733.2 LEC), contracautelas en lo contencioso (art. 133 LJCA), agotamiento de la vía judicial previa (art. 44 LOTC), periculum in mora y presupuestos de la tutela cautelar (art. 728 LEC).',
  mail_seminario_rgpd_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: modelo y guía jurídica «aviso-legal.pdf» sobre Protección de Datos, RGPD y LOPDGDD.',
  mail_seminario_pi_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: documento «EJEMPLOSRESERVASDERECHOSLIBROS.pdf» sobre reservas de derechos de autor y propiedad intelectual.',
  mail_caso_escritura_30oct:'Envío del planteamiento del caso práctico oficial «CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx» para la materia de Escritura Forense y Técnicas Documentales (plazo de entrega: 30 de noviembre).',
@@ -6451,6 +6455,135 @@ const mailSummaries={
 };
 
 const details={
+ test_30oct_susana:{
+  kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Medidas Cautelares',
+  title:'Test online · Medidas cautelares y tutela judicial (Susana Díaz · Sesión 2)',
+  date:'Realizado: viernes, 30 de octubre de 2026 · 18:29 (Grupo de tarde) · Calificación: 10 / 10 (10/10 aciertos · 0 fallos)',
+  teacher:'Susana Díaz Gallego',
+  subjectRef:'Procura|Actuación procesal|2',
+  body:'Prueba oficial de clase realizada en la plataforma Testmoz («SUSANA DIAZ- 30-10-26 - GRUPO DE TARDE - TÉCNICAS INSTRUMENTALES»). Puntuación obtenida por Raquel Escudero: 10 de 10 respuestas correctas (100 % · 10 sobre 10 · Sobresaliente con mención, pleno absoluto). Temario evaluado: medidas cautelares civiles y contenciosas, anotación preventiva de demanda en el Registro de la Propiedad (art. 727.5.ª LEC y art. 42.1.º LH), recurso de amparo constitucional como mecanismo subsidiario de protección de derechos fundamentales (art. 53.2 CE y art. 41 LOTC), principio de instrumentalidad de las medidas cautelares (art. 721 y 726 LEC), principio de variabilidad o modificabilidad por cambio sustancial de circunstancias (art. 743 LEC), adopción inaudita parte por urgencia o riesgo del buen fin (art. 733.2 LEC), medidas y cauciones para paliar perjuicios en vía contencioso-administrativa (art. 133 LJCA), requisito de agotamiento previo de la vía judicial ordinaria en amparo (art. 44.1.a LOTC), fundamento procesal del periculum in mora (art. 728.1 LEC), presupuestos generales fumus boni iuris y caución, y jurisdiccionalidad exclusiva del juez del proceso principal (art. 723 LEC). A continuación tienes las 10 preguntas con sus respuestas y fundamentos jurídicos.',
+  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15727296/student/review) · 30 oct 2026',
+  attachments:[
+   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlSusana2LocalUrl,kind:'HTML en portal'},
+   {name:'Abrir documento Markdown completo (.md)',url:testMdSusana2LocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozSusana2ReviewUrl,kind:'Web Testmoz'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC'},
+   {name:'Ley de Enjuiciamiento Civil (arts. 721 a 745 LEC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',kind:'BOE oficial'},
+   {name:'Ley Orgánica del Tribunal Constitucional (arts. 41 a 58 LOTC · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1979-23709',kind:'BOE oficial'}
+  ],
+  questions:[
+   {
+    q:'1. Julio se considera dueño de una finca rústica que está en poder de Roberto. En el registro de la propiedad aparece Roberto como titular registral de la finca. Tras intentar, sin resultado, un arreglo amistoso con Roberto, Julio acude a su abogado para encargarle el ejercicio de una acción reivindicatoria. Julio manifiesta a su procurador que teme que Roberto, aprovechando su condición de titular registral, transmita la finca a un tercero de buena fe, lo que impediría a Julio recuperarla en caso de que ganase el pleito. ¿Qué medida cautelar resultaría adecuada para evitar este riesgo?',
+    opts:[
+     'El secuestro judicial de la finca rústica.',
+     'El embargo preventivo sobre los frutos de la finca.',
+     'La anotación preventiva de demanda.',
+     'La intervención y administración judicial de bienes.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'2. ¿Qué es el recurso de amparo según la Constitución Español?',
+    opts:[
+     'Un recurso ordinario de apelación ante el Tribunal Supremo.',
+     'Un procedimiento sancionador frente a infracciones disciplinarias.',
+     'Un recurso subsidiario que protege derechos fundamentales',
+     'Un trámite potestativo previo a la vía contencioso-administrativa.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'3. Cuál de las siguientes afirmaciones refleja con mayor precisión el principio de instrumentalidad que caracteriza a las medidas cautelares en el proceso civil?',
+    opts:[
+     'Las medidas cautelares son autónomas y subsisten con independencia del pleito principal.',
+     'Su finalidad es sancionar al demandado rebelde de forma accesoria.',
+     'Están al servicio de un proceso principal del cual dependen funcionalmente, orientándose a garantizar la efectividad de la tutela judicial que en él se declare.',
+     'Permiten ejecutar anticipadamente cualquier pretensión dineraria sin juicio declarativo.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'4. ¿En qué consiste el principio de variabilidad (o modificabilidad) de las medidas cautelares?',
+    opts:[
+     'En la posibilidad de que el actor altere la cuantía de la caución a su conveniencia.',
+     'Faculta al tribunal para modificar la medida adoptada o acordar su sustitución si se alteran de forma sustancial las circunstancias que se tuvieron en cuenta al concederla.',
+     'Permite que el procurador interponga recurso sin intervención de letrado.',
+     'Impide cualquier modificación de las medidas una vez dictado el auto de adopción por el principio de cosa juzgada.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'5. Solicitadas las medidas cautelares antes de la demanda, se podrán acordar sin audiencia del demandado:',
+    opts:[
+     'En todo caso y de forma discrecional por el LAJ.',
+     'Únicamente cuando la demanda verse sobre reclamaciones inferiores a 2.000 euros.',
+     'Siempre que el tribunal acuerde una vista oral en el plazo de un mes.',
+     'Si el solicitante acredita que la audiencia previa puede comprometer el buen fin de la medida.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'6. Julio es un procurador al que se le encarga la presentación de un recurso contencioso-administrativo, en el que además se solicita una medida cautelar. La adopción de dicha medida traería consecuencias negativas al resto de la comunidad de montes de la que es parte el recurrente. ¿Cuál de las siguientes afirmaciones es verdadera?',
+    opts:[
+     'El órgano judicial está obligado a denegar la medida de plano sin valorar contracautelas.',
+     'En el caso de que la adopción de la medida pueda originar perjuicios, podrán adoptarse otras medidas para paliar o evitar los mismos, pudiéndose también solicitar caución o garantías suficientes para responder ante dichos perjuicios.',
+     'La jurisdicción contenciosa prohíbe la exigencia de cauciones económicas a los recurrentes.',
+     'El procurador responderá personalmente con su patrimonio colegial por los daños de la medida.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. ¿Qué se requiere antes de presentar un recurso de amparo ante el Tribunal Constitucional?',
+    opts:[
+     'Recabar informe favorable previo del Colegio Profesional.',
+     'Consignar judicialmente el importe total reclamado en la demanda.',
+     'Agotar la vía judicial previa antes de acudir al Tribunal Constitucional',
+     'Formular protesta verbal en el acto de la vista civil.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'8. Respecto al requisito del periculum in mora ¿cuál es el fundamento procesal que justifica su exigencia para acordar una medida cautelar?',
+    opts:[
+     'Evitar que el letrado perciba honorarios desproporcionados durante el litigio.',
+     'Acelerar los señalamientos de vistas orales mediante sanciones al demandado.',
+     'El riesgo fundado de que, durante la tramitación del proceso principal, se produzcan situaciones o actos que hagan imposible o de difícil ejecución la futura sentencia estimatoria.',
+     'Servir de fianza legal obligatoria para cubrir las costas judiciales del recurso.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'9. ¿Qué presupuestos debe cumplir toda medida cautelar según el texto de referencia?.',
+    opts:[
+     'Fumus boni iuris y periculum in mora.',
+     'Poder general para pleitos y requerimiento notarial fehaciente.',
+     'Sentencia firme y auto de ejecución forzosa.',
+     'Certificado de penales y homologación judicial.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'10. ¿Qué característica define la jurisdiccionalidad de las medidas cautelares?.',
+    opts:[
+     'Que son dictadas siempre por el Decanato del Colegio de Abogados o Procuradores.',
+     'Que pueden ser resueltas por árbitros de consumo de manera ejecutoria.',
+     'Se acuerdan por un Juez conocedor del proceso principal.',
+     'Que requieren ratificación notarial obligatoria para su validez registral.'
+    ],
+    correct:2,
+    userAnswer:2
+   }
+  ]
+ },
  mail_seminario_rgpd_30oct:{
   kicker:'Comunicación académica · Materiales docentes previos',
   title:'Materiales del seminario: Protección de Datos (D.ª Lucía Silvoso)',
@@ -9039,7 +9172,7 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procuradora · Procesos civiles declarativos',
   gradeBadge:'⚖️ Evaluación continua',
-  summary:'Intervención de la Procura en procesos declarativos: juicio ordinario, verbal y cómputos de plazos. Sesión 1 superada con 9/10 en el test de clase.',
+  summary:'Intervención de la Procura en procesos declarativos: juicio ordinario, verbal, plazos y medidas cautelares. Ambas sesiones superadas con 9/10 y 10/10 en los tests de clase.',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-29',dayLabel:'Jueves 29 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Procesos civiles declarativos: intervención del procurador (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
@@ -9047,7 +9180,8 @@ const teacherDirectory=[
   ],
   mails:[{title:'Remisión de material de la Docente Dª Susana Díaz Gallego',key:'mail_189904'},{title:'Carta presentación y Estatutos Procura (23 oct)',key:'materials_susana_diaz_23oct'}],
   practices:[
-   {title:'Test online Testmoz: Procesos declarativos de la Procura (9/10 aciertos)',status:'9 / 10 (Sobresaliente)',key:'test_29oct_susana'},
+   {title:'Test online Testmoz (Sesión 2): Medidas cautelares y tutela judicial (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_30oct_susana'},
+   {title:'Test online Testmoz (Sesión 1): Procesos declarativos de la Procura (9/10 aciertos)',status:'9 / 10 (Sobresaliente)',key:'test_29oct_susana'},
    {title:'Tarea: CASOS PRÁCTICOS DIA 30_10_2026 (Proceso Cautelar)',status:'⏳ Pendiente (Plazo: 2 nov 2026 · CPROC)',key:'entrega_susana_diaz_casos_30oct'},
    {title:'Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026',status:'Entregada en CPROC ✓ (30 oct)',key:'entrega_susana_diaz_subsanacion'}
   ],
@@ -9056,7 +9190,9 @@ const teacherDirectory=[
    {name:'PDF oficial: Casos prácticos día 30_10_2026 (Proceso Cautelar)',url:susanaCasos30OctPdfLocalUrl,label:'Ver PDF ↗'},
    {name:'PDF oficial: Redacción escritos de subsanación 29/10/2026',url:susanaSubsanacionPdfLocalUrl,label:'Ver PDF ↗'},
    {name:'Grabación entrega en CEPROC: Escrito de subsanación (.mp4)',url:susanaSubsanacionVideoLocalUrl,label:'Ver vídeo 🎥'},
-   {name:'Test online Testmoz (9/10 aciertos · HTML original)',url:testHtmlSusanaLocalUrl,label:'Ver test HTML ↗'},
+   {name:'Test online Testmoz Sesión 2 (10/10 aciertos · HTML original)',url:testHtmlSusana2LocalUrl,label:'Ver test HTML ↗'},
+   {name:'Test resuelto Sesión 2 con 10 preguntas y fundamentos (.md)',url:testMdSusana2LocalUrl,label:'Ver .md ↗'},
+   {name:'Test online Testmoz Sesión 1 (9/10 aciertos · HTML original)',url:testHtmlSusanaLocalUrl,label:'Ver test HTML ↗'},
    {name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdSusanaLocalUrl,label:'Ver .md ↗'},
    {title:'Estatuto General de los Procuradores (RD 1281/2002 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2002-24865',urlLabel:'BOE oficial ↗'}
   ]
@@ -10969,7 +11105,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'mail'){
    sumEl.textContent = 'Mostrando expedientes docentes para registrar la calificación oficial conjunta comunicada por correo.';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10 y 29 oct: 9/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10 y 30 oct: 10/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
    sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
