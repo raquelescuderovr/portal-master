@@ -5057,7 +5057,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 7 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">78</span>
+      <span class="nav-badge-pill badge-peach">77</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5292,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">68</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">67</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5906,8 +5906,7 @@ const events={ '2026-10-01':[
    {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-09':[
-   {start:'16:30',end:'20:45',name:'Propiedad horizontal',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'Límite',end:'',name:'🚨 PLAZO ENTREGA: Examen de supuestos prácticos (D. Francisco Magariños)',teacher:'Francisco García Magariños',subject:'Derecho Tributario / Fiscalidad · Envío por correo a patricialopez@icacor.es',detailKey:'entrega_examen_magarinos',place:'Correo particular patricialopez@icacor.es',kind:'Entrega examen',isWarning:true}
+   {start:'16:30',end:'20:45',name:'Propiedad horizontal',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-10':[
    {start:'16:30',end:'20:45',name:'Compraventa',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
@@ -6112,19 +6111,6 @@ const gradeRecords=[
 ];
 
 const deliveries=[
- {
-  date:new Date(2026,10,9),
-  title:'Examen de supuestos prácticos: Profesor Francisco Magariños',
-  teacher:'Francisco García Magariños',
-  subject:'Abogacía · Derecho Tributario / Práctica Fiscal',
-  subjectRef:'Abogacía|Fiscal|1',
-  subjectName:'Derecho Tributario y Práctica Fiscal (Abogacía)',
-  status:'⏳ Pendiente (Plazo: lunes 9 nov 2026)',
-  submitted:false,
-  detailKey:'entrega_examen_magarinos',
-  file:'Examen 2026 Supuestos.docx',
-  details:'Examen de supuestos prácticos oficial remitido por la Administración del Máster de la Abogacía (Patricia · master.abogacia@icacor.org) el lunes 2 de noviembre de 2026 a las 16:39 h para la materia del Profesor D. Francisco García Magariños. Fecha límite improrrogable: lunes 9 de noviembre de 2026. La entrega debe realizarse enviando la resolución directamente a la dirección de correo electrónico particular indicada por la Administración: patricialopez@icacor.es.'
- },
  {
   date:new Date(2026,10,30),
   title:'Caso práctico: Escritura Forense y Técnicas Documentales',
@@ -6333,7 +6319,6 @@ const deliveries=[
 ];
 
 const messages=[
- {date:'2 nov 2026 (16:39)',title:'Examen de supuestos prácticos · D. Francisco Magariños (Plazo: 9 nov)',meta:'MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org · Adjunto: Examen 2026 Supuestos.docx (44 KB) · Entrega a patricialopez@icacor.es',key:'mail_examen_magarinos_2nov',teacher:'Francisco García Magariños',subjectRef:'Abogacía|Fiscal|1',emailSubject:'Examen Profesor Francisco Magariños'},
  {date:'2 nov 2026',title:'Cambios en el cronograma del Máster: 19–20 nov (Juan Lage / Fernando Lousada), suspensión simulados nov y fechas diciembre',meta:'Administración del Máster (Patricia · MASTER ABOGACIA - ICA CORUÑA) · Modificación oficial de calendario',key:'mail_cambios_cronograma_2nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|5',emailSubject:'Cambios en el cronograma del Master'},
  {date:'30 oct 2026 (12:51)',title:'Materiales y seminario de Protección de Datos · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_rgpd_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
  {date:'30 oct 2026 (12:49)',title:'Materiales y seminario de Propiedad Intelectual · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_pi_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROPIEDAD INTELECTUAL Y PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
@@ -6404,7 +6389,6 @@ const messages=[
 ];
 
 const mailSummaries={
- mail_examen_magarinos_2nov:'EXAMEN OFICIAL DE SUPUESTOS PRÁCTICOS (D. Francisco Magariños): La Administración (Patricia) remite el examen «Examen 2026 Supuestos.docx» (44 KB) para su resolución. Fecha límite de entrega fijada: lunes 9 de noviembre de 2026. La entrega debe enviarse obligatoriamente al correo particular: patricialopez@icacor.es.',
  mail_cambios_cronograma_2nov:'CAMBIOS OFICIALES EN EL CRONOGRAMA DEL MÁSTER (Patricia · Administración): 1) Día 19 de noviembre (09:30–12:00 y 16:30–19:00): Juan Lage (Proceso de ejecución). 2) Día 20 de noviembre (09:30–12:00 y 16:30–19:00): Fernando Lousada. 3) Simulados 26 y 30 de noviembre: SUSPENDIDOS hasta nueva fecha que se notificará. 4) Simulados de diciembre: se celebrarán los días 16 y 22 de diciembre. 5) La clase de Laboral pautada para el día 16 de diciembre se llevará a cabo el día 18 de diciembre.',
  test_30oct_susana:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el viernes 30 de octubre a las 18:29 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno). Anotación preventiva de demanda (art. 727 LEC y art. 42 LH), recurso de amparo constitucional (arts. 53.2 CE y 41 LOTC), principio de instrumentalidad y variabilidad de medidas cautelares (arts. 721, 726 y 743 LEC), medidas inaudita parte (art. 733.2 LEC), contracautelas en lo contencioso (art. 133 LJCA), agotamiento de la vía judicial previa (art. 44 LOTC), periculum in mora y presupuestos de la tutela cautelar (art. 728 LEC).',
  mail_seminario_rgpd_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: modelo y guía jurídica «aviso-legal.pdf» sobre Protección de Datos, RGPD y LOPDGDD.',
@@ -6479,37 +6463,6 @@ const mailSummaries={
 };
 
 const details={
- mail_examen_magarinos_2nov:{
-  kicker:'Comunicación oficial · Examen de supuestos prácticos',
-  title:'Examen Profesor Francisco Magariños (Derecho Tributario / Fiscalidad)',
-  date:'Recibido: lunes, 2 nov 2026 (16:39 h) · Documento oficial adjunto',
-  teacher:'Francisco García Magariños',
-  subjectRef:'Abogacía|Fiscal|1',
-  body:'Remisión oficial por parte de la Administración del Máster de la Abogacía (ICA Coruña) del examen de supuestos prácticos del Profesor D. Francisco García Magariños:\n\n«Estimados/as alumnos/as\nOs remito el examen de supuestos prácticos del Profesor Francisco Magariños.\nTal y como se indica en el mismo, tenéis de fecha límite para su entrega el lunes 09 de noviembre.\nLa entrega debéis hacérmela a mi e mail particular: patricialopez@icacor.es\n\nSaludos\nPatricia\nAdministración\nMáster de la Abogacía – ICA Coruña\nIlustre Colegio Provincial de Abogados de A Coruña»\n\n• Resumen operativo:\n  - Docente: D. Francisco García Magariños (Inspector de Hacienda)\n  - Materia: Derecho Tributario y Asesoría Fiscal (Abogacía)\n  - Archivo de trabajo adjunto: Examen 2026 Supuestos.docx (44 KB)\n  - Fecha límite: Lunes, 9 de noviembre de 2026\n  - Destinatario de entrega: patricialopez@icacor.es',
-  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 2 nov 2026',
-  attachments:[
-   {name:'Examen 2026 Supuestos.docx (44 KB)',kind:'Documento de examen (.docx)'},
-   {name:'Enviar resolución a patricialopez@icacor.es',url:'mailto:patricialopez@icacor.es?subject=Entrega%20Examen%20Supuestos%20Profesor%20Francisco%20Magari%C3%B1os%20-%20Raquel%20Escudero',kind:'Redactar correo ✉️'},
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web ↗'}
-  ]
- },
- entrega_examen_magarinos:{
-  isDelivery:true,
-  kicker:'Práctica / Examen pendiente · Abogacía · Derecho Tributario y Fiscalidad',
-  title:'Examen de supuestos prácticos · D. Francisco Magariños',
-  date:'Plazo límite: lunes, 9 de noviembre de 2026 · Entrega a patricialopez@icacor.es',
-  teacher:'Francisco García Magariños',
-  subjectRef:'Abogacía|Fiscal|1',
-  body:'Examen oficial de supuestos prácticos de Derecho Tributario y Fiscalidad asignado por el Profesor D. Francisco García Magariños a través de la Administración del Máster de la Abogacía (Patricia · master.abogacia@icacor.org) el 2 de noviembre de 2026 a las 16:39 h.\n\n• Requisitos de presentación:\n  - Documento base: Examen 2026 Supuestos.docx (44 KB)\n  - Fecha límite improrrogable: Lunes, 9 de noviembre de 2026\n  - Canal de entrega: Correo electrónico dirigido a la dirección particular de Patricia: patricialopez@icacor.es\n  - Asunto recomendado: Entrega Examen Supuestos Profesor Francisco Magariños - Raquel Escudero\n\n• Contenido del módulo:\n  - Supuestos prácticos de Derecho Tributario, gestión e inspección tributaria, liquidaciones y vías de recurso.',
-  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · 2 nov 2026',
-  attachments:[
-   {name:'Examen 2026 Supuestos.docx',kind:'Documento de trabajo (.docx)'},
-   {name:'Enviar a patricialopez@icacor.es',url:'mailto:patricialopez@icacor.es?subject=Entrega%20Examen%20Supuestos%20Profesor%20Francisco%20Magari%C3%B1os%20-%20Raquel%20Escudero',kind:'Redactar email ✉️'},
-   {name:'Correo oficial del Máster (2 nov)',detailKey:'mail_examen_magarinos_2nov',kind:'Correo oficial ↗'},
-   {name:'Ficha docente de D. Francisco García Magariños',teacher:'Francisco García Magariños',kind:'Docente 👤'}
-  ],
-  extra:'⏳ Plazo activo. Fecha límite: lunes 9 de noviembre de 2026.'
- },
  test_30oct_susana:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Medidas Cautelares',
   title:'Test online · Medidas cautelares y tutela judicial (Susana Díaz · Sesión 2)',
@@ -8915,21 +8868,6 @@ const courses=[
 ];
 
 const teacherDirectory=[
- {
-  name:'Francisco García Magariños',
-  branch:'Abogacía',
-  role:'Inspector de Hacienda · Derecho Tributario y Práctica Fiscal',
-  gradeBadge:'⏳ Examen asignado (9 nov)',
-  summary:'Módulo de Derecho Tributario y Asesoría Fiscal. Examen oficial de supuestos prácticos remitido por Administración el 2 de noviembre de 2026.',
-  grade:{score:'⏳ Examen pdte. (9 nov)',scoreLabel:'Evaluación continuada',detail:'Examen de supuestos prácticos asignado el 2 nov (Plazo improrrogable: lunes 9 de noviembre de 2026 · Entrega por correo a patricialopez@icacor.es).',detailKey:'entrega_examen_magarinos'},
-  sessions:[
-   {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'Límite de entrega',hours:'Evaluación',topic:'Plazo final de entrega del Examen de Supuestos Prácticos (a patricialopez@icacor.es)',place:'Entrega telemática por correo'}
-  ],
-  mails:[{title:'Examen de supuestos prácticos (2 nov 2026)',key:'mail_examen_magarinos_2nov'}],
-  practices:[{title:'Examen de supuestos prácticos (Examen 2026 Supuestos.docx)',status:'⏳ Pendiente (Plazo: 9 nov)',key:'entrega_examen_magarinos'}],
-  driveFiles:[{name:'Examen 2026 Supuestos.docx (Documento del examen)',url:outlookUrl,label:'Outlook / Correo ↗'}],
-  notes:[{title:'Entrega por correo a patricialopez@icacor.es',url:'mailto:patricialopez@icacor.es?subject=Entrega%20Examen%20Supuestos%20Profesor%20Francisco%20Magari%C3%B1os%20-%20Raquel%20Escudero',urlLabel:'Redactar correo ↗'}]
- },
  {
   name:'Alejandra Sánchez',
   branch:'Abogacía / Procura',
