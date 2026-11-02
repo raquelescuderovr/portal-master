@@ -5292,7 +5292,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">66</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">67</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -6317,6 +6317,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'02 oct 2026 (11:58)',title:'Modificaciones Cronograma del Máster (Noviembre-Diciembre 2026)',meta:'Coordinación del Máster Universitario en Abogacía y Procura (ICACOR / UDC)',key:'mail_620706',teacher:'Varios (Juan Lage, Fernando Lousada, Luis Merino)',subjectRef:'Abogacía|Técnicas instrumentales|3'},
  {date:'30 oct 2026 (12:51)',title:'Materiales y seminario de Protección de Datos · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_rgpd_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
  {date:'30 oct 2026 (12:49)',title:'Materiales y seminario de Propiedad Intelectual · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_pi_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROPIEDAD INTELECTUAL Y PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
  {date:'30 oct 2026 (12:39)',title:'Caso práctico: Escritura Forense y Técnicas Documentales',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_caso_escritura_30oct',teacher:'Javier García y Santiago Varela',subjectRef:'Abogacía|Técnicas instrumentales|7',emailSubject:'CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES- Máster Acceso Abogacía y Procura'},
@@ -6386,6 +6387,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_620706:'Aviso oficial de cambios en el cronograma: modificación de sesiones de Juan Lage y Fernando Lousada para los días 19 y 20 de noviembre, suspensión de simulados de noviembre (pasan a los días 16 y 22 de diciembre) y traslado de la clase de laboral al 18 de diciembre.',
  test_30oct_susana:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el viernes 30 de octubre a las 18:29 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno). Anotación preventiva de demanda (art. 727 LEC y art. 42 LH), recurso de amparo constitucional (arts. 53.2 CE y 41 LOTC), principio de instrumentalidad y variabilidad de medidas cautelares (arts. 721, 726 y 743 LEC), medidas inaudita parte (art. 733.2 LEC), contracautelas en lo contencioso (art. 133 LJCA), agotamiento de la vía judicial previa (art. 44 LOTC), periculum in mora y presupuestos de la tutela cautelar (art. 728 LEC).',
  mail_seminario_rgpd_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: modelo y guía jurídica «aviso-legal.pdf» sobre Protección de Datos, RGPD y LOPDGDD.',
  mail_seminario_pi_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: documento «EJEMPLOSRESERVASDERECHOSLIBROS.pdf» sobre reservas de derechos de autor y propiedad intelectual.',
@@ -6459,6 +6461,18 @@ const mailSummaries={
 };
 
 const details={
+ mail_620706:{
+  kicker:'Comunicación académica · Máster',
+  title:'Modificaciones Cronograma del Máster (Noviembre-Diciembre 2026)',
+  date:'Recibido: 02 oct 2026 (11:58)',
+  teacher:'Varios (Juan Lage, Fernando Lousada, Luis Merino)',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Os informamos de que se han producido cambios en el cronograma del Master, quedando de la siguiente manera: Día 19 de Noviembre: 9:30 a 12:00 y 16:30 a 19:00: Juan Lage. Proceso de ejecución. Día 20 de Noviembre: 9:30 a 12:00 y 16:30 a 19:00: Fernando Lousada. SIMULADOS 26 y 30 de noviembre: SUSPENDIDOS, hasta nueva fecha que se notificará. SIMULADOS DE DICIEMBRE: se celebrarán los días 16 y 22 de diciembre. * La Clase de laboral pautada para el día 16 se llevará a cabo el día 18 de diciembre.',
+  source:'Coordinación del Máster Universitario en Abogacía y Procura (ICACOR / UDC)',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
  test_30oct_susana:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Medidas Cautelares',
   title:'Test online · Medidas cautelares y tutela judicial (Susana Díaz · Sesión 2)',
