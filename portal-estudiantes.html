@@ -5071,7 +5071,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">77</span>
+      <span class="nav-badge-pill badge-peach">78</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5366,7 +5366,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 5 tests superados (10, 9, 10, 9 y 10) · 9 prácticas entregadas con éxito ✓</span>
+        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 6 tests superados (10, 9, 10, 9, 10 y 10) · 9 prácticas entregadas con éxito ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5770,6 +5770,9 @@ const testMdSandraLocalUrl='historial-tests/2026-10-20-procura-actos-comunicacio
 const testmozCarnotaReviewUrl='https://testmozusercontent.com/q/15713256/student/review';
 const testHtmlCarnotaLocalUrl='historial-tests/originales/2026-10-28-testmoz-15713256.html';
 const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notarias-maria-carnota.md';
+const testmozCarnota2ReviewUrl='https://testmozusercontent.com/q/15729578/student/review';
+const testHtmlCarnota2LocalUrl='historial-tests/originales/2026-11-02-testmoz-15729578.html';
+const testMdCarnota2LocalUrl='historial-tests/2026-11-02-procura-recursos-ejecucion-costas-maria-carnota.md';
 const testmozSusanaReviewUrl='https://testmozusercontent.com/q/15727280/student/review';
 const testHtmlSusanaLocalUrl='historial-tests/originales/2026-10-29-testmoz-15727280.html';
 const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susana-diaz.md';
@@ -5887,6 +5890,7 @@ const events={ '2026-10-01':[
   ],
  '2026-11-02':[
    {start:'16:30',end:'18:30',name:'Recursos, ejecución y costas / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'17:47',end:'',name:'📝 Test online completado: Testmoz María Carnota (10/10 aciertos · 100% ★)',teacher:'María P. Carnota García',subject:'Procura · Recursos procesales, ejecución, costas y nulidad',detailKey:'test_2nov_carnota',place:'Plataforma Testmoz CPROC',kind:'Test superado ★',isWarning:false},
    {start:'18:45',end:'20:45',name:'Escritura y técnicas documentales',teacher:'Javier García y Santiago Varela',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'23:59',end:'',name:'✓ ENTREGADO CON ANTELACIÓN: Casos prácticos día 30_10_2026 (entregada el 30 oct a las 20:08 h en CPROC)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_casos_30oct',place:'Plataforma CPROC',kind:'Entrega completada ✓',isWarning:false},
    {start:'23:59',end:'',name:'✓ ENTREGADO (30 oct): Redacción escritos de subsanación 29/10/2026 (D.ª Susana Díaz Gallego)',teacher:'Susana Díaz Gallego',subject:'Procura · Técnicas Instrumentales (CPROC)',detailKey:'entrega_susana_diaz_subsanacion',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega completada ✓',isWarning:false},
@@ -6389,6 +6393,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_2nov_carnota:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el lunes 2 de noviembre a las 17:47 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno sin fallos). Recursos de queja y apelación (plazo 20 días hábiles, arts. 458 y 494 LEC), efectos de la rebeldía procesal (art. 496.2 LEC), impugnación de tasación de costas por partidas indebidas u honorarios excesivos (arts. 245 y 246 LEC), plazo de espera de 20 días para ejecución (art. 548 LEC), requisito de título ejecutivo (art. 517 LEC), competencia del LAJ para tasar costas (art. 243 LEC), costas de primera instancia y vencimiento objetivo (art. 394 LEC), régimen transitorio de apelación y nulidad de actuaciones (art. 225 LEC y art. 238 LOPJ).',
  mail_cambios_cronograma_2nov:'CAMBIOS OFICIALES EN EL CRONOGRAMA DEL MÁSTER (Patricia · Administración): 1) Día 19 de noviembre (09:30–12:00 y 16:30–19:00): Juan Lage (Proceso de ejecución). 2) Día 20 de noviembre (09:30–12:00 y 16:30–19:00): Fernando Lousada. 3) Simulados 26 y 30 de noviembre: SUSPENDIDOS hasta nueva fecha que se notificará. 4) Simulados de diciembre: se celebrarán los días 16 y 22 de diciembre. 5) La clase de Laboral pautada para el día 16 de diciembre se llevará a cabo el día 18 de diciembre.',
  test_30oct_susana:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el viernes 30 de octubre a las 18:29 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno). Anotación preventiva de demanda (art. 727 LEC y art. 42 LH), recurso de amparo constitucional (arts. 53.2 CE y 41 LOTC), principio de instrumentalidad y variabilidad de medidas cautelares (arts. 721, 726 y 743 LEC), medidas inaudita parte (art. 733.2 LEC), contracautelas en lo contencioso (art. 133 LJCA), agotamiento de la vía judicial previa (art. 44 LOTC), periculum in mora y presupuestos de la tutela cautelar (art. 728 LEC).',
  mail_seminario_rgpd_30oct:'Envío de documentación de la profesora D.ª Lucía Silvoso para la clase del 4 de noviembre: modelo y guía jurídica «aviso-legal.pdf» sobre Protección de Datos, RGPD y LOPDGDD.',
@@ -6463,6 +6468,135 @@ const mailSummaries={
 };
 
 const details={
+ test_2nov_carnota:{
+  kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Recursos y Ejecución',
+  title:'Test online · Recursos procesales, ejecución, costas y nulidad (María Carnota · Sesión 2)',
+  date:'Realizado: lunes, 2 de noviembre de 2026 · 17:47 (Grupo de tarde) · Calificación: 10 / 10 (10/10 aciertos · 0 fallos)',
+  teacher:'María Pilar Carnota García',
+  subjectRef:'Procura|Actuación procesal|1',
+  body:'Prueba oficial de clase realizada en la plataforma Testmoz («MARÍA CARNOTA-2-11-26 - GRUPO DE TARDE -TÉCNICAS INSTRUMENTALES»). Puntuación obtenida por Raquel Escudero: 10 de 10 respuestas correctas (100 % · 10 sobre 10 · Sobresaliente con mención, pleno absoluto sin fallos).\n\n• Temario evaluado en el cuestionario:\n  1. Recurso de queja ante inadmisión de casación por omisión o defecto de traslado a una parte (arts. 494 y 495 LEC).\n  2. Cómputo del plazo general para interponer apelación civil: 20 días hábiles desde el siguiente a la notificación (art. 458.1 LEC).\n  3. Efectos de la declaración de rebeldía: no equivale a allanamiento ni libera al demandante de acreditar sus pretensiones (art. 496.2 LEC).\n  4. Impugnación de tasación de costas por partidas indebidas y/o por honorarios excesivos de letrado (arts. 245 y 246 LEC).\n  5. Plazo de cortesía o espera de la ejecución forzosa de sentencia firme: 20 días posteriores a la firmeza o notificación (art. 548 LEC).\n  6. Demanda ejecutiva: exigencia imperativa de título al que la ley atribuya fuerza ejecutiva (art. 517 LEC).\n  7. Competencia para la práctica de la tasación de costas: corresponde al Letrado de la Administración de Justicia (art. 243.1 LEC).\n  8. Imposición de costas en primera instancia: principio del vencimiento objetivo a la parte desestimada íntegramente salvo dudas de hecho/derecho (art. 394.1 LEC).\n  9. Presentación del recurso de apelación: control por el procurador de la fecha del proceso y competencia entre tribunal a quo y Audiencia.\n  10. Nulidad de actuaciones e infracciones procesales: necesidad de causa legal tasada e indefensión material; no toda irregularidad conlleva nulidad (art. 225 LEC y art. 238 LOPJ).',
+  source:'CPROC-MUAP-TEST-ONLINE (https://www.icpcoruna.com/copia-de-tfm-24-26-1) → Testmoz (https://testmozusercontent.com/q/15729578/student/review) · 2 nov 2026',
+  attachments:[
+   {name:'Abrir documento Markdown completo (.md)',url:testMdCarnota2LocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir HTML original de Testmoz (con diseño original)',url:testHtmlCarnota2LocalUrl,kind:'HTML en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozCarnota2ReviewUrl,kind:'Web Testmoz ↗'},
+   {name:'Ficha docente de D.ª María Pilar Carnota García',teacher:'María Pilar Carnota García',kind:'Docente 👤'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC ↗'}
+  ],
+  extra:'★ Calificación registrada: 10 / 10 respuestas correctas (100 %). Pleno absoluto con 0 fallos.',
+  questions:[
+   {
+    q:'1. A Pedro Procurador de los Tribunales le han inadmitido un Recurso de casación por haber omitido el traslado previo a una de las partes, entiende que no tienen razón porque si ha realizado el traslado, si bien se equivocó al hacerlo a una de las partes, que recurso puede presentar?',
+    opts:[
+     'Recurso de casación.',
+     'Recurso de queja.',
+     'Recurso extraordinario de revisión.',
+     'Recurso de apelación en todo caso y sin excepción.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'2. Miguel, abogado, pretende interponer recurso de apelacion contra una sentencia de un procedimiento ordinario, pero duda sobre el cómputo del plazo. Conforme a la regla general de la Ley de Enjuiciamiento Civil, ¿en qué plazo debe hacerlo?',
+    opts:[
+     'En veinte días hábiles desde el siguiente a la notificación.',
+     'En cinco dias',
+     'En un mes.',
+     'En cualquier momento antes de que termine el procedimiento.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'3. María, demandada, debidamente emplazada, no comparece en un procedimiento civil y es declarada en rebeldía y le pregunta a su procuradora Marta sobre qué puede pasarle y que consecuencias deberá tener presentes',
+    opts:[
+     'La rebeldía supone que admite todos los hechos de la demanda.',
+     'El tribunal debe estimar automáticamente la demanda.',
+     'La rebeldía no equivale por sí sola a allanamiento ni libera al demandante de acreditar los presupuestos de su pretensión.',
+     'El procedimiento debe archivarse sin sentencia.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'4. Tras la tasación de costas Miguel, la parte condenada considera, que se ha incluido una partida indebida y que los honorarios de abogado son excesivos, por lo que le pregunta a su procurador como puede discutir esa cuestión para reducir sus honorarios ¿Cuál es la afirmación correcta?',
+    opts:[
+     'Ambas cuestiones solo pueden discutirse mediante apelación contra la sentencia.',
+     'La tasación no puede impugnarse una vez practicada.',
+     'Solo puede pedir una reducción sin expresar motivos.',
+     'Puede impugnar la tasación por partidas indebidas y/o por honorarios excesivos, según corresponda y siguiendo el trámite legal.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'5. Una sentencia firme condena al pago de la cantidad de 5000 euros a Martín, Yago, parte vencedora quiere presentar de inmediato demanda ejecutiva, pero Angel su procurador le dice que debe tener paciencia, como regla general, ¿qué dispone la Ley de Enjuiciamiento Civil?',
+    opts:[
+     'No se despacha ejecución dentro de los veinte días posteriores a aquel en que la resolución de condena sea firme o haya sido notificada al ejecutado, según corresponda.',
+     'Solo puede solicitarse la ejecución tras seis meses.',
+     'La ejecución debe despacharse el mismo día, sin plazo de espera.',
+     'Las sentencias firmes nunca pueden ejecutarse.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'6. Antonio, pretende iniciar una ejecución civil para cobrar una deuda y se lo comenta a su abogado para que vaya preparándolo, cuando se lo mandan a su procuradora Belén, se da cuenta de que la documentación es incompleta ¿Qué requisito general debe cumplir el documento en que fundamenta su solicitud?',
+    opts:[
+     'Basta con afirmar que existe una deuda, aunque no aporte documento alguno.',
+     'Debe existir un título al que la ley atribuya fuerza ejecutiva.',
+     'Es obligatorio obtener primero una sentencia declarativa en todos los casos.',
+     'El título debe haber sido redactado necesariamente por un procurador.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. En un procedimiento civil, Ramón recibe una vez firme la resolución que impone las costas, pero duda si tiene que iniciar un nuevo procedimiento y como se desarrolla, y le pregunta a Eduardo, su procurador quien realiza la práctica de la tasación de costas, a lo que el le contesta',
+    opts:[
+     'El procurador vencedor mediante resolución vinculante.',
+     'El abogado de la parte condenada.',
+     'El letrado de la Administración de Justicia.',
+     'Un notario designado por las partes.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'8. A Jesús, en un proceso declarativo civil le desestiman íntegramente las pretensiones, y está preocupado porque le han impuesto las costas, por lo que pregunta a Enrique su abogado si proceden. Como regla general, ¿qué puede acordar el tribunal sobre las costas de primera instancia?',
+    opts:[
+     'Nunca puede imponer costas.',
+     'Debe imponerlas siempre al demandado.',
+     'Debe repartirlas siempre por mitad.',
+     'Puede imponerlas a la parte cuyas pretensiones hayan sido totalmente rechazadas, salvo que aprecie y motive serias dudas de hecho o de derecho.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'9. Juan, procurador, recibe un Recurso de Apelación civil, pero duda donde debe presentarlo porque su abogado lo encabeza para dirigirlo al juzgado de Primera Instancia, que debe hacer Juan',
+    opts:[
+     'Presentarlo donde le indica su abogado.',
+     'Comprobar la fecha de presentación del procedimiento y presentarlo según corresponda en la Audiencia o en el juzgado que ha dictado la resolución',
+     'Siempre en la audiencia',
+     'Donde indique la sentencia.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'10. En un procedimiento se denuncia una infracción procesal que, según Miguel, el cliente, le ha causado indefensión, por lo que le pregunta a Arturo, procurador en su procedimiento, que le explique un poco cuales son las consecuencias que puede implicar esa infracción ¿Cuál es la afirmación más correcta?',
+    opts:[
+     'Toda infracción formal determina automáticamente la nulidad de todo lo actuado.',
+     'La nulidad se declara solo porque una parte no esté de acuerdo con el resultado.',
+     'Debe concurrir un supuesto legal y observarse el cauce aplicable; no toda irregularidad produce nulidad.',
+     'La nulidad de actuaciones no existe en el orden civil.'
+    ],
+    correct:2,
+    userAnswer:2
+   }
+  ]
+ },
  test_30oct_susana:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Medidas Cautelares',
   title:'Test online · Medidas cautelares y tutela judicial (Susana Díaz · Sesión 2)',
@@ -9161,21 +9295,27 @@ const teacherDirectory=[
   branch:'Procura',
   role:'Procuradora · Gestiones de procuradores, recursos y ejecuciones',
   gradeBadge:'⚖️ Evaluación continua',
-  summary:'Gestiones de procuradores ante juzgados, recursos y tasación de costas, y ejecución hipotecaria. Sesión 1 superada con 10/10 en el test de clase.',
+  summary:'Gestiones de procuradores ante juzgados, recursos y tasación de costas, y ejecución hipotecaria. Plenos absolutos en ambos tests de clase (10/10 el 28 oct y 10/10 el 2 nov).',
   grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-10-28',dayLabel:'Miércoles 28 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Gestiones profesionales de los procuradores (Práctica judicial cotidiana)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-02',dayLabel:'Lunes 2 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Recursos procesales, ejecución y tasación de costas en la Procura',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Ejecución hipotecaria y subastas judiciales en la Procura',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',key:'mail_105194'},],
+  mails:[
+   {title:'Test online realizado: Recursos, ejecución y costas (2 nov · 10/10 ★)',key:'test_2nov_carnota'},
+   {title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',key:'mail_105194'}
+  ],
   practices:[
-   {title:'Test online Testmoz: Registros, notarías y administraciones (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente)',key:'test_28oct_carnota'}
+   {title:'Test online Testmoz Sesión 2: Recursos, ejecución, costas y nulidad (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_2nov_carnota'},
+   {title:'Test online Testmoz Sesión 1: Registros, notarías y administraciones (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente)',key:'test_28oct_carnota'}
   ],
   driveFiles:[],
   notes:[
-   {title:'Test online Testmoz (10/10 aciertos · HTML original)',name:'Test online Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,urlLabel:'Ver test HTML ↗',label:'Ver test HTML ↗'},
-   {title:'Test resuelto con 10 preguntas y fundamentos (.md)',name:'Test resuelto con 10 preguntas y fundamentos (.md)',url:testMdCarnotaLocalUrl,urlLabel:'Ver .md ↗',label:'Ver .md ↗'}
+   {title:'Test online Sesión 2 Testmoz (10/10 aciertos · HTML original)',name:'Test online Sesión 2 Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnota2LocalUrl,urlLabel:'Ver test 2 HTML ↗',label:'Ver test 2 HTML ↗'},
+   {title:'Test resuelto Sesión 2 con 10 preguntas y fundamentos (.md)',name:'Test resuelto Sesión 2 con 10 preguntas y fundamentos (.md)',url:testMdCarnota2LocalUrl,urlLabel:'Ver test 2 .md ↗',label:'Ver test 2 .md ↗'},
+   {title:'Test online Sesión 1 Testmoz (10/10 aciertos · HTML original)',name:'Test online Sesión 1 Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,urlLabel:'Ver test 1 HTML ↗',label:'Ver test 1 HTML ↗'},
+   {title:'Test resuelto Sesión 1 con 10 preguntas y fundamentos (.md)',name:'Test resuelto Sesión 1 con 10 preguntas y fundamentos (.md)',url:testMdCarnotaLocalUrl,urlLabel:'Ver test 1 .md ↗',label:'Ver test 1 .md ↗'}
   ]
  },
  {
@@ -10492,12 +10632,12 @@ let currentGradeFilter = 'teachers';
 
 function renderSingleGradeCard(g){
  let quizHtml = '';
- const quizDetail = (g.id === 'grade_16oct_test') ? details.test_16oct : ((g.id === 'grade_20oct_test') ? details.test_20oct_sandra : null);
+ const quizDetail = (g.mailKey && details[g.mailKey] && details[g.mailKey].questions) ? details[g.mailKey] : ((g.id === 'grade_16oct_test') ? details.test_16oct : ((g.id === 'grade_20oct_test') ? details.test_20oct_sandra : null));
  if(quizDetail && quizDetail.questions && quizDetail.questions.length){
   const totalQ = quizDetail.questions.length;
   const correctCount = quizDetail.questions.filter(q => (q.userAnswer !== undefined ? q.userAnswer === q.correct : true)).length;
-  const summaryText = (g.id === 'grade_16oct_test')
-   ? `📝 Ver las 20 preguntas íntegras del test (con respuestas correctas · 20/20)`
+  const summaryText = (correctCount === totalQ)
+   ? `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas correctas · ${correctCount}/${totalQ} ★)`
    : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`;
 
   quizHtml = `
@@ -13355,9 +13495,9 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo'){
   let targetFilter = 'teachers';
-  if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetFilter = 'test';
+  if(key.includes('test')) targetFilter = 'test';
   else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetFilter = 'mail';
   else if(key === 'all_tests_summary') targetFilter = 'all';
   renderGrades(targetFilter);
@@ -13370,6 +13510,9 @@ function openDetail(key){
    else if(key === 'test_16oct' || key === 'grade_16oct_test') targetId = 'grade_16oct_test';
    else if(key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetId = 'grade_20oct_test';
    else if(key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetId = 'grade_28oct_carnota_test';
+   else if(key === 'test_29oct_susana' || key === 'grade_29oct_susana_test') targetId = 'grade_29oct_susana_test';
+   else if(key === 'test_30oct_susana' || key === 'grade_30oct_susana_test') targetId = 'grade_30oct_susana_test';
+   else if(key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test') targetId = 'grade_2nov_carnota_test';
    let card = document.getElementById(targetId);
    if(card){
     const d = card.querySelector('details');
