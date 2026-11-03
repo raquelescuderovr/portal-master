@@ -4778,7 +4778,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">78</span>
+      <span class="nav-badge-pill badge-peach">79</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -4801,16 +4801,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="sidebar-pending-breakdown">
       <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
       <div class="side-pending-items">
-        <button class="side-pending-item" data-detail="entrega_susana_diaz_casos_30oct" title="Entregada en CPROC el 30 de octubre a las 20:08 h">
-          <div class="spi-head">
-            <span class="spi-dot green">✓</span>
-            <strong class="spi-date" style="color:var(--forest)">Entregada ✓ (30 oct)</strong>
-            <span class="spi-platform" style="background:var(--forest-subtle);color:var(--forest)">CPROC</span>
-          </div>
-          <div class="spi-title">Casos prácticos día 30_10_2026</div>
-          <div class="spi-teacher">D.ª Susana Díaz Gallego</div>
-        </button>
-
         <button class="side-pending-item" data-detail="entrega_lousada_sesion1" title="Plazo: 11 de noviembre antes de las 20:00 h · UDC">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
@@ -4851,14 +4841,24 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <div class="spi-teacher">D. Fernando Lousada Arochena</div>
         </button>
 
-        <button class="side-pending-item" data-detail="entrega_lousada_sesion5" title="Plazo: 19 de noviembre antes de las 20:00 h · UDC">
+        <button class="side-pending-item" data-detail="entrega_lousada_sesion5" title="Plazo: 19 de noviembre antes de las 20:00 h (clase del 20 nov) · UDC">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
             <strong class="spi-date">19 nov · 20:00 h</strong>
             <span class="spi-platform blue">Email UDC</span>
           </div>
-          <div class="spi-title">Procesal Civil: Casos Sesión 5</div>
+          <div class="spi-title">Procesal Civil: Casos Sesión 5 (Clase 20 nov)</div>
           <div class="spi-teacher">D. Fernando Lousada Arochena</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="mail_caso_escritura_30oct" title="Plazo: 30 de noviembre de 2026 · ICACOR">
+          <div class="spi-head">
+            <span class="spi-dot amber">●</span>
+            <strong class="spi-date">30 nov 2026</strong>
+            <span class="spi-platform blue">ICACOR</span>
+          </div>
+          <div class="spi-title">Caso práctico: Escritura Forense</div>
+          <div class="spi-teacher">Javier García y Santiago Varela</div>
         </button>
       </div>
     </div>
@@ -5044,7 +5044,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="term-box-badge">1.er Cuatrimestre</div>
       <div class="term-box-period">1 oct 2026 — 31 ene 2027</div>
       <div class="term-box-footer">
-        <span>Revisión: 2 nov 2026</span>
+        <span>Revisión: 3 nov 2026</span>
         <span class="term-status-dot">● Al día</span>
       </div>
     </div>
@@ -5059,7 +5059,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">77</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">79</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -5104,15 +5104,43 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px">
             <span class="ptb-badge alert" style="background:var(--terracotta);color:#ffffff">⏳ 6 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip">📅 Próximos vencimientos: del 11 al 19 nov (D. Fernando Lousada · Correo UDC) y 30 nov (Escritura Forense)</span>
+            <span class="ptb-urgent-chip">📅 Próximo vencimiento: 11 nov · Entregas del 11 al 19 nov (D. Fernando Lousada) y 30 nov (Escritura Forense)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Tareas oficiales con plazo activo: 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre) y caso práctico de Escritura Forense (30 de noviembre). ¡Entregadas con éxito las prácticas de Susana Díaz (30 oct), Delgado, Moure y DATAfórum!</p>
+          <p class="ptb-subtitle">Tareas oficiales con plazo activo: 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre · última clase el viernes 20 nov) y caso práctico de Escritura Forense (30 de noviembre). ¡Entregadas con éxito las prácticas de Susana Díaz (30 oct), Delgado, Moure y DATAfórum!</p>
         </div>
         <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (16) ➔</button>
       </div>
 
       <div class="ptb-grid">
+        <!-- Tarjeta Pendiente 1: Fernando Lousada (Sesiones 1 a 5 · 11 al 19 nov) -->
+        <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion1" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
+          <div class="ptb-card-top">
+            <span class="ptb-tag blue">⏳ 5 entregas pendientes · Email UDC</span>
+            <span class="ptb-due-badge amber">⏳ Próx. plazo: Mié 11 nov (20:00 h)</span>
+          </div>
+          <h4 class="ptb-card-title">Casos Prácticos de Procesal Civil (Sesiones 1 a 5 · 11, 12, 16, 17 y 19 nov)</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Profesor: <b>D. Fernando Lousada Arochena (Magistrado TSJ)</b></div>
+            <div>📚 Materia: <b>Práctica Procesal Civil (Clases: 12, 13, 17, 18 y 20 nov)</b></div>
+            <div>📩 Envío a <code>fernando.lousada@udc.es</code> antes de las 20:00 h del día previo a cada sesión (Preguntas 2, 6, 10 y comunes)</div>
+          </div>
+        </article>
+
+        <!-- Tarjeta Pendiente 2: Escritura Forense (30 nov) -->
+        <article class="ptb-card" id="homePendingEscritura" data-detail="mail_caso_escritura_30oct" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver el caso práctico de Escritura Forense">
+          <div class="ptb-card-top">
+            <span class="ptb-tag blue">⏳ Pendiente de entrega · ICACOR</span>
+            <span class="ptb-due-badge amber">⏳ Plazo: Lun 30 nov 2026</span>
+          </div>
+          <h4 class="ptb-card-title">Caso práctico: Escritura Forense y Técnicas Documentales</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Profesores: <b>D. Javier García y D. Santiago Varela</b></div>
+            <div>📚 Materia: <b>Abogacía · Técnicas instrumentales / Escritura forense</b></div>
+            <div>📄 Enunciado remitido el 30 oct: <code>CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES.docx</code></div>
+          </div>
+        </article>
+
         <!-- Tarjeta Susana Díaz (30 oct): Entregada en CPROC -->
         <article class="ptb-card" id="homePendingSusanaDiazCasos30Oct" data-detail="entrega_susana_diaz_casos_30oct" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega en CPROC">
           <div class="ptb-card-top">
@@ -5130,7 +5158,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <article class="ptb-card" id="homePendingSusanaDiaz" data-detail="entrega_susana_diaz_subsanacion" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega en CPROC">
           <div class="ptb-card-top">
             <span class="ptb-tag green">✓ Entregada en CPROC</span>
-            <span class="ptb-due-badge green">✓ Entregada hoy viernes 30 oct (17:20 h)</span>
+            <span class="ptb-due-badge green">✓ Entregada el viernes 30 oct (17:20 h)</span>
           </div>
           <h4 class="ptb-card-title">Tarea: REDACCION ESCRITOS DE SUBSANACION 29/10/2026</h4>
           <div class="ptb-card-meta">
@@ -5139,11 +5167,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
             <div>🎥 Entregada telemáticamente en CPROC con grabación de pantalla de respaldo</div>
           </div>
         </article>
-        <!-- Tarjeta Delgado: Entregada esta mañana -->
+        <!-- Tarjeta Delgado: Entregada -->
         <article class="ptb-card" id="homePendingDelgado" data-detail="entrega_delgado" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega">
           <div class="ptb-card-top">
             <span class="ptb-tag green">✓ Entregada por correo</span>
-            <span class="ptb-due-badge green">✓ Enviada hoy martes 27 oct (mañana)</span>
+            <span class="ptb-due-badge green">✓ Enviada el martes 27 oct (mañana)</span>
           </div>
           <h4 class="ptb-card-title">Caso práctico: Turno de Oficio y Responsabilidad Civil Profesional (Parte A y Parte B)</h4>
           <div class="ptb-card-meta">
@@ -5153,11 +5181,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
         </article>
 
-        <!-- Tarjeta Moure: MASC de Divorcio entregada esta tarde -->
+        <!-- Tarjeta Moure: MASC de Divorcio entregada -->
         <article class="ptb-card" id="homePendingMoure" data-detail="entrega_moure_masc_divorcio" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega">
           <div class="ptb-card-top">
             <span class="ptb-tag green">✓ Entregada por correo</span>
-            <span class="ptb-due-badge green">✓ Enviada hoy martes 27 oct (tarde)</span>
+            <span class="ptb-due-badge green">✓ Enviada el martes 27 oct (tarde)</span>
           </div>
           <h4 class="ptb-card-title">Caso práctico MASC: Demanda de divorcio y negociación previa</h4>
           <div class="ptb-card-meta">
@@ -5171,7 +5199,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <article class="ptb-card" id="homePendingDataforum" data-detail="entrega_dataforum_resumenes" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega confirmada">
           <div class="ptb-card-top">
             <span class="ptb-tag green">✓ Entregada por correo</span>
-            <span class="ptb-due-badge green">✓ Confirmada hoy 13:18 h</span>
+            <span class="ptb-due-badge green">✓ Confirmada el 26 oct (13:18 h)</span>
           </div>
           <h4 class="ptb-card-title">Memoria y Resumen de ponencias DATAfórum Justicia 2026</h4>
           <div class="ptb-card-meta">
@@ -5393,22 +5421,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (6 pendientes en 2 asignaturas · 8 completadas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: 6 tareas pendientes en 2 asignaturas con 2 docentes (D.ª Susana Díaz en CPROC y D. Fernando Lousada en UDC) y 8 prácticas ya completadas agrupadas en desplegables por asignatura.</p>
+        <h2>Próximas entregas y prácticas (6 pendientes en 2 asignaturas · 10 completadas)</h2>
+        <p>Seguimiento de prácticas y trabajos del Máster: 6 tareas pendientes en 2 asignaturas (Práctica Procesal Civil con D. Fernando Lousada del 11 al 19 nov y Escritura Forense con D. Javier García y D. Santiago Varela el 30 nov) y 10 prácticas ya completadas agrupadas en desplegables por asignatura.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">6 pendientes · 8 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">6 pendientes · 10 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (14)</button>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (16)</button>
       <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (6 en 2 asignaturas)</button>
-      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (8)</button>
+      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (10)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (6)</button>
-      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (8)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 14 prácticas (6 pendientes en 2 asignaturas con 2 docentes y 8 completadas).</span>
+      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (10)</button>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 16 prácticas (6 pendientes en 2 asignaturas y 10 completadas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -5708,7 +5736,8 @@ const events={
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'10:00',end:'11:00',name:'Peluquería Stitch',subject:'Calendario Familia (¡Ojo si asistes a grupo de mañana!)',place:'Peluquería',kind:'Personal · Familia',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'12:00',end:'',name:'✓ Entrega enviada: Caso práctico Turno de Oficio y RCP (José Luis Delgado)',teacher:'José Luis Delgado Domínguez',detailKey:'entrega_delgado',kind:'Entrega enviada ✓'},
-   {start:'16:30',end:'18:30',name:'Intervención de procuradores: MASC / mediación',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'16:30',end:'18:30',name:'Intervención de procuradores: MASC / mediación',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|0',mailKey:'mail_rita_goimil_27oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Nota oficial (10/10 ★)'},
+   {start:'18:30',end:'',name:'🏆 Calificación oficial: 10 / 10 · Rita Goimil (Test 4/4 + Trabajos 6/6)',teacher:'Rita Goimil Martínez',detailKey:'mail_rita_goimil_27oct',kind:'Nota oficial (10/10 ★)'},
    {start:'17:00',end:'',name:'✓ Entrega enviada: Caso práctico MASC Demanda de divorcio (Mª Luisa Moure)',teacher:'María Luisa Moure Sagasti',detailKey:'entrega_moure_masc_divorcio',kind:'Entrega enviada ✓'},
    {start:'18:45',end:'20:45',name:'Mediación en la abogacía',teacher:'Rosa González',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|5',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
@@ -5918,6 +5947,29 @@ const events={
 };
 
 const gradeRecords=[
+ {
+  id:'grade_rita_goimil_27oct',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · Sesión 27 oct 2026',
+  title:'MASC, mediación, arbitraje y jurisdicción voluntaria · Rita Goimil',
+  score:'10 / 10 ★',
+  scoreLabel:'Nota oficial',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'4 / 4 puntos (10 / 10)'},
+   {label:'II. Traballos escritos (60 %)',val:'6 / 6 puntos (10 / 10)'},
+   {label:'Calificación otorgada',val:'10 / 10 · Sobresaliente ★ pleno'}
+  ],
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|0',
+  mailKey:'mail_rita_goimil_27oct',
+  description:'Calificaciones comunicadas oficialmente por la docente D.ª María Rita Goimil Martínez correspondientes a las actividades evaluables de la sesión del 27 de octubre de 2026 en «DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES» (La intervención de los Procuradores en: conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria). Test 40%: 4 ptos. (sobre 4 · 100 %) + Trabajos escritos 60%: 6 ptos. (sobre 6 · 100 %) -> Nota final otorgada: 10 / 10 (Sobresaliente pleno). En su momento estas calificaciones serán ponderadas por la coordinación del MUAP con las de los demás docentes.',
+  links:[
+   {label:'✉ Abrir correo de la nota ↗',detailKey:'mail_rita_goimil_27oct',cls:'solid-green'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|0'},
+   {label:'Ficha de Rita Goimil ↗',teacher:'Rita Goimil Martínez'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
  {
   id:'grade_2nov_carnota_test',
   type:'test',
@@ -6414,6 +6466,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'3 nov 2026',title:'Calificaciones oficiales · MASC, mediación y arbitraje (Nota: 10 / 10 ★ · Rita Goimil)',meta:'D.ª María Rita Goimil Martínez · Deontología y técnicas transversales · Procura (10/10 · Sobresaliente pleno)',key:'mail_rita_goimil_27oct',teacher:'Rita Goimil Martínez',subjectRef:'Procura|Actuación procesal|0',emailSubject:'Calificaciones sesión 27/10/2026 - MASC y Mediación - Rita Goimil Martínez'},
  {date:'2 nov 2026 (17:47)',title:'Test online realizado · Recursos, ejecución, costas y nulidad (Nota: 10 / 10 ★)',meta:'Testmoz CPROC · D.ª María Pilar Carnota García · Procura (10/10 aciertos · 100% · Sobresaliente pleno)',key:'test_2nov_carnota',teacher:'María Pilar Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Test online realizado · Recursos, ejecución, costas, rebeldía y nulidad en la Procura'},
  {date:'2 nov 2026',title:'Cambios en el cronograma del Máster: 19–20 nov (Juan Lage / Fernando Lousada), suspensión simulados nov y fechas diciembre',meta:'Administración del Máster (Patricia · MASTER ABOGACIA - ICA CORUÑA) · Modificación oficial de calendario',key:'mail_cambios_cronograma_2nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|5',emailSubject:'Cambios en el cronograma del Master'},
  {date:'30 oct 2026 (18:29)',title:'Test online realizado · Medidas cautelares y tutela judicial (Nota: 10 / 10 ★)',meta:'Testmoz CPROC · D.ª Susana Díaz Gallego · Procura (10/10 aciertos · 100% · Sobresaliente pleno)',key:'test_30oct_susana',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Test online realizado · Medidas cautelares y tutela judicial en la Procura'},
@@ -6495,6 +6548,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_rita_goimil_27oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente pleno). Calificaciones otorgadas por D.ª María Rita Goimil Martínez correspondientes a la sesión del 27 de octubre en Deontología y técnicas transversales (Intervención de los procuradores en conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria). Ponderable por coordinación del MUAP.',
  test_2nov_carnota:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el lunes 2 de noviembre a las 17:47 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno sin fallos). Recursos de queja y apelación (plazo 20 días hábiles, arts. 458 y 494 LEC), efectos de la rebeldía procesal (art. 496.2 LEC), impugnación de tasación de costas por partidas indebidas u honorarios excesivos (arts. 245 y 246 LEC), plazo de espera de 20 días para ejecución (art. 548 LEC), requisito de título ejecutivo (art. 517 LEC), competencia del LAJ para tasar costas (art. 243 LEC), costas de primera instancia y vencimiento objetivo (art. 394 LEC), régimen transitorio de apelación y nulidad de actuaciones (art. 225 LEC y art. 238 LOPJ).',
  mail_cambios_cronograma_2nov:'CAMBIOS OFICIALES EN EL CRONOGRAMA DEL MÁSTER (Patricia · Administración): 1) Día 19 de noviembre (09:30–12:00 y 16:30–19:00): Juan Lage (Proceso de ejecución). 2) Día 20 de noviembre (09:30–12:00 y 16:30–19:00): Fernando Lousada. 3) Simulados 26 y 30 de noviembre: SUSPENDIDOS hasta nueva fecha que se notificará. 4) Simulados de diciembre: se celebrarán los días 16 y 22 de diciembre. 5) La clase de Laboral pautada para el día 16 de diciembre se llevará a cabo el día 18 de diciembre.',
  test_30oct_susana:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Susana Díaz Gallego completado el viernes 30 de octubre a las 18:29 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno). Anotación preventiva de demanda (art. 727 LEC y art. 42 LH), recurso de amparo constitucional (arts. 53.2 CE y 41 LOTC), principio de instrumentalidad y variabilidad de medidas cautelares (arts. 721, 726 y 743 LEC), medidas inaudita parte (art. 733.2 LEC), contracautelas en lo contencioso (art. 133 LJCA), agotamiento de la vía judicial previa (art. 44 LOTC), periculum in mora y presupuestos de la tutela cautelar (art. 728 LEC).',
@@ -6576,6 +6630,20 @@ const mailSummaries={
 };
 
 const details={
+ mail_rita_goimil_27oct:{
+  kicker:'Calificaciones oficiales de Procura · Deontología y técnicas transversales',
+  title:'Resultados de las pruebas del 27/10/2026 · Rita Goimil Martínez (Nota: 10 / 10 ★)',
+  date:'Correo recibido: martes, 3 de noviembre de 2026 · Clase celebrada: 27/10/2026',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|0',
+  body:'Comunicación oficial remitida por la docente D.ª María Rita Goimil Martínez, Procuradora del Máster Universitario en Abogacía y Procura (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña):\n\n«Estimada Estudiante:\n\nComo continuación de la clase celebrada el pasado día 27/10/2026 en la titulación "Máster Universitario en Abogacía y Procura" (UDC, Colegio de Abogados, Colegio de Procuradores de A Coruña), me complace remitirle las calificaciones que otorgué a las actividades evaluables que realizó en su momento, esperando le puedan ser de utilidad y ayuda.\n\nMATERIA: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\nCONTENIDOS: La intervención de los Procuradores en: conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria.\n\n• I. TEST (40%): 4 (sobre 4 · 100 %)\n• II. TRABALLO/S ESCRITO/S (60%): 6 (sobre 6 · 100 %)\n• NOTA FINAL: 10 / 10 (Sobresaliente pleno ★)\n\nObservación: En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia.\n\nRecibe un cordial saludo\n\nFdo.: Maria Rita Goimil Martinez\nMáster Universitario en Abogacía y Procura.»',
+  source:'Correo oficial de D.ª María Rita Goimil Martínez · Materia: Deontología y técnicas transversales · Clase celebrada 27/10/2026',
+  attachments:[
+   {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
+   {name:'Ver en pestaña de Notas (10 / 10 ★)',detailKey:'grade_rita_goimil_27oct',kind:'Calificaciones'},
+   {name:'Ficha de Rita Goimil en el portal',teacher:'Rita Goimil Martínez',kind:'Directorio docente'}
+  ]
+ },
  test_2nov_carnota:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Recursos y Ejecución',
   title:'Test online · Recursos procesales, ejecución, costas y nulidad (María Carnota · Sesión 2)',
@@ -8763,11 +8831,11 @@ const courses=[
     period:'27 oct 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-10-27',
     teachers:['Rita Goimil Martínez'],
-    grade:{score:'⏳ Por venir · 27 oct',detail:'Intervención del procurador en métodos adecuados de solución de controversias y mediación.',detailKey:'materials'},
+    grade:{score:'Nota oficial: 10 / 10 ★ (Sobresaliente)',detail:'Calificación oficial comunicada formalmente por Rita Goimil: Test 4/4 (40 %) + Trabajos escritos 6/6 (60 %) = 10 / 10 (Sobresaliente pleno).',detailKey:'mail_rita_goimil_27oct',actionLabel:'Ver nota oficial (10/10) ↗'},
     notes:[
      {name:'Ley 5/2012 de mediación en asuntos civiles y mercantiles (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2012-9112',label:'BOE oficial ↗'}
     ],
-    mails:['materials']
+    mails:['mail_rita_goimil_27oct','presentation_goimil_21oct','materials']
    },
    {
     name:'Gestiones profesionales de los procuradores',
@@ -9605,17 +9673,22 @@ const teacherDirectory=[
   name:'Rita Goimil Martínez',
   branch:'Procura',
   role:'Procuradora · MASC, mediación intrajudicial y ejecuciones no dinerarias',
-  gradeBadge:'⏳ Por venir · 27 oct y 23 nov',
-  summary:'Intervención de procuradores en MASC / mediación intrajudicial y ejecuciones forzosas no dinerarias.',
-  grade:{score:'⏳ Por venir · 2 sesiones',scoreLabel:'Docencia por venir',detail:'Sesión 1: 27 oct (16:30–18:30) · Sesión 2: 23 nov (18:45–20:45).',detailKey:'schedule'},
+  gradeBadge:'10 / 10 ★',
+  summary:'Intervención de procuradores en MASC / mediación intrajudicial, conciliación, arbitraje y ejecuciones forzosas no dinerarias.',
+  grade:{score:'10 / 10 ★',scoreLabel:'Nota oficial (Sesión 27 oct)',detail:'Test 40% (4 ptos.) + Trabajos escritos 60% (6 ptos.) · Notificada oficialmente por correo',detailKey:'mail_rita_goimil_27oct',actionLabel:'Ver nota oficial ↗'},
+  breakdown:[
+   {label:'I. Test (40 %)',val:'4 / 4 puntos (10 / 10)'},
+   {label:'II. Traballos escritos (60 %)',val:'6 / 6 puntos (10 / 10)'},
+   {label:'Calificación oficial otorgada',val:'10 / 10 · Sobresaliente ★ pleno'}
+  ],
   sessions:[
-   {date:'2026-10-27',dayLabel:'Martes 27 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Intervención de procuradores en MASC y mediación intrajudicial',place:'Colegio de Abogados (A Coruña)'},
+   {date:'2026-10-27',dayLabel:'Martes 27 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Intervención de procuradores en MASC y mediación intrajudicial (Calificación: 10/10 ★)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Ejecuciones no dinerarias en la Procura (hacer, no hacer y entrega de cosa)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
-  practices:[],
+  mails:[{title:'Calificaciones oficiales del 27/10/2026 (Nota: 10/10 ★)',key:'mail_rita_goimil_27oct'},{title:'Carta de presentación oficial (21 oct)',key:'presentation_goimil_21oct'}],
+  practices:[{title:'Actividades evaluables del 27 oct (Test 4 + Trabajos 6)',status:'10 / 10 (Sobresaliente ★) ✓',key:'mail_rita_goimil_27oct'}],
   driveFiles:[],
-  notes:[]
+  notes:[{title:'Ley 5/2012 de mediación civil y mercantil (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2012-9112',urlLabel:'BOE oficial ↗'}]
  },
  {
   name:'Rosa González',
@@ -10017,6 +10090,8 @@ const courseMail={
 };
 
 const teacherGradeMap={
+ 'Rita Goimil Martínez': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · MASC, mediación y arbitraje · Test 4/4 + Trabajos 6/6)' },
+ 'María Rita Goimil Martínez': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · MASC, mediación y arbitraje · Test 4/4 + Trabajos 6/6)' },
  'Carlos M. Sánchez Muiño': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · Técnicas instrumentales y TIC)' },
  'Javier C. Sánchez García': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · Técnicas instrumentales)' },
  'Javier Sánchez García': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · Técnicas instrumentales)' },
@@ -10056,16 +10131,26 @@ function findSubjectLocation(sub){
 function getDossierIdForTeacher(tName){
  if(!tName) return '';
  const n = tName.toLowerCase();
- if(n.includes('carlos') && (n.includes('sánchez') || n.includes('muiño'))){
+ if(n.includes('carlos') && (n.includes('sánchez') || n.includes('sanchez') || n.includes('muiño') || n.includes('muino'))){
   return (isStudentPortal || typeof getStudentGradeData === 'function') ? 'dossier-carlos-sanchez' : 'dossier-carolina-moreno';
  }
- if(n.includes('carolina moreno') || n.includes('sánchez barge') || n.includes('sánchez muiño')) return 'dossier-carolina-moreno';
+ if(n.includes('carolina moreno') || n.includes('sánchez barge') || n.includes('sanchez barge') || n.includes('sánchez muiño')) return 'dossier-carolina-moreno';
  if(n.includes('sandra mosteiro')) return 'dossier-sandra-mosteiro';
- if(n.includes('ana vázquez')) return 'dossier-ana-vazquez';
- if(n.includes('javier') && n.includes('sánchez')) return 'dossier-javier-sanchez';
+ if(n.includes('ana vázquez') || n.includes('ana vazquez')) return 'dossier-ana-vazquez';
+ if(n.includes('javier') && (n.includes('sánchez') || n.includes('sanchez'))) return 'dossier-javier-sanchez';
  if(n.includes('carmen belo') || n.includes('belo')) return 'dossier-carmen-belo';
+ if(n.includes('goimil')) return 'dossier-rita-goimil';
  if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
- return '';
+ if(n.includes('carnota')) return 'dossier-maria-carnota';
+ if(n.includes('susana') && (n.includes('díaz') || n.includes('diaz'))) return 'dossier-susana-diaz';
+ if(n.includes('moure')) return 'dossier-maria-luisa-moure';
+ if(n.includes('javier garcía') || n.includes('javier garcia') || n.includes('santiago varela')) return 'dossier-javier-garcia-santiago-varela';
+ if(n.includes('lousada')) return 'dossier-fernando-lousada';
+ if(n.includes('daniel garrido') || n.includes('garrido pazos')) return 'dossier-daniel-garrido';
+ if(n.includes('alejandra sánchez') || n.includes('alejandra sanchez')) return 'dossier-alejandra-sanchez';
+ if(n.includes('amarelle') || n.includes('carlos tomé') || n.includes('carlos tome')) return 'dossier-vanessa-amarelle';
+ const slug = String(tName).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+ return slug ? ('dossier-' + slug) : '';
 }
 
 function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
@@ -10461,6 +10546,23 @@ function closeSubjectGradeModal(){
  currentModalSubKey = '';
 }
 
+function refreshAllGradeViewsAfterSave(){
+ if(typeof renderTeachers === 'function') renderTeachers();
+ if(typeof renderSubjectsList === 'function') renderSubjectsList();
+ if(typeof renderSidebarTree === 'function') renderSidebarTree();
+ if(typeof renderGrades === 'function') renderGrades();
+ if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+ if(typeof renderDay === 'function') renderDay();
+ if(typeof renderActiveMasterBanner === 'function') renderActiveMasterBanner();
+ const s2 = document.getElementById('subScreen2');
+ const s3 = document.getElementById('subScreen3');
+ if(s2 && s2.style.display !== 'none' && typeof currentActiveSubject !== 'undefined' && currentActiveSubject && typeof showScreen2 === 'function'){
+  showScreen2(currentActiveSubject.cKey, currentActiveSubject.sIdx, (typeof currentActiveTeacher !== 'undefined' && currentActiveTeacher) ? currentActiveTeacher.tName : undefined);
+ } else if(s3 && s3.style.display !== 'none' && typeof currentActiveTeacher !== 'undefined' && currentActiveTeacher && typeof showScreen3 === 'function'){
+  showScreen3(currentActiveTeacher.tName);
+ }
+}
+
 function saveSubjectGradeFromModal(){
  const inputEl = document.getElementById('sgmInput');
  if(!inputEl || !currentModalSubKey) return;
@@ -10483,25 +10585,23 @@ function saveSubjectGradeFromModal(){
 
    // Also sync with the subject(s) taught by this teacher
    for(const c of courses){
-    for(const s of (c.subjects||[])){
+    const cKey = courseKey(c);
+    (c.subjects||[]).forEach((s, idx) => {
      if((s.teachers||[]).some(x => x.toLowerCase().includes(tName.toLowerCase()) || tName.toLowerCase().includes(x.toLowerCase()))){
       if(val){
        localStorage.setItem('muap_sub_grade_' + encodeURIComponent(s.name.trim()), val);
+       localStorage.setItem('muap_sub_grade_' + cKey + '|' + idx, val);
       } else {
        localStorage.removeItem('muap_sub_grade_' + encodeURIComponent(s.name.trim()));
+       localStorage.removeItem('muap_sub_grade_' + cKey + '|' + idx);
       }
      }
-    }
+    });
    }
   } catch(e){}
 
   closeSubjectGradeModal();
-
-  if(typeof renderTeachers === 'function') renderTeachers();
-  if(typeof renderSubjectsList === 'function') renderSubjectsList();
-  if(typeof renderSidebarTree === 'function') renderSidebarTree();
-  if(typeof renderGrades === 'function') renderGrades();
-  if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+  refreshAllGradeViewsAfterSave();
 
   if(typeof showToastNotification === 'function'){
    showToastNotification(val ? `✓ Calificación guardada para ${tName}: ${val}` : `✓ Calificación vaciada para ${tName}`);
@@ -10520,20 +10620,23 @@ function saveSubjectGradeFromModal(){
  if(!sub){
   const clean = decodeURIComponent(currentModalSubKey);
   for(const c of courses){
-   const found = (c.subjects||[]).find(s => s.name === clean);
-   if(found){ sub = found; course = c; break; }
+   const foundIdx = (c.subjects||[]).findIndex(s => s.name === clean);
+   if(foundIdx !== -1){ sub = c.subjects[foundIdx]; course = c; sIdx = foundIdx; break; }
   }
  }
 
  const cleanSubName = sub ? sub.name.trim() : decodeURIComponent(currentModalSubKey);
+ const canonicalSubKey = (course && sub) ? `${courseKey(course)}|${sIdx}` : currentModalSubKey;
 
  try {
   if(val){
    localStorage.setItem('muap_sub_grade_' + encodeURIComponent(cleanSubName), val);
    localStorage.setItem('muap_sub_grade_' + currentModalSubKey, val);
+   localStorage.setItem('muap_sub_grade_' + canonicalSubKey, val);
   } else {
    localStorage.removeItem('muap_sub_grade_' + encodeURIComponent(cleanSubName));
    localStorage.removeItem('muap_sub_grade_' + currentModalSubKey);
+   localStorage.removeItem('muap_sub_grade_' + canonicalSubKey);
   }
 
   // Also sync with student dossier and teacher custom grade
@@ -10544,22 +10647,16 @@ function saveSubjectGradeFromModal(){
      saveStudentGradeData(dId, { finalGrade: val });
     }
     if(val){
-     localStorage.setItem('muap_teacher_grade_' + encodeURIComponent(tName), val);
+     localStorage.setItem('muap_teacher_grade_' + encodeURIComponent(tName.trim()), val);
     } else {
-     localStorage.removeItem('muap_teacher_grade_' + encodeURIComponent(tName));
+     localStorage.removeItem('muap_teacher_grade_' + encodeURIComponent(tName.trim()));
     }
    }
   }
  } catch(e){}
 
  closeSubjectGradeModal();
-
- // Re-render affected views
- if(typeof renderTeachers === 'function') renderTeachers();
- if(typeof renderSubjectsList === 'function') renderSubjectsList();
- if(typeof renderSidebarTree === 'function') renderSidebarTree();
- if(typeof renderGrades === 'function') renderGrades();
- if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+ refreshAllGradeViewsAfterSave();
 
  if(typeof showToastNotification === 'function'){
   if(val){
@@ -10572,7 +10669,7 @@ function saveSubjectGradeFromModal(){
 
 function navigateToSubjectGradeTest(detailKey, dossierId, subKey, evt){
  if(evt) evt.stopPropagation();
- if(detailKey === 'test_16oct' || detailKey === 'test_20oct_sandra'){
+ if(detailKey && detailKey.startsWith('test_')){
   openDetail(detailKey);
   return;
  }
@@ -10591,7 +10688,7 @@ function navigateToSubjectGradeTest(detailKey, dossierId, subKey, evt){
   }, 60);
   return;
  }
- if(detailKey && detailKey !== 'grades'){
+ if(detailKey && detailKey !== 'grades' && detailKey !== 'dossiers'){
   openDetail(detailKey);
   return;
  }
@@ -10925,6 +11022,100 @@ function isLikelyWorkTest(title){
  return true;
 }
 
+function getPracticeLiveState(p, tName){
+ if(!p) return { key:'', canToggle:false, submitted:false, status:'', customNote:'' };
+ const rawKey = p.key || p.detailKey || '';
+ let matchedDeliv = null;
+ if(typeof deliveries !== 'undefined' && Array.isArray(deliveries)){
+  if(rawKey && rawKey !== 'grades' && rawKey !== 'materials'){
+   matchedDeliv = deliveries.find(d => d.detailKey === rawKey);
+  }
+  if(!matchedDeliv && tName){
+   const tDels = deliveries.filter(d => d.teacher === tName || (d.teacher && (d.teacher.includes(tName) || tName.includes(d.teacher))));
+   if(tDels.length === 1){
+    matchedDeliv = tDels[0];
+   } else if(tDels.length > 1 && p.title){
+    const pt = String(p.title).toLowerCase();
+    matchedDeliv = tDels.find(d => String(d.title||'').toLowerCase().slice(0,18) === pt.slice(0,18) || pt.includes(String(d.detailKey||'').toLowerCase()));
+   }
+  }
+ }
+ const delivKey = matchedDeliv ? matchedDeliv.detailKey : (rawKey && rawKey !== 'grades' && rawKey !== 'materials' ? rawKey : ('prac_' + encodeURIComponent((tName||'') + '_' + (p.title||''))));
+ if(isStudentPortal || typeof isDeliveryChecked === 'function'){
+  const checked = (typeof isDeliveryChecked === 'function') ? isDeliveryChecked(delivKey) : Boolean(matchedDeliv && matchedDeliv.submitted);
+  let customNote = '';
+  try {
+   customNote = localStorage.getItem('muap_deliv_note_' + delivKey) || '';
+  } catch(e){}
+  const baseStatus = checked ? '✓ Entregada por mí' : (matchedDeliv && matchedDeliv.status && !matchedDeliv.status.includes('✓') ? matchedDeliv.status : '⏳ Pendiente de marcar');
+  const statusText = customNote ? `${checked ? '✓ Entregada' : '⏳ Pendiente'} · Nota: ${customNote}` : baseStatus;
+  return {
+   key: delivKey,
+   detailKey: matchedDeliv ? matchedDeliv.detailKey : rawKey,
+   canToggle: true,
+   submitted: checked,
+   status: statusText,
+   customNote
+  };
+ }
+ return {
+  key: rawKey,
+  detailKey: rawKey,
+  canToggle: false,
+  submitted: p.submitted !== false,
+  status: p.status || 'Completada ✓',
+  customNote: ''
+ };
+}
+
+function getTestLiveStatus(tst, tName){
+ if(!tst) return '';
+ const tKey = tst.key || tst.detailKey || tst.id || '';
+ let savedScore = '';
+ try {
+  if(tKey) savedScore = localStorage.getItem('muap_test_card_grade_' + tKey) || '';
+  if(!savedScore && tName){
+   const dId = getDossierIdForTeacher(tName);
+   if(dId && typeof getStudentGradeData === 'function'){
+    const sd = getStudentGradeData(dId);
+    if(sd && sd.testGrade) savedScore = sd.testGrade;
+   }
+  }
+ } catch(e){}
+ if(isStudentPortal){
+  return savedScore ? `⭐ Mi nota: ${savedScore}` : '📝 Cuestionario disponible';
+ }
+ return savedScore ? `⭐ ${savedScore}` : (tst.status || '10 / 10 (100 %) ✓');
+}
+
+function saveStudentTestCardGrade(testId, mailKey, teacherName, val){
+ const cleanVal = String(val || '').trim();
+ try {
+  if(testId){
+   if(cleanVal) localStorage.setItem('muap_test_card_grade_' + testId, cleanVal);
+   else localStorage.removeItem('muap_test_card_grade_' + testId);
+  }
+  if(mailKey){
+   if(cleanVal) localStorage.setItem('muap_test_card_grade_' + mailKey, cleanVal);
+   else localStorage.removeItem('muap_test_card_grade_' + mailKey);
+  }
+  if(teacherName){
+   const dId = getDossierIdForTeacher(teacherName);
+   if(dId && typeof saveStudentGradeData === 'function'){
+    saveStudentGradeData(dId, { testGrade: cleanVal });
+   }
+  }
+ } catch(e){}
+ const badgeStrong = document.getElementById('test-card-score-' + testId);
+ const badgeSmall = document.getElementById('test-card-label-' + testId);
+ if(badgeStrong) badgeStrong.textContent = cleanVal || 'Cuestionario oficial';
+ if(badgeSmall) badgeSmall.textContent = cleanVal ? 'Nota guardada ✓' : 'Preguntas y soluciones';
+ if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+ if(typeof renderSubjectsList === 'function') renderSubjectsList();
+ if(typeof renderSidebarTree === 'function') renderSidebarTree();
+ if(typeof renderTeachers === 'function') renderTeachers();
+}
+
 function getTeacherWorkItems(sub, tName){
  const t = (typeof teacherDirectory !== 'undefined' ? teacherDirectory.find(x => x.name === tName) : null) || { practices: [], notes: [] };
  const practices = t.practices || [];
@@ -10942,7 +11133,7 @@ function getTeacherWorkItems(sub, tName){
    seenT.add(key);
    uniqueTests.push({
     title: item.title || item.name,
-    status: item.status || '10 / 10 (100 %) ✓',
+    status: getTestLiveStatus(item, tName),
     key: item.key || item.detailKey || ''
    });
   }
@@ -10962,23 +11153,29 @@ function getTeacherWorkItems(sub, tName){
   const key = d.detailKey || d.title;
   if (!seenP.has(key)) {
    seenP.add(key);
+   const live = getPracticeLiveState({ title: d.title, key: d.detailKey, status: d.status, submitted: d.submitted }, tName);
    uniquePractices.push({
     title: d.title,
-    status: d.status || (d.submitted ? 'Entregada ✓' : 'Pendiente'),
+    status: live.status,
     key: d.detailKey || '',
-    submitted: d.submitted
+    toggleKey: live.key,
+    canToggle: live.canToggle,
+    submitted: live.submitted
    });
   }
  });
  tPractices.forEach(p => {
-  const key = p.key || p.title;
+  const live = getPracticeLiveState(p, tName);
+  const key = live.detailKey || p.key || p.title;
   if (!seenP.has(key)) {
    seenP.add(key);
    uniquePractices.push({
     title: p.title,
-    status: p.status || 'Completada ✓',
-    key: p.key || '',
-    submitted: true
+    status: live.status,
+    key: live.detailKey || p.key || '',
+    toggleKey: live.key,
+    canToggle: live.canToggle,
+    submitted: live.submitted
    });
   }
  });
@@ -10994,9 +11191,11 @@ function renderSingleGradeCard(g){
  if(quizDetail && quizDetail.questions && quizDetail.questions.length){
   const totalQ = quizDetail.questions.length;
   const correctCount = quizDetail.questions.filter(q => (q.userAnswer !== undefined ? q.userAnswer === q.correct : true)).length;
-  const summaryText = (correctCount === totalQ)
-   ? `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas correctas · ${correctCount}/${totalQ} ★)`
-   : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`;
+  const summaryText = isStudentPortal
+   ? `📝 Ver las ${totalQ} preguntas íntegras del test y sus soluciones oficiales`
+   : ((correctCount === totalQ)
+    ? `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas correctas · ${correctCount}/${totalQ} ★)`
+    : `📝 Ver las ${totalQ} preguntas íntegras del test (con respuestas marcadas y solución oficial · ${correctCount}/${totalQ} aciertos)`);
 
   quizHtml = `
   <details class="quiz-dropdown" style="margin-top:14px;border-top:1px dashed var(--line);padding-top:10px">
@@ -11006,7 +11205,7 @@ function renderSingleGradeCard(g){
    </summary>
    <div style="margin-top:10px;font-size:12px">
     ${quizDetail.questions.map(q=>{
-     const userAns = (q.userAnswer !== undefined) ? q.userAnswer : q.correct;
+     const userAns = (!isStudentPortal && q.userAnswer !== undefined) ? q.userAnswer : q.correct;
      return `
      <div style="padding:10px 0;border-top:1px dashed var(--line)">
       <p style="color:var(--ink);font-weight:700;margin-bottom:6px">${q.q}</p>
@@ -11021,7 +11220,7 @@ function renderSingleGradeCard(g){
         bg = 'var(--green-pale)';
         color = 'var(--green-dark)';
         border = 'var(--green-border)';
-        tag = ' (✓ Seleccionada · Correcta)';
+        tag = isStudentPortal ? ' (✓ Respuesta correcta oficial)' : ' (✓ Seleccionada · Correcta)';
        } else if(isCorrect && !isUser){
         bg = 'var(--green-pale)';
         color = 'var(--green-dark)';
@@ -11043,6 +11242,22 @@ function renderSingleGradeCard(g){
   `;
  }
 
+ let savedTestGrade = '';
+ if(isStudentPortal && g.type === 'test'){
+  try {
+   savedTestGrade = localStorage.getItem('muap_test_card_grade_' + g.id) || (g.mailKey ? localStorage.getItem('muap_test_card_grade_' + g.mailKey) : '') || '';
+  } catch(e){}
+ }
+ const effectiveBadgeScore = (isStudentPortal && g.type === 'test' && savedTestGrade) ? savedTestGrade : g.score;
+ const effectiveBadgeLabel = (isStudentPortal && g.type === 'test' && savedTestGrade) ? 'Nota guardada ✓' : g.scoreLabel;
+
+ const studentTestInputHtml = (isStudentPortal && g.type === 'test') ? `
+  <div style="margin-top:12px;padding:10px 12px;background:var(--paper-warm);border:1.5px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+   <label for="test-input-${escapeAttr(g.id)}" style="font-size:12px;font-weight:700;color:var(--ink)">✏️ Mi nota en este test (se guarda automáticamente):</label>
+   <input id="test-input-${escapeAttr(g.id)}" type="text" value="${escapeAttr(savedTestGrade)}" placeholder="Ej: 9/10 o 18/20" oninput="saveStudentTestCardGrade('${escapeAttr(g.id)}', '${escapeAttr(g.mailKey||'')}', '${escapeAttr(g.teacher||'')}', this.value)" style="padding:6px 10px;border-radius:8px;border:1.5px solid var(--green-border);background:var(--paper);font:700 13px var(--sans);color:var(--green-dark);width:170px">
+  </div>
+ ` : '';
+
  return `
  <article class="grade-card" data-type="${g.type}" id="${g.id}">
   <div>
@@ -11052,12 +11267,13 @@ function renderSingleGradeCard(g){
      <h3 class="grade-title"><button class="subject-open" data-subject="${g.subjectRef}">${g.title} ↗</button></h3>
      <div class="grade-meta">Docente: <button class="teacher-link" data-teacher="${g.teacher}">${g.teacher}</button>${g.coTeacher?` · <button class="teacher-link" data-teacher="${g.coTeacher}">${g.coTeacher}</button>`:''}</div>
     </div>
-    <div class="grade-badge"><strong>${g.score}</strong><small>${g.scoreLabel}</small></div>
+    <div class="grade-badge"><strong id="test-card-score-${escapeAttr(g.id)}">${escapeHtml(effectiveBadgeScore)}</strong><small id="test-card-label-${escapeAttr(g.id)}">${escapeHtml(effectiveBadgeLabel)}</small></div>
    </div>
    <p class="grade-meta" style="margin:10px 0">${g.description}</p>
    <div class="grade-breakdown">
     ${g.breakdown.map(b=>`<div class="grade-stat">${b.label}<b>${b.val}</b></div>`).join('')}
    </div>
+   ${studentTestInputHtml}
    ${quizHtml}
   </div>
   <div class="action-pills" style="margin-top:12px">
@@ -11069,6 +11285,53 @@ function renderSingleGradeCard(g){
 
 function renderTeacherDossiers(){
  const dossiers = [
+  {
+   id: 'dossier-rita-goimil',
+   teacher: 'Rita Goimil Martínez',
+   subject: 'Intervención de procuradores: MASC / mediación, arbitraje y jurisdicción voluntaria (Sesión 27 oct 2026)',
+   subjectRef: 'Procura|Actuación procesal|0',
+   kicker: 'Calificación oficial: 10 / 10 ★ (Sobresaliente pleno) · Notificada por correo',
+   badgeClass: 'gold',
+   badgeText: '10 / 10 · Nota Oficial ★',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Oficial',
+     score: '10 / 10 ★',
+     desc: 'Calificaciones remitidas formalmente por D.ª María Rita Goimil Martínez correspondientes a las actividades de la sesión del 27 oct. Ponderables por coordinación MUAP.',
+     subitems: [
+      {label: 'Calificación otorgada', val: '10 / 10 · Sobresaliente pleno ★'},
+      {label: 'Fecha comunicación', val: 'Noviembre 2026'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Test de MASC y Mediación (40 %)',
+     score: '4 / 4 puntos',
+     desc: 'Cuestionario evaluable sobre conciliación privada, mediación intrajudicial, arbitraje y jurisdicción voluntaria en la Procura.',
+     subitems: [
+      {label: 'Puntuación test', val: '4,0 de 4,0 ptos (100 %)'},
+      {label: 'Equivalente decimal', val: '10 / 10'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Trabajos y Casos Escritos (60 %)',
+     score: '6 / 6 puntos',
+     desc: 'Trabajo escrito sobre intervención del procurador en procedimientos de resolución alternativa de conflictos y mediación.',
+     subitems: [
+      {label: 'Puntuación trabajos', val: '6,0 de 6,0 ptos (100 %)'},
+      {label: 'Equivalente decimal', val: '10 / 10'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Ver correo oficial de la nota (10/10) ↗', detailKey: 'mail_rita_goimil_27oct', cls: 'solid-green'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|0'},
+    {label: 'Ficha de Rita Goimil Martínez ↗', teacher: 'Rita Goimil Martínez'}
+   ]
+  },
   {
    id: 'dossier-javier-sanchez',
    teacher: 'Javier Sánchez García',
@@ -11399,9 +11662,71 @@ function renderTeacherDossiers(){
  `).join('');
 }
 
+function getDeliverySavedNote(detailKey){
+ if(!detailKey) return '';
+ try {
+  return localStorage.getItem('muap_deliv_note_' + detailKey) || '';
+ } catch(e){
+  return '';
+ }
+}
+
+function saveDeliveryNote(detailKey, val){
+ if(!detailKey) return;
+ const cleanVal = String(val || '').trim();
+ try {
+  if(cleanVal) localStorage.setItem('muap_deliv_note_' + detailKey, cleanVal);
+  else localStorage.removeItem('muap_deliv_note_' + detailKey);
+ } catch(e){}
+ if(typeof renderSubjectsList === 'function') renderSubjectsList();
+ if(typeof renderSidebarTree === 'function') renderSidebarTree();
+ if(typeof renderTeachers === 'function') renderTeachers();
+ if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+}
+
 function renderPracticesGradeView(){
+ if(typeof isDeliveryChecked === 'function'){
+  deliveries.forEach(d => {
+   d.submitted = isDeliveryChecked(d.detailKey);
+   d.status = d.submitted ? '✓ Entregada por mí' : '⏳ Pendiente de marcar';
+  });
+ }
  const submittedList = deliveries.filter(d => d.submitted);
  const pendingList = deliveries.filter(d => !d.submitted);
+
+ const renderPracticeCard = (del, isSub) => {
+  let noteVal = '';
+  try { noteVal = localStorage.getItem('muap_deliv_note_' + del.detailKey) || ''; } catch(e){}
+  const toggleBtnHtml = (typeof toggleDeliveryCheck === 'function')
+   ? `<button type="button" class="deliv-check-btn ${isSub ? 'is-checked' : ''}" onclick="toggleDeliveryCheck('${escapeAttr(del.detailKey)}', this)">${isSub ? '✓ Entregada por mí (desmarcar)' : '☐ Marcar como entregada'}</button>`
+   : `<span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:${isSub?'var(--green-pale)':'#fff7ed'};color:${isSub?'var(--green-dark)':'#9a3412'};border:1px solid ${isSub?'var(--green-border)':'#fdba74'}">${del.status}</span>`;
+
+  const noteInputHtml = (isStudentPortal || typeof toggleDeliveryCheck === 'function') ? `
+   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px;padding-top:8px;border-top:1px dashed var(--line)">
+    <label for="prac-note-${escapeAttr(del.detailKey)}" style="font-size:11.5px;font-weight:700;color:var(--ink-soft)">✏️ Mi nota / observación en esta práctica:</label>
+    <input id="prac-note-${escapeAttr(del.detailKey)}" type="text" value="${escapeAttr(noteVal)}" placeholder="Ej: Entregada el 30 oct · 9/10" oninput="saveDeliveryNote('${escapeAttr(del.detailKey)}', this.value)" style="flex:1;min-width:180px;max-width:320px;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:var(--paper);font:600 12px var(--sans);color:var(--ink)">
+   </div>
+  ` : '';
+
+  return `
+   <div style="background:var(--paper-warm);border:1px solid ${isSub?'var(--green-border)':'#fed7aa'};border-left:4px solid ${isSub?'var(--green)':'var(--terracotta)'};border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+     <div>
+      <div style="font-size:11px;font-weight:700;color:${isSub?'var(--green-dark)':'var(--terracotta)'};text-transform:uppercase">${del.subject}</div>
+      <div style="font-size:15px;font-weight:700;color:var(--ink)">${del.title}</div>
+      <div style="font-size:12px;color:var(--ink-soft)">Docente: <button class="teacher-link" data-teacher="${del.teacher}">${del.teacher}</button> · Plazo: <b>${fmtShort(del.date)}</b></div>
+     </div>
+     ${toggleBtnHtml}
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin:0">${del.details}</p>
+    ${noteInputHtml}
+    <div class="action-pills" style="margin-top:4px">
+     <button class="pill-btn solid-green" data-detail="${del.detailKey}">Ver instrucciones del caso ↗</button>
+     ${del.subjectRef ? `<button class="pill-btn" data-subject="${del.subjectRef}">Ver asignatura ↗</button>` : ''}
+    </div>
+   </div>
+  `;
+ };
 
  return `
  <div style="display:grid;gap:18px">
@@ -11411,49 +11736,17 @@ function renderPracticesGradeView(){
     <button class="pill-btn solid-green" data-switch-view="entregas">Ir a pestaña de Entregas ↗</button>
    </div>
    <div style="display:grid;gap:12px">
-    ${submittedList.map(del => `
-     <div style="background:var(--paper-warm);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-       <div>
-        <div style="font-size:11px;font-weight:700;color:var(--green-dark);text-transform:uppercase">${del.subject}</div>
-        <div style="font-size:15px;font-weight:700;color:var(--ink)">${del.title}</div>
-        <div style="font-size:12px;color:var(--ink-soft)">Docente: <button class="teacher-link" data-teacher="${del.teacher}">${del.teacher}</button></div>
-       </div>
-       <span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border)">${del.status}</span>
-      </div>
-      <p style="font-size:12.5px;color:var(--ink-soft);margin:0">${del.details}</p>
-      <div class="action-pills" style="margin-top:4px">
-       <button class="pill-btn solid-green" data-detail="${del.detailKey}">Abrir resolución y archivos ↗</button>
-       <button class="pill-btn" data-subject="${del.subjectRef}">Ver asignatura ↗</button>
-      </div>
-     </div>
-    `).join('')}
+    ${submittedList.length ? submittedList.map(del => renderPracticeCard(del, true)).join('') : '<div style="padding:14px;text-align:center;color:var(--muted);font-size:13px;background:var(--paper-warm);border-radius:10px;border:1px dashed var(--line)">Aún no has marcado ninguna práctica como entregada. Usa el botón <b>«☐ Marcar como entregada»</b> en las prácticas de abajo para llevar tu control personal.</div>'}
    </div>
   </div>
 
   <div style="background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow-sm)">
    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;border-bottom:1px dashed var(--line);padding-bottom:10px">
-    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0">⏳ Casos prácticos con plazo activo (${pendingList.length})</h3>
+    <h3 style="font:700 18px var(--serif);color:var(--ink);margin:0">⏳ Casos prácticos pendientes de entrega (${pendingList.length})</h3>
     <button class="pill-btn" data-switch-view="entregas">Gestionar entregas ↗</button>
    </div>
    <div style="display:grid;gap:12px">
-    ${pendingList.map(del => `
-     <div style="background:var(--paper-warm);border:1px solid #fed7aa;border-left:4px solid var(--terracotta);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-       <div>
-        <div style="font-size:11px;font-weight:700;color:var(--terracotta);text-transform:uppercase">${del.subject}</div>
-        <div style="font-size:15px;font-weight:700;color:var(--ink)">${del.title}</div>
-        <div style="font-size:12px;color:var(--ink-soft)">Docente: <button class="teacher-link" data-teacher="${del.teacher}">${del.teacher}</button></div>
-       </div>
-       <span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;background:#fff7ed;color:#9a3412;border:1px solid #fdba74">${del.status}</span>
-      </div>
-      <p style="font-size:12.5px;color:var(--ink-soft);margin:0">${del.details}</p>
-      <div class="action-pills" style="margin-top:4px">
-       <button class="pill-btn solid-green" data-detail="${del.detailKey}">Ver instrucciones del caso ↗</button>
-       <button class="pill-btn" data-subject="${del.subjectRef}">Ver asignatura ↗</button>
-      </div>
-     </div>
-    `).join('')}
+    ${pendingList.length ? pendingList.map(del => renderPracticeCard(del, false)).join('') : '<div style="padding:14px;text-align:center;color:var(--green-dark);font-weight:700;font-size:13px;background:var(--green-pale);border-radius:10px;border:1px solid var(--green-border)">🎉 ¡Enhorabuena! Tienes todas las prácticas marcadas como entregadas.</div>'}
    </div>
   </div>
  </div>
@@ -11473,11 +11766,11 @@ function renderGrades(filter){
  const sumEl = document.getElementById('gradeFilterSummary');
  if(sumEl){
   if(filterToApply === 'teachers'){
-   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (5 profesores con actividad evaluable).';
+   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (6 profesores con actividad evaluable).';
   } else if(filterToApply === 'mail'){
-   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Javier Sánchez 10/10 y Ana Vázquez 8.8/10).';
+   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Rita Goimil 10/10, Javier Sánchez 10/10, Carlos Sánchez 10/10, Carolina Moreno 10/10, Ana Vázquez 8.8/10 y Carmen Belo 7.6/10).';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10 y 30 oct: 10/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10 y 2 nov: 10/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
    sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
@@ -11708,50 +12001,7 @@ function renderTeacherInsideSubject(tName, sub){
 
  // 3. Contenido de Prácticas
  const isAbogaciaT = (t.branch === 'Abogacía') || (t.role||'').toLowerCase().includes('abogad') || t.name === 'José Luis Delgado Domínguez';
- const practicesHeaderLink = isAbogaciaT
-  ? `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Colegio de Abogados (ICACOR) ↗</a>`
-  : `<a class="pill-link terra" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Plataforma CPROC ↗</a>`;
-
- const practicesContent = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
-   <strong style="color:var(--ink);font-size:14px">✍️ Prácticas y casos prácticos (${practicesList.length}):</strong>
-   ${practicesHeaderLink}
-  </div>
-  ${practicesList.length ? `
-   <div style="display:grid;gap:8px">
-    ${practicesList.map(p=>{
-     const pAction = isAbogaciaT
-      ? (p.url ? `<a class="pill-link blue" href="${p.url}" target="_blank" rel="noopener noreferrer">Ver recurso / imagen ↗</a>` : `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">secretariatecnico@icacor.org ↗</a>`)
-      : `<a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>`;
-     return `
-     <div class="visual-resource-card" style="border-left:4px solid ${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">
-      <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terra-dark)'}">✍️</div>
-       <div>
-        <div class="visual-resource-title">${p.title}</div>
-        ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
-       </div>
-      </div>
-      <div class="derive-action-links">
-       ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha ↗</button>`:''}
-       ${pAction}
-      </div>
-     </div>
-    `;}).join('')}
-   </div>
-  ` : `
-   <div class="empty-cozy" style="padding:22px 18px">
-    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
-     <div class="empty-cozy-icon-box" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">🌿</div>
-    </div>
-    <strong>Sin prácticas pendientes de entrega</strong>
-    <p style="margin-bottom:14px">${isAbogaciaT ? 'Este docente no tiene casos prácticos activos registrados. Las prácticas de Abogacía se gestionan a través de secretariatecnico@icacor.org o en clase presencial.' : 'Este docente no tiene casos prácticos activos. Puedes consultar el Campus Virtual en CPROC.'}</p>
-    <div class="empty-cozy-actions">
-     ${isAbogaciaT ? `<a class="cozy-btn cozy-btn-blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">Contactar con ICACOR ↗</a>` : `<a class="cozy-btn cozy-btn-gold" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">Acceder a CPROC (MUAP) ↗</a>`}
-    </div>
-   </div>
-  `}
- `;
+ const practicesContent = renderPracticesPanel(practicesList, t);
 
  // 4. Contenido de Apuntes
  const apuntesContent = `
@@ -11806,62 +12056,12 @@ function renderTeacherInsideSubject(tName, sub){
  `;
 
  // 5. Contenido de Tests
- const testsContent = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
-   <strong style="color:var(--ink);font-size:14px">📝 Tests y cuestionarios de evaluación (${testsList.length}):</strong>
-   <button class="pill-btn solid-honey" data-detail="all_tests_summary">Historial global de tests ↗</button>
-  </div>
-  ${testsList.length ? `
-   <div style="display:grid;gap:8px">
-    ${testsList.map(tst=>`
-     <div class="visual-resource-card" style="border-left:4px solid var(--honey);background:var(--paper-card)">
-      <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🎯</div>
-       <div>
-        <div class="visual-resource-title">${tst.title}</div>
-        ${tst.status?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">⭐ Calificación: ${tst.status}</div>`:''}
-       </div>
-      </div>
-      <div class="derive-action-links">
-       ${tst.key?`<button class="pill-btn solid-honey" data-detail="${tst.key}">Ficha del test ↗</button>`:''}
-       <a class="pill-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">Test original en Testmoz ↗</a>
-      </div>
-     </div>
-    `).join('')}
-   </div>
-  ` : `
-   <div class="empty-cozy" style="padding:22px 18px">
-    <div class="empty-cozy-icon-wrap" style="margin-bottom:8px">
-     <div class="empty-cozy-icon-box" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🌿</div>
-    </div>
-    <strong>Sin tests para este módulo</strong>
-    <p style="margin-bottom:14px">No hay tests o cuestionarios evaluables registrados para este docente. Puedes ver tu resumen global de tests.</p>
-    <div class="empty-cozy-actions">
-     <button class="cozy-btn cozy-btn-gold" data-detail="all_tests_summary">Ver resumen global de tests (10/10) ↗</button>
-    </div>
-   </div>
-  `}
- `;
+ const testsContent = renderTestsPanel(testsList, t);
 
  // 6. Contenido de Notas
- const gradeContent = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">
-   <strong style="color:var(--ink);font-size:14px">⭐ Evaluación y calificación oficial:</strong>
-   <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Expediente oficial ↗</button>
-  </div>
-  <div class="visual-resource-card" style="border-left:5px solid var(--honey);background:var(--paper-card);padding:16px 20px">
-   <div class="visual-resource-left">
-    <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
-    <div>
-     <div style="font:700 19px/1.2 var(--serif);color:var(--honey-dark)">${t.gradeBadge || 'Evaluación del Módulo'}</div>
-     <div style="font-size:13px;color:var(--muted);margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
-    </div>
-   </div>
-   <div class="derive-action-links">
-    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Ver detalle oficial ↗</button>
-   </div>
-  </div>
- `;
+ const gradeContent = renderGradePanel(t);
+ const tGInfo = getTeacherGradeInfo(t);
+ const summaryGradeText = (tGInfo && tGInfo.hasGrade) ? tGInfo.effectiveScore : (t.gradeBadge || '');
 
  const initials = getTeacherInitials(t.name);
 
@@ -11874,7 +12074,7 @@ function renderTeacherInsideSubject(tName, sub){
      <div class="t-summary-name-row">
       <span class="t-name">👤 ${t.name}</span>
       <span class="${badgeClass}">${statusInfo.label}</span>
-      ${t.gradeBadge?`<span class="tag-score" title="Calificación / evaluación oficial">⭐ ${t.gradeBadge}</span>`:''}
+      ${summaryGradeText?`<span class="tag-score" title="Calificación / evaluación">⭐ ${escapeHtml(summaryGradeText)}</span>`:''}
      </div>
 
      <div style="font-size:12.5px;color:var(--muted);margin-top:3px">
@@ -12040,12 +12240,14 @@ function renderSidebarTree(mode){
         ${isAbogaciaT2 ? `<a class="st-sec-link" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">ICACOR ↗</a>` : `<a class="st-sec-link" href="${cprocUrl}" target="_blank" rel="noopener noreferrer">CPROC ↗</a>`}
        </div>
        <div class="st-sec-content">
-        ${practicesList.length ? practicesList.map(p=>`
+        ${practicesList.length ? practicesList.map(p=>{
+         const liveP = getPracticeLiveState(p, t.name);
+         return `
          <div class="st-sec-item practice-item">
-          ${p.key ? `<button class="st-item-btn" data-detail="${p.key}">📝 ${p.title}</button>` : `<span class="st-item-text">📝 ${p.title}</span>`}
-          ${p.status ? `<div class="st-item-status">${p.status}</div>` : ''}
+          ${liveP.detailKey ? `<button class="st-item-btn" data-detail="${liveP.detailKey}">📝 ${p.title}</button>` : `<span class="st-item-text">📝 ${p.title}</span>`}
+          ${liveP.status ? `<div class="st-item-status">${escapeHtml(liveP.status)}</div>` : ''}
          </div>
-        `).join('') : '<div class="st-sec-empty">— Sin prácticas asignadas todavía</div>'}
+        `;}).join('') : '<div class="st-sec-empty">— Sin prácticas asignadas todavía</div>'}
        </div>
       </div>
      `;
@@ -12095,7 +12297,10 @@ function renderSidebarTree(mode){
         ${workData.practices.length ? workData.practices.map(pr => `
          <div class="st-teacher-work-item">
           ${pr.key ? `<button class="work-title-btn" data-detail="${pr.key}">${escapeHtml(pr.title)}</button>` : `<span style="font-weight:600">${escapeHtml(pr.title)}</span>`}
-          <span class="work-status-badge ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>
+          ${(pr.canToggle && typeof toggleDeliveryCheck === 'function')
+           ? `<button type="button" class="work-status-badge ${pr.submitted === false ? 'pending' : ''}" style="cursor:pointer" title="Clic para marcar / desmarcar como entregada" onclick="event.stopPropagation(); toggleDeliveryCheck('${escapeAttr(pr.toggleKey)}', this)">${escapeHtml(pr.status)}</button>`
+           : `<span class="work-status-badge ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>`
+          }
          </div>
         `).join('') : '<div style="font-size:9.5px;color:var(--muted);font-style:italic;padding:2px 0">— Sin prácticas asignadas</div>'}
        </div>
@@ -12290,20 +12495,25 @@ function renderPracticesPanel(practicesList, t){
   ${practicesList.length ? `
    <div style="display:grid;gap:8px">
     ${practicesList.map(p=>{
+     const live = getPracticeLiveState(p, t ? t.name : '');
      const pAction = isAbogaciaT
       ? (p.url ? `<a class="pill-link blue" href="${p.url}" target="_blank" rel="noopener noreferrer">Ver recurso / imagen ↗</a>` : `<a class="pill-link blue" href="mailto:secretariatecnico@icacor.org" target="_blank" rel="noopener noreferrer">secretariatecnico@icacor.org ↗</a>`)
       : `<a class="pill-link terra" href="${p.url||cprocUrl}" target="_blank" rel="noopener noreferrer">Ir a CPROC ↗</a>`;
+     const toggleBtn = (live.canToggle && typeof toggleDeliveryCheck === 'function')
+      ? `<button type="button" class="deliv-check-btn ${live.submitted ? 'is-checked' : ''}" onclick="toggleDeliveryCheck('${escapeAttr(live.key)}', this)">${live.submitted ? '✓ Entregada' : '☐ Marcar entregada'}</button>`
+      : '';
      return `
      <div class="visual-resource-card" style="border-left:4px solid ${isAbogaciaT?'var(--blue)':'var(--terracotta)'}">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:${isAbogaciaT?'var(--blue-badge)':'var(--terra-pale)'};border-color:${isAbogaciaT?'var(--blue-border)':'var(--terra-border)'};color:${isAbogaciaT?'var(--blue)':'var(--terra-dark)'}">✍️</div>
        <div>
         <div class="visual-resource-title">${p.title}</div>
-        ${p.status?`<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:2px">✓ ${p.status}</div>`:''}
+        ${live.status?`<div style="font-size:12px;color:${live.submitted?'var(--green-dark)':'var(--terracotta)'};font-weight:700;margin-top:2px">${escapeHtml(live.status)}</div>`:''}
        </div>
       </div>
-      <div class="derive-action-links">
-       ${p.key?`<button class="pill-btn" data-detail="${p.key}">Ficha ↗</button>`:''}
+      <div class="derive-action-links" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+       ${toggleBtn}
+       ${live.detailKey?`<button class="pill-btn" data-detail="${live.detailKey}">Ficha ↗</button>`:''}
        ${pAction}
       </div>
      </div>
@@ -12377,7 +12587,7 @@ function renderApuntesPanel(apuntesDocs, pureNotes, driveDocs){
  `;
 }
 
-function renderTestsPanel(testsList){
+function renderTestsPanel(testsList, t){
  return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px">
    <strong style="color:var(--ink);font-size:14px">📝 Tests y cuestionarios de evaluación (${testsList.length}):</strong>
@@ -12385,13 +12595,15 @@ function renderTestsPanel(testsList){
   </div>
   ${testsList.length ? `
    <div style="display:grid;gap:8px">
-    ${testsList.map(tst=>`
+    ${testsList.map(tst=>{
+     const liveTestStatus = getTestLiveStatus(tst, t ? t.name : '');
+     return `
      <div class="visual-resource-card" style="border-left:4px solid var(--honey);background:var(--paper-card)">
       <div class="visual-resource-left">
        <div class="visual-resource-icon" style="background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">🎯</div>
        <div>
         <div class="visual-resource-title">${tst.title}</div>
-        ${tst.status?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">⭐ Calificación: ${tst.status}</div>`:''}
+        ${liveTestStatus?`<div style="font-size:12px;color:var(--honey-dark);font-weight:700;margin-top:2px">${escapeHtml(liveTestStatus)}</div>`:''}
        </div>
       </div>
       <div class="derive-action-links">
@@ -12399,7 +12611,7 @@ function renderTestsPanel(testsList){
        <a class="pill-link" href="historial-tests/originales/2026-10-16-testmoz-15705122.html" target="_blank" rel="noopener noreferrer">Test original en Testmoz ↗</a>
       </div>
      </div>
-    `).join('')}
+    `;}).join('')}
    </div>
   ` : `
    <div class="empty-cozy" style="padding:22px 18px">
@@ -12417,21 +12629,30 @@ function renderTestsPanel(testsList){
 }
 
 function renderGradePanel(t){
+ const gInfo = getTeacherGradeInfo(t);
+ const hasCustomOrOff = gInfo && gInfo.hasGrade;
+ const mainTitle = hasCustomOrOff ? `Calificación registrada: ${escapeHtml(gInfo.effectiveScore)}` : (t.gradeBadge || 'Evaluación del Módulo');
+ const subDetail = (gInfo && gInfo.isCustom) ? 'Calificación guardada en tu cuaderno personal del Máster.' : (t.grade ? t.grade.detail : t.summary);
+ const dossierBtn = (gInfo && gInfo.dossierId)
+  ? `<button type="button" class="pill-btn solid-honey" onclick="navigateToTeacherDossier('${escapeAttr(gInfo.dossierId)}', event)">📝 Ir al Cuaderno de Notas ↗</button>`
+  : `<button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Ver detalle oficial ↗</button>`;
+
  return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px">
-   <strong style="color:var(--ink);font-size:14px">⭐ Evaluación y calificación oficial:</strong>
-   <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Expediente oficial ↗</button>
+   <strong style="color:var(--ink);font-size:14px">⭐ Evaluación y calificación del módulo:</strong>
+   ${dossierBtn}
   </div>
   <div class="visual-resource-card" style="border-left:5px solid var(--honey);background:var(--paper-card);padding:16px 20px">
    <div class="visual-resource-left">
     <div class="visual-resource-icon" style="width:44px;height:44px;font-size:22px;background:var(--honey-pale);border-color:var(--honey-border);color:var(--honey-dark)">⭐</div>
     <div>
-     <div style="font:700 19px/1.2 var(--serif);color:var(--honey-dark)">${t.gradeBadge || 'Evaluación del Módulo'}</div>
-     <div style="font-size:13px;color:var(--muted);margin-top:3px">${t.grade ? t.grade.detail : t.summary}</div>
+     <div style="font:700 19px/1.2 var(--serif);color:var(--honey-dark)">${mainTitle}</div>
+     <div style="font-size:13px;color:var(--muted);margin-top:3px">${subDetail}</div>
     </div>
    </div>
-   <div class="derive-action-links">
-    <button class="pill-btn solid-honey" data-detail="${(t.grade && t.grade.detailKey) || 'grades'}">Ver detalle oficial ↗</button>
+   <div class="derive-action-links" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+    <button type="button" class="pill-btn solid-green" onclick="openTeacherGradeModal('${escapeAttr(t.name)}', event)">✏️ ${hasCustomOrOff ? 'Editar mi nota' : 'Anotar mi nota'}</button>
+    ${dossierBtn}
    </div>
   </div>
  `;
@@ -12744,8 +12965,9 @@ function showScreen2(cKey, sIdx, optTeacherName){
  const apuntesContent = renderApuntesPanel(apuntesDocs, pureNotes, driveDocs);
  const practicesContent = renderPracticesPanel(practicesList, t);
  const mailsContent = renderMailsPanel(mailsList, t);
- const testsContent = renderTestsPanel(testsList);
+ const testsContent = renderTestsPanel(testsList, t);
  const gradeContent = renderGradePanel(t);
+ const subGInfo = getSubjectFullGradeInfo(sub, cKey, sIdx);
 
  contentEl.innerHTML=`
   <div class="subject-hero-card ${stInfo.cardClass}">
@@ -12754,10 +12976,10 @@ function showScreen2(cKey, sIdx, optTeacherName){
      <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch} · ${course.blockNumber}</span>
      <span class="status-pill ${stInfo.badgeClass}">${stInfo.label}</span>
     </div>
-    ${sub.grade?`
+    ${(subGInfo.hasGrade || sub.grade)?`
      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <span class="tag-score" style="font-size:13px;padding:4px 10px">⭐ ${sub.grade.score}</span>
-      <button class="pill-btn solid-honey" data-detail="${sub.grade.detailKey||'grades'}">Ver expediente oficial ↗</button>
+      <span class="tag-score" style="font-size:13px;padding:4px 10px">⭐ ${escapeHtml(subGInfo.hasGrade ? subGInfo.effectiveScore : sub.grade.score)}</span>
+      <button class="pill-btn solid-honey" data-detail="${(sub.grade && sub.grade.detailKey) || 'grades'}">Ver expediente oficial ↗</button>
      </div>
     `:''}
    </div>
@@ -12921,7 +13143,7 @@ function showScreen3(tName){
  const apuntesContent=renderApuntesPanel(apuntesDocs, pureNotes, driveDocs);
  const practicesContent=renderPracticesPanel(practicesList, t);
  const mailsContent=renderMailsPanel(mailsList, t);
- const testsContent=renderTestsPanel(testsList);
+ const testsContent=renderTestsPanel(testsList, t);
  const gradeContent=renderGradePanel(t);
 
  contentEl.innerHTML=`
@@ -13119,7 +13341,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
            <div style="font-size:13px;color:var(--ink-soft)">
             🗓️ Fechas: <b>${item.sub.period}</b> · 👤 Docente(s): <b>${formatTeachersWithGrades(item.sub.teachers, false)}</b>
            </div>
-           ${item.sub.grade ? `<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:4px">⭐ ${item.sub.grade.score} · ${item.sub.grade.detail}</div>` : ''}
+           ${(() => { const gInf = getSubjectFullGradeInfo(item.sub, cKey, item.sIdx); return gInf.hasGrade ? `<div style="font-size:12px;color:var(--green-dark);font-weight:700;margin-top:4px">⭐ ${escapeHtml(gInf.effectiveScore)}${item.sub.grade && item.sub.grade.detail ? ' · ' + escapeHtml(item.sub.grade.detail) : ''}</div>` : ''; })()}
           </div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
            <button class="sc-action-btn" data-subject-card="${cKey}|${item.sIdx}">
@@ -13312,7 +13534,11 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
           ${w.practices.length ? w.practices.map(pr => `
            <div class="sc-work-card-row">
             ${pr.key ? `<button data-detail="${pr.key}">✍️ ${escapeHtml(pr.title)}</button>` : `<span>✍️ ${escapeHtml(pr.title)}</span>`}
-            <span class="sc-badge-score ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>
+            ${pr.canToggle && typeof toggleDeliveryCheck === 'function' ? `
+             <button type="button" class="sc-badge-score ${pr.submitted === false ? 'pending' : ''}" style="cursor:pointer;border:1px solid currentColor" onclick="event.stopPropagation(); toggleDeliveryCheck('${escapeHtml(pr.toggleKey)}', this)" title="Pulsa para alternar estado de entrega">${escapeHtml(pr.status)}</button>
+            ` : `
+             <span class="sc-badge-score ${pr.submitted === false ? 'pending' : ''}">${escapeHtml(pr.status)}</span>
+            `}
            </div>
           `).join('') : '<div class="sc-work-empty">— Sin prácticas asignadas</div>'}
          </div>
@@ -13332,7 +13558,7 @@ function renderSubjectsList(branchFilter, statusFilter, viewMode){
        <span class="course-badge ${course.branch==='Procura'?'terra':'blue'}">${course.branch} · ${course.blockNumber}</span>
        <span class="status-pill ${stInfo.badgeClass}">${stInfo.label}</span>
       </div>
-      ${sub.grade?`<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${sub.grade.score}</span>`:''}
+      ${(() => { const gInf = getSubjectFullGradeInfo(sub, cKey, sIdx); return (gInf.hasGrade || sub.grade) ? `<span class="tag-score" style="font-size:11.5px;padding:3px 8px">⭐ ${escapeHtml(gInf.hasGrade ? gInf.effectiveScore : sub.grade.score)}</span>` : ''; })()}
      </div>
 
      <h3 class="sc-title" style="display:flex;align-items:center;flex-wrap:wrap;gap:4px"><span>📖 ${sub.name}</span>${getSubjectGradeBadgeHtml(sub, false, cKey, sIdx)}</h3>
@@ -13423,6 +13649,9 @@ function renderTeachers(q='', filter=currentTeacherFilter){
   const practicesList = t.practices || [];
   const driveDocs = t.driveFiles || [];
   const notesList = t.notes || [];
+  const tGInfo = getTeacherGradeInfo(t);
+  const effectiveBadgeText = tGInfo.hasGrade ? `⭐ Nota: ${tGInfo.effectiveScore}` : (t.gradeBadge || '');
+  const effectiveBadgeClass = tGInfo.hasGrade ? 'completed' : (effectiveBadgeText.toLowerCase().includes('pendiente') ? 'pending' : (effectiveBadgeText.toLowerCase().includes('completado') ? 'completed' : ''));
 
   return `
   <article class="teacher-card" data-branch="${t.branch}" id="teacher-card-${encodeURIComponent(t.name)}" data-teacher-card="${t.name}">
@@ -13436,7 +13665,7 @@ function renderTeachers(q='', filter=currentTeacherFilter){
       </h3>
      </div>
      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
-      <span class="teacher-grade-pill ${t.gradeBadge.toLowerCase().includes('pendiente') ? 'pending' : (t.gradeBadge.toLowerCase().includes('completado') ? 'completed' : '')}">${t.gradeBadge}</span>
+      <span class="teacher-grade-pill ${effectiveBadgeClass}">${escapeHtml(effectiveBadgeText)}</span>
       <span class="${badgeClass}">${st.label}</span>
      </div>
     </div>
@@ -13494,15 +13723,21 @@ function renderTeachers(q='', filter=currentTeacherFilter){
        <div class="teacher-sub-group">
         <div class="teacher-sub-group-title">✍️ Prácticas y tareas evaluables (${practicesList.length})</div>
         <div style="display:grid;gap:6px">
-         ${practicesList.map(p=>`
+         ${practicesList.map(p=>{
+          const live = getPracticeLiveState(p, t.name);
+          return `
           <div class="teacher-practice-item">
            <span class="t-prac-title">📝 ${p.title}</span>
            <div class="t-prac-actions">
-            ${p.status ? `<span class="inline-grade-pill pill-subtle">${p.status}</span>` : ''}
+            ${live.status ? `<span class="inline-grade-pill ${live.submitted ? 'pill-green' : 'pill-subtle'}">${escapeHtml(live.status)}</span>` : ''}
+            ${live.canToggle && typeof toggleDeliveryCheck === 'function' ? `
+             <button type="button" class="pill-btn ${live.submitted ? 'solid-green' : ''}" onclick="event.stopPropagation(); toggleDeliveryCheck('${escapeHtml(live.toggleKey)}', this)">${live.submitted ? '✅ Entregada' : '⬜ Marcar'}</button>
+            ` : ''}
             ${p.key ? `<button class="pill-btn" data-detail="${p.key}">Ver detalle ↗</button>` : ''}
            </div>
           </div>
-         `).join('')}
+          `;
+         }).join('')}
         </div>
        </div>
       ` : ''}
@@ -13701,10 +13936,10 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil'){
   let targetFilter = 'teachers';
   if(key.includes('test')) targetFilter = 'test';
-  else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetFilter = 'mail';
+  else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil') targetFilter = 'mail';
   else if(key === 'all_tests_summary') targetFilter = 'all';
   renderGrades(targetFilter);
   setView('notas', false);
@@ -13713,6 +13948,7 @@ function openDetail(key){
    if(key === 'grades' || key === 'grade_1oct') targetId = 'grade_1oct';
    else if(key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') targetId = 'grade_ana_vazquez';
    else if(key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetId = 'grade_carmen_belo';
+   else if(key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil') targetId = 'grade_rita_goimil_27oct';
    else if(key === 'test_16oct' || key === 'grade_16oct_test') targetId = 'grade_16oct_test';
    else if(key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetId = 'grade_20oct_test';
    else if(key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetId = 'grade_28oct_carnota_test';
@@ -14224,7 +14460,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega en 2 asignaturas (Técnicas Instrumentales con D.ª Susana Díaz el 2 nov y Práctica Procesal Civil con D. Fernando Lousada del 11 al 19 nov).`;
+   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega en 2 asignaturas (Práctica Procesal Civil con D. Fernando Lousada del 11 al 19 nov y Escritura Forense con D. Javier García y D. Santiago Varela el 30 nov).`;
   } else if(currentDeliveryFilter === 'completed'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
   } else if(currentDeliveryFilter === 'cproc'){
@@ -14232,7 +14468,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
   } else if(currentDeliveryFilter === 'icacor'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas de Abogacía, Coordinación y Práctica Procesal Civil.`;
   } else {
-   summaryEl.textContent = `Mostrando ${deliveries.length} prácticas (${pendingCount} pendientes en 2 asignaturas con 2 docentes y ${completedCount} superadas).`;
+   summaryEl.textContent = `Mostrando ${deliveries.length} prácticas (${pendingCount} pendientes en 2 asignaturas y ${completedCount} superadas).`;
   }
  }
 
@@ -14312,6 +14548,19 @@ function renderDeliveries(filter = currentDeliveryFilter){
         <a class="pill-link blue" href="mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)" target="_blank" rel="noopener noreferrer">📩 Redactar envío a fernando.lousada@udc.es ↗</a>
         <button class="pill-btn blue" data-detail="mail_lousada_26oct">✉️ Ver correo e instrucciones (16 adjuntos) ↗</button>
         <button class="pill-btn" data-detail="${d.detailKey}">📋 Ver ficha detallada con preguntas ↗</button>
+       </div>
+      </div>` : d.detailKey === 'mail_caso_escritura_30oct' ? `
+      <div class="delivery-files-block">
+       <strong class="delivery-files-title">
+        <span>✍️</span> Caso práctico: Escritura Forense y Técnicas Documentales (ICACOR)
+       </strong>
+       <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
+        Caso práctico remitido por la Administración del Máster (30 oct 2026) para la materia impartida por D. Javier García, D. Santiago Varela y D.ª Patricia González Figueroa. Plazo límite oficial: <b>lunes, 30 de noviembre de 2026</b>.
+       </div>
+       <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+        <button class="pill-btn blue" data-detail="mail_caso_escritura_30oct">✉️ Ver correo y detalles del caso (30 oct) ↗</button>
+        <a class="pill-link blue" href="mailto:master.abogacia@icacor.org?subject=Entrega%20Caso%20Pr%C3%A1ctico%20Escritura%20Forense%20-%20Raquel%20Escudero" target="_blank" rel="noopener noreferrer">📩 Enviar a master.abogacia@icacor.org ↗</a>
+        <a class="pill-link" href="${driveSearchUrl('ESCRITURA FORENSE')}" target="_blank" rel="noopener noreferrer">📁 Buscar documento en Drive ↗</a>
        </div>
       </div>` : `
       <div class="delivery-files-block">
@@ -14462,18 +14711,25 @@ function renderDeliveries(filter = currentDeliveryFilter){
   return;
  }
 
+ const getNextDueBadgeText = (items) => {
+  if(!items.length) return 'Al día ✓';
+  const sorted = [...items].sort((a,b) => a.date.getTime() - b.date.getTime());
+  return `Próx. vencimiento: ${fmtShort(sorted[0].date)}`;
+ };
+
  if(currentDeliveryFilter === 'pending'){
-  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${filtered.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
-  html += filtered.map(renderPendingRow).join('');
+  const sortedPending = [...filtered].sort((a,b) => a.date.getTime() - b.date.getTime());
+  let html = `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${sortedPending.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">${getNextDueBadgeText(sortedPending)}</span></div>`;
+  html += sortedPending.map(renderPendingRow).join('');
   listContainer.innerHTML = html;
  } else if(currentDeliveryFilter === 'completed'){
   listContainer.innerHTML = renderCompletedAccordions(filtered);
  } else {
-  const pendingItems = filtered.filter(d => !d.submitted);
+  const pendingItems = filtered.filter(d => !d.submitted).sort((a,b) => a.date.getTime() - b.date.getTime());
   const completedItems = filtered.filter(d => d.submitted);
   let html = '';
   if(pendingItems.length){
-   html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">Próx. vencimiento: 29 oct</span></div>`;
+   html += `<div class="delivery-group-header"><span>⏳ Prácticas y tareas pendientes de entrega (${pendingItems.length})</span><span style="font-size:11px;color:#d97706;font-weight:800">${getNextDueBadgeText(pendingItems)}</span></div>`;
    html += pendingItems.map(renderPendingRow).join('');
   }
   if(completedItems.length){
