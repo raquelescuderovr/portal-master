@@ -6115,6 +6115,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,3),title:'Caso práctico evaluable 3_11_2026',teacher:'Patricia González Figueroa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 6 de nov de 2026)',submitted:false,detailKey:'entrega_caso_pr_ctico_evaluable_3',details:'Caso práctico evaluable de la materia de Deontología y Técnicas Transversales (Escritura forense de la Procura).'},
  {
   date:new Date(2026,10,30),
   title:'Caso práctico: Escritura Forense y Técnicas Documentales',
@@ -6468,6 +6469,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_caso_pr_ctico_evaluable_3:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Deontología y Técnicas Transversales',
+  title:'Caso práctico evaluable 3_11_2026',
+  date:'Publicada: 03 oct 2026 · Plazo: 6 de nov de 2026',
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Caso práctico evaluable de la materia de Deontología y Técnicas Transversales (Escritura forense de la Procura).',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:mailto:secretariatecnico@icacor.org,kind:'Correo oficial ICACOR'}
+  ]
+ },
  test_2nov_carnota:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Recursos y Ejecución',
   title:'Test online · Recursos procesales, ejecución, costas y nulidad (María Carnota · Sesión 2)',
@@ -8471,6 +8485,7 @@ const courses=[
     teachers:['Patricia González Figueroa'],
     grade:{score:'⏳ Por venir · 3 nov',detail:'Redacción forense, fórmulas procesales y personación técnica.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Caso práctico evaluable 3_11_2026',detailKey:'entrega_caso_pr_ctico_evaluable_3',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Formularios prácticos de la procura en CPROC',url:cprocUrl,label:'CPROC ↗'}
     ],
     mails:['mail_184540','materials']
@@ -9393,7 +9408,8 @@ const teacherDirectory=[
    {date:'2026-11-03',dayLabel:'Martes 3 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Escritura forense de la Procura: personaciones y escritos de trámite',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',key:'mail_184540'},],
-  practices:[],
+  practices:[
+   {title:'Caso práctico evaluable 3_11_2026',status:'⏳ Pendiente (Plazo: 6 de nov de 2026)',key:'entrega_caso_pr_ctico_evaluable_3'},],
   driveFiles:[],
   notes:[]
  },
