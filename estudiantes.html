@@ -6115,6 +6115,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,4),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.'},
  {date:new Date(2026,10,3),title:'Caso práctico evaluable 3_11_2026',teacher:'Patricia González Figueroa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 6 de nov de 2026)',submitted:false,detailKey:'entrega_caso_pr_ctico_evaluable_3',details:'Caso práctico evaluable de la materia de Deontología y Técnicas Transversales (Escritura forense de la Procura).'},
  {
   date:new Date(2026,10,30),
@@ -6469,6 +6470,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_contrato_de_cesi_n_de_la_:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Propiedad Intelectual',
+  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
+  date:'Publicada: 04 oct 2026 · Plazo: 7 de diciembre de 2026',
+  teacher:'Lucía Silvoso',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:mailto:secretariatecnico@icacor.org,kind:'Correo oficial ICACOR'}
+  ]
+ },
  entrega_caso_pr_ctico_evaluable_3:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Deontología y Técnicas Transversales',
@@ -8670,6 +8684,7 @@ const courses=[
     teachers:['Lucía Silvoso'],
     grade:{score:'Materiales recibidos · 4 nov',detail:'Documentación de clase remitida el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf».',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
+     {name:'Práctica: Contrato de cesión de la diseñadora gráfica con la empresa de papelería',detailKey:'entrega_contrato_de_cesi_n_de_la_',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',label:'BOE oficial ↗'},
@@ -9553,7 +9568,8 @@ const teacherDirectory=[
    {title:'Materiales de Protección de Datos (aviso legal) - 30 oct',key:'mail_seminario_rgpd_30oct'},
    {title:'Materiales de Propiedad Intelectual (reservas de derechos) - 30 oct',key:'mail_seminario_pi_30oct'}
   ],
-  practices:[],
+  practices:[
+   {title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',key:'entrega_contrato_de_cesi_n_de_la_'},],
   driveFiles:[],
   notes:[
    {title:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
