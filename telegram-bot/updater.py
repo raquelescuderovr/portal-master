@@ -333,7 +333,7 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
     kicker_label = f"Práctica ICACOR · {s_subject}" if is_abogacia else f"Práctica CPROC · {s_subject}"
     source_label = "Colegio de Abogados de A Coruña (ICACOR)" if is_abogacia else "Plataforma CEPROC (MUAP)"
     att_name = "Enviar práctica a secretariatecnico@icacor.org" if is_abogacia else "Abrir plataforma CPROC (MUAP)"
-    att_url = "mailto:secretariatecnico@icacor.org" if is_abogacia else "cprocUrl"
+    att_url = "'mailto:secretariatecnico@icacor.org'" if is_abogacia else "cprocUrl"
     att_kind = "Correo oficial ICACOR" if is_abogacia else "Plataforma CPROC"
 
     detail_entry = f""" {detail_key}:{{
@@ -498,8 +498,41 @@ def add_grade_entry(content: str, grade_id: str, title: str, kicker: str, score:
 
     return content
 
+def validate_js_syntax(html_content: str) -> bool:
+    """Comprueba que todos los bloques <script> del HTML tengan sintaxis JavaScript válida."""
+    if "url:mailto:" in html_content or "url:http:" in html_content or "url:https:" in html_content:
+        print("[Updater] Error de sintaxis detectado: URL sin comillas en objeto JS.")
+        return False
+    scripts = re.findall(r'<script[^>]*>([\s\S]*?)</script>', html_content)
+    if not scripts:
+        return False
+    try:
+        node_check = (
+            "const vm=require('vm'),fs=require('fs');"
+            "const h=fs.readFileSync(0,'utf8');"
+            "const re=/<script[^>]*>([\\s\\S]*?)<\\/script>/g;let m;"
+            "while((m=re.exec(h))!==null){new vm.Script(m[1]);}"
+        )
+        res = subprocess.run(
+            ["node", "-e", node_check],
+            input=html_content.encode("utf-8"),
+            capture_output=True,
+            timeout=10
+        )
+        if res.returncode != 0:
+            print(f"[Updater] Error de sintaxis JS detectado por Node: {res.stderr.decode('utf-8', errors='ignore')}")
+            return False
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        print(f"[Updater] Aviso al validar sintaxis JS: {e}")
+    return True
+
 def save_and_commit(new_content: str, commit_msg: str) -> bool:
-    """Guarda los cambios localmente o a través de la API de GitHub."""
+    """Guarda los cambios localmente o a través de la API de GitHub tras validar la sintaxis JS."""
+    if not validate_js_syntax(new_content):
+        print("[Updater] ABORTADO: El nuevo contenido de index.html contiene errores de sintaxis JS.")
+        return False
     # 1. Modo Local si el archivo existe
     if INDEX_HTML.exists():
         with open(INDEX_HTML, "w", encoding="utf-8") as f:

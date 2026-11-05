@@ -5086,12 +5086,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2 id="dayHeading">Información de hoy</h2>
-        <p id="daySubtitle">Cargando agenda en tiempo real...</p>
+        <p id="daySubtitle">jueves, 5 de noviembre de 2026 · Pincha en cualquier titular para ver todos sus datos</p>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <div class="day-control-nav">
           <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
-          <span id="dayPosition">HOY</span>
+          <span id="dayPosition">HOY · 5 NOV</span>
           <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
         </div>
         <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
@@ -5099,7 +5099,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="today-panel">
       <div class="today-list" id="todayList">
-        <div style="padding:14px 18px;color:var(--ink-soft);font-size:13px">Cargando sesiones y actividades del día...</div>
+        <button class="headline-item" data-event-ref="2026-11-05|0">
+          <span class="headline-time">08:00<small>a 09:00</small></span>
+          <span class="headline-title">Pilates</span>
+          <span class="headline-tag personal">Personal · Google ↗</span>
+        </button>
+        <button class="headline-item" data-event-ref="2026-11-05|1">
+          <span class="headline-time">16:30<small>a 19:30</small></span>
+          <span class="headline-title">Arrendamientos y precario (Sesión 1) · Chony Jiménez</span>
+          <span class="headline-tag">Clase · Abogacía ↗</span>
+        </button>
       </div>
     </div>
 
@@ -5108,15 +5117,104 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="minimal-box-head">
         <div>
           <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
-          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Cargando próximos días lectivos...</p>
+          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Viernes, 6 nov, lunes, 9 nov, martes, 10 nov · Pincha en el titular para ver los datos</p>
         </div>
         <span>Pincha en el titular para ver los datos</span>
       </div>
-      <div class="minimal-list" id="nextThreeDaysList"></div>
+      <div class="minimal-list" id="nextThreeDaysList">
+        <div class="next-days-cards-grid">
+          <button class="next-day-card" data-event-ref="2026-11-06|0">
+            <div class="ndc-top">
+              <span class="ndc-day" data-jump-day="2026-11-06" title="Ir a este día en la agenda">VIE, 6 NOV</span>
+              <span class="ndc-time">16:30 – 19:30</span>
+            </div>
+            <strong class="ndc-title">Arrendamientos y precario (Sesión 2) · Chony Jiménez</strong>
+            <div class="ndc-footer">
+              <span class="ndc-kind master">Clase · Abogacía</span>
+              <span class="ndc-arrow">Ver datos ↗</span>
+            </div>
+          </button>
+          <button class="next-day-card" data-event-ref="2026-11-06|1">
+            <div class="ndc-top">
+              <span class="ndc-day" data-jump-day="2026-11-06" title="Ir a este día en la agenda">VIE, 6 NOV</span>
+              <span class="ndc-time">23:59</span>
+            </div>
+            <strong class="ndc-title">✓ ENTREGADO CON ANTELACIÓN (4 nov): Caso Práctico Evaluable 3_11_2026 (D.ª Patricia González)</strong>
+            <div class="ndc-footer">
+              <span class="ndc-kind master">Entrega completada ✓</span>
+              <span class="ndc-arrow">Ver datos ↗</span>
+            </div>
+          </button>
+          <button class="next-day-card" data-event-ref="2026-11-09|0">
+            <div class="ndc-top">
+              <span class="ndc-day" data-jump-day="2026-11-09" title="Ir a este día en la agenda">LUN, 9 NOV</span>
+              <span class="ndc-time">16:30 – 20:45</span>
+            </div>
+            <strong class="ndc-title">Propiedad horizontal (Sesión 1) · Chony Jiménez</strong>
+            <div class="ndc-footer">
+              <span class="ndc-kind master">Clase · Abogacía</span>
+              <span class="ndc-arrow">Ver datos ↗</span>
+            </div>
+          </button>
+          <button class="next-day-card" data-event-ref="2026-11-10|0">
+            <div class="ndc-top">
+              <span class="ndc-day" data-jump-day="2026-11-10" title="Ir a este día en la agenda">MAR, 10 NOV</span>
+              <span class="ndc-time">08:00 – 09:00</span>
+            </div>
+            <strong class="ndc-title">Pilates</strong>
+            <div class="ndc-footer">
+              <span class="ndc-kind personal">Personal · Google</span>
+              <span class="ndc-arrow">Ver datos ↗</span>
+            </div>
+          </button>
+          <button class="next-day-card" data-event-ref="2026-11-10|1">
+            <div class="ndc-top">
+              <span class="ndc-day" data-jump-day="2026-11-10" title="Ir a este día en la agenda">MAR, 10 NOV</span>
+              <span class="ndc-time">16:30 – 20:45</span>
+            </div>
+            <strong class="ndc-title">Compraventa civil y mercantil · Juan Raposo</strong>
+            <div class="ndc-footer">
+              <span class="ndc-kind master">Clase · Abogacía</span>
+              <span class="ndc-arrow">Ver datos ↗</span>
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- 2. MÓDULO DESTACADO: BLOQUES Y MATERIAS EN CURSO ACTIVO HOY -->
-    <div class="active-master-banner" id="activeMasterBanner" style="display:none"></div>
+    <div class="active-master-banner" id="activeMasterBanner">
+      <div class="amb-header">
+        <div class="amb-title-wrap">
+          <span class="amb-badge">🟢 DOCENCIA EN ACTIVO HOY</span>
+          <h3 class="amb-title">Bloques y Materias cursándose hoy en el Máster</h3>
+          <p class="amb-subtitle">jueves, 5 de noviembre de 2026 · Colegio de Abogados de A Coruña (Turno de tarde: 16:30 — 20:45 h)</p>
+        </div>
+        <button class="amb-view-all-btn" data-select-view-mode="blocks">Ver los 8 bloques del plan ➔</button>
+      </div>
+      <div class="amb-grid">
+        <article class="amb-card amb-card-abogacia" data-subject-card="Abogacía|Sustantivo civil|1" style="cursor:pointer">
+          <div class="amb-card-top">
+            <span class="course-badge blue">⚖️ Bloque II (Abogacía)</span>
+            <span class="status-pill status-current">🟢 Clase hoy</span>
+          </div>
+          <h4 class="amb-card-subject" data-subject-card="Abogacía|Sustantivo civil|1" style="cursor:pointer">Arrendamientos urbanos y precario</h4>
+          <div class="amb-card-meta">
+            <div>⏰ Horario: <b>16:30 — 20:45 h</b> (Sesión 1 de 3)</div>
+            <div>👤 Docente: <b data-open-teacher-screen="Chony Jiménez" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">Chony Jiménez</b></div>
+            <div>📍 Lugar: <b>Colegio de Abogados (A Coruña)</b></div>
+            <div>📖 Tema: <b>Arrendamientos y precario (Sesión 1)</b></div>
+          </div>
+          <div class="amb-card-actions">
+            <button class="amb-action-btn" data-subject-card="Abogacía|Sustantivo civil|1">
+              <span>Ver asignatura y clase</span> ➔
+            </button>
+            <button class="amb-action-btn secondary" data-open-teacher-screen="Chony Jiménez"><span>Docente 👤</span></button>
+            <button class="amb-action-btn secondary" data-detail="mail_arrendamientos_urbanos_5nov"><span>Ver correo ✉️</span></button>
+          </div>
+        </article>
+      </div>
+    </div>
 
     <!-- 3. MÓDULO DESTACADO: TITULARES DE PRÁCTICAS Y ENTREGAS PENDIENTES -->
     <div class="pending-tasks-banner" id="pendingTasksBanner">
@@ -5834,14 +5932,14 @@ const events={
   ],
   '2026-11-05':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 1)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 1)',teacher:'Chony Jiménez',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-06':[
-   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 2)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
+   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 2)',teacher:'Chony Jiménez',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
    {start:'23:59',end:'',name:'✓ ENTREGADO CON ANTELACIÓN (4 nov): Caso Práctico Evaluable 3_11_2026 (D.ª Patricia González)',teacher:'Patricia González Figueroa',subject:'Procura · Deontología y Técnicas Transversales (CPROC)',detailKey:'entrega_patricia_caso_evaluable_3nov',place:'Plataforma CPROC (Plazo oficial: 6 nov)',kind:'Entrega completada ✓',isWarning:false}
   ],
   '2026-11-09':[
-   {start:'16:30',end:'20:45',name:'Propiedad horizontal (Sesión 1)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+   {start:'16:30',end:'20:45',name:'Propiedad horizontal (Sesión 1)',teacher:'Chony Jiménez',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',mailKey:'mail_895671',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-10':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
@@ -6880,12 +6978,12 @@ mail_rita_goimil_27oct:{
  },
  mail_895671:{
   kicker:'Comunicación académica · Máster',
-  title:'Actualización docente: Chony Jiménez',
-  date:'Recibido: 05 oct 2026 (16:21)',
+  title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',
+  date:'Recibido: 5 nov 2026 (16:21)',
   teacher:'Chony Jiménez',
   subjectRef:'Abogacía|Sustantivo civil|1',
-  body:'Se confirma que la docente Chony Jiménez impartirá las sesiones de Arrendamientos y precario de los días 5 y 6 de noviembre, así como la sesión de Propiedad Horizontal del lunes 9 de noviembre.',
-  source:'Raquel Escudero Valcárcel-Ríos',
+  body:'Se confirma que la docente Chony Jiménez (chonyjimenezdellamo@yahoo.es) impartirá las sesiones de Arrendamientos y precario de los días 5 y 6 de noviembre (16:30 – 19:30 h), así como la sesión de Propiedad Horizontal del lunes 9 de noviembre (16:30 – 20:45 h).',
+  source:'Administración del Máster · D.ª Chony Jiménez (chonyjimenezdellamo@yahoo.es)',
   attachments:[
    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
   ]
@@ -6894,7 +6992,7 @@ mail_rita_goimil_27oct:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Propiedad Intelectual',
   title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
-  date:'Publicada: 04 oct 2026 · Plazo: 7 de diciembre de 2026',
+  date:'Publicada: 4 nov 2026 · Plazo: 7 de diciembre de 2026',
   teacher:'Lucía Silvoso',
   subjectRef:'Abogacía|Sustantivo civil|0',
   body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
@@ -9386,25 +9484,25 @@ const courses=[
     name:'Arrendamientos urbanos y precario',
     period:'5 y 6 nov 2026 · Horario: 16:30 – 19:30 (2 sesiones · 6 h)',
     startDate:'2026-11-05',
-    teachers:['Docente pendiente de asignar'],
-    grade:{score:'Docencia hoy y mañana · 5–6 nov',detail:'Documentación y trabajos para casa remitidos el 5 de noviembre por correo («Trabajos para casa y documentación arrendamientos urbanos (2).zip»). Clases de 16:30 a 19:30 h en el Colegio de Abogados.',detailKey:'mail_arrendamientos_urbanos_5nov',actionLabel:'Ver documentación ↗'},
+    teachers:['Chony Jiménez'],
+    grade:{score:'Docencia hoy y mañana · 5–6 nov',detail:'Docencia impartida por D.ª Chony Jiménez (chonyjimenezdellamo@yahoo.es). Documentación y trabajos para casa remitidos el 5 de noviembre por correo («Trabajos para casa y documentación arrendamientos urbanos (2).zip»). Clases de 16:30 a 19:30 h en el Colegio de Abogados.',detailKey:'mail_arrendamientos_urbanos_5nov',actionLabel:'Ver documentación ↗'},
     notes:[
      {name:'Trabajos para casa y documentación arrendamientos urbanos (ZIP)',detailKey:'mail_arrendamientos_urbanos_5nov',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Arrendamientos Urbanos (LAU 29/1994 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003',label:'BOE oficial ↗'},
      {name:'LEC: Juicio de desahucio por falta de pago y precario (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:['mail_arrendamientos_urbanos_5nov']
+    mails:['mail_arrendamientos_urbanos_5nov','mail_895671']
    },
    {
     name:'Propiedad horizontal',
     period:'9 y 11 nov 2026 · Horario: 16:30 – 20:45 (9 nov) y 16:30 – 20:45 (11 nov)',
     startDate:'2026-11-09',
-    teachers:['Docente pendiente de asignar'],
-    grade:{score:'⏳ Por venir · 9 y 11 nov',detail:'Régimen de comunidades de propietarios, acuerdos de junta, impugnaciones y reclamación de deudas.',detailKey:'materials'},
+    teachers:['Chony Jiménez','Docente pendiente de asignar'],
+    grade:{score:'⏳ Por venir · 9 y 11 nov',detail:'1.ª sesión (lunes 9 nov) impartida por D.ª Chony Jiménez. Régimen de comunidades de propietarios, acuerdos de junta, impugnaciones y reclamación de deudas.',detailKey:'mail_895671'},
     notes:[
      {name:'Ley 49/1960 de Propiedad Horizontal consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906',label:'BOE oficial ↗'}
     ],
-    mails:[]
+    mails:['mail_895671']
    },
    {
     name:'Compraventa civil y mercantil',
@@ -10308,6 +10406,30 @@ const teacherDirectory=[
   ]
  },
  {
+  name:'Chony Jiménez',
+  branch:'Abogacía',
+  role:'Abogada · Arrendamientos Urbanos, Precario y Propiedad Horizontal (chonyjimenezdellamo@yahoo.es)',
+  gradeBadge:'🟢 En curso · 5, 6 y 9 nov',
+  summary:'Docente de las sesiones de Arrendamientos urbanos y precario (jueves 5 y viernes 6 de noviembre de 2026, de 16:30 a 19:30 h) y de la primera sesión de Propiedad Horizontal (lunes 9 de noviembre de 2026, de 16:30 a 20:45 h) en el Colegio de Abogados de A Coruña.',
+  grade:{score:'🟢 En curso · 5–9 nov',scoreLabel:'Docencia en activo',detail:'Sesiones presenciales los días 5 y 6 de noviembre (Arrendamientos y precario) y lunes 9 de noviembre (Propiedad horizontal). Documentación y trabajos para casa remitidos en ZIP.',detailKey:'mail_arrendamientos_urbanos_5nov'},
+  sessions:[
+   {date:'2026-11-05',dayLabel:'Jueves 5 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
+   {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
+   {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 1)',place:'Colegio de Abogados (A Coruña)'}
+  ],
+  mails:[
+   {title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',key:'mail_895671'},
+   {title:'Documentación y trabajos para casa: Arrendamientos Urbanos - 5 nov',key:'mail_arrendamientos_urbanos_5nov'}
+  ],
+  practices:[],
+  driveFiles:[],
+  notes:[
+   {title:'Trabajos para casa y documentación arrendamientos urbanos (ZIP)',detailKey:'mail_arrendamientos_urbanos_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'Ley de Arrendamientos Urbanos (LAU 29/1994 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003',urlLabel:'BOE oficial ↗'},
+   {title:'Ley 49/1960 de Propiedad Horizontal consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
   name:'Docente pendiente de asignar',
   branch:'Abogacía',
   role:'Profesorado facultativo · Sustantivo civil, Laboral y Contencioso-Administrativo',
@@ -10315,9 +10437,6 @@ const teacherDirectory=[
   summary:'Sesiones lectivas programadas en el calendario oficial combinadas sin docente individualizado especificado en calendario fuente.',
   grade:{score:'⏳ Por venir · Programado',scoreLabel:'Docencia por venir',detail:'Programación oficial completa en noviembre, diciembre 2026 (Facultad de Derecho) y enero 2027.',detailKey:'schedule'},
   sessions:[
-   {date:'2026-11-05',dayLabel:'Jueves 5 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
-   {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
-   {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-11',dayLabel:'Miércoles 11 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-12-01',dayLabel:'Martes 1 dic 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Contrato de trabajo y tiempo de trabajo',place:'Facultad de Derecho (A Coruña)'},
    {date:'2026-12-02',dayLabel:'Miércoles 2 dic 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Clasificación profesional y modificación del contrato',place:'Facultad de Derecho (A Coruña)'},
@@ -10325,14 +10444,10 @@ const teacherDirectory=[
    {date:'2027-01-07',dayLabel:'Jueves 7 ene 2027',time:'16:30 – 19:30',hours:'3 horas',topic:'Procedimiento Administrativo Común (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2027-01-08',dayLabel:'Viernes 8 ene 2027',time:'16:30 – 18:30',hours:'2 horas',topic:'Procedimiento Administrativo Común (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[
-   {title:'Documentación y trabajos para casa: Arrendamientos Urbanos - 5 nov',key:'mail_arrendamientos_urbanos_5nov'}
-  ],
+  mails:[],
   practices:[],
   driveFiles:[],
-  notes:[
-   {title:'Trabajos para casa y documentación arrendamientos urbanos (ZIP)',detailKey:'mail_arrendamientos_urbanos_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'}
-  ]
+  notes:[]
  }
 ];
 
@@ -14523,6 +14638,15 @@ function openEventDetail(dateStr,idx){
  if(todaySec) todaySec.scrollIntoView({behavior:'smooth'});
 }
 
+function formatEventTitleWithTeacher(ev){
+ if(!ev) return '';
+ const base=ev.name||'';
+ if(ev.teacher && ev.teacher!=='Docente pendiente de asignar' && !base.includes(ev.teacher)){
+  return `${base} · ${ev.teacher}`;
+ }
+ return base;
+}
+
 function renderHomeHeadlines(){
  const nextBox=document.getElementById('nextThreeDaysList');
  if(!nextBox)return;
@@ -14561,7 +14685,7 @@ function renderHomeHeadlines(){
        <span class="ndc-day" data-jump-day="${u.ck}" title="Ir a este día en la agenda">${dateLabel.toUpperCase()}</span>
        <span class="ndc-time">${item.ev.start}${item.ev.end?' – '+item.ev.end:''}</span>
       </div>
-      <strong class="ndc-title">${item.ev.name}</strong>
+      <strong class="ndc-title">${escapeHtml(formatEventTitleWithTeacher(item.ev))}</strong>
       <div class="ndc-footer">
        <span class="ndc-kind ${item.ev.isWarning?'warning':(item.ev.isPersonal?'personal':'master')}">${item.ev.kind||'Máster'}</span>
        <span class="ndc-arrow">Ver datos ↗</span>
@@ -14622,25 +14746,31 @@ function renderDay(){
  });
  const isToday=sameDay(selectedDate,todayDate);
  const timeStr=getLiveClockStr();
- document.getElementById('welcomeDate').textContent=isToday?`${fmtFull(selectedDate)} · ${timeStr}`:fmtFull(selectedDate);
- document.getElementById('daySubtitle').textContent=isToday?`${fmtFull(selectedDate)} · Hora actual: ${timeStr}`:`${fmtFull(selectedDate)} · Pincha en cualquier titular para ver todos sus datos`;
- document.getElementById('dayHeading').textContent=isToday?'Información de hoy':`Información del día (${fmtShort(selectedDate)})`;
- document.getElementById('dayPosition').textContent=isToday?`HOY · ${fmtShort(selectedDate).toUpperCase()}`:fmtShort(selectedDate).toUpperCase();
+ const welEl=document.getElementById('welcomeDate');
+ if(welEl) welEl.textContent=isToday?`${fmtFull(selectedDate)} · ${timeStr}`:fmtFull(selectedDate);
+ const subEl=document.getElementById('daySubtitle');
+ if(subEl) subEl.textContent=isToday?`${fmtFull(selectedDate)} · Hora actual: ${timeStr}`:`${fmtFull(selectedDate)} · Pincha en cualquier titular para ver todos sus datos`;
+ const headEl=document.getElementById('dayHeading');
+ if(headEl) headEl.textContent=isToday?'Información de hoy':`Información del día (${fmtShort(selectedDate)})`;
+ const posEl=document.getElementById('dayPosition');
+ if(posEl) posEl.textContent=isToday?`HOY · ${fmtShort(selectedDate).toUpperCase()}`:fmtShort(selectedDate).toUpperCase();
 
- const pendingDeliveries=(deliveries||[]).filter(d=>!d.submitted).sort((a,b)=>a.date-b.date);
- const nextPending=pendingDeliveries[0];
- const sideDueEl=document.getElementById('sideDelgadoDueText');
- if(sideDueEl && nextPending){
-  const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
-  const shortDateStr=fmtShort(nextPending.date);
-  sideDueEl.textContent=diffDays>1?`${shortDateStr} · Quedan ${diffDays} días`:(diffDays===1?`${shortDateStr} · Mañana vence`:(diffDays===0?`${shortDateStr} · Vence hoy`:shortDateStr));
- }
- const cardPendingBadge=document.querySelector('#homePendingDelgado .ptb-due-badge') || document.querySelector('#cardTaskDelgado .ptb-due-badge');
- if(cardPendingBadge && nextPending){
-  const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
-  const shortDateStr=fmtShort(nextPending.date);
-  cardPendingBadge.textContent=diffDays>1?`⏳ Plazo: ${shortDateStr} (${diffDays} días)`:(diffDays===1?`⏳ Plazo: ${shortDateStr} (mañana)`:(diffDays===0?`⏳ Plazo: Hoy ${shortDateStr}`:`⏳ Plazo: ${shortDateStr}`));
- }
+ try{
+  const pendingDeliveries=(deliveries||[]).filter(d=>!d.submitted).sort((a,b)=>a.date-b.date);
+  const nextPending=pendingDeliveries[0];
+  const sideDueEl=document.getElementById('sideDelgadoDueText');
+  if(sideDueEl && nextPending){
+   const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
+   const shortDateStr=fmtShort(nextPending.date);
+   sideDueEl.textContent=diffDays>1?`${shortDateStr} · Quedan ${diffDays} días`:(diffDays===1?`${shortDateStr} · Mañana vence`:(diffDays===0?`${shortDateStr} · Vence hoy`:shortDateStr));
+  }
+  const cardPendingBadge=document.querySelector('#homePendingDelgado .ptb-due-badge') || document.querySelector('#cardTaskDelgado .ptb-due-badge');
+  if(cardPendingBadge && nextPending){
+   const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
+   const shortDateStr=fmtShort(nextPending.date);
+   cardPendingBadge.textContent=diffDays>1?`⏳ Plazo: ${shortDateStr} (${diffDays} días)`:(diffDays===1?`⏳ Plazo: ${shortDateStr} (mañana)`:(diffDays===0?`⏳ Plazo: Hoy ${shortDateStr}`:`⏳ Plazo: ${shortDateStr}`));
+  }
+ }catch(err){ console.error('Error actualizando indicador de entregas:',err); }
 
  const returnTodayBanner=!isToday?`
   <div class="viewing-other-day-banner" style="margin-bottom:12px">
@@ -14652,51 +14782,54 @@ function renderDay(){
   </div>
  `: '';
 
- document.getElementById('todayList').innerHTML=returnTodayBanner+(list.length?list.map(({e,idx})=>`
-  <button class="headline-item" data-event-ref="${k}|${idx}">
-   <span class="headline-time">${e.start}${e.end?`<small>a ${e.end}</small>`:''}</span>
-   <span class="headline-title">${e.name}</span>
-   <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
-  </button>
- `).join(''):(() => {
-    const safeSel = makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
-    const isWeekend = safeSel.getDay()===0 || safeSel.getDay()===6;
-    const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(safeSel);
-    return `<div class="empty-cozy">
-    <div class="empty-cozy-top">
-      <div class="empty-cozy-icon-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
-      </div>
-      <div>
-        <div class="empty-cozy-kicker">Agenda · ${dayName.charAt(0).toUpperCase() + dayName.slice(1)}</div>
-        <strong>Sin sesiones presenciales programadas para esta fecha</strong>
-      </div>
-    </div>
-    
-    <p>${isWeekend ? 'Fin de semana sin clases lectivas programadas en el Colegio de Abogados.' : 'No constan clases convocadas para este día en el calendario oficial.'} Puedes consultar los apuntes en Drive, revisar las notas o explorar las próximas asignaturas.</p>
-    
-    <div class="empty-cozy-actions">
-      <button class="cozy-btn cozy-btn-mint" data-switch-view="materiales">
-        📁 Explorar apuntes en Drive ↗
-      </button>
-      <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
-        ⭐ Ver notas y tests (10/10) →
-      </button>
-      <button class="cozy-btn cozy-btn-blue" data-switch-view="asignaturas">
-        📖 Ver asignaturas y bloques →
-      </button>
-    </div>
-   </div>`;
-  })());
+ const todayListEl=document.getElementById('todayList');
+ if(todayListEl){
+  todayListEl.innerHTML=returnTodayBanner+(list.length?list.map(({e,idx})=>`
+   <button class="headline-item" data-event-ref="${k}|${idx}">
+    <span class="headline-time">${e.start}${e.end?`<small>a ${e.end}</small>`:''}</span>
+    <span class="headline-title">${escapeHtml(formatEventTitleWithTeacher(e))}</span>
+    <span class="headline-tag${e.isWarning?' warning':e.isPersonal?' personal':''}">${e.kind} ↗</span>
+   </button>
+  `).join(''):(() => {
+     const safeSel = makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
+     const isWeekend = safeSel.getDay()===0 || safeSel.getDay()===6;
+     const dayName = new Intl.DateTimeFormat('es-ES',{weekday:'long'}).format(safeSel);
+     return `<div class="empty-cozy">
+     <div class="empty-cozy-top">
+       <div class="empty-cozy-icon-box">
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+       </div>
+       <div>
+         <div class="empty-cozy-kicker">Agenda · ${dayName.charAt(0).toUpperCase() + dayName.slice(1)}</div>
+         <strong>Sin sesiones presenciales programadas para esta fecha</strong>
+       </div>
+     </div>
+     
+     <p>${isWeekend ? 'Fin de semana sin clases lectivas programadas en el Colegio de Abogados.' : 'No constan clases convocadas para este día en el calendario oficial.'} Puedes consultar los apuntes en Drive, revisar las notas o explorar las próximas asignaturas.</p>
+     
+     <div class="empty-cozy-actions">
+       <button class="cozy-btn cozy-btn-mint" data-switch-view="materiales">
+         📁 Explorar apuntes en Drive ↗
+       </button>
+       <button class="cozy-btn cozy-btn-gold" data-switch-view="notas">
+         ⭐ Ver notas y tests (10/10) →
+       </button>
+       <button class="cozy-btn cozy-btn-blue" data-switch-view="asignaturas">
+         📖 Ver asignaturas y bloques →
+       </button>
+     </div>
+    </div>`;
+   })());
+ }
 
  const retBtn=document.getElementById('returnTodayBannerBtn');
  if(retBtn) retBtn.addEventListener('click',()=>goToTodayAction(false));
 
- renderHomeHeadlines();
- renderCalendar();
- renderCalendarDayDetail();
- renderDeliveries();
- renderActiveMasterBanner();
+ try{ renderHomeHeadlines(); }catch(err){ console.error('Error en renderHomeHeadlines:',err); }
+ try{ renderCalendar(); }catch(err){ console.error('Error en renderCalendar:',err); }
+ try{ renderCalendarDayDetail(); }catch(err){ console.error('Error en renderCalendarDayDetail:',err); }
+ try{ renderDeliveries(); }catch(err){ console.error('Error en renderDeliveries:',err); }
+ try{ renderActiveMasterBanner(); }catch(err){ console.error('Error en renderActiveMasterBanner:',err); }
 }
 
 function renderActiveMasterBanner(){
@@ -14728,10 +14861,23 @@ function renderActiveMasterBanner(){
 
  bannerEl.style.display='';
  const cardsHtml=dayEvents.map(ev=>{
-  const isProcura=(ev.subject||'').includes('Procura');
+  const isProcura=(ev.subject||'').includes('Procura') || (ev.subjectRef||'').startsWith('Procura|');
   const cardClass=isProcura?'amb-card amb-card-procura':'amb-card amb-card-abogacia';
   const badgeClass=isProcura?'course-badge terra':'course-badge blue';
-  const branchLabel=isProcura?'🏛️ Procura · Bloque I':'⚖️ Abogacía · Bloque I';
+  let subjectName=ev.name;
+  let blockLabel=isProcura?'Procura · Bloque I':'Abogacía · Bloque I';
+  if(ev.subjectRef){
+   const parts=ev.subjectRef.split('|');
+   const sIdx=Number(parts[2]);
+   const cCourse=courses.find(c=>c.branch===parts[0] && c.name===parts[1]);
+   if(cCourse){
+    if(cCourse.blockNumber) blockLabel=cCourse.blockNumber;
+    if(cCourse.subjects && cCourse.subjects[sIdx]){
+     subjectName=cCourse.subjects[sIdx].name;
+    }
+   }
+  }
+  const branchLabel=isProcura?`🏛️ ${blockLabel}`:`⚖️ ${blockLabel}`;
   const t=ev.teacher?teacherDirectory.find(x=>x.name===ev.teacher):null;
   
   let sessionBadge='';
@@ -14745,16 +14891,6 @@ function renderActiveMasterBanner(){
     if(sNum===sTot) sessionBadge+=` · ¡Hoy última sesión!`;
     else if(ev.teacher==='José Luis Delgado Domínguez') sessionBadge+=` · Aseguramiento de la responsabilidad`;
     sessionTopic=t.sessions[sIdx].topic||'';
-   }
-  }
-
-  let subjectName=ev.name;
-  if(ev.subjectRef){
-   const parts=ev.subjectRef.split('|');
-   const sIdx=Number(parts[2]);
-   const cCourse=courses.find(c=>c.branch===parts[0] && c.name===parts[1]);
-   if(cCourse && cCourse.subjects && cCourse.subjects[sIdx]){
-    subjectName=cCourse.subjects[sIdx].name;
    }
   }
 
@@ -16374,16 +16510,16 @@ if(window.matchMedia){
  }
 }
 
-applyTheme(null, false);
+try{ applyTheme(null, false); }catch(err){ console.error('Error en applyTheme:',err); }
 
-renderDay();
-renderActiveMasterBanner();
-renderGrades();
-renderCourses();
-renderSidebarTree();
-renderTeachers();
-renderMaterials();
-renderMail();
+try{ renderDay(); }catch(err){ console.error('Error en renderDay:',err); }
+try{ renderActiveMasterBanner(); }catch(err){ console.error('Error en renderActiveMasterBanner:',err); }
+try{ renderGrades(); }catch(err){ console.error('Error en renderGrades:',err); }
+try{ renderCourses(); }catch(err){ console.error('Error en renderCourses:',err); }
+try{ renderSidebarTree(); }catch(err){ console.error('Error en renderSidebarTree:',err); }
+try{ renderTeachers(); }catch(err){ console.error('Error en renderTeachers:',err); }
+try{ renderMaterials(); }catch(err){ console.error('Error en renderMaterials:',err); }
+try{ renderMail(); }catch(err){ console.error('Error en renderMail:',err); }
 
 const validViews = ['inicio','calendario','asignaturas','profesores','notas','entregas','materiales','correo'];
 const initialHash = (window.location.hash || '').replace(/^#/, '');

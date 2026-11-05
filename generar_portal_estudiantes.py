@@ -120,6 +120,19 @@ def generate_student_portal_html(html: str) -> str:
                 new_events_lines.append(f" '{day_str}':[]")
         cleaned_events_code = ",\n".join(new_events_lines)
         html = html[:m_events.start(2)] + cleaned_events_code + html[m_events.end(2):]
+        # Limpiar también cualquier tarjeta estática pre-renderizada de eventos personales en #todayList y #nextThreeDaysList
+        html = re.sub(
+            r'\s*<button class="headline-item"[^>]*>(?:(?!</button>).)*(?:Pilates|Personal · Google|ENTREGAD[OA])(?:(?!</button>).)*</button>',
+            '',
+            html,
+            flags=re.DOTALL
+        )
+        html = re.sub(
+            r'\s*<button class="next-day-card"[^>]*>(?:(?!</button>).)*(?:Pilates|Personal · Google|ENTREGAD[OA])(?:(?!</button>).)*</button>',
+            '',
+            html,
+            flags=re.DOTALL
+        )
         print("✓ Eventos personales filtrados.")
 
     # -------------------------------------------------------------

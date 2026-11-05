@@ -500,8 +500,9 @@ def execute_action(action_type: str, args: dict) -> str:
             resumen = args.get("resumen", titulo)
             cuerpo = args.get("cuerpo", "")
             desglose = args.get("desglose", [])
-            now_str = datetime.now().strftime("%d oct %Y (%H:%M)")
-            timestamp_suffix = str(int(datetime.now().timestamp()))[-6:]
+            now_dt = get_madrid_now()
+            now_str = f"{now_dt.day} {MESES_ABR[now_dt.month]} {now_dt.year} ({now_dt.strftime('%H:%M')})"
+            timestamp_suffix = str(int(now_dt.timestamp()))[-6:]
             mail_key = "mail_nota_" + timestamp_suffix
             grade_id = "grade_" + timestamp_suffix
 
@@ -538,7 +539,8 @@ def execute_action(action_type: str, args: dict) -> str:
             materia = args.get("materia", "Actuación procesal")
             plazo = args.get("plazo", "Por determinar")
             detalles = args.get("detalles", "")
-            now_str = datetime.now().strftime("%d oct %Y")
+            now_dt = get_madrid_now()
+            now_str = f"{now_dt.day} {MESES_ABR[now_dt.month]} {now_dt.year}"
 
             new_html = updater.add_ceproc_task(
                 current_content, now_str, titulo, docente, materia,
@@ -562,8 +564,9 @@ def execute_action(action_type: str, args: dict) -> str:
             materia = args.get("materia", "Técnicas instrumentales")
             resumen = args.get("resumen", titulo)
             cuerpo = args.get("cuerpo", "")
-            now_str = datetime.now().strftime("%d oct %Y (%H:%M)")
-            key_name = "mail_" + str(int(datetime.now().timestamp()))[-6:]
+            now_dt = get_madrid_now()
+            now_str = f"{now_dt.day} {MESES_ABR[now_dt.month]} {now_dt.year} ({now_dt.strftime('%H:%M')})"
+            key_name = "mail_" + str(int(now_dt.timestamp()))[-6:]
 
             new_html = updater.add_mail_entry(
                 current_content, now_str, titulo, remitente, key_name,
