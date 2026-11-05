@@ -2268,6 +2268,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .legend-dot.blue{background:var(--blue)}
 .calendar-legend-hint{margin-left:auto;color:var(--muted);font-size:12px}
 
+/* Detalle integrado de día seleccionado en el Calendario */
+.calendar-day-panel{margin-top:22px;background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow-sm);transition:all .2s ease}
+.calendar-day-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}
+.cal-day-tag{display:inline-block;font:800 11px var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--green-dark);background:var(--green-pale);border:1px solid var(--green-border);padding:3px 9px;border-radius:12px;margin-bottom:6px}
+.cal-day-tag.today{color:var(--blue);background:var(--blue-pale);border-color:var(--blue-border)}
+.cal-day-title{margin:0;font:700 20px var(--serif);color:var(--ink)}
+.cal-day-subtitle{margin:4px 0 0;font-size:12.5px;color:var(--muted);font-weight:600}
+.cal-day-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.calendar-day-list{display:flex;flex-direction:column;gap:8px}
+.viewing-other-day-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--honey-pale);border:1.5px solid var(--honey-border);border-radius:14px;padding:10px 16px;margin-bottom:14px;font-size:12.5px;color:var(--honey-dark);font-weight:600;flex-wrap:wrap}
+
 /* Enlaces y Vista de Detalle a Página Entera (Sustituye la ventana lateral a la derecha) */
 .teacher-link,.course-open,.subject-open{border:0;background:transparent;color:var(--green-dark);font:inherit;font-weight:600;text-decoration:underline;text-decoration-color:var(--green-border);text-underline-offset:3px;cursor:pointer;padding:0;text-align:left;transition:color .15s}
 .course-open,.subject-open{text-decoration:none;color:inherit}
@@ -4778,7 +4789,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">79</span>
+      <span class="nav-badge-pill badge-peach">80</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5059,28 +5070,37 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">79</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">80</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
   <section class="section" id="todaySection" data-section-view="inicio">
     <!-- 1. INFORMACIÓN DEL DÍA + NAVEGACIÓN + PRÓXIMOS 3 DÍAS -->
+    <noscript>
+      <div style="background:#fee2e2;border:1.5px solid #ef4444;border-radius:12px;padding:16px 20px;margin-bottom:18px;color:#991b1b;font-size:13.5px;line-height:1.5">
+        <strong>⚠️ JavaScript no está activo en esta ventana.</strong><br>
+        Si has abierto el archivo mediante la <em>Vista Rápida</em> del Finder (pulsando la barra espaciadora) o la previsualización del editor, el sistema bloquea los scripts por seguridad. Haz doble clic en el archivo o pulsa con el botón derecho y selecciona <strong>Abrir con › Microsoft Edge (o Google Chrome / Safari)</strong> para ver la agenda en tiempo real, el horario de hoy y todas las notas y entregas.
+      </div>
+    </noscript>
+
     <div class="section-title">
       <div>
         <h2 id="dayHeading">Información de hoy</h2>
-        <p id="daySubtitle">Lunes, 26 de octubre de 2026</p>
+        <p id="daySubtitle">Cargando agenda en tiempo real...</p>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
         <div class="day-control-nav">
           <button id="previousDay" aria-label="Día anterior">‹ Día anterior</button>
-          <span id="dayPosition">HOY · 26 OCT</span>
+          <span id="dayPosition">HOY</span>
           <button id="nextDay" aria-label="Día siguiente">Día siguiente ›</button>
         </div>
         <button id="resetTodayTop" style="border-radius:30px;border:1px solid var(--line);background:var(--paper);padding:8px 14px;font:700 11px var(--sans);color:var(--green-dark);cursor:pointer">Hoy</button>
       </div>
     </div>
     <div class="today-panel">
-      <div class="today-list" id="todayList"></div>
+      <div class="today-list" id="todayList">
+        <div style="padding:14px 18px;color:var(--ink-soft);font-size:13px">Cargando sesiones y actividades del día...</div>
+      </div>
     </div>
 
     <!-- Próximos 3 días (únicamente titulares clicables) -->
@@ -5088,7 +5108,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="minimal-box-head">
         <div>
           <h3 id="nextThreeDaysHeading">Próximos 3 días · Titulares</h3>
-          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Martes 27, miércoles 28 y jueves 29 de octubre de 2026</p>
+          <p id="nextThreeDaysSubtitle" style="margin:2px 0 0;font-size:12.5px;color:var(--muted);font-weight:600">Cargando próximos días lectivos...</p>
         </div>
         <span>Pincha en el titular para ver los datos</span>
       </div>
@@ -5107,12 +5127,25 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
             <span class="ptb-urgent-chip">📅 Próximo vencimiento: 11 nov · Entregas del 11 al 19 nov (D. Fernando Lousada) y 30 nov (Escritura Forense)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle">Tareas oficiales con plazo activo: 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre · última clase el viernes 20 nov) y caso práctico de Escritura Forense (30 de noviembre). ¡Entregadas con éxito las prácticas de Susana Díaz (30 oct), Delgado, Moure y DATAfórum!</p>
+          <p class="ptb-subtitle">Tareas oficiales con plazo activo: 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre · última clase el viernes 20 nov) y caso práctico de Escritura Forense (30 de noviembre). ¡Entregadas con éxito las prácticas de Patricia González (4 nov), Susana Díaz (30 oct), Delgado, Moure y DATAfórum!</p>
         </div>
-        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (16) ➔</button>
+        <button class="ptb-view-all-btn" data-switch-view="entregas">Ver todas las entregas (17) ➔</button>
       </div>
 
       <div class="ptb-grid">
+        <!-- Tarjeta Patricia González (3-4 nov): Entregada en CPROC -->
+        <article class="ptb-card" id="homePendingPatriciaGonzalez" data-detail="entrega_patricia_caso_evaluable_3nov" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega en CPROC">
+          <div class="ptb-card-top">
+            <span class="ptb-tag green">✓ Entregada en CPROC</span>
+            <span class="ptb-due-badge green">✓ Entregada el 4 nov (16:26 h) · Vídeo MOV</span>
+          </div>
+          <h4 class="ptb-card-title">Tarea: CASO PRÁCTICO EVALUABLE 3_11_2026 (Escritura Forense)</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Profesora: <b>D.ª Patricia González Figueroa (Procuradora ICP)</b></div>
+            <div>📚 Materia: <b>Deontología y Técnicas Transversales (Procura)</b></div>
+            <div>📄 Documento: <code>Escrito de personación en sustitución de procuradora_Raquel Escudero.pdf</code> (con comprobante en vídeo)</div>
+          </div>
+        </article>
         <!-- Tarjeta Pendiente 1: Fernando Lousada (Sesiones 1 a 5 · 11 al 19 nov) -->
         <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion1" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
           <div class="ptb-card-top">
@@ -5477,7 +5510,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Correo clasificado por asignatura y profesor</h2>
-        <p>Mensajes revisados hasta el 2 de noviembre de 2026 con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
+        <p>Mensajes revisados hasta el 5 de noviembre de 2026 con enlace directo a sus adjuntos, asignaturas y bandeja de Microsoft Outlook.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button class="pill-btn" id="btnToggleAllMails" style="font-size:11px;padding:6px 12px">Expandir todos ▾</button>
@@ -5486,7 +5519,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar correos" style="margin-bottom:18px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (77)</button>
+      <button class="status-filter-btn active" data-mail-filter="all">Todos los correos (79)</button>
       <button class="status-filter-btn" data-mail-filter="icacor">⚖️ Abogacía (ICACOR)</button>
       <button class="status-filter-btn" data-mail-filter="procura">🏛️ Procura (Colegio)</button>
       <button class="status-filter-btn" data-mail-filter="udc">🎓 Facultad y UDC</button>
@@ -5534,7 +5567,24 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span><i class="legend-dot"></i>Clase / Actividad del Máster</span>
         <span><i class="legend-dot terracotta"></i>Entrega o prueba</span>
         <span><i class="legend-dot blue"></i>Personal / Google Calendar / Mac</span>
-        <span class="calendar-legend-hint">Selecciona cualquier día para ver sus clases, entregas y citas personales arriba en «Actividades del día»</span>
+        <span class="calendar-legend-hint">Pincha en cualquier día del mes para ver sus clases, entregas y actividades</span>
+      </div>
+
+      <!-- Panel integrado del día seleccionado en el calendario -->
+      <div class="calendar-day-panel" id="calendarDayPanel">
+        <div class="calendar-day-head" id="calendarDayHead">
+          <div>
+            <span class="cal-day-tag" id="calDayTag">📅 DÍA SELECCIONADO</span>
+            <h4 class="cal-day-title" id="calDayTitle">Actividades del día</h4>
+            <p class="cal-day-subtitle" id="calDaySubtitle"></p>
+          </div>
+          <div class="cal-day-actions">
+            <button type="button" class="pill-btn" id="calPrevDayBtn" aria-label="Día anterior">‹ Día ant.</button>
+            <button type="button" class="pill-btn solid-green" id="calTodayBtn">Ir a hoy</button>
+            <button type="button" class="pill-btn" id="calNextDayBtn" aria-label="Día siguiente">Día sig. ›</button>
+          </div>
+        </div>
+        <div class="calendar-day-list" id="calendarDayList"></div>
       </div>
     </div>
 
@@ -5602,12 +5652,12 @@ function getMadridTodayDate(){
   let y=Number(parts.find(p=>p.type==='year').value);
   const m=Number(parts.find(p=>p.type==='month').value);
   const d=Number(parts.find(p=>p.type==='day').value);
-  if(y===2025&&m>=9)y=2026;
+  if(y < 2026) y = 2026;
   return makeLocalDate(y,m-1,d);
  }catch(e){
   const n=new Date();
   let y=n.getFullYear();
-  if(y===2025&&n.getMonth()>=8)y=2026;
+  if(y < 2026) y = 2026;
   return makeLocalDate(y,n.getMonth(),n.getDate());
  }
 }
@@ -5641,6 +5691,9 @@ const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susa
 const testmozSusana2ReviewUrl='https://testmozusercontent.com/q/15727296/student/review';
 const testHtmlSusana2LocalUrl='historial-tests/originales/2026-10-30-testmoz-15727296.html';
 const testMdSusana2LocalUrl='historial-tests/2026-10-30-procura-medidas-cautelares-susana-diaz.md';
+const testmozPatriciaReviewUrl='https://testmozusercontent.com/q/15733404/student/review';
+const testHtmlPatriciaLocalUrl='historial-tests/originales/2026-11-03-testmoz-15733404.html';
+const testMdPatriciaLocalUrl='historial-tests/2026-11-03-procura-escritura-forense-patricia-gonzalez.md';
 const casoDelgadoFotoRealUrl='materiales/foto-caso-delgado.jpg';
 const casoSandraPdfLocalUrl='materiales/CASO_PRACTICO_2026_SANDRA.pdf';
 const casoSandraMdLocalUrl='materiales/2026-10-20-caso-practico-sandra-mosteiro.md';
@@ -5771,29 +5824,32 @@ const events={
   ],
   '2026-11-03':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'18:30',name:'Escritura forense de la Procura',teacher:'Patricia González Figueroa',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|4',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'16:30',end:'18:30',name:'Escritura forense de la Procura',teacher:'Patricia González Figueroa',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|4',mailKey:'test_3nov_patricia',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (8/10)'},
+   {start:'17:16',end:'',name:'📝 Test online realizado: Testmoz Patricia González (8/10 aciertos · 80% · Notable alto)',teacher:'Patricia González Figueroa',detailKey:'test_3nov_patricia',kind:'Test online ✓'},
    {start:'18:45',end:'20:45',name:'Previsión social de la abogacía',teacher:'Pilar Cortizo',subject:'Técnicas instrumentales · Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|8',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-04':[
-   {start:'16:30',end:'20:45',name:'Propiedad intelectual y protección de datos',teacher:'Lucía Silvoso',subject:'Sustantivo civil / Mercantil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|3',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:26',end:'',name:'✓ ENTREGADO EN CPROC: Caso Práctico Evaluable 3_11_2026 (D.ª Patricia González)',teacher:'Patricia González Figueroa',subject:'Procura · Deontología y Técnicas Transversales (CPROC)',detailKey:'entrega_patricia_caso_evaluable_3nov',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega completada ✓',isWarning:false},
+   {start:'16:30',end:'20:45',name:'Propiedad intelectual y protección de datos',teacher:'Lucía Silvoso',subject:'Sustantivo civil / Mercantil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|0',mailKey:'mail_seminario_rgpd_30oct',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-05':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 1)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-06':[
-   {start:'16:30',end:'19:30',name:'Arrendamientos y precario',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'19:30',name:'Arrendamientos y precario (Sesión 2)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|1',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
+   {start:'23:59',end:'',name:'✓ ENTREGADO CON ANTELACIÓN (4 nov): Caso Práctico Evaluable 3_11_2026 (D.ª Patricia González)',teacher:'Patricia González Figueroa',subject:'Procura · Deontología y Técnicas Transversales (CPROC)',detailKey:'entrega_patricia_caso_evaluable_3nov',place:'Plataforma CPROC (Plazo oficial: 6 nov)',kind:'Entrega completada ✓',isWarning:false}
   ],
   '2026-11-09':[
-   {start:'16:30',end:'20:45',name:'Propiedad horizontal',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'Propiedad horizontal (Sesión 1)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-10':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'20:45',name:'Compraventa',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'20:45',name:'Compraventa civil y mercantil',teacher:'Juan Raposo',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|3',mailKey:'mail_compraventa_raposo_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-11':[
-   {start:'16:30',end:'17:30',name:'Propiedad horizontal (1.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'17:45',end:'20:45',name:'Propiedad horizontal (2.ª parte)',subject:'Sustantivo civil · Abogacía',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'16:30',end:'17:30',name:'Propiedad horizontal (Sesión 2 · 1.ª parte)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
+   {start:'17:45',end:'20:45',name:'Propiedad horizontal (Sesión 2 · 2.ª parte)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
    {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 1 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion1',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
   ],
   '2026-11-12':[
@@ -5968,6 +6024,30 @@ const gradeRecords=[
    {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|0'},
    {label:'Ficha de Rita Goimil ↗',teacher:'Rita Goimil Martínez'},
    {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_3nov_patricia_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 3 nov 2026 (17:16)',
+  title:'Escritura forense de la Procura y LexNET · Patricia González',
+  score:'8 / 10',
+  scoreLabel:'8/10 (80 %)',
+  breakdown:[
+   {label:'Respuestas correctas',val:'8 de 10 (80 %)'},
+   {label:'Calificación',val:'8 / 10 · Notable alto'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Procura|Actuación procesal|4',
+  mailKey:'test_3nov_patricia',
+  description:'Test oficial «PATRICIA GONZÁLEZ-3-11-26 - GRUPO DE TARDE - DEONTOLGÍA Y TÉCNICAS TRANSVERSALES» realizado el martes 3 de noviembre de 2026 a las 17:16 h por Raquel Escudero. Superado con 8/10 aciertos (8 sobre 10 · 80 % · Notable alto, con 2 fallos analizados con fundamentación jurídica). Materia evaluada: interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto de parte iniciador en civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de firma de abogado (art. 188.1.5.º LEC), requisitos del encabezado procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas (con fallos analizados) ↗',detailKey:'test_3nov_patricia',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlPatriciaLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdPatriciaLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozPatriciaReviewUrl,cls:'blue'},
+   {label:'Ficha de Patricia González ↗',teacher:'Patricia González Figueroa'}
   ]
  },
  {
@@ -6237,18 +6317,18 @@ const gradeRecords=[
   type:'global',
   kicker:'Balance global en CPROC / Testmoz · Todos realizados',
   title:'Historial general de tests y prácticas en CPROC',
-  score:'10 (y un 8)',
-  scoreLabel:'Todos hechos',
+  score:'10, 9 y 8 ★',
+  scoreLabel:'7 tests hechos',
   breakdown:[
-   {label:'Tests realizados',val:'100 % completados'},
-   {label:'Notas en tests',val:'10 en todos salvo uno (~8)'},
+   {label:'Tests realizados',val:'7 de 7 completados (100 %)'},
+   {label:'Notas en tests',val:'10, 10, 10, 10, 9, 9 y 8 (media ~9.4)'},
    {label:'Prácticas CPROC',val:'4 / 4 enviadas (0 vencidas)'}
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'all_tests_summary',
-  description:'Todos los tests publicados hasta la fecha en CPROC / Testmoz están hechos, con calificación de 10 en todos salvo en uno (~8). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
+  description:'Todos los 7 tests oficiales publicados hasta la fecha en CPROC / Testmoz están completados (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
   links:[
    {label:'★ Ver resumen completo de tests y entregas ↗',detailKey:'all_tests_summary',cls:'solid-green'},
    {label:'Abrir plataforma CPROC ↗',url:cprocUrl,cls:'blue'},
@@ -6397,6 +6477,20 @@ const deliveries=[
   details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del jueves 19 de noviembre (víspera de la sesión final trasladada al viernes 20 de noviembre de 16:30 a 19:00 h). Casos: Recurso de apelación y Análisis clínico de jurisprudencia constitucional (análisis sin envío, exposición oral en clase). Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
  },
  {
+  date:new Date(2026,10,6),
+  title:'Tarea: CASO PRÁCTICO EVALUABLE 3_11_2026 (D.ª Patricia González Figueroa)',
+  teacher:'Patricia González Figueroa',
+  subject:'Procura · Escritura forense de la Procura / Deontología',
+  subjectRef:'Procura|Actuación procesal|4',
+  subjectName:'Escritura forense de la Procura (D.ª Patricia González Figueroa)',
+  status:'Entregada en CPROC ✓ (4 nov 2026 · Comprobante registrado)',
+  submitted:true,
+  detailKey:'entrega_patricia_caso_evaluable_3nov',
+  file:'Escrito de personación en sustitución de procuradora_Raquel Escudero.pdf',
+  file2:'2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov',
+  details:'Tarea oficial evaluable publicada en la plataforma CPROC: «CASO PRÁCTICO EVALUABLE 3_11_2026» por la docente D.ª Patricia González Figueroa (Procuradora ICP) para la materia Deontología y Técnicas Transversales / Escritura Forense. Plazo oficial de entrega: 6 de noviembre de 2026. Entregada telemáticamente con éxito el miércoles 4 de noviembre de 2026 a las 16:26 h. Documento presentado: «Escrito de personación en sustitución de procuradora_Raquel Escudero.pdf». Comprobante de entrega registrado en vídeo de pantalla (2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov).'
+ },
+ {
   date:new Date(2026,9,22),
   title:'Caso práctico 2026: Actos de comunicación judicial',
   teacher:'Sandra Mosteiro Costa',
@@ -6466,12 +6560,15 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'5 nov 2026 (10:32)',title:'Documentación y trabajos para casa: Arrendamientos Urbanos (5 y 6 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_arrendamientos_urbanos_5nov',teacher:'Administración del Máster',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'RV: Archivos para enviar hoy a los dos grupos arrendamientos urbanos'},
+ {date:'5 nov 2026 (10:03)',title:'Casos prácticos de Compraventa · Profesor D. Juan Raposo (10 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D. Juan Raposo',key:'mail_compraventa_raposo_5nov',teacher:'Juan Raposo',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'Casos prácticos máster abogacía'},
+ {date:'3 nov 2026 (17:16)',title:'Test online realizado · Escritura forense y LexNET (Nota: 8 / 10 · Patricia González)',meta:'Testmoz CPROC · D.ª Patricia González Figueroa · Procura (8/10 aciertos · 80% · Notable alto)',key:'test_3nov_patricia',teacher:'Patricia González Figueroa',subjectRef:'Procura|Actuación procesal|4',emailSubject:'Test online realizado · Escritura forense de la Procura'},
  {date:'3 nov 2026',title:'Calificaciones oficiales · MASC, mediación y arbitraje (Nota: 10 / 10 ★ · Rita Goimil)',meta:'D.ª María Rita Goimil Martínez · Deontología y técnicas transversales · Procura (10/10 · Sobresaliente pleno)',key:'mail_rita_goimil_27oct',teacher:'Rita Goimil Martínez',subjectRef:'Procura|Actuación procesal|0',emailSubject:'Calificaciones sesión 27/10/2026 - MASC y Mediación - Rita Goimil Martínez'},
  {date:'2 nov 2026 (17:47)',title:'Test online realizado · Recursos, ejecución, costas y nulidad (Nota: 10 / 10 ★)',meta:'Testmoz CPROC · D.ª María Pilar Carnota García · Procura (10/10 aciertos · 100% · Sobresaliente pleno)',key:'test_2nov_carnota',teacher:'María Pilar Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Test online realizado · Recursos, ejecución, costas, rebeldía y nulidad en la Procura'},
  {date:'2 nov 2026',title:'Cambios en el cronograma del Máster: 19–20 nov (Juan Lage / Fernando Lousada), suspensión simulados nov y fechas diciembre',meta:'Administración del Máster (Patricia · MASTER ABOGACIA - ICA CORUÑA) · Modificación oficial de calendario',key:'mail_cambios_cronograma_2nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|5',emailSubject:'Cambios en el cronograma del Master'},
  {date:'30 oct 2026 (18:29)',title:'Test online realizado · Medidas cautelares y tutela judicial (Nota: 10 / 10 ★)',meta:'Testmoz CPROC · D.ª Susana Díaz Gallego · Procura (10/10 aciertos · 100% · Sobresaliente pleno)',key:'test_30oct_susana',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Test online realizado · Medidas cautelares y tutela judicial en la Procura'},
- {date:'30 oct 2026 (12:51)',title:'Materiales y seminario de Protección de Datos · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_rgpd_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
- {date:'30 oct 2026 (12:49)',title:'Materiales y seminario de Propiedad Intelectual · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_pi_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROPIEDAD INTELECTUAL Y PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
+ {date:'30 oct 2026 (12:51)',title:'Materiales y seminario de Protección de Datos · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_rgpd_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|0',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
+ {date:'30 oct 2026 (12:49)',title:'Materiales y seminario de Propiedad Intelectual · D.ª Lucía Silvoso (4 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_seminario_pi_30oct',teacher:'Lucía Silvoso',subjectRef:'Abogacía|Sustantivo civil|0',emailSubject:'DOCUMENTACION ALUMNOS MASTER SEMINARIO PROPIEDAD INTELECTUAL Y PROTECCIÓN DE DATOS 4 NOVIEMBRE 2026'},
  {date:'30 oct 2026 (12:39)',title:'Caso práctico: Escritura Forense y Técnicas Documentales',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA)',key:'mail_caso_escritura_30oct',teacher:'Javier García y Santiago Varela',subjectRef:'Abogacía|Técnicas instrumentales|7',emailSubject:'CASO PRÁCTICO ESCRITURA FORENSE Y TÉCNICAS DOCUMENTALES- Máster Acceso Abogacía y Procura'},
  {date:'30 oct 2026 (11:21)',title:'Xornadas Feminismo e perspectiva de xénero na investigación (PechaKucha CEXEF · 4 nov)',meta:'Vicerreitoría do Campus de Ferrol, Igualdade e Responsabilidade · UDC',key:'mail_pechakucha_udc_30oct',teacher:'Vicerreitoría Campus de Ferrol, Igualdade e Responsabilidade',subjectRef:'',emailSubject:'PechaKucha_ CEXEF 2026_ 4 de novembro'},
  {date:'29 oct 2026 (18:17)',title:'Test online realizado · Procesos declarativos de la Procura (Nota: 9 / 10 · Sobresaliente)',meta:'Testmoz CPROC · D.ª Susana Díaz Gallego · Procura (9/10 aciertos · 90% · 1 fallo)',key:'test_29oct_susana',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Test online realizado · Procesos declarativos de la Procura'},
@@ -6548,6 +6645,9 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
+ mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
+ test_3nov_patricia:'TEST ONLINE REALIZADO (8/10): Cuestionario oficial en Testmoz de D.ª Patricia González Figueroa completado el martes 3 de noviembre a las 17:16 h con 8 de 10 aciertos (80 % de puntuación · Notable alto · 2 fallos analizados con fundamentación jurídica). Interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto iniciador civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de letrado (art. 188.1.5.º LEC), encabezamiento procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
  mail_rita_goimil_27oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente pleno). Calificaciones otorgadas por D.ª María Rita Goimil Martínez correspondientes a la sesión del 27 de octubre en Deontología y técnicas transversales (Intervención de los procuradores en conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria). Ponderable por coordinación del MUAP.',
  test_2nov_carnota:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el lunes 2 de noviembre a las 17:47 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno sin fallos). Recursos de queja y apelación (plazo 20 días hábiles, arts. 458 y 494 LEC), efectos de la rebeldía procesal (art. 496.2 LEC), impugnación de tasación de costas por partidas indebidas u honorarios excesivos (arts. 245 y 246 LEC), plazo de espera de 20 días para ejecución (art. 548 LEC), requisito de título ejecutivo (art. 517 LEC), competencia del LAJ para tasar costas (art. 243 LEC), costas de primera instancia y vencimiento objetivo (art. 394 LEC), régimen transitorio de apelación y nulidad de actuaciones (art. 225 LEC y art. 238 LOPJ).',
  mail_cambios_cronograma_2nov:'CAMBIOS OFICIALES EN EL CRONOGRAMA DEL MÁSTER (Patricia · Administración): 1) Día 19 de noviembre (09:30–12:00 y 16:30–19:00): Juan Lage (Proceso de ejecución). 2) Día 20 de noviembre (09:30–12:00 y 16:30–19:00): Fernando Lousada. 3) Simulados 26 y 30 de noviembre: SUSPENDIDOS hasta nueva fecha que se notificará. 4) Simulados de diciembre: se celebrarán los días 16 y 22 de diciembre. 5) La clase de Laboral pautada para el día 16 de diciembre se llevará a cabo el día 18 de diciembre.',
@@ -6642,6 +6742,136 @@ const details={
    {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Ver en pestaña de Notas (10 / 10 ★)',detailKey:'grade_rita_goimil_27oct',kind:'Calificaciones'},
    {name:'Ficha de Rita Goimil en el portal',teacher:'Rita Goimil Martínez',kind:'Directorio docente'}
+  ]
+ },
+ test_3nov_patricia:{
+  kicker:'Nota de Test: 8 / 10 (80 % · Notable alto) · Procura · Escritura forense y LexNET',
+  title:'Test online · Escritura forense de la Procura (Patricia González)',
+  date:'Realizado: martes, 3 de noviembre de 2026 · 17:16 (Grupo de tarde) · Calificación: 8 / 10 (8/10 aciertos · 2 fallos analizados)',
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Procura|Actuación procesal|4',
+  body:'Prueba oficial de clase realizada en la plataforma Testmoz («PATRICIA GONZÁLEZ-3-11-26 - GRUPO DE TARDE - DEONTOLGÍA Y TÉCNICAS TRANSVERSALES»). Puntuación obtenida por Raquel Escudero: 8 de 10 respuestas correctas (80 % · 8 sobre 10 · Notable alto).\n\n• Resumen y análisis jurídico de las 10 cuestiones:\n  1. Caída de LexNET y ACCEDA: presentación en soporte digital con Anexo 2 ante el Registro del Juzgado (art. 135.2 LEC y RD 1065/2015). Fallo analizado: se marcó Anexo 2 en papel.\n  2. Acto de parte iniciador en el proceso civil: la demanda (arts. 399 y ss. LEC). Providencia, auto y diligencia de ordenación son resoluciones del órgano judicial.\n  3. Formato reglamentario de presentación electrónica: formato PDF-A con capa de reconocimiento óptico de caracteres (OCR) (art. 18 Ley 18/2011).\n  4. Supuesto exento de firma preceptiva de letrado: escrito interesando la suspensión de vista por enfermedad sobrevenida del abogado (art. 188.1.5.º LEC).\n  5. Estructura y menciones preceptivas del encabezado: identificación del órgano judicial, datos y número de procedimiento, procurador con indicación de su condición, mandante y clase de representación conferida.\n  6. Inhibición por incompetencia territorial y remisión: necesidad de aportar poder de representación procesal y diligencia de emplazamiento con el primer escrito ante el nuevo juzgado (arts. 24 y 60 LEC).\n  7. Paralización procesal superior a seis meses: procede solicitud de impulso procesal de parte para instar el deber de impulso de oficio ex art. 237 LEC.\n  8. Localidad del encabezamiento cuando el procurador ejerce fuera de su sede: debe figurar la localidad de la sede del Juzgado ante el que se presenta el escrito procesal (art. 152 LEC). Fallo analizado: se marcó la localidad del despacho del procurador.\n  9. Petición de auxilio al Punto Neutro Judicial (PNJ) para averiguación de domicilio: datos estrictamente obligatorios son nombre y apellidos completos y DNI o NIE del ejecutado (art. 156 LEC).\n  10. Modalidad de firma en sede judicial electrónica: firma electrónica cualificada del procurador presentador.',
+  source:'CPROC-MUAP-TEST-ONLINE → Testmoz (https://testmozusercontent.com/q/15733404/student/review) · 3 nov 2026',
+  attachments:[
+   {name:'Abrir documento Markdown con análisis jurídico íntegro (.md)',url:testMdPatriciaLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir HTML original de Testmoz (diseño original)',url:testHtmlPatriciaLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozPatriciaReviewUrl,kind:'Web Testmoz ↗'},
+   {name:'Ficha docente de D.ª Patricia González Figueroa',teacher:'Patricia González Figueroa',kind:'Docente 👤'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC ↗'}
+  ],
+  extra:'✓ Calificación registrada: 8 / 10 respuestas correctas (80 % · Notable alto). 2 fallos analizados detalladamente con base legal.',
+  questions:[
+   {
+    q:'1. Has presentado una demanda con muchos documentos y la plataforma Lexnet no la admite por falta de capacidad y la plataforma ACCEDA no funciona, ¿Qué anexo se utiliza para presentar los documentos en estos casos?',
+    opts:[
+     'Anexo 1',
+     'Anexo 2',
+     'Anexo 2 – soporte digital',
+     'Anexo 3'
+    ],
+    correct:2,
+    userAnswer:1
+   },
+   {
+    q:'2. En relación con los actos de parte que dan comienzo a un procedimiento en el ámbito de la jurisdicción civil, ¿cuál de los siguientes es un escrito iniciador?',
+    opts:[
+     'Escrito de personación',
+     'Solicitud de vista telemática',
+     'Demanda',
+     'Escrito de impulso procesal'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'3. El LAJ de un Juzgado te ha requerido para que aportes el escrito y los documentos presentados en el formato adecuado, ¿qué formato deben tener los escritos presentados?',
+    opts:[
+     'PDF',
+     'PDF-A con característica OCR',
+     'WORD',
+     'JPG'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'4. A excepción de determinados supuestos previstos legalmente, la firma de abogado es obligatoria en los actos procesales. ¿En qué escrito NO es necesaria?',
+    opts:[
+     'Escrito de renuncia',
+     'Escrito de desistimiento',
+     'Escrito solicitando averiguación patrimonial',
+     'Escrito solicitando suspensión de vista por enfermedad del abogado',
+     'Ninguno, no es necesario acompañar documentos'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'5. Has presentado un escrito y te lo han rechazado por falta de información en el mismo. Al presentar un escrito, ¿qué información debe llevar el encabezado?',
+    opts:[
+     'Juzgado, datos del procedimiento, nombre del procurador, nombre del cliente y tipo de representación',
+     'Juzgado, nombre del procurador, nombre del cliente y tipo de representación',
+     'Juzgado y datos del procedimiento',
+     'Juzgado, datos del procedimiento y nombre del procurador'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'6. Has presentado una demanda en el Juzgado de Valencia y te comunican que no son competentes y que remiten los autos al Juzgado de Catarroja dándote plazo para que te persones en ese Juzgado ¿Qué documentos debe acompañar el escrito de personación?',
+    opts:[
+     'Poder',
+     'Poder y diligencia de emplazamiento',
+     'Diligencia de emplazamiento',
+     'Ninguno, no es necesario acompañar documentos'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. Un procedimiento judicial lleva más de 6 meses parado en el Juzgado y tu abogado te pide que presentes un escrito para agilizarlo. ¿Cuál de estos escritos se utiliza cuando un proceso judicial está paralizado desde hace tiempo?',
+    opts:[
+     'Solicitud de grabación de vista',
+     'Solicitud de subsanación de defectos',
+     'Escrito aportando poder',
+     'Solicitud de impulso procesal'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'8. Tienes el despacho profesional en A Coruña y tienes que presentar un escrito en un procedimiento en los Juzgados de Madrid, ¿qué localidad debe figurar en el suplico?',
+    opts:[
+     'La de la localidad del Juzgado en el que se presenta',
+     'La de la localidad donde tiene el despacho el procurador',
+     'La de la localidad donde reside el cliente',
+     'La de la localidad donde reside el contrario'
+    ],
+    correct:0,
+    userAnswer:1
+   },
+   {
+    q:'9. En un procedimiento civil en el que no se ha conseguido emplazar al demandado en el domicilio aportado, ¿qué datos mínimos se deben aportar al Juzgado para solicitar que practique averiguación de domicilios en el Punto Neutro Judicial?',
+    opts:[
+     'Nombre del ejecutado',
+     'Nombre del ejecutado y domicilio',
+     'Nombre del ejecutado y DNI',
+     'Domicilio del ejecutado'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'10. Cómo profesionales de la procura y la abogacía, ¿qué tipo de firma deben llevar los escritos que presentamos en los órganos jurisdiccionales?',
+    opts:[
+     'Firma manuscrita',
+     'Firma electrónica',
+     'Firma manuscrita y electrónica',
+     'NO es necesario que lleve firma'
+    ],
+    correct:1,
+    userAnswer:1
+   }
   ]
  },
  test_2nov_carnota:{
@@ -6918,12 +7148,58 @@ const details={
    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
   ]
  },
+ entrega_patricia_caso_evaluable_3nov:{
+  isDelivery:true,
+  kicker:'Práctica entregada en CPROC ✓ · Procura · Escritura Forense y Deontología',
+  title:'Tarea: CASO PRÁCTICO EVALUABLE 3_11_2026 · Escritura Forense (D.ª Patricia González Figueroa)',
+  date:'Entregada: miércoles, 4 de noviembre de 2026 · Plataforma CPROC (Plazo oficial: 6 nov)',
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Procura|Actuación procesal|4',
+  body:'Tarea oficial de la plataforma CPROC entregada telemáticamente con éxito el miércoles 4 de noviembre de 2026 antes del plazo límite del viernes 6 de noviembre, con comprobante de entrega en vídeo de pantalla (2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov).\n\n• Datos oficiales de la entrega:\n  - Tarea: CASO PRÁCTICO EVALUABLE 3_11_2026\n  - Docente y cargo: D.ª PATRICIA GONZÁLEZ FIGUEIROA (Procuradora ICP)\n  - Materia: Deontología y Técnicas Transversales – Escritura Forense de la Procura\n  - Curso: 26-28\n  - Fecha límite oficial: 6 de noviembre de 2026\n  - Estado: Entregada y confirmada con éxito en la plataforma oficial CPROC',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Entrega completada con éxito',
+  attachments:[
+   {name:'Escrito de personación en sustitución de procuradora (PDF entregado)',url:'materiales/Escrito de personación en sustitución de procuradora_Raquel Escudero.pdf',kind:'PDF entregado 📄'},
+   {name:'Vídeo comprobante de entrega en CEPROC (.mov)',url:'materiales/2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov',kind:'Vídeo MOV 🎥'},
+   {name:'Plataforma de entregas CPROC (MUAP → Tareas)',url:cprocTareasUrl,kind:'CPROC ↗'},
+   {name:'Ficha docente de D.ª Patricia González Figueroa',teacher:'Patricia González Figueroa',kind:'Docente 👤'},
+   {name:'Ver test online superado (8/10)',detailKey:'test_3nov_patricia',kind:'Testmoz 📝'}
+  ],
+  extra:'✓ Tarea entregada formalmente en CPROC el miércoles 4 de noviembre de 2026 con comprobante de vídeo registrado.'
+ },
+ mail_arrendamientos_urbanos_5nov:{
+  kicker:'Comunicación académica · Documentación y trabajos para casa',
+  title:'Documentación y trabajos para casa: Arrendamientos Urbanos',
+  date:'Recibido: jueves, 5 nov 2026 (10:32) · Archivo comprimido adjunto',
+  teacher:'Administración del Máster (Patricia)',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  body:'Remisión oficial por parte de la Administración del Máster (ICA Coruña) de la documentación y los trabajos para casa correspondientes al módulo de Arrendamientos Urbanos (sesiones del 5 y 6 de noviembre, de 16:30 a 19:30 h en el Colegio de Abogados):\n\n«Estimados/as alumnos/As: Remitimos documentación relativa al tema de Arrendamientos Urbanos. Saludos. Patricia, Administración. Máster de la Abogacía – ICA Coruña. Ilustre Colegio Provincial de Abogados de A Coruña.»\n\nArchivo adjunto remitido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB) con casos, modelos y materiales para las dos sesiones.',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 5 nov 2026',
+  attachments:[
+   {name:'Trabajos para casa y documentación arrendamientos urbanos (2).zip (143 KB)',kind:'Archivo ZIP comprimido 📦'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ mail_compraventa_raposo_5nov:{
+  kicker:'Comunicación académica · Casos prácticos y documentación previa',
+  title:'Casos prácticos de Compraventa · Profesor D. Juan Raposo',
+  date:'Recibido: jueves, 5 nov 2026 (10:03) · 3 documentos Word adjuntos',
+  teacher:'Juan Raposo',
+  subjectRef:'Abogacía|Sustantivo civil|3',
+  body:'Remisión oficial por parte de la Administración del Máster (ICA Coruña) de la documentación y los casos prácticos para la sesión de Compraventa civil y mercantil impartida por el docente D. Juan Raposo el martes 10 de noviembre de 2026 (16:30 – 20:45 h en el Colegio de Abogados):\n\n«Estimados/as alumnos/as: Remitimos documentación relativa a la clase de Compraventa del Profesor D. Juan Raposo. Saludos, Patricia. Administración. Máster de la Abogacía – ICA Coruña.»\n\nArchivos adjuntos remitidos (105 KB en total):\n1. «Caso práctico compraventa MUA.docx»\n2. «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx»\n3. «CASO FINCA RÚSTICA ALUMNADO.docx»',
+  source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 5 nov 2026',
+  attachments:[
+   {name:'Caso práctico compraventa MUA.docx',kind:'Documento Word 📄'},
+   {name:'CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx',kind:'Documento Word 📄'},
+   {name:'CASO FINCA RÚSTICA ALUMNADO.docx',kind:'Documento Word 📄'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
  mail_seminario_rgpd_30oct:{
   kicker:'Comunicación académica · Materiales docentes previos',
   title:'Materiales del seminario: Protección de Datos (D.ª Lucía Silvoso)',
   date:'Recibido: viernes, 30 oct 2026 (12:51) · Documentación adjunta',
   teacher:'Lucía Silvoso',
-  subjectRef:'Abogacía|Sustantivo civil|3',
+  subjectRef:'Abogacía|Sustantivo civil|0',
   body:'Envío de documentación preparatoria para la clase del próximo miércoles 4 de noviembre de 2026 por parte de la docente D.ª Lucía Silvoso:\n\n«Estimados/as alumnos/as: Remitimos la documentación de la profesora Dª Lucía Silvoso, que impartirá clase el próximo 4 de noviembre. Se trata de documentación relativa a la Protección de Datos. Saludos. Patricia, Administración Máster de la Abogacía – ICA Coruña.»\n\nArchivo adjunto: «aviso-legal.pdf» con modelos y análisis jurídico de cláusulas de aviso legal, privacidad, política de cookies y adecuación al RGPD y LOPDGDD para páginas web profesionales y despachos.',
   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 30 oct 2026',
   attachments:[
@@ -6936,7 +7212,7 @@ const details={
   title:'Materiales del seminario: Propiedad Intelectual (D.ª Lucía Silvoso)',
   date:'Recibido: viernes, 30 oct 2026 (12:49) · Documentación adjunta',
   teacher:'Lucía Silvoso',
-  subjectRef:'Abogacía|Sustantivo civil|3',
+  subjectRef:'Abogacía|Sustantivo civil|0',
   body:'Envío de documentación preparatoria para la clase del próximo miércoles 4 de noviembre de 2026 por parte de la docente D.ª Lucía Silvoso:\n\n«Estimados/as alumnos/as: Remitimos la documentación de la profesora Dª Lucía Silvoso, que impartirá clase el próximo 4 de noviembre. Se trata de documentación relativa a la propiedad intelectual. Saludos. Patricia, Administración Máster de la Abogacía – ICA Coruña.»\n\nArchivo adjunto: «EJEMPLOSRESERVASDERECHOSLIBROS.pdf» con supuestos prácticos de cláusulas de reserva de derechos, copyright y licencias editoriales.',
   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 30 oct 2026',
   attachments:[
@@ -8868,22 +9144,25 @@ const courses=[
     period:'2 nov 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-11-02',
     teachers:['María P. Carnota García'],
-    grade:{score:'⏳ Por venir · 2 nov',detail:'Intervención en recursos devolutivos, tasación de costas y aranceles.',detailKey:'materials'},
+    grade:{score:'Test: 10 / 10 ★ (100 %)',detail:'Test oficial Testmoz completado el 2 nov a las 17:47 h con 10/10 aciertos (Sobresaliente pleno). Módulo superado con la máxima nota.',detailKey:'test_2nov_carnota',actionLabel:'Ver test (10/10) ↗'},
     notes:[
      {name:'Arancel de derechos de los procuradores (RD 1373/2003 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2003-21226',label:'BOE oficial ↗'}
     ],
-    mails:['materials']
+    mails:['test_2nov_carnota','materials']
    },
    {
     name:'Escritura forense de la Procura',
     period:'3 nov 2026 · Horario: 16:30 – 18:30',
     startDate:'2026-11-03',
     teachers:['Patricia González Figueroa'],
-    grade:{score:'⏳ Por venir · 3 nov',detail:'Redacción forense, fórmulas procesales y personación técnica.',detailKey:'materials'},
+    grade:{score:'Test: 8 / 10 (80 %)',detail:'Test oficial Testmoz completado el 3 nov a las 17:16 h con 8/10 aciertos (Notable alto). Fallos analizados en apuntes y guía jurídica.',detailKey:'test_3nov_patricia',actionLabel:'Ver test (8/10) ↗'},
     notes:[
+     {name:'Ver test online resuelto (8/10 con análisis de fallos)',detailKey:'test_3nov_patricia',label:'Test en portal ↗'},
+     {name:'HTML original Testmoz (revisión oficial)',url:testHtmlPatriciaLocalUrl,label:'HTML Testmoz ↗'},
+     {name:'Apuntes y guía jurídica del test (.md)',url:testMdPatriciaLocalUrl,label:'Guía Markdown ↗'},
      {name:'Formularios prácticos de la procura en CPROC',url:cprocUrl,label:'CPROC ↗'}
     ],
-    mails:['mail_184540','materials']
+    mails:['test_3nov_patricia','mail_184540','materials']
    },
    {
     name:'Ejecución procesal de la Procura',
@@ -9053,7 +9332,7 @@ const courses=[
   name:'Sustantivo civil',
   blockNumber:'Bloque II (Abogacía)',
   blockTitle:'Bloque II: Sustantivo civil y mercantil (Abogacía)',
-  state:'Por venir',
+  state:'En curso',
   officialOrder:5,
   period:'4 al 11 de noviembre de 2026 · Colegio de Abogados',
   startDate:'2026-11-04',
@@ -9063,7 +9342,7 @@ const courses=[
     period:'4 nov 2026 · Horario: 16:30 – 20:45 (4 h 15 min)',
     startDate:'2026-11-04',
     teachers:['Lucía Silvoso'],
-    grade:{score:'Materiales recibidos · 4 nov',detail:'Documentación de clase remitida el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf».',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
+    grade:{score:'Docencia en curso · 4 nov',detail:'Seminario práctico en el Colegio de Abogados: Protección de Datos (RGPD, LOPDGDD y cláusulas de aviso legal web) y Propiedad Intelectual (derechos de autor y reservas).',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
      {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
@@ -9077,12 +9356,13 @@ const courses=[
     period:'5 y 6 nov 2026 · Horario: 16:30 – 19:30 (2 sesiones · 6 h)',
     startDate:'2026-11-05',
     teachers:['Docente pendiente de asignar'],
-    grade:{score:'⏳ Por venir · 5–6 nov',detail:'Contratos de arrendamiento de vivienda y uso distinto, desahucios y acción de precario.',detailKey:'materials'},
+    grade:{score:'Docencia hoy y mañana · 5–6 nov',detail:'Documentación y trabajos para casa remitidos el 5 de noviembre por correo («Trabajos para casa y documentación arrendamientos urbanos (2).zip»). Clases de 16:30 a 19:30 h en el Colegio de Abogados.',detailKey:'mail_arrendamientos_urbanos_5nov',actionLabel:'Ver documentación ↗'},
     notes:[
+     {name:'Trabajos para casa y documentación arrendamientos urbanos (ZIP)',detailKey:'mail_arrendamientos_urbanos_5nov',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Arrendamientos Urbanos (LAU 29/1994 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003',label:'BOE oficial ↗'},
      {name:'LEC: Juicio de desahucio por falta de pago y precario (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:[]
+    mails:['mail_arrendamientos_urbanos_5nov']
    },
    {
     name:'Propiedad horizontal',
@@ -9099,12 +9379,13 @@ const courses=[
     name:'Compraventa civil y mercantil',
     period:'10 nov 2026 · Horario: 16:30 – 20:45 (4 h 15 min)',
     startDate:'2026-11-10',
-    teachers:['Docente pendiente de asignar'],
-    grade:{score:'⏳ Por venir · 10 nov',detail:'Contrato de compraventa, arras, saneamiento por vicios ocultos y resolución contractual.',detailKey:'materials'},
+    teachers:['Juan Raposo'],
+    grade:{score:'⏳ Por venir · 10 nov',detail:'Docencia a cargo de D. Juan Raposo. Documentación y 3 casos prácticos remitidos por correo el 5 de noviembre de 2026.',detailKey:'mail_compraventa_raposo_5nov',actionLabel:'Ver casos prácticos ↗'},
     notes:[
+     {name:'Casos prácticos de compraventa (MUA, internacional y finca rústica)',detailKey:'mail_compraventa_raposo_5nov',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Código Civil: Contrato de compra y venta (arts. 1445 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763',label:'BOE oficial ↗'}
     ],
-    mails:[]
+    mails:['mail_compraventa_raposo_5nov']
    }
   ]
  },
@@ -9801,16 +10082,27 @@ const teacherDirectory=[
   name:'Patricia González Figueroa',
   branch:'Procura',
   role:'Procuradora · Escritura forense de la Procura',
-  gradeBadge:'⏳ Por venir · 3 nov',
-  summary:'Escritos forenses propios de la Procura: personaciones, peticiones de impulso, subsanaciones y recursos procesales.',
-  grade:{score:'⏳ Por venir · 3 nov',scoreLabel:'Docencia por venir',detail:'Sesión programada para el martes 3 de noviembre (16:30–18:30). Total: 2 horas.',detailKey:'schedule'},
+  gradeBadge:'8 / 10 (Test) ★',
+  summary:'Escritos forenses propios de la Procura: personaciones, peticiones de impulso, subsanaciones, LexNET y recursos procesales.',
+  grade:{score:'Test: 8 / 10 (80 %)',scoreLabel:'Notable alto',detail:'Test oficial Testmoz completado el martes 3 de noviembre a las 17:16 h con 8/10 aciertos (80 % · Notable alto). Fallos analizados en apuntes y guía jurídica.',detailKey:'test_3nov_patricia'},
   sessions:[
    {date:'2026-11-03',dayLabel:'Martes 3 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Escritura forense de la Procura: personaciones y escritos de trámite',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[{title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',key:'mail_184540'},],
-  practices:[],
+  mails:[
+   {title:'Test online realizado · Escritura forense y LexNET (Nota: 8 / 10)',key:'test_3nov_patricia'},
+   {title:'Carta de presentación y materiales - D.ª Patricia González Figueroa',key:'mail_184540'}
+  ],
+  practices:[
+   {title:'Tarea CPROC: CASO PRÁCTICO EVALUABLE 3_11_2026',status:'Entregada en CPROC ✓ (4 nov · Vídeo comprobante)',key:'entrega_patricia_caso_evaluable_3nov'}
+  ],
   driveFiles:[],
-  notes:[]
+  notes:[
+   {name:'Vídeo comprobante de entrega en CEPROC (.mov)',url:'materiales/2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov',label:'Vídeo comprobante ↗'},
+   {name:'Ver test online resuelto (8/10 con análisis de fallos)',detailKey:'test_3nov_patricia',label:'Test en portal ↗'},
+   {name:'HTML original Testmoz (revisión oficial)',url:testHtmlPatriciaLocalUrl,label:'HTML Testmoz ↗'},
+   {name:'Apuntes y guía jurídica del test (.md)',url:testMdPatriciaLocalUrl,label:'Guía Markdown ↗'},
+   {name:'Revisión oficial en Testmoz',url:testmozPatriciaReviewUrl,label:'Web Testmoz ↗'}
+  ]
  },
  {
   name:'Pilar Cortizo',
@@ -9942,9 +10234,9 @@ const teacherDirectory=[
   name:'Lucía Silvoso',
   branch:'Abogacía',
   role:'Abogada · Propiedad Intelectual y Protección de Datos',
-  gradeBadge:'Materiales recibidos · 4 nov',
+  gradeBadge:'🟢 Clase hoy · 4 nov',
   summary:'Seminario práctico sobre propiedad intelectual (reservas de derechos y licencias) y protección de datos (RGPD, LOPDGDD y cláusulas de aviso legal).',
-  grade:{score:'Materiales recibidos · 4 nov',scoreLabel:'Documentación remitida',detail:'Materiales remitidos por el ICA Coruña el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf». Sesión lectiva el miércoles 4 de noviembre (16:30 – 20:45).',detailKey:'mail_seminario_rgpd_30oct'},
+  grade:{score:'Docencia en curso · 4 nov',scoreLabel:'Docencia en curso',detail:'Materiales remitidos por el ICA Coruña el 30 de octubre: «aviso-legal.pdf» y «EJEMPLOSRESERVASDERECHOSLIBROS.pdf». Sesión lectiva el miércoles 4 de noviembre (16:30 – 20:45) en el Colegio de Abogados.',detailKey:'mail_seminario_rgpd_30oct'},
   sessions:[
    {date:'2026-11-04',dayLabel:'Miércoles 4 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad intelectual y protección de datos',place:'Colegio de Abogados (A Coruña)'}
   ],
@@ -9962,6 +10254,28 @@ const teacherDirectory=[
   ]
  },
  {
+  name:'Juan Raposo',
+  branch:'Abogacía',
+  role:'Profesor · Sustantivo civil y mercantil (Compraventa)',
+  gradeBadge:'⏳ Por venir · 10 nov',
+  summary:'Docencia práctica sobre contrato de compraventa civil y mercantil, compraventa internacional y finca rústica.',
+  grade:{score:'⏳ Por venir · 10 nov',scoreLabel:'Docencia programada',detail:'Documentación y 3 casos prácticos remitidos por correo el 5 de noviembre de 2026. Sesión lectiva el martes 10 de noviembre (16:30 – 20:45) en el Colegio de Abogados.',detailKey:'mail_compraventa_raposo_5nov'},
+  sessions:[
+   {date:'2026-11-10',dayLabel:'Martes 10 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Compraventa civil y mercantil',place:'Colegio de Abogados (A Coruña)'}
+  ],
+  mails:[
+   {title:'Casos prácticos de Compraventa (3 archivos Word) - 5 nov',key:'mail_compraventa_raposo_5nov'}
+  ],
+  practices:[],
+  driveFiles:[],
+  notes:[
+   {title:'Caso práctico compraventa MUA (.docx)',detailKey:'mail_compraventa_raposo_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'CASO COMPRAVENTA INTERNACIONAL ALUMNADO (.docx)',detailKey:'mail_compraventa_raposo_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'CASO FINCA RÚSTICA ALUMNADO (.docx)',detailKey:'mail_compraventa_raposo_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
+   {title:'Código Civil: Contrato de compra y venta (arts. 1445 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763',urlLabel:'BOE oficial ↗'}
+  ]
+ },
+ {
   name:'Docente pendiente de asignar',
   branch:'Abogacía',
   role:'Profesorado facultativo · Sustantivo civil, Laboral y Contencioso-Administrativo',
@@ -9972,7 +10286,6 @@ const teacherDirectory=[
    {date:'2026-11-05',dayLabel:'Jueves 5 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
-   {date:'2026-11-10',dayLabel:'Martes 10 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Compraventa civil y mercantil',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-11',dayLabel:'Miércoles 11 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 2)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-12-01',dayLabel:'Martes 1 dic 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Contrato de trabajo y tiempo de trabajo',place:'Facultad de Derecho (A Coruña)'},
    {date:'2026-12-02',dayLabel:'Miércoles 2 dic 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Clasificación profesional y modificación del contrato',place:'Facultad de Derecho (A Coruña)'},
@@ -9980,10 +10293,14 @@ const teacherDirectory=[
    {date:'2027-01-07',dayLabel:'Jueves 7 ene 2027',time:'16:30 – 19:30',hours:'3 horas',topic:'Procedimiento Administrativo Común (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2027-01-08',dayLabel:'Viernes 8 ene 2027',time:'16:30 – 18:30',hours:'2 horas',topic:'Procedimiento Administrativo Común (Sesión 2)',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
+  mails:[
+   {title:'Documentación y trabajos para casa: Arrendamientos Urbanos - 5 nov',key:'mail_arrendamientos_urbanos_5nov'}
+  ],
   practices:[],
   driveFiles:[],
-  notes:[]
+  notes:[
+   {title:'Trabajos para casa y documentación arrendamientos urbanos (ZIP)',detailKey:'mail_arrendamientos_urbanos_5nov',url:outlookUrl,urlLabel:'Ver en Outlook ↗'}
+  ]
  }
 ];
 
@@ -10078,12 +10395,42 @@ const catalogMaterials=[
    {name:'Estatuto General de la Abogacía (RD 135/2021)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE ↗'},
    {name:'Ley 1/1996 de Asistencia Jurídica Gratuita',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE ↗'}
   ]
+ },
+ {
+  area:'abogacia',
+  kicker:'Bloque II: Sustantivo civil · Arrendamientos urbanos · 5–6 nov',
+  title:'Documentación y trabajos para casa: Arrendamientos Urbanos',
+  teacher:'Administración del Máster (Patricia)',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  mailKey:'mail_arrendamientos_urbanos_5nov',
+  actionLabel:'Ver documentación en correo',
+  docs:[
+   {name:'Trabajos para casa y documentación arrendamientos urbanos (2).zip (143 KB)',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'Ley de Arrendamientos Urbanos (LAU 29/1994 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003',label:'BOE ↗'},
+   {name:'LEC: Juicio de desahucio por falta de pago y precario (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE ↗'}
+  ]
+ },
+ {
+  area:'abogacia',
+  kicker:'Bloque II: Sustantivo civil · Prof. D. Juan Raposo · 10 nov',
+  title:'Casos prácticos de Compraventa (MUA, internacional y finca rústica)',
+  teacher:'Juan Raposo',
+  subjectRef:'Abogacía|Sustantivo civil|3',
+  mailKey:'mail_compraventa_raposo_5nov',
+  actionLabel:'Ver casos prácticos',
+  docs:[
+   {name:'Caso práctico compraventa MUA.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'CASO FINCA RÚSTICA ALUMNADO.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'Código Civil: Contrato de compra y venta (arts. 1445 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763',label:'BOE ↗'}
+  ]
  }
 ];
 
 const courseKey=c=>`${c.branch}|${c.name}`;
 const courseMail={
  'Abogacía|Técnicas instrumentales':['dataforum_instrucciones','dataforum_viernes','schedule','dataforum','udc_avisos'],
+ 'Abogacía|Sustantivo civil':['mail_arrendamientos_urbanos_5nov','mail_compraventa_raposo_5nov','mail_seminario_rgpd_30oct','mail_seminario_pi_30oct'],
  'Procura|Técnicas instrumentales':['grades','procura_resultados','materials'],
  'Procura|Deontología y responsabilidad':['mail_deontologia_ana_vazquez','assignment'],
  'Procura|Actuación procesal':['materials']
@@ -10102,6 +10449,8 @@ const teacherGradeMap={
  'María Pilar Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
  'María P. Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
  'Susana Díaz Gallego': { kind:'test', score:'Tests: 10 y 9 ★', label:'Tests: 10 y 9 ★ (Media 9.5)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Tests online Testmoz: Sesión 1 (9/10) y Sesión 2 (10/10 ★ · Pleno) · Media 9.5 (Sobresaliente) · Ambas sesiones superadas' },
+ 'Patricia González Figueroa': { kind:'test', score:'Test: 8 / 10', label:'Test: 8 / 10 (80%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 8 / 10 aciertos (80 %) · Calificación final de módulo pendiente' },
+ 'Patricia González': { kind:'test', score:'Test: 8 / 10', label:'Test: 8 / 10 (80%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 8 / 10 aciertos (80 %) · Calificación final de módulo pendiente' },
  'Alejandra Sánchez': { kind:'completed', score:'Taller superado', label:'Taller superado', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Taller práctico de Oratoria Forense superado' },
  'Carmen Belo González': { kind:'final', score:'7.6 / 10 ★', label:'Final: 7.6 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 7.6 / 10 (Notable · Test 3.4/4 + Trabajos 4.2/6)' },
  'Vanessa Amarelle': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
@@ -10143,6 +10492,7 @@ function getDossierIdForTeacher(tName){
  if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
  if(n.includes('carnota')) return 'dossier-maria-carnota';
  if(n.includes('susana') && (n.includes('díaz') || n.includes('diaz'))) return 'dossier-susana-diaz';
+ if(n.includes('patricia') && (n.includes('gonzález') || n.includes('gonzalez') || n.includes('figueroa'))) return 'dossier-patricia-gonzalez';
  if(n.includes('moure')) return 'dossier-maria-luisa-moure';
  if(n.includes('javier garcía') || n.includes('javier garcia') || n.includes('santiago varela')) return 'dossier-javier-garcia-santiago-varela';
  if(n.includes('lousada')) return 'dossier-fernando-lousada';
@@ -11333,6 +11683,56 @@ function renderTeacherDossiers(){
    ]
   },
   {
+   id: 'dossier-patricia-gonzalez',
+   teacher: 'Patricia González Figueroa',
+   subject: 'Escritura forense de la Procura (Sesión 3 nov 2026)',
+   subjectRef: 'Procura|Actuación procesal|4',
+   kicker: 'Test online completado (8/10 · 80 % · Notable alto) · CPROC / Testmoz',
+   badgeClass: 'blue',
+   badgeText: '8 / 10 Testmoz · Notable alto',
+   cardClass: 'has-test',
+   blocks: [
+    {
+     cls: 'highlight-test',
+     title: '📝 Test Online en Testmoz (80 %)',
+     score: '8 / 10',
+     desc: 'Test oficial «PATRICIA GONZÁLEZ-3-11-26 - GRUPO DE TARDE» completado el martes 3 nov a las 17:16 h con 8 de 10 aciertos (Notable alto). Preguntas íntegras y análisis de fallos en el portal.',
+     subitems: [
+      {label: 'Aciertos en test', val: '8 de 10 (80 %)'},
+      {label: 'Calificación test', val: '8 / 10 · Notable alto'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Práctica CPROC: Caso Evaluable 3_11_2026',
+     score: 'Entregada ✓',
+     desc: 'Tarea oficial «CASO PRÁCTICO EVALUABLE 3_11_2026» entregada telemáticamente en la plataforma CPROC el 4 de noviembre con comprobante en vídeo registrado.',
+     subitems: [
+      {label: 'Plazo oficial', val: '6 nov 2026'},
+      {label: 'Estado CPROC', val: 'Entregada con éxito ✓ (4 nov)'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta por Correo',
+     score: 'Pendiente',
+     desc: 'La Secretaría y la docente remitirán en su caso el desglose conjunto de la materia tras finalizar el módulo.',
+     subitems: [
+      {label: 'Test online', val: '8 / 10 registrado ✓'},
+      {label: 'Ponderación', val: '40 % test / 60 % prácticas'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '📁 Ver tarea entregada (CPROC) ↗', detailKey: 'entrega_patricia_caso_evaluable_3nov', cls: 'solid-green'},
+    {label: '📝 Ver preguntas y respuestas del test (3 nov) ↗', detailKey: 'test_3nov_patricia', cls: 'solid-blue'},
+    {label: 'Abrir HTML original Testmoz ↗', url: testHtmlPatriciaLocalUrl, cls: 'blue'},
+    {label: 'Abrir apuntes del test (.md) ↗', url: testMdPatriciaLocalUrl},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|4'},
+    {label: 'Ficha de Patricia González Figueroa ↗', teacher: 'Patricia González Figueroa'}
+   ]
+  },
+  {
    id: 'dossier-javier-sanchez',
    teacher: 'Javier Sánchez García',
    subject: 'Técnicas instrumentales · Rama Procura (Sesión 1 oct 2026)',
@@ -11766,11 +12166,11 @@ function renderGrades(filter){
  const sumEl = document.getElementById('gradeFilterSummary');
  if(sumEl){
   if(filterToApply === 'teachers'){
-   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (6 profesores con actividad evaluable).';
+   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (7 profesores con actividad evaluable).';
   } else if(filterToApply === 'mail'){
    sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Rita Goimil 10/10, Javier Sánchez 10/10, Carlos Sánchez 10/10, Carolina Moreno 10/10, Ana Vázquez 8.8/10 y Carmen Belo 7.6/10).';
   } else if(filterToApply === 'test'){
-   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10 y 2 nov: 10/10), con desglose interactivo de preguntas y respuestas.';
+   sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
    sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
   } else {
@@ -12542,35 +12942,49 @@ function renderApuntesPanel(apuntesDocs, pureNotes, driveDocs){
   </div>
   ${apuntesDocs.length ? `
    <div style="display:grid;gap:8px">
-    ${driveDocs.map(d=>`
-     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
+    ${driveDocs.map(d=>{
+     const isOutlook = d.url && d.url.includes('outlook');
+     const isBoe = d.url && d.url.includes('boe.es');
+     const dSub = isOutlook ? 'Correo Outlook · Material oficial adjunto' : (isBoe ? 'Legislación oficial consolidada (BOE)' : 'Google Drive · Documento de estudio');
+     const dBtnLabel = d.label || (isOutlook ? 'Ver en Outlook ↗' : (isBoe ? 'BOE oficial ↗' : 'Abrir archivo en Drive ↗'));
+     const dBtnCls = isOutlook ? 'pill-link blue' : (isBoe ? 'pill-link' : 'pill-link solid-green');
+     return `
+     <div class="visual-resource-card" style="border-left:4px solid ${isOutlook?'var(--blue)':(isBoe?'var(--honey)':'var(--green)')}">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📄</div>
+       <div class="visual-resource-icon" style="background:${isOutlook?'var(--blue-pale)':(isBoe?'#fef9c3':'var(--green-pale)')};border-color:${isOutlook?'var(--blue-border)':(isBoe?'#fde047':'var(--green-border)')};color:${isOutlook?'var(--blue-dark)':(isBoe?'#854d0e':'var(--green-dark)')}">${isOutlook?'✉️':(isBoe?'⚖️':'📄')}</div>
        <div>
         <div class="visual-resource-title">${d.name}</div>
-        <div class="visual-resource-sub">Google Drive · Documento de estudio</div>
+        <div class="visual-resource-sub">${dSub}</div>
        </div>
       </div>
-      <div class="derive-action-links">
-       <a class="pill-link solid-green" href="${d.url}" target="_blank" rel="noopener noreferrer">Abrir archivo en Drive ↗</a>
+      <div class="derive-action-links" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+       ${d.detailKey?`<button class="pill-btn blue" data-detail="${d.detailKey}">Ver correo / ficha ↗</button>`:''}
+       <a class="${dBtnCls}" href="${d.url}" target="_blank" rel="noopener noreferrer">${dBtnLabel}</a>
       </div>
      </div>
-    `).join('')}
-    ${pureNotes.map(n=>`
-     <div class="visual-resource-card" style="border-left:4px solid var(--green)">
+    `;}).join('')}
+    ${pureNotes.map(n=>{
+     const isOutlook = n.url && n.url.includes('outlook');
+     const isBoe = n.url && n.url.includes('boe.es');
+     const nSub = isOutlook ? 'Correo Outlook · Material oficial adjunto' : (isBoe ? 'Legislación oficial consolidada (BOE)' : 'Apuntes y guía didáctica');
+     const nBtnLabel = n.urlLabel || (isOutlook ? 'Ver en Outlook ↗' : (isBoe ? 'BOE oficial ↗' : 'Ver documento ↗'));
+     const nBtnCls = isOutlook ? 'pill-link blue' : (isBoe ? 'pill-link' : 'pill-link solid-green');
+     const nDetail = n.detailKey || n.key || '';
+     return `
+     <div class="visual-resource-card" style="border-left:4px solid ${isOutlook?'var(--blue)':(isBoe?'var(--honey)':'var(--green)')}">
       <div class="visual-resource-left">
-       <div class="visual-resource-icon" style="background:var(--green-pale);border-color:var(--green-border);color:var(--green-dark)">📖</div>
+       <div class="visual-resource-icon" style="background:${isOutlook?'var(--blue-pale)':(isBoe?'#fef9c3':'var(--green-pale)')};border-color:${isOutlook?'var(--blue-border)':(isBoe?'#fde047':'var(--green-border)')};color:${isOutlook?'var(--blue-dark)':(isBoe?'#854d0e':'var(--green-dark)')}">${isOutlook?'✉️':(isBoe?'⚖️':'📖')}</div>
        <div>
-        <div class="visual-resource-title">${n.title}</div>
-        <div class="visual-resource-sub">Apuntes y guía didáctica</div>
+        <div class="visual-resource-title">${n.title || n.name}</div>
+        <div class="visual-resource-sub">${nSub}</div>
        </div>
       </div>
-      <div class="derive-action-links">
-       ${n.key?`<button class="pill-btn" data-detail="${n.key}">Ficha ↗</button>`:''}
-       <a class="pill-link" href="${n.url}" target="_blank" rel="noopener noreferrer">Ver documento ↗</a>
+      <div class="derive-action-links" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+       ${nDetail?`<button class="pill-btn blue" data-detail="${nDetail}">Ver correo / ficha ↗</button>`:''}
+       <a class="${nBtnCls}" href="${n.url}" target="_blank" rel="noopener noreferrer">${nBtnLabel}</a>
       </div>
      </div>
-    `).join('')}
+    `;}).join('')}
    </div>
   ` : `
    <div class="empty-cozy" style="padding:22px 18px">
@@ -12946,14 +13360,31 @@ function showScreen2(cKey, sIdx, optTeacherName){
 
  const allPractices = t.practices || [];
  const notesList = t.notes || [];
- const mailsList = t.mails || [];
+ 
+ // Combinar correos del docente y de la materia
+ const tMails = (t.mails || []).map(m => typeof m === 'string' ? {title: m, key: m} : m);
+ const subMails = (sub.mails || []).map(m => {
+  if(typeof m === 'string'){
+   const foundMsg = messages.find(x => x.key === m);
+   return { title: foundMsg ? foundMsg.title : m, key: m };
+  }
+  return m;
+ });
+ const mailsList = [...tMails];
+ subMails.forEach(sm => {
+  if(!mailsList.some(cm => (cm.key || cm) === (sm.key || sm))){
+   mailsList.push(sm);
+  }
+ });
+
  const testsList = [
   ...allPractices.filter(p=>(p.title||'').toLowerCase().includes('test')),
   ...notesList.filter(n=>(n.title||'').toLowerCase().includes('test'))
  ];
  const practicesList = allPractices.filter(p=>!(p.title||'').toLowerCase().includes('test'));
  const pureNotes = notesList.filter(n=>!(n.title||'').toLowerCase().includes('test'));
- const apuntesDocs = [...driveDocs, ...pureNotes];
+ const filteredPureNotes = pureNotes.filter(pn => !driveDocs.some(dd => (dd.url && dd.url === pn.url) || (dd.name && dd.name === (pn.title || pn.name))));
+ const apuntesDocs = [...driveDocs, ...filteredPureNotes];
  const initials = getTeacherInitials(t.name);
 
  let bClass='teacher-badge-upcoming';
@@ -13936,7 +14367,7 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil'){
   let targetFilter = 'teachers';
   if(key.includes('test')) targetFilter = 'test';
   else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil') targetFilter = 'mail';
@@ -13955,6 +14386,7 @@ function openDetail(key){
    else if(key === 'test_29oct_susana' || key === 'grade_29oct_susana_test') targetId = 'grade_29oct_susana_test';
    else if(key === 'test_30oct_susana' || key === 'grade_30oct_susana_test') targetId = 'grade_30oct_susana_test';
    else if(key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test') targetId = 'grade_2nov_carnota_test';
+   else if(key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test') targetId = 'grade_3nov_patricia_test';
    let card = document.getElementById(targetId);
    if(card){
     const d = card.querySelector('details');
@@ -14124,11 +14556,12 @@ function refreshTodayDate(forceSelectToday=false){
  const wasViewingToday=sameDay(selectedDate,todayDate);
  if(dayChanged || forceSelectToday){
   todayDate=freshToday;
-  if(forceSelectToday || wasViewingToday){
+  if(forceSelectToday || wasViewingToday || selectedDate < freshToday){
    selectedDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),todayDate.getDate());
    monthDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),1);
   }
   renderDay();
+  renderCalendar();
   if(dayChanged){
    if(typeof renderCourses==='function') renderCourses();
    if(typeof renderSidebarTree==='function') renderSidebarTree();
@@ -14159,21 +14592,35 @@ function renderDay(){
  const timeStr=getLiveClockStr();
  document.getElementById('welcomeDate').textContent=isToday?`${fmtFull(selectedDate)} · ${timeStr}`:fmtFull(selectedDate);
  document.getElementById('daySubtitle').textContent=isToday?`${fmtFull(selectedDate)} · Hora actual: ${timeStr}`:`${fmtFull(selectedDate)} · Pincha en cualquier titular para ver todos sus datos`;
- document.getElementById('dayHeading').textContent=isToday?'Información de hoy':'Información del día';
+ document.getElementById('dayHeading').textContent=isToday?'Información de hoy':`Información del día (${fmtShort(selectedDate)})`;
  document.getElementById('dayPosition').textContent=isToday?`HOY · ${fmtShort(selectedDate).toUpperCase()}`:fmtShort(selectedDate).toUpperCase();
- const delgadoDue=makeLocalDate(2026,9,29);
- const diffDays=Math.round((delgadoDue.getTime()-todayDate.getTime())/86400000);
- const sideDelgadoDueEl=document.getElementById('sideDelgadoDueText');
- const delgadoDelivery=deliveries.find(d=>d.detailKey==='entrega_delgado');
- const isDelgadoSubmitted=delgadoDelivery?!!delgadoDelivery.submitted:false;
- if(sideDelgadoDueEl && !isDelgadoSubmitted){
-  sideDelgadoDueEl.textContent=diffDays>1?`Jue 29 oct · Quedan ${diffDays} días`:(diffDays===1?'Jue 29 oct · Mañana vence':(diffDays===0?'Jue 29 oct · Vence hoy':'Jue 29 oct'));
+
+ const pendingDeliveries=(deliveries||[]).filter(d=>!d.submitted).sort((a,b)=>a.date-b.date);
+ const nextPending=pendingDeliveries[0];
+ const sideDueEl=document.getElementById('sideDelgadoDueText');
+ if(sideDueEl && nextPending){
+  const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
+  const shortDateStr=fmtShort(nextPending.date);
+  sideDueEl.textContent=diffDays>1?`${shortDateStr} · Quedan ${diffDays} días`:(diffDays===1?`${shortDateStr} · Mañana vence`:(diffDays===0?`${shortDateStr} · Vence hoy`:shortDateStr));
  }
- const cardDelgadoBadge=document.querySelector('#homePendingDelgado .ptb-due-badge') || document.querySelector('#cardTaskDelgado .ptb-due-badge');
- if(cardDelgadoBadge && !isDelgadoSubmitted){
-  cardDelgadoBadge.textContent=diffDays>1?`⏳ Plazo: Jue 29 oct (${diffDays} días)`:(diffDays===1?'⏳ Plazo: Jue 29 oct (mañana)':(diffDays===0?'⏳ Plazo: Hoy Jue 29 oct':'⏳ Plazo: Jue 29 oct'));
+ const cardPendingBadge=document.querySelector('#homePendingDelgado .ptb-due-badge') || document.querySelector('#cardTaskDelgado .ptb-due-badge');
+ if(cardPendingBadge && nextPending){
+  const diffDays=Math.round((nextPending.date.getTime()-todayDate.getTime())/86400000);
+  const shortDateStr=fmtShort(nextPending.date);
+  cardPendingBadge.textContent=diffDays>1?`⏳ Plazo: ${shortDateStr} (${diffDays} días)`:(diffDays===1?`⏳ Plazo: ${shortDateStr} (mañana)`:(diffDays===0?`⏳ Plazo: Hoy ${shortDateStr}`:`⏳ Plazo: ${shortDateStr}`));
  }
- document.getElementById('todayList').innerHTML=list.length?list.map(({e,idx})=>`
+
+ const returnTodayBanner=!isToday?`
+  <div class="viewing-other-day-banner" style="margin-bottom:12px">
+    <div>
+      <strong>📅 Viendo fecha seleccionada: ${fmtFull(selectedDate)}</strong>
+      <p style="margin:2px 0 0">Esta no es la fecha de hoy. Pulsa el botón para regresar inmediatamente a la agenda y clases de hoy.</p>
+    </div>
+    <button type="button" class="viewing-other-day-btn" id="returnTodayBannerBtn">Volver a HOY (${fmtShort(todayDate)}) ↺</button>
+  </div>
+ `: '';
+
+ document.getElementById('todayList').innerHTML=returnTodayBanner+(list.length?list.map(({e,idx})=>`
   <button class="headline-item" data-event-ref="${k}|${idx}">
    <span class="headline-time">${e.start}${e.end?`<small>a ${e.end}</small>`:''}</span>
    <span class="headline-title">${e.name}</span>
@@ -14208,9 +14655,14 @@ function renderDay(){
       </button>
     </div>
    </div>`;
-  })();
-  renderHomeHeadlines();
+  })());
+
+ const retBtn=document.getElementById('returnTodayBannerBtn');
+ if(retBtn) retBtn.addEventListener('click',()=>goToTodayAction(false));
+
+ renderHomeHeadlines();
  renderCalendar();
+ renderCalendarDayDetail();
  renderDeliveries();
  renderActiveMasterBanner();
 }
@@ -14220,7 +14672,7 @@ function renderActiveMasterBanner(){
  if(!bannerEl)return;
 
  const k=keyOf(todayDate);
- const dayEvents=(events[k]||[]).filter(ev=>!ev.isPersonal && !ev.isSuspended && ev.teacher);
+ const dayEvents=(events[k]||[]).filter(ev=>!ev.isPersonal && !ev.isSuspended && ((ev.kind||'').includes('Clase') || ev.teacher));
 
  if(!dayEvents.length){
   if(k>='2026-10-21' && k<='2026-10-23'){
@@ -14248,7 +14700,7 @@ function renderActiveMasterBanner(){
   const cardClass=isProcura?'amb-card amb-card-procura':'amb-card amb-card-abogacia';
   const badgeClass=isProcura?'course-badge terra':'course-badge blue';
   const branchLabel=isProcura?'🏛️ Procura · Bloque I':'⚖️ Abogacía · Bloque I';
-  const t=teacherDirectory.find(x=>x.name===ev.teacher);
+  const t=ev.teacher?teacherDirectory.find(x=>x.name===ev.teacher):null;
   
   let sessionBadge='';
   let sessionTopic='';
@@ -14289,6 +14741,9 @@ function renderActiveMasterBanner(){
    contentLine=`<div>📖 Tema: <b>${escapeHtml(sessionTopic)}</b></div>`;
   }
 
+  const teacherDisplay=ev.teacher?`<b data-open-teacher-screen="${escapeHtml(ev.teacher)}" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">${escapeHtml(ev.teacher)}</b>`:`<b>Docencia del Máster · Colegio de Abogados</b>`;
+  const teacherBtn=ev.teacher?`<button class="amb-action-btn secondary" data-open-teacher-screen="${escapeHtml(ev.teacher)}"><span>Docente 👤</span></button>`:'';
+
   return `
     <article class="${cardClass}" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">
       <div class="amb-card-top">
@@ -14298,7 +14753,7 @@ function renderActiveMasterBanner(){
       <h4 class="amb-card-subject" data-subject-card="${escapeHtml(ev.subjectRef||'')}" style="cursor:pointer">${escapeHtml(subjectName)}</h4>
       <div class="amb-card-meta">
         <div>⏰ Horario: <b>${escapeHtml(ev.start)} — ${escapeHtml(ev.end)} h</b>${sessionBadge ? ` (${sessionBadge})` : ''}</div>
-        <div>👤 Docente: <b data-open-teacher-screen="${escapeHtml(ev.teacher)}" style="cursor:pointer;text-decoration:underline" title="Ver información del profesor">${escapeHtml(ev.teacher)}</b></div>
+        <div>👤 Docente: ${teacherDisplay}</div>
         <div>📍 Lugar: <b>${escapeHtml(ev.place||'Colegio de Abogados (A Coruña)')}</b></div>
         ${contentLine}
       </div>
@@ -14306,9 +14761,7 @@ function renderActiveMasterBanner(){
         <button class="amb-action-btn" data-subject-card="${escapeHtml(ev.subjectRef||'')}">
           <span>Ver asignatura y clase</span> ➔
         </button>
-        <button class="amb-action-btn secondary" data-open-teacher-screen="${escapeHtml(ev.teacher)}">
-          <span>Docente 👤</span>
-        </button>
+        ${teacherBtn}
         ${detailBtn}
       </div>
     </article>
@@ -14335,6 +14788,54 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 window.addEventListener('focus',updateClockDisplay);
 window.addEventListener('pageshow',updateClockDisplay);
 
+function renderCalendarDayDetail(){
+ const listEl=document.getElementById('calendarDayList');
+ if(!listEl)return;
+ const isToday=sameDay(selectedDate,todayDate);
+ const tagEl=document.getElementById('calDayTag');
+ const titleEl=document.getElementById('calDayTitle');
+ const subEl=document.getElementById('calDaySubtitle');
+ if(tagEl) tagEl.textContent=isToday?'🟢 HOY EN EL MÁSTER':`📅 ${fmtShort(selectedDate).toUpperCase()}`;
+ if(titleEl) titleEl.textContent=fmtFull(selectedDate);
+ if(subEl) subEl.textContent=isToday
+  ?`Hoy · Hora actual en A Coruña: ${getLiveClockStr()} · Mostrando sesiones lectivas, entregas y actividades`
+  : `Día seleccionado en el calendario mensual · Pulsa sobre cualquier actividad para consultar sus detalles`;
+
+ const k=keyOf(selectedDate);
+ const raw=events[k]||[];
+ if(!raw.length){
+  const safeSel=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate());
+  const isWeekend=safeSel.getDay()===0 || safeSel.getDay()===6;
+  listEl.innerHTML=`
+   <div style="padding:16px 14px;background:var(--paper-2);border-radius:12px;border:1px dashed var(--line);color:var(--muted);font-size:13px;line-height:1.5">
+     <strong>Sin sesiones presenciales programadas</strong><br>
+     ${isWeekend?'Fin de semana sin clases lectivas en el Colegio de Abogados.':'No constan clases lectivas en el calendario oficial para este día.'}
+   </div>
+  `;
+  return;
+ }
+
+ listEl.innerHTML=raw.map((e,idx)=>{
+  const isWarning=!!e.isWarning;
+  const isPersonal=!!e.isPersonal;
+  const kindTag=e.kind||(isPersonal?'Personal':'Clase');
+  const teacherHtml=e.teacher?`<div style="font-size:12px;color:var(--muted);margin-top:2px">👤 Docente: <b>${escapeHtml(e.teacher)}</b></div>`:'';
+  const placeHtml=e.place?`<div style="font-size:11.5px;color:var(--muted)">📍 ${escapeHtml(e.place)}</div>`:'';
+  const tagClass='headline-tag'+(isWarning?' warning':isPersonal?' personal':'');
+  return `
+   <div class="cal-day-item${isWarning?' warning':isPersonal?' personal':''}" data-event-ref="${k}|${idx}" style="cursor:pointer;padding:12px 14px;background:var(--paper);border-radius:12px;border:1px solid var(--line);display:flex;flex-direction:column;gap:4px;transition:all .15s">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <span style="font-weight:800;font-size:13px;color:var(--green-dark)">⏰ ${escapeHtml(e.start)}${e.end?` — ${escapeHtml(e.end)} h`:''}</span>
+      <span class="${tagClass}" style="margin:0">${escapeHtml(kindTag)} ↗</span>
+    </div>
+    <div style="font-weight:700;font-size:14px;color:var(--ink)">${escapeHtml(e.name)}</div>
+    ${teacherHtml}
+    ${placeHtml}
+   </div>
+  `;
+ }).join('');
+}
+
 function renderCalendar(){
  const y=monthDate.getFullYear(),m=monthDate.getMonth(),first=makeLocalDate(y,m,1),start=(first.getDay()+6)%7,total=new Date(y,m+1,0).getDate(),prevTotal=new Date(y,m,0).getDate();
  document.getElementById('monthLabel').textContent=new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric'}).format(first);
@@ -14357,13 +14858,23 @@ function renderCalendar(){
   b.innerHTML=`<span class="num">${d.getDate()}</span>${hasMaster||hasPersonal||hasDue?`<span class="dots">${hasMaster?'<i></i>':''}${hasDue?'<i class="deadline-dot"></i>':''}${hasPersonal?'<i class="personal-dot"></i>':''}</span>`:''}`;
   b.addEventListener('click',()=>{
    selectedDate=makeLocalDate(d.getFullYear(),d.getMonth(),d.getDate());
-   if(d.getMonth()!==monthDate.getMonth())monthDate=makeLocalDate(d.getFullYear(),d.getMonth(),1);
+   if(d.getMonth()!==monthDate.getMonth()){
+     monthDate=makeLocalDate(d.getFullYear(),d.getMonth(),1);
+   }
+   renderCalendar();
    renderDay();
-   setView('inicio',false);
-   document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
+   renderCalendarDayDetail();
+   if(activeView==='calendario'){
+     const panel=document.getElementById('calendarDayPanel');
+     if(panel)panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+   } else if(activeView==='inicio'){
+     const todaySec=document.getElementById('todaySection');
+     if(todaySec)todaySec.scrollIntoView({behavior:'smooth'});
+   }
   });
   grid.appendChild(b);
  }
+ renderCalendarDayDetail();
 }
 
 function formatDeliveryStatementHtml(text, isAbogacia){
@@ -14495,7 +15006,21 @@ function renderDeliveries(filter = currentDeliveryFilter){
      <div class="delivery-statement-content">
       ${formatDeliveryStatementHtml(det.body || d.details, isAbogacia)}
 
-      ${d.detailKey === 'entrega_susana_diaz_casos_30oct' ? `
+      ${d.detailKey === 'entrega_patricia_caso_evaluable_3nov' ? `
+      <div class="delivery-files-block">
+       <strong class="delivery-files-title">
+        <span>🏛️</span> Plataforma oficial CPROC (Colegio de Procuradores) y Grabación de Pantalla
+       </strong>
+       <div style="font-size:12px;color:var(--ink-soft);line-height:1.5">
+        Tarea oficial «CASO PRÁCTICO EVALUABLE 3_11_2026» entregada telemáticamente con éxito en la plataforma CPROC («La Tarea se ha entregado con éxito.»). Tienes disponible el comprobante en vídeo de pantalla:
+       </div>
+       <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+        <a class="pill-link solid-green" href="materiales/2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov" target="_blank" rel="noopener noreferrer">🎥 Ver comprobante de entrega en vídeo (.mov) ↗</a>
+        <a class="pill-link blue" href="${cprocTareasUrl}" target="_blank" rel="noopener noreferrer">🏛️ Abrir plataforma CPROC (Tareas) ↗</a>
+        <button class="pill-btn solid-blue" data-detail="test_3nov_patricia">📝 Ver test superado (8/10) ↗</button>
+        <button class="pill-btn" data-teacher="Patricia González Figueroa">👤 Ficha de D.ª Patricia González ↗</button>
+       </div>
+      </div>` : d.detailKey === 'entrega_susana_diaz_casos_30oct' ? `
       <div class="delivery-files-block">
        <strong class="delivery-files-title">
         <span>🏛️</span> Plataforma oficial CPROC (Colegio de Procuradores) y PDF del caso
@@ -14802,10 +15327,13 @@ function renderMail(q='', filter=currentMailFilter){
   b.classList.toggle('active', b.getAttribute('data-mail-filter') === currentMailFilter);
  });
 
+ const allBtn = document.querySelector('[data-mail-filter="all"]');
+ if(allBtn) allBtn.textContent = `Todos los correos (${messages.length})`;
+
  let list = messages;
 
  if(currentMailFilter === 'icacor'){
-  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.teacher||'').includes('Amarelle') || (m.teacher||'').includes('Garrido') || (m.teacher||'').includes('Coordinación') || (m.title||'').toLowerCase().includes('abogacía'));
+  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.teacher||'').includes('Amarelle') || (m.teacher||'').includes('Garrido') || (m.teacher||'').includes('Raposo') || (m.teacher||'').includes('Coordinación') || (m.title||'').toLowerCase().includes('abogacía'));
  } else if(currentMailFilter === 'procura'){
   list = list.filter(m => (m.meta||'').includes('procuradores') || (m.meta||'').includes('Procura') || (m.meta||'').includes('CEPROC') || (m.teacher||'').includes('Belo') || (m.teacher||'').includes('Moreno') || (m.teacher||'').includes('Sánchez Muiño') || (m.teacher||'').includes('Mosteiro') || (m.teacher||'').includes('Goimil') || (m.teacher||'').includes('Carnota') || (m.teacher||'').includes('Díaz Gallego') || (m.teacher||'').includes('Vázquez Corte') || (m.teacher||'').includes('Javier Sánchez') || (m.teacher||'').includes('Procurador'));
  } else if(currentMailFilter === 'udc'){
@@ -14813,7 +15341,7 @@ function renderMail(q='', filter=currentMailFilter){
  } else if(currentMailFilter === 'notas'){
   list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci') || (m.title||'').toLowerCase().includes('test'));
  } else if(currentMailFilter === 'practicas'){
-  list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse'));
+  list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse') || (m.title||'').toLowerCase().includes('trabajo'));
  } else if(currentMailFilter === 'avisos'){
   list = list.filter(m => m.key.startsWith('dataforum') || m.key === 'schedule' || m.key === 'materials' || m.key.startsWith('udc') || m.key.startsWith('mail_suspension') || m.key.startsWith('mail_bolsas') || m.key.startsWith('mail_boletin') || m.key.startsWith('mail_olimpiadas') || m.key.startsWith('mail_mobilidade') || m.key.startsWith('mail_dataforum_cierre') || m.key.startsWith('mail_premio') || m.key.startsWith('mail_paro') || m.key.startsWith('mail_interrupcion') || (m.title||'').toLowerCase().includes('aviso') || (m.title||'').toLowerCase().includes('boletín') || (m.title||'').toLowerCase().includes('charla') || (m.title||'').toLowerCase().includes('difusión'));
  }
@@ -14976,6 +15504,21 @@ document.querySelectorAll('.branch-link').forEach(b=>b.addEventListener('click',
  openCourse(cKey);
 }));
 document.querySelectorAll('.nav [data-view], .view-tabs [data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+function goToTodayAction(stayInCalendarIfActive=false){
+ refreshTodayDate(true);
+ if(activeView==='calendario' && stayInCalendarIfActive){
+  monthDate=makeLocalDate(todayDate.getFullYear(),todayDate.getMonth(),1);
+  renderCalendar();
+  renderCalendarDayDetail();
+  const panel=document.getElementById('calendarDayPanel');
+  if(panel)panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+ } else {
+  setView('inicio',false);
+  const todaySec=document.getElementById('todaySection');
+  if(todaySec)todaySec.scrollIntoView({behavior:'smooth'});
+ }
+}
+
 document.getElementById('previousDay').addEventListener('click',()=>{
  selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()-1);
  monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
@@ -14987,7 +15530,7 @@ document.getElementById('nextDay').addEventListener('click',()=>{
  renderDay();
 });
 document.getElementById('resetTodayTop').addEventListener('click',()=>{
- refreshTodayDate(true);
+ goToTodayAction(false);
 });
 document.getElementById('previousMonth').addEventListener('click',()=>{
  monthDate=makeLocalDate(monthDate.getFullYear(),monthDate.getMonth()-1,1);
@@ -14998,10 +15541,38 @@ document.getElementById('nextMonth').addEventListener('click',()=>{
  renderCalendar();
 });
 document.getElementById('goTodayBtn').addEventListener('click',()=>{
- refreshTodayDate(true);
- setView('inicio',false);
- document.getElementById('todaySection').scrollIntoView({behavior:'smooth'});
+ goToTodayAction(true);
 });
+
+const calPrevDayBtn=document.getElementById('calPrevDayBtn');
+if(calPrevDayBtn){
+ calPrevDayBtn.addEventListener('click',()=>{
+  selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()-1);
+  if(selectedDate.getMonth()!==monthDate.getMonth()){
+   monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
+  }
+  renderCalendar();
+  renderDay();
+  renderCalendarDayDetail();
+ });
+}
+const calNextDayBtn=document.getElementById('calNextDayBtn');
+if(calNextDayBtn){
+ calNextDayBtn.addEventListener('click',()=>{
+  selectedDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),selectedDate.getDate()+1);
+  if(selectedDate.getMonth()!==monthDate.getMonth()){
+   monthDate=makeLocalDate(selectedDate.getFullYear(),selectedDate.getMonth(),1);
+  }
+  renderCalendar();
+  renderDay();
+  renderCalendarDayDetail();
+ });
+}
+const calTodayBtn=document.getElementById('calTodayBtn');
+if(calTodayBtn){
+ calTodayBtn.addEventListener('click',()=>goToTodayAction(true));
+}
+
 function renderSearchResults(query){
  const dropdown = document.getElementById('searchDropdown');
  const searchBox = document.getElementById('searchBox');
