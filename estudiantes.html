@@ -5082,7 +5082,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </span>
       <span class="nav-label-text">Correo clasificado</span>
-      <span class="nav-badge-pill badge-peach">66</span>
+      <span class="nav-badge-pill badge-peach">67</span>
     </button>
     <button class="nav-btn-calendario" data-view="calendario">
       <span class="nav-icon-pill icon-lilac">
@@ -5313,7 +5313,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">0</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">Entregas</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Materiales y Normativa <span class="tab-badge">13</span></button>
-    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">66</span></button>
+    <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">67</span></button>
   </div>
 
   <!-- 1. PORTADA PRINCIPAL: 1º DÍA, 2º CLASES EN ACTIVO HOY, 3º ENTREGAS PENDIENTES -->
@@ -6289,6 +6289,8 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,4),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.'},
+ {date:new Date(2026,10,3),title:'Caso práctico evaluable 3_11_2026',teacher:'Patricia González Figueroa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_caso_pr_ctico_evaluable_3',details:'Caso práctico evaluable de la materia de Deontología y Técnicas Transversales (Escritura forense de la Procura).'},
  {
   date:new Date(2026,10,30),
   title:'Caso práctico: Escritura Forense y Técnicas Documentales',
@@ -6511,6 +6513,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'5 nov 2026 (16:21)',title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',meta:'Administración del Máster · D.ª Chony Jiménez',key:'mail_895671',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|1'},
  {date:'5 nov 2026 (10:32)',title:'Documentación y trabajos para casa: Arrendamientos Urbanos (5 y 6 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_arrendamientos_urbanos_5nov',teacher:'Administración del Máster',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'RV: Archivos para enviar hoy a los dos grupos arrendamientos urbanos'},
  {date:'5 nov 2026 (10:03)',title:'Casos prácticos de Compraventa · Profesor D. Juan Raposo (10 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D. Juan Raposo',key:'mail_compraventa_raposo_5nov',teacher:'Juan Raposo',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'Casos prácticos máster abogacía'},
  {date:'2 nov 2026',title:'Cambios en el cronograma del Máster: 19–20 nov (Juan Lage / Fernando Lousada), suspensión simulados nov y fechas diciembre',meta:'Administración del Máster (Patricia · MASTER ABOGACIA - ICA CORUÑA) · Modificación oficial de calendario',key:'mail_cambios_cronograma_2nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|5',emailSubject:'Cambios en el cronograma del Master'},
@@ -6580,6 +6583,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_895671:'Asignación de la docente Chony Jiménez (chonyjimenezdellamo@yahoo.es) para las sesiones de Arrendamientos (5 y 6 nov) y Propiedad Horizontal (9 nov).',
  mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
  mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
  test_3nov_patricia:'TEST ONLINE REALIZADO (8/10): Cuestionario oficial en Testmoz de D.ª Patricia González Figueroa completado el martes 3 de noviembre a las 17:16 h con 8 de 10 aciertos (80 % de puntuación · Notable alto · 2 fallos analizados con fundamentación jurídica). Interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto iniciador civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de letrado (art. 188.1.5.º LEC), encabezamiento procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
@@ -6656,7 +6660,7 @@ const mailSummaries={
 };
 
 const details={
- mail_rita_goimil_27oct:{
+mail_rita_goimil_27oct:{
   kicker:'Calificaciones oficiales de Procura · Deontología y técnicas transversales',
   title:'Resultados de las pruebas del 27/10/2026 · Rita Goimil Martínez (Nota: 10 / 10 ★)',
   date:'Correo recibido: martes, 3 de noviembre de 2026 · Clase celebrada: 27/10/2026',
@@ -6798,6 +6802,31 @@ const details={
     correct:1,
     userAnswer:1
    }
+ mail_895671:{
+  kicker:'Comunicación académica · Máster',
+  title:'Actualización docente: Chony Jiménez',
+  date:'Recibido: 05 oct 2026 (16:21)',
+  teacher:'Chony Jiménez',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  body:'Se confirma que la docente Chony Jiménez impartirá las sesiones de Arrendamientos y precario de los días 5 y 6 de noviembre, así como la sesión de Propiedad Horizontal del lunes 9 de noviembre.',
+  source:'Raquel Escudero Valcárcel-Ríos',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ entrega_contrato_de_cesi_n_de_la_:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Propiedad Intelectual',
+  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
+  date:'Publicada: 04 oct 2026 · Plazo: 7 de diciembre de 2026',
+  teacher:'Lucía Silvoso',
+  subjectRef:'Abogacía|Sustantivo civil|0',
+  body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
   ]
  },
  test_2nov_carnota:{
@@ -8928,6 +8957,7 @@ const courses=[
      {name:'Ver test online resuelto (8/10 con análisis de fallos)',detailKey:'test_3nov_patricia',label:'Test en portal ↗'},
      {name:'HTML original Testmoz (revisión oficial)',url:testHtmlPatriciaLocalUrl,label:'HTML Testmoz ↗'},
      {name:'Apuntes y guía jurídica del test (.md)',url:testMdPatriciaLocalUrl,label:'Guía Markdown ↗'},
+     {name:'Práctica: Caso práctico evaluable 3_11_2026 (Entregada 4 nov)',detailKey:'entrega_patricia_caso_evaluable_3nov',label:'Ver entrega en CPROC ↗'},
      {name:'Formularios prácticos de la procura en CPROC',url:cprocUrl,label:'CPROC ↗'}
     ],
     mails:['test_3nov_patricia','mail_184540','materials']
@@ -9112,6 +9142,7 @@ const courses=[
     teachers:['Lucía Silvoso'],
     grade:{score:'Docencia en curso · 4 nov',detail:'Seminario práctico en el Colegio de Abogados: Protección de Datos (RGPD, LOPDGDD y cláusulas de aviso legal web) y Propiedad Intelectual (derechos de autor y reservas).',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
+     {name:'Práctica: Contrato de cesión de la diseñadora gráfica con la empresa de papelería',detailKey:'entrega_contrato_de_cesi_n_de_la_',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',label:'BOE oficial ↗'},
@@ -10007,7 +10038,8 @@ const teacherDirectory=[
    {title:'Materiales de Protección de Datos (aviso legal) - 30 oct',key:'mail_seminario_rgpd_30oct'},
    {title:'Materiales de Propiedad Intelectual (reservas de derechos) - 30 oct',key:'mail_seminario_pi_30oct'}
   ],
-  practices:[],
+  practices:[
+   {title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',key:'entrega_contrato_de_cesi_n_de_la_'},],
   driveFiles:[],
   notes:[
    {title:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
@@ -10158,12 +10190,42 @@ const catalogMaterials=[
    {name:'Estatuto General de la Abogacía (RD 135/2021)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE ↗'},
    {name:'Ley 1/1996 de Asistencia Jurídica Gratuita',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-750',label:'BOE ↗'}
   ]
+ },
+ {
+  area:'abogacia',
+  kicker:'Bloque II: Sustantivo civil · Arrendamientos urbanos · 5–6 nov',
+  title:'Documentación y trabajos para casa: Arrendamientos Urbanos',
+  teacher:'Administración del Máster (Patricia)',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  mailKey:'mail_arrendamientos_urbanos_5nov',
+  actionLabel:'Ver documentación en correo',
+  docs:[
+   {name:'Trabajos para casa y documentación arrendamientos urbanos (2).zip (143 KB)',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'Ley de Arrendamientos Urbanos (LAU 29/1994 consolidada · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003',label:'BOE ↗'},
+   {name:'LEC: Juicio de desahucio por falta de pago y precario (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE ↗'}
+  ]
+ },
+ {
+  area:'abogacia',
+  kicker:'Bloque II: Sustantivo civil · Prof. D. Juan Raposo · 10 nov',
+  title:'Casos prácticos de Compraventa (MUA, internacional y finca rústica)',
+  teacher:'Juan Raposo',
+  subjectRef:'Abogacía|Sustantivo civil|3',
+  mailKey:'mail_compraventa_raposo_5nov',
+  actionLabel:'Ver casos prácticos',
+  docs:[
+   {name:'Caso práctico compraventa MUA.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'CASO FINCA RÚSTICA ALUMNADO.docx',url:outlookUrl,label:'Ver en Outlook ↗'},
+   {name:'Código Civil: Contrato de compra y venta (arts. 1445 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763',label:'BOE ↗'}
+  ]
  }
 ];
 
 const courseKey=c=>`${c.branch}|${c.name}`;
 const courseMail={
  'Abogacía|Técnicas instrumentales':['dataforum_instrucciones','dataforum_viernes','schedule','dataforum','udc_avisos'],
+ 'Abogacía|Sustantivo civil':['mail_arrendamientos_urbanos_5nov','mail_compraventa_raposo_5nov','mail_seminario_rgpd_30oct','mail_seminario_pi_30oct'],
  'Procura|Técnicas instrumentales':['grades','procura_resultados','materials'],
  'Procura|Deontología y responsabilidad':['mail_deontologia_ana_vazquez','assignment'],
  'Procura|Actuación procesal':['materials']
@@ -15489,10 +15551,13 @@ function renderMail(q='', filter=currentMailFilter){
   b.classList.toggle('active', b.getAttribute('data-mail-filter') === currentMailFilter);
  });
 
+ const allBtn = document.querySelector('[data-mail-filter="all"]');
+ if(allBtn) allBtn.textContent = `Todos los correos (${messages.length})`;
+
  let list = messages;
 
  if(currentMailFilter === 'icacor'){
-  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.teacher||'').includes('Amarelle') || (m.teacher||'').includes('Garrido') || (m.teacher||'').includes('Coordinación') || (m.title||'').toLowerCase().includes('abogacía'));
+  list = list.filter(m => (m.meta||'').includes('ICACOR') || (m.meta||'').includes('ICA CORUÑA') || (m.meta||'').includes('master.abogacia') || (m.teacher||'').includes('Delgado') || (m.teacher||'').includes('Moure') || (m.teacher||'').includes('Lousada') || (m.teacher||'').includes('Braña') || (m.teacher||'').includes('Bével') || (m.teacher||'').includes('Alejandra') || (m.teacher||'').includes('Amarelle') || (m.teacher||'').includes('Garrido') || (m.teacher||'').includes('Raposo') || (m.teacher||'').includes('Coordinación') || (m.title||'').toLowerCase().includes('abogacía'));
  } else if(currentMailFilter === 'procura'){
   list = list.filter(m => (m.meta||'').includes('procuradores') || (m.meta||'').includes('Procura') || (m.meta||'').includes('CEPROC') || (m.teacher||'').includes('Belo') || (m.teacher||'').includes('Moreno') || (m.teacher||'').includes('Sánchez Muiño') || (m.teacher||'').includes('Mosteiro') || (m.teacher||'').includes('Goimil') || (m.teacher||'').includes('Carnota') || (m.teacher||'').includes('Díaz Gallego') || (m.teacher||'').includes('Vázquez Corte') || (m.teacher||'').includes('Javier Sánchez') || (m.teacher||'').includes('Procurador'));
  } else if(currentMailFilter === 'udc'){
@@ -15500,7 +15565,7 @@ function renderMail(q='', filter=currentMailFilter){
  } else if(currentMailFilter === 'notas'){
   list = list.filter(m => m.key === 'grades' || m.key === 'mail_deontologia_ana_vazquez' || m.key === 'procura_resultados' || (m.title||'').toLowerCase().includes('nota') || (m.title||'').toLowerCase().includes('resultado') || (m.title||'').toLowerCase().includes('calificaci') || (m.title||'').toLowerCase().includes('test'));
  } else if(currentMailFilter === 'practicas'){
-  list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse'));
+  list = list.filter(m => m.key === 'assignment' || m.key.startsWith('entrega') || m.key.includes('dataforum') || (m.title||'').toLowerCase().includes('caso') || (m.title||'').toLowerCase().includes('práctica') || (m.title||'').toLowerCase().includes('entrega') || (m.title||'').toLowerCase().includes('acuse') || (m.title||'').toLowerCase().includes('trabajo'));
  } else if(currentMailFilter === 'avisos'){
   list = list.filter(m => m.key.startsWith('dataforum') || m.key === 'schedule' || m.key === 'materials' || m.key.startsWith('udc') || m.key.startsWith('mail_suspension') || m.key.startsWith('mail_bolsas') || m.key.startsWith('mail_boletin') || m.key.startsWith('mail_olimpiadas') || m.key.startsWith('mail_mobilidade') || m.key.startsWith('mail_dataforum_cierre') || m.key.startsWith('mail_premio') || m.key.startsWith('mail_paro') || m.key.startsWith('mail_interrupcion') || (m.title||'').toLowerCase().includes('aviso') || (m.title||'').toLowerCase().includes('boletín') || (m.title||'').toLowerCase().includes('charla') || (m.title||'').toLowerCase().includes('difusión'));
  }

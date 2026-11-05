@@ -6338,6 +6338,8 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,4),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.'},
+ {date:new Date(2026,10,3),title:'Caso práctico evaluable 3_11_2026',teacher:'Patricia González Figueroa',subject:'Deontología y Técnicas Transversales',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 6 de nov de 2026)',submitted:false,detailKey:'entrega_caso_pr_ctico_evaluable_3',details:'Caso práctico evaluable de la materia de Deontología y Técnicas Transversales (Escritura forense de la Procura).'},
  {
   date:new Date(2026,10,30),
   title:'Caso práctico: Escritura Forense y Técnicas Documentales',
@@ -6560,6 +6562,7 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'5 nov 2026 (16:21)',title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',meta:'Administración del Máster · D.ª Chony Jiménez',key:'mail_895671',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|1'},
  {date:'5 nov 2026 (10:32)',title:'Documentación y trabajos para casa: Arrendamientos Urbanos (5 y 6 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_arrendamientos_urbanos_5nov',teacher:'Administración del Máster',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'RV: Archivos para enviar hoy a los dos grupos arrendamientos urbanos'},
  {date:'5 nov 2026 (10:03)',title:'Casos prácticos de Compraventa · Profesor D. Juan Raposo (10 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D. Juan Raposo',key:'mail_compraventa_raposo_5nov',teacher:'Juan Raposo',subjectRef:'Abogacía|Sustantivo civil|3',emailSubject:'Casos prácticos máster abogacía'},
  {date:'3 nov 2026 (17:16)',title:'Test online realizado · Escritura forense y LexNET (Nota: 8 / 10 · Patricia González)',meta:'Testmoz CPROC · D.ª Patricia González Figueroa · Procura (8/10 aciertos · 80% · Notable alto)',key:'test_3nov_patricia',teacher:'Patricia González Figueroa',subjectRef:'Procura|Actuación procesal|4',emailSubject:'Test online realizado · Escritura forense de la Procura'},
@@ -6645,6 +6648,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ mail_895671:'Asignación de la docente Chony Jiménez (chonyjimenezdellamo@yahoo.es) para las sesiones de Arrendamientos (5 y 6 nov) y Propiedad Horizontal (9 nov).',
  mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
  mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
  test_3nov_patricia:'TEST ONLINE REALIZADO (8/10): Cuestionario oficial en Testmoz de D.ª Patricia González Figueroa completado el martes 3 de noviembre a las 17:16 h con 8 de 10 aciertos (80 % de puntuación · Notable alto · 2 fallos analizados con fundamentación jurídica). Interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto iniciador civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de letrado (art. 188.1.5.º LEC), encabezamiento procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
@@ -6730,7 +6734,7 @@ const mailSummaries={
 };
 
 const details={
- mail_rita_goimil_27oct:{
+mail_rita_goimil_27oct:{
   kicker:'Calificaciones oficiales de Procura · Deontología y técnicas transversales',
   title:'Resultados de las pruebas del 27/10/2026 · Rita Goimil Martínez (Nota: 10 / 10 ★)',
   date:'Correo recibido: martes, 3 de noviembre de 2026 · Clase celebrada: 27/10/2026',
@@ -6872,6 +6876,31 @@ const details={
     correct:1,
     userAnswer:1
    }
+ mail_895671:{
+  kicker:'Comunicación académica · Máster',
+  title:'Actualización docente: Chony Jiménez',
+  date:'Recibido: 05 oct 2026 (16:21)',
+  teacher:'Chony Jiménez',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  body:'Se confirma que la docente Chony Jiménez impartirá las sesiones de Arrendamientos y precario de los días 5 y 6 de noviembre, así como la sesión de Propiedad Horizontal del lunes 9 de noviembre.',
+  source:'Raquel Escudero Valcárcel-Ríos',
+  attachments:[
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ]
+ },
+ entrega_contrato_de_cesi_n_de_la_:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Propiedad Intelectual',
+  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
+  date:'Publicada: 04 oct 2026 · Plazo: 7 de diciembre de 2026',
+  teacher:'Lucía Silvoso',
+  subjectRef:'Abogacía|Sustantivo civil|0',
+  body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
   ]
  },
  test_2nov_carnota:{
@@ -9160,6 +9189,7 @@ const courses=[
      {name:'Ver test online resuelto (8/10 con análisis de fallos)',detailKey:'test_3nov_patricia',label:'Test en portal ↗'},
      {name:'HTML original Testmoz (revisión oficial)',url:testHtmlPatriciaLocalUrl,label:'HTML Testmoz ↗'},
      {name:'Apuntes y guía jurídica del test (.md)',url:testMdPatriciaLocalUrl,label:'Guía Markdown ↗'},
+     {name:'Práctica: Caso práctico evaluable 3_11_2026 (Entregada 4 nov)',detailKey:'entrega_patricia_caso_evaluable_3nov',label:'Ver entrega en CPROC ↗'},
      {name:'Formularios prácticos de la procura en CPROC',url:cprocUrl,label:'CPROC ↗'}
     ],
     mails:['test_3nov_patricia','mail_184540','materials']
@@ -9344,6 +9374,7 @@ const courses=[
     teachers:['Lucía Silvoso'],
     grade:{score:'Docencia en curso · 4 nov',detail:'Seminario práctico en el Colegio de Abogados: Protección de Datos (RGPD, LOPDGDD y cláusulas de aviso legal web) y Propiedad Intelectual (derechos de autor y reservas).',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
+     {name:'Práctica: Contrato de cesión de la diseñadora gráfica con la empresa de papelería',detailKey:'entrega_contrato_de_cesi_n_de_la_',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',label:'BOE oficial ↗'},
@@ -10244,7 +10275,8 @@ const teacherDirectory=[
    {title:'Materiales de Protección de Datos (aviso legal) - 30 oct',key:'mail_seminario_rgpd_30oct'},
    {title:'Materiales de Propiedad Intelectual (reservas de derechos) - 30 oct',key:'mail_seminario_pi_30oct'}
   ],
-  practices:[],
+  practices:[
+   {title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',key:'entrega_contrato_de_cesi_n_de_la_'},],
   driveFiles:[],
   notes:[
    {title:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
