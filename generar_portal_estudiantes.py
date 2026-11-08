@@ -146,6 +146,7 @@ def generate_student_portal_html(html: str) -> str:
             'mail_carmen_belo_13oct',
             'mail_digna_dataforum_26oct',
             'mail_acuse_mediacion_29oct',
+            'mail_acuse_demanda_civil_6nov',
             'mail_acuse_ficha_raquel_24sep',
             'test_20oct_sandra',
             'test_28oct_carnota',
@@ -195,7 +196,7 @@ def generate_student_portal_html(html: str) -> str:
     # 4. LIMPIAR OBJETO DETAILS Y MAILSUMMARIES (NOTAS PERSONALES Y CITAS MÉDICAS)
     # -------------------------------------------------------------
     # Limpiar claves de notas en mailSummaries
-    for k in ['mail_carolina_carlos_23oct', 'mail_carlos_sanchez_2oct', 'mail_carmen_belo_13oct', 'mail_digna_dataforum_26oct', 'mail_acuse_mediacion_29oct', 'mail_acuse_ficha_raquel_24sep', 'mail_deontologia_ana_vazquez', 'grades', 'procura_resultados']:
+    for k in ['mail_carolina_carlos_23oct', 'mail_carlos_sanchez_2oct', 'mail_carmen_belo_13oct', 'mail_digna_dataforum_26oct', 'mail_acuse_mediacion_29oct', 'mail_acuse_demanda_civil_6nov', 'mail_acuse_ficha_raquel_24sep', 'mail_deontologia_ana_vazquez', 'grades', 'procura_resultados']:
         html = re.sub(rf'\s*{k}:\s*\'[^\']*?\',?', '', html)
 
     def remove_details_key(content: str, key: str) -> str:
