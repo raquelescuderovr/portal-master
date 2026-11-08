@@ -6460,11 +6460,11 @@ const deliveries=[
   subject:'Abogacía · Sustantivo civil (Arrendamientos urbanos y precario)',
   subjectRef:'Abogacía|Sustantivo civil|1',
   subjectName:'Arrendamientos urbanos y precario (D.ª Chony Jiménez)',
-  status:'⏳ Pendiente (Plazo: antes del lunes 9 nov 2026)',
+  status:'📨 En envío programado (Correo listo con Test arrendamientos urbanos.doc)',
   submitted:false,
   detailKey:'entrega_chony_test_arrendamientos_9nov',
   file:'Trabajos para casa y documentación arrendamientos urbanos (2).zip',
-  details:'Entrega encargada en la sesión del viernes 6 de noviembre de 2026: mandar por correo electrónico a la profesora D.ª Chony Jiménez (chonyjimenezdellano@yahoo.es) antes del lunes 9 de noviembre de 2026 con el test de la materia de Arrendamientos Urbanos y Precario.'
+  details:'Entrega encargada en la sesión del viernes 6 de noviembre de 2026. Correo redactado y dejado en envío programado en Exchange (Asunto: «Test de arrendamientos_Raquel Escudero», adjunto: «Test arrendamientos urbanos.doc») dirigido a chonyjimenezdellano@yahoo.es antes del plazo del lunes 9 de noviembre de 2026.'
  },
  {date:new Date(2026,10,4),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.'},
  {
@@ -6552,10 +6552,10 @@ const deliveries=[
   subject:'Abogacía · Práctica Procesal Civil',
   subjectRef:'Abogacía|Procesal civil|0',
   subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
-  status:'⏳ Pendiente (Plazo: 11 nov 2026 · antes 20:00 h)',
+  status:'📨 En envío programado (Correo listo con Caso 12 noviembre_Raquel Escudero.pdf)',
   submitted:false,
   detailKey:'entrega_lousada_sesion1',
-  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del miércoles 11 de noviembre. 4 casos prácticos previstos: Competencia y conciliación, Diligencias Preliminares, Medidas cautelares (Alcoa) y Cuestiones Generales. Tus preguntas asignadas (Grupo Tarde · Escudero): Preguntas 2 (en casos de 4), Preguntas 2 y 6 (en casos de 8), Preguntas 2, 6 y 10 (en casos de 12) y todas las comunes.'
+  details:'Respuestas a los casos prácticos de la Sesión 1 (clase del 12 de noviembre): Competencia y conciliación, Diligencias Preliminares, Medidas cautelares (Alcoa) y Cuestiones Generales. Correo redactado y en envío programado en Exchange (Asunto: «Práctica 12 de noviembre_Raquel Escudero», adjunto: «Caso 12 noviembre_Raquel Escudero.pdf») dirigido a fernando.lousada@udc.es para su entrega en plazo antes de las 20:00 h del miércoles 11 de noviembre.'
  },
  {
   date:new Date(2026,10,12),
@@ -10706,7 +10706,10 @@ const teacherGradeMap={
  'Carmen Belo González': { kind:'final', score:'7.6 / 10 ★', label:'Final: 7.6 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 7.6 / 10 (Notable · Test 3.4/4 + Trabajos 4.2/6)' },
  'Vanessa Amarelle': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
  'Carlos Tomé': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
- 'Daniel Garrido Pazos': { kind:'completed', score:'Prácticas al día', label:'Prácticas al día', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Iniciación profesional y despacho al día' }
+ 'Daniel Garrido Pazos': { kind:'completed', score:'Prácticas al día', label:'Prácticas al día', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Iniciación profesional y despacho al día' },
+ 'Javier García Fernández': { kind:'completed', score:'Demanda entregada ✓', label:'Demanda entregada ✓', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Demanda Civil de Escritura Forense entregada el 6 nov (11:00 h) con acuse de recibo oficial confirmado (13:56 h)' },
+ 'Javier García y Santiago Varela': { kind:'completed', score:'Demanda entregada ✓', label:'Demanda entregada ✓', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Demanda Civil de Escritura Forense entregada el 6 nov (11:00 h) con acuse de recibo oficial confirmado (13:56 h)' },
+ 'Santiago Varela': { kind:'completed', score:'Demanda entregada ✓', label:'Demanda entregada ✓', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Demanda Civil de Escritura Forense entregada el 6 nov (11:00 h) con acuse de recibo oficial confirmado (13:56 h)' }
 };
 
 const isStudentPortal = false;
@@ -12269,6 +12272,44 @@ function renderTeacherDossiers(){
     {label: '⏳ Ver caso práctico (Parte A y Parte B · plazo 29 oct) ↗', detailKey: 'entrega_delgado', cls: 'solid-green'},
     {label: 'Ver asignatura ↗', subjectRef: 'Abogacía|Técnicas instrumentales|3'},
     {label: 'Ficha de José Luis Delgado Domínguez ↗', teacher: 'José Luis Delgado Domínguez'}
+   ]
+  },
+  {
+   id: 'dossier-javier-garcia-santiago-varela',
+   teacher: 'Javier García Fernández y Santiago Varela',
+   subject: 'Escritura Forense y Técnicas Documentales (Abogacía)',
+   subjectRef: 'Abogacía|Técnicas instrumentales|7',
+   kicker: 'Demanda Civil entregada con acuse de recibo oficial ✓ (Garrigues)',
+   badgeClass: 'green',
+   badgeText: 'Demanda entregada y confirmada ✓',
+   cardClass: 'has-submitted',
+   blocks: [
+    {
+     cls: 'highlight-practice',
+     title: '📁 Demanda Civil de Escritura Forense',
+     score: 'Entregada ✓ (6 nov)',
+     desc: 'Práctica oficial de redacción de demanda civil enviada por correo electrónico a D. Javier García Fernández (javier.garcia@garrigues.com) el 6 de noviembre de 2026 (11:00 h). Acuse de recibo oficial confirmado a las 13:56 h.',
+     subitems: [
+      {label: 'Plazo oficial', val: '30 nov 2026 (entregada con 24 días de antelación)'},
+      {label: 'Acuse de recibo', val: 'Confirmado por D. Javier García (13:56 h) ✓'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta del Módulo',
+     score: 'Pendiente',
+     desc: 'La secretaría colegial y los docentes remitirán la nota definitiva tras la evaluación de las demandas del grupo.',
+     subitems: [
+      {label: 'Estado de entrega', val: 'Demanda recepcionada oficialmente ✓'},
+      {label: 'Profesor evaluador', val: 'D. Javier García Fernández (Garrigues)'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '🖼️ Ver justificante de entrega y acuse (.png) ↗', url: 'materiales/2026-11-06-acuse-recibo-demanda-civil-javier-garcia.png', cls: 'solid-green'},
+    {label: '✉️ Ver correo de acuse de recibo (6 nov) ↗', detailKey: 'mail_acuse_demanda_civil_6nov', cls: 'solid-blue'},
+    {label: 'Ver caso en entregas ↗', detailKey: 'mail_caso_escritura_30oct'},
+    {label: 'Ficha de Javier García Fernández ↗', teacher: 'Javier García Fernández'}
    ]
   }
  ];
