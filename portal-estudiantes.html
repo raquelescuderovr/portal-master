@@ -6365,6 +6365,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,10),title:'Examen de Marketing de Despacho',teacher:'Jaime Martul',subject:'Marketing Jurídico y Desarrollo de Negocio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_marketing_de_de',details:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.'},
  {
   date:new Date(2026,10,9),
   title:'Mandar al correo de la profesora D.ª Chony Jiménez con el Test (Arrendamientos Urbanos)',
@@ -6748,6 +6749,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_examen_de_marketing_de_de:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Marketing Jurídico y Desarrollo de Negocio',
+  title:'Examen de Marketing de Despacho',
+  date:'Publicada: 10 nov 2026 · Plazo: 21 de noviembre de 2026 · antes de las 23:59 h',
+  teacher:'Jaime Martul',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
 mail_rita_goimil_27oct:{
   kicker:'Calificaciones oficiales de Procura · Deontología y técnicas transversales',
   title:'Resultados de las pruebas del 27/10/2026 · Rita Goimil Martínez (Nota: 10 / 10 ★)',
@@ -9245,6 +9259,7 @@ const courses=[
     teachers:['Jaime Martul'],
     grade:{score:'⏳ Por venir · 28 oct',detail:'Estrategia de despacho, marca personal y captación de clientes.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Examen de Marketing de Despacho',detailKey:'entrega_examen_de_marketing_de_de',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Publicidad y captación en el Código Deontológico de la Abogacía',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Normativa y CPROC ↗'}
     ],
     mails:['materials']
@@ -9970,7 +9985,8 @@ const teacherDirectory=[
    {date:'2026-10-28',dayLabel:'Miércoles 28 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Marketing de la abogacía, captación ética y marca personal',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[],
-  practices:[],
+  practices:[
+   {title:'Examen de Marketing de Despacho',status:'⏳ Pendiente (Plazo: 21 de noviembre de 2026 · antes de las 23:59 h)',key:'entrega_examen_de_marketing_de_de'},],
   driveFiles:[],
   notes:[]
  },
