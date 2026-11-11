@@ -6365,6 +6365,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,11),title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',teacher:'Fernando Lousada',subject:'Abogacía · Práctica Procesal Civil',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_casos_procesal_civil__ses',details:'Correo redactado y listo con el archivo adjunto Caso 13 noviembre_Raquel Escudero.pdf dirigido a fernando.lousada@udc.es'},
  {date:new Date(2026,10,10),title:'Examen de Marketing de Despacho',teacher:'Jaime Martul',subject:'Marketing Jurídico y Desarrollo de Negocio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_marketing_de_de',details:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.'},
  {
   date:new Date(2026,10,9),
@@ -6749,6 +6750,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_casos_procesal_civil__ses:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Abogacía · Práctica Procesal Civil',
+  title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
+  date:'Publicada: 11 nov 2026 · Plazo: 12 de noviembre de 2026 · antes de las 20:00 h (Envío programado: 12 nov a las 1',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Correo redactado y listo con el archivo adjunto Caso 13 noviembre_Raquel Escudero.pdf dirigido a fernando.lousada@udc.es',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
  entrega_examen_de_marketing_de_de:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Marketing Jurídico y Desarrollo de Negocio',
@@ -9370,6 +9384,7 @@ const courses=[
     teachers:['Fernando Lousada'],
     grade:{score:'⏳ Por venir · 12 nov',detail:'Diligencias preliminares, medidas cautelares y proceso monitorio.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',detailKey:'entrega_casos_procesal_civil__ses',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'LEC: Medidas cautelares y proceso monitorio (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
     mails:[]
@@ -10101,7 +10116,8 @@ const teacherDirectory=[
    {date:'2026-11-20',dayLabel:'Viernes 20 nov 2026',time:'16:30 – 19:00 (Mañana: 09:30 – 12:00)',hours:'2h 30m',topic:'Recursos procesales civiles: apelación, casación y queja (antes 19 nov)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:['mail_cambios_cronograma_2nov','mail_lousada_26oct'],
-  practices:['Casos prácticos de Procesal Civil (15 supuestos y guía de programación para las sesiones de noviembre)'],
+  practices:[
+   {title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',status:'⏳ Pendiente (Plazo: 12 de noviembre de 2026 · antes de las 20:00 h (Envío programado: 12 nov a las 1)',key:'entrega_casos_procesal_civil__ses'},'Casos prácticos de Procesal Civil (15 supuestos y guía de programación para las sesiones de noviembre)'],
   driveFiles:[],
   notes:['Materiales e instrucciones de los 15 casos prácticos remitidos por la Administración el 26 de octubre (16 archivos adjuntos).','Cambio de cronograma (2 nov): su sesión final pasa del jueves 19 al viernes 20 de noviembre (09:30–12:00 y 16:30–19:00 h).']
  },
