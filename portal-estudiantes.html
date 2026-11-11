@@ -6365,6 +6365,7 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,11),title:'Examen de Previsión Social',teacher:'Jaime Martul',subject:'Previsión Social de la Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_previsi_n_socia',details:'Envío obligatorio al correo master.abogacia@icacor.org identificando el email con nombre y apellidos y cumplimentando la hoja de examen adjunta.'},
  {date:new Date(2026,10,11),title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',teacher:'Fernando Lousada',subject:'Abogacía · Práctica Procesal Civil',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_casos_procesal_civil__ses',details:'Correo redactado y listo con el archivo adjunto Caso 13 noviembre_Raquel Escudero.pdf dirigido a fernando.lousada@udc.es'},
  {date:new Date(2026,10,10),title:'Examen de Marketing de Despacho',teacher:'Jaime Martul',subject:'Marketing Jurídico y Desarrollo de Negocio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_marketing_de_de',details:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.'},
  {
@@ -6750,6 +6751,19 @@ const mailSummaries={
 };
 
 const details={
+ entrega_examen_de_previsi_n_socia:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Previsión Social de la Abogacía',
+  title:'Examen de Previsión Social',
+  date:'Publicada: 11 nov 2026 · Plazo: 23 de noviembre de 2026, antes de las 23:59 h',
+  teacher:'Jaime Martul',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Envío obligatorio al correo master.abogacia@icacor.org identificando el email con nombre y apellidos y cumplimentando la hoja de examen adjunta.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
  entrega_casos_procesal_civil__ses:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Abogacía · Práctica Procesal Civil',
@@ -9297,6 +9311,7 @@ const courses=[
     teachers:['Pilar Cortizo'],
     grade:{score:'⏳ Por venir · 3 nov',detail:'Régimen de previsión profesional, Mutualidad de la Abogacía y RETA.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Examen de Previsión Social',detailKey:'entrega_examen_de_previsi_n_socia',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Previsión social y mutualidades de la abogacía',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'}
     ],
     mails:['materials']
@@ -10001,6 +10016,7 @@ const teacherDirectory=[
   ],
   mails:[],
   practices:[
+   {title:'Examen de Previsión Social',status:'⏳ Pendiente (Plazo: 23 de noviembre de 2026, antes de las 23:59 h)',key:'entrega_examen_de_previsi_n_socia'},
    {title:'Examen de Marketing de Despacho',status:'⏳ Pendiente (Plazo: 21 de noviembre de 2026 · antes de las 23:59 h)',key:'entrega_examen_de_marketing_de_de'},],
   driveFiles:[],
   notes:[]
