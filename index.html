@@ -1422,6 +1422,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .hub-more-btn{border:1.5px solid var(--line);background:var(--paper-warm);color:var(--ink);border-radius:20px;padding:8px 16px;font:800 12.5px var(--sans);cursor:pointer;transition:all .16s}
 .hub-more-btn:hover{background:var(--honey);color:#140f0c;border-color:var(--honey)}
 
+/* Estado de entrega programada en correo */
+.due-state{display:inline-flex;align-items:center;padding:5px 12px;border-radius:12px;font:700 11.5px var(--sans);letter-spacing:.02em;white-space:nowrap}
+.due-state.pending{background:var(--terra-pale);color:var(--terracotta);border:1px solid var(--terra-border)}
+.due-state.submitted{background:var(--green-pale);color:var(--green-dark);border:1px solid var(--green-border)}
+.due-state.scheduled{background:var(--blue-pale);color:var(--blue);border:1px solid var(--blue-border);font-weight:800}
+
 /* Bloques del Máster con Identidad de Color Temática Nítida */
 .course-grid{display:grid;grid-template-columns:1fr;gap:24px}
 .course-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}
@@ -4806,42 +4812,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">6 pendientes</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">4 pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
       <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
       <div class="side-pending-items">
-        <button class="side-pending-item" data-detail="entrega_chony_test_arrendamientos_9nov" title="Plazo: antes del lunes 9 de noviembre de 2026 · Enviar por correo a D.ª Chony Jiménez">
-          <div class="spi-head">
-            <span class="spi-dot red">●</span>
-            <strong class="spi-date">Antes del lun 9 nov</strong>
-            <span class="spi-platform blue">Email Docente</span>
-          </div>
-          <div class="spi-title">Test Arrendamientos Urbanos (Correo)</div>
-          <div class="spi-teacher">D.ª Chony Jiménez (chonyjimenezdellano@yahoo.es)</div>
-        </button>
-
-        <button class="side-pending-item" data-detail="entrega_lousada_sesion1" title="Plazo: 11 de noviembre antes de las 20:00 h · UDC">
-          <div class="spi-head">
-            <span class="spi-dot amber">●</span>
-            <strong class="spi-date">11 nov · 20:00 h</strong>
-            <span class="spi-platform blue">Email UDC</span>
-          </div>
-          <div class="spi-title">Procesal Civil: Casos Sesión 1</div>
-          <div class="spi-teacher">D. Fernando Lousada Arochena</div>
-        </button>
-
-        <button class="side-pending-item" data-detail="entrega_lousada_sesion2" title="Plazo: 12 de noviembre antes de las 20:00 h · UDC">
-          <div class="spi-head">
-            <span class="spi-dot amber">●</span>
-            <strong class="spi-date">12 nov · 20:00 h</strong>
-            <span class="spi-platform blue">Email UDC</span>
-          </div>
-          <div class="spi-title">Procesal Civil: Casos Sesión 2</div>
-          <div class="spi-teacher">D. Fernando Lousada Arochena</div>
-        </button>
-
         <button class="side-pending-item" data-detail="entrega_lousada_sesion3" title="Plazo: 16 de noviembre antes de las 20:00 h · UDC">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
@@ -4870,6 +4846,36 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
           <div class="spi-title">Procesal Civil: Casos Sesión 5 (Clase 20 nov)</div>
           <div class="spi-teacher">D. Fernando Lousada Arochena</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="entrega_consuelo_sanchez_12dic" title="Plazo: 12 de diciembre de 2026 · Enviar por correo a D.ª Consuelo Sánchez Mariño">
+          <div class="spi-head">
+            <span class="spi-dot amber">●</span>
+            <strong class="spi-date">12 dic</strong>
+            <span class="spi-platform blue">Email Docente</span>
+          </div>
+          <div class="spi-title">Propiedad Horizontal (4 prácticas)</div>
+          <div class="spi-teacher">D.ª M.ª Consuelo Sánchez Mariño</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="entrega_lousada_sesion2" title="Entregada por correo a D. Fernando Lousada (12 nov)">
+          <div class="spi-head">
+            <span class="spi-dot green">✓</span>
+            <strong class="spi-date">12 nov · Entregada</strong>
+            <span class="spi-platform green">Email UDC</span>
+          </div>
+          <div class="spi-title">Procesal Civil: Casos Sesión 2</div>
+          <div class="spi-teacher">D. Fernando Lousada Arochena</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="entrega_chony_test_arrendamientos_9nov" title="Entregados y calificados con 10/10 por D.ª Chony Jiménez (10 nov)">
+          <div class="spi-head">
+            <span class="spi-dot green">✓</span>
+            <strong class="spi-date">10 nov · 10/10 ★</strong>
+            <span class="spi-platform green">Email Docente</span>
+          </div>
+          <div class="spi-title">Tests Arrendamientos y Prop. Horizontal</div>
+          <div class="spi-teacher">D.ª Chony Jiménez</div>
         </button>
       </div>
     </div>
@@ -5067,7 +5073,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">Calendario mensual 🗓️</button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">10/8</span></button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">18 notas</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">81</span></button>
@@ -5222,26 +5228,26 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
             <span class="ptb-badge alert" id="ptbPendingBadge" style="background:var(--terracotta);color:#ffffff">⏳ 7 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip" id="ptbUrgentChip">🚨 Próximo vencimiento: antes del lunes 9 nov · Test Arrendamientos (D.ª Chony Jiménez)</span>
+            <span class="ptb-urgent-chip" id="ptbUrgentChip">📌 Próximo vencimiento: lunes 16 nov (20:00 h) · Sesión 3 Procesal Civil (D. Fernando Lousada)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle" id="ptbSubtitle">Tareas con plazo activo: <b>mandar al correo de la profesora D.ª Chony Jiménez</b> (<code>chonyjimenezdellano@yahoo.es</code>) <b>antes del lunes 9 de noviembre con el test</b> de Arrendamientos Urbanos + 5 sesiones con D. Fernando Lousada (del 11 al 19 de noviembre) + Contrato de cesión con Lucía Silvoso (7 dic). ¡Entregadas con éxito las prácticas de Demanda Civil / Escritura Forense con D. Javier García (6 nov · acuse confirmado), Patricia González (4 nov), Susana Díaz (30 oct), Delgado, Moure y DATAfórum!</p>
+          <p class="ptb-subtitle" id="ptbSubtitle">Tareas con plazo activo: Procesal Civil con D. Fernando Lousada (Sesiones 3, 4 y 5: 16, 17 y 19 nov) + 4 Casos de Propiedad Horizontal con D.ª Consuelo Sánchez (12 dic). ¡Entregados con éxito hoy 12 nov los dos exámenes de D. Jaime Martul (Marketing y Previsión Social) y la Sesión 2 de Fernando Lousada; además de los tests de Chony Jiménez (calificados con 10/10) y las tareas de Javier García, Patricia González, Susana Díaz, Delgado y Moure!</p>
         </div>
         <button class="ptb-view-all-btn" id="ptbViewAllBtn" data-switch-view="entregas">Ver todas las entregas (19) ➔</button>
       </div>
 
       <div class="ptb-grid">
         <!-- Tarjeta Pendiente URGENTE: Test Arrendamientos Chony Jiménez (antes del lunes 9 nov) -->
-        <article class="ptb-card" id="homePendingChonyTest" data-detail="entrega_chony_test_arrendamientos_9nov" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega del test por correo a D.ª Chony Jiménez">
+        <article class="ptb-card" id="homePendingChonyTest" data-detail="entrega_chony_test_arrendamientos_9nov" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega y la calificación de D.ª Chony Jiménez">
           <div class="ptb-card-top">
-            <span class="ptb-tag red">⏳ Entrega por correo · Urgente</span>
-            <span class="ptb-due-badge red">⏳ Plazo: Antes del lunes 9 nov 2026</span>
+            <span class="ptb-tag green">✓ Entregada · Doble 10 / 10 ★</span>
+            <span class="ptb-due-badge green">✓ Entregados el 10 nov · Calificado 10 y 10</span>
           </div>
-          <h4 class="ptb-card-title">Mandar al correo de la profesora D.ª Chony Jiménez con el Test (Arrendamientos Urbanos)</h4>
+          <h4 class="ptb-card-title">Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)</h4>
           <div class="ptb-card-meta">
-            <div>👤 Profesora de hoy (6 nov): <b>D.ª Chony Jiménez</b></div>
-            <div>📚 Materia: <b>Abogacía · Sustantivo civil (Arrendamientos urbanos y precario)</b></div>
-            <div>📩 Enviar a <code>chonyjimenezdellano@yahoo.es</code> antes del lunes 9 de noviembre con el test</div>
+            <div>👤 Profesora: <b>D.ª Chony Jiménez</b></div>
+            <div>📚 Materia: <b>Abogacía · Sustantivo civil (Arrendamientos y Propiedad Horizontal)</b></div>
+            <div>📩 Entregados por correo el 10 nov (11:30 h) · Calificación: <b>10 en cada uno («están perfectos los dos test»)</b></div>
           </div>
         </article>
         <!-- Tarjeta Escritura Forense (Demanda Civil): Entregada con acuse de recibo (6 nov) -->
@@ -5271,16 +5277,30 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
         </article>
         <!-- Tarjeta Pendiente 1: Fernando Lousada (Sesiones 1 a 5 · 11 al 19 nov) -->
-        <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion1" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
+        <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion3" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
           <div class="ptb-card-top">
-            <span class="ptb-tag blue">⏳ 5 entregas pendientes · Email UDC</span>
-            <span class="ptb-due-badge amber">⏳ Próx. plazo: Mié 11 nov (20:00 h)</span>
+            <span class="ptb-tag green">✓ Sesiones 1 y 2 entregadas</span>
+            <span class="ptb-due-badge amber">⏳ Próx. Sesión 3: Lun 16 nov (20:00 h)</span>
           </div>
-          <h4 class="ptb-card-title">Casos Prácticos de Procesal Civil (Sesiones 1 a 5 · 11, 12, 16, 17 y 19 nov)</h4>
+          <h4 class="ptb-card-title">Casos Prácticos de Procesal Civil (D. Fernando Lousada Arochena)</h4>
           <div class="ptb-card-meta">
             <div>👤 Profesor: <b>D. Fernando Lousada Arochena (Magistrado TSJ)</b></div>
-            <div>📚 Materia: <b>Práctica Procesal Civil (Clases: 12, 13, 17, 18 y 20 nov)</b></div>
-            <div>📩 Envío a <code>fernando.lousada@udc.es</code> antes de las 20:00 h del día previo a cada sesión (Preguntas 2, 6, 10 y comunes)</div>
+            <div>📚 Materia: <b>Práctica Procesal Civil · Sesión 1 (8 nov ✓) y Sesión 2 (12 nov ✓)</b></div>
+            <div>📩 Próximo envío a <code>fernando.lousada@udc.es</code>: Sesión 3 antes de las 20:00 h del lunes 16 nov</div>
+          </div>
+        </article>
+
+        <!-- Tarjetas Nuevas: Exámenes de Jaime Martul entregados -->
+        <article class="ptb-card" id="homeMartulExamenes" data-detail="entrega_examen_marketing_martul_21nov" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles del examen de Marketing">
+          <div class="ptb-card-top">
+            <span class="ptb-tag green">✓ Entregados el 12 nov</span>
+            <span class="ptb-due-badge green">✓ Marketing y Previsión completados</span>
+          </div>
+          <h4 class="ptb-card-title">Exámenes de Marketing de Despacho y Previsión Social (D. Jaime Martul)</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Profesor: <b>D. Jaime Martul</b></div>
+            <div>📚 Materia: <b>Técnicas Instrumentales (Marketing jurídico y Previsión social)</b></div>
+            <div>📩 Enviados formalmente por correo a <code>master.abogacia@icacor.org</code> el 12 nov (con 9 y 11 días de antelación)</div>
           </div>
         </article>
 
@@ -5360,7 +5380,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="section-title">
       <div>
         <h2>Calificaciones, notas por correo y tests evaluados</h2>
-        <p>Notas oficiales por correo de profesores (10/10 con Javier Sánchez y 8.8 con Ana Vázquez) y tests online de clase (20/20 con Carolina Moreno y 9/10 con Sandra Mosteiro).</p>
+        <p>Notas oficiales por correo (doble 10/10 oficial con María Pilar Carnota, 10/10 con Chony Jiménez, Javier Sánchez, Rita Goimil y Carlos Sánchez; 9.74 con Susana Díaz y 8.79 con Patricia González) y tests de clase superados.</p>
       </div>
       <button class="hub-more-btn" data-switch-view="inicio">← Volver a Portada</button>
     </div>
@@ -5371,20 +5391,20 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">5 notas oficiales por correo · 6 tests superados (10, 9, 10, 9, 10 y 10) · 9 prácticas entregadas con éxito ✓</span>
+        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 7 tests online superados · 11 prácticas entregadas con éxito ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--green-dark);margin-bottom:4px">1. ✉️ Nota conjunta del profesor (por correo)</div>
-          <p style="color:var(--ink-soft);margin:0">Es la calificación global que envía el docente al finalizar su bloque (ej. <strong>Javier Sánchez 10/10</strong> y <strong>Ana Vázquez 8.8/10</strong>). Pondera la nota conjunta de tests (40 %) y la nota conjunta de trabajos/escritos prácticos (60 %).</p>
+          <p style="color:var(--ink-soft);margin:0">Es la calificación global que envía el docente al finalizar su bloque (ej. <strong>María Pilar Carnota doble 10/10</strong>, <strong>Chony Jiménez 10/10</strong>, <strong>Susana Díaz 9.74/10</strong>, <strong>Patricia González 8.79/10</strong>, <strong>Javier Sánchez 10/10</strong> y <strong>Ana Vázquez 8.8/10</strong>). Pondera la nota de tests (40 %) y de trabajos/escritos (60 %).</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--blue);margin-bottom:4px">2. 📝 Tests online de clase (cuestionarios tipo test)</div>
-          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct y <strong>9/10 con Sandra Mosteiro</strong> el 20 oct). Tienen su propia nota independiente y no son casos prácticos.</p>
+          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct, <strong>9/10 con Sandra Mosteiro</strong> el 20 oct, <strong>10/10 con Carnota</strong> el 28 oct y 2 nov, <strong>10/10 y 9/10 con Susana</strong>, y <strong>8/10 con Patricia</strong>). Tienen su propia nota independiente y no son casos prácticos.</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
-          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (5 entregadas con éxito y 2 pendientes con Delgado).</p>
+          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (11 entregadas con éxito, incluida la demanda civil con acuse de recibo de Garrigues y los exámenes de Martul).</p>
         </div>
       </div>
     </div>
@@ -5394,30 +5414,30 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card" data-grade-filter="teachers" title="Ver expedientes agrupados por profesor">
         <div>
           <span class="stat-kicker">Expediente docente</span>
-          <span class="stat-title">6 profesores con actividad evaluable</span>
+          <span class="stat-title">10 profesores con actividad evaluable y notas</span>
         </div>
-        <span class="stat-val-pill">6 docentes</span>
+        <span class="stat-val-pill">10 docentes</span>
       </button>
       <button class="stat-card" data-grade-filter="mail" title="Ver solo calificaciones globales remitidas por correo">
         <div>
           <span class="stat-kicker">Notas conjuntas por correo</span>
-          <span class="stat-title">Javier Sánchez (10) · Carlos Sánchez (10) · Ana Vázquez (8.8)</span>
+          <span class="stat-title">Carnota (doble 10) · Chony (10) · Susana (9.74) · Patricia (8.79) · Goimil (10) · Sánchez (10)</span>
         </div>
-        <span class="stat-val-pill">3 oficiales</span>
+        <span class="stat-val-pill">11 oficiales</span>
       </button>
       <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">5 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10)</span>
+          <span class="stat-title">7 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10 · 2 nov: 10/10 · 3 nov: 8/10)</span>
         </div>
-        <span class="stat-val-pill">5 notas excelentes ★</span>
+        <span class="stat-val-pill">7 tests excelentes ★</span>
       </button>
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
           <span class="stat-kicker">Casos prácticos y trabajos</span>
-          <span class="stat-title">5 entregadas en 3 asignaturas</span>
+          <span class="stat-title">11 entregadas y confirmadas formalmente</span>
         </div>
-        <span class="stat-val-pill">5 / 5 ✓</span>
+        <span class="stat-val-pill">11 / 11 ✓</span>
       </button>
     </div>
 
@@ -5952,16 +5972,17 @@ const events={
    {start:'23:59',end:'',name:'✓ ENTREGADO CON ANTELACIÓN (4 nov): Caso Práctico Evaluable 3_11_2026 (D.ª Patricia González)',teacher:'Patricia González Figueroa',subject:'Procura · Deontología y Técnicas Transversales (CPROC)',detailKey:'entrega_patricia_caso_evaluable_3nov',place:'Plataforma CPROC (Plazo oficial: 6 nov)',kind:'Entrega completada ✓',isWarning:false}
   ],
   '2026-11-08':[
-   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA (antes del lunes): Mandar Test al correo de D.ª Chony Jiménez (Arrendamientos Urbanos)',teacher:'Chony Jiménez',subject:'Envío por correo a chonyjimenezdellano@yahoo.es antes del lunes 9 de noviembre con el test',detailKey:'entrega_chony_test_arrendamientos_9nov',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Correo chonyjimenezdellano@yahoo.es',kind:'Entrega práctica',isWarning:true}
-  ],
-  '2026-11-09':[
-   {start:'09:00',end:'',name:'⏳ LÍMITE ENTREGA (antes del lunes): Mandar Test al correo de D.ª Chony Jiménez',teacher:'Chony Jiménez',subject:'Envío por correo a chonyjimenezdellano@yahoo.es con el test de Arrendamientos Urbanos',detailKey:'entrega_chony_test_arrendamientos_9nov',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Correo chonyjimenezdellano@yahoo.es',kind:'Entrega práctica',isWarning:true},
-   {start:'16:30',end:'20:45',name:'Propiedad horizontal (Sesión 1)',teacher:'Chony Jiménez',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',mailKey:'mail_895671',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
-  ],
-  '2026-11-10':[
-   {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'20:45',name:'Compraventa civil y mercantil',teacher:'Juan Raposo',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|3',mailKey:'mail_compraventa_raposo_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
-  ],
+    {start:'13:32',end:'',name:'📨 EN ENVÍO PROGRAMADO: Test de Arrendamientos Urbanos (D.ª Chony Jiménez)',teacher:'Chony Jiménez',subject:'Programado por correo a chonyjimenezdellano@yahoo.es (ampliado posteriormente con el Test de Propiedad Horizontal)',detailKey:'entrega_chony_test_arrendamientos_9nov',mailKey:'mail_arrendamientos_urbanos_5nov',place:'Correo Exchange',kind:'Envío programado 📨',isWarning:false}
+   ],
+   '2026-11-09':[
+    {start:'09:54',end:'',name:'✉️ CORREO RECIBIDO: Test de Propiedad Horizontal (D.ª Chony Jiménez)',teacher:'Chony Jiménez',subject:'Recibido «Test propiedad horizontal.doc». Se une al correo de Arrendamientos para entrega conjunta',detailKey:'mail_test_propiedad_horizontal_9nov',mailKey:'mail_test_propiedad_horizontal_9nov',place:'Correo Exchange',kind:'Material / Test ✉️'},
+    {start:'16:30',end:'20:45',name:'Propiedad horizontal (Sesión 1)',teacher:'Chony Jiménez',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',mailKey:'mail_895671',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+   ],
+   '2026-11-10':[
+    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
+    {start:'09:00',end:'',name:'📨 EN ENVÍO PROGRAMADO: Entrega conjunta de 2 Tests a D.ª Chony Jiménez',teacher:'Chony Jiménez',subject:'Envío programado en Exchange para hoy 10 nov a chonyjimenezdellano@yahoo.es (Adjuntos: Test arrendamientos urbanos.doc + Test propiedad horizontal.doc)',detailKey:'entrega_chony_test_arrendamientos_9nov',mailKey:'mail_test_propiedad_horizontal_9nov',place:'Correo chonyjimenezdellano@yahoo.es',kind:'Envío programado 📨',isWarning:false},
+    {start:'16:30',end:'20:45',name:'Compraventa civil y mercantil',teacher:'Juan Raposo',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|3',mailKey:'mail_compraventa_raposo_5nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
+   ],
   '2026-11-11':[
    {start:'16:30',end:'17:30',name:'Propiedad horizontal (Sesión 2 · 1.ª parte)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
    {start:'17:45',end:'20:45',name:'Propiedad horizontal (Sesión 2 · 2.ª parte)',teacher:'Docente pendiente de asignar',subject:'Sustantivo civil · Abogacía',subjectRef:'Abogacía|Sustantivo civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'},
@@ -5970,7 +5991,7 @@ const events={
   '2026-11-12':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'16:30',end:'20:45',name:'Cuestiones procesales / diligencias preliminares / cautelares / monitorio',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|0',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
-   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 2 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion2',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
+   {start:'20:00',end:'',name:'✅ ENTREGADA: Casos Procesal Civil Sesión 2 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Enviada formalmente por correo a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion2',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:false}
   ],
   '2026-11-13':[
    {start:'16:30',end:'20:45',name:'Demanda, contestación, reconvención y juicio ordinario',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
@@ -6118,6 +6139,129 @@ const events={
 };
 
 const gradeRecords=[
+ {
+  id:'grade_carnota_sesion2_2nov',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 11 nov 2026 (13:03)',
+  title:'Recursos procesales, ejecución y costas · María Pilar Carnota (Sesión 02/11)',
+  score:'10 / 10 ★',
+  scoreLabel:'Nota oficial',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'4.00 / 4.00 puntos (100 % aciertos)'},
+   {label:'II. Trabajo/s escrito/s (60 %)',val:'6.00 / 6.00 puntos (100 % aciertos)'},
+   {label:'Calificación otorgada',val:'10.00 / 10 ★ · Sobresaliente pleno'}
+  ],
+  teacher:'María P. Carnota García',
+  subjectRef:'Procura|Actuación procesal|1',
+  mailKey:'mail_notas_carnota_sesion2_11nov',
+  description:'Calificación oficial comunicada por la secretaría del Colegio de Procuradores de A Coruña el 11 de noviembre de 2026 a las 13:03 h («Resultados de las pruebas del 02/11/2026 - Técnicas Instrumentales - Docente María Pilar Carnota García»), correspondiente a las pruebas de la clase del 2 de noviembre sobre recursos de queja y apelación, ejecución forzosa, costas procesales y tasación. Ponderación oficial: Test 40%: 4.00 ptos + Trabajos escritos 60%: 6.00 ptos -> Nota final de la docente: 10.00 / 10 ★ (Sobresaliente pleno). Ponderable por la coordinación del MUAP.',
+  links:[
+   {label:'✉ Abrir correo de la nota (11 nov) ↗',detailKey:'mail_notas_carnota_sesion2_11nov',cls:'solid-green'},
+   {label:'📝 Ver test online realizado (10/10) ↗',detailKey:'test_2nov_carnota',cls:'solid-blue'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|1'},
+   {label:'Ficha de María P. Carnota ↗',teacher:'María P. Carnota García'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_carnota_sesion1_28oct',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 11 nov 2026 (12:28)',
+  title:'Deontología y trámites registrales · María Pilar Carnota (Sesión 28/10)',
+  score:'10 / 10 ★',
+  scoreLabel:'Nota oficial',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'4.00 / 4.00 puntos (100 % aciertos)'},
+   {label:'II. Trabajo/s escrito/s (60 %)',val:'6.00 / 6.00 puntos (100 % aciertos)'},
+   {label:'Calificación otorgada',val:'10.00 / 10 ★ · Sobresaliente pleno'}
+  ],
+  teacher:'María P. Carnota García',
+  subjectRef:'Procura|Actuación procesal|1',
+  mailKey:'mail_notas_carnota_sesion1_11nov',
+  description:'Calificación oficial comunicada por la secretaría del Colegio de Procuradores de A Coruña el 11 de noviembre de 2026 a las 12:28 h («Resultados de las pruebas del 28/10/2026 - Deontología y Técnicas Transversales - Docente María Pilar Carnota García»), correspondiente a la clase del 28 de octubre. Ponderación oficial: Test 40%: 4.00 ptos + Trabajos escritos 60%: 6.00 ptos -> Nota final de la docente: 10.00 / 10 ★ (Sobresaliente pleno). Ponderable por la coordinación del MUAP.',
+  links:[
+   {label:'✉ Abrir correo de la nota (11 nov) ↗',detailKey:'mail_notas_carnota_sesion1_11nov',cls:'solid-green'},
+   {label:'📝 Ver test online realizado (10/10) ↗',detailKey:'test_28oct_carnota',cls:'solid-blue'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|1'},
+   {label:'Ficha de María P. Carnota ↗',teacher:'María P. Carnota García'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_chony_ambos_tests',
+  type:'mail',
+  kicker:'Evaluación docente directa por correo · 10 nov 2026 (12:14)',
+  title:'Arrendamientos Urbanos y Propiedad Horizontal · D.ª Chony Jiménez',
+  score:'10 / 10 ★',
+  scoreLabel:'Doble 10 / 10',
+  breakdown:[
+   {label:'Test Arrendamientos Urbanos',val:'10 / 10 puntos (Perfecto ★)'},
+   {label:'Test Propiedad Horizontal',val:'10 / 10 puntos (Perfecto ★)'},
+   {label:'Calificación docente',val:'10 / 10 ★ en ambos tests'}
+  ],
+  teacher:'Chony Jiménez',
+  subjectRef:'Abogacía|Sustantivo civil|1',
+  mailKey:'mail_calificacion_chony_10nov',
+  description:'Calificación otorgada formalmente por correo por la profesora D.ª María Asunción (Chony) Jiménez de Llano Zato el martes 10 de noviembre de 2026 a las 12:14 h tras remitirle ambos tests resueltos («Test de arrendamientos_Raquel Escudero»): «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno. Saludos. Chony».',
+  links:[
+   {label:'✉ Abrir correo de la calificación (10 nov) ↗',detailKey:'mail_calificacion_chony_10nov',cls:'solid-green'},
+   {label:'📁 Ver entrega de tests en el portal ↗',detailKey:'entrega_chony_test_arrendamientos_9nov',cls:'solid-blue'},
+   {label:'Ver asignatura ↗',subjectRef:'Abogacía|Sustantivo civil|1'},
+   {label:'Ficha de Chony Jiménez ↗',teacher:'Chony Jiménez'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_patricia_9nov',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 9 nov 2026 (14:55)',
+  title:'Escritura forense de la Procura y LexNET · Patricia González',
+  score:'8.79 / 10',
+  scoreLabel:'Nota oficial',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'2.94 / 4 puntos'},
+   {label:'II. Trabajos escritos (60 %)',val:'5.85 / 6 puntos'},
+   {label:'Calificación otorgada',val:'8.79 / 10 · Notable alto'}
+  ],
+  teacher:'Patricia González Figueroa',
+  subjectRef:'Procura|Actuación procesal|4',
+  mailKey:'mail_notas_patricia_9nov',
+  description:'Calificaciones comunicadas oficialmente por la secretaría del Colegio de Procuradores de A Coruña el lunes 9 de noviembre de 2026 a las 14:55 h («Resultados de las pruebas del 3/11/2026 - Deontología y Técnicas Transversales - Docente Patricia González Figueroa»). Desglose: Test 40%: 2.94 puntos + Trabajos escritos 60%: 5.85 puntos (Caso práctico evaluable entregado en CPROC con vídeo registrado) -> Nota final de la docente: 8.79 / 10 (Notable alto). Ponderable por la coordinación del MUAP.',
+  links:[
+   {label:'✉ Abrir correo de la nota (9 nov) ↗',detailKey:'mail_notas_patricia_9nov',cls:'solid-green'},
+   {label:'📝 Ver test online de Testmoz (8/10) ↗',detailKey:'test_3nov_patricia',cls:'solid-blue'},
+   {label:'📁 Ver entrega de caso práctico en CPROC ↗',detailKey:'entrega_patricia_caso_evaluable_3nov'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|4'},
+   {label:'Ficha de Patricia González ↗',teacher:'Patricia González Figueroa'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_susana_9nov',
+  type:'mail',
+  kicker:'Evaluación oficial por correo · 9 nov 2026 (13:15)',
+  title:'Procesos civiles declarativos y medidas cautelares · Susana Díaz',
+  score:'9.74 / 10 ★',
+  scoreLabel:'Nota oficial',
+  breakdown:[
+   {label:'I. Test (40 %)',val:'3.74 / 4 puntos'},
+   {label:'II. Trabajos escritos (60 %)',val:'6.00 / 6.00 puntos (100 %)'},
+   {label:'Calificación otorgada',val:'9.74 / 10 ★ · Sobresaliente pleno'}
+  ],
+  teacher:'Susana Díaz Gallego',
+  subjectRef:'Procura|Actuación procesal|2',
+  mailKey:'mail_notas_susana_9nov',
+  description:'Calificaciones comunicadas oficialmente por la secretaría del Colegio de Procuradores de A Coruña el lunes 9 de noviembre de 2026 a las 13:15 h («Resultados de las pruebas del 29 y 30/10/2026 - Técnicas Instrumentales - Docente Susana Díaz Gallego»). Desglose: Test 40%: 3.74 ptos (media de los dos tests: 9/10 el 29 oct y 10/10 el 30 oct) + Trabajos escritos 60%: 6.00 / 6.00 ptos (100 % de los casos prácticos y escrito de subsanación entregados en CPROC) -> Nota final de la docente: 9.74 / 10 ★ (Sobresaliente pleno). Ponderable por la coordinación del MUAP.',
+  links:[
+   {label:'✉ Abrir correo de la nota (9 nov) ↗',detailKey:'mail_notas_susana_9nov',cls:'solid-green'},
+   {label:'📝 Ver Test Sesión 2 (10/10 ★) ↗',detailKey:'test_30oct_susana',cls:'solid-blue'},
+   {label:'📝 Ver Test Sesión 1 (9/10) ↗',detailKey:'test_29oct_susana'},
+   {label:'📁 Ver entrega casos prácticos en CPROC ↗',detailKey:'entrega_susana_diaz_casos_30oct'},
+   {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|2'},
+   {label:'Ficha de Susana Díaz ↗',teacher:'Susana Díaz Gallego'},
+   {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
  {
   id:'grade_rita_goimil_27oct',
   type:'mail',
@@ -6454,17 +6598,17 @@ const gradeRecords=[
 
 const deliveries=[
  {
-  date:new Date(2026,10,9),
-  title:'Mandar al correo de la profesora D.ª Chony Jiménez con el Test (Arrendamientos Urbanos)',
+  date:new Date(2026,10,10),
+  title:'Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
   teacher:'Chony Jiménez',
-  subject:'Abogacía · Sustantivo civil (Arrendamientos urbanos y precario)',
+  subject:'Abogacía · Sustantivo civil (Arrendamientos y Propiedad Horizontal)',
   subjectRef:'Abogacía|Sustantivo civil|1',
-  subjectName:'Arrendamientos urbanos y precario (D.ª Chony Jiménez)',
-  status:'📨 En envío programado (Correo listo con Test arrendamientos urbanos.doc)',
-  submitted:false,
+  subjectName:'Arrendamientos urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
+  status:'Entregada con nota oficial: 10 / 10 en ambos tests ✓ (10 nov 2026)',
+  submitted:true,
   detailKey:'entrega_chony_test_arrendamientos_9nov',
-  file:'Trabajos para casa y documentación arrendamientos urbanos (2).zip',
-  details:'Entrega encargada en la sesión del viernes 6 de noviembre de 2026. Correo redactado y dejado en envío programado en Exchange (Asunto: «Test de arrendamientos_Raquel Escudero», adjunto: «Test arrendamientos urbanos.doc») dirigido a chonyjimenezdellano@yahoo.es antes del plazo del lunes 9 de noviembre de 2026.'
+  file:'Test arrendamientos urbanos.doc + Test propiedad horizontal.doc',
+  details:'Entrega conjunta de los 2 tests realizada por correo electrónico a chonyjimenezdellano@yahoo.es el martes 10 de noviembre de 2026 a las 11:30 h («Test de arrendamientos_Raquel Escudero»). Calificada por la docente el mismo 10 de noviembre a las 12:14 h con la máxima nota: «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno. Saludos, Chony».'
  },
  {date:new Date(2026,10,4),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.'},
  {
@@ -6552,22 +6696,62 @@ const deliveries=[
   subject:'Abogacía · Práctica Procesal Civil',
   subjectRef:'Abogacía|Procesal civil|0',
   subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
-  status:'📨 En envío programado (Correo listo con Caso 12 noviembre_Raquel Escudero.pdf)',
-  submitted:false,
+  status:'Entregada por correo a D. Fernando Lousada ✓ (8 nov 2026, 13:36 h)',
+  submitted:true,
   detailKey:'entrega_lousada_sesion1',
-  details:'Respuestas a los casos prácticos de la Sesión 1 (clase del 12 de noviembre): Competencia y conciliación, Diligencias Preliminares, Medidas cautelares (Alcoa) y Cuestiones Generales. Correo redactado y en envío programado en Exchange (Asunto: «Práctica 12 de noviembre_Raquel Escudero», adjunto: «Caso 12 noviembre_Raquel Escudero.pdf») dirigido a fernando.lousada@udc.es para su entrega en plazo antes de las 20:00 h del miércoles 11 de noviembre.'
+  file:'Caso 12 noviembre_Raquel Escudero.pdf',
+  details:'Respuestas a los casos prácticos de la Sesión 1 (clase del 12 de noviembre): Competencia y conciliación, Diligencias Preliminares, Medidas cautelares (Alcoa) y Cuestiones Generales. Enviadas formalmente por correo electrónico a fernando.lousada@udc.es el domingo 8 de noviembre de 2026 a las 13:36 h con el archivo adjunto «Caso 12 noviembre_Raquel Escudero.pdf» (cumplida con 3 días de antelación respecto al límite oficial del 11 nov a las 20:00 h).'
  },
  {
-  date:new Date(2026,10,12),
-  title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
+   date:new Date(2026,10,12),
+   title:'Examen de Marketing de Despacho (D. Jaime Martul)',
+   teacher:'Jaime Martul',
+   subject:'Abogacía · Técnicas instrumentales (Marketing jurídico)',
+   subjectRef:'Abogacía|Técnicas instrumentales|4',
+   subjectName:'Marketing de Despacho (D. Jaime Martul)',
+   status:'Entregado por correo a master.abogacia@icacor.org ✓ (12 nov 2026)',
+   submitted:true,
+   detailKey:'entrega_examen_marketing_martul_21nov',
+   file:'Máster de la abogacía 2026 EXAMEN MARKETING.pdf',
+   details:'Examen oficial remitido por el ICA Coruña el 10 de noviembre de 2026 sobre marketing de despacho y desarrollo de negocio. Resuelto y enviado formalmente por correo electrónico a master.abogacia@icacor.org el jueves 12 de noviembre de 2026 (cumplido con 9 días de antelación sobre el plazo límite del 21 de noviembre a las 23:59 h).'
+  },
+  {
+   date:new Date(2026,10,12),
+   title:'Examen de Previsión Social de la Abogacía (D. Jaime Martul)',
+   teacher:'Jaime Martul',
+   subject:'Abogacía · Técnicas instrumentales (Previsión social)',
+   subjectRef:'Abogacía|Técnicas instrumentales|5',
+   subjectName:'Previsión Social (D. Jaime Martul)',
+   status:'Entregado por correo a master.abogacia@icacor.org ✓ (12 nov 2026)',
+   submitted:true,
+   detailKey:'entrega_examen_prevision_social_23nov',
+   file:'Máster de la abogacía 2026 EXAMEN PREVISIÓN SOCIAL.pdf',
+   details:'Examen oficial remitido por el ICA Coruña el 11 de noviembre de 2026 sobre Previsión Social de la Abogacía (Mutualidad, RETA y coberturas). Resuelto y enviado formalmente por correo electrónico a master.abogacia@icacor.org el jueves 12 de noviembre de 2026 (cumplido con 11 días de antelación sobre el plazo límite del 23 de noviembre a las 23:59 h).'
+  },
+  {
+   date:new Date(2026,11,12),
+   title:'Tareas de Propiedad Horizontal: Convocatorias, Acta y Demanda de Impugnación (D.ª M.ª Consuelo Sánchez Mariño)',
+   teacher:'María Consuelo Sánchez Mariño',
+   subject:'Abogacía · Sustantivo civil (Propiedad Horizontal)',
+   subjectRef:'Abogacía|Sustantivo civil|2',
+   subjectName:'Propiedad Horizontal · Tareas prácticas (D.ª M.ª Consuelo Sánchez Mariño)',
+   status:'⏳ Pendiente (Plazo: sábado 12 dic 2026)',
+   submitted:false,
+   detailKey:'entrega_consuelo_sanchez_12dic',
+   details:'4 tareas oficiales encargadas el 12 de noviembre de 2026 por D.ª María Consuelo Sánchez Mariño: 1) Convocatoria de Junta Ordinaria; 2) Convocatoria de Junta Extraordinaria; 3) Acta de Junta Ordinaria; 4) Demanda de impugnación de acuerdo comunitario con solicitud de medidas cautelares (panadería en bajo afectada en 10 m² por instalación de ascensor de 120.000 €). Remitir en PDFs identificados a mcsmarino@gmail.com antes del 12 de diciembre de 2026.'
+  },
+  {
+   date:new Date(2026,10,12),
+   title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
   teacher:'Fernando Lousada',
   subject:'Abogacía · Práctica Procesal Civil',
   subjectRef:'Abogacía|Procesal civil|1',
   subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
-  status:'⏳ Pendiente (Plazo: 12 nov 2026 · antes 20:00 h)',
-  submitted:false,
+  status:'Entregada por correo a D. Fernando Lousada ✓ (12 nov 2026)',
+  submitted:true,
   detailKey:'entrega_lousada_sesion2',
-  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del jueves 12 de noviembre. Casos: Divorcio internacional (1), Wally Procesal (sin envío por email, exposición en clase), Reconvención y Divorcio internacional (2). Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
+  file:'Caso 13 noviembre_Raquel Escudero.pdf',
+  details:'Respuestas a los casos prácticos de la Sesión 2 (clase del viernes 13 de noviembre): Divorcio internacional (1), Reconvención y Divorcio internacional (2) (en Wally Procesal exposición oral). Enviadas formalmente por correo electrónico a fernando.lousada@udc.es el jueves 12 de noviembre de 2026 con el archivo adjunto «Caso 13 noviembre_Raquel Escudero.pdf» (cumplida antes del límite oficial de las 20:00 h).'
  },
  {
   date:new Date(2026,10,16),
@@ -6689,6 +6873,16 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'12 nov 2026 (11:29)',title:'Tareas de Propiedad Horizontal (4 trabajos · Plazo: 12 dic) · D.ª M.ª Consuelo Sánchez Mariño',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_tareas_consuelo_12nov',teacher:'María Consuelo Sánchez Mariño',subjectRef:'Abogacía|Sustantivo civil|2',emailSubject:'Tareas a realizar para la Docente Dª María Consuelo Sánchez Mariño'},
+ {date:'11 nov 2026 (18:12)',title:'Examen y apuntes de Previsión Social (Plazo: 23 nov · 23:59 h) · D. Jaime Martul',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_examen_prevision_social_11nov',teacher:'Jaime Martul',subjectRef:'Abogacía|Técnicas instrumentales|5',emailSubject:'Examen y apuntes asignatura Previsión Social'},
+ {date:'11 nov 2026 (13:03)',title:'Resultados oficiales Recursos, ejecución y costas: 10 / 10 ★ (Pleno) · D.ª M.ª Pilar Carnota',meta:'accesoabogaciaprocura@procuradores-coruna.com · Técnicas Instrumentales · Procura (Nota: 10/10 · Test: 4/4 + Trabajos: 6/6)',key:'mail_notas_carnota_sesion2_11nov',teacher:'María P. Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Resultados de las pruebas del 02/11/2026 -Técnicas Instrumentales - Docente María Pilar Carnota García'},
+ {date:'11 nov 2026 (12:28)',title:'Resultados oficiales Deontología y Técnica transversal: 10 / 10 ★ (Pleno) · D.ª M.ª Pilar Carnota',meta:'accesoabogaciaprocura@procuradores-coruna.com · Deontología y Técnicas Transversales · Procura (Nota: 10/10 · Test: 4/4 + Trabajos: 6/6)',key:'mail_notas_carnota_sesion1_11nov',teacher:'María P. Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Resultados de las pruebas del 28/10/2026 -Deontologíay Técnicas Transversales - Docente María Pilar Carnota García'},
+ {date:'10 nov 2026 (13:57)',title:'Examen de Marketing de Despacho (Plazo: 21 nov · 23:59 h) · D. Jaime Martul',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_examen_marketing_10nov',teacher:'Jaime Martul',subjectRef:'Abogacía|Técnicas instrumentales|4',emailSubject:'Examen marketing de despacho'},
+ {date:'10 nov 2026 (12:14)',title:'Calificación oficial: 10 / 10 en ambos tests · D.ª Chony Jiménez',meta:'D.ª Asunción (Chony) Jiménez de Llano (chonyjimenezdellano@yahoo.es) · «están perfectos los dos test y te he puesto un 10 en cada uno»',key:'mail_calificacion_chony_10nov',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'Re: Test de arrendamientos_Raquel Escudero'},
+ {date:'9 nov 2026 (14:55)',title:'Resultados oficiales Escritura forense: 8.79 / 10 · D.ª Patricia González',meta:'accesoabogaciaprocura@procuradores-coruna.com · Deontología y Técnicas Transversales (Nota final: 8.79 · Test: 2.94/4 + Trabajos: 5.85/6)',key:'mail_notas_patricia_9nov',teacher:'Patricia González Figueroa',subjectRef:'Procura|Actuación procesal|4',emailSubject:'Resultados de las pruebas del 3/11/2026 -Deontologíay Técnicas Transversales - Docente Patricia González Figueroa'},
+ {date:'9 nov 2026 (13:15)',title:'Resultados oficiales Procesos declarativos y medidas cautelares: 9.74 / 10 ★ · D.ª Susana Díaz',meta:'accesoabogaciaprocura@procuradores-coruna.com · Técnicas Instrumentales (Nota final: 9.74 · Sobresaliente pleno · Test: 3.74/4 + Trabajos: 6/6)',key:'mail_notas_susana_9nov',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Resultados de las pruebas del 29 y  30/10/2026 -Técnicas Instrumentales - Docente Susana Díaz Gallego'},
+ {date:'9 nov 2026 (12:48)',title:'Información importante de la Coordinación del Máster: Huelga 11 nov y clases / Patrona ICACOR 20 nov',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_coordinacion_huelga_patrona_9nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Información importante de la Coordinación del Master'},
+ {date:'9 nov 2026 (09:54)',title:'Test Propiedad Horizontal · D.ª Chony Jiménez (Adjunto: Test propiedad horizontal.doc)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_test_propiedad_horizontal_9nov',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|2',emailSubject:'Test Propiedad Horizontal'},
  {date:'6 nov 2026 (13:56)',title:'Acuse de recibo de entrega: Demanda civil · Escritura Forense (D. Javier García Fernández)',meta:'Javier García Fernández (javier.garcia@garrigues.com · Garrigues) · Confirmación de entrega recibida formalmente ✓',key:'mail_acuse_demanda_civil_6nov',teacher:'Javier García y Santiago Varela',subjectRef:'Abogacía|Técnicas instrumentales|7',emailSubject:'RE: Entrega demanda civil máster de abogacía_Raquel Escudero'},
  {date:'5 nov 2026 (16:21)',title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',meta:'Administración del Máster · D.ª Chony Jiménez',key:'mail_895671',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|1'},
  {date:'5 nov 2026 (10:32)',title:'Documentación y trabajos para casa: Arrendamientos Urbanos (5 y 6 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_arrendamientos_urbanos_5nov',teacher:'Administración del Máster',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'RV: Archivos para enviar hoy a los dos grupos arrendamientos urbanos'},
@@ -7328,7 +7522,205 @@ mail_rita_goimil_27oct:{
   ],
   extra:'✓ Tarea entregada formalmente en CPROC el miércoles 4 de noviembre de 2026 con comprobante de vídeo registrado.'
  },
- mail_arrendamientos_urbanos_5nov:{
+    mail_calificacion_chony_10nov:{
+   kicker:'Calificación oficial · 10 nov 2026 (12:14 h)',
+   title:'Calificación oficial: 10 / 10 en ambos tests · D.ª Chony Jiménez',
+   date:'Recibido: martes, 10 nov 2026 (12:14) · Docente D.ª Chony Jiménez',
+   teacher:'Chony Jiménez',
+   subjectRef:'Abogacía|Sustantivo civil|1',
+   body:'Respuesta oficial de calificación remitida por la profesora D.ª Asunción (Chony) Jiménez de Llano Zato (chonyjimenezdellano@yahoo.es) tras el envío de los tests de Arrendamientos Urbanos y Propiedad Horizontal:\n\n«Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno.\n\nSaludos\nChony\nMARIA ASUNCION JIMENEZ DE LLANO ZATO. ABOGADA Y MEDIADORA.»',
+   source:'chonyjimenezdellano@yahoo.es · 10 nov 2026 (12:14 h)',
+   attachments:[
+    {name:'Ficha de la entrega completada (10/10)',detailKey:'entrega_chony_test_arrendamientos_9nov',kind:'Entrega 10 ★'},
+    {name:'Ficha docente: D.ª Chony Jiménez',teacher:'Chony Jiménez',kind:'Profesorado 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_examen_marketing_10nov:{
+   kicker:'Convocatoria de Examen Oficial · Marketing de Despacho',
+   title:'Examen de Marketing de Despacho · Profesor D. Jaime Martul',
+   date:'Recibido: martes, 10 nov 2026 (13:57) · Plazo de entrega: sábado, 21 nov 2026 (23:59 h)',
+   teacher:'Jaime Martul',
+   subjectRef:'Abogacía|Técnicas instrumentales|4',
+   body:'Remisión oficial del examen y materiales de Marketing de Despacho por parte del ICA Coruña:\n\n«Estimados/as alumnos/as: Siguiendo indicaciones del profesor D. Jaime Martul, remitimos examen de la asignatura Marketing de Despacho y diapositivas de la asignatura.\n\nDisponéis de plazo hasta el 21 de noviembre a las 23.59 horas para enviar el examen realizado.\nNo admitiremos exámenes recibidos fuera de ese plazo.\n\nDebéis enviar los exámenes al e mail master.abogacia@icacor.org, identificando el e mail con vuestros nombres y apellidos, así como cumplimentando dichos datos en la hoja de examen. Saludos, Patricia, Administración.»\n\nArchivos adjuntos remitidos:\n1. «Máster de la abogacía 2026 EXAMEN MARKETING.pdf» (340 KB)\n2. «Presentación Marketing Máster Abogacía 2026 ENVIO ALUMNOS.pdf» (3.8 MB)',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 10 nov 2026',
+   attachments:[
+    {name:'Máster de la abogacía 2026 EXAMEN MARKETING.pdf',kind:'Examen oficial 📄'},
+    {name:'Presentación Marketing Máster Abogacía 2026.pdf (3.8 MB)',kind:'Diapositivas 📚'},
+    {name:'Ficha de la entrega: Examen Marketing (Plazo: 21 nov)',detailKey:'entrega_examen_marketing_martul_21nov',kind:'Entrega ⏳'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_examen_prevision_social_11nov:{
+   kicker:'Convocatoria de Examen Oficial · Previsión Social de la Abogacía',
+   title:'Examen de Previsión Social · Profesor D. Jaime Martul',
+   date:'Recibido: miércoles, 11 nov 2026 (18:12) · Plazo de entrega: lunes, 23 nov 2026 (23:59 h)',
+   teacher:'Jaime Martul',
+   subjectRef:'Abogacía|Técnicas instrumentales|5',
+   body:'Remisión oficial del examen y materiales de Previsión Social por parte del ICA Coruña:\n\n«Estimados/as alumnos/as: Siguiendo indicaciones del profesor D. Jaime Martul, remitimos examen de la asignatura Previsión Social y presentación de la asignatura.\n\nDisponéis de plazo hasta el día 23 de noviembre a las 23.59 para enviar el examen realizado.\nNo admitiremos exámenes recibidos fuera de ese plazo.\n\nDebéis enviar los exámenes al e mail master.abogacia@icacor.org, identificando el e mail con vuestros nombres y apellidos, así como cumplimentando dichos datos en la hoja de examen. Saludos, Patricia, Administración.»\n\nArchivos adjuntos remitidos:\n1. «Máster de la abogacía 2026 EXAMEN PREVISIÓN SOCIAL.pdf» (308 KB)\n2. «Presentación Previsión social Máster Abogacía 2026 ENVIO ALUMNOS.pdf» (3.1 MB)',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 11 nov 2026',
+   attachments:[
+    {name:'Máster de la abogacía 2026 EXAMEN PREVISIÓN SOCIAL.pdf',kind:'Examen oficial 📄'},
+    {name:'Presentación Previsión social Máster Abogacía 2026.pdf (3.1 MB)',kind:'Diapositivas 📚'},
+    {name:'Ficha de la entrega: Examen Previsión Social (Plazo: 23 nov)',detailKey:'entrega_examen_prevision_social_23nov',kind:'Entrega ⏳'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_tareas_consuelo_12nov:{
+   kicker:'Convocatoria de Trabajos Prácticos · Propiedad Horizontal',
+   title:'Tareas de Propiedad Horizontal (4 trabajos · Plazo: 12 dic) · D.ª M.ª Consuelo Sánchez Mariño',
+   date:'Recibido: jueves, 12 nov 2026 (11:29) · Plazo de entrega: 12 de diciembre de 2026',
+   teacher:'María Consuelo Sánchez Mariño',
+   subjectRef:'Abogacía|Sustantivo civil|2',
+   body:'Remisión oficial de tareas por parte de la Administración del Máster (ICA Coruña):\n\n«Estimados/as alumnos/as: Remitimos las tareas a realizar para la Docente Dª María Consuelo Sánchez Mariño. El plazo de entrega de los trabajos finaliza el 12 de diciembre.\n\nDebéis remitir las mismas al e mail de la profesora: mcsmarino@gmail.com, identificando los pdfs con apellidos, nombre, grupo y trabajo solicitado.\n\nLa tarea es la siguiente:\n1. CONVOCATORIA DE JUNTA ORDINARIA\n2. CONVOCATORIA JUNTA EXTRAORDINARIA\n3. ACTA DE JUNTA ORDINARIA\n4. DEMANDA DE IMPUGNACIÓN DE ACUERDO COMUNITARIO CON SOLICITUD DE ADOPCIÓN DE MEDIDAS CAUTELARES, y con las siguientes premisas:\n   a) Comunidad que aprueba por mayoría simple la instalación de ascensor en un edificio.\n   b) Nuestro cliente es el propietario del bajo.\n   c) El ascensor a instalar va a suponer afectar a 10 m² del Bajo.\n   d) El coste del ascensor es 120.000 euros.\n   e) La cuota de participación del bajo es un 20%.\n   f) En el bajo se desarrolla la actividad de panadería.\n   g) El ascensor se va a ubicar afectando a la superficie donde se encuentra el horno.\n\nSaludos, Patricia. Administración. Máster de la Abogacía – ICA Coruña.»',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 12 nov 2026',
+   attachments:[
+    {name:'Ficha de la entrega: 4 Tareas de Propiedad Horizontal (Plazo: 12 dic)',detailKey:'entrega_consuelo_sanchez_12dic',kind:'Entrega ⏳'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_notas_carnota_sesion1_11nov:{
+   kicker:'Calificaciones oficiales · Deontología y Técnica transversal (Procura)',
+   title:'Resultados oficiales Sesión 28/10: 10 / 10 ★ (Pleno) · D.ª María Pilar Carnota',
+   date:'Recibido: miércoles, 11 nov 2026 (12:28) · Secretaría Colegio de Procuradores',
+   teacher:'María P. Carnota García',
+   subjectRef:'Procura|Actuación procesal|1',
+   body:'Calificaciones oficiales comunicadas por la secretaría del Colegio de Procuradores correspondientes a la clase del 28 de octubre de 2026:\n\n• Materia: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\n• Contenidos: La intervención del procurador en la tramitación de los recursos y de otros medios de impugnación. Actuación del procurador en el proceso de ejecución. Las costas procesales.\n\n• Desglose oficial de puntuación:\n  - I. TEST (40 %): 4.00 / 4.00 puntos (100 % aciertos)\n  - II. TRABAJO/S ESCRITO/S (60 %): 6.00 / 6.00 puntos (100 % aciertos)\n  - NOTA FINAL: 10.00 / 10 ★ (Sobresaliente pleno)\n\n• Observación: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: María Pilar Carnota García.»',
+   source:'accesoabogaciaprocura@procuradores-coruna.com (Colegio de Procuradores de A Coruña) · 11 nov 2026',
+   attachments:[
+    {name:'Ver test online Sesión 1 (10/10 aciertos)',detailKey:'test_28oct_carnota',kind:'Test 📝'},
+    {name:'Ficha docente: D.ª María Pilar Carnota',teacher:'María P. Carnota García',kind:'Docente 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_notas_carnota_sesion2_11nov:{
+   kicker:'Calificaciones oficiales · Técnicas Instrumentales (Procura)',
+   title:'Resultados oficiales Sesión 02/11: 10 / 10 ★ (Pleno) · D.ª María Pilar Carnota',
+   date:'Recibido: miércoles, 11 nov 2026 (13:03) · Secretaría Colegio de Procuradores',
+   teacher:'María P. Carnota García',
+   subjectRef:'Procura|Actuación procesal|1',
+   body:'Calificaciones oficiales comunicadas por la secretaría del Colegio de Procuradores correspondientes a la clase del 2 de noviembre de 2026:\n\n• Materia: TÉCNICAS INSTRUMENTALES\n• Contenidos: La intervención del procurador en la tramitación de los recursos y de otros medios de impugnación. Actuación del procurador en el proceso de ejecución. Las costas procesales.\n\n• Desglose oficial de puntuación:\n  - I. TEST (40 %): 4.00 / 4.00 puntos (100 % aciertos)\n  - II. TRABAJO/S ESCRITO/S (60 %): 6.00 / 6.00 puntos (100 % aciertos)\n  - NOTA FINAL: 10.00 / 10 ★ (Sobresaliente pleno)\n\n• Observación: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: María Pilar Carnota García.»',
+   source:'accesoabogaciaprocura@procuradores-coruna.com (Colegio de Procuradores de A Coruña) · 11 nov 2026',
+   attachments:[
+    {name:'Ver test online Sesión 2 (10/10 aciertos)',detailKey:'test_2nov_carnota',kind:'Test 📝'},
+    {name:'Ficha docente: D.ª María Pilar Carnota',teacher:'María P. Carnota García',kind:'Docente 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  entrega_examen_marketing_martul_21nov:{
+   isDelivery:true,
+   kicker:'Examen Oficial Entregado ✓ · Abogacía · Técnicas Instrumentales',
+   title:'Examen de Marketing de Despacho (D. Jaime Martul)',
+   date:'Entregado: Jueves, 12 de noviembre de 2026 · Plazo oficial: Sábado 21 nov (23:59 h)',
+   teacher:'Jaime Martul',
+   subjectRef:'Abogacía|Técnicas instrumentales|4',
+   mailKey:'mail_examen_marketing_10nov',
+   body:'INSTRUCCIONES OFICIALES DEL EXAMEN DE MARKETING DE DESPACHO:\n\n• Docente: D. Jaime Martul\n• Plazo improrrogable: Sábado, 21 de noviembre de 2026 antes de las 23:59 horas.\n• Correo de entrega: master.abogacia@icacor.org\n• Identificación obligatoria: Enviar con nombre y apellidos en el correo y cumplimentados en la hoja de examen.\n• Materiales de apoyo: «Presentación Marketing Máster Abogacía 2026 ENVIO ALUMNOS.pdf» (3.8 MB).',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 10 nov 2026',
+   attachments:[
+    {name:'📩 Redactar envío a master.abogacia@icacor.org',url:'mailto:master.abogacia@icacor.org?subject=Examen%20Marketing%20de%20Despacho%20-%20Raquel%20Escudero&body=Buenas%20tardes%2C%0A%0AAdjunto%20remito%20el%20examen%20realizado%20de%20Marketing%20de%20Despacho.%0A%0AAtentamente%2C%0ARaquel%20Escudero',kind:'Enviar examen ↗'},
+    {name:'Máster de la abogacía 2026 EXAMEN MARKETING.pdf',kind:'Examen oficial 📄'},
+    {name:'Ver correo oficial con las diapositivas (10 nov)',detailKey:'mail_examen_marketing_10nov',kind:'Correo oficial ✉️'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ],
+   extra:'✓ Entregado por correo electrónico a master.abogacia@icacor.org el jueves 12 de noviembre de 2026 (cumplido con 9 días de antelación).'
+  },
+  entrega_examen_prevision_social_23nov:{
+   isDelivery:true,
+   kicker:'Examen Oficial Entregado ✓ · Abogacía · Técnicas Instrumentales',
+   title:'Examen de Previsión Social de la Abogacía (D. Jaime Martul)',
+   date:'Entregado: Jueves, 12 de noviembre de 2026 · Plazo oficial: Lunes 23 nov (23:59 h)',
+   teacher:'Jaime Martul',
+   subjectRef:'Abogacía|Técnicas instrumentales|5',
+   mailKey:'mail_examen_prevision_social_11nov',
+   body:'INSTRUCCIONES OFICIALES DEL EXAMEN DE PREVISIÓN SOCIAL:\n\n• Docente: D. Jaime Martul\n• Plazo improrrogable: Lunes, 23 de noviembre de 2026 antes de las 23:59 horas.\n• Correo de entrega: master.abogacia@icacor.org\n• Identificación obligatoria: Enviar con nombre y apellidos en el correo y cumplimentados en la hoja de examen.\n• Contenido: Mutualidad de la Abogacía, RETA, coberturas profesionales y fiscalidad.\n• Materiales de apoyo: «Presentación Previsión social Máster Abogacía 2026 ENVIO ALUMNOS.pdf» (3.1 MB).',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 11 nov 2026',
+   attachments:[
+    {name:'📩 Redactar envío a master.abogacia@icacor.org',url:'mailto:master.abogacia@icacor.org?subject=Examen%20Previsi%C3%B3n%20Social%20-%20Raquel%20Escudero&body=Buenas%20tardes%2C%0A%0AAdjunto%20remito%20el%20examen%20realizado%20de%20Previsi%C3%B3n%20Social.%0A%0AAtentamente%2C%0ARaquel%20Escudero',kind:'Enviar examen ↗'},
+    {name:'Máster de la abogacía 2026 EXAMEN PREVISIÓN SOCIAL.pdf',kind:'Examen oficial 📄'},
+    {name:'Ver correo oficial con las diapositivas (11 nov)',detailKey:'mail_examen_prevision_social_11nov',kind:'Correo oficial ✉️'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ],
+   extra:'✓ Entregado por correo electrónico a master.abogacia@icacor.org el jueves 12 de noviembre de 2026 (cumplido con 11 días de antelación).'
+  },
+  entrega_consuelo_sanchez_12dic:{
+   isDelivery:true,
+   kicker:'Trabajos prácticos oficiales ⏳ · Abogacía · Propiedad Horizontal',
+   title:'Tareas de Propiedad Horizontal: Convocatorias, Acta y Demanda de Impugnación (D.ª M.ª Consuelo Sánchez Mariño)',
+   date:'Encargada: jueves, 12 nov 2026 · Plazo oficial límite: Sábado, 12 de diciembre de 2026',
+   teacher:'María Consuelo Sánchez Mariño',
+   subjectRef:'Abogacía|Sustantivo civil|2',
+   mailKey:'mail_tareas_consuelo_12nov',
+   body:'ENUNCIADO Y TAREAS OFICIALES A REALIZAR (PROP. HORIZONTAL):\n\n• Docente: D.ª María Consuelo Sánchez Mariño\n• Correo de destino: mcsmarino@gmail.com\n• Plazo de entrega: Hasta el 12 de diciembre de 2026\n• Formato: PDFs identificados con apellidos, nombre, grupo y trabajo solicitado\n\n• Trabajos requeridos:\n  1. CONVOCATORIA DE JUNTA ORDINARIA\n  2. CONVOCATORIA JUNTA EXTRAORDINARIA\n  3. ACTA DE JUNTA ORDINARIA\n  4. DEMANDA DE IMPUGNACIÓN DE ACUERDO COMUNITARIO CON MEDIDAS CAUTELARES:\n     - Premisas: Comunidad que aprueba por mayoría simple la instalación de ascensor en edificio.\n     - Cliente: Propietario del bajo comercial.\n     - Afección: El ascensor afecta a 10 m² del bajo, ubicándose exactamente sobre la superficie donde se encuentra el horno.\n     - Coste del ascensor: 120.000 €.\n     - Cuota de participación del bajo: 20 %.\n     - Actividad económica: En el bajo se desarrolla actividad de panadería.',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D.ª Consuelo Sánchez Mariño · 12 nov 2026',
+   attachments:[
+    {name:'📩 Redactar envío a mcsmarino@gmail.com',url:'mailto:mcsmarino@gmail.com?subject=Trabajos%20Propiedad%20Horizontal%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimada%20D%C2%AA%20Consuelo%20S%C3%A1nchez%20Mari%C3%B1o%3A%0A%0AAdjunto%20remito%20las%204%20tareas%20solicitadas%20de%20Propiedad%20Horizontal.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Enviar tareas ↗'},
+    {name:'Ver correo de la convocatoria (12 nov)',detailKey:'mail_tareas_consuelo_12nov',kind:'Correo oficial ✉️'},
+    {name:'Ley 49/1960 de Propiedad Horizontal (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906',kind:'BOE oficial ↗'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ],
+   extra:'⏳ Plazo límite de entrega por correo: 12 de diciembre de 2026 a mcsmarino@gmail.com.'
+  },
+  mail_notas_patricia_9nov:{
+   kicker:'Calificaciones oficiales · Escritura forense (Procura)',
+   title:'Resultados oficiales: 8.79 / 10 · Docente D.ª Patricia González Figueroa',
+   date:'Recibido: lunes, 9 nov 2026 (14:55) · Secretaría Colegio de Procuradores',
+   teacher:'Patricia González Figueroa',
+   subjectRef:'Procura|Actuación procesal|4',
+   body:'Calificaciones oficiales comunicadas por la secretaría del Colegio de Procuradores de A Coruña correspondientes a las pruebas evaluables de la clase del 3 de noviembre de 2026:\n\n• Materia: DEONTOLOGÍA Y TÉCNICAS TRANSVERSALES\n• Contenidos: Escritura forense (personaciones, peticiones de impulso, subsanaciones, LexNET y recursos)\n\n• Desglose de puntuación:\n  - I. TEST (40 %): 2.94 puntos\n  - II. TRABAJO/S ESCRITO/S (60 %): 5.85 puntos\n  - NOTA FINAL: 8.79 / 10 (Notable alto)\n\n• Observación oficial: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: Patricia González Figueroa.»',
+   source:'accesoabogaciaprocura@procuradores-coruna.com (Colegio de Procuradores de A Coruña) · 9 nov 2026 (14:55 h)',
+   attachments:[
+    {name:'Ver test online realizado (8/10 en Testmoz)',detailKey:'test_3nov_patricia',kind:'Test 📝'},
+    {name:'Ver comprobante de caso práctico evaluable en CPROC (.mov)',url:'materiales/2026-11-04-grabacion-entrega-caso-evaluable-patricia-gonzalez.mov',kind:'Vídeo CPROC 🎥'},
+    {name:'Ficha docente: D.ª Patricia González Figueroa',teacher:'Patricia González Figueroa',kind:'Docente 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_notas_susana_9nov:{
+   kicker:'Calificaciones oficiales · Declarativos y Cautelar (Procura)',
+   title:'Resultados oficiales: 9.74 / 10 ★ · Docente D.ª Susana Díaz Gallego',
+   date:'Recibido: lunes, 9 nov 2026 (13:15) · Secretaría Colegio de Procuradores',
+   teacher:'Susana Díaz Gallego',
+   subjectRef:'Procura|Actuación procesal|2',
+   body:'Calificaciones oficiales comunicadas por la secretaría del Colegio de Procuradores de A Coruña correspondientes a las pruebas evaluables de las clases del 29 y 30 de octubre de 2026:\n\n• Materia: TÉCNICAS INSTRUMENTALES\n• Contenidos: La intervención del procurador en los procesos civiles declarativos (primera instancia) y la intervención del profesional de la procura en el proceso cautelar\n\n• Desglose de puntuación:\n  - I. TEST (40 %): 3.74 puntos\n  - II. TRABAJO/S ESCRITO/S (60 %): 6.00 / 6.00 puntos (100 % de los trabajos)\n  - NOTA FINAL: 9.74 / 10 (Sobresaliente pleno ★)\n\n• Observación oficial: «En su momento, estas calificaciones serán ponderadas, por la coordinación del MUAP, con las que emitan los demás docentes, al objeto de calcular su calificación final en la materia de referencia. Fdo.: Susana Díaz Gallego.»',
+   source:'accesoabogaciaprocura@procuradores-coruna.com (Colegio de Procuradores de A Coruña) · 9 nov 2026 (13:15 h)',
+   attachments:[
+    {name:'Ver test online Sesión 2 (10/10 en Testmoz)',detailKey:'test_30oct_susana',kind:'Test 📝'},
+    {name:'Ver test online Sesión 1 (9/10 en Testmoz)',detailKey:'test_29oct_susana',kind:'Test 📝'},
+    {name:'Ver entrega casos prácticos cautelares en CPROC',detailKey:'entrega_susana_diaz_casos_30oct',kind:'Entrega CPROC 📄'},
+    {name:'Ver escrito de subsanación entregado en CPROC',detailKey:'entrega_susana_diaz_subsanacion',kind:'Entrega CPROC 📄'},
+    {name:'Ficha docente: D.ª Susana Díaz Gallego',teacher:'Susana Díaz Gallego',kind:'Docente 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_coordinacion_huelga_patrona_9nov:{
+   kicker:'Comunicación oficial de Coordinación · Máster Abogacía y Procura',
+   title:'Información importante de Coordinación: Huelga 11 nov, clases y Patrona ICACOR 20 nov',
+   date:'Recibido: lunes, 9 nov 2026 (12:48) · Coordinación MUAP (ICA Coruña - UDC)',
+   teacher:'Coordinación Máster (ICACOR - UDC)',
+   subjectRef:'Abogacía|Procesal civil|0',
+   body:'Comunicación general remitida por la Administración y Coordinación del Máster resolviendo consultas de organización:\n\n1) CONVOCATORIA DE HUELGA - CLASES DÍA 11 DE NOVIEMBRE:\n   «Como sabéis el derecho de huelga es un derecho de ejercicio individual, tanto para estudiantes como para profesores. No existe obligación de comunicación del eventual ejercicio del derecho. En ningún caso supondrá un perjuicio en la evaluación académica.»\n\n2) PATRONA ICACOR - DÍA 20 DE NOVIEMBRE:\n   «Por razones de limitación de aforo la Junta de Gobierno acordó que podían acudir a la cena los alumnos/as de segundo curso. No es materialmente posible abrirlo a los alumnos de primero.»\n\n3) CLASES DÍA 20 DE NOVIEMBRE:\n   «Hay clase tanto en turno de mañana como de tarde.» (Sesión final de Recursos Civiles con D. Fernando Lousada de 09:30 a 12:00 y de 16:30 a 19:00 h).',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · Patricia · 9 nov 2026 (12:48 h)',
+   attachments:[
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_test_propiedad_horizontal_9nov:{
+   kicker:'Comunicación académica · Test evaluable de Propiedad Horizontal',
+   title:'Test de Propiedad Horizontal · D.ª Chony Jiménez',
+   date:'Recibido: lunes, 9 nov 2026 (09:54) · Archivo Word adjunto',
+   teacher:'Chony Jiménez',
+   subjectRef:'Abogacía|Sustantivo civil|2',
+   body:'Remisión oficial por parte de la Administración del Máster (ICA Coruña) del Test de Propiedad Horizontal para el módulo impartido por D.ª Chony Jiménez:\n\n«Estimados/as alumnos/as: Siguiendo instrucciones de la profesora del área, os remitimos el Test de Propiedad Horizontal. Saludos, Patricia. Administración. Máster de la Abogacía – ICA Coruña.»\n\nArchivo adjunto remitido: «Test propiedad horizontal.doc».\n\n• ENTREGA: El test queda incorporado junto con el test de Arrendamientos Urbanos en un único envío por correo electrónico a la docente (chonyjimenezdellano@yahoo.es) programado para el martes 10 de noviembre de 2026.',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA · master.abogacia@icacor.org) · 9 nov 2026 (09:54 h)',
+   attachments:[
+    {name:'Test propiedad horizontal.doc (Documento Word)',kind:'Documento Word 📄'},
+    {name:'Ficha de la entrega de tests a D.ª Chony Jiménez',detailKey:'entrega_chony_test_arrendamientos_9nov',kind:'Entrega 📨'},
+    {name:'Ficha docente: D.ª Chony Jiménez',teacher:'Chony Jiménez',kind:'Profesorado 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ]
+  },
+  mail_arrendamientos_urbanos_5nov:{
   kicker:'Comunicación académica · Documentación y trabajos para casa',
   title:'Documentación y trabajos para casa: Arrendamientos Urbanos',
   date:'Recibido: jueves, 5 nov 2026 (10:32) · Entrega del test: antes del lunes 9 nov 2026',
@@ -7343,26 +7735,26 @@ mail_rita_goimil_27oct:{
    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
   ]
  },
- entrega_chony_test_arrendamientos_9nov:{
-  isDelivery:true,
-  kicker:'Entrega pendiente por correo ⏳ · Abogacía · Arrendamientos Urbanos y Precario',
-  title:'Mandar al correo de la profesora D.ª Chony Jiménez con el Test (Arrendamientos Urbanos)',
-  date:'Encargada: viernes, 6 nov 2026 · Plazo límite: antes del lunes, 9 de noviembre de 2026',
-  teacher:'Chony Jiménez',
-  subjectRef:'Abogacía|Sustantivo civil|1',
-  mailKey:'mail_arrendamientos_urbanos_5nov',
-  body:'INSTRUCCIONES DE LA ENTREGA (ENCARGADA EN LA CLASE DEL VIERNES 6 NOV 2026):\n\n• Docente: D.ª Chony Jiménez\n• Correo electrónico de envío: chonyjimenezdellano@yahoo.es\n• Plazo límite de entrega: Antes del lunes, 9 de noviembre de 2026\n• Contenido a enviar: Mandar correo a la profesora con el test de Arrendamientos Urbanos (incluido en «Trabajos para casa y documentación arrendamientos urbanos (2).zip» remitido por el Máster el 5 de noviembre de 2026).',
-  source:'Indicación en clase presencial de D.ª Chony Jiménez (6 nov 2026) · Correo de destino: chonyjimenezdellano@yahoo.es',
-  attachments:[
-   {name:'📩 Redactar correo a D.ª Chony Jiménez (chonyjimenezdellano@yahoo.es)',url:'mailto:chonyjimenezdellano@yahoo.es?subject=Test%20Arrendamientos%20Urbanos%20-%20Raquel%20Escudero%20(M%C3%A1ster%20Abogac%C3%ADa)&body=Buenas%20tardes%2C%0A%0ALe%20mando%20el%20test%20de%20Arrendamientos%20Urbanos%20del%20M%C3%A1ster%20de%20Abogac%C3%ADa%20y%20Procura.%0A%0AUn%20saludo%2C%0ARaquel%20Escudero',kind:'Enviar entrega ↗'},
-   {name:'Ver correo con la documentación y ZIP (5 nov)',detailKey:'mail_arrendamientos_urbanos_5nov',kind:'Correo y materiales ✉️'},
-   {name:'Trabajos para casa y documentación arrendamientos urbanos (2).zip (143 KB)',kind:'Archivo ZIP comprimido 📦'},
-   {name:'Ficha docente: D.ª Chony Jiménez',teacher:'Chony Jiménez',kind:'Profesorado 👤'},
-   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
-  ],
-  extra:'⏳ Pendiente de enviar por correo electrónico a chonyjimenezdellano@yahoo.es antes del lunes 9 de noviembre de 2026.'
- },
- mail_compraventa_raposo_5nov:{
+  entrega_chony_test_arrendamientos_9nov:{
+   isDelivery:true,
+   kicker:'Entrega completada y evaluada con 10 / 10 ★ · Abogacía · Sustantivo Civil',
+   title:'Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
+   date:'Entregada: martes, 10 nov 2026 (11:30 h) · Calificación otorgada: 10/10 (12:14 h)',
+   teacher:'Chony Jiménez',
+   subjectRef:'Abogacía|Sustantivo civil|1',
+   mailKey:'mail_calificacion_chony_10nov',
+   body:'Entrega oficial de los dos tests del módulo de Sustantivo Civil impartido por D.ª María Asunción (Chony) Jiménez de Llano Zato:\n\n• Tests entregados:\n  1) Test de Arrendamientos Urbanos (remitido el 5 de noviembre)\n  2) Test de Propiedad Horizontal (remitido el 9 de noviembre)\n\n• Envío formal realizado:\n  - Fecha de envío: Martes, 10 de noviembre de 2026 a las 11:30:33 CET\n  - Correo de destino: chonyjimenezdellano@yahoo.es\n  - Asunto: «Test de arrendamientos_Raquel Escudero»\n  - Archivos adjuntos: «Test arrendamientos urbanos.doc» y «Test propiedad horizontal.doc»\n\n• EVALUACIÓN OFICIAL DE LA DOCENTE (10 nov 2026, 12:14 h):\n  «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno. Saludos. Chony.»',
+   source:'Correo electrónico con la docente D.ª Chony Jiménez (chonyjimenezdellano@yahoo.es) · 10 nov 2026',
+   attachments:[
+    {name:'✉️ Ver correo de calificación (10/10) de D.ª Chony Jiménez',detailKey:'mail_calificacion_chony_10nov',kind:'Calificación 10 ★'},
+    {name:'Test arrendamientos urbanos.doc (Adjunto 1)',kind:'Documento Word 📄'},
+    {name:'Test propiedad horizontal.doc (Adjunto 2)',kind:'Documento Word 📄'},
+    {name:'Ficha docente: D.ª Chony Jiménez',teacher:'Chony Jiménez',kind:'Profesorado 👤'},
+    {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+   ],
+   extra:'✓ Entregados ambos tests el 10 nov y calificados con la máxima nota (10 / 10 ★ en ambos).'
+  },
+  mail_compraventa_raposo_5nov:{
   kicker:'Comunicación académica · Casos prácticos y documentación previa',
   title:'Casos prácticos de Compraventa · Profesor D. Juan Raposo',
   date:'Recibido: jueves, 5 nov 2026 (10:03) · 3 documentos Word adjuntos',
@@ -8492,22 +8884,23 @@ mail_rita_goimil_27oct:{
   extra:'✓ Entregada telemáticamente en CEPROC el viernes 30 de octubre de 2026 (17:20 h), con grabación en vídeo de respaldo.'
  },
  entrega_lousada_sesion1:{
-  isDelivery:true,
-  kicker:'Práctica Procesal Civil · Sesión 1 (Jueves 12 nov · 4 horas)',
-  title:'Casos Procesal Civil (Sesión 1): Competencia, conciliación, diligencias preliminares y cautelares',
-  date:'Plazo de entrega por correo: Miércoles, 11 de noviembre de 2026 antes de las 20:00 h',
-  teacher:'Fernando Lousada',
-  subjectRef:'Abogacía|Procesal civil|0',
-  body:'Programación oficial de casos prácticos de la Sesión 1 (12 de noviembre, 4 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 12 (1) Competencia y conciliación.doc (MASC, mediación y competencia judicial).\n  2) Nov. 12 (2) Diligencias Preliminares.doc (preparación del juicio ordinario ex arts. 256 y ss. LEC).\n  3) Nov. 12 (3) Medidas cautelares - Alcoa.doc (presupuestos cautelares: fumus boni iuris, periculum in mora y caución).\n  4) Nov. 12 (4) Cuestiones Generales.doc (capacidad, legitimación y postulación).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior (11 de noviembre).\n  - Se corregirán en clase y la entrega en tiempo junto con la exposición oral son básicas para la puntuación final.',
-  source:'Programación oficial e instrucciones remitidas por la Administración el 26 oct 2026',
-  mailKey:'mail_lousada_26oct',
-  attachments:[
-   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%2012%20nov%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20(Preguntas%202%2C%206%20y%2010%20y%20comunes)%20para%20la%20sesi%C3%B3n%20de%20ma%C3%B1ana%2012%20de%20noviembre.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
-   {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
-   {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
-  ],
-  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del miércoles 11 de noviembre a fernando.lousada@udc.es.'
- },
+   isDelivery:true,
+   kicker:'Práctica entregada formalmente por correo ✓ · Abogacía · Práctica Procesal Civil',
+   title:'Casos Procesal Civil (Sesión 1): Competencia, conciliación, diligencias preliminares y cautelares',
+   date:'Entregada por correo: Domingo, 8 de noviembre de 2026 (13:36 h) · Plazo oficial: 11 nov',
+   teacher:'Fernando Lousada',
+   subjectRef:'Abogacía|Procesal civil|0',
+   body:'Programación oficial de casos prácticos de la Sesión 1 (12 de noviembre, 4 horas) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos resueltos en el documento entregado:\n  1) Nov. 12 (1) Competencia y conciliación.doc\n  2) Nov. 12 (2) Diligencias Preliminares.doc\n  3) Nov. 12 (3) Medidas cautelares - Alcoa.doc\n  4) Nov. 12 (4) Cuestiones Generales.doc\n\n• Entrega formal realizada:\n  - Fecha de envío: Domingo, 8 de noviembre de 2026 a las 13:36 h (3 días antes del plazo límite)\n  - Correo de destino: fernando.lousada@udc.es\n  - Asunto: «Práctica 12 de noviembre_Raquel Escudero»\n  - Archivo adjunto: «Caso 12 noviembre_Raquel Escudero.pdf»\n  - Texto: «Buenas tardes, Le adjunto la práctica del 12 de noviembre. Un saludo, Raquel Escudero»',
+   source:'Programación oficial de D. Fernando Lousada · Entregada por correo el 8 nov 2026',
+   mailKey:'mail_lousada_26oct',
+   attachments:[
+    {name:'📄 Ver archivo entregado: Caso 12 noviembre_Raquel Escudero.pdf',kind:'PDF entregado 📄'},
+    {name:'✉️ Ver correo oficial de instrucciones (26 oct)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+    {name:'Ficha de D. Fernando Lousada',teacher:'Fernando Lousada',kind:'Docente 👤'},
+    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
+   ],
+   extra:'✓ Entregada por correo electrónico a fernando.lousada@udc.es el domingo 8 de noviembre de 2026 a las 13:36 h.'
+  },
  entrega_lousada_sesion2:{
   isDelivery:true,
   kicker:'Práctica Procesal Civil · Sesión 2 (Viernes 13 nov · 4 horas)',
@@ -8523,7 +8916,7 @@ mail_rita_goimil_27oct:{
    {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
   ],
-  extra:'⏳ Plazo de envío por correo: antes de las 20:00 h del jueves 12 de noviembre a fernando.lousada@udc.es. En Wally Procesal no se envía nada (exposición oral).'
+  extra:'✓ Entregada por correo electrónico a fernando.lousada@udc.es el jueves 12 de noviembre de 2026 con el adjunto «Caso 13 noviembre_Raquel Escudero.pdf». En Wally Procesal exposición oral en clase.'
  },
  entrega_lousada_sesion3:{
   isDelivery:true,
@@ -10212,9 +10605,9 @@ const teacherDirectory=[
   name:'María P. Carnota García',
   branch:'Procura',
   role:'Procuradora · Gestiones de procuradores, recursos y ejecuciones',
-  gradeBadge:'📝 Doble 10 / 10 ★ (Pleno en Test 1 y Test 2) · 100%',
-  summary:'Gestiones de procuradores ante juzgados, recursos y tasación de costas, y ejecución hipotecaria. Plenos absolutos en ambos tests de clase (10/10 el 28 oct y 10/10 el 2 nov).',
-  grade:{score:'Doble 10 / 10 ★ (100 %)',scoreLabel:'Tests online en Testmoz',detail:'Doble pleno 10/10 en tests oficiales de clase: Sesión 1 el 28 oct (10/10) y Sesión 2 el 2 nov (10/10 · Recursos, ejecución, costas y nulidad). Próxima sesión el 23 de noviembre.',detailKey:'test_2nov_carnota',actionLabel:'Ver test resuelto (10/10) ↗'},
+  gradeBadge:'🏆 Doble 10 / 10 ★ Pleno Oficial (11 nov) · 100%',
+  summary:'Gestiones de procuradores ante juzgados, recursos, costas y ejecuciones. Notificadas el 11 de noviembre las calificaciones oficiales con doble 10 / 10 pleno (4.00/4 en Test 40% + 6.00/6 en Trabajos 60% en ambas sesiones).',
+  grade:{score:'Doble 10 / 10 ★ Pleno Oficial (100 %)',scoreLabel:'Calificaciones oficiales notificadas por correo (11 nov)',detail:'Notificadas por la profesora D.ª María Pilar Carnota el 11 nov: Sesión 28 oct (10 / 10 · Deontología y Técnicas Transversales) y Sesión 2 nov (10 / 10 · Técnicas Instrumentales). Pleno total en ambas.',detailKey:'grade_carnota_doble_10_oficial',actionLabel:'Ver calificación oficial ↗'},
   sessions:[
    {date:'2026-10-28',dayLabel:'Miércoles 28 oct 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Gestiones profesionales de los procuradores (Práctica judicial cotidiana)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-02',dayLabel:'Lunes 2 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Recursos procesales, ejecución y tasación de costas en la Procura',place:'Colegio de Abogados (A Coruña)'},
@@ -10239,17 +10632,26 @@ const teacherDirectory=[
  {
   name:'Jaime Martul',
   branch:'Abogacía',
-  role:'Letrado y consultor · Marketing jurídico y desarrollo de negocio',
-  gradeBadge:'⏳ Por venir · 28 oct',
-  summary:'Estrategias de posicionamiento, captación ética de clientes, presencia online y desarrollo de marca profesional.',
-  grade:{score:'⏳ Por venir · 28 oct',scoreLabel:'Docencia por venir',detail:'Sesión programada para el miércoles 28 de octubre (18:45–20:45).',detailKey:'schedule'},
+  role:'Letrado y consultor · Marketing jurídico, Previsión Social y desarrollo de negocio',
+  gradeBadge:'🎉 Ambos exámenes entregados (Marketing y Previsión · 12 nov)',
+  summary:'Estrategias de posicionamiento, captación ética de clientes, marca personal y sistemas de previsión social de la abogacía. Ambos exámenes prácticos completados y entregados el 12 de noviembre.',
+  grade:{score:'🎉 Ambos exámenes entregados',scoreLabel:'Evaluación continuada (12 nov)',detail:'Entregados formalmente por correo a master.abogacia@icacor.org el 12 de noviembre tanto el Examen de Marketing de Despacho como el Examen de Previsión Social (con amplia antelación sobre los límites del 21 y 23 nov).',detailKey:'entrega_examen_prevision_social_23nov',actionLabel:'Ver examen Previsión ↗'},
   sessions:[
    {date:'2026-10-28',dayLabel:'Miércoles 28 oct 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Marketing de la abogacía, captación ética y marca personal',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
-  practices:[],
+  mails:[
+   {title:'Examen de Previsión Social y presentación de clase - Jaime Martul (11 nov)',key:'mail_examen_prevision_social_11nov'},
+   {title:'Examen de Marketing y presentación de clase - Jaime Martul (10 nov)',key:'mail_examen_marketing_10nov'}
+  ],
+  practices:[
+   {title:'Examen Práctico de Marketing de Despacho',status:'✅ Entregado el 12 nov a master.abogacia@icacor.org',key:'entrega_examen_marketing_martul_21nov'},
+   {title:'Examen Práctico de Previsión Social de la Abogacía',status:'✅ Entregado el 12 nov a master.abogacia@icacor.org',key:'entrega_examen_prevision_social_23nov'}
+  ],
   driveFiles:[],
-  notes:[]
+  notes:[
+   {title:'Examen Marketing de Despacho (PDF)',url:'mailto:master.abogacia@icacor.org',urlLabel:'Enviar a ICA Coruña ↗'},
+   {title:'Examen Previsión Social (PDF)',url:'mailto:master.abogacia@icacor.org',urlLabel:'Enviar a ICA Coruña ↗'}
+  ]
  },
  {
   name:'Susana Díaz Gallego',
@@ -10352,7 +10754,7 @@ const teacherDirectory=[
   name:'Fernando Lousada',
   branch:'Abogacía',
   role:'Magistrado especialista · Derecho Procesal Civil',
-  gradeBadge:'⏳ Por venir · 12, 13, 17, 18 y 20 nov',
+  gradeBadge:'✅ Sesiones 1 y 2 entregadas · Docencia en curso',
   summary:'Medidas cautelares, demanda y contestación, fase oral en estrados, terminación y recursos procesales civiles.',
   grade:{score:'⏳ Por venir · 5 sesiones',scoreLabel:'Docencia por venir',detail:'12, 13, 17, 18 y 20 de noviembre de 2026 (la sesión del 19 nov pasa al viernes 20 nov de 09:30 a 12:00 y de 16:30 a 19:00 h).',detailKey:'mail_cambios_cronograma_2nov'},
   sessions:[
@@ -10363,7 +10765,11 @@ const teacherDirectory=[
    {date:'2026-11-20',dayLabel:'Viernes 20 nov 2026',time:'16:30 – 19:00 (Mañana: 09:30 – 12:00)',hours:'2h 30m',topic:'Recursos procesales civiles: apelación, casación y queja (antes 19 nov)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:['mail_cambios_cronograma_2nov','mail_lousada_26oct'],
-  practices:['Casos prácticos de Procesal Civil (15 supuestos y guía de programación para las sesiones de noviembre)'],
+  practices:[
+   {title:'Sesión 1 (Práctica 12 nov): Competencia, conciliación, diligencias y cautelares',status:'✅ Entregada por correo el 8 nov',key:'entrega_lousada_sesion1'},
+   {title:'Sesión 2 (Práctica 13 nov): Divorcio internacional, reconvención y Wally',status:'✅ Entregada por correo el 12 nov',key:'entrega_lousada_sesion2'},
+   {title:'Sesión 3 (Práctica 17 nov): Romeo y Julieta y DDFF',status:'⏳ Plazo: 16 nov antes 20:00 h',key:'entrega_lousada_sesion3'}
+  ],
   driveFiles:[],
   notes:['Materiales e instrucciones de los 15 casos prácticos remitidos por la Administración el 26 de octubre (16 archivos adjuntos).','Cambio de cronograma (2 nov): su sesión final pasa del jueves 19 al viernes 20 de noviembre (09:30–12:00 y 16:30–19:00 h).']
  },
@@ -10510,20 +10916,22 @@ const teacherDirectory=[
   branch:'Abogacía',
   role:'Abogada · Arrendamientos Urbanos, Precario y Propiedad Horizontal (chonyjimenezdellano@yahoo.es)',
   email:'chonyjimenezdellano@yahoo.es',
-  gradeBadge:'⏳ Entrega test: antes del lun 9 nov',
-  summary:'Docente de las sesiones de Arrendamientos urbanos y precario (jueves 5 y viernes 6 de noviembre de 2026, de 16:30 a 19:30 h) y de la primera sesión de Propiedad Horizontal (lunes 9 de noviembre de 2026, de 16:30 a 20:45 h) en el Colegio de Abogados de A Coruña.',
-  grade:{score:'⏳ Test: antes del lun 9 nov',scoreLabel:'Entrega por correo pendiente',detail:'Mandar al correo de la profesora D.ª Chony Jiménez (chonyjimenezdellano@yahoo.es) antes del lunes 9 de noviembre de 2026 con el test de Arrendamientos Urbanos. Sesiones presenciales los días 5 y 6 de noviembre (Arrendamientos y precario) y lunes 9 de noviembre (Propiedad horizontal).',detailKey:'entrega_chony_test_arrendamientos_9nov',actionLabel:'Ver entrega del test ↗'},
+  gradeBadge:'🎉 Doble 10 / 10 · Calificado por docente (10 nov)',
+  summary:'Docente de las sesiones de Arrendamientos urbanos y precario (5 y 6 nov) y Propiedad Horizontal (9 nov). Entregados ambos tests el 10 nov por correo y confirmada calificación máxima: 10 en Test Arrendamientos Urbanos y 10 en Test Propiedad Horizontal.',
+  grade:{score:'10 / 10 en ambos tests ★',scoreLabel:'Evaluación docente por correo (10 nov)',detail:'Entregados ambos tests (Arrendamientos y Propiedad Horizontal) el 10 nov a las 11:30 h. Respuesta de D.ª Chony el 10 nov a las 12:14 h: «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno. Saludos, Chony».',detailKey:'grade_chony_ambos_tests',actionLabel:'Ver calificación oficial ↗'},
   sessions:[
    {date:'2026-11-05',dayLabel:'Jueves 5 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 1)',place:'Colegio de Abogados (A Coruña)'},
-   {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2 · Encargo de entrega de test por correo antes del lunes)',place:'Colegio de Abogados (A Coruña)'},
+   {date:'2026-11-06',dayLabel:'Viernes 6 nov 2026',time:'16:30 – 19:30',hours:'3 horas',topic:'Arrendamientos y precario (Sesión 2 · Encargo de entrega de tests)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-09',dayLabel:'Lunes 9 nov 2026',time:'16:30 – 20:45',hours:'4h 15m',topic:'Propiedad horizontal (Sesión 1)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[
+   {title:'Calificación tests Arrendamientos y Propiedad Horizontal (10/10) - Chony Jiménez (10 nov)',key:'mail_chony_nota_10'},
+   {title:'Entrega de tests de Arrendamientos Urbanos y Propiedad Horizontal - Raquel Escudero (10 nov)',key:'mail_entrega_chony_10nov'},
    {title:'Documentación y trabajos para casa: Arrendamientos Urbanos - 5 nov',key:'mail_arrendamientos_urbanos_5nov'},
    {title:'Actualización docente: Chony Jiménez (Arrendamientos y Propiedad Horizontal)',key:'mail_895671'}
   ],
   practices:[
-   {title:'Mandar al correo de la profesora con el Test (Arrendamientos Urbanos)',status:'⏳ Pendiente · Antes del lunes 9 nov 2026',key:'entrega_chony_test_arrendamientos_9nov'}
+   {title:'Test Arrendamientos Urbanos y Test Propiedad Horizontal',status:'✅ Entregado el 10 nov · Calificación: 10 / 10 en ambos',key:'entrega_chony_test_arrendamientos_9nov'}
   ],
   driveFiles:[],
   notes:[
@@ -10697,11 +11105,12 @@ const teacherGradeMap={
  'Ana Vázquez Corte': { kind:'final', score:'8.8 / 10 ★', label:'Final: 8.8 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 8.8 / 10 (Notable alto · Deontología)' },
  'Alex Sánchez Barge': { kind:'test', score:'Test: 20 / 20', label:'Test: 20 / 20', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 20 / 20 aciertos (Final conjunta de módulo 10/10 con Carolina y Carlos)' },
  'Sandra Mosteiro Costa': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 %) · Calificación final de módulo pendiente' },
- 'María Pilar Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
- 'María P. Carnota García': { kind:'test', score:'Test: 10 / 10 ★', label:'Test: 10 / 10 ★ (100%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 10 / 10 aciertos (100 %) · Calificación final de módulo pendiente' },
- 'Susana Díaz Gallego': { kind:'test', score:'Tests: 10 y 9 ★', label:'Tests: 10 y 9 ★ (Media 9.5)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Tests online Testmoz: Sesión 1 (9/10) y Sesión 2 (10/10 ★ · Pleno) · Media 9.5 (Sobresaliente) · Ambas sesiones superadas' },
- 'Patricia González Figueroa': { kind:'test', score:'Test: 8 / 10', label:'Test: 8 / 10 (80%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 8 / 10 aciertos (80 %) · Calificación final de módulo pendiente' },
- 'Patricia González': { kind:'test', score:'Test: 8 / 10', label:'Test: 8 / 10 (80%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 8 / 10 aciertos (80 %) · Calificación final de módulo pendiente' },
+ 'María Pilar Carnota García': { kind:'final', score:'10 / 10 ★', label:'Doble 10 / 10 ★ (Pleno)', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 ★ en ambas sesiones (28 oct y 2 nov) comunicada por correo el 11 nov (Test 4/4 + Trabajos 6/6)' },
+ 'María P. Carnota García': { kind:'final', score:'10 / 10 ★', label:'Doble 10 / 10 ★ (Pleno)', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 ★ en ambas sesiones (28 oct y 2 nov) comunicada por correo el 11 nov (Test 4/4 + Trabajos 6/6)' },
+ 'Susana Díaz Gallego': { kind:'final', score:'9.74 / 10 ★', label:'Final: 9.74 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 9.74 / 10 (Sobresaliente pleno) comunicada el 9 nov (Tests 3.74/4 + Casos prácticos CPROC 6/6)' },
+ 'Patricia González Figueroa': { kind:'final', score:'8.79 / 10 ★', label:'Final: 8.79 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 8.79 / 10 (Notable alto) comunicada el 9 nov (Test 2.94/4 + Caso práctico CPROC 5.85/6)' },
+ 'Patricia González': { kind:'final', score:'8.79 / 10 ★', label:'Final: 8.79 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 8.79 / 10 (Notable alto) comunicada el 9 nov (Test 2.94/4 + Caso práctico CPROC 5.85/6)' },
+ 'Chony Jiménez': { kind:'final', score:'10 / 10 ★', label:'Doble 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Calificación oficial por correo (10 nov): 10 en Test Arrendamientos Urbanos y 10 en Test Propiedad Horizontal' },
  'Alejandra Sánchez': { kind:'completed', score:'Taller superado', label:'Taller superado', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Taller práctico de Oratoria Forense superado' },
  'Carmen Belo González': { kind:'final', score:'7.6 / 10 ★', label:'Final: 7.6 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 7.6 / 10 (Notable · Test 3.4/4 + Trabajos 4.2/6)' },
  'Vanessa Amarelle': { kind:'completed', score:'Completado ✓', label:'Completada', icon:'✓', badgeClass:'grade-badge-completed', pillClass:'grade-pill-completed', full:'Deontología y responsabilidad completada' },
@@ -10745,6 +11154,7 @@ function getDossierIdForTeacher(tName){
  if(n.includes('goimil')) return 'dossier-rita-goimil';
  if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
  if(n.includes('carnota')) return 'dossier-maria-carnota';
+ if(n.includes('chony') || n.includes('asunción jiménez') || n.includes('asuncion jimenez') || n.includes('jiménez de llano') || n.includes('jimenez de llano')) return 'dossier-chony-jimenez';
  if(n.includes('susana') && (n.includes('díaz') || n.includes('diaz'))) return 'dossier-susana-diaz';
  if(n.includes('patricia') && (n.includes('gonzález') || n.includes('gonzalez') || n.includes('figueroa'))) return 'dossier-patricia-gonzalez';
  if(n.includes('moure')) return 'dossier-maria-luisa-moure';
@@ -10894,6 +11304,41 @@ function getSubjectFullGradeInfo(sub, optCKey, optSIdx){
    badgeIcon = '✓';
    badgeClass = 'grade-badge-completed';
    if(!detailKey) detailKey = 'grades';
+  } else if(teachers.includes('María P. Carnota García') || teachers.includes('María Pilar Carnota García') || lowerName.includes('gestiones profesionales') || lowerName.includes('recursos, ejecución y costas')){
+   gradeKind = 'final';
+   officialScore = '10 / 10 ★';
+   officialDetail = 'Nota final oficial: 10 / 10 ★ (Sobresaliente pleno) comunicada por correo el 11 nov (Test 4.00/4 + Trabajos 6.00/6). Docencia de María Pilar Carnota.';
+   displayLabel = 'Final: 10 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   if(lowerName.includes('recursos')) { testKey = 'test_2nov_carnota'; detailKey = 'mail_notas_carnota_sesion2_11nov'; }
+   else { testKey = 'test_28oct_carnota'; detailKey = 'mail_notas_carnota_sesion1_11nov'; }
+  } else if(teachers.includes('Susana Díaz Gallego') || lowerName.includes('declarativos de la procura')){
+   gradeKind = 'final';
+   officialScore = '9.74 / 10 ★';
+   officialDetail = 'Nota final oficial: 9.74 / 10 (Sobresaliente pleno) comunicada por correo el 9 nov (Tests 3.74/4 + Casos prácticos CPROC 6.00/6).';
+   displayLabel = 'Final: 9.74 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   testKey = 'test_30oct_susana';
+   if(!detailKey) detailKey = 'mail_notas_susana_9nov';
+  } else if(teachers.includes('Patricia González Figueroa') || lowerName.includes('escritura forense de la procura')){
+   gradeKind = 'final';
+   officialScore = '8.79 / 10 ★';
+   officialDetail = 'Nota final oficial: 8.79 / 10 (Notable alto) comunicada por correo el 9 nov (Test 2.94/4 + Práctica CPROC 5.85/6).';
+   displayLabel = 'Final: 8.79 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   testKey = 'test_3nov_patricia';
+   if(!detailKey) detailKey = 'mail_notas_patricia_9nov';
+  } else if(teachers.includes('Chony Jiménez') || lowerName.includes('arrendamientos urbanos')){
+   gradeKind = 'final';
+   officialScore = '10 / 10 ★';
+   officialDetail = 'Calificación oficial por correo de D.ª Chony Jiménez (10 nov): 10 en Test Arrendamientos Urbanos y 10 en Test Propiedad Horizontal.';
+   displayLabel = 'Final: 10 / 10 ★';
+   badgeIcon = '🏆';
+   badgeClass = 'grade-badge-final';
+   detailKey = 'mail_calificacion_chony_10nov';
   } else if(teachers.includes('José Luis Delgado Domínguez')){
    if(!detailKey) detailKey = 'entrega_delgado';
   }
@@ -11937,15 +12382,163 @@ function renderTeacherDossiers(){
    ]
   },
   {
+   id: 'dossier-maria-carnota',
+   teacher: 'María Pilar Carnota García',
+   subject: 'Trámites registrales, recursos, ejecución y costas (Sesiones 28 oct y 2 nov 2026)',
+   subjectRef: 'Procura|Actuación procesal|1',
+   kicker: 'Calificación oficial: DOBLE 10 / 10 ★ (Pleno absoluto en ambas sesiones) · Por correo el 11 nov',
+   badgeClass: 'gold',
+   badgeText: '10 / 10 ★ Doble Pleno Oficial',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificaciones Conjuntas Oficiales (11 nov)',
+     score: '10 / 10 ★ en ambas',
+     desc: 'Calificaciones oficiales comunicadas por la secretaría de Procura el 11 nov 2026: Sesión 1 (28 oct) 10/10 ★ y Sesión 2 (2 nov) 10/10 ★.',
+     subitems: [
+      {label: 'Sesión 1 (28 oct)', val: '10.00 / 10 ★ (Test: 4/4 + Trabajos: 6/6)'},
+      {label: 'Sesión 2 (2 nov)', val: '10.00 / 10 ★ (Test: 4/4 + Trabajos: 6/6)'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Tests Online en Testmoz (100 % aciertos)',
+     score: '20 / 20 aciertos',
+     desc: 'Doble pleno de 10/10 en ambos cuestionarios oficiales de clase: 10/10 el 28 oct y 10/10 el 2 nov (sin ningún fallo).',
+     subitems: [
+      {label: 'Test 28 oct', val: '10 / 10 aciertos (100 % ★)'},
+      {label: 'Test 2 nov', val: '10 / 10 aciertos (100 % ★)'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Trabajos y Casos Escritos',
+     score: '6 / 6 puntos (100 %)',
+     desc: 'Casos prácticos de trámites notariales, registrales, recursos y costas evaluados con la máxima puntuación en ambas sesiones.',
+     subitems: [
+      {label: 'Trabajos 28 oct', val: '6.00 / 6.00 ptos (100 %)'},
+      {label: 'Trabajos 2 nov', val: '6.00 / 6.00 ptos (100 %)'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Ver correo nota Sesión 2 (2 nov) ↗', detailKey: 'mail_notas_carnota_sesion2_11nov', cls: 'solid-green'},
+    {label: '✉ Ver correo nota Sesión 1 (28 oct) ↗', detailKey: 'mail_notas_carnota_sesion1_11nov', cls: 'solid-green'},
+    {label: '📝 Ver Test 2 (10/10) ↗', detailKey: 'test_2nov_carnota', cls: 'solid-blue'},
+    {label: '📝 Ver Test 1 (10/10) ↗', detailKey: 'test_28oct_carnota', cls: 'solid-blue'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|1'},
+    {label: 'Ficha de María Pilar Carnota ↗', teacher: 'María Pilar Carnota García'}
+   ]
+  },
+  {
+   id: 'dossier-susana-diaz',
+   teacher: 'Susana Díaz Gallego',
+   subject: 'Procesos declarativos y medidas cautelares (Sesiones 29 y 30 oct 2026)',
+   subjectRef: 'Procura|Actuación procesal|2',
+   kicker: 'Calificación oficial: 9.74 / 10 ★ (Sobresaliente pleno) · Por correo el 9 nov',
+   badgeClass: 'gold',
+   badgeText: '9.74 / 10 ★ Nota Oficial',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Oficial (9 nov)',
+     score: '9.74 / 10 ★',
+     desc: 'Calificaciones comunicadas oficialmente por la secretaría de Procura el 9 nov (13:15 h): Tests 3.74/4 + Trabajos escritos 6.00/6 (100 %).',
+     subitems: [
+      {label: 'Calificación global', val: '9.74 / 10 ★ · Sobresaliente pleno'},
+      {label: 'Ponderación', val: 'Test 40% (3.74) + Trabajos 60% (6.00)'}
+     ]
+    },
+    {
+     cls: 'highlight-test',
+     title: '📝 Tests Online en Testmoz (9.5 media)',
+     score: '10/10 ★ y 9/10',
+     desc: 'Test Sesión 1 (29 oct): 9/10 aciertos. Test Sesión 2 (30 oct): 10/10 aciertos (Sobresaliente pleno ★ sin fallos).',
+     subitems: [
+      {label: 'Test 29 oct', val: '9 / 10 aciertos (90 %)'},
+      {label: 'Test 30 oct', val: '10 / 10 aciertos (100 % ★)'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Casos Prácticos CPROC (100 %)',
+     score: '6.00 / 6.00 ptos',
+     desc: 'Escrito de subsanación de apoderamiento (29 oct) y 3 casos prácticos cautelares (30 oct) entregados con éxito en CPROC.',
+     subitems: [
+      {label: 'Subsanación poder', val: 'Entregada en CPROC ✓'},
+      {label: '3 Casos Cautelares', val: 'Entregados en CPROC ✓'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Ver correo de la nota (9.74) ↗', detailKey: 'mail_notas_susana_9nov', cls: 'solid-green'},
+    {label: '📝 Ver Test Sesión 2 (10/10 ★) ↗', detailKey: 'test_30oct_susana', cls: 'solid-blue'},
+    {label: '📝 Ver Test Sesión 1 (9/10) ↗', detailKey: 'test_29oct_susana'},
+    {label: '📁 Ver entrega casos prácticos en CPROC ↗', detailKey: 'entrega_susana_diaz_casos_30oct'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|2'},
+    {label: 'Ficha de Susana Díaz ↗', teacher: 'Susana Díaz Gallego'}
+   ]
+  },
+  {
+   id: 'dossier-chony-jimenez',
+   teacher: 'Chony Jiménez',
+   subject: 'Arrendamientos urbanos, precario y propiedad horizontal (Sesiones 5, 6 y 9 nov 2026)',
+   subjectRef: 'Abogacía|Sustantivo civil|1',
+   kicker: 'Calificación oficial: 10 / 10 ★ en ambos tests · Confirmada por correo el 10 nov',
+   badgeClass: 'gold',
+   badgeText: '10 / 10 ★ Doble Pleno Oficial',
+   cardClass: 'has-mail-grade',
+   blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Docente Directa',
+     score: '10 / 10 ★ en ambos',
+     desc: 'Confirmación directa de D.ª Chony Jiménez (10 nov, 12:14 h): «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno».',
+     subitems: [
+      {label: 'Test Arrendamientos', val: '10 / 10 ★ (Sobresaliente pleno)'},
+      {label: 'Test Prop. Horizontal', val: '10 / 10 ★ (Sobresaliente pleno)'}
+     ]
+    },
+    {
+     cls: 'highlight-practice',
+     title: '📁 Entrega de Tests por Correo',
+     score: 'Entregados ✓ (10 nov)',
+     desc: 'Envío conjunto formal realizado a chonyjimenezdellano@yahoo.es con los dos archivos Word cumplimentados con antelación.',
+     subitems: [
+      {label: 'Fecha de entrega', val: '10 nov 2026 (11:30 h)'},
+      {label: 'Respuesta docente', val: '10 nov 2026 (12:14 h)'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '✉ Ver correo de la nota (10 nov) ↗', detailKey: 'mail_calificacion_chony_10nov', cls: 'solid-green'},
+    {label: '📁 Ver entrega de tests en el portal ↗', detailKey: 'entrega_chony_test_arrendamientos_9nov', cls: 'solid-blue'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Abogacía|Sustantivo civil|1'},
+    {label: 'Ficha de Chony Jiménez ↗', teacher: 'Chony Jiménez'}
+   ]
+  },
+  {
    id: 'dossier-patricia-gonzalez',
    teacher: 'Patricia González Figueroa',
    subject: 'Escritura forense de la Procura (Sesión 3 nov 2026)',
    subjectRef: 'Procura|Actuación procesal|4',
-   kicker: 'Test online completado (8/10 · 80 % · Notable alto) · CPROC / Testmoz',
-   badgeClass: 'blue',
-   badgeText: '8 / 10 Testmoz · Notable alto',
-   cardClass: 'has-test',
+   kicker: 'Calificación oficial: 8.79 / 10 · Comunicada por correo el 9 nov',
+   badgeClass: 'gold',
+   badgeText: '8.79 / 10 · Nota Oficial',
+   cardClass: 'has-mail-grade',
    blocks: [
+    {
+     cls: 'highlight-mail',
+     title: '✉️ Calificación Conjunta Oficial (9 nov)',
+     score: '8.79 / 10',
+     desc: 'Calificaciones comunicadas oficialmente por la secretaría de Procura el 9 nov (14:55 h): Test 40% (2.94) + Caso práctico CPROC 60% (5.85).',
+     subitems: [
+      {label: 'Calificación global', val: '8.79 / 10 · Notable alto'},
+      {label: 'Ponderación', val: 'Test 40% (2.94) + Prácticas 60% (5.85)'}
+     ]
+    },
     {
      cls: 'highlight-test',
      title: '📝 Test Online en Testmoz (80 %)',
@@ -11959,26 +12552,17 @@ function renderTeacherDossiers(){
     {
      cls: 'highlight-practice',
      title: '📁 Práctica CPROC: Caso Evaluable 3_11_2026',
-     score: 'Entregada ✓',
+     score: '5.85 / 6 ptos ✓',
      desc: 'Tarea oficial «CASO PRÁCTICO EVALUABLE 3_11_2026» entregada telemáticamente en la plataforma CPROC el 4 de noviembre con comprobante en vídeo registrado.',
      subitems: [
-      {label: 'Plazo oficial', val: '6 nov 2026'},
+      {label: 'Puntuación escrita', val: '5.85 de 6.00 puntos (97.5 %)'},
       {label: 'Estado CPROC', val: 'Entregada con éxito ✓ (4 nov)'}
-     ]
-    },
-    {
-     cls: 'highlight-mail',
-     title: '✉️ Calificación Conjunta por Correo',
-     score: 'Pendiente',
-     desc: 'La Secretaría y la docente remitirán en su caso el desglose conjunto de la materia tras finalizar el módulo.',
-     subitems: [
-      {label: 'Test online', val: '8 / 10 registrado ✓'},
-      {label: 'Ponderación', val: '40 % test / 60 % prácticas'}
      ]
     }
    ],
    actions: [
-    {label: '📁 Ver tarea entregada (CPROC) ↗', detailKey: 'entrega_patricia_caso_evaluable_3nov', cls: 'solid-green'},
+    {label: '✉ Ver correo de la nota (8.79) ↗', detailKey: 'mail_notas_patricia_9nov', cls: 'solid-green'},
+    {label: '📁 Ver tarea entregada (CPROC) ↗', detailKey: 'entrega_patricia_caso_evaluable_3nov'},
     {label: '📝 Ver preguntas y respuestas del test (3 nov) ↗', detailKey: 'test_3nov_patricia', cls: 'solid-blue'},
     {label: 'Abrir HTML original Testmoz ↗', url: testHtmlPatriciaLocalUrl, cls: 'blue'},
     {label: 'Abrir apuntes del test (.md) ↗', url: testMdPatriciaLocalUrl},
@@ -12458,9 +13042,9 @@ function renderGrades(filter){
  const sumEl = document.getElementById('gradeFilterSummary');
  if(sumEl){
   if(filterToApply === 'teachers'){
-   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura (7 profesores con actividad evaluable).';
+   sumEl.textContent = 'Mostrando expedientes completos agrupados por docente y asignatura con notas oficiales y entregas.';
   } else if(filterToApply === 'mail'){
-   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (Rita Goimil 10/10, Javier Sánchez 10/10, Carlos Sánchez 10/10, Carolina Moreno 10/10, Ana Vázquez 8.8/10 y Carmen Belo 7.6/10).';
+   sumEl.textContent = 'Mostrando solo calificaciones conjuntas oficiales comunicadas formalmente por correo electrónico (María Pilar Carnota doble 10/10 ★, Chony Jiménez doble 10/10 ★, Susana Díaz 9.74, Patricia González 8.79, Rita Goimil 10/10, Javier Sánchez 10/10, Carlos Sánchez 10/10, Carolina Moreno 10/10, Ana Vázquez 8.8/10 y Carmen Belo 7.6/10).';
   } else if(filterToApply === 'test'){
    sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
@@ -14659,10 +15243,10 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
   let targetFilter = 'teachers';
-  if(key.includes('test')) targetFilter = 'test';
-  else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil') targetFilter = 'mail';
+  if(key.includes('test') && !key.includes('chony')) targetFilter = 'test';
+  else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key.startsWith('mail_notas_') || key.startsWith('mail_calificacion_') || key.startsWith('grade_carnota_') || key.startsWith('grade_patricia_') || key.startsWith('grade_susana_') || key.startsWith('grade_chony_')) targetFilter = 'mail';
   else if(key === 'all_tests_summary') targetFilter = 'all';
   renderGrades(targetFilter);
   setView('notas', false);
@@ -14672,6 +15256,11 @@ function openDetail(key){
    else if(key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez') targetId = 'grade_ana_vazquez';
    else if(key === 'grade_carmen_belo' || key === 'grades_carmen_belo') targetId = 'grade_carmen_belo';
    else if(key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil') targetId = 'grade_rita_goimil_27oct';
+   else if(key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct') targetId = 'grade_carnota_sesion1_28oct';
+   else if(key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov') targetId = 'grade_carnota_sesion2_2nov';
+   else if(key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests') targetId = 'grade_chony_ambos_tests';
+   else if(key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov') targetId = 'grade_patricia_9nov';
+   else if(key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov') targetId = 'grade_susana_9nov';
    else if(key === 'test_16oct' || key === 'grade_16oct_test') targetId = 'grade_16oct_test';
    else if(key === 'test_20oct_sandra' || key === 'grade_20oct_test') targetId = 'grade_20oct_test';
    else if(key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test') targetId = 'grade_28oct_carnota_test';
@@ -15302,7 +15891,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
  const summaryEl = document.getElementById('deliveryFilterSummary');
  if(summaryEl){
   if(currentDeliveryFilter === 'pending'){
-   summaryEl.textContent = `Mostrando ${filtered.length} prácticas pendientes de entrega (Test de Arrendamientos Urbanos a D.ª Chony Jiménez antes del lunes 9 nov, Práctica Procesal Civil con D. Fernando Lousada y Contrato con Lucía Silvoso).`;
+   summaryEl.textContent = `Mostrando ${filtered.length} entregas activas (2 en envío programado: entrega conjunta de 2 Tests a D.ª Chony Jiménez para el 10 nov y Práctica Sesión 1 de D. Fernando Lousada para el 11 nov; y restantes según calendario).`;
   } else if(currentDeliveryFilter === 'completed'){
    summaryEl.textContent = `Mostrando ${filtered.length} prácticas ya entregadas con éxito, organizadas en desplegables por asignatura.`;
   } else if(currentDeliveryFilter === 'cproc'){
@@ -15450,7 +16039,7 @@ function renderDeliveries(filter = currentDeliveryFilter){
      </div>
     </details>
    </div>
-   <span class="due-state pending">${d.status}</span>
+   <span class="due-state ${d.status.includes('envío programado') ? 'scheduled' : 'pending'}">${d.status}</span>
   </div>
   `;
  };
@@ -16696,6 +17285,7 @@ try{ renderSidebarTree(); }catch(err){ console.error('Error en renderSidebarTree
 try{ renderTeachers(); }catch(err){ console.error('Error en renderTeachers:',err); }
 try{ renderMaterials(); }catch(err){ console.error('Error en renderMaterials:',err); }
 try{ renderMail(); }catch(err){ console.error('Error en renderMail:',err); }
+try{ renderDeliveries(); }catch(err){ console.error('Error en renderDeliveries init:',err); }
 
 const validViews = ['inicio','calendario','asignaturas','profesores','notas','entregas','materiales','correo'];
 const initialHash = (window.location.hash || '').replace(/^#/, '');

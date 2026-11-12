@@ -374,37 +374,39 @@ def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subje
 
 def mark_delivery_completed(content: str, search_query: str) -> tuple:
     """Busca una entrega por término clave (título o docente) y la marca como completada,
-    actualizando también su estado en la ficha del profesor."""
+    soportando objetos multilínea y actualizando también su estado en la ficha del profesor."""
     m = re.search(r'(const deliveries=\[\s*)(.*?)(\s*\];)', content, re.DOTALL)
     if not m:
         return content, False
 
     deliveries_block = m.group(2)
-    lines = deliveries_block.splitlines(True)
-    found = False
-    new_lines = []
     sq_lower = search_query.strip().lower()
+    found = False
     matched_title = ""
     matched_teacher = ""
 
-    for line in lines:
-        if not found and sq_lower in line.lower() and 'submitted:false' in line:
-            line = re.sub(r"status:'[^']+'", "status:'Completada y enviada ✓'", line)
-            line = line.replace('submitted:false', 'submitted:true')
+    # Iterar sobre bloques de objetos dentro de deliveries delimitados por { ... }
+    def replacer(obj_match):
+        nonlocal found, matched_title, matched_teacher
+        block = obj_match.group(0)
+        if not found and sq_lower in block.lower() and 'submitted:false' in block:
             found = True
-            t_match = re.search(r"title:'([^']+)'", line)
+            t_match = re.search(r"title:'([^']+)'", block)
             if t_match:
                 matched_title = t_match.group(1)
-            te_match = re.search(r"teacher:'([^']+)'", line)
+            te_match = re.search(r"teacher:'([^']+)'", block)
             if te_match:
                 matched_teacher = te_match.group(1)
-        new_lines.append(line)
+            block = re.sub(r"status:'[^']+'", "status:'Entregada por correo / telemáticamente ✓'", block)
+            block = block.replace('submitted:false', 'submitted:true')
+        return block
+
+    new_deliveries_block = re.sub(r'\{[^}]*\}', replacer, deliveries_block, flags=re.DOTALL)
 
     if found:
-        new_block = m.group(1) + "".join(new_lines) + m.group(3)
+        new_block = m.group(1) + new_deliveries_block + m.group(3)
         content = content[:m.start()] + new_block + content[m.end():]
 
-        # Sincronizar estado en teacherDirectory si se conoce el profesor
         if matched_teacher:
             content = update_teacher_directory(
                 content,
