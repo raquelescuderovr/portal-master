@@ -6371,6 +6371,10 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {date:new Date(2026,10,12),title:'Tareas Propiedad Horizontal (Convocatorias, Actas y Demanda de Impugnación)',teacher:'María Consuelo Sánchez Mariño',subject:'Derecho Civil / Propiedad Horizontal',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_tareas_propiedad_horizont',details:'Realización y remisión al correo mcsmarino@gmail.com de: 1) Convocatoria de Junta Ordinaria, 2) Convocatoria de Junta Extraordinaria, 3) Acta de Junta Ordinaria, y 4) Demanda de impugnación de acuerdo comunitario con medidas cautelares. Identificar PDFs con apellidos, nombre, grupo y trabajo.'},
+ {date:new Date(2026,10,11),title:'Examen de Previsión Social',teacher:'Jaime Martul',subject:'Previsión Social de la Abogacía',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_previsi_n_socia',details:'Envío obligatorio al correo master.abogacia@icacor.org identificando el email con nombre y apellidos y cumplimentando la hoja de examen adjunta.'},
+ {date:new Date(2026,10,11),title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',teacher:'Fernando Lousada',subject:'Abogacía · Práctica Procesal Civil',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_casos_procesal_civil__ses',details:'Correo redactado y listo con el archivo adjunto Caso 13 noviembre_Raquel Escudero.pdf dirigido a fernando.lousada@udc.es'},
+ {date:new Date(2026,10,10),title:'Examen de Marketing de Despacho',teacher:'Jaime Martul',subject:'Marketing Jurídico y Desarrollo de Negocio',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente de marcar',submitted:false,detailKey:'entrega_examen_de_marketing_de_de',details:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.'},
  {
   date:new Date(2026,10,10),
   title:'Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
@@ -6799,6 +6803,58 @@ const mailSummaries={
 };
 
 const details={
+ entrega_tareas_propiedad_horizont:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Derecho Civil / Propiedad Horizontal',
+  title:'Tareas Propiedad Horizontal (Convocatorias, Actas y Demanda de Impugnación)',
+  date:'Publicada: 12 nov 2026 · Plazo: 12 de diciembre de 2026',
+  teacher:'María Consuelo Sánchez Mariño',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Realización y remisión al correo mcsmarino@gmail.com de: 1) Convocatoria de Junta Ordinaria, 2) Convocatoria de Junta Extraordinaria, 3) Acta de Junta Ordinaria, y 4) Demanda de impugnación de acuerdo comunitario con medidas cautelares. Identificar PDFs con apellidos, nombre, grupo y trabajo.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
+ entrega_examen_de_previsi_n_socia:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Previsión Social de la Abogacía',
+  title:'Examen de Previsión Social',
+  date:'Publicada: 11 nov 2026 · Plazo: 23 de noviembre de 2026, antes de las 23:59 h',
+  teacher:'Jaime Martul',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Envío obligatorio al correo master.abogacia@icacor.org identificando el email con nombre y apellidos y cumplimentando la hoja de examen adjunta.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
+ entrega_casos_procesal_civil__ses:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Abogacía · Práctica Procesal Civil',
+  title:'Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',
+  date:'Publicada: 11 nov 2026 · Plazo: 12 de noviembre de 2026 · antes de las 20:00 h (Envío programado: 12 nov a las 1',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Correo redactado y listo con el archivo adjunto Caso 13 noviembre_Raquel Escudero.pdf dirigido a fernando.lousada@udc.es',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
+ entrega_examen_de_marketing_de_de:{
+  isDelivery:true,
+  kicker:'Práctica ICACOR · Marketing Jurídico y Desarrollo de Negocio',
+  title:'Examen de Marketing de Despacho',
+  date:'Publicada: 10 nov 2026 · Plazo: 21 de noviembre de 2026 · antes de las 23:59 h',
+  teacher:'Jaime Martul',
+  subjectRef:'Abogacía|Técnicas instrumentales|3',
+  body:'Realizar y enviar el examen de Marketing de Despacho al correo master.abogacia@icacor.org, identificando el correo con nombre y apellidos.',
+  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  attachments:[
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+  ]
+ },
 mail_rita_goimil_27oct:{
   kicker:'Calificaciones oficiales de Procura · Deontología y técnicas transversales',
   title:'Resultados de las pruebas del 27/10/2026 · Rita Goimil Martínez (Nota: 10 / 10 ★)',
@@ -9495,6 +9551,7 @@ const courses=[
     teachers:['Jaime Martul'],
     grade:{score:'⏳ Por venir · 28 oct',detail:'Estrategia de despacho, marca personal y captación de clientes.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Examen de Marketing de Despacho',detailKey:'entrega_examen_de_marketing_de_de',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Publicidad y captación en el Código Deontológico de la Abogacía',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Normativa y CPROC ↗'}
     ],
     mails:['materials']
@@ -9518,6 +9575,7 @@ const courses=[
     teachers:['Pilar Cortizo'],
     grade:{score:'⏳ Por venir · 3 nov',detail:'Régimen de previsión profesional, Mutualidad de la Abogacía y RETA.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Examen de Previsión Social',detailKey:'entrega_examen_de_previsi_n_socia',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'Previsión social y mutualidades de la abogacía',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2021-4568',label:'BOE oficial ↗'}
     ],
     mails:['materials']
@@ -9605,6 +9663,7 @@ const courses=[
     teachers:['Fernando Lousada'],
     grade:{score:'⏳ Por venir · 12 nov',detail:'Diligencias preliminares, medidas cautelares y proceso monitorio.',detailKey:'materials'},
     notes:[
+     {name:'Práctica: Casos Procesal Civil (Sesión 2): Divorcio internacional, Reconvención y Wally Procesal',detailKey:'entrega_casos_procesal_civil__ses',url:cprocTareasUrl,label:'Ver práctica ↗'},
      {name:'LEC: Medidas cautelares y proceso monitorio (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
     mails:[]
