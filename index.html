@@ -4781,7 +4781,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px">⏳ 6 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 5 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4812,7 +4812,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-size:10px;padding:2px 7px">4 pendientes</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarAccordionBadge" style="font-size:10px;padding:2px 7px">5 pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
@@ -5041,7 +5041,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value">6 por entregar · Próx: antes del lun 9 nov</strong>
+            <strong class="badge-value" id="welcomePendingDeliveriesBadge">5 por entregar · Próx: 16 nov</strong>
           </div>
         </button>
 
@@ -5061,7 +5061,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="term-box-badge">1.er Cuatrimestre</div>
       <div class="term-box-period">1 oct 2026 — 31 ene 2027</div>
       <div class="term-box-footer">
-        <span>Revisión: 6 nov 2026</span>
+        <span>Revisión: 12 nov 2026</span>
         <span class="term-status-dot">● Al día</span>
       </div>
     </div>
@@ -5074,7 +5074,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">18 notas</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" style="background:var(--terracotta);color:#ffffff;font-weight:800">6 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">81</span></button>
   </div>
@@ -5584,11 +5584,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (6 pendientes · 11 completadas)</h2>
+        <h2>Próximas entregas y prácticas (5 pendientes · 17 completadas)</h2>
         <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas pendientes de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov) y 11 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">6 pendientes · 11 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">5 pendientes · 17 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
@@ -5599,7 +5599,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (11)</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (6)</button>
       <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (11)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 17 prácticas (6 pendientes y 11 completadas).</span>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 22 prácticas (5 pendientes y 17 superadas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>

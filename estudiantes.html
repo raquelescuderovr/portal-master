@@ -5304,7 +5304,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="term-box-badge">1.er Cuatrimestre</div>
       <div class="term-box-period">1 oct 2026 — 31 ene 2027</div>
       <div class="term-box-footer">
-        <span>Revisión: 6 nov 2026</span>
+        <span>Revisión: 12 nov 2026</span>
         <span class="term-status-dot">● Al día</span>
       </div>
     </div>
@@ -5666,11 +5666,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (6 pendientes · 11 completadas)</h2>
+        <h2>Próximas entregas y prácticas (5 pendientes · 17 completadas)</h2>
         <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas pendientes de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov) y 11 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">Control de entregas</div>
+        <div class="delivery-range" id="deliveryRange">5 pendientes · 17 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
@@ -5681,7 +5681,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas</button>
       <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC</button>
       <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando el listado completo de entregas del máster.</span>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 22 prácticas (5 pendientes y 17 superadas).</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -15716,6 +15716,15 @@ function updateDeliveryCounts(){
   const pendingCount = pending.length;
   const completedCount = deliveries.length - pendingCount;
   const totalCount = deliveries.length;
+ const sideNavBadge = document.getElementById('sidebarNavDeliveriesBadge');
+ if(sideNavBadge) sideNavBadge.textContent = '⏳ ' + pendingCount + ' pend.';
+ const tabDelBadge = document.getElementById('tabDeliveriesBadge');
+ if(tabDelBadge) tabDelBadge.textContent = pendingCount + ' pend.';
+ const welBadge = document.getElementById('welcomePendingDeliveriesBadge');
+ if(welBadge) welBadge.textContent = pendingCount + ' por entregar · Próx: 16 nov';
+ const sideAccBadge = document.getElementById('sidebarAccordionBadge');
+ if(sideAccBadge) sideAccBadge.textContent = pendingCount + ' pendientes';
+
 
   // 1. Sidebar badge
   const sideBadge = document.getElementById('sideNavDeliveriesBadge') || document.querySelector('.nav-btn-entregas .nav-badge-pill');
