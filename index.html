@@ -4781,7 +4781,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 5 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 4 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -5750,7 +5750,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div class="hub-card-text">
           <span class="hub-card-kicker">Tareas y Prácticas</span>
-          <strong class="hub-card-title">Cosas pendientes (5)</strong>
+          <strong class="hub-card-title" id="homeHubPendingTitle">Cosas pendientes (4)</strong>
           <span class="hub-card-meta">⏳ Próx: Sesión 4 de D. Fernando Lousada (17 nov)</span>
         </div>
         <span class="hub-card-arrow">↗</span>
@@ -15931,6 +15931,15 @@ function renderDeliveries(filter = currentDeliveryFilter){
  if(ptbBadge) ptbBadge.textContent = `⏳ ${pendingCount} PRÁCTICAS PENDIENTES`;
  const ptbBtn = document.getElementById('ptbViewAllBtn');
  if(ptbBtn) ptbBtn.textContent = `Ver todas las entregas (${totalCount}) ➔`;
+
+ const sideNavBadge = document.getElementById('sidebarNavDeliveriesBadge');
+ if(sideNavBadge) sideNavBadge.textContent = `⏳ ${pendingCount} pend.`;
+
+ const sideAccBadge = document.getElementById('sidebarAccordionBadge');
+ if(sideAccBadge) sideAccBadge.textContent = `${pendingCount} pendientes`;
+
+ const hubPendingTitle = document.getElementById('homeHubPendingTitle');
+ if(hubPendingTitle) hubPendingTitle.textContent = `Cosas pendientes (${pendingCount})`;
 
  let filtered = deliveries;
  if(currentDeliveryFilter === 'pending'){
