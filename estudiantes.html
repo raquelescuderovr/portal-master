@@ -5700,8 +5700,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (1 pendiente · 21 completadas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov · Las 5 sesiones ya entregadas), 4 tareas de Propiedad Horizontal con D.ª Consuelo Sánchez Mariño (entregadas el 14 nov) y 15 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
+        <h2>Próximas entregas y prácticas (<span id="deliveryTitlePendingCount">1</span> pendientes · <span id="deliveryTitleCompletedCount">21</span> completadas)</h2>
+        <p id="deliverySubtitle">Seguimiento de prácticas y trabajos del Máster: entregas futuras pendientes y prácticas ya entregadas con acuse de recibo y calificaciones oficiales.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
         <div class="delivery-range" id="deliveryRange">Control de entregas</div>
@@ -7045,10 +7045,13 @@ mail_rita_goimil_27oct:{
   date:'Publicada: 4 nov 2026 · Plazo: 7 de diciembre de 2026',
   teacher:'Lucía Silvoso',
   subjectRef:'Abogacía|Sustantivo civil|0',
+  mailKey:'mail_seminario_pi_30oct',
   body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
   source:'Colegio de Abogados de A Coruña (ICACOR)',
   attachments:[
-   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org',kind:'Correo oficial ICACOR'}
+   {name:'Enviar práctica a secretariatecnico@icacor.org',url:'mailto:secretariatecnico@icacor.org?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Luc%C3%ADa%20Silvoso%20(Contrato%20de%20cesi%C3%B3n)',kind:'Correo oficial ICACOR'},
+   {name:'Materiales de Propiedad Intelectual (PDF)',detailKey:'mail_seminario_pi_30oct',kind:'Materiales'},
+   {name:'Ley de Propiedad Intelectual (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',kind:'BOE oficial'}
   ]
  },
  test_2nov_carnota:{
@@ -9577,7 +9580,7 @@ const courses=[
     teachers:['Jaime Martul'],
     grade:{score:'⏳ Por venir · 28 oct',detail:'Estrategia de despacho, marca personal y captación de clientes.',detailKey:'materials'},
     notes:[
-     {name:'Práctica: Examen de Marketing de Despacho',detailKey:'entrega_examen_de_marketing_de_de',url:cprocTareasUrl,label:'Ver práctica ↗'},
+     {name:'Práctica: Examen de Marketing de Despacho',detailKey:'entrega_examen_de_marketing_de_de',label:'Ver práctica ↗'},
      {name:'Publicidad y captación en el Código Deontológico de la Abogacía',url:driveSearchUrl('Código Deontológico Abogacía'),label:'Normativa y CPROC ↗'}
     ],
     mails:['materials']
@@ -9625,7 +9628,7 @@ const courses=[
     teachers:['Lucía Silvoso'],
     grade:{score:'Docencia en curso · 4 nov',detail:'Seminario práctico en el Colegio de Abogados: Protección de Datos (RGPD, LOPDGDD y cláusulas de aviso legal web) y Propiedad Intelectual (derechos de autor y reservas).',detailKey:'mail_seminario_rgpd_30oct',actionLabel:'Ver materiales ↗'},
     notes:[
-     {name:'Práctica: Contrato de cesión de la diseñadora gráfica con la empresa de papelería',detailKey:'entrega_contrato_de_cesi_n_de_la_',url:cprocTareasUrl,label:'Ver práctica ↗'},
+     {name:'Práctica: Contrato de cesión de la diseñadora gráfica con la empresa de papelería',detailKey:'entrega_contrato_de_cesi_n_de_la_',label:'Ver práctica ↗'},
      {name:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ejemplos de reservas de derechos y copyright (PDF)',detailKey:'mail_seminario_pi_30oct',url:outlookUrl,label:'Ver en Outlook ↗'},
      {name:'Ley de Propiedad Intelectual consolidada (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',label:'BOE oficial ↗'},
