@@ -235,10 +235,11 @@ def update_course_subject(content: str, subject_name: str = None, teacher_name: 
     if practice_entry:
         p_name = sanitize_js_string(practice_entry.get("name", ""))
         p_dkey = sanitize_js_string(practice_entry.get("detailKey", ""))
-        p_url = practice_entry.get("url", "cprocTareasUrl")
+        p_url = practice_entry.get("url")
         p_lbl = sanitize_js_string(practice_entry.get("label", "Ver práctica ↗"))
+        url_part = f",url:{p_url}" if p_url else ""
         if f"'{p_name}'" not in new_obj:
-            p_chunk = f"\n     {{name:'{p_name}',detailKey:'{p_dkey}',url:{p_url},label:'{p_lbl}'}},"
+            p_chunk = f"\n     {{name:'{p_name}',detailKey:'{p_dkey}'{url_part},label:'{p_lbl}'}},"
             if "notes:[" in new_obj:
                 new_obj = new_obj.replace("notes:[", f"notes:[{p_chunk}", 1)
             elif "notes: [" in new_obj:
