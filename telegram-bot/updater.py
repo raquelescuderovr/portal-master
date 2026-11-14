@@ -498,6 +498,42 @@ def add_grade_entry(content: str, grade_id: str, title: str, kicker: str, score:
         mail_key=s_mail_key
     )
 
+    # 5. Actualizar la media estática en los badges y textos del HTML inicial
+    try:
+        def parse_score_num(val_str):
+            if not val_str:
+                return None
+            m = re.search(r'(\d+(?:[.,]\d+)?)\s*(?:/|\s+de\s+)\s*10', str(val_str), re.I)
+            if m:
+                v = float(m.group(1).replace(',', '.'))
+                if 0 <= v <= 10:
+                    return v
+            m_any = re.search(r'\b(10|[0-9](?:[.,][0-9]+)?)\b', str(val_str))
+            if m_any:
+                v = float(m_any.group(1).replace(',', '.'))
+                if 0 <= v <= 10:
+                    return v
+            return None
+
+        # Extraer todas las notas con type: 'mail'
+        mail_scores = []
+        for m in re.finditer(r"id:\s*'[^']+',\s*type:\s*'mail'.*?score:\s*'([^']+)'", content, re.DOTALL):
+            sc = parse_score_num(m.group(1))
+            if sc is not None:
+                mail_scores.append(sc)
+        if mail_scores:
+            count_sc = len(mail_scores)
+            avg_sc = sum(mail_scores) / count_sc
+            avg_str = f"{avg_sc:.2f}"
+            content = re.sub(r'id="statAverageVal">[^<]*</span>', f'id="statAverageVal">Media: {avg_str} ★</span>', content)
+            content = re.sub(r'id="statAverageTitle">[^<]*</span>', f'id="statAverageTitle">Media de {avg_str} ★ sobre {count_sc} notas finales de profesores</span>', content)
+            content = re.sub(r'id="statMailGradesCount">[^<]*</span>', f'id="statMailGradesCount">{count_sc} oficiales</span>', content)
+            content = re.sub(r'id="sidebarNavGradesBadge">[^<]*</span>', f'id="sidebarNavGradesBadge">Media: {avg_str} ★</span>', content)
+            content = re.sub(r'id="tabGradesBadge">[^<]*</span>', f'id="tabGradesBadge">Media: {avg_str} ★</span>', content)
+            content = re.sub(r'id="homeHubGradesMeta">[^<]*</span>', f'id="homeHubGradesMeta">Media del Máster: {avg_str} ★ ({count_sc} notas)</span>', content)
+    except Exception as e_avg:
+        print(f"[Updater] Aviso al actualizar media global: {e_avg}")
+
     return content
 
 def validate_js_syntax(html_content: str) -> bool:

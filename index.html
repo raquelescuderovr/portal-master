@@ -1303,7 +1303,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 /* ========================================================
    TARJETAS DE NOTAS Y CALIFICACIONES (POTENTES Y VISIBLES)
    ======================================================== */
-.stats-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:26px}
+.stats-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:26px}
 .stat-card{
   background:var(--paper-card);
   border:1.5px solid var(--line);
@@ -1322,6 +1322,23 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   transform:translateY(-3px);
   box-shadow:var(--shadow-hover);
   background:#2f241d;
+}
+
+/* Card Media del Máster (Verde Esmeralda Universitario) */
+.stat-card.highlight-average{
+  border-left:5px solid var(--green);
+  background:#1a2820;
+  border-color:#2a503a;
+}
+.stat-card.highlight-average:hover{border-color:var(--green-border)}
+.stat-card.highlight-average .stat-kicker{color:var(--green-dark)}
+.stat-card.highlight-average .stat-title{color:var(--ink);font-size:16px}
+.stat-card.highlight-average .stat-val-pill{
+  background:#244432;
+  color:#e2f7ec;
+  border:1px solid #366c4c;
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
+  font-weight:800;
 }
 
 /* Card 1: 10/10 oficial por correo (Oro Miel) */
@@ -2728,6 +2745,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 [data-theme="light"] .stat-card:first-child{
   background:var(--honey-pale);
   border-color:var(--honey-border);
+}
+[data-theme="light"] .stat-card.highlight-average{
+  background:var(--green-pale);
+  border-color:var(--green-border);
+}
+[data-theme="light"] .stat-card.highlight-average .stat-val-pill{
+  background:var(--green-badge, #e2f7ec);
+  color:var(--green-dark);
+  border-color:var(--green-border);
+  box-shadow:none;
 }
 [data-theme="light"] .stat-card:first-child .stat-val-pill{
   background:var(--honey-badge);
@@ -4774,7 +4801,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </span>
       <span class="nav-label-text">Notas y Tests</span>
-      <span class="nav-badge-pill badge-honey highlight-pill">10 / 10 ★</span>
+      <span class="nav-badge-pill badge-honey highlight-pill" id="sidebarNavGradesBadge">Media: 9.54 ★</span>
     </button>
     <button class="nav-btn-entregas" data-view="entregas">
       <span class="nav-icon-pill icon-terra">
@@ -5073,7 +5100,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="calendario" role="tab" aria-selected="false">Calendario mensual 🗓️</button>
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
-    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge">18 notas</span></button>
+    <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">Media: 9.54 ★</span></button>
     <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">81</span></button>
@@ -5411,6 +5438,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <!-- Resumen de notas por correo y tests (dentro de Notas y Tests) -->
     <div class="stats-strip" aria-label="Notas por correo a grosso modo" style="margin-bottom:20px">
+      <button class="stat-card highlight-average" data-grade-filter="mail" title="Ver la media global del máster en notas finales">
+        <div>
+          <span class="stat-kicker">Media global del Máster</span>
+          <span class="stat-title" id="statAverageTitle">Media de 9.54 ★ sobre 11 notas finales de profesores</span>
+        </div>
+        <span class="stat-val-pill" id="statAverageVal">Media: 9.54 ★</span>
+      </button>
       <button class="stat-card" data-grade-filter="teachers" title="Ver expedientes agrupados por profesor">
         <div>
           <span class="stat-kicker">Expediente docente</span>
@@ -5423,7 +5457,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           <span class="stat-kicker">Notas conjuntas por correo</span>
           <span class="stat-title">Carnota (doble 10) · Chony (10) · Susana (9.74) · Patricia (8.79) · Goimil (10) · Sánchez (10)</span>
         </div>
-        <span class="stat-val-pill">11 oficiales</span>
+        <span class="stat-val-pill" id="statMailGradesCount">11 oficiales</span>
       </button>
       <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
@@ -5739,7 +5773,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="hub-card-text">
           <span class="hub-card-kicker">Evaluación oficial</span>
           <strong class="hub-card-title">Notas de profesores y tests</strong>
-          <span class="hub-card-meta">4 notas de docentes + Tests</span>
+          <span class="hub-card-meta" id="homeHubGradesMeta">Media del Máster: 9.54 ★ (11 notas)</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -11656,6 +11690,7 @@ function refreshAllGradeViewsAfterSave(){
  if(typeof renderSidebarTree === 'function') renderSidebarTree();
  if(typeof renderGrades === 'function') renderGrades();
  if(typeof updateHomeGradesBadge === 'function') updateHomeGradesBadge();
+ if(typeof updateMasterAverageDisplay === 'function') updateMasterAverageDisplay();
  if(typeof renderDay === 'function') renderDay();
  if(typeof renderActiveMasterBanner === 'function') renderActiveMasterBanner();
  const s2 = document.getElementById('subScreen2');
@@ -12285,6 +12320,81 @@ function getTeacherWorkItems(sub, tName){
  });
 
  return { tests: uniqueTests, practices: uniquePractices };
+}
+
+function parseNumericScore(raw){
+ if(raw === null || raw === undefined) return null;
+ const str = String(raw).trim();
+ const m10 = str.match(/(\d+(?:[.,]\d+)?)\s*(?:\/|\s+de\s+)\s*10/i);
+ if(m10){
+  const val = parseFloat(m10[1].replace(',', '.'));
+  if(!isNaN(val) && val >= 0 && val <= 10) return val;
+ }
+ const mAny = str.match(/\b(10|[0-9](?:[.,][0-9]+)?)\b/);
+ if(mAny){
+  const val = parseFloat(mAny[1].replace(',', '.'));
+  if(!isNaN(val) && val >= 0 && val <= 10) return val;
+ }
+ return null;
+}
+
+function calcMasterFinalGradesStats(){
+ if(typeof gradeRecords === 'undefined' || !Array.isArray(gradeRecords)){
+  return { count: 0, sum: 0, average: null, averageStr: '—', fullAverageStr: 'Sin notas' };
+ }
+ const finalItems = gradeRecords.filter(g => {
+  if(!g || g.type !== 'mail') return false;
+  const num = parseNumericScore(g.score);
+  return num !== null;
+ });
+ const count = finalItems.length;
+ if(!count){
+  return { count: 0, sum: 0, average: null, averageStr: '—', fullAverageStr: 'Sin notas' };
+ }
+ const sum = finalItems.reduce((acc, g) => acc + parseNumericScore(g.score), 0);
+ const avg = sum / count;
+ const rounded = Math.round(avg * 100) / 100;
+ const avgStr = rounded.toFixed(2);
+ return {
+  count,
+  sum,
+  average: rounded,
+  averageStr: avgStr,
+  fullAverageStr: `Media: ${avgStr} ★ (${count} notas finales)`
+ };
+}
+
+function updateMasterAverageDisplay(){
+ const stats = calcMasterFinalGradesStats();
+
+ const statAverageVal = document.getElementById('statAverageVal');
+ if(statAverageVal){
+  statAverageVal.textContent = stats.count ? `Media: ${stats.averageStr} ★` : '—';
+ }
+ const statAverageTitle = document.getElementById('statAverageTitle');
+ if(statAverageTitle){
+  statAverageTitle.textContent = stats.count
+   ? `Media de ${stats.averageStr} ★ sobre ${stats.count} notas finales de profesores`
+   : 'Aún no hay calificaciones finales de profesores';
+ }
+ const statMailGradesCount = document.getElementById('statMailGradesCount');
+ if(statMailGradesCount){
+  statMailGradesCount.textContent = `${stats.count} oficiales`;
+ }
+ const sidebarBadge = document.getElementById('sidebarNavGradesBadge');
+ if(sidebarBadge){
+  sidebarBadge.textContent = stats.count ? `Media: ${stats.averageStr} ★` : '10 / 10 ★';
+ }
+ const tabBadge = document.getElementById('tabGradesBadge');
+ if(tabBadge){
+  tabBadge.textContent = stats.count ? `Media: ${stats.averageStr} ★` : 'Notas';
+ }
+ const homeHubMeta = document.getElementById('homeHubGradesMeta');
+ if(homeHubMeta){
+  homeHubMeta.textContent = stats.count
+   ? `Media del Máster: ${stats.averageStr} ★ (${stats.count} notas)`
+   : 'Notas de docentes + Tests';
+ }
 }
 
 let currentGradeFilter = 'teachers';
@@ -13089,6 +13199,8 @@ function renderGrades(filter){
  const filterToApply = currentGradeFilter || 'teachers';
  const grid = document.getElementById('gradesGrid');
  if(!grid) return;
+
+ if(typeof updateMasterAverageDisplay === 'function') updateMasterAverageDisplay();
 
  document.querySelectorAll('[data-grade-filter]').forEach(b => {
   b.classList.toggle('active', b.dataset.gradeFilter === filterToApply);
@@ -17341,6 +17453,7 @@ if(window.matchMedia){
 
 try{ applyTheme(null, false); }catch(err){ console.error('Error en applyTheme:',err); }
 
+try{ updateMasterAverageDisplay(); }catch(err){ console.error('Error en updateMasterAverageDisplay init:',err); }
 try{ renderDay(); }catch(err){ console.error('Error en renderDay:',err); }
 try{ renderActiveMasterBanner(); }catch(err){ console.error('Error en renderActiveMasterBanner:',err); }
 try{ renderGrades(); }catch(err){ console.error('Error en renderGrades:',err); }
