@@ -5301,7 +5301,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value" id="welcomePendingDeliveriesBadge">2 por entregar · Próx: 7 dic</strong>
+            <strong class="badge-value" id="welcomePendingDeliveriesBadge">1 por entregar · Próx: 7 dic</strong>
           </div>
         </button>
 
@@ -5700,8 +5700,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (2 pendientes · 20 completadas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov · Las 5 sesiones ya entregadas) y 14 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
+        <h2>Próximas entregas y prácticas (1 pendiente · 21 completadas)</h2>
+        <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov · Las 5 sesiones ya entregadas), 4 tareas de Propiedad Horizontal con D.ª Consuelo Sánchez Mariño (entregadas el 14 nov) y 15 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
         <div class="delivery-range" id="deliveryRange">Control de entregas</div>
@@ -6534,7 +6534,7 @@ const deliveries=[
    details:'Examen oficial remitido por el ICA Coruña el 11 de noviembre de 2026 sobre Previsión Social de la Abogacía (Mutualidad, RETA y coberturas). Resuelto y enviado formalmente por correo electrónico a master.abogacia@icacor.org el jueves 12 de noviembre de 2026 (cumplido con 11 días de antelación sobre el plazo límite del 23 de noviembre a las 23:59 h).'
   },
   {
-   date:new Date(2026,11,12),
+   date:new Date(2026,10,14),
    title:'Tareas de Propiedad Horizontal: Convocatorias, Acta y Demanda de Impugnación (D.ª M.ª Consuelo Sánchez Mariño)',
    teacher:'María Consuelo Sánchez Mariño',
    subject:'Abogacía · Sustantivo civil (Propiedad Horizontal)',
@@ -6543,7 +6543,7 @@ const deliveries=[
    status:'⏳ Pendiente de marcar',
    submitted:false,
    detailKey:'entrega_consuelo_sanchez_12dic',
-   details:'4 tareas oficiales encargadas el 12 de noviembre de 2026 por D.ª María Consuelo Sánchez Mariño: 1) Convocatoria de Junta Ordinaria; 2) Convocatoria de Junta Extraordinaria; 3) Acta de Junta Ordinaria; 4) Demanda de impugnación de acuerdo comunitario con solicitud de medidas cautelares (panadería en bajo afectada en 10 m² por instalación de ascensor de 120.000 €). Remitir en PDFs identificados a mcsmarino@gmail.com antes del 12 de diciembre de 2026.'
+   details:'4 tareas oficiales encargadas el 12 de noviembre de 2026 por D.ª María Consuelo Sánchez Mariño: 1) Convocatoria de Junta Ordinaria; 2) Convocatoria de Junta Extraordinaria; 3) Acta de Junta Ordinaria; 4) Demanda de impugnación de acuerdo comunitario con solicitud de medidas cautelares (panadería en bajo afectada en 10 m² por instalación de ascensor de 120.000 €). Resueltas y enviadas formalmente por correo electrónico a mcsmarino@gmail.com el sábado 14 de noviembre de 2026 (cumplidas con 28 días de antelación sobre el plazo límite del 12 de diciembre).'
   },
   {
    date:new Date(2026,10,12),
@@ -7470,21 +7470,20 @@ mail_rita_goimil_27oct:{
   },
   entrega_consuelo_sanchez_12dic:{
    isDelivery:true,
-   kicker:'Trabajos prácticos oficiales ⏳ · Abogacía · Propiedad Horizontal',
+   kicker:'Trabajos prácticos entregados por correo ✓ · Abogacía · Propiedad Horizontal',
    title:'Tareas de Propiedad Horizontal: Convocatorias, Acta y Demanda de Impugnación (D.ª M.ª Consuelo Sánchez Mariño)',
-   date:'Encargada: jueves, 12 nov 2026 · Plazo oficial límite: Sábado, 12 de diciembre de 2026',
+   date:'Entregada por correo: Sábado, 14 nov 2026 · Plazo oficial límite: 12 de diciembre de 2026',
    teacher:'María Consuelo Sánchez Mariño',
    subjectRef:'Abogacía|Sustantivo civil|2',
    mailKey:'mail_tareas_consuelo_12nov',
-   body:'ENUNCIADO Y TAREAS OFICIALES A REALIZAR (PROP. HORIZONTAL):\n\n• Docente: D.ª María Consuelo Sánchez Mariño\n• Correo de destino: mcsmarino@gmail.com\n• Plazo de entrega: Hasta el 12 de diciembre de 2026\n• Formato: PDFs identificados con apellidos, nombre, grupo y trabajo solicitado\n\n• Trabajos requeridos:\n  1. CONVOCATORIA DE JUNTA ORDINARIA\n  2. CONVOCATORIA JUNTA EXTRAORDINARIA\n  3. ACTA DE JUNTA ORDINARIA\n  4. DEMANDA DE IMPUGNACIÓN DE ACUERDO COMUNITARIO CON MEDIDAS CAUTELARES:\n     - Premisas: Comunidad que aprueba por mayoría simple la instalación de ascensor en edificio.\n     - Cliente: Propietario del bajo comercial.\n     - Afección: El ascensor afecta a 10 m² del bajo, ubicándose exactamente sobre la superficie donde se encuentra el horno.\n     - Coste del ascensor: 120.000 €.\n     - Cuota de participación del bajo: 20 %.\n     - Actividad económica: En el bajo se desarrolla actividad de panadería.',
-   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D.ª Consuelo Sánchez Mariño · 12 nov 2026',
+   body:'ENUNCIADO Y TAREAS OFICIALES REALIZADAS (PROP. HORIZONTAL):\n\n• Docente: D.ª María Consuelo Sánchez Mariño\n• Correo de destino: mcsmarino@gmail.com\n• Formato: PDFs identificados con apellidos, nombre, grupo y trabajo solicitado\n\n• Trabajos resueltos y remitidos:\n  1. CONVOCATORIA DE JUNTA ORDINARIA\n  2. CONVOCATORIA JUNTA EXTRAORDINARIA\n  3. ACTA DE JUNTA ORDINARIA\n  4. DEMANDA DE IMPUGNACIÓN DE ACUERDO COMUNITARIO CON MEDIDAS CAUTELARES:\n     - Premisas: Comunidad que aprueba por mayoría simple la instalación de ascensor en edificio.\n     - Cliente: Propietario del bajo comercial.\n     - Afección: El ascensor afecta a 10 m² del bajo, ubicándose exactamente sobre la superficie donde se encuentra el horno.\n     - Coste del ascensor: 120.000 €.\n     - Cuota de participación del bajo: 20 %.\n     - Actividad económica: En el bajo se desarrolla actividad de panadería.\n\n• Entrega formal realizada:\n  - Enviadas por correo a mcsmarino@gmail.com el sábado 14 de noviembre de 2026 (con 28 días de antelación respecto al plazo máximo del 12 de diciembre de 2026).',
+   source:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · D.ª Consuelo Sánchez Mariño · Entregada el 14 nov 2026',
    attachments:[
-    {name:'📩 Redactar envío a mcsmarino@gmail.com',url:'mailto:mcsmarino@gmail.com?subject=Trabajos%20Propiedad%20Horizontal%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimada%20D%C2%AA%20Consuelo%20S%C3%A1nchez%20Mari%C3%B1o%3A%0A%0AAdjunto%20remito%20las%204%20tareas%20solicitadas%20de%20Propiedad%20Horizontal.%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos',kind:'Enviar tareas ↗'},
-    {name:'Ver correo de la convocatoria (12 nov)',detailKey:'mail_tareas_consuelo_12nov',kind:'Correo oficial ✉️'},
+    {name:'Ver correo oficial de la convocatoria (12 nov)',detailKey:'mail_tareas_consuelo_12nov',kind:'Correo oficial ✉️'},
     {name:'Ley 49/1960 de Propiedad Horizontal (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906',kind:'BOE oficial ↗'},
     {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
    ],
-   extra:'⏳ Plazo límite de entrega por correo: 12 de diciembre de 2026 a mcsmarino@gmail.com.'
+   extra:'Entrega telemática a través del aula virtual o secretaría académica.'
   },
   mail_notas_patricia_9nov:{
    kicker:'Calificaciones oficiales · Escritura forense (Procura)',
