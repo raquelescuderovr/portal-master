@@ -308,21 +308,74 @@ def add_mail_entry(content: str, date_str: str, title: str, meta: str, key: str,
 
     return content
 
+def parse_deadline_date(deadline_str: str) -> tuple:
+    """Intenta extraer la fecha de vencimiento (día, mes, año) de la cadena de plazo.
+    Si no se detecta o no está especificada, devuelve la fecha actual."""
+    now = datetime.now()
+    if not deadline_str:
+        return now.year, now.month, now.day
+    
+    # Mapeo de meses en español
+    meses = {
+        'ene': 1, 'enero': 1,
+        'feb': 2, 'febrero': 2,
+        'mar': 3, 'marzo': 3,
+        'abr': 4, 'abril': 4,
+        'may': 5, 'mayo': 5,
+        'jun': 6, 'junio': 6,
+        'jul': 7, 'julio': 7,
+        'ago': 8, 'agosto': 8,
+        'sep': 9, 'septiembre': 9, 'setiembre': 9,
+        'oct': 10, 'octubre': 10,
+        'nov': 11, 'noviembre': 11,
+        'dic': 12, 'diciembre': 12
+    }
+    
+    # Buscar patrones como "7 de diciembre de 2026", "7 dic 2026", "7 de diciembre", "07/12/2026"
+    m_slash = re.search(r'(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?', deadline_str)
+    if m_slash:
+        d = int(m_slash.group(1))
+        m = int(m_slash.group(2))
+        y = int(m_slash.group(3)) if m_slash.group(3) else now.year
+        if y < 100: y += 2000
+        return y, m, d
+
+    m_text = re.search(r'(\d{1,2})\s+(?:de\s+)?([a-zA-ZáéíóúÁÉÍÓÚ]+)(?:\s+(?:de\s+)?(\d{4}))?', deadline_str, re.IGNORECASE)
+    if m_text:
+        d = int(m_text.group(1))
+        m_name = m_text.group(2).lower()
+        y = int(m_text.group(3)) if m_text.group(3) else now.year
+        # Normalizar tildes
+        m_name = m_name.replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u')
+        for k, v in meses.items():
+            if m_name.startswith(k):
+                return y, v, d
+
+    return now.year, now.month, now.day
+
 def add_ceproc_task(content: str, date_str: str, title: str, teacher: str, subject: str,
                     subject_ref: str, status: str, deadline_str: str, details_text: str) -> str:
     """Inserta una nueva práctica/tarea de CEPROC en deliveries y details,
+    utilizando como fecha principal de la entrega la fecha de caducidad/vencimiento,
     y la vincula automáticamente con la ficha del profesor y la asignatura correspondiente."""
     s_title = sanitize_js_string(title)
     s_teacher = sanitize_js_string(teacher)
     s_subject = sanitize_js_string(subject)
     s_subref = sanitize_js_string(subject_ref)
-    s_status = sanitize_js_string(status or "Pendiente de realizar")
     s_details = sanitize_js_string(details_text)
     detail_key = "entrega_" + re.sub(r'[^a-zA-Z0-9_]', '_', title.strip().lower())[:25]
 
-    now = datetime.now()
+    # La fecha de la práctica se fija siempre a su vencimiento/caducidad
+    due_y, due_m, due_d = parse_deadline_date(deadline_str)
+    
+    # Estado reflejando plazo y fecha de asignación/origen si existe
+    if status:
+        s_status = sanitize_js_string(status)
+    else:
+        s_status = f"⏳ Pendiente (Plazo: {sanitize_js_string(deadline_str)} · Asignada: {sanitize_js_string(date_str)})"
+
     delivery_entry = (
-        f" {{date:new Date({now.year},{now.month-1},{now.day}),title:'{s_title}',teacher:'{s_teacher}',"
+        f" {{date:new Date({due_y},{due_m-1},{due_d}),title:'{s_title}',teacher:'{s_teacher}',"
         f"subject:'{s_subject}',subjectRef:'{s_subref}',status:'{s_status}',submitted:false,"
         f"detailKey:'{detail_key}',details:'{s_details}'}},\n"
     )

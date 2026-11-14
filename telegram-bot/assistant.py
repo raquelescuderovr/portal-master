@@ -544,7 +544,7 @@ def execute_action(action_type: str, args: dict) -> str:
 
             new_html = updater.add_ceproc_task(
                 current_content, now_str, titulo, docente, materia,
-                "Abogacía|Técnicas instrumentales|3", f"⏳ Pendiente (Plazo: {plazo})", plazo, detalles
+                "Abogacía|Técnicas instrumentales|3", f"⏳ Pendiente (Plazo: {plazo} · Asignada: {now_str})", plazo, detalles
             )
             commit_msg = f"Añadir práctica: {titulo} ({docente}) [vía Telegram]"
             updater.save_and_commit(new_html, commit_msg)
@@ -552,7 +552,8 @@ def execute_action(action_type: str, args: dict) -> str:
                 f"\n\n📌 <b>Práctica registrada en el portal:</b> «{titulo}»\n"
                 f"• <b>Docente:</b> {docente} (vinculada en su ficha de profesor)\n"
                 f"• <b>Asignatura:</b> {materia}\n"
-                f"• <b>Plazo:</b> {plazo}\n"
+                f"• <b>Plazo de vencimiento:</b> {plazo}\n"
+                f"• <b>Fecha de asignación:</b> {now_str}\n"
                 f"• <b>Ubicación:</b> Pestaña de Entregas y panel docente\n"
                 f"🌐 <a href='{PORTAL_PUBLIC_URL}'>Ver en tu portal web</a>"
             )
