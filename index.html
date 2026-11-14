@@ -4808,7 +4808,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 3 pend.</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 2 pend.</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4839,20 +4839,20 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarAccordionBadge" style="font-size:10px;padding:2px 7px">3 pendientes</span>
+      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarAccordionBadge" style="font-size:10px;padding:2px 7px">2 pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
       <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
       <div class="side-pending-items">
-        <button class="side-pending-item" data-detail="entrega_lousada_sesion5" title="Plazo: 19 de noviembre antes de las 20:00 h (clase del 20 nov) · UDC">
+        <button class="side-pending-item" data-detail="entrega_contrato_de_cesi_n_de_la_" title="Plazo: 7 de diciembre de 2026 · Propiedad Intelectual">
           <div class="spi-head">
             <span class="spi-dot amber">●</span>
-            <strong class="spi-date">19 nov · 20:00 h</strong>
-            <span class="spi-platform blue">Email UDC</span>
+            <strong class="spi-date">7 dic</strong>
+            <span class="spi-platform blue">Email Docente</span>
           </div>
-          <div class="spi-title">Procesal Civil: Casos Sesión 5 (Clase 20 nov)</div>
-          <div class="spi-teacher">D. Fernando Lousada Arochena</div>
+          <div class="spi-title">Contrato cesión derechos de autor</div>
+          <div class="spi-teacher">D.ª Lucía Silvoso</div>
         </button>
 
         <button class="side-pending-item" data-detail="entrega_consuelo_sanchez_12dic" title="Plazo: 12 de diciembre de 2026 · Enviar por correo a D.ª Consuelo Sánchez Mariño">
@@ -4863,6 +4863,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </div>
           <div class="spi-title">Propiedad Horizontal (4 prácticas)</div>
           <div class="spi-teacher">D.ª M.ª Consuelo Sánchez Mariño</div>
+        </button>
+
+        <button class="side-pending-item" data-detail="entrega_lousada_sesion5" title="Entregada por correo a D. Fernando Lousada (14 nov)">
+          <div class="spi-head">
+            <span class="spi-dot green">✓</span>
+            <strong class="spi-date">14 nov · Entregada</strong>
+            <span class="spi-platform green">Email UDC</span>
+          </div>
+          <div class="spi-title">Procesal Civil: Casos Sesión 5 (Clase 20 nov)</div>
+          <div class="spi-teacher">D. Fernando Lousada Arochena</div>
         </button>
 
         <button class="side-pending-item" data-detail="entrega_lousada_sesion4" title="Entregada por correo a D. Fernando Lousada (14 nov)">
@@ -5068,7 +5078,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value" id="welcomePendingDeliveriesBadge">3 por entregar · Próx: 19 nov</strong>
+            <strong class="badge-value" id="welcomePendingDeliveriesBadge">2 por entregar · Próx: 7 dic</strong>
           </div>
         </button>
 
@@ -5303,17 +5313,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
             <div>📄 Documento: <code>Escrito de personación en sustitución de procuradora_Raquel Escudero.pdf</code> (con comprobante en vídeo)</div>
           </div>
         </article>
-        <!-- Tarjeta Pendiente 1: Fernando Lousada (Sesiones 1 a 5 · 11 al 19 nov) -->
-        <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion5" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
+        <!-- Tarjeta Fernando Lousada: Todas las sesiones (1 a 5) completadas -->
+        <article class="ptb-card" id="homePendingLousada" data-detail="entrega_lousada_sesion5" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los casos prácticos de Procesal Civil">
           <div class="ptb-card-top">
-            <span class="ptb-tag green">✓ Sesiones 1, 2, 3 y 4 entregadas</span>
-            <span class="ptb-due-badge amber">⏳ Próx. Sesión 5: Jue 19 nov (20:00 h)</span>
+            <span class="ptb-tag green">✓ Sesiones 1 a 5 entregadas</span>
+            <span class="ptb-due-badge green">✓ 100% Casos Procesal Civil completados</span>
           </div>
           <h4 class="ptb-card-title">Casos Prácticos de Procesal Civil (D. Fernando Lousada Arochena)</h4>
           <div class="ptb-card-meta">
             <div>👤 Profesor: <b>D. Fernando Lousada Arochena (Magistrado TSJ)</b></div>
-            <div>📚 Materia: <b>Práctica Procesal Civil · Sesiones 1 a 4 entregadas formalmente por correo</b></div>
-            <div>📩 Próximo envío a <code>fernando.lousada@udc.es</code>: Sesión 5 antes de las 20:00 h del jueves 19 nov (sesión final 20 nov)</div>
+            <div>📚 Materia: <b>Práctica Procesal Civil · Las 5 sesiones resueltas y entregadas por correo</b></div>
+            <div>📩 Enviadas formalmente a <code>fernando.lousada@udc.es</code> (Sesión 5 completada el 14 nov con 5 días de antelación)</div>
           </div>
         </article>
 
@@ -5618,11 +5628,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (3 pendientes · 19 completadas)</h2>
-        <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov · Sesiones 1, 2, 3 y 4 ya entregadas) y 13 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
+        <h2>Próximas entregas y prácticas (2 pendientes · 20 completadas)</h2>
+        <p>Seguimiento de prácticas y trabajos del Máster: enviar al correo de D.ª Chony Jiménez (<code>chonyjimenezdellano@yahoo.es</code>) antes del lunes 9 nov con el test de Arrendamientos Urbanos, 5 entregas de Práctica Procesal Civil con D. Fernando Lousada (del 11 al 19 nov · Las 5 sesiones ya entregadas) y 14 prácticas ya completadas agrupadas en desplegables por asignatura (incluida la demanda civil de Escritura Forense entregada el 6 nov con acuse de recibo de D. Javier García).</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">3 pendientes · 19 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">2 pendientes · 20 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
@@ -5784,8 +5794,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div class="hub-card-text">
           <span class="hub-card-kicker">Tareas y Prácticas</span>
-          <strong class="hub-card-title" id="homeHubPendingTitle">Cosas pendientes (3)</strong>
-          <span class="hub-card-meta">⏳ Próx: Sesión 5 de D. Fernando Lousada (19 nov)</span>
+          <strong class="hub-card-title" id="homeHubPendingTitle">Cosas pendientes (2)</strong>
+          <span class="hub-card-meta">⏳ Próx: Contrato cesión PI de D.ª Lucía Silvoso (7 dic)</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -6047,7 +6057,7 @@ const events={
   '2026-11-19':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'16:30',end:'19:00',name:'Proceso de ejecución / Procura',teacher:'Juan Lage Fdez-Cervera',subject:'Actuación procesal · Procura (Cambio de cronograma: antes 20 nov · Mañana: 09:30–12:00 / Tarde: 16:30–19:00)',subjectRef:'Procura|Actuación procesal|5',mailKey:'mail_cambios_cronograma_2nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
-   {start:'20:00',end:'',name:'⏳ PLAZO ENTREGA: Casos Procesal Civil Sesión 5 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Envío antes de las 20:00 h a fernando.lousada@udc.es (Preguntas 2, 6, 10 y comunes · Sesión del viernes 20 nov)',detailKey:'entrega_lousada_sesion5',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:true}
+   {start:'20:00',end:'',name:'✅ ENTREGADA: Casos Procesal Civil Sesión 5 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Enviada formalmente por correo a fernando.lousada@udc.es (14 nov · Preguntas asignadas y recurso apelación)',detailKey:'entrega_lousada_sesion5',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:false}
   ],
   '2026-11-20':[
    {start:'16:30',end:'19:00',name:'Recursos civiles (Práctica Procesal Civil · Sesión 5)',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía (Cambio de cronograma: antes 19 nov · Mañana: 09:30–12:00 / Tarde: 16:30–19:00)',subjectRef:'Abogacía|Procesal civil|5',mailKey:'mail_cambios_cronograma_2nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
@@ -6812,16 +6822,16 @@ const deliveries=[
   details:'Respuestas a los casos prácticos de la Sesión 4 (clase del miércoles 18 de noviembre): Desalojo de okupas y Proceso Monitorio Comercial. Enviadas formalmente por correo electrónico a fernando.lousada@udc.es el sábado 14 de noviembre de 2026 (cumplida con 3 días de antelación respecto al límite oficial del 17 nov a las 20:00 h). Preguntas asignadas Grupo Tarde: 2, 6, 10 y comunes.'
  },
  {
-  date:new Date(2026,10,19),
+  date:new Date(2026,10,14),
   title:'Casos Procesal Civil (Sesión 5 · Clase del 20 nov): Recurso de apelación y Jurisprudencia constitucional',
   teacher:'Fernando Lousada',
   subject:'Abogacía · Práctica Procesal Civil',
   subjectRef:'Abogacía|Procesal civil|5',
   subjectName:'Práctica Procesal Civil (D. Fernando Lousada)',
-  status:'⏳ Pendiente (Plazo: 19 nov 2026 · antes 20:00 h)',
-  submitted:false,
+  status:'Entregada por correo a D. Fernando Lousada ✓ (14 nov 2026)',
+  submitted:true,
   detailKey:'entrega_lousada_sesion5',
-  details:'Entrega de respuestas por correo a fernando.lousada@udc.es antes de las 20:00 h del jueves 19 de noviembre (víspera de la sesión final trasladada al viernes 20 de noviembre de 16:30 a 19:00 h). Casos: Recurso de apelación y Análisis clínico de jurisprudencia constitucional (análisis sin envío, exposición oral en clase). Tus preguntas asignadas (Grupo Tarde): 2, 6, 10 y comunes.'
+  details:'Respuestas a los casos prácticos de la Sesión final de Procesal Civil (trasladada al viernes 20 de noviembre): Recurso de apelación y Análisis clínico de jurisprudencia constitucional. Enviadas formalmente por correo electrónico a fernando.lousada@udc.es el sábado 14 de noviembre de 2026 (cumplida con 5 días de antelación sobre el límite del 19 nov a las 20:00 h). Preguntas asignadas Grupo Tarde: 2, 6, 10 y comunes.'
  },
  {
   date:new Date(2026,10,6),
@@ -9040,21 +9050,21 @@ mail_rita_goimil_27oct:{
  },
  entrega_lousada_sesion5:{
   isDelivery:true,
-  kicker:'Práctica Procesal Civil · Sesión 5 (Viernes 20 nov · 16:30–19:00 h; mañana 09:30–12:00 h)',
+  kicker:'Práctica entregada formalmente por correo ✓ · Abogacía · Práctica Procesal Civil',
   title:'Casos Procesal Civil (Sesión 5): Recurso de apelación y Jurisprudencia constitucional',
-  date:'Plazo de entrega por correo: Jueves, 19 de noviembre de 2026 antes de las 20:00 h (día anterior a la sesión del viernes 20 nov)',
+  date:'Entregada por correo: Sábado, 14 de noviembre de 2026 · Plazo oficial: 19 nov (20:00 h)',
   teacher:'Fernando Lousada',
   subjectRef:'Abogacía|Procesal civil|5',
-  body:'Programación oficial de casos prácticos de la Sesión final de Procesal Civil (trasladada al viernes 20 de noviembre, de 09:30 a 12:00 y de 16:30 a 19:00 h, según aviso de Administración del 2 de noviembre) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 19 (1) Análisis clínico Jurisprudencia constitucional.doc (¡ATENCIÓN! No requiere envío por email; basta el análisis y la exposición oral en clase).\n  2) Nov. 19 (2) Recurso de apelación.doc (interposición de recurso ordinario ex arts. 458 y ss. LEC).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Reglas de envío y evaluación:\n  - Correo de entrega: fernando.lousada@udc.es antes de las 20:00 horas del día anterior a la sesión (jueves 19 de noviembre).\n  - Remate final de la corrección de todos los casos presentados durante las clases.',
-  source:'Programación oficial (26 oct 2026) y cambio de cronograma de Administración (Patricia · 2 nov 2026)',
+  body:'Programación oficial de casos prácticos de la Sesión final de Procesal Civil (trasladada al viernes 20 de noviembre, de 09:30 a 12:00 y de 16:30 a 19:00 h, según aviso de Administración del 2 de noviembre) impartida por el Magistrado D. Fernando Lousada Arochena:\n\n• Casos prácticos a resolver:\n  1) Nov. 19 (1) Análisis clínico Jurisprudencia constitucional.doc (análisis para exposición oral en clase).\n  2) Nov. 19 (2) Recurso de apelación.doc (interposición de recurso ordinario ex arts. 458 y ss. LEC).\n\n• ASIGNACIÓN DE PREGUNTAS (Grupo Tarde · Raquel Escudero Valcárcel-Ríos):\n  - Bloque alfabético: «De Doce Caneiro-Aneiros, Mireia, a González Fernández, Esperanza».\n  - En casos de 4 preguntas: respondes la PREGUNTA 2.\n  - En casos de 8 preguntas: respondes las PREGUNTAS 2 y 6.\n  - En casos de 12 preguntas: respondes las PREGUNTAS 2, 6 y 10.\n  - Cuestiones comunes: se contestan íntegramente por todos los grupos.\n\n• Entrega formal realizada:\n  - Enviada por correo a fernando.lousada@udc.es el sábado 14 de noviembre de 2026 (con 5 días de antelación sobre el plazo oficial del jueves 19 de noviembre a las 20:00 h). ¡Todas las prácticas de D. Fernando Lousada completadas al 100%!',
+  source:'Programación oficial (26 oct 2026) y entrega formal realizada el 14 nov 2026',
   mailKey:'mail_lousada_26oct',
   attachments:[
-   {name:'📩 Enviar respuestas a fernando.lousada@udc.es',url:'mailto:fernando.lousada@udc.es?subject=Pr%C3%A1ctica%20Procesal%20Civil%20-%20Sesi%C3%B3n%20Final%20(20%20nov)%20-%20Raquel%20Escudero%20(Grupo%20Tarde)&body=Estimado%20D.%20Fernando%20Lousada%3A%0A%0AAdjunto%20remito%20las%20respuestas%20a%20las%20preguntas%20asignadas%20para%20la%20sesi%C3%B3n%20final%20de%20Pr%C3%A1ctica%20Procesal%20Civil%20(viernes%2020%20de%20noviembre).%0A%0AAtentamente%2C%0ARaquel%20Escudero%20Valc%C3%A1rcel-R%C3%ADos%20(Grupo%20Tarde)',kind:'Correo D. Fernando Lousada'},
    {name:'✉️ Ver aviso de cambio de cronograma (2 nov)',detailKey:'mail_cambios_cronograma_2nov',kind:'Cambio cronograma'},
    {name:'✉️ Ver correo oficial con los 16 adjuntos (09:35 h)',detailKey:'mail_lousada_26oct',kind:'Correo oficial'},
+   {name:'Ficha de D. Fernando Lousada',teacher:'Fernando Lousada',kind:'Docente 👤'},
    {name:'Bandeja de entrada en Outlook Web',url:outlookUrl,kind:'Correo Outlook'}
   ],
-  extra:'⏳ Plazo de envío por correo: jueves 19 de noviembre antes de las 20:00 h (día anterior a la sesión del viernes 20 nov) a fernando.lousada@udc.es. En análisis de jurisprudencia constitucional no se envía nada (exposición oral).'
+  extra:'✓ Entregada por correo electrónico a fernando.lousada@udc.es el sábado 14 de noviembre de 2026 (cumplida con 5 días de antelación).'
  },
  entrega_apud_acta:{
   isDelivery:true,
@@ -10858,7 +10868,8 @@ const teacherDirectory=[
    {title:'Sesión 1 (Práctica 12 nov): Competencia, conciliación, diligencias y cautelares',status:'✅ Entregada por correo el 8 nov',key:'entrega_lousada_sesion1'},
    {title:'Sesión 2 (Práctica 13 nov): Divorcio internacional, reconvención y Wally',status:'✅ Entregada por correo el 12 nov',key:'entrega_lousada_sesion2'},
    {title:'Sesión 3 (Práctica 17 nov): Romeo y Julieta y DDFF',status:'✅ Entregada por correo el 14 nov',key:'entrega_lousada_sesion3'},
-   {title:'Sesión 4 (Práctica 18 nov): Desahucio okupas y monitorio',status:'✅ Entregada por correo el 14 nov',key:'entrega_lousada_sesion4'}
+   {title:'Sesión 4 (Práctica 18 nov): Desahucio okupas y monitorio',status:'✅ Entregada por correo el 14 nov',key:'entrega_lousada_sesion4'},
+   {title:'Sesión 5 (Práctica 20 nov): Apelación y jurisprudencia',status:'✅ Entregada por correo el 14 nov',key:'entrega_lousada_sesion5'}
   ],
   driveFiles:[],
   notes:['Materiales e instrucciones de los 15 casos prácticos remitidos por la Administración el 26 de octubre (16 archivos adjuntos).','Cambio de cronograma (2 nov): su sesión final pasa del jueves 19 al viernes 20 de noviembre (09:30–12:00 y 16:30–19:00 h).']
