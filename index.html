@@ -4808,7 +4808,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <svg class="nav-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </span>
       <span class="nav-label-text">Próximas entregas</span>
-      <span class="nav-badge-pill badge-terra highlight-pill" style="font-weight:800;padding:2px 7px" id="sidebarNavDeliveriesBadge">⏳ 1 pend.</span>
+      <span class="nav-badge-pill highlight-pill" style="font-weight:800;padding:2px 7px;background:var(--green);color:#ffffff" id="sidebarNavDeliveriesBadge">Al día ✓</span>
     </button>
     <button class="nav-btn-materiales" data-view="materiales">
       <span class="nav-icon-pill icon-sky">
@@ -4839,7 +4839,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <span class="spa-icon">⏳</span>
         <span class="spa-text">Prácticas pendientes</span>
       </div>
-      <span class="nav-badge-pill badge-terra highlight-pill" id="sidebarAccordionBadge" style="font-size:10px;padding:2px 7px">1 pendiente</span>
+      <span class="nav-badge-pill highlight-pill" id="sidebarAccordionBadge" style="font-size:10px;padding:2px 7px;background:var(--green);color:#ffffff">0 pendientes</span>
       <span class="sta-arrow">▾</span>
     </summary>
     <div class="sidebar-pending-breakdown">
@@ -5628,22 +5628,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
   <section class="section view-hidden" id="deliverySection" data-section-view="entregas">
     <div class="section-title">
       <div>
-        <h2>Próximas entregas y prácticas (<span id="deliveryTitlePendingCount">1</span> pendientes · <span id="deliveryTitleCompletedCount">21</span> completadas)</h2>
+        <h2>Próximas entregas y prácticas (<span id="deliveryTitlePendingCount">0</span> pendientes · <span id="deliveryTitleCompletedCount">22</span> completadas)</h2>
         <p id="deliverySubtitle">Seguimiento de prácticas y trabajos del Máster: entregas futuras pendientes y prácticas ya entregadas con acuse de recibo y calificaciones oficiales.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">1 pendiente · 21 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">0 pendientes · 22 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (17)</button>
-      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (6)</button>
-      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (11)</button>
-      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (6)</button>
-      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (11)</button>
-      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 22 prácticas (5 pendientes y 17 superadas).</span>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (22)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (0)</button>
+      <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (22)</button>
+      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (7)</button>
+      <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (15)</button>
+      <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 22 prácticas ya entregadas con éxito.</span>
     </div>
     <div class="deliveries">
       <div class="delivery-list" id="deliveryList"></div>
@@ -16173,10 +16173,30 @@ function renderDeliveries(filter = currentDeliveryFilter){
  if(ptbBtn) ptbBtn.textContent = `Ver todas las entregas (${totalCount}) ➔`;
 
  const sideNavBadge = document.getElementById('sidebarNavDeliveriesBadge');
- if(sideNavBadge) sideNavBadge.textContent = `⏳ ${pendingCount} pend.`;
+ if(sideNavBadge){
+  if(pendingCount === 0){
+   sideNavBadge.textContent = 'Al día ✓';
+   sideNavBadge.style.background = 'var(--green)';
+   sideNavBadge.style.color = '#ffffff';
+  } else {
+   sideNavBadge.textContent = `⏳ ${pendingCount} pend.`;
+   sideNavBadge.style.background = 'var(--terracotta)';
+   sideNavBadge.style.color = '#ffffff';
+  }
+ }
 
  const sideAccBadge = document.getElementById('sidebarAccordionBadge');
- if(sideAccBadge) sideAccBadge.textContent = `${pendingCount} pendientes`;
+ if(sideAccBadge){
+  if(pendingCount === 0){
+   sideAccBadge.textContent = '0 pendientes';
+   sideAccBadge.style.background = 'var(--green)';
+   sideAccBadge.style.color = '#ffffff';
+  } else {
+   sideAccBadge.textContent = `${pendingCount} pendientes`;
+   sideAccBadge.style.background = 'var(--terracotta)';
+   sideAccBadge.style.color = '#ffffff';
+  }
+ }
 
  const hubPendingTitle = document.getElementById('homeHubPendingTitle');
  if(hubPendingTitle) hubPendingTitle.textContent = `Cosas pendientes (${pendingCount})`;
