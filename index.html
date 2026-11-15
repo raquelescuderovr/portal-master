@@ -5072,13 +5072,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <p id="welcomeSubtitle">Cuaderno personal de estudio, agenda y seguimiento académico del Máster en Abogacía y Procura.</p>
       
       <div class="welcome-badges-row">
-        <button class="welcome-badge badge-terra" data-switch-view="entregas" title="Prácticas y tareas pendientes de entrega">
+        <button class="welcome-badge badge-mint" id="welcomePendingDeliveriesBtn" data-switch-view="entregas" title="Prácticas y tareas pendientes de entrega">
           <span class="badge-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </span>
           <div class="badge-texts">
             <span class="badge-label">Prácticas pendientes</span>
-            <strong class="badge-value" id="welcomePendingDeliveriesBadge">1 por entregar · Próx: 7 dic</strong>
+            <strong class="badge-value" id="welcomePendingDeliveriesBadge">Al día ✓ · 0 pendientes</strong>
           </div>
         </button>
 
@@ -16166,6 +16166,25 @@ function renderDeliveries(filter = currentDeliveryFilter){
   } else {
    tabDeliveriesBadge.textContent = `${pendingCount} pend.`;
    tabDeliveriesBadge.style.background = 'var(--terracotta)';
+  }
+ }
+
+ const welcomeBadgeEl = document.getElementById('welcomePendingDeliveriesBadge');
+ const welcomeBtnEl = document.getElementById('welcomePendingDeliveriesBtn');
+ if(welcomeBadgeEl){
+  if(pendingCount === 0){
+   welcomeBadgeEl.textContent = 'Al día ✓ · 0 pendientes';
+   if(welcomeBtnEl){
+    welcomeBtnEl.classList.remove('badge-terra');
+    welcomeBtnEl.classList.add('badge-mint');
+   }
+  } else {
+   const nextDue = deliveries.filter(d => !d.submitted).sort((a,b)=>a.date-b.date)[0];
+   welcomeBadgeEl.textContent = nextDue ? `${pendingCount} por entregar · Próx: ${fmtShort(nextDue.date)}` : `${pendingCount} por entregar`;
+   if(welcomeBtnEl){
+    welcomeBtnEl.classList.remove('badge-mint');
+    welcomeBtnEl.classList.add('badge-terra');
+   }
   }
  }
 
