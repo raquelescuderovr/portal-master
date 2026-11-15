@@ -4845,11 +4845,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="sidebar-pending-breakdown">
       <div style="font-size:10.5px;color:var(--muted);padding:0 4px 6px;line-height:1.4">Accesos directos con fecha límite y plataforma de entrega:</div>
       <div class="side-pending-items">
-        <button class="side-pending-item" data-detail="entrega_contrato_de_cesi_n_de_la_" title="Plazo: 7 de diciembre de 2026 · Propiedad Intelectual">
+        <button class="side-pending-item" data-detail="entrega_contrato_de_cesi_n_de_la_" title="Entregada por correo a D.ª Lucía Silvoso (16 nov · 10:30 h)">
           <div class="spi-head">
-            <span class="spi-dot amber">●</span>
-            <strong class="spi-date">7 dic</strong>
-            <span class="spi-platform blue">Email Docente</span>
+            <span class="spi-dot green">✓</span>
+            <strong class="spi-date">16 nov · Entregada</strong>
+            <span class="spi-platform green">Email Docente</span>
           </div>
           <div class="spi-title">Contrato cesión derechos de autor</div>
           <div class="spi-teacher">D.ª Lucía Silvoso</div>
@@ -5794,8 +5794,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div class="hub-card-text">
           <span class="hub-card-kicker">Tareas y Prácticas</span>
-          <strong class="hub-card-title" id="homeHubPendingTitle">Cosas pendientes (1)</strong>
-          <span class="hub-card-meta">⏳ Próx: Contrato cesión PI de D.ª Lucía Silvoso (7 dic)</span>
+          <strong class="hub-card-title" id="homeHubPendingTitle">Cosas pendientes (0)</strong>
+          <span class="hub-card-meta" id="homeHubPendingMeta">✓ ¡Al día! 22 prácticas completadas</span>
         </div>
         <span class="hub-card-arrow">↗</span>
       </button>
@@ -6041,6 +6041,7 @@ const events={
    {start:'16:30',end:'20:45',name:'Demanda, contestación, reconvención y juicio ordinario',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|1',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-16':[
+   {start:'10:30',end:'',name:'✅ ENTREGADA: Contrato de cesión de derechos de autor (D.ª Lucía Silvoso)',teacher:'Lucía Silvoso',subject:'Enviada por correo a lucia.sivoso@gmail.com (10:30 h · con 21 días de antelación)',detailKey:'entrega_contrato_de_cesi_n_de_la_',place:'Correo lucia.sivoso@gmail.com',kind:'Entrega completada ✓',isWarning:false},
    {start:'16:30',end:'20:45',name:'La prueba en el proceso civil',teacher:'José Luis Seoane',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|2',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
    {start:'20:00',end:'',name:'✅ ENTREGADA: Casos Procesal Civil Sesión 3 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Enviada formalmente por correo a fernando.lousada@udc.es (14 nov · Preguntas 2, 6, 10 y comunes)',detailKey:'entrega_lousada_sesion3',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:false}
   ],
@@ -6654,7 +6655,19 @@ const deliveries=[
   file:'Test arrendamientos urbanos.doc + Test propiedad horizontal.doc',
   details:'Entrega conjunta de los 2 tests realizada por correo electrónico a chonyjimenezdellano@yahoo.es el martes 10 de noviembre de 2026 a las 11:30 h («Test de arrendamientos_Raquel Escudero»). Calificada por la docente el mismo 10 de noviembre a las 12:14 h con la máxima nota: «Gracias Raquel, están perfectos los dos test y te he puesto un 10 en cada uno. Saludos, Chony».'
  },
- {date:new Date(2026,11,7),title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',teacher:'Lucía Silvoso',subject:'Propiedad Intelectual',subjectRef:'Abogacía|Técnicas instrumentales|3',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026 · Asignada: 4 nov)',submitted:false,detailKey:'entrega_contrato_de_cesi_n_de_la_',details:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería. Entrega por correo a lucia.sivoso@gmail.com hasta el 7 de diciembre de 2026.'},
+ {
+  date:new Date(2026,11,7),
+  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
+  teacher:'Lucía Silvoso',
+  subject:'Abogacía · Propiedad Intelectual',
+  subjectRef:'Abogacía|Sustantivo civil|0',
+  subjectName:'Propiedad Intelectual y Protección de Datos (D.ª Lucía Silvoso)',
+  status:'Entregada por correo a D.ª Lucía Silvoso ✓ (16 nov 2026, 10:30 h)',
+  submitted:true,
+  detailKey:'entrega_contrato_de_cesi_n_de_la_',
+  file:'Contrato de cesión de derechos de autor_Raquel Escudero.docx',
+  details:'Práctica sobre redacción y análisis del contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería. Entrega programada y remitida formalmente por correo a lucia.sivoso@gmail.com para el 16 de noviembre de 2026 a las 10:30 h (cumplida con 21 días de antelación sobre el plazo oficial del 7 de diciembre).'
+ },
  {
   date:new Date(2026,10,6),
   title:'Caso práctico: Demanda Civil · Escritura Forense y Técnicas Documentales',
@@ -7311,19 +7324,21 @@ mail_rita_goimil_27oct:{
  },
  entrega_contrato_de_cesi_n_de_la_:{
   isDelivery:true,
-  kicker:'Práctica ICACOR · Propiedad Intelectual',
-  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',
-  date:'Publicada: 4 nov 2026 · Plazo: 7 de diciembre de 2026',
+  kicker:'Práctica entregada por correo ✓ · Abogacía · Propiedad Intelectual',
+  title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería (D.ª Lucía Silvoso)',
+  date:'Entregada por correo: 16 nov 2026 (10:30 h) · Plazo oficial: 7 de diciembre de 2026',
   teacher:'Lucía Silvoso',
   subjectRef:'Abogacía|Sustantivo civil|0',
   mailKey:'mail_seminario_pi_30oct',
-  body:'Práctica sobre la redacción/análisis de un contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.',
-  source:'Colegio de Abogados de A Coruña (ICACOR)',
+  body:'Práctica sobre redacción y análisis jurídico de contrato de cesión de derechos de autor entre una diseñadora gráfica y una empresa de papelería.\n\n• Entrega formal programada y realizada por correo electrónico a la docente D.ª Lucía Silvoso (lucia.sivoso@gmail.com) para el 16 de noviembre de 2026 a las 10:30 h (con 21 días de antelación respecto al plazo límite del 7 de diciembre).\n• Archivo: «Contrato de cesión de derechos de autor_Raquel Escudero.docx».',
+  source:'Colegio de Abogados de A Coruña (ICACOR) · D.ª Lucía Silvoso · Entregada el 16 nov 2026 (10:30 h)',
   attachments:[
-   {name:'Enviar práctica a lucia.sivoso@gmail.com',url:'mailto:lucia.sivoso@gmail.com?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Luc%C3%ADa%20Silvoso%20(Contrato%20de%20cesi%C3%B3n)',kind:'Email docente 📩'},
+   {name:'Redactar / Ver correo a lucia.sivoso@gmail.com',url:'mailto:lucia.sivoso@gmail.com?subject=Entrega%20Pr%C3%A1ctica%20MUAP%20-%20Luc%C3%ADa%20Silvoso%20(Contrato%20de%20cesi%C3%B3n)',kind:'Email docente 📩'},
    {name:'Materiales de Propiedad Intelectual (PDF)',detailKey:'mail_seminario_pi_30oct',kind:'Materiales'},
-   {name:'Ley de Propiedad Intelectual (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',kind:'BOE oficial'}
-  ]
+   {name:'Ley de Propiedad Intelectual (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930',kind:'BOE oficial ↗'},
+   {name:'Bandeja de entrada en Outlook',url:outlookUrl,kind:'Outlook Web'}
+  ],
+  extra:'✓ Entregada por correo electrónico a lucia.sivoso@gmail.com el 16 de noviembre de 2026 a las 10:30 h (cumplida con 21 días de antelación).'
  },
  test_2nov_carnota:{
   kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Recursos y Ejecución',
@@ -10984,7 +10999,7 @@ const teacherDirectory=[
    {title:'Materiales de Propiedad Intelectual (reservas de derechos) - 30 oct',key:'mail_seminario_pi_30oct'}
   ],
   practices:[
-   {title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',status:'⏳ Pendiente (Plazo: 7 de diciembre de 2026)',key:'entrega_contrato_de_cesi_n_de_la_'},],
+   {title:'Contrato de cesión de la diseñadora gráfica con la empresa de papelería',status:'✅ Entregada por correo (16 nov · 10:30 h)',key:'entrega_contrato_de_cesi_n_de_la_'},],
   driveFiles:[],
   notes:[
    {title:'Aviso legal y protección de datos (PDF)',detailKey:'mail_seminario_rgpd_30oct',url:outlookUrl,urlLabel:'Ver en Outlook ↗'},
@@ -16122,6 +16137,16 @@ function renderDeliveries(filter = currentDeliveryFilter){
 
  const hubPendingTitle = document.getElementById('homeHubPendingTitle');
  if(hubPendingTitle) hubPendingTitle.textContent = `Cosas pendientes (${pendingCount})`;
+
+ const hubPendingMeta = document.getElementById('homeHubPendingMeta');
+ if(hubPendingMeta){
+  if(pendingCount === 0){
+   hubPendingMeta.textContent = `✓ ¡Al día! ${completedCount} prácticas entregadas`;
+  } else {
+   const nextDue = deliveries.filter(d => !d.submitted).sort((a,b)=>a.date-b.date)[0];
+   hubPendingMeta.textContent = nextDue ? `⏳ Próx: ${nextDue.title.slice(0,25)}...` : `${pendingCount} pendientes`;
+  }
+ }
 
  let filtered = deliveries;
  if(currentDeliveryFilter === 'pending'){
