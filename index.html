@@ -5111,7 +5111,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
     <button class="view-tab" data-view="asignaturas" role="tab" aria-selected="false">Bloques y Asignaturas <span class="tab-badge">8</span></button>
     <button class="view-tab" data-view="profesores" role="tab" aria-selected="false">Profesorado <span class="tab-badge">30</span></button>
     <button class="view-tab" data-view="notas" role="tab" aria-selected="false">Notas y Tests <span class="tab-badge" id="tabGradesBadge">Media: 9.54 ★</span></button>
-    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--terracotta);color:#ffffff;font-weight:800">5 pend.</span></button>
+    <button class="view-tab" data-view="entregas" role="tab" aria-selected="false">Próximas entregas <span class="tab-badge" id="tabDeliveriesBadge" style="background:var(--green);color:#ffffff;font-weight:800">Al día ✓</span></button>
     <button class="view-tab" data-view="materiales" role="tab" aria-selected="false">Apuntes y Drive <span class="tab-badge">13</span></button>
     <button class="view-tab" data-view="correo" role="tab" aria-selected="false">Correo <span class="tab-badge">81</span></button>
   </div>
@@ -5264,13 +5264,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="ptb-header">
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-            <span class="ptb-badge alert" id="ptbPendingBadge" style="background:var(--terracotta);color:#ffffff">⏳ 7 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip" id="ptbUrgentChip">📌 Próximo vencimiento: lunes 16 nov (20:00 h) · Sesión 3 Procesal Civil (D. Fernando Lousada)</span>
+            <span class="ptb-badge" id="ptbPendingBadge" style="background:var(--green);color:#ffffff">✓ 0 PRÁCTICAS PENDIENTES</span>
+            <span class="ptb-urgent-chip" id="ptbUrgentChip">🎉 ¡Todas las prácticas al día! · 22 completadas</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle" id="ptbSubtitle">Tareas con plazo activo: Procesal Civil con D. Fernando Lousada (Sesiones 3, 4 y 5: 16, 17 y 19 nov) + 4 Casos de Propiedad Horizontal con D.ª Consuelo Sánchez (12 dic). ¡Entregados con éxito hoy 12 nov los dos exámenes de D. Jaime Martul (Marketing y Previsión Social) y la Sesión 2 de Fernando Lousada; además de los tests de Chony Jiménez (calificados con 10/10) y las tareas de Javier García, Patricia González, Susana Díaz, Delgado y Moure!</p>
+          <p class="ptb-subtitle" id="ptbSubtitle">Todas las prácticas y casos evaluables encargados hasta la fecha han sido resueltos y entregados formalmente con acuse de recibo y excelentes calificaciones.</p>
         </div>
-        <button class="ptb-view-all-btn" id="ptbViewAllBtn" data-switch-view="entregas">Ver todas las entregas (19) ➔</button>
+        <button class="ptb-view-all-btn" id="ptbViewAllBtn" data-switch-view="entregas">Ver todas las entregas (22) ➔</button>
       </div>
 
       <div class="ptb-grid">
@@ -5428,7 +5428,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 7 tests online superados · 11 prácticas entregadas con éxito ✓</span>
+        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 7 tests online superados · 22 prácticas entregadas con éxito ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5441,7 +5441,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
-          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (11 entregadas con éxito, incluida la demanda civil con acuse de recibo de Garrigues y los exámenes de Martul).</p>
+          <p style="color:var(--ink-soft);margin:0">Redacción y presentación formal de escritos procesales, apoderamientos apud acta, resoluciones de casos y dictámenes entregados en CPROC o remitidos al ICACOR (22 entregadas con éxito, incluida la demanda civil con acuse de recibo de Garrigues y los exámenes de Martul).</p>
         </div>
       </div>
     </div>
@@ -5479,9 +5479,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
           <span class="stat-kicker">Casos prácticos y trabajos</span>
-          <span class="stat-title">11 entregadas y confirmadas formalmente</span>
+          <span class="stat-title" id="statPracticesTitle">22 entregadas y confirmadas formalmente</span>
         </div>
-        <span class="stat-val-pill">11 / 11 ✓</span>
+        <span class="stat-val-pill" id="statPracticesVal">22 / 22 ✓</span>
       </button>
     </div>
 
@@ -13299,7 +13299,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'test'){
    sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
-   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (5 entregadas y 1 pendiente con Delgado).';
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (22 entregadas con éxito, 0 pendientes).';
   } else {
    sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
   }
@@ -16125,7 +16125,50 @@ function renderDeliveries(filter = currentDeliveryFilter){
  if(btnCompleted) btnCompleted.textContent = `✓ Ya entregadas (${completedCount})`;
 
  const ptbBadge = document.getElementById('ptbPendingBadge');
- if(ptbBadge) ptbBadge.textContent = `⏳ ${pendingCount} PRÁCTICAS PENDIENTES`;
+ if(ptbBadge){
+  if(pendingCount === 0){
+   ptbBadge.textContent = '✓ 0 PRÁCTICAS PENDIENTES';
+   ptbBadge.classList.remove('alert');
+   ptbBadge.style.background = 'var(--green)';
+   ptbBadge.style.color = '#ffffff';
+  } else {
+   ptbBadge.textContent = `⏳ ${pendingCount} PRÁCTICAS PENDIENTES`;
+   ptbBadge.classList.add('alert');
+   ptbBadge.style.background = 'var(--terracotta)';
+   ptbBadge.style.color = '#ffffff';
+  }
+ }
+
+ const ptbUrgentChip = document.getElementById('ptbUrgentChip');
+ if(ptbUrgentChip){
+  if(pendingCount === 0){
+   ptbUrgentChip.textContent = `🎉 ¡Todas las prácticas al día! · ${completedCount} completadas`;
+  } else {
+   const nextDue = deliveries.filter(d => !d.submitted).sort((a,b)=>a.date-b.date)[0];
+   ptbUrgentChip.textContent = nextDue ? `📌 Próximo vencimiento: ${fmtShort(nextDue.date)} · ${nextDue.title}` : `⏳ ${pendingCount} pendientes`;
+  }
+ }
+
+ const ptbSubtitle = document.getElementById('ptbSubtitle');
+ if(ptbSubtitle){
+  if(pendingCount === 0){
+   ptbSubtitle.textContent = 'Todas las prácticas y casos evaluables encargados hasta la fecha han sido resueltos y entregados formalmente con acuse de recibo y excelentes calificaciones.';
+  } else {
+   ptbSubtitle.textContent = `Tienes ${pendingCount} prácticas pendientes de entrega según calendario. Revisa los detalles y plazos a continuación.`;
+  }
+ }
+
+ const tabDeliveriesBadge = document.getElementById('tabDeliveriesBadge');
+ if(tabDeliveriesBadge){
+  if(pendingCount === 0){
+   tabDeliveriesBadge.textContent = 'Al día ✓';
+   tabDeliveriesBadge.style.background = 'var(--green)';
+  } else {
+   tabDeliveriesBadge.textContent = `${pendingCount} pend.`;
+   tabDeliveriesBadge.style.background = 'var(--terracotta)';
+  }
+ }
+
  const ptbBtn = document.getElementById('ptbViewAllBtn');
  if(ptbBtn) ptbBtn.textContent = `Ver todas las entregas (${totalCount}) ➔`;
 
