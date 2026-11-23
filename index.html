@@ -5441,7 +5441,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 8 tests online superados · 22 prácticas entregadas con éxito (3 pendientes) ✓</span>
+        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 9 tests online superados · 22 prácticas entregadas con éxito (3 pendientes) ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5450,7 +5450,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--blue);margin-bottom:4px">2. 📝 Tests online de clase (cuestionarios tipo test)</div>
-          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct, <strong>9/10 con Sandra Mosteiro</strong> el 20 oct, <strong>10/10 con Carnota</strong> el 28 oct y 2 nov, <strong>10/10 y 9/10 con Susana</strong>, <strong>8/10 con Patricia</strong>, y <strong>9/10 con Juan Lage</strong>). Tienen su propia nota independiente y no son casos prácticos.</p>
+          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct, <strong>9/10 con Sandra Mosteiro</strong> el 20 oct, <strong>triple 10/10 con María Carnota</strong> el 28 oct, 2 nov y 23 nov, <strong>10/10 y 9/10 con Susana</strong>, <strong>8/10 con Patricia</strong>, y <strong>9/10 con Juan Lage</strong>). Tienen su propia nota independiente y no son casos prácticos.</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
@@ -5485,9 +5485,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">8 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10 · 2 nov: 10/10 · 3 nov: 8/10 · 19 nov: 9/10)</span>
+          <span class="stat-title">9 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10 · 2 nov: 10/10 · 3 nov: 8/10 · 19 nov: 9/10 · 23 nov: 10/10 ★)</span>
         </div>
-        <span class="stat-val-pill">8 tests excelentes ★</span>
+        <span class="stat-val-pill">9 tests excelentes ★</span>
       </button>
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
@@ -5872,6 +5872,9 @@ const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notari
 const testmozCarnota2ReviewUrl='https://testmozusercontent.com/q/15729578/student/review';
 const testHtmlCarnota2LocalUrl='historial-tests/originales/2026-11-02-testmoz-15729578.html';
 const testMdCarnota2LocalUrl='historial-tests/2026-11-02-procura-recursos-ejecucion-costas-maria-carnota.md';
+const testmozCarnota3ReviewUrl='https://testmozusercontent.com/q/15773916/student/review';
+const testHtmlCarnota3LocalUrl='historial-tests/originales/2026-11-23-testmoz-15773916.html';
+const testMdCarnota3LocalUrl='historial-tests/2026-11-23-procura-ejecucion-hipotecaria-concursal-maria-carnota.md';
 const testmozSusanaReviewUrl='https://testmozusercontent.com/q/15727280/student/review';
 const testHtmlSusanaLocalUrl='historial-tests/originales/2026-10-29-testmoz-15727280.html';
 const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susana-diaz.md';
@@ -6081,7 +6084,8 @@ const events={
    {start:'16:30',end:'19:00',name:'Recursos civiles (Práctica Procesal Civil · Sesión 5)',teacher:'Fernando Lousada',subject:'Procesal civil · Abogacía (Cambio de cronograma: antes 19 nov · Mañana: 09:30–12:00 / Tarde: 16:30–19:00)',subjectRef:'Abogacía|Procesal civil|5',mailKey:'mail_cambios_cronograma_2nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Abogacía'}
   ],
   '2026-11-23':[
-   {start:'16:30',end:'18:30',name:'Ejecución hipotecaria / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'},
+   {start:'16:30',end:'18:30',name:'Ejecución hipotecaria / Procura',teacher:'María P. Carnota García',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|6',mailKey:'test_23nov_carnota',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (10/10 ★)'},
+   {start:'18:01',end:'',name:'📝 Test online realizado: Testmoz María Carnota (10/10 aciertos · 100% · Pleno ★)',teacher:'María P. Carnota García',detailKey:'test_23nov_carnota',kind:'Test superado ★'},
    {start:'18:45',end:'20:45',name:'Ejecuciones no dinerarias / Procura',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-24':[
@@ -6097,6 +6101,7 @@ const events={
    {start:'Aviso',end:'',name:'🚫 SUSPENDIDO: Juicios simulados (Sesión 1 · Pendiente de nueva fecha)',teacher:'Luis Merino',subject:'Práctica procesal · Suspendido por Administración hasta nueva fecha que se notificará',subjectRef:'Abogacía|Procesal civil|7',mailKey:'mail_cambios_cronograma_2nov',place:'Juzgado de Primera Instancia n.º 4 (A Coruña)',kind:'Suspendido · Nueva fecha pdte.',isWarning:true,isSuspended:true}
   ],
   '2026-11-27':[
+   {start:'23:59',end:'',name:'⏳ LÍMITE ENTREGA: Test aprovechamiento Iniciación y Organización despacho (D. Daniel Garrido)',teacher:'Daniel Roberto Garrido Pazos',subject:'Enviar por correo al profesor D. Daniel Roberto Garrido Pazos antes de las 23:59 h',detailKey:'entrega_test_garrido_iniciacion_27nov',place:'Correo electrónico',kind:'Entrega práctica',isWarning:true},
    {start:'18:45',end:'20:45',name:'Remuneración, reclamación y fiscalidad / Procura',teacher:'Juan Lage Fdez-Cervera',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|8',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-30':[
@@ -6346,6 +6351,30 @@ const gradeRecords=[
    {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|0'},
    {label:'Ficha de Rita Goimil ↗',teacher:'Rita Goimil Martínez'},
    {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_23nov_carnota_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 23 nov 2026 (18:01)',
+  title:'Ejecución hipotecaria, subastas LO 1/2025 y concursal · María Carnota (Sesión 3)',
+  score:'10 / 10 ★',
+  scoreLabel:'10/10 (100 %)',
+  breakdown:[
+   {label:'Respuestas correctas',val:'10 de 10 (100 %)'},
+   {label:'Calificación',val:'10 / 10 · Sobresaliente ★ pleno'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'María P. Carnota García',
+  subjectRef:'Procura|Actuación procesal|6',
+  mailKey:'test_23nov_carnota',
+  description:'Test oficial «MARÍA CARNOTA-23-11-26 - GRUPO DE TARDE -PRÁCTICA PROCESAL CIVIL» realizado el lunes 23 de noviembre de 2026 a las 18:01 h por Raquel Escudero. Superado con 10/10 aciertos (10 sobre 10 · 100 % · Sobresaliente pleno ★ sin ningún fallo). Materia evaluada: sistema de pujas secretas en subasta electrónica según la Ley Orgánica 1/2025 de eficiencia de la Justicia (art. 648 LEC), depósito preceptivo del 20 % o mínimo 1.000 € para licitar en inmuebles (art. 669.1 LEC), fin del privilegio de adjudicación automática del ejecutante en subasta desierta, autorización al procurador para inserción telemática del anuncio de subasta en BOE (art. 645.1 LEC), suspensión inmediata de subasta y ejecución por declaración de concurso del deudor (art. 649.1 LEC y TRLC), requisitos para procedimiento especial de microempresas (<10 trabajadores y pasivo <350.000 € o facturación <700.000 €, art. 685 TRLC), itinerarios de microempresas (continuación o liquidación con/sin unidad productiva), legitimación para segunda oportunidad (persona natural deudora, art. 486 TRLC), vías de exoneración del pasivo insatisfecho (plan de pagos o liquidación masa activa, art. 487 TRLC), y procedimiento general para sociedades mercantiles insolventes.',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas (10/10 pleno) ↗',detailKey:'test_23nov_carnota',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlCarnota3LocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdCarnota3LocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozCarnota3ReviewUrl,cls:'blue'},
+   {label:'Ficha de María Carnota ↗',teacher:'María P. Carnota García'}
   ]
  },
  {
@@ -6664,17 +6693,17 @@ const gradeRecords=[
   kicker:'Balance global en CPROC / Testmoz · Todos realizados',
   title:'Historial general de tests y prácticas en CPROC',
   score:'10, 9 y 8 ★',
-  scoreLabel:'8 tests hechos',
+  scoreLabel:'9 tests hechos',
   breakdown:[
-   {label:'Tests realizados',val:'8 de 8 completados (100 %)'},
-   {label:'Notas en tests',val:'10, 10, 10, 10, 9, 9, 9 y 8 (media ~9.4)'},
+   {label:'Tests realizados',val:'9 de 9 completados (100 %)'},
+   {label:'Notas en tests',val:'10, 10, 10, 10, 10, 9, 9, 9 y 8 (media ~9.5)'},
    {label:'Prácticas CPROC',val:'4 / 4 enviadas (0 vencidas)'}
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'all_tests_summary',
-  description:'Todos los 8 tests oficiales publicados hasta la fecha en CPROC / Testmoz están completados (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10, 3 nov: 8/10 y 19 nov: 9/10). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
+  description:'Todos los 9 tests oficiales publicados hasta la fecha en CPROC / Testmoz están completados (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10, 3 nov: 8/10, 19 nov: 9/10 y 23 nov: 10/10 ★). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
   links:[
    {label:'★ Ver resumen completo de tests y entregas ↗',detailKey:'all_tests_summary',cls:'solid-green'},
    {label:'Abrir plataforma CPROC ↗',url:cprocUrl,cls:'blue'},
@@ -6684,6 +6713,19 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {
+  date:new Date(2026,10,27),
+  title:'Test de aprovechamiento: Iniciación actividad profesional y Organización despacho (D. Daniel Roberto Garrido Pazos)',
+  teacher:'Daniel Roberto Garrido Pazos',
+  subject:'Abogacía · Iniciación a la actividad profesional y Organización del Despacho',
+  subjectRef:'Abogacía|Técnicas instrumentales|0',
+  subjectName:'Iniciación a la abogacía y organización de despacho (D. Daniel Garrido)',
+  status:'⏳ Pendiente (Plazo: 27 nov 2026 · 23:59 h · Asignada: 23 nov 2026)',
+  submitted:false,
+  detailKey:'entrega_test_garrido_iniciacion_27nov',
+  file:'Test aprovechamiento Iniciación a la actividad profesional y Organización del Despacho.docx',
+  details:'Test de aprovechamiento remitido por la Administración del Máster (23 nov 2026) para los módulos de Iniciación a la actividad profesional y Organización del Despacho. Debe cumplimentarse y remitirse por correo al profesor D. Daniel Roberto Garrido Pazos como muy tarde a las 23:59 horas del viernes 27 de noviembre de 2026.'
+ },
  {
   date:new Date(2026,10,24),
   title:'Caso práctico 1: Ejecución de condena no dineraria',
@@ -7011,6 +7053,16 @@ const deliveries=[
 ];
 
 const messages=[
+ {date:'23 nov 2026 (18:01)',title:'Test online realizado · Ejecución hipotecaria, subastas y concursal (Nota: 10 / 10 ★ · María Carnota)',meta:'Testmoz CPROC · D.ª María Pilar Carnota García · Procura (10/10 aciertos · 100% · Pleno ★)',key:'test_23nov_carnota',teacher:'María Pilar Carnota García',subjectRef:'Procura|Actuación procesal|6',emailSubject:'Test online realizado · Subastas judiciales electrónicas y concursal'},
+ {date:'23 nov 2026 (17:24)',title:'Test aprovechamiento Iniciación y Organización despacho (Plazo: 27 nov · 23:59 h) · D. Daniel Garrido',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_test_garrido_23nov',teacher:'Daniel Roberto Garrido Pazos',subjectRef:'Abogacía|Técnicas instrumentales|0',emailSubject:'TEST APROVECHAMIENTO MÓDULOS INICIACIACIÓN ACTIVIDAD PROFESIONAL Y ORGANIZACIÓN DESPACHO (MÁSTER ABOGACÍA)'},
+ {date:'23 nov 2026 (08:37)',title:'Recordatorio: Charla Uría Menéndez (27 nov · 13:00 h · Salón de Grados)',meta:'Decanato Facultade de Dereito · Mª Teresa Seoane Sande · UDC',key:'mail_charla_uria_23nov',teacher:'Decanato Facultade de Dereito',subjectRef:'Abogacía|Deontología y responsabilidad|0',emailSubject:'Recordatorio Información sobre a Charla de Uria Menendez'},
+ {date:'19 nov 2026 (18:48)',title:'Material didáctico para las clases del 19 nov · D. Juan Lage Fernández-Cervera',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_material_lage_19nov',teacher:'Juan Lage Fdez-Cervera',subjectRef:'Procura|Actuación procesal|5',emailSubject:'Docente D. Juan Lage Fernández-Cervera [Procurador] - Material didáctico para las clases del jueves 19 de noviembre'},
+ {date:'19 nov 2026 (18:34)',title:'Rectificación: Presentación y Auto 30/09/2026 · D.ª Elena Miranda Osset (Clase 24 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia · Presentación PPTX actualizada + Auto Mercantil',key:'mail_elena_miranda_19nov',teacher:'Elena Miranda Osset',subjectRef:'Procura|Actuación procesal|7',emailSubject:'Rectificación: Docente Dña. Elena Miranda Osset [Procuradora] carta presentación MUAP 2026-2027, clase 24 de noviembre'},
+ {date:'19 nov 2026 (18:24)',title:'Carta de presentación MUAP · D.ª María Rita Goimil Martínez (Clase 23 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_carta_goimil_19nov',teacher:'Rita Goimil Martínez',subjectRef:'Procura|Actuación procesal|6',emailSubject:'Docente Dña. María Rita Goimil Martínez [Procuradora] carta presentación MUAP 2026-2027, clase 23 de noviembre'},
+ {date:'19 nov 2026 (12:52)',title:'Horario Clases del 20 de noviembre · D. Fernando Lousada (Mañana y Tarde)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia · Mismos horarios (4 h presenciales)',key:'mail_horario_lousada_19nov',teacher:'Fernando Lousada',subjectRef:'Abogacía|Procesal civil|5',emailSubject:'Horario Clases de mañana 20 de noviembre'},
+ {date:'16 nov 2026 (18:51)',title:'Carta de presentación MUAP · D. Juan Lage Fernández-Cervera (Clase 19 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_carta_lage_16nov',teacher:'Juan Lage Fdez-Cervera',subjectRef:'Procura|Actuación procesal|5',emailSubject:'Docente D. Juan Lage Fernández-Cervera [Procurador] carta presentación MUAP 2026-2027, clase 19 de noviembre'},
+ {date:'16 nov 2026 (18:50)',title:'Carta de presentación MUAP · D.ª María Pilar Carnota García (Clase 23 nov)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_carta_carnota_16nov',teacher:'María Pilar Carnota García',subjectRef:'Procura|Actuación procesal|6',emailSubject:'Docente Dña. María Pilar Carnota García [Procuradora] carta presentación MUAP 2026-2027, clase 23 de noviembre'},
+ {date:'16 nov 2026 (12:12)',title:'Juicios mes de Diciembre de 2026 · Grupo de Tarde (Archivo adjunto .zip)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia · Archivo Grupo tarde. Juicios Diciembre.zip',key:'mail_juicios_diciembre_16nov',teacher:'Administración MUAP',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Juicios mes de Diciembre de 2026. Grupo de Tarde'},
  {date:'12 nov 2026 (11:29)',title:'Tareas de Propiedad Horizontal (4 trabajos · Plazo: 12 dic) · D.ª M.ª Consuelo Sánchez Mariño',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_tareas_consuelo_12nov',teacher:'María Consuelo Sánchez Mariño',subjectRef:'Abogacía|Sustantivo civil|2',emailSubject:'Tareas a realizar para la Docente Dª María Consuelo Sánchez Mariño'},
  {date:'11 nov 2026 (18:12)',title:'Examen y apuntes de Previsión Social (Plazo: 23 nov · 23:59 h) · D. Jaime Martul',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_examen_prevision_social_11nov',teacher:'Jaime Martul',subjectRef:'Abogacía|Técnicas instrumentales|5',emailSubject:'Examen y apuntes asignatura Previsión Social'},
  {date:'11 nov 2026 (13:03)',title:'Resultados oficiales Recursos, ejecución y costas: 10 / 10 ★ (Pleno) · D.ª M.ª Pilar Carnota',meta:'accesoabogaciaprocura@procuradores-coruna.com · Técnicas Instrumentales · Procura (Nota: 10/10 · Test: 4/4 + Trabajos: 6/6)',key:'mail_notas_carnota_sesion2_11nov',teacher:'María P. Carnota García',subjectRef:'Procura|Actuación procesal|1',emailSubject:'Resultados de las pruebas del 02/11/2026 -Técnicas Instrumentales - Docente María Pilar Carnota García'},
@@ -7113,6 +7165,7 @@ const mailSummaries={
  mail_895671:'Asignación de la docente Chony Jiménez (chonyjimenezdellano@yahoo.es) para las sesiones de Arrendamientos (5 y 6 nov) y Propiedad Horizontal (9 nov).',
  mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
  mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
+ test_23nov_carnota:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el lunes 23 de noviembre a las 18:01 h con 10 de 10 aciertos (100 % de puntuación · Sobresaliente pleno ★ sin ningún fallo). Pujas secretas en subasta electrónica según LO 1/2025 (art. 648 LEC), depósito del 20 % o mínimo 1.000 € para licitar en inmuebles (art. 669.1 LEC), fin del privilegio de adjudicación automática en subasta desierta, autorización judicial al procurador para anunciar subasta en BOE (art. 645.1 LEC), suspensión y cese de subasta por concurso del ejecutado (art. 649.1 LEC), requisitos del procedimiento especial de microempresas (<10 empleados, pasivo <350.000 € o volumen <700.000 €, art. 685 TRLC), modalidades de microempresas (continuación o liquidación), legitimación de persona natural para exoneración de pasivo insatisfecho (art. 486 TRLC), vías de exoneración con plan de pagos o liquidación (art. 487 TRLC) y concurso general para sociedades mercantiles.',
  test_19nov_lage:'TEST ONLINE SOBRESALIENTE (9/10): Cuestionario oficial en Testmoz de D. Juan Lage Fdez-Cervera completado el jueves 19 de noviembre a las 18:51 h con 9 de 10 aciertos (90 % de puntuación · Sobresaliente · 1 fallo analizado con fundamentación jurídica). Liquidez de cantidad dineraria (art. 572.1 LEC), exclusión de requerimiento en títulos judiciales (art. 580 LEC), evitación de embargo por consignación (art. 585 LEC), realización por entidad especializada (art. 640 LEC), certificación registral de dominio y cargas (arts. 656 y 666 LEC), depósito judicial colegial (art. 626.4 LEC), legitimación y postulación en ejecución (art. 539 LEC), mediación en proceso ejecutivo (art. 19.4 LEC), tercería de mejor derecho frente a tercería de dominio (arts. 614 y 595 LEC), y aseguramiento de vehículo en Registro de Bienes Muebles (art. 629.2 LEC).',
  test_3nov_patricia:'TEST ONLINE REALIZADO (8/10): Cuestionario oficial en Testmoz de D.ª Patricia González Figueroa completado el martes 3 de noviembre a las 17:16 h con 8 de 10 aciertos (80 % de puntuación · Notable alto · 2 fallos analizados con fundamentación jurídica). Interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto iniciador civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de letrado (art. 188.1.5.º LEC), encabezamiento procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
  mail_rita_goimil_27oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente pleno). Calificaciones otorgadas por D.ª María Rita Goimil Martínez correspondientes a la sesión del 27 de octubre en Deontología y técnicas transversales (Intervención de los procuradores en conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria). Ponderable por coordinación del MUAP.',
@@ -7197,6 +7250,135 @@ const mailSummaries={
 };
 
 const details={
+ entrega_test_garrido_iniciacion_27nov:{
+  isDelivery:true,
+  kicker:'Test de Aprovechamiento ⏳ Pendiente · Abogacía · Iniciación y Organización de Despacho',
+  title:'Test de aprovechamiento: Módulos Iniciación a la Actividad Profesional y Organización del Despacho (D. Daniel Roberto Garrido Pazos)',
+  date:'Fecha límite de entrega: viernes, 27 de noviembre de 2026 a las 23:59 h · Vía correo electrónico',
+  teacher:'Daniel Roberto Garrido Pazos',
+  subjectRef:'Abogacía|Técnicas instrumentales|0',
+  body:'Test de aprovechamiento remitido por la Administración del Máster (Patricia) el 23 de noviembre de 2026 a las 17:24 h.\n\n• Docente: D. Daniel Roberto Garrido Pazos\n• Módulos evaluados: Iniciación a la Actividad Profesional y Organización del Despacho\n• Plazo máximo: viernes 27 de noviembre de 2026 hasta las 23:59 horas\n• Procedimiento: Remitir el documento respondido por correo electrónico directamente al profesor D. Daniel Roberto Garrido Pazos.\n• Archivo adjunto oficial: Test aprovechamiento Iniciación a la actividad profesional y Organización del Despacho.docx (27 KB).',
+  source:'Correo oficial Administración MUAP (master.abogacia@icacor.org) · 23 nov 2026 (17:24 h)',
+  attachments:[
+   {name:'Ficha de Daniel Garrido Pazos',teacher:'Daniel Garrido Pazos',kind:'Docente 👤'},
+   {name:'Ver asignatura: Iniciación y Organización de Despacho',subjectRef:'Abogacía|Técnicas instrumentales|0',kind:'Asignatura ↗'}
+  ]
+ },
+ mail_test_garrido_23nov:{
+  kicker:'Convocatoria de Evaluación · Test de Aprovechamiento',
+  title:'Test aprovechamiento Módulos Iniciación actividad profesional y Organización del despacho (D. Daniel Roberto Garrido Pazos)',
+  date:'Recibido: lunes, 23 nov 2026 (17:24 h) · Plazo: viernes 27 nov 2026 (23:59 h)',
+  teacher:'Daniel Roberto Garrido Pazos',
+  subjectRef:'Abogacía|Técnicas instrumentales|0',
+  body:'Remisión oficial de la Administración del Máster de la Abogacía (ICA Coruña):\n\n«Buenas tardes, Adjuntamos el test de aprovechamiento para que los alumnos/as lo remitáis respondido como muy tarde a las 23.59 horas del próximo viernes 27 de noviembre de 2026 al profesor D. Daniel Roberto Garrido Pazos. Saludos, Patricia. Administración Máster de la Abogacía – ICA Coruña».\n\n• Adjunto: Test aprovechamiento Iniciación a la actividad profesional y Organización del Despacho.docx (27 KB).\n• Destinatario de entrega: Profesor D. Daniel Roberto Garrido Pazos.',
+  source:'master.abogacia@icacor.org · Patricia (ICA Coruña)',
+  attachments:[
+   {name:'Ver entrega pendiente en el portal',detailKey:'entrega_test_garrido_iniciacion_27nov',kind:'Entrega ⏳'},
+   {name:'Ficha de Daniel Garrido Pazos',teacher:'Daniel Roberto Garrido Pazos',kind:'Docente 👤'}
+  ]
+ },
+ mail_charla_uria_23nov:{
+  kicker:'Información Institucional · Charla Uría Menéndez',
+  title:'Recordatorio Información sobre a Charla de Uría Menéndez en la Facultad de Derecho',
+  date:'Recibido: lunes, 23 nov 2026 (08:37 h) · Fecha del acto: 27 nov 2026 (13:00 h)',
+  teacher:'Decanato Facultade de Dereito',
+  subjectRef:'Abogacía|Deontología y responsabilidad|0',
+  body:'Comunicación oficial remitida por el Decanato de la Facultad de Derecho (UDC):\n\n«Prezado estudantado, Achegamos cartel informativo sobre a charla que terá lugar o vindeiro 27 de novembro ás 13:00 no Salón de Grados da Facultade de Dereito. A charla será impartida por Diego José Pérez Rodriguez, exalumno, e, actualmente, abogado en Uría Menéndez, exercendo como Asociado Principal. A charla consistirá de dúas partes: primeiro, contará a súa experiencia ata agora no despacho e, a continuación, exporá o proceso de selección de talento da firma. Neste Forms (https://docs.google.com/forms/d/16nL7QjB2wmoEKXqE2KwR8KxYjq-TzMPeLu3lWnQo3X4/edit) pódese facer unha previa inscripción. Un saúdo. Mª Teresa Seoane Sande. Secretaría Decanato».',
+  source:'Decanato Facultade de Dereito · UDC',
+  attachments:[
+   {name:'Formulario de inscripción (Google Forms)',url:'https://docs.google.com/forms/d/16nL7QjB2wmoEKXqE2KwR8KxYjq-TzMPeLu3lWnQo3X4/edit',kind:'Inscripción ↗'}
+  ]
+ },
+ mail_material_lage_19nov:{
+  kicker:'Documentación Docente · Práctica Procesal Civil en la Procura',
+  title:'Material didáctico para las clases del 19 nov · D. Juan Lage Fernández-Cervera',
+  date:'Recibido: jueves, 19 nov 2026 (18:48 h)',
+  teacher:'Juan Lage Fdez-Cervera',
+  subjectRef:'Procura|Actuación procesal|5',
+  body:'Remisión de documentación didáctica para la sesión de Proceso de Ejecución forzosa y vía de apremio impartida por D. Juan Lage:\n\n«Buenas tardes, Remitimos documentación del docente D. Juan Lage Fernández-Cervera, relativa a las clases previstas para el jueves 19 de noviembre. Tal y como indicaba en su carta de presentación, el docente ha puesto a vuestra disposición una serie de materiales didácticos que podéis consultar a través del apartado "Práctica Procesal Civil – JUAN LAGE" al final de dicha página en "Material puesto a disposición del estudiantado". Se recomienda consultar estos materiales antes de las clases del jueves. Un saludo. Patricia. Administración Máster de la Abogacía – ICA Coruña».',
+  source:'master.abogacia@icacor.org · Patricia',
+  attachments:[
+   {name:'Ficha de Juan Lage Fdez-Cervera',teacher:'Juan Lage Fdez-Cervera',kind:'Docente 👤'},
+   {name:'Ver test superado (9/10)',detailKey:'test_19nov_lage',kind:'Test 9/10 📝'}
+  ]
+ },
+ mail_elena_miranda_19nov:{
+  kicker:'Documentación y Rectificación · Clase 24 de noviembre',
+  title:'Rectificación: Documentación, Presentación actualizada y Auto 30/09/2026 · D.ª Elena Miranda Osset',
+  date:'Recibido: jueves, 19 nov 2026 (18:34 h)',
+  teacher:'Elena Miranda Osset',
+  subjectRef:'Procura|Actuación procesal|7',
+  body:'Remisión oficial de la Administración del Máster (ICA Coruña):\n\n«Estimados/as alumnos/as: Por error en la documentación enviada anteriormente, os remitimos de nuevo la Carta de presentación, el Auto de fecha 30/09/2026, dictado por la Sección de lo Mercantil del Tribunal de instancia de A Coruña, Plaza nº 3, y nueva presentación en power point actualizado. Eliminad el power point del correo anterior, que no estaba actualizado. Saludos. Patricia. Administración Máster de la Abogacía – ICA Coruña».\n\n• Adjuntos:\n1. Carta presentación docente_Elena Miranda Osset.pdf (181 KB)\n2. AUTO 30 SEP 26.pdf (194 KB)\n3. PPTX GESTIÓN ECONÓMICA PCDMTO.pdf (1 MB)',
+  source:'master.abogacia@icacor.org · Patricia',
+  attachments:[
+   {name:'Ficha de Elena Miranda Osset',teacher:'Elena Miranda Osset',kind:'Docente 👤'},
+   {name:'Ver calendario 24 nov',detailKey:'schedule',kind:'Calendario 📅'}
+  ]
+ },
+ mail_carta_goimil_19nov:{
+  kicker:'Carta de Presentación Docente · Procura',
+  title:'Carta de presentación MUAP 2026-2027 · D.ª María Rita Goimil Martínez (Clase 23 nov)',
+  date:'Recibido: jueves, 19 nov 2026 (18:24 h)',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Remisión oficial de la Administración del Máster (ICA Coruña):\n\n«Estimados/as alumnos/as: Remitimos la carta de presentación de la Docente Dª María Rita Goimil Martínez. Saludos. Patricia. Administración Máster de la Abogacía – ICA Coruña».\n\n• Adjunto: Carta presentación docente_María Rita Goimil Martínez.pdf (175 KB).',
+  source:'master.abogacia@icacor.org · Patricia',
+  attachments:[
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver prácticas CPROC de Rita Goimil',detailKey:'entrega_goimil_caso1_no_dineraria',kind:'Prácticas ⏳'}
+  ]
+ },
+ mail_horario_lousada_19nov:{
+  kicker:'Organización de Horarios · Clases 20 de noviembre',
+  title:'Horario Clases del 20 de noviembre · D. Fernando Lousada Arochena (4 horas presenciales)',
+  date:'Recibido: jueves, 19 nov 2026 (12:52 h)',
+  teacher:'Fernando Lousada',
+  subjectRef:'Abogacía|Procesal civil|5',
+  body:'Comunicación oficial de la Administración del Máster (ICA Coruña):\n\n«Buenos días. Os informo que mañana, 20 de noviembre, tras el cambio que hubo en el cronograma del Máster en el que tenéis como profesor a Fernando Lousada en lugar de a Juan Lage, os informo que el cambio fue solo respecto a los profesores, sus horarios son los mismos. Fernando Lousada impartirá mañana sus 4 horas de clase tanto en horario de mañana como en horario de tarde. Respecto a los alumnos del horario de tarde que preguntasteis sobre el horario del colegio, éste estará abierto a vuestra hora de entrada y la salida será como siempre por el portal. Espero haber respondido vuestras dudas. Saludos. Patricia».',
+  source:'master.abogacia@icacor.org · Patricia',
+  attachments:[
+   {name:'Ficha de Fernando Lousada',teacher:'Fernando Lousada',kind:'Docente 👤'},
+   {name:'Ver entregas de Procesal Civil',detailKey:'entrega_lousada_sesion5',kind:'Entregas ✓'}
+  ]
+ },
+ mail_carta_lage_16nov:{
+  kicker:'Carta de Presentación Docente · Procura',
+  title:'Carta de presentación MUAP 2026-2027 · D. Juan Lage Fernández-Cervera (Clase 19 nov)',
+  date:'Recibido: lunes, 16 nov 2026 (18:51 h)',
+  teacher:'Juan Lage Fdez-Cervera',
+  subjectRef:'Procura|Actuación procesal|5',
+  body:'Remisión de la carta de presentación docente del Procurador D. Juan Lage Fernández-Cervera con antelación a su sesión lectiva sobre Proceso de ejecución forzosa en la Procura impartida el 19 de noviembre.\n\n• Adjunto: Carta presentación docente_ Juan Lage Fernández-Cervera.pdf (185 KB).\n• Docente: D. Juan Lage Fernández-Cervera (Procurador de los Tribunales).',
+  source:'master.abogacia@icacor.org · Patricia (ICA Coruña)',
+  attachments:[
+   {name:'Ficha de Juan Lage Fdez-Cervera',teacher:'Juan Lage Fdez-Cervera',kind:'Docente 👤'},
+   {name:'Ver test superado (9/10)',detailKey:'test_19nov_lage',kind:'Test 9/10 📝'}
+  ]
+ },
+ mail_carta_carnota_16nov:{
+  kicker:'Carta de Presentación Docente · Procura',
+  title:'Carta de presentación MUAP 2026-2027 · D.ª María Pilar Carnota García (Clase 23 nov)',
+  date:'Recibido: lunes, 16 nov 2026 (18:50 h)',
+  teacher:'María Pilar Carnota García',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Remisión de la carta de presentación docente de la Procuradora D.ª María Pilar Carnota García con antelación a su sesión lectiva de Ejecución hipotecaria y subastas judiciales electrónicas (23 de noviembre).\n\n• Adjunto: Carta presentación docente_Maria Pilar Carnota García 23.pdf (195 KB).\n• Docente: D.ª María Pilar Carnota García (Procuradora de los Tribunales).',
+  source:'master.abogacia@icacor.org · Patricia (ICA Coruña)',
+  attachments:[
+   {name:'Ficha de María Pilar Carnota',teacher:'María Pilar Carnota García',kind:'Docente 👤'},
+   {name:'Ver test superado (10/10 pleno)',detailKey:'test_23nov_carnota',kind:'Test 10/10 ★'}
+  ]
+ },
+ mail_juicios_diciembre_16nov:{
+  kicker:'Información Práctica Procesal · Juicios Diciembre 2026',
+  title:'Juicios mes de Diciembre de 2026 · Grupo de Tarde (Archivo adjunto .zip)',
+  date:'Recibido: lunes, 16 nov 2026 (12:12 h)',
+  teacher:'Administración MUAP',
+  subjectRef:'Abogacía|Procesal civil|0',
+  body:'Comunicación oficial de la Administración del Máster de la Abogacía (ICA Coruña):\n\n«Estimados/as alumnos/as: Os remitimos la información correspondiente a los Juicios del mes de diciembre de 2026 para los alumnos/as del grupo de tarde. Saludos. Patricia. Administración Máster de la Abogacía – ICA Coruña».\n\n• Archivo adjunto: Grupo tarde. Juicios Diciembre.zip',
+  source:'master.abogacia@icacor.org · Patricia (ICA Coruña)',
+  attachments:[
+   {name:'Ver asignaturas de Procesal Civil',subjectRef:'Abogacía|Procesal civil|0',kind:'Asignatura ↗'}
+  ]
+ },
  entrega_goimil_caso1_no_dineraria:{
   isDelivery:true,
   kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
@@ -7306,6 +7488,135 @@ mail_rita_goimil_27oct:{
    {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Ver en pestaña de Notas (10 / 10 ★)',detailKey:'grade_rita_goimil_27oct',kind:'Calificaciones'},
    {name:'Ficha de Rita Goimil en el portal',teacher:'Rita Goimil Martínez',kind:'Directorio docente'}
+  ]
+ },
+ test_23nov_carnota:{
+  kicker:'Nota de Test: 10 / 10 ★ (100 % · Sobresaliente pleno) · Procura · Ejecución Hipotecaria y Concursal',
+  title:'Test online · Ejecución hipotecaria, subastas electrónicas LO 1/2025 y concursal (María Carnota)',
+  date:'Realizado: lunes, 23 de noviembre de 2026 · 18:01 (Grupo de tarde) · Calificación: 10 / 10 (10/10 aciertos · Pleno absoluto)',
+  teacher:'María Pilar Carnota García',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Prueba oficial de clase realizada en la plataforma Testmoz («MARÍA CARNOTA-23-11-26 - GRUPO DE TARDE -PRÁCTICA PROCESAL CIVIL»). Puntuación obtenida por Raquel Escudero: 10 de 10 respuestas correctas (100 % · 10 sobre 10 · Sobresaliente con mención plena, pleno absoluto sin fallos).\n\n• Resumen y análisis jurídico de las 10 cuestiones:\n  1. Sistema de pujas en subasta judicial electrónica (LO 1/2025): pujas secretas (a sobre cerrado electrónico o postura ciega ex art. 648 LEC).\n  2. Depósito preceptivo para pujar por inmueble (art. 669.1 LEC): 20 % del valor de subasta o mínimo 1.000 € (modulable por el LAJ).\n  3. Subasta finalizada sin postor: fin del privilegio del ejecutante para hacerse automáticamente con el bien a precio mínimo tradicional.\n  4. Publicación del anuncio de subasta en BOE (art. 645.1 LEC): el LAJ puede autorizar al procurador del ejecutante a petición de parte para llevarlo a efecto telemáticamente.\n  5. Declaración de concurso del ejecutado con subasta en marcha (art. 649.1 LEC): el LAJ suspende la ejecución y deja sin efecto la subasta comunicándolo al Portal de Subastas.\n  6. Requisitos procedimiento especial microempresas (art. 685 TRLC): menos de 10 trabajadores de media en el año anterior y facturación <700.000 € o pasivo <350.000 €.\n  7. Vías de tramitación para microempresas (Libro III TRLC): procedimiento de continuación o de liquidación (con o sin transmisión de empresa en funcionamiento).\n  8. Legitimación para exoneración del pasivo insatisfecho / segunda oportunidad (art. 486 TRLC): la persona natural deudora, empresaria o no empresaria de buena fe.\n  9. Vías para solicitar la exoneración (art. 487 TRLC): plan de pagos sin liquidación de masa activa o tras la liquidación concursal.\n  10. Régimen concursal para sociedad limitada: concurso general del Libro I TRLC; la segunda oportunidad es privativa de personas naturales.',
+  source:'CPROC-MUAP-TEST-ONLINE → Testmoz (https://testmozusercontent.com/q/15773916/student/review) · 23 nov 2026',
+  attachments:[
+   {name:'Abrir documento Markdown con análisis jurídico íntegro (.md)',url:testMdCarnota3LocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir HTML original de Testmoz (diseño original)',url:testHtmlCarnota3LocalUrl,kind:'HTML en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozCarnota3ReviewUrl,kind:'Web Testmoz ↗'},
+   {name:'Ficha docente de D.ª María Pilar Carnota García',teacher:'María Pilar Carnota García',kind:'Docente 👤'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC ↗'}
+  ],
+  extra:'✓ Calificación registrada: 10 / 10 respuestas correctas (100 % · Sobresaliente pleno ★). Pleno total en los 3 tests realizados con María Carnota.',
+  questions:[
+   {
+    q:'1. Como procurador de la parte ejecutante, recibe el decreto de convocatoria de una subasta judicial electrónica. Un compañero le pregunta como es ahora el Sistema de pujas en la redacción dada por la Ley Orgánica 1/2025. ¿Qué le indica?',
+    opts:[
+     'Es igual que antes, no ha variado.',
+     'Ha variado, pero las pujas siguen siendo publicas y en tiempo real.',
+     'Pujas secretas',
+     'Depende de cada LAJ'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'2. Como procurador de un ejecutante, prepara la información para un cliente interesado en pujar por un inmueble. Según el artículo 669.1 LEC reformado por la LO 1/2025, ¿qué depósito debe consignar, como regla general, para participar?',
+    opts:[
+     'El 5 % del valor de subasta, sin mínimo.',
+     'El 10 % del valor de subasta, con un mínimo de 500 euros.',
+     'El 20 % del valor de subasta, o un mínimo de 1.000 euros si el porcentaje fuera inferior, sin perjuicio de la facultad del LAJ de modificarlo.',
+     'El 30 % del valor de tasación, sin posibilidad de modificación.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'3. Como procurador de la parte ejecutada, comprueba que la subasta ha finalizado sin que ningún licitador haya presentado postura. ¿Qué se ha modificado en la nueva redacción?',
+    opts:[
+     'El ejecutante obtiene automáticamente la adjudicación por el 50 % del valor.',
+     'El fin del privilegio del ejecutanta para hacerse con el bien',
+     'Se convoca necesariamente una segunda subasta en los diez días siguientes.',
+     'El bien se adjudica de oficio al primer acreedor personado.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'4. Como procurador de la parte ejecutante, considera conveniente impulsar la publicación del anuncio de subasta. Conforme al artículo 645.1 LEC reformado, ¿qué posibilidad contempla expresamente la ley?',
+    opts:[
+     'El procurador puede publicar el anuncio por sí solo, sin intervención ni autorización judicial.',
+     'El LAJ puede autorizar al procurador del ejecutante, a petición de esta parte, para llevar a efecto el anuncio en el BOE de forma telemática.',
+     'La publicación corresponde exclusivamente al administrador concursal.',
+     'El procurador debe publicar el anuncio en un periódico privado y no en el BOE.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'5. Juan procurador que interviene en una subasta, tiene conocimiento de que se ha declarado el concurso del deudor mientras la subasta electrónica ya está en marcha. ¿Qué consecuencia establece el artículo 649.1 LEC?',
+    opts:[
+     'La subasta continúa hasta su cierre y el precio se entrega al ejecutante.',
+     'La subasta queda suspendida solo si lo solicita el concursado.',
+     'El LAJ suspende la ejecución y deja sin efecto la subasta, aunque ya se hubiera iniciado, comunicándolo al Portal de Subastas.',
+     'La subasta se transforma automáticamente en una liquidación concursal.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'6. Requisitos para el procedimiento especial de microempresas, como procurador, asesora a una persona autónoma que desarrolla actividad empresarial y quiere acogerse al procedimiento especial del Libro III del texto refundido de la Ley Concursal. ¿Qué combinación de requisitos económicos y de plantilla recoge el artículo 685?',
+    opts:[
+     'Menos de 20 trabajadores y volumen de negocio inferior a 2 millones de euros, necesariamente ambas condiciones',
+     'Menos de 10 trabajadores de media en el año anterior y volumen de negocio inferior a 700.000 euros o pasivo inferior a 350.000 euros.',
+     'Menos de 50 trabajadores y pasivo inferior a 10 millones de euros.',
+     'Cualquier número de trabajadores si la deuda no supera 100.000 euros.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. Marcos como procurador de una microempresa que cumple los requisitos legales, debe explicar a su cliente las vías de tramitación disponibles. ¿Qué modalidades contempla ?',
+    opts:[
+     'Únicamente liquidación con cierre inmediato del negocio.',
+     'Exclusivamente convenio ordinario con junta de acreedores.',
+     'Procedimiento de continuación o procedimiento de liquidación, con o sin transmisión de la empresa en funcionamiento.',
+     'Solo un acuerdo extrajudicial de pagos ante notario.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'8. Ana procuradora de una persona física insolvente que no puede atender regularmente sus obligaciones, le consultan por la exoneración del pasivo insatisfecho (segunda oportunidad). ¿Quién puede solicitar este mecanismo conforme al TRLC?',
+    opts:[
+     'Únicamente las sociedades mercantiles inscritas en el Registro Mercantil.',
+     'La persona natural deudora, empresaria o no empresaria, si reúne los presupuestos y requisitos legales.',
+     'Cualquier acreedor, en nombre propio y sin consentimiento del deudor.',
+     'Solo los autónomos dados de alta en el RETA durante más de cinco años.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'9. Alberto, procurador de una persona física que estudia acogerse a la segunda oportunidad, debe explicarle las vías previstas legalmente para solicitar la exoneración. ¿Cuál es la respuesta correcta?',
+    opts:[
+     'Solo cabe la exoneración después de pagar íntegramente todas las deudas.',
+     'Puede solicitarse exclusivamente mediante un convenio con todos los acreedores.',
+     'Puede articularse mediante un plan de pagos o tras la liquidación de la masa activa, en los términos y con los requisitos legales.',
+     'La exoneración se concede automáticamente con la mera presentación de la solicitud de concurso.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'10. Como procurador de una sociedad limitada que se encuentra en insolvencia actual y no reúne los requisitos para ser considerada microempresa, debe orientar sobre el cauce concursal. ¿Cuál es la opción correcta?',
+    opts:[
+     'La sociedad puede solicitar la exoneración del pasivo insatisfecho como si fuera una persona física.',
+     'Debe acudir necesariamente al procedimiento especial de microempresas, cualquiera que sea su tamaño.',
+     'Podrá solicitar la declaración de concurso conforme al procedimiento concursal general del Libro I TRLC; la exoneración del pasivo insatisfecho está prevista para deudores personas naturales.',
+     'Solo puede acudir a una subasta notarial de sus activos, sin intervención judicial.'
+    ],
+    correct:2,
+    userAnswer:2
+   }
   ]
  },
  test_19nov_lage:{
@@ -10165,12 +10476,15 @@ const courses=[
     period:'23 nov 2026 · Horario: 16:30 – 20:45 (2 sesiones continuas)',
     startDate:'2026-11-23',
     teachers:['María P. Carnota García','Rita Goimil Martínez'],
-    grade:{score:'⏳ 3 prácticas pendientes (24 nov)',detail:'3 casos prácticos de ejecuciones no dinerarias y UE publicados en CPROC con límite el 24 nov.',detailKey:'entrega_goimil_caso1_no_dineraria'},
+    grade:{score:'Test Carnota: 10/10 ★ · 3 casos Rita (24 nov)',detail:'Test María Carnota completado con 10/10 ★ (100 %). 3 casos prácticos de Rita Goimil en curso con límite el 24 nov.',detailKey:'test_23nov_carnota',actionLabel:'Ver test (10/10) ↗'},
     notes:[
+     {name:'Test online María Carnota (10/10 aciertos · Pleno ★)',detailKey:'test_23nov_carnota',label:'Test en portal ↗'},
+     {name:'HTML original Testmoz (revisión oficial)',url:testHtmlCarnota3LocalUrl,label:'HTML Testmoz ↗'},
+     {name:'Apuntes y guía jurídica del test (.md)',url:testMdCarnota3LocalUrl,label:'Apuntes .md ↗'},
      {name:'LEC: Ejecución hipotecaria (arts. 681 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'},
      {name:'LEC: Ejecución no dineraria (arts. 699 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:['materials']
+    mails:['test_23nov_carnota','materials']
    },
    {
     name:'Gestión económica del proceso',
@@ -10994,11 +11308,14 @@ const teacherDirectory=[
    {title:'Carta de presentación y materiales - D.ª María Pilar Carnota García',key:'mail_105194'}
   ],
   practices:[
+   {title:'Test online Testmoz Sesión 3: Ejecución hipotecaria, subastas LO 1/2025 y concursal (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_23nov_carnota'},
    {title:'Test online Testmoz Sesión 2: Recursos, ejecución, costas y nulidad (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_2nov_carnota'},
    {title:'Test online Testmoz Sesión 1: Registros, notarías y administraciones (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente)',key:'test_28oct_carnota'}
   ],
   driveFiles:[],
   notes:[
+   {title:'Test online Sesión 3 Testmoz: Subastas y Concursal (10/10 aciertos · HTML original)',name:'Test online Sesión 3 Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnota3LocalUrl,urlLabel:'Ver test 3 HTML ↗',label:'Ver test 3 HTML ↗'},
+   {title:'Test resuelto Sesión 3 con 10 preguntas y fundamentos (.md)',name:'Test resuelto Sesión 3 con 10 preguntas y fundamentos (.md)',url:testMdCarnota3LocalUrl,urlLabel:'Ver test 3 .md ↗',label:'Ver test 3 .md ↗'},
    {title:'Test online Sesión 2 Testmoz (10/10 aciertos · HTML original)',name:'Test online Sesión 2 Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnota2LocalUrl,urlLabel:'Ver test 2 HTML ↗',label:'Ver test 2 HTML ↗'},
    {title:'Test resuelto Sesión 2 con 10 preguntas y fundamentos (.md)',name:'Test resuelto Sesión 2 con 10 preguntas y fundamentos (.md)',url:testMdCarnota2LocalUrl,urlLabel:'Ver test 2 .md ↗',label:'Ver test 2 .md ↗'},
    {title:'Test online Sesión 1 Testmoz (10/10 aciertos · HTML original)',name:'Test online Sesión 1 Testmoz (10/10 aciertos · HTML original)',url:testHtmlCarnotaLocalUrl,urlLabel:'Ver test 1 HTML ↗',label:'Ver test 1 HTML ↗'},
@@ -12941,18 +13258,18 @@ function renderTeacherDossiers(){
   {
    id: 'dossier-maria-carnota',
    teacher: 'María Pilar Carnota García',
-   subject: 'Trámites registrales, recursos, ejecución y costas (Sesiones 28 oct y 2 nov 2026)',
-   subjectRef: 'Procura|Actuación procesal|1',
-   kicker: 'Calificación oficial: DOBLE 10 / 10 ★ (Pleno absoluto en ambas sesiones) · Por correo el 11 nov',
+   subject: 'Trámites registrales, recursos, ejecuciones y subastas (Sesiones 28 oct, 2 nov y 23 nov 2026)',
+   subjectRef: 'Procura|Actuación procesal|6',
+   kicker: 'TRIPLE 10 / 10 ★ (Pleno absoluto en los 3 tests) · Calificación oficial doble 10 el 11 nov',
    badgeClass: 'gold',
-   badgeText: '10 / 10 ★ Doble Pleno Oficial',
+   badgeText: 'Triple 10 / 10 ★ Pleno',
    cardClass: 'has-mail-grade',
    blocks: [
     {
      cls: 'highlight-mail',
      title: '✉️ Calificaciones Conjuntas Oficiales (11 nov)',
-     score: '10 / 10 ★ en ambas',
-     desc: 'Calificaciones oficiales comunicadas por la secretaría de Procura el 11 nov 2026: Sesión 1 (28 oct) 10/10 ★ y Sesión 2 (2 nov) 10/10 ★.',
+     score: '10 / 10 ★ (Ses. 1 y 2)',
+     desc: 'Calificaciones oficiales comunicadas por la secretaría de Procura el 11 nov 2026: Sesión 1 (28 oct) 10/10 ★ y Sesión 2 (2 nov) 10/10 ★. Sesión 3 pendiente de acta conjunta.',
      subitems: [
       {label: 'Sesión 1 (28 oct)', val: '10.00 / 10 ★ (Test: 4/4 + Trabajos: 6/6)'},
       {label: 'Sesión 2 (2 nov)', val: '10.00 / 10 ★ (Test: 4/4 + Trabajos: 6/6)'}
@@ -12961,11 +13278,12 @@ function renderTeacherDossiers(){
     {
      cls: 'highlight-test',
      title: '📝 Tests Online en Testmoz (100 % aciertos)',
-     score: '20 / 20 aciertos',
-     desc: 'Doble pleno de 10/10 en ambos cuestionarios oficiales de clase: 10/10 el 28 oct y 10/10 el 2 nov (sin ningún fallo).',
+     score: '30 / 30 aciertos (Triple 10 ★)',
+     desc: 'Pleno absoluto de 10/10 en los tres cuestionarios oficiales de clase: 28 oct (10/10), 2 nov (10/10) y 23 nov (10/10).',
      subitems: [
-      {label: 'Test 28 oct', val: '10 / 10 aciertos (100 % ★)'},
-      {label: 'Test 2 nov', val: '10 / 10 aciertos (100 % ★)'}
+      {label: 'Test 28 oct (Registros)', val: '10 / 10 aciertos (100 % ★)'},
+      {label: 'Test 2 nov (Recursos y costas)', val: '10 / 10 aciertos (100 % ★)'},
+      {label: 'Test 23 nov (Subastas y concursal)', val: '10 / 10 aciertos (100 % ★)'}
      ]
     },
     {
@@ -12982,9 +13300,12 @@ function renderTeacherDossiers(){
    actions: [
     {label: '✉ Ver correo nota Sesión 2 (2 nov) ↗', detailKey: 'mail_notas_carnota_sesion2_11nov', cls: 'solid-green'},
     {label: '✉ Ver correo nota Sesión 1 (28 oct) ↗', detailKey: 'mail_notas_carnota_sesion1_11nov', cls: 'solid-green'},
-    {label: '📝 Ver Test 2 (10/10) ↗', detailKey: 'test_2nov_carnota', cls: 'solid-blue'},
-    {label: '📝 Ver Test 1 (10/10) ↗', detailKey: 'test_28oct_carnota', cls: 'solid-blue'},
-    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|1'},
+    {label: '📝 Ver Test 3 Subastas y Concursal (10/10) ↗', detailKey: 'test_23nov_carnota', cls: 'solid-blue'},
+    {label: 'Abrir HTML original Test 3 Testmoz ↗', url: testHtmlCarnota3LocalUrl, cls: 'blue'},
+    {label: 'Abrir apuntes del Test 3 (.md) ↗', url: testMdCarnota3LocalUrl},
+    {label: '📝 Ver Test 2 (10/10) ↗', detailKey: 'test_2nov_carnota'},
+    {label: '📝 Ver Test 1 (10/10) ↗', detailKey: 'test_28oct_carnota'},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|6'},
     {label: 'Ficha de María Pilar Carnota ↗', teacher: 'María Pilar Carnota García'}
    ]
   },
@@ -15803,7 +16124,7 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'test_19nov_lage' || key === 'grade_19nov_lage_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'test_19nov_lage' || key === 'grade_19nov_lage_test' || key === 'test_23nov_carnota' || key === 'grade_23nov_carnota_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
   let targetFilter = 'teachers';
   if(key.includes('test') && !key.includes('chony')) targetFilter = 'test';
   else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key.startsWith('mail_notas_') || key.startsWith('mail_calificacion_') || key.startsWith('grade_carnota_') || key.startsWith('grade_patricia_') || key.startsWith('grade_susana_') || key.startsWith('grade_chony_')) targetFilter = 'mail';
@@ -15827,6 +16148,7 @@ function openDetail(key){
    else if(key === 'test_29oct_susana' || key === 'grade_29oct_susana_test') targetId = 'grade_29oct_susana_test';
    else if(key === 'test_30oct_susana' || key === 'grade_30oct_susana_test') targetId = 'grade_30oct_susana_test';
    else if(key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test') targetId = 'grade_2nov_carnota_test';
+   else if(key === 'test_23nov_carnota' || key === 'grade_23nov_carnota_test') targetId = 'grade_23nov_carnota_test';
    else if(key === 'test_19nov_lage' || key === 'grade_19nov_lage_test') targetId = 'grade_19nov_lage_test';
    else if(key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test') targetId = 'grade_3nov_patricia_test';
    let card = document.getElementById(targetId);
