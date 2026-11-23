@@ -6112,6 +6112,7 @@ const events={ '2026-10-01':[
    {start:'18:45',end:'20:45',name:'Ejecuciones no dinerarias / Procura',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-24':[
+   {start:'23:59',end:'',name:'⏳ PLAZO DE ENTREGA (CPROC): Casos Prácticos 1, 2 y 3 (D.ª Rita Goimil · Práctica Procesal Civil)',teacher:'Rita Goimil Martínez',subject:'Procura · Práctica Procesal Civil',subjectRef:'Procura|Actuación procesal|6',detailKey:'entrega_goimil_caso1_no_dineraria',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
    {start:'16:30',end:'18:30',name:'Gestión económica del proceso / Procura',teacher:'Elena de Miranda Osset',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-25':[
@@ -6420,6 +6421,45 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 1: Ejecución de condena no dineraria',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
+  detailKey:'entrega_goimil_caso1_no_dineraria',
+  file:'CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
+ {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 2: Aseguramiento de pensiones de alimentos en país comunitario',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
+  detailKey:'entrega_goimil_caso2_pensiones_alimentos',
+  file:'CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
+ {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 3: Oposición a la ejecución título judicial europeo',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
+  detailKey:'entrega_goimil_caso3_oposicion_titulo_europeo',
+  file:'CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
  {
   date:new Date(2026,10,10),
   title:'Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
@@ -6861,6 +6901,51 @@ const mailSummaries={
 };
 
 const details={
+ entrega_goimil_caso1_no_dineraria:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
+ entrega_goimil_caso2_pensiones_alimentos:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
+ entrega_goimil_caso3_oposicion_titulo_europeo:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
  entrega_tareas_propiedad_horizont:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Derecho Civil / Propiedad Horizontal',
@@ -9626,7 +9711,7 @@ const courses=[
     period:'23 nov 2026 · Horario: 16:30 – 20:45 (2 sesiones continuas)',
     startDate:'2026-11-23',
     teachers:['María P. Carnota García','Rita Goimil Martínez'],
-    grade:{score:'⏳ Por venir · 23 nov',detail:'Ejecución sobre bienes hipotecados (16:30) y ejecución de hacer/no hacer (18:45).',detailKey:'materials'},
+    grade:{score:'⏳ 3 prácticas pendientes (24 nov)',detail:'3 casos prácticos de ejecuciones no dinerarias y UE publicados en CPROC con límite el 24 nov.',detailKey:'entrega_goimil_caso1_no_dineraria'},
     notes:[
      {name:'LEC: Ejecución hipotecaria (arts. 681 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'},
      {name:'LEC: Ejecución no dineraria (arts. 699 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
@@ -10415,7 +10500,7 @@ const teacherDirectory=[
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Ejecuciones no dinerarias en la Procura (hacer, no hacer y entrega de cosa)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Calificaciones oficiales del 27/10/2026 (Nota: 10/10 ★)',key:'mail_rita_goimil_27oct'},{title:'Carta de presentación oficial (21 oct)',key:'presentation_goimil_21oct'}],
-  practices:[{title:'Actividades evaluables del 27 oct (Test 4 + Trabajos 6)',status:'10 / 10 (Sobresaliente ★) ✓',key:'mail_rita_goimil_27oct'}],
+  practices:[{title:'Actividades evaluables del 27 oct (Test 4 + Trabajos 6)',status:'10 / 10 (Sobresaliente ★) ✓',key:'mail_rita_goimil_27oct'},{title:'Caso práctico 1: Ejecución de condena no dineraria',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso1_no_dineraria'},{title:'Caso práctico 2: Aseguramiento de pensiones de alimentos en país comunitario',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso2_pensiones_alimentos'},{title:'Caso práctico 3: Oposición a la ejecución título judicial europeo',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso3_oposicion_titulo_europeo'}],
   driveFiles:[],
   notes:[{title:'Ley 5/2012 de mediación civil y mercantil (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2012-9112',urlLabel:'BOE oficial ↗'}]
  },
@@ -13201,7 +13286,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'test'){
    sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
-   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (22 entregadas con éxito, 0 pendientes).';
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (22 entregadas con éxito, 3 pendientes de entrega).';
   } else {
    sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
   }
