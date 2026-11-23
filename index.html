@@ -5428,7 +5428,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 7 tests online superados · 22 prácticas entregadas con éxito ✓</span>
+        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 8 tests online superados · 22 prácticas entregadas con éxito ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5437,7 +5437,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--blue);margin-bottom:4px">2. 📝 Tests online de clase (cuestionarios tipo test)</div>
-          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct, <strong>9/10 con Sandra Mosteiro</strong> el 20 oct, <strong>10/10 con Carnota</strong> el 28 oct y 2 nov, <strong>10/10 y 9/10 con Susana</strong>, y <strong>8/10 con Patricia</strong>). Tienen su propia nota independiente y no son casos prácticos.</p>
+          <p style="color:var(--ink-soft);margin:0">Cuestionarios realizados en directo en el aula mediante Testmoz o CPROC (ej. <strong>20/20 con Carolina Moreno</strong> el 16 oct, <strong>9/10 con Sandra Mosteiro</strong> el 20 oct, <strong>10/10 con Carnota</strong> el 28 oct y 2 nov, <strong>10/10 y 9/10 con Susana</strong>, <strong>8/10 con Patricia</strong>, y <strong>9/10 con Juan Lage</strong>). Tienen su propia nota independiente y no son casos prácticos.</p>
         </div>
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
           <div style="font-weight:700;color:var(--terracotta);margin-bottom:4px">3. 📁 Casos prácticos y trabajos escritos</div>
@@ -5472,9 +5472,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card highlight-test" data-grade-filter="test" title="Ver solo tests online de clase">
         <div>
           <span class="stat-kicker">Tests online de clase</span>
-          <span class="stat-title">7 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10 · 2 nov: 10/10 · 3 nov: 8/10)</span>
+          <span class="stat-title">8 realizados (16 oct: 20/20 · 20 oct: 9/10 · 28 oct: 10/10 · 29 oct: 9/10 · 30 oct: 10/10 · 2 nov: 10/10 · 3 nov: 8/10 · 19 nov: 9/10)</span>
         </div>
-        <span class="stat-val-pill">7 tests excelentes ★</span>
+        <span class="stat-val-pill">8 tests excelentes ★</span>
       </button>
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
@@ -5865,6 +5865,9 @@ const testMdSusanaLocalUrl='historial-tests/2026-10-29-procura-declarativos-susa
 const testmozSusana2ReviewUrl='https://testmozusercontent.com/q/15727296/student/review';
 const testHtmlSusana2LocalUrl='historial-tests/originales/2026-10-30-testmoz-15727296.html';
 const testMdSusana2LocalUrl='historial-tests/2026-10-30-procura-medidas-cautelares-susana-diaz.md';
+const testmozLageReviewUrl='https://testmozusercontent.com/q/15778000/student/review';
+const testHtmlLageLocalUrl='historial-tests/originales/2026-11-19-testmoz-15778000.html';
+const testMdLageLocalUrl='historial-tests/2026-11-19-procura-proceso-ejecucion-juan-lage.md';
 const testmozPatriciaReviewUrl='https://testmozusercontent.com/q/15733404/student/review';
 const testHtmlPatriciaLocalUrl='historial-tests/originales/2026-11-03-testmoz-15733404.html';
 const testMdPatriciaLocalUrl='historial-tests/2026-11-03-procura-escritura-forense-patricia-gonzalez.md';
@@ -6057,7 +6060,8 @@ const events={
   ],
   '2026-11-19':[
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
-   {start:'16:30',end:'19:00',name:'Proceso de ejecución / Procura',teacher:'Juan Lage Fdez-Cervera',subject:'Actuación procesal · Procura (Cambio de cronograma: antes 20 nov · Mañana: 09:30–12:00 / Tarde: 16:30–19:00)',subjectRef:'Procura|Actuación procesal|5',mailKey:'mail_cambios_cronograma_2nov',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+   {start:'16:30',end:'19:00',name:'Proceso de ejecución / Procura',teacher:'Juan Lage Fdez-Cervera',subject:'Actuación procesal · Procura (Cambio de cronograma: antes 20 nov · Mañana: 09:30–12:00 / Tarde: 16:30–19:00)',subjectRef:'Procura|Actuación procesal|5',mailKey:'test_19nov_lage',place:'Colegio de Abogados (A Coruña)',kind:'Clase + Test (9/10)'},
+   {start:'18:51',end:'',name:'📝 Test online realizado: Testmoz Juan Lage (9/10 aciertos · 90% · Sobresaliente)',teacher:'Juan Lage Fdez-Cervera',detailKey:'test_19nov_lage',kind:'Test online ✓'},
    {start:'20:00',end:'',name:'✅ ENTREGADA: Casos Procesal Civil Sesión 5 (D. Fernando Lousada)',teacher:'Fernando Lousada',subject:'Enviada formalmente por correo a fernando.lousada@udc.es (14 nov · Preguntas asignadas y recurso apelación)',detailKey:'entrega_lousada_sesion5',place:'Correo fernando.lousada@udc.es',kind:'Entrega práctica',isWarning:false}
   ],
   '2026-11-20':[
@@ -6328,6 +6332,30 @@ const gradeRecords=[
    {label:'Ver asignatura ↗',subjectRef:'Procura|Actuación procesal|0'},
    {label:'Ficha de Rita Goimil ↗',teacher:'Rita Goimil Martínez'},
    {label:'Abrir correo en Outlook ↗',url:outlookUrl,cls:'blue'}
+  ]
+ },
+ {
+  id:'grade_19nov_lage_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 19 nov 2026 (18:51)',
+  title:'Proceso de ejecución y vía de apremio · Juan Lage',
+  score:'9 / 10',
+  scoreLabel:'9/10 (90 %)',
+  breakdown:[
+   {label:'Respuestas correctas',val:'9 de 10 (90 %)'},
+   {label:'Calificación',val:'9 / 10 · Sobresaliente'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Juan Lage Fdez-Cervera',
+  subjectRef:'Procura|Actuación procesal|5',
+  mailKey:'test_19nov_lage',
+  description:'Test oficial «JUAN LAGE- 19-11-26 - GRUPO DE TARDE - PRÁCTICA PROCESAL CIVIL» realizado el jueves 19 de noviembre de 2026 a las 18:51 h por Raquel Escudero. Superado con 9/10 aciertos (9 sobre 10 · 90 % · Sobresaliente, con 1 fallo analizado con fundamentación jurídica). Materia evaluada: liquidez de la cantidad principal para despachar ejecución dineraria (art. 572.1 LEC), exclusión de requerimiento de pago en títulos judiciales (art. 580 LEC), enervación o evitación del embargo mediante consignación (art. 585 LEC), realización por persona o entidad especializada (art. 640 LEC), certificación registral de dominio y cargas (arts. 656 y 666 LEC), depósito judicial por Colegios de Procuradores (art. 626.4 LEC), legitimación activa y postulación procesal en ejecución (art. 539.1 LEC), mediación intrajudicial durante la ejecución (art. 19.4 LEC), tercería de mejor derecho vs tercería de dominio (arts. 614 y 595 LEC), y medidas de aseguramiento en embargo de vehículos (art. 629.2 LEC).',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas (con fallo analizado) ↗',detailKey:'test_19nov_lage',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlLageLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdLageLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozLageReviewUrl,cls:'blue'},
+   {label:'Ficha de Juan Lage ↗',teacher:'Juan Lage Fdez-Cervera'}
   ]
  },
  {
@@ -6622,17 +6650,17 @@ const gradeRecords=[
   kicker:'Balance global en CPROC / Testmoz · Todos realizados',
   title:'Historial general de tests y prácticas en CPROC',
   score:'10, 9 y 8 ★',
-  scoreLabel:'7 tests hechos',
+  scoreLabel:'8 tests hechos',
   breakdown:[
-   {label:'Tests realizados',val:'7 de 7 completados (100 %)'},
-   {label:'Notas en tests',val:'10, 10, 10, 10, 9, 9 y 8 (media ~9.4)'},
+   {label:'Tests realizados',val:'8 de 8 completados (100 %)'},
+   {label:'Notas en tests',val:'10, 10, 10, 10, 9, 9, 9 y 8 (media ~9.4)'},
    {label:'Prácticas CPROC',val:'4 / 4 enviadas (0 vencidas)'}
   ],
   teacher:'Carolina Moreno Vázquez',
   coTeacher:'Ana Vázquez Corte',
   subjectRef:'Procura|Técnicas instrumentales|2',
   mailKey:'all_tests_summary',
-  description:'Todos los 7 tests oficiales publicados hasta la fecha en CPROC / Testmoz están completados (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
+  description:'Todos los 8 tests oficiales publicados hasta la fecha en CPROC / Testmoz están completados (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10, 3 nov: 8/10 y 19 nov: 9/10). Asimismo, todas las prácticas subidas a Google Drive están completadas y enviadas en CPROC (la plataforma no envía acuse por correo).',
   links:[
    {label:'★ Ver resumen completo de tests y entregas ↗',detailKey:'all_tests_summary',cls:'solid-green'},
    {label:'Abrir plataforma CPROC ↗',url:cprocUrl,cls:'blue'},
@@ -6937,6 +6965,7 @@ const messages=[
  {date:'10 nov 2026 (13:57)',title:'Examen de Marketing de Despacho (Plazo: 21 nov · 23:59 h) · D. Jaime Martul',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_examen_marketing_10nov',teacher:'Jaime Martul',subjectRef:'Abogacía|Técnicas instrumentales|4',emailSubject:'Examen marketing de despacho'},
  {date:'10 nov 2026 (12:14)',title:'Calificación oficial: 10 / 10 en ambos tests · D.ª Chony Jiménez',meta:'D.ª Asunción (Chony) Jiménez de Llano (chonyjimenezdellano@yahoo.es) · «están perfectos los dos test y te he puesto un 10 en cada uno»',key:'mail_calificacion_chony_10nov',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|1',emailSubject:'Re: Test de arrendamientos_Raquel Escudero'},
  {date:'9 nov 2026 (14:55)',title:'Resultados oficiales Escritura forense: 8.79 / 10 · D.ª Patricia González',meta:'accesoabogaciaprocura@procuradores-coruna.com · Deontología y Técnicas Transversales (Nota final: 8.79 · Test: 2.94/4 + Trabajos: 5.85/6)',key:'mail_notas_patricia_9nov',teacher:'Patricia González Figueroa',subjectRef:'Procura|Actuación procesal|4',emailSubject:'Resultados de las pruebas del 3/11/2026 -Deontologíay Técnicas Transversales - Docente Patricia González Figueroa'},
+ {date:'19 nov 2026 (18:51)',title:'Test online realizado · Proceso de ejecución y vía de apremio (Nota: 9 / 10 · Juan Lage)',meta:'Testmoz CPROC · D. Juan Lage Fdez-Cervera · Procura (9/10 aciertos · 90% · Sobresaliente)',key:'test_19nov_lage',teacher:'Juan Lage Fdez-Cervera',subjectRef:'Procura|Actuación procesal|5',emailSubject:'Test online realizado · Proceso de ejecución en la Procura'},
  {date:'9 nov 2026 (13:15)',title:'Resultados oficiales Procesos declarativos y medidas cautelares: 9.74 / 10 ★ · D.ª Susana Díaz',meta:'accesoabogaciaprocura@procuradores-coruna.com · Técnicas Instrumentales (Nota final: 9.74 · Sobresaliente pleno · Test: 3.74/4 + Trabajos: 6/6)',key:'mail_notas_susana_9nov',teacher:'Susana Díaz Gallego',subjectRef:'Procura|Actuación procesal|2',emailSubject:'Resultados de las pruebas del 29 y  30/10/2026 -Técnicas Instrumentales - Docente Susana Díaz Gallego'},
  {date:'9 nov 2026 (12:48)',title:'Información importante de la Coordinación del Máster: Huelga 11 nov y clases / Patrona ICACOR 20 nov',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_coordinacion_huelga_patrona_9nov',teacher:'Coordinación Máster (ICACOR - UDC)',subjectRef:'Abogacía|Procesal civil|0',emailSubject:'Información importante de la Coordinación del Master'},
  {date:'9 nov 2026 (09:54)',title:'Test Propiedad Horizontal · D.ª Chony Jiménez (Adjunto: Test propiedad horizontal.doc)',meta:'Administración del Máster (MASTER ABOGACIA - ICA CORUÑA) · Patricia',key:'mail_test_propiedad_horizontal_9nov',teacher:'Chony Jiménez',subjectRef:'Abogacía|Sustantivo civil|2',emailSubject:'Test Propiedad Horizontal'},
@@ -7031,6 +7060,7 @@ const mailSummaries={
  mail_895671:'Asignación de la docente Chony Jiménez (chonyjimenezdellano@yahoo.es) para las sesiones de Arrendamientos (5 y 6 nov) y Propiedad Horizontal (9 nov).',
  mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
  mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
+ test_19nov_lage:'TEST ONLINE SOBRESALIENTE (9/10): Cuestionario oficial en Testmoz de D. Juan Lage Fdez-Cervera completado el jueves 19 de noviembre a las 18:51 h con 9 de 10 aciertos (90 % de puntuación · Sobresaliente · 1 fallo analizado con fundamentación jurídica). Liquidez de cantidad dineraria (art. 572.1 LEC), exclusión de requerimiento en títulos judiciales (art. 580 LEC), evitación de embargo por consignación (art. 585 LEC), realización por entidad especializada (art. 640 LEC), certificación registral de dominio y cargas (arts. 656 y 666 LEC), depósito judicial colegial (art. 626.4 LEC), legitimación y postulación en ejecución (art. 539 LEC), mediación en proceso ejecutivo (art. 19.4 LEC), tercería de mejor derecho frente a tercería de dominio (arts. 614 y 595 LEC), y aseguramiento de vehículo en Registro de Bienes Muebles (art. 629.2 LEC).',
  test_3nov_patricia:'TEST ONLINE REALIZADO (8/10): Cuestionario oficial en Testmoz de D.ª Patricia González Figueroa completado el martes 3 de noviembre a las 17:16 h con 8 de 10 aciertos (80 % de puntuación · Notable alto · 2 fallos analizados con fundamentación jurídica). Interrupción de LexNET y ACCEDA (presentación en soporte digital con Anexo 2, art. 135.2 LEC y RD 1065/2015), demanda como acto iniciador civil (art. 399 LEC), formato PDF-A con OCR (art. 18 Ley 18/2011), escritos sin necesidad de letrado (art. 188.1.5.º LEC), encabezamiento procesal, poder y emplazamiento ante incompetencia territorial (arts. 24 y 60 LEC), impulso procesal de oficio tras paralización (art. 237 LEC), localidad que encabeza según sede del órgano judicial (art. 152 LEC), datos obligatorios en PNJ para averiguación domiciliaria (art. 156 LEC) y firma electrónica en sede judicial.',
  mail_rita_goimil_27oct:'NOTA OFICIAL: 10 / 10 (Test 40%: 4 + Trabajos 60%: 6 · Sobresaliente pleno). Calificaciones otorgadas por D.ª María Rita Goimil Martínez correspondientes a la sesión del 27 de octubre en Deontología y técnicas transversales (Intervención de los procuradores en conciliación privada, mediación, otros MASC, procedimiento arbitral y jurisdicción voluntaria). Ponderable por coordinación del MUAP.',
  test_2nov_carnota:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª María Pilar Carnota García completado el lunes 2 de noviembre a las 17:47 h con 10 de 10 aciertos (100 % de puntuación · 10/10 ★ · Pleno sin fallos). Recursos de queja y apelación (plazo 20 días hábiles, arts. 458 y 494 LEC), efectos de la rebeldía procesal (art. 496.2 LEC), impugnación de tasación de costas por partidas indebidas u honorarios excesivos (arts. 245 y 246 LEC), plazo de espera de 20 días para ejecución (art. 548 LEC), requisito de título ejecutivo (art. 517 LEC), competencia del LAJ para tasar costas (art. 243 LEC), costas de primera instancia y vencimiento objetivo (art. 394 LEC), régimen transitorio de apelación y nulidad de actuaciones (art. 225 LEC y art. 238 LOPJ).',
@@ -7178,6 +7208,135 @@ mail_rita_goimil_27oct:{
    {name:'Abrir correo oficial en Outlook',url:outlookUrl,kind:'Correo Outlook'},
    {name:'Ver en pestaña de Notas (10 / 10 ★)',detailKey:'grade_rita_goimil_27oct',kind:'Calificaciones'},
    {name:'Ficha de Rita Goimil en el portal',teacher:'Rita Goimil Martínez',kind:'Directorio docente'}
+  ]
+ },
+ test_19nov_lage:{
+  kicker:'Nota de Test: 9 / 10 (90 % · Sobresaliente) · Procura · Proceso de Ejecución',
+  title:'Test online · Proceso de ejecución forzosa y vía de apremio (Juan Lage)',
+  date:'Realizado: jueves, 19 de noviembre de 2026 · 18:51 (Grupo de tarde) · Calificación: 9 / 10 (9/10 aciertos · 1 fallo analizado)',
+  teacher:'Juan Lage Fdez-Cervera',
+  subjectRef:'Procura|Actuación procesal|5',
+  body:'Prueba oficial de clase realizada en la plataforma Testmoz («JUAN LAGE- 19-11-26 - GRUPO DE TARDE - PRÁCTICA PROCESAL CIVIL»). Puntuación obtenida por Raquel Escudero: 9 de 10 respuestas correctas (90 % · 9 sobre 10 · Sobresaliente).\n\n• Resumen y análisis jurídico de las 10 cuestiones:\n  1. Cantidad reclamada para despachar ejecución: debe ser líquida (art. 572.1 LEC).\n  2. Inexigibilidad de requerimiento de pago: no se practica cuando la ejecución se funda en sentencia o resolución judicial (art. 580 LEC).\n  3. Evitación del embargo mediante consignación: en los términos del art. 585 LEC antes de que se traben los bienes.\n  4. Realización por persona o entidad especializada: permitida ex art. 640 LEC bajo sus requisitos y condiciones.\n  5. Certificación de dominio y cargas en inmuebles: conocer la titularidad y cargas registrales para la ejecución y subasta (arts. 656 y 666 LEC).\n  6. Depósito judicial de bienes muebles embargados: los Colegios de Procuradores pueden prestar servicios de depósito legalmente previstos (art. 626.4 LEC).\n  7. Legitimación para demanda ejecutiva y embargo: corresponde a la parte ejecutante con abogado y procurador cuando sea preceptivo (art. 539.1 LEC).\n  8. Mediación en el proceso de ejecución: las partes pueden acudir a mediación en cualquier momento del proceso ejecutivo (art. 19.4 LEC y Ley 5/2012).\n  9. Crédito preferente respecto al ejecutante: procede presentar tercería de mejor derecho (art. 614 LEC). Fallo analizado: se marcó tercería de dominio (reservada a quien alegue titularidad dominical no ejecutada ex art. 595 LEC).\n  10. Aseguramiento de embargo de vehículo: anotar en el Registro de Bienes Muebles, designar depositario y requerir entrega de llaves y documentación (art. 629.2 LEC).',
+  source:'CPROC-MUAP-TEST-ONLINE → Testmoz (https://testmozusercontent.com/q/15778000/student/review) · 19 nov 2026',
+  attachments:[
+   {name:'Abrir documento Markdown con análisis jurídico íntegro (.md)',url:testMdLageLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir HTML original de Testmoz (diseño original)',url:testHtmlLageLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozLageReviewUrl,kind:'Web Testmoz ↗'},
+   {name:'Ficha docente de D. Juan Lage Fdez-Cervera',teacher:'Juan Lage Fdez-Cervera',kind:'Docente 👤'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC ↗'}
+  ],
+  extra:'✓ Calificación registrada: 9 / 10 respuestas correctas (90 % · Sobresaliente). 1 fallo analizado con fundamentación jurídica.',
+  questions:[
+   {
+    q:'1. Para despachar ejecución, la cantidad reclamada como principal debe ser:',
+    opts:[
+     'Siempre aproximada.',
+     'Líquida.',
+     'Reconocida por el ejecutado en comparecencia.',
+     'Superior a la reconocida en sentencia hasta un máximo del 30%.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'2. Como regla general, el requerimiento de pago no se practica cuando la ejecución se funda en:',
+    opts:[
+     'Un título extrajudicial que no lleva aparejado requerimiento previo.',
+     'Una sentencia o resolución judicial.',
+     'Un documento privado no reconocido.',
+     'Una factura impagada.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'3. El ejecutado puede evitar el embargo consignando la cantidad por la que se haya despachado ejecución:',
+    opts:[
+     'Únicamente antes de que se presente la demanda ejecutiva.',
+     'En los términos del art. 585 LEC, antes de que se embarguen los bienes.',
+     'Solo después de la subasta.',
+     'Despachada ejecución, no podrá evitarlo.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'4. La realización por persona o entidad especializada:',
+    opts:[
+     'Está prohibida en la ejecución civil.',
+     'Puede acordarse conforme al art. 640 LEC y a sus condiciones.',
+     'Sustituye siempre a la subasta electrónica.',
+     'Solo se permite para bienes inmuebles.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'5. La certificación de dominio y cargas en la ejecución de inmuebles tiene, entre otras finalidades:',
+    opts:[
+     'Determinar exclusivamente el valor catastral.',
+     'Conocer la titularidad y las cargas registrales relevantes para la ejecución y subasta.',
+     'Cancelar todas las cargas antes de la subasta.',
+     'Sustituir la tasación pericial.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'6. En el depósito judicial de bienes muebles embargados, los Colegios de Procuradores:',
+    opts:[
+     'No pueden intervenir como depositarios.',
+     'Pueden prestar servicios de depósito en los términos legalmente previstos y conforme a su operativa.',
+     'Adquieren la propiedad de los bienes depositados en el caso de que no le sean abonados sus servicios.',
+     'Solo pueden intervenir en la jurisdicción civil y cuando no haya otro posible depositario que se haga cargo del bien.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'7. ¿Quién está legitimado para presentar la demanda ejecutiva y la solicitud de medidas de embargo?:',
+    opts:[
+     'Al beneficiario de la sentencia, siendo suficiente con la intervención del procurador.',
+     'A la parte ejecutante, mediante abogado y procurador cuando su intervención sea preceptiva.',
+     'La ejecución se inicia de oficio tal y como ocurre en el procedimiento penal.',
+     'A la parte ejecutante, mediante abogado y procurador, en todo caso.'
+    ],
+    correct:1,
+    userAnswer:1
+   },
+   {
+    q:'8. Durante una ejecución judicial, las partes deciden acudir a mediación ¿En qué momento pueden hacerlo?',
+    opts:[
+     'En los cinco días siguientes a la notificación de la demanda ejecutiva.',
+     'En el proceso de ejecución no se puede acudir a mediación.',
+     'No se puede acudir a mediación si el ejecutado no se ha opuesto a la ejecución.',
+     'En cualquier momento del proceso de ejecución.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'9. ¿Qué ha de hacer quien afirme que tiene un derecho a que su crédito sea satisfecho con preferencia al del acreedor ejecutante?',
+    opts:[
+     'Presentar una tercería de dominio.',
+     'Presentar una tercería de mejor derecho y se sustanciará por los cauces del procedimiento declarativo correspondiente teniendo en cuenta la cuantía de la deuda.',
+     'Solicitar una mejora de embargo.',
+     'Presentar una tercería de mejor derecho.'
+    ],
+    correct:3,
+    userAnswer:0
+   },
+   {
+    q:'10. ¿En el caso del embargo de un vehículo, qué medidas se deben de adoptar para garantizar su aseguramiento?',
+    opts:[
+     'Designar depositario, requiriendo además al ejecutado para que entregue la documentación y las llaves del vehículo.',
+     'Designar depositario y anotar el embargo en la Jefatura Superior de Tráfico.',
+     'Anotar el embargo en el Registro de la Propiedad, nombrar depositario y requerir al ejecutado para que entregue la documentación y las llaves del vehículo.',
+     'Anotar el embargo en el Registro de Bienes Muebles, designar depositario y requerir al ejecutado para que entregue la documentación y las llaves del vehículo.'
+    ],
+    correct:3,
+    userAnswer:3
+   }
   ]
  },
  test_3nov_patricia:{
@@ -9894,11 +10053,14 @@ const courses=[
     period:'19 nov 2026 · Horario: 16:30 – 19:00 (Mañana: 09:30 – 12:00)',
     startDate:'2026-11-19',
     teachers:['Juan Lage Fdez-Cervera'],
-    grade:{score:'⏳ Por venir · 19 nov',detail:'Proceso de ejecución: vía de apremio, embargo y subastas judiciales electrónicas (cambio de cronograma: antes 20 nov).',detailKey:'mail_cambios_cronograma_2nov'},
+    grade:{score:'Test: 9 / 10 (90 %)',detail:'Test oficial Testmoz completado el 19 nov a las 18:51 h con 9/10 aciertos (Sobresaliente). Fallo analizado en apuntes.',detailKey:'test_19nov_lage',actionLabel:'Ver test (9/10) ↗'},
     notes:[
+     {name:'Ver test online resuelto (9/10 con análisis de fallo)',detailKey:'test_19nov_lage',label:'Test en portal ↗'},
+     {name:'HTML original Testmoz (revisión oficial)',url:testHtmlLageLocalUrl,label:'HTML Testmoz ↗'},
+     {name:'Apuntes y guía jurídica del test (.md)',url:testMdLageLocalUrl,label:'Apuntes .md ↗'},
      {name:'LEC: Ejecución forzosa y medidas cautelares (arts. 517 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
     ],
-    mails:['mail_cambios_cronograma_2nov','materials']
+    mails:['test_19nov_lage','mail_cambios_cronograma_2nov','materials']
    },
    {
     name:'Ejecución hipotecaria y ejecuciones no dinerarias',
@@ -10925,17 +11087,23 @@ const teacherDirectory=[
   name:'Juan Lage Fdez-Cervera',
   branch:'Procura',
   role:'Procurador · Ejecución procesal, remuneración y fiscalidad',
-  gradeBadge:'⏳ Por venir · 19 y 27 nov',
+  gradeBadge:'📝 Test: 9 / 10 · 27 nov pdte.',
   summary:'Ejecución dineraria, medidas de localización y embargo de bienes, derechos arancelarios y fiscalidad del procurador.',
-  grade:{score:'⏳ Por venir · 2 sesiones',scoreLabel:'Docencia por venir',detail:'19 nov (09:30–12:00 y 16:30–19:00 h · Proceso de ejecución, antes 20 nov) y 27 nov (18:45–20:45). Total: 4h 30m.',detailKey:'mail_cambios_cronograma_2nov'},
+  grade:{score:'Test: 9 / 10 (90 %)',scoreLabel:'Sobresaliente',detail:'Test oficial Testmoz completado el jueves 19 de noviembre a las 18:51 h con 9/10 aciertos (90 % · Sobresaliente). Sesión del 27 nov pendiente.',detailKey:'test_19nov_lage'},
   sessions:[
-   {date:'2026-11-19',dayLabel:'Jueves 19 nov 2026',time:'16:30 – 19:00 (Mañana: 09:30 – 12:00)',hours:'2h 30m',topic:'Proceso de ejecución en la Procura: títulos y medidas ejecutivas (antes 20 nov)',place:'Colegio de Abogados (A Coruña)'},
+   {date:'2026-11-19',dayLabel:'Jueves 19 nov 2026',time:'16:30 – 19:00 (Mañana: 09:30 – 12:00)',hours:'2h 30m',topic:'Proceso de ejecución en la Procura: títulos y medidas ejecutivas (antes 20 nov · Testmoz superado 9/10)',place:'Colegio de Abogados (A Coruña)'},
    {date:'2026-11-27',dayLabel:'Viernes 27 nov 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Remuneración, reclamación de cuenta arancelaria y fiscalidad de la Procura',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:['mail_cambios_cronograma_2nov'],
+  mails:[
+   {title:'Test online realizado · Proceso de ejecución y vía de apremio (Nota: 9 / 10)',key:'test_19nov_lage'},
+   {title:'Cambios en el cronograma del Máster: 19–20 nov (Juan Lage / Fernando Lousada)',key:'mail_cambios_cronograma_2nov'}
+  ],
   practices:[],
   driveFiles:[],
-  notes:['Cambio de cronograma (2 nov): la clase de Proceso de ejecución se adelanta del viernes 20 al jueves 19 de noviembre (09:30–12:00 y 16:30–19:00 h).']
+  notes:[
+   'Test oficial en Testmoz completado el 19 nov con 9/10 aciertos (Sobresaliente).',
+   'Cambio de cronograma (2 nov): la clase de Proceso de ejecución se adelantó al jueves 19 de noviembre (09:30–12:00 y 16:30–19:00 h).'
+  ]
  },
  {
   name:'Elena de Miranda Osset',
@@ -11222,6 +11390,8 @@ const teacherGradeMap={
  'Javier Sánchez García': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · Técnicas instrumentales)' },
  'Carolina Moreno Vázquez': { kind:'final', score:'10 / 10 ★', label:'Final: 10 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 (Sobresaliente · Proceso digital y TIC)' },
  'Ana Vázquez Corte': { kind:'final', score:'8.8 / 10 ★', label:'Final: 8.8 / 10 ★', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 8.8 / 10 (Notable alto · Deontología)' },
+ 'Juan Lage Fdez-Cervera': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 % · Sobresaliente) · Sesión 27 nov pendiente' },
+ 'Juan Lage': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 % · Sobresaliente) · Sesión 27 nov pendiente' },
  'Alex Sánchez Barge': { kind:'test', score:'Test: 20 / 20', label:'Test: 20 / 20', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 20 / 20 aciertos (Final conjunta de módulo 10/10 con Carolina y Carlos)' },
  'Sandra Mosteiro Costa': { kind:'test', score:'Test: 9 / 10', label:'Test: 9 / 10 (90%)', icon:'📝', badgeClass:'grade-badge-test', pillClass:'grade-pill-test', full:'Test online Testmoz: 9 / 10 aciertos (90 %) · Calificación final de módulo pendiente' },
  'María Pilar Carnota García': { kind:'final', score:'10 / 10 ★', label:'Doble 10 / 10 ★ (Pleno)', icon:'🏆', badgeClass:'grade-badge-final', pillClass:'grade-pill-final', full:'Nota final oficial: 10 / 10 ★ en ambas sesiones (28 oct y 2 nov) comunicada por correo el 11 nov (Test 4/4 + Trabajos 6/6)' },
@@ -11270,6 +11440,7 @@ function getDossierIdForTeacher(tName){
  if(n.includes('ana vázquez') || n.includes('ana vazquez')) return 'dossier-ana-vazquez';
  if(n.includes('javier') && (n.includes('sánchez') || n.includes('sanchez'))) return 'dossier-javier-sanchez';
  if(n.includes('carmen belo') || n.includes('belo')) return 'dossier-carmen-belo';
+ if(n.includes('lage')) return 'dossier-juan-lage';
  if(n.includes('goimil')) return 'dossier-rita-goimil';
  if(n.includes('delgado')) return 'dossier-jose-luis-delgado';
  if(n.includes('carnota')) return 'dossier-maria-carnota';
@@ -12583,6 +12754,45 @@ function renderSingleGradeCard(g){
 
 function renderTeacherDossiers(){
  const dossiers = [
+  {
+   id: 'dossier-juan-lage',
+   teacher: 'Juan Lage Fdez-Cervera',
+   subject: 'Proceso de ejecución forzosa y vía de apremio en la Procura',
+   subjectRef: 'Procura|Actuación procesal|5',
+   kicker: 'Test online superado: 9 / 10 (90 % · Sobresaliente)',
+   badgeClass: 'blue',
+   badgeText: 'Test: 9 / 10 (90 %)',
+   cardClass: 'has-test',
+   blocks: [
+    {
+     cls: 'highlight-test',
+     title: '📝 Test Online en Testmoz (90 %)',
+     score: '9 / 10 (Sobresaliente)',
+     desc: 'Cuestionario oficial «JUAN LAGE- 19-11-26 - GRUPO DE TARDE - PRÁCTICA PROCESAL CIVIL» realizado el 19 de noviembre a las 18:51 h con 9/10 aciertos (1 fallo analizado con fundamentación legal).',
+     subitems: [
+      {label: 'Aciertos en test', val: '9 de 10 (90 %)'},
+      {label: 'Calificación decimal', val: '9,0 / 10 · Sobresaliente'}
+     ]
+    },
+    {
+     cls: 'highlight-mail',
+     title: '⏳ Docencia y Evaluación del Módulo',
+     score: '2ª sesión: 27 nov',
+     desc: 'Módulo compuesto por 2 sesiones: 19 nov (Proceso de ejecución, test realizado) y 27 nov (Remuneración, reclamación y fiscalidad). La nota final conjunta se completará tras la docencia del 27 nov.',
+     subitems: [
+      {label: 'Sesión 1 (19 nov)', val: 'Completada · Test superado ✓'},
+      {label: 'Sesión 2 (27 nov)', val: 'Pendiente (18:45 – 20:45)'}
+     ]
+    }
+   ],
+   actions: [
+    {label: '📝 Ver preguntas y respuestas del test (19 nov) ↗', detailKey: 'test_19nov_lage', cls: 'solid-blue'},
+    {label: 'Abrir HTML original Testmoz ↗', url: testHtmlLageLocalUrl, cls: 'blue'},
+    {label: 'Abrir apuntes del test (.md) ↗', url: testMdLageLocalUrl},
+    {label: 'Ver asignatura ↗', subjectRef: 'Procura|Actuación procesal|5'},
+    {label: 'Ficha de Juan Lage Fdez-Cervera ↗', teacher: 'Juan Lage Fdez-Cervera'}
+   ]
+  },
   {
    id: 'dossier-rita-goimil',
    teacher: 'Rita Goimil Martínez',
@@ -15495,7 +15705,7 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'test_19nov_lage' || key === 'grade_19nov_lage_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
   let targetFilter = 'teachers';
   if(key.includes('test') && !key.includes('chony')) targetFilter = 'test';
   else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key.startsWith('mail_notas_') || key.startsWith('mail_calificacion_') || key.startsWith('grade_carnota_') || key.startsWith('grade_patricia_') || key.startsWith('grade_susana_') || key.startsWith('grade_chony_')) targetFilter = 'mail';
@@ -15519,6 +15729,7 @@ function openDetail(key){
    else if(key === 'test_29oct_susana' || key === 'grade_29oct_susana_test') targetId = 'grade_29oct_susana_test';
    else if(key === 'test_30oct_susana' || key === 'grade_30oct_susana_test') targetId = 'grade_30oct_susana_test';
    else if(key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test') targetId = 'grade_2nov_carnota_test';
+   else if(key === 'test_19nov_lage' || key === 'grade_19nov_lage_test') targetId = 'grade_19nov_lage_test';
    else if(key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test') targetId = 'grade_3nov_patricia_test';
    let card = document.getElementById(targetId);
    if(card){
