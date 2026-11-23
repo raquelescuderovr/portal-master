@@ -5264,16 +5264,29 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="ptb-header">
         <div class="ptb-title-wrap">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-            <span class="ptb-badge" id="ptbPendingBadge" style="background:var(--green);color:#ffffff">✓ 0 PRÁCTICAS PENDIENTES</span>
-            <span class="ptb-urgent-chip" id="ptbUrgentChip">🎉 ¡Todas las prácticas al día! · 22 completadas</span>
+            <span class="ptb-badge alert" id="ptbPendingBadge" style="background:var(--terracotta);color:#ffffff">⏳ 3 PRÁCTICAS PENDIENTES</span>
+            <span class="ptb-urgent-chip" id="ptbUrgentChip">📌 Próximo vencimiento: 24 nov · Casos Prácticos 1, 2 y 3 (D.ª Rita Goimil)</span>
           </div>
           <h3 class="ptb-title">Titulares de Prácticas y Cosas Pendientes</h3>
-          <p class="ptb-subtitle" id="ptbSubtitle">Todas las prácticas y casos evaluables encargados hasta la fecha han sido resueltos y entregados formalmente con acuse de recibo y excelentes calificaciones.</p>
+          <p class="ptb-subtitle" id="ptbSubtitle">Tienes 3 prácticas pendientes de entrega según calendario (Casos prácticos 1, 2 y 3 de D.ª Rita Goimil en CPROC, con vencimiento el 24 nov 2026). Revisa los detalles y plazos a continuación.</p>
         </div>
-        <button class="ptb-view-all-btn" id="ptbViewAllBtn" data-switch-view="entregas">Ver todas las entregas (22) ➔</button>
+        <button class="ptb-view-all-btn" id="ptbViewAllBtn" data-switch-view="entregas">Ver todas las entregas (25) ➔</button>
       </div>
 
       <div class="ptb-grid">
+        <!-- Tarjeta Pendiente URGENTE: Casos Prácticos 1, 2 y 3 Rita Goimil (Plazo: 24 nov 2026) -->
+        <article class="ptb-card" id="homePendingGoimilCasos" data-detail="entrega_goimil_caso1_no_dineraria" style="cursor:pointer;border-left:4px solid var(--terracotta);background:var(--paper-card)" title="Pincha para ver los detalles de los casos prácticos de D.ª Rita Goimil">
+          <div class="ptb-card-top">
+            <span class="ptb-tag terra">⏳ 3 Prácticas pendientes en CPROC</span>
+            <span class="ptb-due-badge terra">Plazo: Martes 24 nov 2026</span>
+          </div>
+          <h4 class="ptb-card-title">Casos Prácticos 1, 2 y 3: Ejecución no dineraria, alimentos y título europeo</h4>
+          <div class="ptb-card-meta">
+            <div>👤 Docente: <b>D.ª María Rita Goimil Martínez (Procuradora ICP)</b></div>
+            <div>📚 Materia: <b>Práctica Procesal Civil · Procura (Curso 26-28)</b></div>
+            <div>🏛️ Publicadas en la plataforma CPROC (MUAP → Tareas) · Plazo límite: <b>24 nov 2026</b></div>
+          </div>
+        </article>
         <!-- Tarjeta Pendiente URGENTE: Test Arrendamientos Chony Jiménez (antes del lunes 9 nov) -->
         <article class="ptb-card" id="homePendingChonyTest" data-detail="entrega_chony_test_arrendamientos_9nov" style="cursor:pointer;border-left:4px solid var(--green);background:var(--paper-card)" title="Pincha para ver los detalles de la entrega y la calificación de D.ª Chony Jiménez">
           <div class="ptb-card-top">
@@ -5428,7 +5441,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <strong style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px">
           <span>⚖️</span> Modelo de Evaluación del Máster: 3 niveles claramente diferenciados
         </strong>
-        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 8 tests online superados · 22 prácticas entregadas con éxito ✓</span>
+        <span class="due-state submitted" style="font-size:11px">11 notas conjuntas oficiales por correo · 8 tests online superados · 22 prácticas entregadas con éxito (3 pendientes) ✓</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:12.5px;line-height:1.5">
         <div style="background:var(--paper-warm);border:1px solid var(--line-subtle);border-radius:10px;padding:12px 14px">
@@ -5479,9 +5492,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
       <button class="stat-card" data-grade-filter="practices" title="Ver solo casos prácticos y entregas">
         <div>
           <span class="stat-kicker">Casos prácticos y trabajos</span>
-          <span class="stat-title" id="statPracticesTitle">22 entregadas y confirmadas formalmente</span>
+          <span class="stat-title" id="statPracticesTitle">22 entregadas (3 pendientes en CPROC)</span>
         </div>
-        <span class="stat-val-pill" id="statPracticesVal">22 / 22 ✓</span>
+        <span class="stat-val-pill" id="statPracticesVal">22 / 25</span>
       </button>
     </div>
 
@@ -5632,16 +5645,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
         <p id="deliverySubtitle">Seguimiento de prácticas y trabajos del Máster: entregas futuras pendientes y prácticas ya entregadas con acuse de recibo y calificaciones oficiales.</p>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <div class="delivery-range" id="deliveryRange">0 pendientes · 22 entregadas</div>
+        <div class="delivery-range" id="deliveryRange">3 pendientes · 22 entregadas</div>
         <button class="hub-more-btn" data-switch-view="inicio">← Portada</button>
       </div>
     </div>
     <div class="status-filter-strip" role="group" aria-label="Filtrar entregas" style="margin-bottom:16px">
       <b>Filtrar:</b>
-      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (22)</button>
-      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (0)</button>
+      <button class="status-filter-btn active" data-delivery-filter="all">Todas las prácticas (25)</button>
+      <button class="status-filter-btn status-btn-upcoming" data-delivery-filter="pending">⏳ Pendientes de entrega (3)</button>
       <button class="status-filter-btn" data-delivery-filter="completed">✓ Ya entregadas (22)</button>
-      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (7)</button>
+      <button class="status-filter-btn" data-delivery-filter="cproc">🏛️ Procura / CPROC (10)</button>
       <button class="status-filter-btn" data-delivery-filter="icacor">⚖️ Abogacía / Coordinación (15)</button>
       <span class="status-filter-summary" id="deliveryFilterSummary">Mostrando 22 prácticas ya entregadas con éxito.</span>
     </div>
@@ -6072,6 +6085,7 @@ const events={
    {start:'18:45',end:'20:45',name:'Ejecuciones no dinerarias / Procura',teacher:'Rita Goimil Martínez',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
   '2026-11-24':[
+   {start:'23:59',end:'',name:'⏳ PLAZO DE ENTREGA (CPROC): Casos Prácticos 1, 2 y 3 (D.ª Rita Goimil · Práctica Procesal Civil)',teacher:'Rita Goimil Martínez',subject:'Procura · Práctica Procesal Civil',subjectRef:'Procura|Actuación procesal|6',detailKey:'entrega_goimil_caso1_no_dineraria',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
    {start:'08:00',end:'09:00',name:'Pilates',subject:'Google Calendar (raquel.escudero.valcarcelrios@gmail.com)',place:'A Coruña',kind:'Personal · Google',isPersonal:true,detailKey:'personal_calendar_sync'},
    {start:'16:30',end:'18:30',name:'Gestión económica del proceso / Procura',teacher:'Elena de Miranda Osset',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
@@ -6671,6 +6685,45 @@ const gradeRecords=[
 
 const deliveries=[
  {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 1: Ejecución de condena no dineraria',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente (Plazo: 24 nov 2026 · Asignada: 23 nov 2026)',
+  submitted:false,
+  detailKey:'entrega_goimil_caso1_no_dineraria',
+  file:'CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
+ {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 2: Aseguramiento de pensiones de alimentos en país comunitario',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente (Plazo: 24 nov 2026 · Asignada: 23 nov 2026)',
+  submitted:false,
+  detailKey:'entrega_goimil_caso2_pensiones_alimentos',
+  file:'CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
+ {
+  date:new Date(2026,10,24),
+  title:'Caso práctico 3: Oposición a la ejecución título judicial europeo',
+  teacher:'Rita Goimil Martínez',
+  subject:'Procura · Práctica Procesal Civil / Ejecuciones no dinerarias',
+  subjectRef:'Procura|Actuación procesal|6',
+  subjectName:'Ejecución hipotecaria y ejecuciones no dinerarias (D.ª Rita Goimil)',
+  status:'⏳ Pendiente (Plazo: 24 nov 2026 · Asignada: 23 nov 2026)',
+  submitted:false,
+  detailKey:'entrega_goimil_caso3_oposicion_titulo_europeo',
+  file:'CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO». Docente: D.ª María Rita Goimil Martínez (Procuradora ICP). Materia: Práctica Procesal Civil. Curso: 26-28. Fecha límite de entrega: 24 de noviembre de 2026. Entrega telemática a través de la plataforma CPROC (MUAP → Tareas).'
+ },
+ {
   date:new Date(2026,10,10),
   title:'Tests de Arrendamientos Urbanos y Propiedad Horizontal (D.ª Chony Jiménez)',
   teacher:'Chony Jiménez',
@@ -7144,6 +7197,51 @@ const mailSummaries={
 };
 
 const details={
+ entrega_goimil_caso1_no_dineraria:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 1_EJECUCIÓN DE CONDENA NO DINERARIA\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
+ entrega_goimil_caso2_pensiones_alimentos:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 2_ASEGURAMIENTO DE PENSIONES DE ALIMENTOS EN PAÍS COMUNITARIO\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
+ entrega_goimil_caso3_oposicion_titulo_europeo:{
+  isDelivery:true,
+  kicker:'Práctica CPROC ⏳ Pendiente · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO (D.ª María Rita Goimil)',
+  date:'Fecha límite de entrega: martes, 24 de noviembre de 2026 · Plataforma CPROC',
+  teacher:'Rita Goimil Martínez',
+  subjectRef:'Procura|Actuación procesal|6',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC: «CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO».\n\n• Docente y cargo: D.ª MARÍA RITA GOIMIL MARTÍNEZ (Procuradora ICP)\n• Materia: Práctica Procesal Civil\n• Curso: 26-28\n• Fecha límite de entrega: 24 de noviembre de 2026\n• Descripción de la tarea: CASO PRACTICO 3_OPOSICION A LA EJECUCION TITULO JUDICIAL EUROPEO\n• Vía de entrega: Plataforma oficial CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Curso 26-28',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Ficha de Rita Goimil',teacher:'Rita Goimil Martínez',kind:'Docente 👤'},
+   {name:'Ver asignatura: Ejecución no dineraria',subjectRef:'Procura|Actuación procesal|6',kind:'Asignatura ↗'}
+  ]
+ },
  entrega_tareas_propiedad_horizont:{
   isDelivery:true,
   kicker:'Práctica ICACOR · Derecho Civil / Propiedad Horizontal',
@@ -10067,7 +10165,7 @@ const courses=[
     period:'23 nov 2026 · Horario: 16:30 – 20:45 (2 sesiones continuas)',
     startDate:'2026-11-23',
     teachers:['María P. Carnota García','Rita Goimil Martínez'],
-    grade:{score:'⏳ Por venir · 23 nov',detail:'Ejecución sobre bienes hipotecados (16:30) y ejecución de hacer/no hacer (18:45).',detailKey:'materials'},
+    grade:{score:'⏳ 3 prácticas pendientes (24 nov)',detail:'3 casos prácticos de ejecuciones no dinerarias y UE publicados en CPROC con límite el 24 nov.',detailKey:'entrega_goimil_caso1_no_dineraria'},
     notes:[
      {name:'LEC: Ejecución hipotecaria (arts. 681 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'},
      {name:'LEC: Ejecución no dineraria (arts. 699 y ss. · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2000-323',label:'BOE oficial ↗'}
@@ -10860,7 +10958,7 @@ const teacherDirectory=[
    {date:'2026-11-23',dayLabel:'Lunes 23 nov 2026',time:'18:45 – 20:45',hours:'2 horas',topic:'Ejecuciones no dinerarias en la Procura (hacer, no hacer y entrega de cosa)',place:'Colegio de Abogados (A Coruña)'}
   ],
   mails:[{title:'Calificaciones oficiales del 27/10/2026 (Nota: 10/10 ★)',key:'mail_rita_goimil_27oct'},{title:'Carta de presentación oficial (21 oct)',key:'presentation_goimil_21oct'}],
-  practices:[{title:'Actividades evaluables del 27 oct (Test 4 + Trabajos 6)',status:'10 / 10 (Sobresaliente ★) ✓',key:'mail_rita_goimil_27oct'}],
+  practices:[{title:'Actividades evaluables del 27 oct (Test 4 + Trabajos 6)',status:'10 / 10 (Sobresaliente ★) ✓',key:'mail_rita_goimil_27oct'},{title:'Caso práctico 1: Ejecución de condena no dineraria',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso1_no_dineraria'},{title:'Caso práctico 2: Aseguramiento de pensiones de alimentos en país comunitario',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso2_pensiones_alimentos'},{title:'Caso práctico 3: Oposición a la ejecución título judicial europeo',status:'⏳ Pendiente (Plazo: 24 nov)',key:'entrega_goimil_caso3_oposicion_titulo_europeo'}],
   driveFiles:[],
   notes:[{title:'Ley 5/2012 de mediación civil y mercantil (BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2012-9112',urlLabel:'BOE oficial ↗'}]
  },
@@ -13509,7 +13607,7 @@ function renderGrades(filter){
   } else if(filterToApply === 'test'){
    sumEl.textContent = 'Mostrando exclusivamente tests online realizados en clase (16 oct: 20/20, 20 oct: 9/10, 28 oct: 10/10, 29 oct: 9/10, 30 oct: 10/10, 2 nov: 10/10 y 3 nov: 8/10), con desglose interactivo de preguntas y respuestas.';
   } else if(filterToApply === 'practices'){
-   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (22 entregadas con éxito, 0 pendientes).';
+   sumEl.textContent = 'Mostrando casos prácticos, dictámenes y escritos evaluables agrupados por estado de entrega (22 entregadas con éxito, 3 pendientes de entrega).';
   } else {
    sumEl.textContent = 'Mostrando todas las tarjetas individuales de calificaciones, tests y balance general.';
   }
@@ -16334,6 +16432,12 @@ function renderDeliveries(filter = currentDeliveryFilter){
  if(btnPending) btnPending.textContent = `⏳ Pendientes de entrega (${pendingCount})`;
  const btnCompleted = document.querySelector('[data-delivery-filter="completed"]');
  if(btnCompleted) btnCompleted.textContent = `✓ Ya entregadas (${completedCount})`;
+ const cprocCount = deliveries.filter(d => (d.subject||'').toLowerCase().includes('procura') || (d.status||'').toLowerCase().includes('cproc') || (d.details||'').toLowerCase().includes('cproc')).length;
+ const btnCproc = document.querySelector('[data-delivery-filter="cproc"]');
+ if(btnCproc) btnCproc.textContent = `🏛️ Procura / CPROC (${cprocCount})`;
+ const icacorCount = deliveries.filter(d => (d.subject||'').toLowerCase().includes('abogacía') || (d.details||'').toLowerCase().includes('icacor') || (d.teacher||'').toLowerCase().includes('delgado') || (d.details||'').toLowerCase().includes('dataforum')).length;
+ const btnIcacor = document.querySelector('[data-delivery-filter="icacor"]');
+ if(btnIcacor) btnIcacor.textContent = `⚖️ Abogacía / Coordinación (${icacorCount})`;
 
  const ptbBadge = document.getElementById('ptbPendingBadge');
  if(ptbBadge){
