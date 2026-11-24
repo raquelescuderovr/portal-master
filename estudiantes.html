@@ -5921,6 +5921,9 @@ const testMdCarnotaLocalUrl='historial-tests/2026-10-28-procura-registros-notari
 const testmozCarnota2ReviewUrl='https://testmozusercontent.com/q/15729578/student/review';
 const testHtmlCarnota2LocalUrl='historial-tests/originales/2026-11-02-testmoz-15729578.html';
 const testMdCarnota2LocalUrl='historial-tests/2026-11-02-procura-recursos-ejecucion-costas-maria-carnota.md';
+const testmozMirandaReviewUrl='https://testmozusercontent.com/q/15778350/student/review';
+const testHtmlMirandaLocalUrl='historial-tests/originales/2026-11-24-testmoz-15778350.html';
+const testMdMirandaLocalUrl='historial-tests/2026-11-24-procura-gestion-economica-elena-miranda.md';
 const testmozGoimilReviewUrl='https://testmozusercontent.com/q/15775872/student/review';
 const testHtmlGoimilLocalUrl='historial-tests/originales/2026-11-23-testmoz-15775872.html';
 const testMdGoimilLocalUrl='historial-tests/2026-11-23-procura-ejecucion-no-dineraria-cooperacion-ue-rita-goimil.md';
@@ -5949,6 +5952,7 @@ const practicasGdriveUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const cprocTareasUrl='https://www.icpcoruna.com/copia-de-entrega-de-tareas';
 const susanaSubsanacionPdfLocalUrl='materiales/REDACCION_ESCRITOS_SUBSANACION_29_10_2026_SUSANA_DIAZ.pdf';
 const susanaSubsanacionVideoLocalUrl='materiales/2026-10-30-grabacion-entrega-practica-ceproc.mp4';
+const casoMirandaFotoUrl='materiales/CASO_PRACTICO_GESTION_ECONOMICA_DEL_PROCESO_24_11_2026_CPROC.jpg';
 const susanaCasos30OctPdfLocalUrl='materiales/CASOS_PRACTICOS_30_10_2026_SUSANA_DIAZ.pdf';
 
 const events={ '2026-10-01':[
@@ -6121,9 +6125,11 @@ const events={ '2026-10-01':[
   ],
  '2026-11-24':[
    {start:'20:45',end:'',name:'✓ Casos Prácticos 1, 2 y 3 hechos en clase (D.ª Rita Goimil · Práctica Procesal Civil)',teacher:'Rita Goimil Martínez',subject:'Procura · Práctica Procesal Civil',subjectRef:'Procura|Actuación procesal|6',detailKey:'entrega_goimil_caso1_no_dineraria',place:'Colegio de Abogados (A Coruña)',kind:'Prácticas en clase ✓',isWarning:false},
-   {start:'16:30',end:'18:30',name:'Gestión económica del proceso / Procura',teacher:'Elena de Miranda Osset',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|7',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
+   {start:'16:30',end:'18:30',name:'Gestión económica del proceso / Procura',teacher:'Elena de Miranda Osset',subject:'Actuación procesal · Procura',subjectRef:'Procura|Actuación procesal|7',mailKey:'test_24nov_miranda',place:'Colegio de Abogados (A Coruña)',kind:'Clase · Procura'},
+   {start:'18:15',end:'',name:'📝 Test online realizado: Testmoz Elena Miranda (10/10 aciertos · 100% · Pleno ★)',teacher:'Elena de Miranda Osset',detailKey:'test_24nov_miranda',kind:'Test superado ★'}
   ],
  '2026-11-25':[
+   {start:'23:59',end:'',name:'⏳ PLAZO ENTREGA: Caso Práctico Gestión económica del proceso (D.ª Elena Miranda)',teacher:'Elena de Miranda Osset',subject:'Procura · Práctica Procesal Civil (CPROC)',detailKey:'entrega_miranda_caso_gestion_economica',place:'Plataforma CPROC (MUAP → Tareas)',kind:'Entrega práctica (Límite)',isWarning:true},
    {start:'16:30',end:'20:45',name:'Ejecución procesal civil',teacher:'María de Álvaro',subject:'Procesal civil · Abogacía',subjectRef:'Abogacía|Procesal civil|6',place:'Colegio de Abogados (A Coruña)',kind:'Clase'}
   ],
  '2026-11-26':[
@@ -6233,6 +6239,30 @@ const events={ '2026-10-01':[
 };
 
 const gradeRecords=[
+ {
+  id:'grade_24nov_miranda_test',
+  type:'test',
+  kicker:'Prueba online evaluada en Testmoz / CPROC · 24 nov 2026 (18:15)',
+  title:'Gestión económica del proceso, tasas e impuestos · Elena Miranda Osset',
+  score:'Cuestionario oficial',
+  scoreLabel:'Preguntas y soluciones',
+  breakdown:[
+   {label:'Formato',val:'Cuestionario oficial resuelto'},
+   {label:'Evaluación',val:'Autoevaluación en tu cuaderno'},
+   {label:'Grupo y modalidad',val:'Tarde · Testmoz CPROC'}
+  ],
+  teacher:'Elena de Miranda Osset',
+  subjectRef:'Procura|Actuación procesal|7',
+  mailKey:'test_24nov_miranda',
+  description:'Test oficial «ELENA MIRANDA- 24-11-26 - GRUPO DE TARDE - PRÁCTICA PROCESAL CIVIL» realizado el martes 24 de noviembre de 2026 a las 18:15 h. Incluye todas las preguntas oficiales y sus respuestas. Materia evaluada: normas que imponen justificar y detallar gastos (procesales, tributarias, Estatuto y Arancel), tratamiento tributario de suplidos fuera de base imponible de IVA (art. 78.Tres.3º LIVA), no devengo de tasa en tercería de dominio por ser pretensión accesoria/incidental en ejecución, devengo de cuota fija (modelo 696) en demanda de juicio ordinario de persona jurídica (Ley 10/2012), devolución del 60% de tasa judicial por acuerdo procesal mediante modelo 695 (art. 8.2 Ley 10/2012), liquidación de provisión de fondos con deducción formal en factura con IVA-IRPF, exención de tasas para Comunidades de Propietarios al carecer de personalidad jurídica, exención subjetiva plena del Ministerio Fiscal, cuota de tasa en concurso necesario con bonificación telemática del 10% (540 €), y elementos determinantes en liquidación y pago del ITP y AJD (modelo, competencia territorial, valor de referencia y base imponible/tipo).',
+  links:[
+   {label:'✓ Ver las 10 preguntas y respuestas (10/10 pleno) ↗',detailKey:'test_24nov_miranda',cls:'solid-blue'},
+   {label:'Abrir HTML original Testmoz ↗',url:testHtmlMirandaLocalUrl,cls:'blue'},
+   {label:'Abrir apuntes del test (.md) ↗',url:testMdMirandaLocalUrl},
+   {label:'Revisión en Testmoz ↗',url:testmozMirandaReviewUrl,cls:'blue'},
+   {label:'Ficha de Elena Miranda ↗',teacher:'Elena de Miranda Osset'}
+  ]
+ },
  {
   id:'grade_23nov_goimil_test',
   type:'test',
@@ -6477,6 +6507,20 @@ const gradeRecords=[
 ];
 
 const deliveries=[
+ {
+  date:new Date(2026,10,25),
+  title:'Caso Práctico: Gestión económica del proceso (D.ª Elena de Miranda Osset)',
+  teacher:'Elena de Miranda Osset',
+  subject:'Procura · Práctica Procesal Civil / Gestión económica del proceso',
+  subjectRef:'Procura|Actuación procesal|7',
+  subjectName:'Gestión económica del proceso (D.ª Elena Miranda)',
+  status:'⏳ Pendiente de marcar',
+  submitted:false,
+  detailKey:'entrega_miranda_caso_gestion_economica',
+  file:'CASO PRÁCTICO_GESTIÓN ECONÓMICA DEL PROCESO_24 11 2026',
+  file2:'materiales/CASO_PRACTICO_GESTION_ECONOMICA_DEL_PROCESO_24_11_2026_CPROC.jpg',
+  details:'Tarea oficial de Procura publicada en CPROC: «CASO PRÁCTICO_GESTIÓN ECONÓMICA DEL PROCESO_24 11 2026». Docente: D.ª Elena de Miranda Osset (Procuradora ICP). Materia: Práctica Procesal Civil (Curso 26-28). Plazo límite de entrega: 25 de noviembre de 2026 a través de la plataforma CPROC.'
+ },
  {
   date:new Date(2026,10,27),
   title:'Test de aprovechamiento: Iniciación actividad profesional y Organización despacho (D. Daniel Roberto Garrido Pazos)',
@@ -6901,6 +6945,7 @@ const messages=[
 ];
 
 const mailSummaries={
+ test_24nov_miranda:'TEST ONLINE SOBRESALIENTE (10/10 ★): Cuestionario oficial en Testmoz de D.ª Elena de Miranda Osset completado el martes 24 de noviembre a las 18:15 h con 10 de 10 aciertos (100 % de puntuación · Sobresaliente pleno ★ sin ningún fallo). Obligación de justificar y detallar gastos (procesales, tributarias, Estatuto y Arancel), tratamiento tributario de suplidos fuera de base imponible de IVA (art. 78.Tres.3º LIVA), ausencia de tasa judicial en tercería de dominio por ser pretensión incidental en ejecución, devengo de cuota fija (modelo 696) en demanda ordinaria de persona jurídica, devolución del 60% de tasa por acuerdo procesal (modelo 695), deducción de provisión de fondos en factura con IVA-IRPF, no sujeción a tasas para Comunidades de Propietarios, exención subjetiva del Ministerio Fiscal, cuota de concurso necesario con bonificación telemática del 10% (540 €), y elementos clave en liquidación de ITP y AJD.',
  mail_895671:'Asignación de la docente Chony Jiménez (chonyjimenezdellano@yahoo.es) para las sesiones de Arrendamientos (5 y 6 nov) y Propiedad Horizontal (9 nov).',
  mail_arrendamientos_urbanos_5nov:'Envío por parte de la Administración del Máster (Patricia) de la documentación y trabajos para casa sobre Arrendamientos Urbanos para las clases del 5 y 6 de noviembre (16:30–19:30 h). Archivo adjunto comprimido: «Trabajos para casa y documentación arrendamientos urbanos (2).zip» (143 KB).',
  mail_compraventa_raposo_5nov:'Envío por parte de la Administración del Máster (Patricia) de 3 casos prácticos para la clase de Compraventa del martes 10 de noviembre con el Profesor D. Juan Raposo: «Caso práctico compraventa MUA.docx», «CASO COMPRAVENTA INTERNACIONAL ALUMNADO.docx» y «CASO FINCA RÚSTICA ALUMNADO.docx» (105 KB en total).',
@@ -7110,6 +7155,31 @@ const details={
    {name:'Ver asignaturas de Procesal Civil',subjectRef:'Abogacía|Procesal civil|0',kind:'Asignatura ↗'}
   ]
  },
+ entrega_miranda_caso_gestion_economica:{
+  isDelivery:true,
+  kicker:'Práctica oficial CPROC · Procura · Práctica Procesal Civil',
+  title:'Tarea: CASO PRÁCTICO_GESTIÓN ECONÓMICA DEL PROCESO_24 11 2026 (D.ª Elena de Miranda Osset)',
+  date:'Publicada: 24 nov 2026 · Fecha límite de entrega: 25 de noviembre de 2026 · CPROC',
+  teacher:'Elena de Miranda Osset',
+  subjectRef:'Procura|Actuación procesal|7',
+  body:'Tarea oficial de Procura publicada en la plataforma CPROC:
+
+• Tarea: CASO PRÁCTICO_GESTIÓN ECONÓMICA DEL PROCESO_24 11 2026
+• Docente y cargo: D.ª ELENA DE MIRANDA OSSET (Procuradora ICP)
+• Materia: Práctica Procesal Civil
+• Curso: 26-28
+• Fecha límite de entrega: 25 de noviembre de 2026
+• Descripción de la tarea: CASO PRÁCTICO_GESTIÓN ECONÓMICA DEL PROCESO_24 11 2026
+• Documentación relacionada: Archivo adjunto PDF en plataforma CPROC.
+• Vía de entrega: Plataforma CPROC (MUAP → Tareas publicadas).',
+  source:'Plataforma CPROC (MUAP → Tareas publicadas) · Asignada el 24 nov 2026',
+  attachments:[
+   {name:'Plataforma CPROC (MUAP → Tareas)',url:cprocUrl,kind:'CPROC ↗'},
+   {name:'Captura del enunciado en CPROC (.jpg)',url:casoMirandaFotoUrl,kind:'Enunciado CPROC 📷'},
+   {name:'Ficha de Elena de Miranda Osset',teacher:'Elena de Miranda Osset',kind:'Docente 👤'},
+   {name:'Ver asignatura: Gestión económica del proceso',subjectRef:'Procura|Actuación procesal|7',kind:'Asignatura ↗'}
+  ]
+ },
  entrega_goimil_caso1_no_dineraria:{
   isDelivery:true,
   kicker:'Práctica realizada en clase ✓ · Procura · Práctica Procesal Civil',
@@ -7221,25 +7291,144 @@ mail_rita_goimil_27oct:{
    {name:'Ficha de Rita Goimil en el portal',teacher:'Rita Goimil Martínez',kind:'Directorio docente'}
   ]
  },
- test_23nov_goimil:{
+  test_24nov_miranda:{
+  kicker:'Cuestionario oficial de autoevaluación · Preguntas y respuestas',
+  title:'Test online · Gestión económica del proceso, tasas e impuestos (Elena Miranda)',
+  date:'Sesión: martes, 24 de noviembre de 2026  · Cuestionario oficial Testmoz',
+  teacher:'Elena de Miranda Osset',
+  subjectRef:'Procura|Actuación procesal|7',
+  body:,
+
+  source:'CPROC-MUAP-TEST-ONLINE → Testmoz (https://testmozusercontent.com/q/15778350/student/review) · 24 nov 2026',
+  attachments:[
+   {name:'Abrir documento Markdown con análisis jurídico íntegro (.md)',url:testMdMirandaLocalUrl,kind:'Markdown en portal'},
+   {name:'Abrir HTML original de Testmoz (diseño original)',url:testHtmlMirandaLocalUrl,kind:'HTML en portal'},
+   {name:'Abrir revisión online en Testmoz',url:testmozMirandaReviewUrl,kind:'Web Testmoz ↗'},
+   {name:'Ficha docente de D.ª Elena de Miranda Osset',teacher:'Elena de Miranda Osset',kind:'Docente 👤'},
+   {name:'Abrir aula virtual CPROC',url:cprocUrl,kind:'Web CPROC ↗'}
+  ],
+  extra:'Entrega telemática a través del aula virtual o secretaría académica.',
+  questions:[
+   {
+    q:'1. A María, estudiante del Máster universitario para el acceso a la Abogacía y a la procura, no le quedó claro, ¿Cuáles son las normas que imponen al procurador la obligación de justificar y detallar los gastos?',
+    opts:[
+     'La norma procesal y la legislación tributaria.',
+     'Las normas reguladoras de los procuradores.',
+     'El Estatuto General de los Procuradores de los Tribunales y por el Arancel de los procuradores de los tribunales.',
+     'Todas las respuestas son verdaderas.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'2. La Dirección General de Tributos entiende por suplidos "las sumas pagadas en nombre y por cuenta del cliente en virtud de un mandato expreso", lo que implica que el/la procurador/a al emitir su minuta o factura. ¿Debe incluir estas sumas en la base imponible?',
+    opts:[
+     'No. No incluirá dichas sumas en la base imponible, siempre que sean sumas pagadas en nombre y por cuenta del cliente; que se acredite mediante la correspondiente factura o documento expedido a cargo del cliente y no del intermediario; y que la cantidad percibida por el procurador coincida exactamente con el importe del gasto suplido.',
+     'Sí. Estas sumas siempre deben integrarse en la base imponible del impuesto, sin perjuicio de su repercusión al cliente y correspondiente anotación contable.',
+     'Sí. Pero, sólo se suman a la base imponible cuando existe una provisión previa entregada por el poderdante al procurador.',
+     'Sí. Porque la base imponible únicamente está integrada por la suma de los honorarios, de los suplidos, los depósitos y las tasas expresamente previstas en la ley procesal civil.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'3. Juan es procurador de los tribunales de la entidad “GOOD MORNING S.L.” y debe interponer una demanda de tercería de dominio. ¿La interposición de esta demanda devenga tasa judicial?',
+    opts:[
+     'Si, porque es un procedimiento declarativo ordinario.',
+     'Si, porque es un procedimiento declarativo y el sujeto pasivo, es una persona jurídica.',
+     'Si, porque es un procedimiento declarativo, el sujeto pasivo es una persona jurídica y el hecho imponible está sometido a gravamen.',
+     'No, porque se origina en el seno de un proceso principal, respecto del cual tiene una naturaleza accesoria y no es ninguno de los supuestos de hecho imponibles.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'4. Sonia, procuradora de los tribunales, recibe en su despacho el encargo de presentar el día 16 de Octubre de 2026, una demanda de juicio Ordinario en reclamación de cantidad, en nombre y representación de la mercantil “SER O NO SER, SL”, ¿Se devenga tasa judicial?',
+    opts:[
+     'El acto procesal (demanda), devenga tasa judicial y se despacha autoliquidación (modelo 696) por la cuota fija prevista para los procedimientos ordinarios.',
+     'El acto procesal (demanda), devenga tasa judicial y se despacha autoliquidación (modelo 696) por la cuota fija prevista para los procedimientos ordinarios, más la cuota variable determinada según la cuantía del procedimiento.',
+     'El acto procesal (demanda), devenga tasa judicial, pero está exenta de autoliquidación y pago, por concurrir una causa de exención subjetiva, dada la naturaleza jurídica del sujeto pasivo.',
+     'El acto procesal (demanda), no devenga tasa, ya que el supuesto enunciado se tramita conforme a las normas de la jurisdicción voluntaria y, por tanto, es ajeno a la potestad jurisdiccional que grava la tasa judicial.'
+    ],
+    correct:0,
+    userAnswer:0
+   },
+   {
+    q:'5. En un procedimiento ordinario civil seguido ante la Sección Única del Tribunal Instancia plaza n.2 de Betanzos, las entidades mercantiles que son parte en el proceso alcanzan un acuerdo total y ponen fin al litigio definitivamente. La entidad demandante que abonó la tasa judicial, nos pregunta si tiene derecho a la devolución de la tasa en su día abonada. ¿Qué respuesta considera la más acertada?',
+    opts:[
+     'No, porque el procedimiento ha finalizado después del devengo.',
+     'No, porque son personas jurídicas y por tanto no están exentas.',
+     'Si, a través de la tasación de costas.',
+     'Si, porque la norma prevé que el sujeto pasivo tiene derecho a la devolución del 60 por ciento del importe de la cuota de la tasa cuando, en cualquiera de los procesos cuya iniciación dé lugar al devengo de este tributo, se alcance un acuerdo que ponga fin al litigio, mediante el modelo de 695.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'6. Mónica es procuradora y no tiene claro cómo hacer la factura a su cliente, que es una Sociedad Limitada con domicilio social en España y se pregunta en concreto cómo ha de hacer con la provisión de fondos recibida y con los impuestos.',
+    opts:[
+     'No ha de incluir la provisión de fondos en la factura.',
+     'Incluye la provisión en la factura sumándola al importe final, y le resta el IVA.',
+     'Ha de liquidar la provisión de fondos y deducirla de su factura final de derechos, suplidos y gastos y así rendir cuentas a su cliente que es un deber del/ la procurador/a y la factura irá con IVA-IRPF.',
+     'Depende de lo que le diga el cliente que haga.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'7. Rebeca es procuradora de los tribunales de la “COMUNIDAD DE PROPIETARIOS Rúa de la Procura nº11” y debe interponer una demanda de Juicio Ordinario. ¿La interposición de esta demanda devenga tasa judicial?',
+    opts:[
+     'Si, porque es un procedimiento declarativo.',
+     'Si, porque es un procedimiento declarativo y el sujeto pasivo, es una persona jurídica.',
+     'No, porque es un procedimiento declarativo, el sujeto pasivo es una persona jurídica y el hecho imponible está sometido a gravamen.',
+     'No, puesto que las CCPP al no tener personalidad jurídica, no devengan tasa.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'8. El Ministerio Fiscal va a interponer una demanda para la adopción de medidas de apoyo a la discapacidad. ¿Qué exención disfrutará el Ministerio Fiscal al abonar la tasa por el ejercicio de la función jurisdiccional?',
+    opts:[
+     'El Ministerio Fiscal disfrutará de una exención del 20% al abonar la tasa por el ejercicio de la potestad jurisdiccional en los órdenes civil, contencioso-administrativo y social.',
+     'El Ministerio Fiscal disfrutará de una exención del 50% al abonar la tasa por el ejercicio de la potestad jurisdiccional en los órdenes civil, contencioso-administrativo y social.',
+     'El Ministerio Fiscal disfrutará de una exención del 70% al abonar la tasa por el ejercicio de la potestad jurisdiccional en los órdenes civil, contencioso-administrativo y social.',
+     'El Ministerio Fiscal está exento de la tasa por el ejercicio de la potestad jurisdiccional.'
+    ],
+    correct:3,
+    userAnswer:3
+   },
+   {
+    q:'9. José, procurador de los Tribunales, ha presentado en nombre de las entidades “AHORA O NUNCA, SL”, “MÁS TARDE, SL” Y “SIEMPRE, SL”, un concurso necesario frente a la entidad “XXXXXX, SA” y no sabe si ha de pagar la tasa y para el caso de tener que abonarla, ha de trasladar a sus clientes la cuantía a pagar, ¿Tiene que pagar tasa?, ¿de qué cuantía?',
+    opts:[
+     'Entiende que no ha de abonar ninguna tasa judicial.',
+     'Entiende que sí ha de poner la tasa judicial y que la cuantía es de 200€ prorrateado entre sus tres representados, así que pide esa cantidad como Provisión de fondos.',
+     'Entiende que, al hacerlo telemático, la cuantía TOTAL será de 600€ menos el 10% de bonificación cada uno de ellos. Es decir, abonará 540€.',
+     'Sí ha de pagar tasa, y le corresponden 200€ a cada uno de sus representados ya que lo va a hacer de forma telemática.'
+    ],
+    correct:2,
+    userAnswer:2
+   },
+   {
+    q:'10. Para la liquidación y pago de un ITP Y AJD por cuenta de su mandante, indica ¿Qué elementos deberá tener en cuenta un/a procurador/a?',
+    opts:[
+     'El modelo tributario que debe diligenciar y oficina competente para liquidarlo.',
+     'Las exenciones, valor de referencia del inmueble y los plazos.',
+     'La determinación de la cuota: base imponible y el tipo aplicable.',
+     'Todas las respuestas son verdaderas.'
+    ],
+    correct:3,
+    userAnswer:3
+   }
+  ]
+ },
+test_23nov_goimil:{
   kicker:'Cuestionario oficial de autoevaluación · Preguntas y respuestas',
   title:'Test online · Ejecución no dineraria, cooperación UE y especialidades (Rita Goimil)',
   date:'Sesión: lunes, 23 de noviembre de 2026  · Cuestionario oficial Testmoz',
   teacher:'Rita Goimil Martínez',
   subjectRef:'Procura|Actuación procesal|6',
-  body:'Prueba oficial de clase realizada en la plataforma Testmoz («RITA GOIMIL- 23-11-26 - GRUPO DE TARDE - PRÁCTICA PROCESAL CIVIL»). Cuestionario oficial resuelto con preguntas, opciones y fundamentos jurídicos.
+  body:,
 
-• Resumen y análisis jurídico de las 10 cuestiones:
-  1. Desalojo de vivienda habitual (art. 704.1 LEC): plazo inicial de un mes prorrogable por un mes más si concurren motivos fundados.
-  2. Terceros ocupantes en inmueble a desalojar (art. 704.2 LEC): el LAJ convoca a las partes y a los ocupantes a una vista ante el Tribunal dentro del plazo de 10 días siguientes a la notificación.
-  3. Ejecución directa en España de título judicial de Estado miembro UE: sin necesidad de declaración de ejecutividad ni exequátur (Reglamento UE 1215/2012 Bruselas I bis).
-  4. Oposición a requerimiento europeo de pago (Reglamento CE 1896/2006 y 1182/71): plazo perentorio de 30 días, computado según el Reglamento 1182/71, no de un mes.
-  5. Medida cautelar transfronteriza de retención de cuentas bancarias en la UE: Orden Europea de Retención de Cuentas (Reglamento UE 655/2014).
-  6. Notificación y traslado transfronterizo de documentos en la UE (Reglamento UE 2020/1784): sin orden jerárquico o de prelación entre los distintos medios previstos.
-  7. Ejecución dineraria frente a Administración pública (arts. 104 y 106 LJCA): plazo de gracia de 3 meses para el pago; transcurrido sin abonar, el ejecutante puede pedir ejecución forzosa e intereses de demora legales.
-  8. Ejecución penal de pronunciamientos sobre responsabilidad civil (art. 984 LECrim): se promueve de oficio por el propio juzgado o tribunal sentenciador.
-  9. Impugnación de resoluciones del Letrado de la Administración de Justicia en ejecución laboral: recurso de reposición ante el propio LAJ (art. 239.4 LRJS).
-  10. Título ejecutivo europeo y cooperación judicial comunitaria: armonización e integración directa en el espacio judicial europeo.',
   source:'CPROC-MUAP-TEST-ONLINE → Testmoz (https://testmozusercontent.com/q/15775872/student/review) · 23 nov 2026',
   attachments:[
    {name:'Abrir documento Markdown con análisis jurídico íntegro (.md)',url:testMdGoimilLocalUrl,kind:'Markdown en portal'},
@@ -10203,14 +10392,18 @@ const courses=[
    },
    {
     name:'Gestión económica del proceso',
-    period:'24 nov 2026 · Horario: 16:30 – 18:30',
+    period:'24 nov 2026 · Horario: 16:30 – 18:30 · Test online superado ★',
     startDate:'2026-11-24',
     teachers:['Elena de Miranda Osset'],
-    grade:{score:'⏳ Por venir · 24 nov',detail:'Depósitos judiciales, consignaciones, cuenta de clientes y liquidaciones.',detailKey:'materials'},
+    grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
     notes:[
+     {name:'Práctica: Caso Práctico Gestión económica (Plazo: 25 nov)',detailKey:'entrega_miranda_caso_gestion_economica',label:'Práctica CPROC ↗'},
+     {name:'Test online Elena Miranda (10/10 aciertos · Pleno ★)',detailKey:'test_24nov_miranda',label:'Test en portal ↗'},
+     {name:'HTML original Testmoz (revisión oficial)',url:testHtmlMirandaLocalUrl,label:'HTML Testmoz ↗'},
+     {name:'Apuntes y guía jurídica del test (.md)',url:testMdMirandaLocalUrl,label:'Apuntes .md ↗'},
      {name:'Cuenta de depósitos y consignaciones judiciales (RD 467/2006 · BOE)',url:'https://www.boe.es/buscar/act.php?id=BOE-A-2006-8293',label:'BOE oficial ↗'}
     ],
-    mails:['materials']
+    mails:['test_24nov_miranda','mail_elena_miranda_19nov','materials']
    },
    {
     name:'Remuneración, reclamación y fiscalidad de la Procura',
@@ -11234,16 +11427,18 @@ const teacherDirectory=[
   name:'Elena de Miranda Osset',
   branch:'Procura',
   role:'Procuradora · Gestión económica del proceso',
-  gradeBadge:'⏳ Por venir · 24 nov',
-  summary:'Consignaciones judiciales, gestión de cuentas de depósitos del Ministerio de Justicia y liquidación económica procesal.',
-  grade:{score:'⏳ Por venir · 24 nov',scoreLabel:'Docencia por venir',detail:'Sesión programada para el martes 24 de noviembre (16:30–18:30). Total: 2 horas.',detailKey:'schedule'},
+  gradeBadge:'⚖️ Evaluación continua',
+  summary:'Consignaciones judiciales, gestión de cuentas de depósitos del Ministerio de Justicia, tasas judiciales (Ley 10/2012) y liquidación económica procesal.',
+  grade:{score:'Evaluación continua',scoreLabel:'Evaluación del módulo',detail:'Ponderación oficial: 40% Cuestionario tipo test + 60% Trabajos y casos prácticos.',detailKey:'dossiers'},
   sessions:[
    {date:'2026-11-24',dayLabel:'Martes 24 nov 2026',time:'16:30 – 18:30',hours:'2 horas',topic:'Gestión económica del proceso: depósitos, consignaciones y pagos',place:'Colegio de Abogados (A Coruña)'}
   ],
-  mails:[],
-  practices:[],
+  mails:[{title:'Test online Testmoz (24 nov · 10/10 ★)',key:'test_24nov_miranda'},{title:'Rectificación: Presentación y Auto 30/09/2026 (19 nov)',key:'mail_elena_miranda_19nov'}],
+  practices:[{title:'Test online Testmoz: Gestión económica del proceso, tasas e impuestos (10/10 aciertos)',status:'10 / 10 ★ (Sobresaliente pleno)',key:'test_24nov_miranda'},{title:'Caso Práctico: Gestión económica del proceso (24 11 2026)',status:'⏳ Pendiente (Plazo: 25 nov 2026)',key:'entrega_miranda_caso_gestion_economica'}],
   driveFiles:[],
-  notes:[]
+  notes:[
+   'Test oficial en Testmoz completado el 24 nov con 10/10 aciertos (Sobresaliente pleno ★).'
+  ]
  },
  {
   name:'María de Álvaro',
@@ -15968,7 +16163,7 @@ function openDetail(key){
  closeMenu();
 
  // 1. Calificaciones y tests
- if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'test_19nov_lage' || key === 'grade_19nov_lage_test' || key === 'test_23nov_carnota' || key === 'grade_23nov_carnota_test' || key === 'test_23nov_goimil' || key === 'grade_23nov_goimil_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
+ if(key === 'test_16oct' || key === 'grade_16oct_test' || key === 'test_20oct_sandra' || key === 'grade_20oct_test' || key === 'test_28oct_carnota' || key === 'grade_28oct_carnota_test' || key === 'test_29oct_susana' || key === 'grade_29oct_susana_test' || key === 'test_30oct_susana' || key === 'grade_30oct_susana_test' || key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test' || key === 'test_3nov_patricia' || key === 'grade_3nov_patricia_test' || key === 'test_19nov_lage' || key === 'grade_19nov_lage_test' || key === 'test_23nov_carnota' || key === 'grade_23nov_carnota_test' || key === 'test_24nov_miranda' || key === 'grade_24nov_miranda_test' || key === 'test_23nov_goimil' || key === 'grade_23nov_goimil_test' || key === 'grades' || key === 'grade_1oct' || key === 'all_tests_summary' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key === 'mail_notas_carnota_sesion1_11nov' || key === 'grade_carnota_sesion1_28oct' || key === 'mail_notas_carnota_sesion2_11nov' || key === 'grade_carnota_sesion2_2nov' || key === 'mail_calificacion_chony_10nov' || key === 'grade_chony_ambos_tests' || key === 'mail_notas_patricia_9nov' || key === 'grade_patricia_9nov' || key === 'mail_notas_susana_9nov' || key === 'grade_susana_9nov'){
   let targetFilter = 'teachers';
   if(key.includes('test') && !key.includes('chony')) targetFilter = 'test';
   else if(key === 'grades' || key === 'grade_1oct' || key === 'grade_ana_vazquez' || key === 'grades_ana_vazquez' || key === 'grade_carmen_belo' || key === 'grades_carmen_belo' || key === 'grade_rita_goimil_27oct' || key === 'grade_rita_goimil' || key.startsWith('mail_notas_') || key.startsWith('mail_calificacion_') || key.startsWith('grade_carnota_') || key.startsWith('grade_patricia_') || key.startsWith('grade_susana_') || key.startsWith('grade_chony_')) targetFilter = 'mail';
@@ -15992,6 +16187,7 @@ function openDetail(key){
    else if(key === 'test_29oct_susana' || key === 'grade_29oct_susana_test') targetId = 'grade_29oct_susana_test';
    else if(key === 'test_30oct_susana' || key === 'grade_30oct_susana_test') targetId = 'grade_30oct_susana_test';
    else if(key === 'test_2nov_carnota' || key === 'grade_2nov_carnota_test') targetId = 'grade_2nov_carnota_test';
+   else if(key === 'test_24nov_miranda' || key === 'grade_24nov_miranda_test') targetId = 'grade_24nov_miranda_test';
    else if(key === 'test_23nov_goimil' || key === 'grade_23nov_goimil_test') targetId = 'grade_23nov_goimil_test';
    else if(key === 'test_23nov_carnota' || key === 'grade_23nov_carnota_test') targetId = 'grade_23nov_carnota_test';
    else if(key === 'test_19nov_lage' || key === 'grade_19nov_lage_test') targetId = 'grade_19nov_lage_test';
