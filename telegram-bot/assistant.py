@@ -671,9 +671,11 @@ def chat(chat_id: int, user_text: str = "", media_bytes: bytes = None, mime_type
     system_inst = build_system_instruction()
 
     models_to_try = [
+        ("gemini-flash-lite-latest", {}),
         ("gemini-3.5-flash-lite", {}),
         ("gemini-3.1-flash-lite", {}),
-        ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}})
+        ("gemini-3.5-flash", {"thinkingConfig": {"thinkingBudget": 0}}),
+        ("gemini-3.8-flash", {"thinkingConfig": {"thinkingBudget": 0}})
     ]
 
     resp_text = ""
